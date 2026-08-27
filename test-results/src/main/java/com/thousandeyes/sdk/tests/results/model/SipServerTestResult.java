@@ -57,116 +57,91 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SipServerTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_AVAILABILITY = "availability";
+  @JsonProperty(JSON_PROPERTY_AVAILABILITY)
   private Float availability;
 
   public static final String JSON_PROPERTY_CONNECT_TIME = "connectTime";
+  @JsonProperty(JSON_PROPERTY_CONNECT_TIME)
   private Integer connectTime;
 
   public static final String JSON_PROPERTY_DNS_TIME = "dnsTime";
+  @JsonProperty(JSON_PROPERTY_DNS_TIME)
   private Integer dnsTime;
 
   public static final String JSON_PROPERTY_INVITE_TIME = "inviteTime";
+  @JsonProperty(JSON_PROPERTY_INVITE_TIME)
   private Integer inviteTime;
 
   public static final String JSON_PROPERTY_OPTIONS_TIME = "optionsTime";
+  @JsonProperty(JSON_PROPERTY_OPTIONS_TIME)
   private Integer optionsTime;
 
   public static final String JSON_PROPERTY_NUM_REDIRECTS = "numRedirects";
+  @JsonProperty(JSON_PROPERTY_NUM_REDIRECTS)
   private Integer numRedirects;
 
   public static final String JSON_PROPERTY_OPTIONS_REQUEST = "optionsRequest";
+  @JsonProperty(JSON_PROPERTY_OPTIONS_REQUEST)
   private String optionsRequest;
 
   public static final String JSON_PROPERTY_OPTIONS_RESPONSE = "optionsResponse";
+  @JsonProperty(JSON_PROPERTY_OPTIONS_RESPONSE)
   private String optionsResponse;
 
   public static final String JSON_PROPERTY_REGISTER_TIME = "registerTime";
+  @JsonProperty(JSON_PROPERTY_REGISTER_TIME)
   private Integer registerTime;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   private Integer responseCode;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public static final String JSON_PROPERTY_TOTAL_TIME = "totalTime";
+  @JsonProperty(JSON_PROPERTY_TOTAL_TIME)
   private Integer totalTime;
 
   public static final String JSON_PROPERTY_WAIT_TIME = "waitTime";
+  @JsonProperty(JSON_PROPERTY_WAIT_TIME)
   private Integer waitTime;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
   private SipServerErrorType errorType;
 
   public static final String JSON_PROPERTY_PROBLEM_DETAIL = "problemDetail";
+  @JsonProperty(JSON_PROPERTY_PROBLEM_DETAIL)
   private String problemDetail;
 
   public SipServerTestResult() { 
-  }
-
-  @JsonCreator
-  public SipServerTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_AVAILABILITY) Float availability, 
-    @JsonProperty(JSON_PROPERTY_CONNECT_TIME) Integer connectTime, 
-    @JsonProperty(JSON_PROPERTY_DNS_TIME) Integer dnsTime, 
-    @JsonProperty(JSON_PROPERTY_INVITE_TIME) Integer inviteTime, 
-    @JsonProperty(JSON_PROPERTY_OPTIONS_TIME) Integer optionsTime, 
-    @JsonProperty(JSON_PROPERTY_NUM_REDIRECTS) Integer numRedirects, 
-    @JsonProperty(JSON_PROPERTY_OPTIONS_REQUEST) String optionsRequest, 
-    @JsonProperty(JSON_PROPERTY_OPTIONS_RESPONSE) String optionsResponse, 
-    @JsonProperty(JSON_PROPERTY_REGISTER_TIME) Integer registerTime, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE) Integer responseCode, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_TIME) Integer totalTime, 
-    @JsonProperty(JSON_PROPERTY_WAIT_TIME) Integer waitTime, 
-    @JsonProperty(JSON_PROPERTY_PROBLEM_DETAIL) String problemDetail
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.serverIp = serverIp;
-    this.availability = availability;
-    this.connectTime = connectTime;
-    this.dnsTime = dnsTime;
-    this.inviteTime = inviteTime;
-    this.optionsTime = optionsTime;
-    this.numRedirects = numRedirects;
-    this.optionsRequest = optionsRequest;
-    this.optionsResponse = optionsResponse;
-    this.registerTime = registerTime;
-    this.responseCode = responseCode;
-    this.responseTime = responseTime;
-    this.totalTime = totalTime;
-    this.waitTime = waitTime;
-    this.problemDetail = problemDetail;
   }
 
    /**
@@ -610,5 +585,164 @@ public class SipServerTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SipServerTestResult instance;
+
+    public ModelBuilder() {
+      this(new SipServerTestResult());
+    }
+
+    protected ModelBuilder(SipServerTestResult instance) {
+      this.instance = instance;
+    }
+
+    public SipServerTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder availability(Float availability) {
+      this.instance.availability = availability;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder connectTime(Integer connectTime) {
+      this.instance.connectTime = connectTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder dnsTime(Integer dnsTime) {
+      this.instance.dnsTime = dnsTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder inviteTime(Integer inviteTime) {
+      this.instance.inviteTime = inviteTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder optionsTime(Integer optionsTime) {
+      this.instance.optionsTime = optionsTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder numRedirects(Integer numRedirects) {
+      this.instance.numRedirects = numRedirects;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder optionsRequest(String optionsRequest) {
+      this.instance.optionsRequest = optionsRequest;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder optionsResponse(String optionsResponse) {
+      this.instance.optionsResponse = optionsResponse;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder registerTime(Integer registerTime) {
+      this.instance.registerTime = registerTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.responseCode = responseCode;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder totalTime(Integer totalTime) {
+      this.instance.totalTime = totalTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder waitTime(Integer waitTime) {
+      this.instance.waitTime = waitTime;
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder errorType(SipServerErrorType errorType) {
+      this.instance.setErrorType(errorType);
+      return this;
+    }
+    public SipServerTestResult.ModelBuilder problemDetail(String problemDetail) {
+      this.instance.problemDetail = problemDetail;
+      return this;
+    }
+
+    /**
+     * Returns a built SipServerTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SipServerTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SipServerTestResult.ModelBuilder builder() {
+    return new SipServerTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SipServerTestResult.ModelBuilder toBuilder() {
+    SipServerTestResult.ModelBuilder builder = new SipServerTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .serverIp(getServerIp())
+      .agent(getAgent())
+      .availability(getAvailability())
+      .connectTime(getConnectTime())
+      .dnsTime(getDnsTime())
+      .inviteTime(getInviteTime())
+      .optionsTime(getOptionsTime())
+      .numRedirects(getNumRedirects())
+      .optionsRequest(getOptionsRequest())
+      .optionsResponse(getOptionsResponse())
+      .registerTime(getRegisterTime())
+      .responseCode(getResponseCode())
+      .responseTime(getResponseTime())
+      .totalTime(getTotalTime())
+      .waitTime(getWaitTime())
+      .errorType(getErrorType())
+      .problemDetail(getProblemDetail());
+    return builder;
+  }
+
 }
 

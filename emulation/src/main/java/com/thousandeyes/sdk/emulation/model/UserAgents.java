@@ -145,5 +145,64 @@ public class UserAgents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserAgents instance;
+
+    public ModelBuilder() {
+      this(new UserAgents());
+    }
+
+    protected ModelBuilder(UserAgents instance) {
+      this.instance = instance;
+    }
+
+    public UserAgents.ModelBuilder userAgents(List<UserAgent> userAgents) {
+      this.instance.setUserAgents(userAgents);
+      return this;
+    }
+    public UserAgents.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built UserAgents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserAgents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserAgents.ModelBuilder builder() {
+    return new UserAgents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserAgents.ModelBuilder toBuilder() {
+    UserAgents.ModelBuilder builder = new UserAgents.ModelBuilder()
+      .userAgents(getUserAgents())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

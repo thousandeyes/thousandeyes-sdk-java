@@ -177,5 +177,69 @@ public class BgpTestRouteInformationResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BgpTestRouteInformationResults instance;
+
+    public ModelBuilder() {
+      this(new BgpTestRouteInformationResults());
+    }
+
+    protected ModelBuilder(BgpTestRouteInformationResults instance) {
+      this.instance = instance;
+    }
+
+    public BgpTestRouteInformationResults.ModelBuilder results(List<BgpTestRouteInformationResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public BgpTestRouteInformationResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public BgpTestRouteInformationResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built BgpTestRouteInformationResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BgpTestRouteInformationResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BgpTestRouteInformationResults.ModelBuilder builder() {
+    return new BgpTestRouteInformationResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BgpTestRouteInformationResults.ModelBuilder toBuilder() {
+    BgpTestRouteInformationResults.ModelBuilder builder = new BgpTestRouteInformationResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

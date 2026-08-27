@@ -292,5 +292,89 @@ public class EndpointNetworkTestUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointNetworkTestUpdate instance;
+
+    public ModelBuilder() {
+      this(new EndpointNetworkTestUpdate());
+    }
+
+    protected ModelBuilder(EndpointNetworkTestUpdate instance) {
+      this.instance = instance;
+    }
+
+    public EndpointNetworkTestUpdate.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public EndpointNetworkTestUpdate.ModelBuilder server(String server) {
+      this.instance.setServer(server);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointNetworkTestUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointNetworkTestUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointNetworkTestUpdate.ModelBuilder builder() {
+    return new EndpointNetworkTestUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointNetworkTestUpdate.ModelBuilder toBuilder() {
+    EndpointNetworkTestUpdate.ModelBuilder builder = new EndpointNetworkTestUpdate.ModelBuilder()
+      .interval(getInterval())
+      .testName(getTestName())
+      .protocol(getProtocol())
+      .isEnabled(getIsEnabled())
+      .tcpProbeMode(getTcpProbeMode())
+      .port(getPort())
+      .server(getServer());
+    return builder;
+  }
+
 }
 

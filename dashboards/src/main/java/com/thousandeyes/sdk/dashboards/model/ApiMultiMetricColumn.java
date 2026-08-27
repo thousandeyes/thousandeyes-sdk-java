@@ -335,5 +335,94 @@ public class ApiMultiMetricColumn {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiMultiMetricColumn instance;
+
+    public ModelBuilder() {
+      this(new ApiMultiMetricColumn());
+    }
+
+    protected ModelBuilder(ApiMultiMetricColumn instance) {
+      this.instance = instance;
+    }
+
+    public ApiMultiMetricColumn.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder dataSource(MultiMetricsTableDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiMultiMetricColumn.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiMultiMetricColumn instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiMultiMetricColumn build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiMultiMetricColumn.ModelBuilder builder() {
+    return new ApiMultiMetricColumn.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiMultiMetricColumn.ModelBuilder toBuilder() {
+    ApiMultiMetricColumn.ModelBuilder builder = new ApiMultiMetricColumn.ModelBuilder()
+      .id(getId())
+      .dataSource(getDataSource())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

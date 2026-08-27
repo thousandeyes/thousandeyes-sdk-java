@@ -102,5 +102,59 @@ public class InputConfig {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InputConfig instance;
+
+    public ModelBuilder() {
+      this(new InputConfig());
+    }
+
+    protected ModelBuilder(InputConfig instance) {
+      this.instance = instance;
+    }
+
+    public InputConfig.ModelBuilder metric(InputConfigMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+
+    /**
+     * Returns a built InputConfig instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InputConfig build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InputConfig.ModelBuilder builder() {
+    return new InputConfig.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InputConfig.ModelBuilder toBuilder() {
+    InputConfig.ModelBuilder builder = new InputConfig.ModelBuilder()
+      .metric(getMetric());
+    return builder;
+  }
+
 }
 

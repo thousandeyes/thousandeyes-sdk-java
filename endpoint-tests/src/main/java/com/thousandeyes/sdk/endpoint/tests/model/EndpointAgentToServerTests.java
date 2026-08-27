@@ -145,5 +145,64 @@ public class EndpointAgentToServerTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentToServerTests instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentToServerTests());
+    }
+
+    protected ModelBuilder(EndpointAgentToServerTests instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentToServerTests.ModelBuilder tests(List<EndpointAgentToServerTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public EndpointAgentToServerTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentToServerTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentToServerTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentToServerTests.ModelBuilder builder() {
+    return new EndpointAgentToServerTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentToServerTests.ModelBuilder toBuilder() {
+    EndpointAgentToServerTests.ModelBuilder builder = new EndpointAgentToServerTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

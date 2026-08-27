@@ -80,45 +80,55 @@ public class VoiceTestRequest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_CODEC = "codec";
+  @JsonProperty(JSON_PROPERTY_CODEC)
   private String codec;
 
   public static final String JSON_PROPERTY_CODEC_ID = "codecId";
   private String codecId;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_ID = "dscpId";
@@ -167,32 +177,6 @@ public class VoiceTestRequest {
   private List<String> monitors = new ArrayList<>();
 
   public VoiceTestRequest() { 
-  }
-
-  @JsonCreator
-  public VoiceTestRequest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.codec = codec;
-    this.dscp = dscp;
   }
 
   public VoiceTestRequest interval(TestInterval interval) {
@@ -1052,5 +1036,214 @@ public class VoiceTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VoiceTestRequest instance;
+
+    public ModelBuilder() {
+      this(new VoiceTestRequest());
+    }
+
+    protected ModelBuilder(VoiceTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public VoiceTestRequest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder codec(String codec) {
+      this.instance.codec = codec;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder codecId(String codecId) {
+      this.instance.setCodecId(codecId);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder dscpId(TestDscpId dscpId) {
+      this.instance.setDscpId(dscpId);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder duration(Integer duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder jitterBuffer(Integer jitterBuffer) {
+      this.instance.setJitterBuffer(jitterBuffer);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder targetAgentId(String targetAgentId) {
+      this.instance.setTargetAgentId(targetAgentId);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder alertRules(List<String> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public VoiceTestRequest.ModelBuilder monitors(List<String> monitors) {
+      this.instance.setMonitors(monitors);
+      return this;
+    }
+
+    /**
+     * Returns a built VoiceTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VoiceTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VoiceTestRequest.ModelBuilder builder() {
+    return new VoiceTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VoiceTestRequest.ModelBuilder toBuilder() {
+    VoiceTestRequest.ModelBuilder builder = new VoiceTestRequest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .codec(getCodec())
+      .codecId(getCodecId())
+      .dscp(getDscp())
+      .dscpId(getDscpId())
+      .duration(getDuration())
+      .jitterBuffer(getJitterBuffer())
+      .numPathTraces(getNumPathTraces())
+      .port(getPort())
+      .randomizedStartTime(getRandomizedStartTime())
+      .targetAgentId(getTargetAgentId())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .alertRules(getAlertRules())
+      .agents(getAgents())
+      .monitors(getMonitors());
+    return builder;
+  }
+
 }
 

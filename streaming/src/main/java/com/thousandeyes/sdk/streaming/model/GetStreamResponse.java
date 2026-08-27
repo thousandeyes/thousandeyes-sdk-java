@@ -69,6 +69,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class GetStreamResponse {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
@@ -126,14 +127,6 @@ public class GetStreamResponse {
   private StreamStatus streamStatus;
 
   public GetStreamResponse() { 
-  }
-
-  @JsonCreator
-  public GetStreamResponse(
-    @JsonProperty(JSON_PROPERTY_ID) String id
-  ) {
-  this();
-    this.id = id;
   }
 
    /**
@@ -716,5 +709,149 @@ public class GetStreamResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private GetStreamResponse instance;
+
+    public ModelBuilder() {
+      this(new GetStreamResponse());
+    }
+
+    protected ModelBuilder(GetStreamResponse instance) {
+      this.instance = instance;
+    }
+
+    public GetStreamResponse.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder links(StreamLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder type(StreamType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder signal(Signal signal) {
+      this.instance.setSignal(signal);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder endpointType(EndpointType endpointType) {
+      this.instance.setEndpointType(endpointType);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder streamEndpointUrl(String streamEndpointUrl) {
+      this.instance.setStreamEndpointUrl(streamEndpointUrl);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder dataModelVersion(DataModelVersion dataModelVersion) {
+      this.instance.setDataModelVersion(dataModelVersion);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder customHeaders(Map<String, String> customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder tagMatch(List<TagMatch> tagMatch) {
+      this.instance.setTagMatch(tagMatch);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder testMatch(List<TestMatch> testMatch) {
+      this.instance.setTestMatch(testMatch);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder filters(Filters filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder inputConfig(InputConfig inputConfig) {
+      this.instance.setInputConfig(inputConfig);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder exporterConfig(ExporterConfig exporterConfig) {
+      this.instance.setExporterConfig(exporterConfig);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder endpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+      this.instance.setEndpointAgentLabel(endpointAgentLabel);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+      this.instance.setEndpointAgentTag(endpointAgentTag);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder auditOperation(AuditOperationWithUpdate auditOperation) {
+      this.instance.setAuditOperation(auditOperation);
+      return this;
+    }
+    public GetStreamResponse.ModelBuilder streamStatus(StreamStatus streamStatus) {
+      this.instance.setStreamStatus(streamStatus);
+      return this;
+    }
+
+    /**
+     * Returns a built GetStreamResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public GetStreamResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static GetStreamResponse.ModelBuilder builder() {
+    return new GetStreamResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public GetStreamResponse.ModelBuilder toBuilder() {
+    GetStreamResponse.ModelBuilder builder = new GetStreamResponse.ModelBuilder()
+      .id(getId())
+      .enabled(getEnabled())
+      .links(getLinks())
+      .type(getType())
+      .signal(getSignal())
+      .endpointType(getEndpointType())
+      .streamEndpointUrl(getStreamEndpointUrl())
+      .dataModelVersion(getDataModelVersion())
+      .name(getName())
+      .customHeaders(getCustomHeaders())
+      .tagMatch(getTagMatch())
+      .testMatch(getTestMatch())
+      .filters(getFilters())
+      .inputConfig(getInputConfig())
+      .exporterConfig(getExporterConfig())
+      .endpointAgentLabel(getEndpointAgentLabel())
+      .endpointAgentTag(getEndpointAgentTag())
+      .auditOperation(getAuditOperation())
+      .streamStatus(getStreamStatus());
+    return builder;
+  }
+
 }
 

@@ -245,5 +245,79 @@ public class EndpointVpnProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointVpnProfile instance;
+
+    public ModelBuilder() {
+      this(new EndpointVpnProfile());
+    }
+
+    protected ModelBuilder(EndpointVpnProfile instance) {
+      this.instance = instance;
+    }
+
+    public EndpointVpnProfile.ModelBuilder interfaceName(String interfaceName) {
+      this.instance.setInterfaceName(interfaceName);
+      return this;
+    }
+    public EndpointVpnProfile.ModelBuilder vpnType(VpnType vpnType) {
+      this.instance.setVpnType(vpnType);
+      return this;
+    }
+    public EndpointVpnProfile.ModelBuilder vpnGatewayAddress(String vpnGatewayAddress) {
+      this.instance.setVpnGatewayAddress(vpnGatewayAddress);
+      return this;
+    }
+    public EndpointVpnProfile.ModelBuilder vpnClientAddresses(List<String> vpnClientAddresses) {
+      this.instance.setVpnClientAddresses(vpnClientAddresses);
+      return this;
+    }
+    public EndpointVpnProfile.ModelBuilder vpnClientNetworkRange(List<String> vpnClientNetworkRange) {
+      this.instance.setVpnClientNetworkRange(vpnClientNetworkRange);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointVpnProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointVpnProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointVpnProfile.ModelBuilder builder() {
+    return new EndpointVpnProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointVpnProfile.ModelBuilder toBuilder() {
+    EndpointVpnProfile.ModelBuilder builder = new EndpointVpnProfile.ModelBuilder()
+      .interfaceName(getInterfaceName())
+      .vpnType(getVpnType())
+      .vpnGatewayAddress(getVpnGatewayAddress())
+      .vpnClientAddresses(getVpnClientAddresses())
+      .vpnClientNetworkRange(getVpnClientNetworkRange());
+    return builder;
+  }
+
 }
 

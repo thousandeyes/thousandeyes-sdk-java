@@ -53,6 +53,7 @@ public class AgentToAgentProperties {
   private TestDirection direction = TestDirection.TO_TARGET;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_ID = "dscpId";
@@ -92,19 +93,10 @@ public class AgentToAgentProperties {
   private Integer fixedPacketRate;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public AgentToAgentProperties() { 
-  }
-
-  @JsonCreator
-  public AgentToAgentProperties(
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.dscp = dscp;
-    this.type = type;
   }
 
   public AgentToAgentProperties direction(TestDirection direction) {
@@ -541,5 +533,129 @@ public class AgentToAgentProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentToAgentProperties instance;
+
+    public ModelBuilder() {
+      this(new AgentToAgentProperties());
+    }
+
+    protected ModelBuilder(AgentToAgentProperties instance) {
+      this.instance = instance;
+    }
+
+    public AgentToAgentProperties.ModelBuilder direction(TestDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder dscpId(TestDscpId dscpId) {
+      this.instance.setDscpId(dscpId);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder mss(Integer mss) {
+      this.instance.setMss(mss);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder protocol(AgentToAgentTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder targetAgentId(String targetAgentId) {
+      this.instance.setTargetAgentId(targetAgentId);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder throughputMeasurements(Boolean throughputMeasurements) {
+      this.instance.setThroughputMeasurements(throughputMeasurements);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder throughputDuration(Integer throughputDuration) {
+      this.instance.setThroughputDuration(throughputDuration);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder throughputRate(Integer throughputRate) {
+      this.instance.setThroughputRate(throughputRate);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public AgentToAgentProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentToAgentProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentToAgentProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentToAgentProperties.ModelBuilder builder() {
+    return new AgentToAgentProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentToAgentProperties.ModelBuilder toBuilder() {
+    AgentToAgentProperties.ModelBuilder builder = new AgentToAgentProperties.ModelBuilder()
+      .direction(getDirection())
+      .dscp(getDscp())
+      .dscpId(getDscpId())
+      .mss(getMss())
+      .numPathTraces(getNumPathTraces())
+      .pathTraceMode(getPathTraceMode())
+      .port(getPort())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .targetAgentId(getTargetAgentId())
+      .throughputMeasurements(getThroughputMeasurements())
+      .throughputDuration(getThroughputDuration())
+      .throughputRate(getThroughputRate())
+      .fixedPacketRate(getFixedPacketRate())
+      .type(getType());
+    return builder;
+  }
+
 }
 

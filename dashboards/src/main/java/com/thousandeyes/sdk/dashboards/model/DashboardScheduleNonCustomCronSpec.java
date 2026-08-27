@@ -197,5 +197,74 @@ public class DashboardScheduleNonCustomCronSpec {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleNonCustomCronSpec instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleNonCustomCronSpec());
+    }
+
+    protected ModelBuilder(DashboardScheduleNonCustomCronSpec instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleNonCustomCronSpec.ModelBuilder startTime(Long startTime) {
+      this.instance.setStartTime(startTime);
+      return this;
+    }
+    public DashboardScheduleNonCustomCronSpec.ModelBuilder zoneCode(String zoneCode) {
+      this.instance.setZoneCode(zoneCode);
+      return this;
+    }
+    public DashboardScheduleNonCustomCronSpec.ModelBuilder repeat(DashboardScheduleNonCustomRepeat repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+    public DashboardScheduleNonCustomCronSpec.ModelBuilder endRepeat(DashboardScheduleEndCondition endRepeat) {
+      this.instance.setEndRepeat(endRepeat);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleNonCustomCronSpec instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleNonCustomCronSpec build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleNonCustomCronSpec.ModelBuilder builder() {
+    return new DashboardScheduleNonCustomCronSpec.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleNonCustomCronSpec.ModelBuilder toBuilder() {
+    DashboardScheduleNonCustomCronSpec.ModelBuilder builder = new DashboardScheduleNonCustomCronSpec.ModelBuilder()
+      .startTime(getStartTime())
+      .zoneCode(getZoneCode())
+      .repeat(getRepeat())
+      .endRepeat(getEndRepeat());
+    return builder;
+  }
+
 }
 

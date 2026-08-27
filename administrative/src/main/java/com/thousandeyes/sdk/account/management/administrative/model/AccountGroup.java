@@ -132,5 +132,64 @@ public class AccountGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroup instance;
+
+    public ModelBuilder() {
+      this(new AccountGroup());
+    }
+
+    protected ModelBuilder(AccountGroup instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroup.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public AccountGroup.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroup.ModelBuilder builder() {
+    return new AccountGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroup.ModelBuilder toBuilder() {
+    AccountGroup.ModelBuilder builder = new AccountGroup.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName());
+    return builder;
+  }
+
 }
 

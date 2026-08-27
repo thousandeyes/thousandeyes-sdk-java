@@ -567,5 +567,134 @@ public class ApiOutage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiOutage instance;
+
+    public ModelBuilder() {
+      this(new ApiOutage());
+    }
+
+    protected ModelBuilder(ApiOutage instance) {
+      this.instance = instance;
+    }
+
+    public ApiOutage.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiOutage.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiOutage.ModelBuilder providerName(String providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiOutage.ModelBuilder providerType(String providerType) {
+      this.instance.setProviderType(providerType);
+      return this;
+    }
+    public ApiOutage.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiOutage.ModelBuilder startDate(String startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public ApiOutage.ModelBuilder startRoundId(Long startRoundId) {
+      this.instance.setStartRoundId(startRoundId);
+      return this;
+    }
+    public ApiOutage.ModelBuilder endDate(String endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public ApiOutage.ModelBuilder endRoundId(Long endRoundId) {
+      this.instance.setEndRoundId(endRoundId);
+      return this;
+    }
+    public ApiOutage.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public ApiOutage.ModelBuilder affectedTestsCount(Integer affectedTestsCount) {
+      this.instance.setAffectedTestsCount(affectedTestsCount);
+      return this;
+    }
+    public ApiOutage.ModelBuilder affectedServersCount(Integer affectedServersCount) {
+      this.instance.setAffectedServersCount(affectedServersCount);
+      return this;
+    }
+    public ApiOutage.ModelBuilder affectedLocationsCount(Integer affectedLocationsCount) {
+      this.instance.setAffectedLocationsCount(affectedLocationsCount);
+      return this;
+    }
+    public ApiOutage.ModelBuilder affectedInterfacesCount(Integer affectedInterfacesCount) {
+      this.instance.setAffectedInterfacesCount(affectedInterfacesCount);
+      return this;
+    }
+    public ApiOutage.ModelBuilder asn(Integer asn) {
+      this.instance.setAsn(asn);
+      return this;
+    }
+    public ApiOutage.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiOutage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiOutage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiOutage.ModelBuilder builder() {
+    return new ApiOutage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiOutage.ModelBuilder toBuilder() {
+    ApiOutage.ModelBuilder builder = new ApiOutage.ModelBuilder()
+      .id(getId())
+      .type(getType())
+      .providerName(getProviderName())
+      .providerType(getProviderType())
+      .name(getName())
+      .startDate(getStartDate())
+      .startRoundId(getStartRoundId())
+      .endDate(getEndDate())
+      .endRoundId(getEndRoundId())
+      .duration(getDuration())
+      .affectedTestsCount(getAffectedTestsCount())
+      .affectedServersCount(getAffectedServersCount())
+      .affectedLocationsCount(getAffectedLocationsCount())
+      .affectedInterfacesCount(getAffectedInterfacesCount())
+      .asn(getAsn())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

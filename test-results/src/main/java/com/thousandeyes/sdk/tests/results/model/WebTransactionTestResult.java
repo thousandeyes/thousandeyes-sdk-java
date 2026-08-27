@@ -44,58 +44,44 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WebTransactionTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_COMPONENT_ERRORS = "componentErrors";
+  @JsonProperty(JSON_PROPERTY_COMPONENT_ERRORS)
   private Integer componentErrors;
 
   public static final String JSON_PROPERTY_TRANSACTION_TIME = "transactionTime";
+  @JsonProperty(JSON_PROPERTY_TRANSACTION_TIME)
   private Integer transactionTime;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
+  @JsonProperty(JSON_PROPERTY_ERROR_TYPE)
   private String errorType;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public WebTransactionTestResult() { 
-  }
-
-  @JsonCreator
-  public WebTransactionTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_COMPONENT_ERRORS) Integer componentErrors, 
-    @JsonProperty(JSON_PROPERTY_TRANSACTION_TIME) Integer transactionTime, 
-    @JsonProperty(JSON_PROPERTY_ERROR_TYPE) String errorType, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.componentErrors = componentErrors;
-    this.transactionTime = transactionTime;
-    this.errorType = errorType;
-    this.errorDetails = errorDetails;
   }
 
    /**
@@ -325,5 +311,104 @@ public class WebTransactionTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebTransactionTestResult instance;
+
+    public ModelBuilder() {
+      this(new WebTransactionTestResult());
+    }
+
+    protected ModelBuilder(WebTransactionTestResult instance) {
+      this.instance = instance;
+    }
+
+    public WebTransactionTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder componentErrors(Integer componentErrors) {
+      this.instance.componentErrors = componentErrors;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder transactionTime(Integer transactionTime) {
+      this.instance.transactionTime = transactionTime;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder errorType(String errorType) {
+      this.instance.errorType = errorType;
+      return this;
+    }
+    public WebTransactionTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+
+    /**
+     * Returns a built WebTransactionTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebTransactionTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebTransactionTestResult.ModelBuilder builder() {
+    return new WebTransactionTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebTransactionTestResult.ModelBuilder toBuilder() {
+    WebTransactionTestResult.ModelBuilder builder = new WebTransactionTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .componentErrors(getComponentErrors())
+      .transactionTime(getTransactionTime())
+      .errorType(getErrorType())
+      .errorDetails(getErrorDetails());
+    return builder;
+  }
+
 }
 

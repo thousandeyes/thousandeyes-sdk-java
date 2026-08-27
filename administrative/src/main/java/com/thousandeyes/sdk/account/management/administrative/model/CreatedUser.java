@@ -342,5 +342,94 @@ public class CreatedUser {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CreatedUser instance;
+
+    public ModelBuilder() {
+      this(new CreatedUser());
+    }
+
+    protected ModelBuilder(CreatedUser instance) {
+      this.instance = instance;
+    }
+
+    public CreatedUser.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public CreatedUser.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public CreatedUser.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public CreatedUser.ModelBuilder dateRegistered(OffsetDateTime dateRegistered) {
+      this.instance.setDateRegistered(dateRegistered);
+      return this;
+    }
+    public CreatedUser.ModelBuilder loginAccountGroup(AccountGroup loginAccountGroup) {
+      this.instance.setLoginAccountGroup(loginAccountGroup);
+      return this;
+    }
+    public CreatedUser.ModelBuilder accountGroupRoles(List<AccountGroupRole> accountGroupRoles) {
+      this.instance.setAccountGroupRoles(accountGroupRoles);
+      return this;
+    }
+    public CreatedUser.ModelBuilder allAccountGroupRoles(List<Role> allAccountGroupRoles) {
+      this.instance.setAllAccountGroupRoles(allAccountGroupRoles);
+      return this;
+    }
+    public CreatedUser.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CreatedUser instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CreatedUser build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CreatedUser.ModelBuilder builder() {
+    return new CreatedUser.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CreatedUser.ModelBuilder toBuilder() {
+    CreatedUser.ModelBuilder builder = new CreatedUser.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .uid(getUid())
+      .dateRegistered(getDateRegistered())
+      .loginAccountGroup(getLoginAccountGroup())
+      .accountGroupRoles(getAccountGroupRoles())
+      .allAccountGroupRoles(getAllAccountGroupRoles())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

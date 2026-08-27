@@ -153,6 +153,7 @@ public class HttpServerProperties {
   private TestProtocol protocol = TestProtocol.TCP;
 
   public static final String JSON_PROPERTY_SSL_VERSION = "sslVersion";
+  @JsonProperty(JSON_PROPERTY_SSL_VERSION)
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
@@ -210,19 +211,10 @@ public class HttpServerProperties {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public HttpServerProperties() { 
-  }
-
-  @JsonCreator
-  public HttpServerProperties(
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.sslVersion = sslVersion;
-    this.type = type;
   }
 
   public HttpServerProperties authType(TestAuthType authType) {
@@ -1402,5 +1394,264 @@ public class HttpServerProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpServerProperties instance;
+
+    public ModelBuilder() {
+      this(new HttpServerProperties());
+    }
+
+    protected ModelBuilder(HttpServerProperties instance) {
+      this.instance = instance;
+    }
+
+    public HttpServerProperties.ModelBuilder authType(TestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
+      this.instance.setAgentInterfaces(agentInterfaces);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder contentRegex(String contentRegex) {
+      this.instance.setContentRegex(contentRegex);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder customHeaders(TestCustomHeaders customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder desiredStatusCode(String desiredStatusCode) {
+      this.instance.setDesiredStatusCode(desiredStatusCode);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder downloadLimit(Integer downloadLimit) {
+      this.instance.setDownloadLimit(downloadLimit);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder dnsOverride(String dnsOverride) {
+      this.instance.setDnsOverride(dnsOverride);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder httpTargetTime(Integer httpTargetTime) {
+      this.instance.setHttpTargetTime(httpTargetTime);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder httpVersion(Integer httpVersion) {
+      this.instance.setHttpVersion(httpVersion);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder includeHeaders(Boolean includeHeaders) {
+      this.instance.setIncludeHeaders(includeHeaders);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder oAuth(OAuth oAuth) {
+      this.instance.setoAuth(oAuth);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder sslVersion(String sslVersion) {
+      this.instance.sslVersion = sslVersion;
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder useNtlm(Boolean useNtlm) {
+      this.instance.setUseNtlm(useNtlm);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder userAgent(String userAgent) {
+      this.instance.setUserAgent(userAgent);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+      this.instance.setAllowUnsafeLegacyRenegotiation(allowUnsafeLegacyRenegotiation);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+      this.instance.setVaultCredentials(vaultCredentials);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder headers(List<String> headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder requestMethod(RequestMethod requestMethod) {
+      this.instance.setRequestMethod(requestMethod);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder postBody(String postBody) {
+      this.instance.setPostBody(postBody);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public HttpServerProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built HttpServerProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpServerProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpServerProperties.ModelBuilder builder() {
+    return new HttpServerProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpServerProperties.ModelBuilder toBuilder() {
+    HttpServerProperties.ModelBuilder builder = new HttpServerProperties.ModelBuilder()
+      .authType(getAuthType())
+      .agentInterfaces(getAgentInterfaces())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .clientCertificate(getClientCertificate())
+      .contentRegex(getContentRegex())
+      .customHeaders(getCustomHeaders())
+      .desiredStatusCode(getDesiredStatusCode())
+      .distributedTracing(getDistributedTracing())
+      .downloadLimit(getDownloadLimit())
+      .dnsOverride(getDnsOverride())
+      .httpTargetTime(getHttpTargetTime())
+      .httpTimeLimit(getHttpTimeLimit())
+      .httpVersion(getHttpVersion())
+      .includeHeaders(getIncludeHeaders())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .oAuth(getoAuth())
+      .password(getPassword())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .sslVersion(getSslVersion())
+      .sslVersionId(getSslVersionId())
+      .url(getUrl())
+      .useNtlm(getUseNtlm())
+      .userAgent(getUserAgent())
+      .username(getUsername())
+      .verifyCertificate(getVerifyCertificate())
+      .allowUnsafeLegacyRenegotiation(getAllowUnsafeLegacyRenegotiation())
+      .followRedirects(getFollowRedirects())
+      .fixedPacketRate(getFixedPacketRate())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .vaultCredentials(getVaultCredentials())
+      .headers(getHeaders())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requestMethod(getRequestMethod())
+      .postBody(getPostBody())
+      .ipv6Policy(getIpv6Policy())
+      .type(getType());
+    return builder;
+  }
+
 }
 

@@ -44,25 +44,17 @@ public class LocalNetworkTopologyResults {
   private List<LocalNetworkTopologyResultBase> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextLink links;
 
   public LocalNetworkTopologyResults() { 
-  }
-
-  @JsonCreator
-  public LocalNetworkTopologyResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public LocalNetworkTopologyResults results(List<LocalNetworkTopologyResultBase> results) {
@@ -198,5 +190,74 @@ public class LocalNetworkTopologyResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkTopologyResults instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkTopologyResults());
+    }
+
+    protected ModelBuilder(LocalNetworkTopologyResults instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkTopologyResults.ModelBuilder results(List<LocalNetworkTopologyResultBase> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public LocalNetworkTopologyResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public LocalNetworkTopologyResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public LocalNetworkTopologyResults.ModelBuilder links(PaginationNextLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkTopologyResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkTopologyResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkTopologyResults.ModelBuilder builder() {
+    return new LocalNetworkTopologyResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkTopologyResults.ModelBuilder toBuilder() {
+    LocalNetworkTopologyResults.ModelBuilder builder = new LocalNetworkTopologyResults.ModelBuilder()
+      .results(getResults())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

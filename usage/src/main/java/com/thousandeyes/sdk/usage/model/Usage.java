@@ -134,5 +134,64 @@ public class Usage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Usage instance;
+
+    public ModelBuilder() {
+      this(new Usage());
+    }
+
+    protected ModelBuilder(Usage instance) {
+      this.instance = instance;
+    }
+
+    public Usage.ModelBuilder usage(UsageDetails usage) {
+      this.instance.setUsage(usage);
+      return this;
+    }
+    public Usage.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Usage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Usage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Usage.ModelBuilder builder() {
+    return new Usage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Usage.ModelBuilder toBuilder() {
+    Usage.ModelBuilder builder = new Usage.ModelBuilder()
+      .usage(getUsage())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

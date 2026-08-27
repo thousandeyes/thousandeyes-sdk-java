@@ -145,5 +145,64 @@ public class Labels {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Labels instance;
+
+    public ModelBuilder() {
+      this(new Labels());
+    }
+
+    protected ModelBuilder(Labels instance) {
+      this.instance = instance;
+    }
+
+    public Labels.ModelBuilder labels(List<LabelResponse> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public Labels.ModelBuilder links(PaginationNextAndSelfLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Labels instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Labels build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Labels.ModelBuilder builder() {
+    return new Labels.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Labels.ModelBuilder toBuilder() {
+    Labels.ModelBuilder builder = new Labels.ModelBuilder()
+      .labels(getLabels())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

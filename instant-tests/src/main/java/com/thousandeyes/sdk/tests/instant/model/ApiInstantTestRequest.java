@@ -81,33 +81,41 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiInstantTestRequest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -192,28 +200,6 @@ public class ApiInstantTestRequest {
   private List<TestVaultCredential> vaultCredentials = new ArrayList<>();
 
   public ApiInstantTestRequest() { 
-  }
-
-  @JsonCreator
-  public ApiInstantTestRequest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
   }
 
    /**
@@ -1242,5 +1228,239 @@ public class ApiInstantTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiInstantTestRequest instance;
+
+    public ModelBuilder() {
+      this(new ApiInstantTestRequest());
+    }
+
+    protected ModelBuilder(ApiInstantTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public ApiInstantTestRequest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder clientCertDomainsAllowList(String clientCertDomainsAllowList) {
+      this.instance.setClientCertDomainsAllowList(clientCertDomainsAllowList);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder predefinedVariables(List<ApiPredefinedVariable> predefinedVariables) {
+      this.instance.setPredefinedVariables(predefinedVariables);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder requests(List<ApiRequest> requests) {
+      this.instance.setRequests(requests);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder targetTime(Integer targetTime) {
+      this.instance.setTargetTime(targetTime);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder timeLimit(Integer timeLimit) {
+      this.instance.setTimeLimit(timeLimit);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder agents(List<TestAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder credentials(List<String> credentials) {
+      this.instance.setCredentials(credentials);
+      return this;
+    }
+    public ApiInstantTestRequest.ModelBuilder vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+      this.instance.setVaultCredentials(vaultCredentials);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiInstantTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiInstantTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiInstantTestRequest.ModelBuilder builder() {
+    return new ApiInstantTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiInstantTestRequest.ModelBuilder toBuilder() {
+    ApiInstantTestRequest.ModelBuilder builder = new ApiInstantTestRequest.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .clientCertificate(getClientCertificate())
+      .clientCertDomainsAllowList(getClientCertDomainsAllowList())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .distributedTracing(getDistributedTracing())
+      .followRedirects(getFollowRedirects())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .pathTraceMode(getPathTraceMode())
+      .predefinedVariables(getPredefinedVariables())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requests(getRequests())
+      .sslVersionId(getSslVersionId())
+      .targetTime(getTargetTime())
+      .timeLimit(getTimeLimit())
+      .url(getUrl())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .agents(getAgents())
+      .credentials(getCredentials())
+      .vaultCredentials(getVaultCredentials());
+    return builder;
+  }
+
 }
 

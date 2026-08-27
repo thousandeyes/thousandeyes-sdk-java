@@ -101,5 +101,59 @@ public class DashboardGlobalFilterId {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardGlobalFilterId instance;
+
+    public ModelBuilder() {
+      this(new DashboardGlobalFilterId());
+    }
+
+    protected ModelBuilder(DashboardGlobalFilterId instance) {
+      this.instance = instance;
+    }
+
+    public DashboardGlobalFilterId.ModelBuilder globalFilterId(String globalFilterId) {
+      this.instance.setGlobalFilterId(globalFilterId);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardGlobalFilterId instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardGlobalFilterId build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardGlobalFilterId.ModelBuilder builder() {
+    return new DashboardGlobalFilterId.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardGlobalFilterId.ModelBuilder toBuilder() {
+    DashboardGlobalFilterId.ModelBuilder builder = new DashboardGlobalFilterId.ModelBuilder()
+      .globalFilterId(getGlobalFilterId());
+    return builder;
+  }
+
 }
 

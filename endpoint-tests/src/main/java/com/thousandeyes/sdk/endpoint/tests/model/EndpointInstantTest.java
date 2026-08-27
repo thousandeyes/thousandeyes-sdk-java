@@ -319,5 +319,89 @@ public class EndpointInstantTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointInstantTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointInstantTest());
+    }
+
+    protected ModelBuilder(EndpointInstantTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointInstantTest.ModelBuilder agentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointInstantTest.ModelBuilder ipVersion(EndpointIpVersionIn ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointInstantTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointInstantTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointInstantTest.ModelBuilder builder() {
+    return new EndpointInstantTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointInstantTest.ModelBuilder toBuilder() {
+    EndpointInstantTest.ModelBuilder builder = new EndpointInstantTest.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .agents(getAgents())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds())
+      .maxMachines(getMaxMachines())
+      .testName(getTestName())
+      .ipVersion(getIpVersion());
+    return builder;
+  }
+
 }
 

@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Label {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -56,14 +57,6 @@ public class Label {
   private List<Filter> filters = new ArrayList<>();
 
   public Label() { 
-  }
-
-  @JsonCreator
-  public Label(
-    @JsonProperty(JSON_PROPERTY_ID) String id
-  ) {
-  this();
-    this.id = id;
   }
 
    /**
@@ -236,5 +229,79 @@ public class Label {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Label instance;
+
+    public ModelBuilder() {
+      this(new Label());
+    }
+
+    protected ModelBuilder(Label instance) {
+      this.instance = instance;
+    }
+
+    public Label.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public Label.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public Label.ModelBuilder color(String color) {
+      this.instance.setColor(color);
+      return this;
+    }
+    public Label.ModelBuilder matchType(MatchType matchType) {
+      this.instance.setMatchType(matchType);
+      return this;
+    }
+    public Label.ModelBuilder filters(List<Filter> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+
+    /**
+     * Returns a built Label instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Label build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Label.ModelBuilder builder() {
+    return new Label.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Label.ModelBuilder toBuilder() {
+    Label.ModelBuilder builder = new Label.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .color(getColor())
+      .matchType(getMatchType())
+      .filters(getFilters());
+    return builder;
+  }
+
 }
 

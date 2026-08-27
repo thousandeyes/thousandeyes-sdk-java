@@ -145,5 +145,64 @@ public class ApiTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTests instance;
+
+    public ModelBuilder() {
+      this(new ApiTests());
+    }
+
+    protected ModelBuilder(ApiTests instance) {
+      this.instance = instance;
+    }
+
+    public ApiTests.ModelBuilder tests(List<UnexpandedApiTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public ApiTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTests.ModelBuilder builder() {
+    return new ApiTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTests.ModelBuilder toBuilder() {
+    ApiTests.ModelBuilder builder = new ApiTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

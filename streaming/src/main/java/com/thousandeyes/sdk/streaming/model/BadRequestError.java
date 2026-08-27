@@ -205,5 +205,74 @@ public class BadRequestError {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BadRequestError instance;
+
+    public ModelBuilder() {
+      this(new BadRequestError());
+    }
+
+    protected ModelBuilder(BadRequestError instance) {
+      this.instance = instance;
+    }
+
+    public BadRequestError.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public BadRequestError.ModelBuilder httpStatus(String httpStatus) {
+      this.instance.setHttpStatus(httpStatus);
+      return this;
+    }
+    public BadRequestError.ModelBuilder errors(List<String> errors) {
+      this.instance.setErrors(errors);
+      return this;
+    }
+    public BadRequestError.ModelBuilder path(String path) {
+      this.instance.setPath(path);
+      return this;
+    }
+
+    /**
+     * Returns a built BadRequestError instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BadRequestError build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BadRequestError.ModelBuilder builder() {
+    return new BadRequestError.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BadRequestError.ModelBuilder toBuilder() {
+    BadRequestError.ModelBuilder builder = new BadRequestError.ModelBuilder()
+      .timestamp(getTimestamp())
+      .httpStatus(getHttpStatus())
+      .errors(getErrors())
+      .path(getPath());
+    return builder;
+  }
+
 }
 

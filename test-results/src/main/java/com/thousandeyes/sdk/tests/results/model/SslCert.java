@@ -330,5 +330,94 @@ public class SslCert {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SslCert instance;
+
+    public ModelBuilder() {
+      this(new SslCert());
+    }
+
+    protected ModelBuilder(SslCert instance) {
+      this.instance = instance;
+    }
+
+    public SslCert.ModelBuilder daysUntilExpiry(Integer daysUntilExpiry) {
+      this.instance.setDaysUntilExpiry(daysUntilExpiry);
+      return this;
+    }
+    public SslCert.ModelBuilder isFetchDateInValidCertDateRange(Boolean isFetchDateInValidCertDateRange) {
+      this.instance.setIsFetchDateInValidCertDateRange(isFetchDateInValidCertDateRange);
+      return this;
+    }
+    public SslCert.ModelBuilder hasValidSigningCert(Boolean hasValidSigningCert) {
+      this.instance.setHasValidSigningCert(hasValidSigningCert);
+      return this;
+    }
+    public SslCert.ModelBuilder issuerName(String issuerName) {
+      this.instance.setIssuerName(issuerName);
+      return this;
+    }
+    public SslCert.ModelBuilder validBefore(OffsetDateTime validBefore) {
+      this.instance.setValidBefore(validBefore);
+      return this;
+    }
+    public SslCert.ModelBuilder validAfter(OffsetDateTime validAfter) {
+      this.instance.setValidAfter(validAfter);
+      return this;
+    }
+    public SslCert.ModelBuilder subjectAlternativeNames(List<String> subjectAlternativeNames) {
+      this.instance.setSubjectAlternativeNames(subjectAlternativeNames);
+      return this;
+    }
+    public SslCert.ModelBuilder subjectName(String subjectName) {
+      this.instance.setSubjectName(subjectName);
+      return this;
+    }
+
+    /**
+     * Returns a built SslCert instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SslCert build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SslCert.ModelBuilder builder() {
+    return new SslCert.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SslCert.ModelBuilder toBuilder() {
+    SslCert.ModelBuilder builder = new SslCert.ModelBuilder()
+      .daysUntilExpiry(getDaysUntilExpiry())
+      .isFetchDateInValidCertDateRange(getIsFetchDateInValidCertDateRange())
+      .hasValidSigningCert(getHasValidSigningCert())
+      .issuerName(getIssuerName())
+      .validBefore(getValidBefore())
+      .validAfter(getValidAfter())
+      .subjectAlternativeNames(getSubjectAlternativeNames())
+      .subjectName(getSubjectName());
+    return builder;
+  }
+
 }
 

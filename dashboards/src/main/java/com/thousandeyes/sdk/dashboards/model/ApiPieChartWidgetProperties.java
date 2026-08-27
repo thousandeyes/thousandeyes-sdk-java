@@ -196,5 +196,74 @@ public class ApiPieChartWidgetProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiPieChartWidgetProperties instance;
+
+    public ModelBuilder() {
+      this(new ApiPieChartWidgetProperties());
+    }
+
+    protected ModelBuilder(ApiPieChartWidgetProperties instance) {
+      this.instance = instance;
+    }
+
+    public ApiPieChartWidgetProperties.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiPieChartWidgetProperties.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiPieChartWidgetProperties.ModelBuilder dataSource(PieChartDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+    public ApiPieChartWidgetProperties.ModelBuilder showSubmetrics(Boolean showSubmetrics) {
+      this.instance.setShowSubmetrics(showSubmetrics);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiPieChartWidgetProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiPieChartWidgetProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiPieChartWidgetProperties.ModelBuilder builder() {
+    return new ApiPieChartWidgetProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiPieChartWidgetProperties.ModelBuilder toBuilder() {
+    ApiPieChartWidgetProperties.ModelBuilder builder = new ApiPieChartWidgetProperties.ModelBuilder()
+      .type(getType())
+      .groupBy(getGroupBy())
+      .dataSource(getDataSource())
+      .showSubmetrics(getShowSubmetrics());
+    return builder;
+  }
+
 }
 

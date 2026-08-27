@@ -97,45 +97,56 @@ public class DnsServerTest {
   private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
@@ -190,39 +201,10 @@ public class DnsServerTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
+  @JsonProperty(JSON_PROPERTY_MONITORS)
   private List<Monitor> monitors = new ArrayList<>();
 
   public DnsServerTest() { 
-  }
-
-  @JsonCreator
-  public DnsServerTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
-    this.monitors = monitors;
   }
 
   public DnsServerTest interval(TestInterval interval) {
@@ -1134,5 +1116,234 @@ public class DnsServerTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerTest instance;
+
+    public ModelBuilder() {
+      this(new DnsServerTest());
+    }
+
+    protected ModelBuilder(DnsServerTest instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder alertRules(List<AlertRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public DnsServerTest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder dnsServers(List<TestDnsServer> dnsServers) {
+      this.instance.setDnsServers(dnsServers);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+      this.instance.setDnsTransportProtocol(dnsTransportProtocol);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder recursiveQueries(Boolean recursiveQueries) {
+      this.instance.setRecursiveQueries(recursiveQueries);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder dnsQueryClass(DnsQueryClass dnsQueryClass) {
+      this.instance.setDnsQueryClass(dnsQueryClass);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public DnsServerTest.ModelBuilder monitors(List<Monitor> monitors) {
+      this.instance.monitors = monitors;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerTest.ModelBuilder builder() {
+    return new DnsServerTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerTest.ModelBuilder toBuilder() {
+    DnsServerTest.ModelBuilder builder = new DnsServerTest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .alertRules(getAlertRules())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .dnsServers(getDnsServers())
+      .dnsTransportProtocol(getDnsTransportProtocol())
+      .domain(getDomain())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .recursiveQueries(getRecursiveQueries())
+      .ipv6Policy(getIpv6Policy())
+      .fixedPacketRate(getFixedPacketRate())
+      .dnsQueryClass(getDnsQueryClass())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .monitors(getMonitors());
+    return builder;
+  }
+
 }
 

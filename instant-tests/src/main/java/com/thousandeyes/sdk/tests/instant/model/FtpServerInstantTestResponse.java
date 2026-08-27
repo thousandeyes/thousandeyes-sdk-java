@@ -79,45 +79,56 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class FtpServerInstantTestResponse {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
@@ -181,34 +192,6 @@ public class FtpServerInstantTestResponse {
   private List<TestAgentResponse> agents = new ArrayList<>();
 
   public FtpServerInstantTestResponse() { 
-  }
-
-  @JsonCreator
-  public FtpServerInstantTestResponse(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
    /**
@@ -1072,5 +1055,224 @@ public class FtpServerInstantTestResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FtpServerInstantTestResponse instance;
+
+    public ModelBuilder() {
+      this(new FtpServerInstantTestResponse());
+    }
+
+    protected ModelBuilder(FtpServerInstantTestResponse instance) {
+      this.instance = instance;
+    }
+
+    public FtpServerInstantTestResponse.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder downloadLimit(Integer downloadLimit) {
+      this.instance.setDownloadLimit(downloadLimit);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder ftpTargetTime(Integer ftpTargetTime) {
+      this.instance.setFtpTargetTime(ftpTargetTime);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder ftpTimeLimit(Integer ftpTimeLimit) {
+      this.instance.setFtpTimeLimit(ftpTimeLimit);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder requestType(FtpServerRequestType requestType) {
+      this.instance.setRequestType(requestType);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder useActiveFtp(Boolean useActiveFtp) {
+      this.instance.setUseActiveFtp(useActiveFtp);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder useExplicitFtps(Boolean useExplicitFtps) {
+      this.instance.setUseExplicitFtps(useExplicitFtps);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public FtpServerInstantTestResponse.ModelBuilder agents(List<TestAgentResponse> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built FtpServerInstantTestResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FtpServerInstantTestResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FtpServerInstantTestResponse.ModelBuilder builder() {
+    return new FtpServerInstantTestResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FtpServerInstantTestResponse.ModelBuilder toBuilder() {
+    FtpServerInstantTestResponse.ModelBuilder builder = new FtpServerInstantTestResponse.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .downloadLimit(getDownloadLimit())
+      .ftpTargetTime(getFtpTargetTime())
+      .ftpTimeLimit(getFtpTimeLimit())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .password(getPassword())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requestType(getRequestType())
+      .url(getUrl())
+      .useActiveFtp(getUseActiveFtp())
+      .useExplicitFtps(getUseExplicitFtps())
+      .username(getUsername())
+      .fixedPacketRate(getFixedPacketRate())
+      .ipv6Policy(getIpv6Policy())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

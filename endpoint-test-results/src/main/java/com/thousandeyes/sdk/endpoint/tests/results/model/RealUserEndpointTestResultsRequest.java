@@ -102,5 +102,59 @@ public class RealUserEndpointTestResultsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestResultsRequest instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestResultsRequest());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestResultsRequest instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestResultsRequest.ModelBuilder searchFilters(RealUserEndpointTestResultRequestFilter searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestResultsRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestResultsRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestResultsRequest.ModelBuilder builder() {
+    return new RealUserEndpointTestResultsRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestResultsRequest.ModelBuilder toBuilder() {
+    RealUserEndpointTestResultsRequest.ModelBuilder builder = new RealUserEndpointTestResultsRequest.ModelBuilder()
+      .searchFilters(getSearchFilters());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class AgentLabel {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentLabel instance;
+
+    public ModelBuilder() {
+      this(new AgentLabel());
+    }
+
+    protected ModelBuilder(AgentLabel instance) {
+      this.instance = instance;
+    }
+
+    public AgentLabel.ModelBuilder labelId(String labelId) {
+      this.instance.setLabelId(labelId);
+      return this;
+    }
+    public AgentLabel.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentLabel instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentLabel build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentLabel.ModelBuilder builder() {
+    return new AgentLabel.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentLabel.ModelBuilder toBuilder() {
+    AgentLabel.ModelBuilder builder = new AgentLabel.ModelBuilder()
+      .labelId(getLabelId())
+      .name(getName());
+    return builder;
+  }
+
 }
 

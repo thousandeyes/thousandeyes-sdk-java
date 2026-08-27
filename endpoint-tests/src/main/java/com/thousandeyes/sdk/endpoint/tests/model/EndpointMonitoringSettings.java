@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointMonitoringSettings {
   public static final String JSON_PROPERTY_MONITORING_SETTINGS_ID = "monitoringSettingsId";
+  @JsonProperty(JSON_PROPERTY_MONITORING_SETTINGS_ID)
   private String monitoringSettingsId;
 
   public static final String JSON_PROPERTY_MONITORING_SETTINGS_TYPE = "monitoringSettingsType";
@@ -56,14 +57,6 @@ public class EndpointMonitoringSettings {
   private List<String> labelIds;
 
   public EndpointMonitoringSettings() { 
-  }
-
-  @JsonCreator
-  public EndpointMonitoringSettings(
-    @JsonProperty(JSON_PROPERTY_MONITORING_SETTINGS_ID) String monitoringSettingsId
-  ) {
-  this();
-    this.monitoringSettingsId = monitoringSettingsId;
   }
 
    /**
@@ -252,5 +245,79 @@ public class EndpointMonitoringSettings {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointMonitoringSettings instance;
+
+    public ModelBuilder() {
+      this(new EndpointMonitoringSettings());
+    }
+
+    protected ModelBuilder(EndpointMonitoringSettings instance) {
+      this.instance = instance;
+    }
+
+    public EndpointMonitoringSettings.ModelBuilder monitoringSettingsId(String monitoringSettingsId) {
+      this.instance.monitoringSettingsId = monitoringSettingsId;
+      return this;
+    }
+    public EndpointMonitoringSettings.ModelBuilder monitoringSettingsType(EndpointMonitoringSettingsType monitoringSettingsType) {
+      this.instance.setMonitoringSettingsType(monitoringSettingsType);
+      return this;
+    }
+    public EndpointMonitoringSettings.ModelBuilder agentIds(List<UUID> agentIds) {
+      this.instance.setAgentIds(agentIds);
+      return this;
+    }
+    public EndpointMonitoringSettings.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public EndpointMonitoringSettings.ModelBuilder labelIds(List<String> labelIds) {
+      this.instance.setLabelIds(labelIds);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointMonitoringSettings instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointMonitoringSettings build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointMonitoringSettings.ModelBuilder builder() {
+    return new EndpointMonitoringSettings.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointMonitoringSettings.ModelBuilder toBuilder() {
+    EndpointMonitoringSettings.ModelBuilder builder = new EndpointMonitoringSettings.ModelBuilder()
+      .monitoringSettingsId(getMonitoringSettingsId())
+      .monitoringSettingsType(getMonitoringSettingsType())
+      .agentIds(getAgentIds())
+      .tagIds(getTagIds())
+      .labelIds(getLabelIds());
+    return builder;
+  }
+
 }
 

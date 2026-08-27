@@ -37,27 +37,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentBase {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES)
   private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public AgentBase() { 
-  }
-
-  @JsonCreator
-  public AgentBase(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES) List<String> publicIpAddresses, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network
-  ) {
-  this();
-    this.ipAddresses = ipAddresses;
-    this.publicIpAddresses = publicIpAddresses;
-    this.network = network;
   }
 
    /**
@@ -148,5 +139,69 @@ public class AgentBase {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentBase instance;
+
+    public ModelBuilder() {
+      this(new AgentBase());
+    }
+
+    protected ModelBuilder(AgentBase instance) {
+      this.instance = instance;
+    }
+
+    public AgentBase.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+    public AgentBase.ModelBuilder publicIpAddresses(List<String> publicIpAddresses) {
+      this.instance.publicIpAddresses = publicIpAddresses;
+      return this;
+    }
+    public AgentBase.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentBase instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentBase build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentBase.ModelBuilder builder() {
+    return new AgentBase.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentBase.ModelBuilder toBuilder() {
+    AgentBase.ModelBuilder builder = new AgentBase.ModelBuilder()
+      .ipAddresses(getIpAddresses())
+      .publicIpAddresses(getPublicIpAddresses())
+      .network(getNetwork());
+    return builder;
+  }
+
 }
 

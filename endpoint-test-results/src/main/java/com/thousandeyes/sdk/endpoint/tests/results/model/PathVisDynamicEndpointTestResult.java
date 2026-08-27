@@ -76,15 +76,19 @@ public class PathVisDynamicEndpointTestResult {
   private String aid;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
@@ -115,12 +119,15 @@ public class PathVisDynamicEndpointTestResult {
   private AsnDetails asnDetails;
 
   public static final String JSON_PROPERTY_SERVER = "server";
+  @JsonProperty(JSON_PROPERTY_SERVER)
   private String server;
 
   public static final String JSON_PROPERTY_SOURCE_IP = "sourceIp";
+  @JsonProperty(JSON_PROPERTY_SOURCE_IP)
   private String sourceIp;
 
   public static final String JSON_PROPERTY_SOURCE_PREFIX = "sourcePrefix";
+  @JsonProperty(JSON_PROPERTY_SOURCE_PREFIX)
   private String sourcePrefix;
 
   public static final String JSON_PROPERTY_APPLICATION = "application";
@@ -139,34 +146,13 @@ public class PathVisDynamicEndpointTestResult {
   private DynamicEndpointTestWebex webex;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_PATH_TRACES = "pathTraces";
   private List<EndpointPathTrace> pathTraces = new ArrayList<>();
 
   public PathVisDynamicEndpointTestResult() { 
-  }
-
-  @JsonCreator
-  public PathVisDynamicEndpointTestResult(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_SERVER) String server, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_IP) String sourceIp, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_PREFIX) String sourcePrefix, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location
-  ) {
-  this();
-    this.testId = testId;
-    this.agentId = agentId;
-    this.roundId = roundId;
-    this.serverIp = serverIp;
-    this.server = server;
-    this.sourceIp = sourceIp;
-    this.sourcePrefix = sourcePrefix;
-    this.location = location;
   }
 
   public PathVisDynamicEndpointTestResult aid(String aid) {
@@ -782,5 +768,174 @@ public class PathVisDynamicEndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisDynamicEndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new PathVisDynamicEndpointTestResult());
+    }
+
+    protected ModelBuilder(PathVisDynamicEndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public PathVisDynamicEndpointTestResult.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder originalTargetProfile(TargetProfile originalTargetProfile) {
+      this.instance.setOriginalTargetProfile(originalTargetProfile);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder userProfile(UserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder vpnProfile(VpnProfile vpnProfile) {
+      this.instance.setVpnProfile(vpnProfile);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder asnDetails(AsnDetails asnDetails) {
+      this.instance.setAsnDetails(asnDetails);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder server(String server) {
+      this.instance.server = server;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder sourceIp(String sourceIp) {
+      this.instance.sourceIp = sourceIp;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder sourcePrefix(String sourcePrefix) {
+      this.instance.sourcePrefix = sourcePrefix;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder protocol(EndpointTestResultProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder udpProbeMode(UdpProbeModeResponse udpProbeMode) {
+      this.instance.setUdpProbeMode(udpProbeMode);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder webex(DynamicEndpointTestWebex webex) {
+      this.instance.setWebex(webex);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResult.ModelBuilder pathTraces(List<EndpointPathTrace> pathTraces) {
+      this.instance.setPathTraces(pathTraces);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisDynamicEndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisDynamicEndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisDynamicEndpointTestResult.ModelBuilder builder() {
+    return new PathVisDynamicEndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisDynamicEndpointTestResult.ModelBuilder toBuilder() {
+    PathVisDynamicEndpointTestResult.ModelBuilder builder = new PathVisDynamicEndpointTestResult.ModelBuilder()
+      .aid(getAid())
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .roundId(getRoundId())
+      .serverIp(getServerIp())
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .originalTargetProfile(getOriginalTargetProfile())
+      .userProfile(getUserProfile())
+      .vpnProfile(getVpnProfile())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform())
+      .asnDetails(getAsnDetails())
+      .server(getServer())
+      .sourceIp(getSourceIp())
+      .sourcePrefix(getSourcePrefix())
+      .application(getApplication())
+      .protocol(getProtocol())
+      .tcpProbeMode(getTcpProbeMode())
+      .udpProbeMode(getUdpProbeMode())
+      .webex(getWebex())
+      .location(getLocation())
+      .pathTraces(getPathTraces());
+    return builder;
+  }
+
 }
 

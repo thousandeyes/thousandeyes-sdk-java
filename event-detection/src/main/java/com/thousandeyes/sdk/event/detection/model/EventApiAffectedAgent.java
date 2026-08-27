@@ -44,18 +44,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EventApiAffectedAgent {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private EventAffectedAgentType type;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_COUNTRY_CODE = "countryCode";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_CODE)
   private String countryCode;
 
   public static final String JSON_PROPERTY_AFFECTED_TARGET_IDS = "affectedTargetIds";
@@ -68,20 +72,6 @@ public class EventApiAffectedAgent {
   private AgentLinks links;
 
   public EventApiAffectedAgent() { 
-  }
-
-  @JsonCreator
-  public EventApiAffectedAgent(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_CODE) String countryCode
-  ) {
-  this();
-    this.agentId = agentId;
-    this.name = name;
-    this.location = location;
-    this.countryCode = countryCode;
   }
 
    /**
@@ -313,5 +303,94 @@ public class EventApiAffectedAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EventApiAffectedAgent instance;
+
+    public ModelBuilder() {
+      this(new EventApiAffectedAgent());
+    }
+
+    protected ModelBuilder(EventApiAffectedAgent instance) {
+      this.instance = instance;
+    }
+
+    public EventApiAffectedAgent.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder type(EventAffectedAgentType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder countryCode(String countryCode) {
+      this.instance.countryCode = countryCode;
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder affectedTargetIds(List<String> affectedTargetIds) {
+      this.instance.setAffectedTargetIds(affectedTargetIds);
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder affectedTestIds(List<String> affectedTestIds) {
+      this.instance.setAffectedTestIds(affectedTestIds);
+      return this;
+    }
+    public EventApiAffectedAgent.ModelBuilder links(AgentLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EventApiAffectedAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EventApiAffectedAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EventApiAffectedAgent.ModelBuilder builder() {
+    return new EventApiAffectedAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EventApiAffectedAgent.ModelBuilder toBuilder() {
+    EventApiAffectedAgent.ModelBuilder builder = new EventApiAffectedAgent.ModelBuilder()
+      .agentId(getAgentId())
+      .type(getType())
+      .name(getName())
+      .location(getLocation())
+      .countryCode(getCountryCode())
+      .affectedTargetIds(getAffectedTargetIds())
+      .affectedTestIds(getAffectedTestIds())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

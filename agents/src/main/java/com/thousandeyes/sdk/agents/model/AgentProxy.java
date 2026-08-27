@@ -425,5 +425,109 @@ public class AgentProxy {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentProxy instance;
+
+    public ModelBuilder() {
+      this(new AgentProxy());
+    }
+
+    protected ModelBuilder(AgentProxy instance) {
+      this.instance = instance;
+    }
+
+    public AgentProxy.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public AgentProxy.ModelBuilder authType(ProxyAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public AgentProxy.ModelBuilder bypassList(List<String> bypassList) {
+      this.instance.setBypassList(bypassList);
+      return this;
+    }
+    public AgentProxy.ModelBuilder lastModified(OffsetDateTime lastModified) {
+      this.instance.setLastModified(lastModified);
+      return this;
+    }
+    public AgentProxy.ModelBuilder location(String location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public AgentProxy.ModelBuilder isLocalConfigured(Boolean isLocalConfigured) {
+      this.instance.setIsLocalConfigured(isLocalConfigured);
+      return this;
+    }
+    public AgentProxy.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public AgentProxy.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public AgentProxy.ModelBuilder proxyId(String proxyId) {
+      this.instance.setProxyId(proxyId);
+      return this;
+    }
+    public AgentProxy.ModelBuilder type(ProxyType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public AgentProxy.ModelBuilder user(String user) {
+      this.instance.setUser(user);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentProxy instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentProxy build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentProxy.ModelBuilder builder() {
+    return new AgentProxy.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentProxy.ModelBuilder toBuilder() {
+    AgentProxy.ModelBuilder builder = new AgentProxy.ModelBuilder()
+      .aid(getAid())
+      .authType(getAuthType())
+      .bypassList(getBypassList())
+      .lastModified(getLastModified())
+      .location(getLocation())
+      .isLocalConfigured(getIsLocalConfigured())
+      .name(getName())
+      .password(getPassword())
+      .proxyId(getProxyId())
+      .type(getType())
+      .user(getUser());
+    return builder;
+  }
+
 }
 

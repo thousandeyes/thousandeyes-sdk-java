@@ -269,5 +269,79 @@ public class HttpEndpointTestsDataSearchFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpEndpointTestsDataSearchFilter instance;
+
+    public ModelBuilder() {
+      this(new HttpEndpointTestsDataSearchFilter());
+    }
+
+    protected ModelBuilder(HttpEndpointTestsDataSearchFilter instance) {
+      this.instance = instance;
+    }
+
+    public HttpEndpointTestsDataSearchFilter.ModelBuilder testId(List<String> testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public HttpEndpointTestsDataSearchFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public HttpEndpointTestsDataSearchFilter.ModelBuilder userPrincipalName(List<String> userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+    public HttpEndpointTestsDataSearchFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public HttpEndpointTestsDataSearchFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpEndpointTestsDataSearchFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpEndpointTestsDataSearchFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpEndpointTestsDataSearchFilter.ModelBuilder builder() {
+    return new HttpEndpointTestsDataSearchFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpEndpointTestsDataSearchFilter.ModelBuilder toBuilder() {
+    HttpEndpointTestsDataSearchFilter.ModelBuilder builder = new HttpEndpointTestsDataSearchFilter.ModelBuilder()
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .userPrincipalName(getUserPrincipalName())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion());
+    return builder;
+  }
+
 }
 

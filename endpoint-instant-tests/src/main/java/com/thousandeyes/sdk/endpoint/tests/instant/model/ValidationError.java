@@ -268,5 +268,84 @@ public class ValidationError {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ValidationError instance;
+
+    public ModelBuilder() {
+      this(new ValidationError());
+    }
+
+    protected ModelBuilder(ValidationError instance) {
+      this.instance = instance;
+    }
+
+    public ValidationError.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ValidationError.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ValidationError.ModelBuilder status(Integer status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public ValidationError.ModelBuilder detail(String detail) {
+      this.instance.setDetail(detail);
+      return this;
+    }
+    public ValidationError.ModelBuilder instance(String instance) {
+      this.instance.setInstance(instance);
+      return this;
+    }
+    public ValidationError.ModelBuilder errors(List<ValidationErrorItem> errors) {
+      this.instance.setErrors(errors);
+      return this;
+    }
+
+    /**
+     * Returns a built ValidationError instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ValidationError build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ValidationError.ModelBuilder builder() {
+    return new ValidationError.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ValidationError.ModelBuilder toBuilder() {
+    ValidationError.ModelBuilder builder = new ValidationError.ModelBuilder()
+      .type(getType())
+      .title(getTitle())
+      .status(getStatus())
+      .detail(getDetail())
+      .instance(getInstance())
+      .errors(getErrors());
+    return builder;
+  }
+
 }
 

@@ -177,5 +177,69 @@ public class ApiDetailTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDetailTestResults instance;
+
+    public ModelBuilder() {
+      this(new ApiDetailTestResults());
+    }
+
+    protected ModelBuilder(ApiDetailTestResults instance) {
+      this.instance = instance;
+    }
+
+    public ApiDetailTestResults.ModelBuilder results(List<ApiDetailTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public ApiDetailTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public ApiDetailTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDetailTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDetailTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDetailTestResults.ModelBuilder builder() {
+    return new ApiDetailTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDetailTestResults.ModelBuilder toBuilder() {
+    ApiDetailTestResults.ModelBuilder builder = new ApiDetailTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -102,5 +102,59 @@ public class ApiListWidgetRowLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiListWidgetRowLinks instance;
+
+    public ModelBuilder() {
+      this(new ApiListWidgetRowLinks());
+    }
+
+    protected ModelBuilder(ApiListWidgetRowLinks instance) {
+      this.instance = instance;
+    }
+
+    public ApiListWidgetRowLinks.ModelBuilder data(Link data) {
+      this.instance.setData(data);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiListWidgetRowLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiListWidgetRowLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiListWidgetRowLinks.ModelBuilder builder() {
+    return new ApiListWidgetRowLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiListWidgetRowLinks.ModelBuilder toBuilder() {
+    ApiListWidgetRowLinks.ModelBuilder builder = new ApiListWidgetRowLinks.ModelBuilder()
+      .data(getData());
+    return builder;
+  }
+
 }
 

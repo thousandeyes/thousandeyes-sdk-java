@@ -112,5 +112,59 @@ public class AgentTestsAssignRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentTestsAssignRequest instance;
+
+    public ModelBuilder() {
+      this(new AgentTestsAssignRequest());
+    }
+
+    protected ModelBuilder(AgentTestsAssignRequest instance) {
+      this.instance = instance;
+    }
+
+    public AgentTestsAssignRequest.ModelBuilder testIds(List<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentTestsAssignRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentTestsAssignRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentTestsAssignRequest.ModelBuilder builder() {
+    return new AgentTestsAssignRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentTestsAssignRequest.ModelBuilder toBuilder() {
+    AgentTestsAssignRequest.ModelBuilder builder = new AgentTestsAssignRequest.ModelBuilder()
+      .testIds(getTestIds());
+    return builder;
+  }
+
 }
 

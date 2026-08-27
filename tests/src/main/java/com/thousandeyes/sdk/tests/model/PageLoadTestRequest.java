@@ -134,33 +134,41 @@ public class PageLoadTestRequest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -233,6 +241,7 @@ public class PageLoadTestRequest {
   private TestProtocol protocol = TestProtocol.TCP;
 
   public static final String JSON_PROPERTY_SSL_VERSION = "sslVersion";
+  @JsonProperty(JSON_PROPERTY_SSL_VERSION)
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
@@ -347,30 +356,6 @@ public class PageLoadTestRequest {
   private List<String> monitors = new ArrayList<>();
 
   public PageLoadTestRequest() { 
-  }
-
-  @JsonCreator
-  public PageLoadTestRequest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.sslVersion = sslVersion;
   }
 
   public PageLoadTestRequest interval(TestInterval interval) {
@@ -2388,5 +2373,424 @@ public class PageLoadTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PageLoadTestRequest instance;
+
+    public ModelBuilder() {
+      this(new PageLoadTestRequest());
+    }
+
+    protected ModelBuilder(PageLoadTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public PageLoadTestRequest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder authType(TestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
+      this.instance.setAgentInterfaces(agentInterfaces);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder contentRegex(String contentRegex) {
+      this.instance.setContentRegex(contentRegex);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder customHeaders(TestCustomHeaders customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder desiredStatusCode(String desiredStatusCode) {
+      this.instance.setDesiredStatusCode(desiredStatusCode);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder downloadLimit(Integer downloadLimit) {
+      this.instance.setDownloadLimit(downloadLimit);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder dnsOverride(String dnsOverride) {
+      this.instance.setDnsOverride(dnsOverride);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder httpTargetTime(Integer httpTargetTime) {
+      this.instance.setHttpTargetTime(httpTargetTime);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder httpVersion(Integer httpVersion) {
+      this.instance.setHttpVersion(httpVersion);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder includeHeaders(Boolean includeHeaders) {
+      this.instance.setIncludeHeaders(includeHeaders);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder oAuth(OAuth oAuth) {
+      this.instance.setoAuth(oAuth);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder sslVersion(String sslVersion) {
+      this.instance.sslVersion = sslVersion;
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder useNtlm(Boolean useNtlm) {
+      this.instance.setUseNtlm(useNtlm);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder userAgent(String userAgent) {
+      this.instance.setUserAgent(userAgent);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+      this.instance.setAllowUnsafeLegacyRenegotiation(allowUnsafeLegacyRenegotiation);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+      this.instance.setVaultCredentials(vaultCredentials);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder emulatedDeviceId(String emulatedDeviceId) {
+      this.instance.setEmulatedDeviceId(emulatedDeviceId);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder pageLoadTargetTime(Integer pageLoadTargetTime) {
+      this.instance.setPageLoadTargetTime(pageLoadTargetTime);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder pageLoadTimeLimit(Integer pageLoadTimeLimit) {
+      this.instance.setPageLoadTimeLimit(pageLoadTimeLimit);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder blockDomains(String blockDomains) {
+      this.instance.setBlockDomains(blockDomains);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder disableScreenshot(Boolean disableScreenshot) {
+      this.instance.setDisableScreenshot(disableScreenshot);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder allowMicAndCamera(Boolean allowMicAndCamera) {
+      this.instance.setAllowMicAndCamera(allowMicAndCamera);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder allowGeolocation(Boolean allowGeolocation) {
+      this.instance.setAllowGeolocation(allowGeolocation);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder browserLanguage(String browserLanguage) {
+      this.instance.setBrowserLanguage(browserLanguage);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder chromeOptions(String chromeOptions) {
+      this.instance.setChromeOptions(chromeOptions);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder chromePolicies(String chromePolicies) {
+      this.instance.setChromePolicies(chromePolicies);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder chromiumTrack(TestChromiumTrack chromiumTrack) {
+      this.instance.setChromiumTrack(chromiumTrack);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
+      this.instance.setPageLoadingStrategy(pageLoadingStrategy);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder identifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+      this.instance.setIdentifyAgentTrafficWithUserAgent(identifyAgentTrafficWithUserAgent);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder httpInterval(TestHttpInterval httpInterval) {
+      this.instance.setHttpInterval(httpInterval);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder subinterval(TestSubInterval subinterval) {
+      this.instance.setSubinterval(subinterval);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder alertRules(List<String> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public PageLoadTestRequest.ModelBuilder monitors(List<String> monitors) {
+      this.instance.setMonitors(monitors);
+      return this;
+    }
+
+    /**
+     * Returns a built PageLoadTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PageLoadTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PageLoadTestRequest.ModelBuilder builder() {
+    return new PageLoadTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PageLoadTestRequest.ModelBuilder toBuilder() {
+    PageLoadTestRequest.ModelBuilder builder = new PageLoadTestRequest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .authType(getAuthType())
+      .agentInterfaces(getAgentInterfaces())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .clientCertificate(getClientCertificate())
+      .contentRegex(getContentRegex())
+      .customHeaders(getCustomHeaders())
+      .desiredStatusCode(getDesiredStatusCode())
+      .distributedTracing(getDistributedTracing())
+      .downloadLimit(getDownloadLimit())
+      .dnsOverride(getDnsOverride())
+      .httpTargetTime(getHttpTargetTime())
+      .httpTimeLimit(getHttpTimeLimit())
+      .httpVersion(getHttpVersion())
+      .includeHeaders(getIncludeHeaders())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .oAuth(getoAuth())
+      .password(getPassword())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .sslVersion(getSslVersion())
+      .sslVersionId(getSslVersionId())
+      .url(getUrl())
+      .useNtlm(getUseNtlm())
+      .userAgent(getUserAgent())
+      .username(getUsername())
+      .verifyCertificate(getVerifyCertificate())
+      .allowUnsafeLegacyRenegotiation(getAllowUnsafeLegacyRenegotiation())
+      .followRedirects(getFollowRedirects())
+      .fixedPacketRate(getFixedPacketRate())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .vaultCredentials(getVaultCredentials())
+      .emulatedDeviceId(getEmulatedDeviceId())
+      .pageLoadTargetTime(getPageLoadTargetTime())
+      .pageLoadTimeLimit(getPageLoadTimeLimit())
+      .blockDomains(getBlockDomains())
+      .disableScreenshot(getDisableScreenshot())
+      .allowMicAndCamera(getAllowMicAndCamera())
+      .allowGeolocation(getAllowGeolocation())
+      .browserLanguage(getBrowserLanguage())
+      .chromeOptions(getChromeOptions())
+      .chromePolicies(getChromePolicies())
+      .chromiumTrack(getChromiumTrack())
+      .pageLoadingStrategy(getPageLoadingStrategy())
+      .randomizedStartTime(getRandomizedStartTime())
+      .identifyAgentTrafficWithUserAgent(getIdentifyAgentTrafficWithUserAgent())
+      .httpInterval(getHttpInterval())
+      .subinterval(getSubinterval())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .alertRules(getAlertRules())
+      .agents(getAgents())
+      .monitors(getMonitors());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class TestDnsServer {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestDnsServer instance;
+
+    public ModelBuilder() {
+      this(new TestDnsServer());
+    }
+
+    protected ModelBuilder(TestDnsServer instance) {
+      this.instance = instance;
+    }
+
+    public TestDnsServer.ModelBuilder serverId(String serverId) {
+      this.instance.setServerId(serverId);
+      return this;
+    }
+    public TestDnsServer.ModelBuilder serverName(String serverName) {
+      this.instance.setServerName(serverName);
+      return this;
+    }
+
+    /**
+     * Returns a built TestDnsServer instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestDnsServer build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestDnsServer.ModelBuilder builder() {
+    return new TestDnsServer.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestDnsServer.ModelBuilder toBuilder() {
+    TestDnsServer.ModelBuilder builder = new TestDnsServer.ModelBuilder()
+      .serverId(getServerId())
+      .serverName(getServerName());
+    return builder;
+  }
+
 }
 

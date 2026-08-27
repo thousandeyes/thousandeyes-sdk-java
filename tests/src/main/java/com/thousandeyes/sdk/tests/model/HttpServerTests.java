@@ -145,5 +145,64 @@ public class HttpServerTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpServerTests instance;
+
+    public ModelBuilder() {
+      this(new HttpServerTests());
+    }
+
+    protected ModelBuilder(HttpServerTests instance) {
+      this.instance = instance;
+    }
+
+    public HttpServerTests.ModelBuilder tests(List<UnexpandedHttpServerTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public HttpServerTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpServerTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpServerTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpServerTests.ModelBuilder builder() {
+    return new HttpServerTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpServerTests.ModelBuilder toBuilder() {
+    HttpServerTests.ModelBuilder builder = new HttpServerTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

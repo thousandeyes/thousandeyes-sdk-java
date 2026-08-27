@@ -132,5 +132,64 @@ public class ApiReportDataComponentLabelMapEntry {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiReportDataComponentLabelMapEntry instance;
+
+    public ModelBuilder() {
+      this(new ApiReportDataComponentLabelMapEntry());
+    }
+
+    protected ModelBuilder(ApiReportDataComponentLabelMapEntry instance) {
+      this.instance = instance;
+    }
+
+    public ApiReportDataComponentLabelMapEntry.ModelBuilder groupId(String groupId) {
+      this.instance.setGroupId(groupId);
+      return this;
+    }
+    public ApiReportDataComponentLabelMapEntry.ModelBuilder groupLabel(String groupLabel) {
+      this.instance.setGroupLabel(groupLabel);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiReportDataComponentLabelMapEntry instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiReportDataComponentLabelMapEntry build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiReportDataComponentLabelMapEntry.ModelBuilder builder() {
+    return new ApiReportDataComponentLabelMapEntry.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiReportDataComponentLabelMapEntry.ModelBuilder toBuilder() {
+    ApiReportDataComponentLabelMapEntry.ModelBuilder builder = new ApiReportDataComponentLabelMapEntry.ModelBuilder()
+      .groupId(getGroupId())
+      .groupLabel(getGroupLabel());
+    return builder;
+  }
+
 }
 

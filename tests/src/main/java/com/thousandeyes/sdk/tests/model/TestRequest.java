@@ -269,5 +269,79 @@ public class TestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestRequest instance;
+
+    public ModelBuilder() {
+      this(new TestRequest());
+    }
+
+    protected ModelBuilder(TestRequest instance) {
+      this.instance = instance;
+    }
+
+    public TestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public TestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public TestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public TestRequest.ModelBuilder alertRules(List<String> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public TestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built TestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestRequest.ModelBuilder builder() {
+    return new TestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestRequest.ModelBuilder toBuilder() {
+    TestRequest.ModelBuilder builder = new TestRequest.ModelBuilder()
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .alertRules(getAlertRules())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

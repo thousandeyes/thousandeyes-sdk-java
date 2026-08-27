@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentResponseExpands {
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   private List<Long> testIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
@@ -52,24 +53,14 @@ public class EnterpriseAgentResponseExpands {
   private List<NotificationRules> notificationRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<AgentLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<AgentTag> tags = new ArrayList<>();
 
   public EnterpriseAgentResponseExpands() { 
-  }
-
-  @JsonCreator
-  public EnterpriseAgentResponseExpands(
-    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
-  ) {
-  this();
-    this.testIds = testIds;
-    this.labels = labels;
-    this.tags = tags;
   }
 
    /**
@@ -230,5 +221,79 @@ public class EnterpriseAgentResponseExpands {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentResponseExpands instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentResponseExpands());
+    }
+
+    protected ModelBuilder(EnterpriseAgentResponseExpands instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentResponseExpands.ModelBuilder testIds(List<Long> testIds) {
+      this.instance.testIds = testIds;
+      return this;
+    }
+    public EnterpriseAgentResponseExpands.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public EnterpriseAgentResponseExpands.ModelBuilder notificationRules(List<NotificationRules> notificationRules) {
+      this.instance.setNotificationRules(notificationRules);
+      return this;
+    }
+    public EnterpriseAgentResponseExpands.ModelBuilder labels(List<AgentLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public EnterpriseAgentResponseExpands.ModelBuilder tags(List<AgentTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentResponseExpands instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentResponseExpands build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentResponseExpands.ModelBuilder builder() {
+    return new EnterpriseAgentResponseExpands.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentResponseExpands.ModelBuilder toBuilder() {
+    EnterpriseAgentResponseExpands.ModelBuilder builder = new EnterpriseAgentResponseExpands.ModelBuilder()
+      .testIds(getTestIds())
+      .tests(getTests())
+      .notificationRules(getNotificationRules())
+      .labels(getLabels())
+      .tags(getTags());
+    return builder;
+  }
+
 }
 

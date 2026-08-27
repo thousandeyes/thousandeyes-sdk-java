@@ -145,5 +145,64 @@ public class VoiceTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VoiceTests instance;
+
+    public ModelBuilder() {
+      this(new VoiceTests());
+    }
+
+    protected ModelBuilder(VoiceTests instance) {
+      this.instance = instance;
+    }
+
+    public VoiceTests.ModelBuilder tests(List<UnexpandedVoiceTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public VoiceTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built VoiceTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VoiceTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VoiceTests.ModelBuilder builder() {
+    return new VoiceTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VoiceTests.ModelBuilder toBuilder() {
+    VoiceTests.ModelBuilder builder = new VoiceTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

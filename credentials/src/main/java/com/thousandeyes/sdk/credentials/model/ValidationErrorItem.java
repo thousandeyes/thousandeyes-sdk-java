@@ -163,5 +163,69 @@ public class ValidationErrorItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ValidationErrorItem instance;
+
+    public ModelBuilder() {
+      this(new ValidationErrorItem());
+    }
+
+    protected ModelBuilder(ValidationErrorItem instance) {
+      this.instance = instance;
+    }
+
+    public ValidationErrorItem.ModelBuilder code(String code) {
+      this.instance.setCode(code);
+      return this;
+    }
+    public ValidationErrorItem.ModelBuilder field(String field) {
+      this.instance.setField(field);
+      return this;
+    }
+    public ValidationErrorItem.ModelBuilder message(String message) {
+      this.instance.setMessage(message);
+      return this;
+    }
+
+    /**
+     * Returns a built ValidationErrorItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ValidationErrorItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ValidationErrorItem.ModelBuilder builder() {
+    return new ValidationErrorItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ValidationErrorItem.ModelBuilder toBuilder() {
+    ValidationErrorItem.ModelBuilder builder = new ValidationErrorItem.ModelBuilder()
+      .code(getCode())
+      .field(getField())
+      .message(getMessage());
+    return builder;
+  }
+
 }
 

@@ -144,5 +144,64 @@ public class ApiReportDataComponentLabelMap {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiReportDataComponentLabelMap instance;
+
+    public ModelBuilder() {
+      this(new ApiReportDataComponentLabelMap());
+    }
+
+    protected ModelBuilder(ApiReportDataComponentLabelMap instance) {
+      this.instance = instance;
+    }
+
+    public ApiReportDataComponentLabelMap.ModelBuilder groupProperty(String groupProperty) {
+      this.instance.setGroupProperty(groupProperty);
+      return this;
+    }
+    public ApiReportDataComponentLabelMap.ModelBuilder groupLabels(List<ApiReportDataComponentLabelMapEntry> groupLabels) {
+      this.instance.setGroupLabels(groupLabels);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiReportDataComponentLabelMap instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiReportDataComponentLabelMap build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiReportDataComponentLabelMap.ModelBuilder builder() {
+    return new ApiReportDataComponentLabelMap.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiReportDataComponentLabelMap.ModelBuilder toBuilder() {
+    ApiReportDataComponentLabelMap.ModelBuilder builder = new ApiReportDataComponentLabelMap.ModelBuilder()
+      .groupProperty(getGroupProperty())
+      .groupLabels(getGroupLabels());
+    return builder;
+  }
+
 }
 

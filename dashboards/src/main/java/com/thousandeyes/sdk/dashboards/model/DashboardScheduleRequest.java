@@ -397,5 +397,104 @@ public class DashboardScheduleRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleRequest instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleRequest());
+    }
+
+    protected ModelBuilder(DashboardScheduleRequest instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleRequest.ModelBuilder cronSpec(DashboardScheduleCronSpec cronSpec) {
+      this.instance.setCronSpec(cronSpec);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder dataSource(DashboardScheduleDataSource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder dataTimespan(DashboardScheduleTimespan dataTimespan) {
+      this.instance.setDataTimespan(dataTimespan);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder flagEnabled(Boolean flagEnabled) {
+      this.instance.setFlagEnabled(flagEnabled);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder flagLocked(Boolean flagLocked) {
+      this.instance.setFlagLocked(flagLocked);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder flagAutoShare(Boolean flagAutoShare) {
+      this.instance.setFlagAutoShare(flagAutoShare);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder flagIsIncludePiiUserData(Boolean flagIsIncludePiiUserData) {
+      this.instance.setFlagIsIncludePiiUserData(flagIsIncludePiiUserData);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder flagAttachPdfToEmail(Boolean flagAttachPdfToEmail) {
+      this.instance.setFlagAttachPdfToEmail(flagAttachPdfToEmail);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder recipients(Set<String> recipients) {
+      this.instance.setRecipients(recipients);
+      return this;
+    }
+    public DashboardScheduleRequest.ModelBuilder expiresAfter(Long expiresAfter) {
+      this.instance.setExpiresAfter(expiresAfter);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleRequest.ModelBuilder builder() {
+    return new DashboardScheduleRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleRequest.ModelBuilder toBuilder() {
+    DashboardScheduleRequest.ModelBuilder builder = new DashboardScheduleRequest.ModelBuilder()
+      .cronSpec(getCronSpec())
+      .dataSource(getDataSource())
+      .dataTimespan(getDataTimespan())
+      .flagEnabled(getFlagEnabled())
+      .flagLocked(getFlagLocked())
+      .flagAutoShare(getFlagAutoShare())
+      .flagIsIncludePiiUserData(getFlagIsIncludePiiUserData())
+      .flagAttachPdfToEmail(getFlagAttachPdfToEmail())
+      .recipients(getRecipients())
+      .expiresAfter(getExpiresAfter());
+    return builder;
+  }
+
 }
 

@@ -61,51 +61,63 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BaseBgpTest {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
+  @JsonProperty(JSON_PROPERTY_MONITORS)
   private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INCLUDE_COVERED_PREFIXES = "includeCoveredPrefixes";
@@ -121,36 +133,6 @@ public class BaseBgpTest {
   private List<AlertRule> alertRules = new ArrayList<>();
 
   public BaseBgpTest() { 
-  }
-
-  @JsonCreator
-  public BaseBgpTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
-    this.monitors = monitors;
   }
 
    /**
@@ -618,5 +600,154 @@ public class BaseBgpTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BaseBgpTest instance;
+
+    public ModelBuilder() {
+      this(new BaseBgpTest());
+    }
+
+    protected ModelBuilder(BaseBgpTest instance) {
+      this.instance = instance;
+    }
+
+    public BaseBgpTest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder monitors(List<Monitor> monitors) {
+      this.instance.monitors = monitors;
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
+      this.instance.setIncludeCoveredPrefixes(includeCoveredPrefixes);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public BaseBgpTest.ModelBuilder alertRules(List<AlertRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+
+    /**
+     * Returns a built BaseBgpTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BaseBgpTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BaseBgpTest.ModelBuilder builder() {
+    return new BaseBgpTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BaseBgpTest.ModelBuilder toBuilder() {
+    BaseBgpTest.ModelBuilder builder = new BaseBgpTest.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .enabled(getEnabled())
+      .monitors(getMonitors())
+      .includeCoveredPrefixes(getIncludeCoveredPrefixes())
+      .usePublicBgp(getUsePublicBgp())
+      .alertsEnabled(getAlertsEnabled())
+      .alertRules(getAlertRules());
+    return builder;
+  }
+
 }
 

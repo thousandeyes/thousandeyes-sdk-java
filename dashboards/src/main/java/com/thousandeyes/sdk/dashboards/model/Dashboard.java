@@ -64,33 +64,41 @@ public class Dashboard {
   private String globalFilterId;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
+  @JsonProperty(JSON_PROPERTY_DASHBOARD_ID)
   private String dashboardId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
   private String title;
 
   public static final String JSON_PROPERTY_IS_BUILT_IN = "isBuiltIn";
+  @JsonProperty(JSON_PROPERTY_IS_BUILT_IN)
   private Boolean isBuiltIn;
 
   public static final String JSON_PROPERTY_AID = "aid";
+  @JsonProperty(JSON_PROPERTY_AID)
   private String aid;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_IS_PRIVATE = "isPrivate";
   private Boolean isPrivate;
 
   public static final String JSON_PROPERTY_IS_DEFAULT_FOR_USER = "isDefaultForUser";
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER)
   private Boolean isDefaultForUser;
 
   public static final String JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT = "isDefaultForAccount";
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT)
   private Boolean isDefaultForAccount;
 
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
@@ -106,12 +114,14 @@ public class Dashboard {
   private Boolean isGlobalOverride;
 
   public static final String JSON_PROPERTY_IS_MIGRATED_REPORT = "isMigratedReport";
+  @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT)
   private Boolean isMigratedReport;
 
   public static final String JSON_PROPERTY_LAYOUT = "layout";
   private DashboardLayout layout;
 
   public static final String JSON_PROPERTY_SCHEDULE = "schedule";
+  @JsonProperty(JSON_PROPERTY_SCHEDULE)
   private DashboardSchedule schedule;
 
   public static final String JSON_PROPERTY_REFRESH_RATE = "refreshRate";
@@ -121,32 +131,6 @@ public class Dashboard {
   private DashboardLinks links;
 
   public Dashboard() { 
-  }
-
-  @JsonCreator
-  public Dashboard(
-    @JsonProperty(JSON_PROPERTY_DASHBOARD_ID) String dashboardId, 
-    @JsonProperty(JSON_PROPERTY_IS_BUILT_IN) Boolean isBuiltIn, 
-    @JsonProperty(JSON_PROPERTY_AID) String aid, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER) Boolean isDefaultForUser, 
-    @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT) Boolean isDefaultForAccount, 
-    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport, 
-    @JsonProperty(JSON_PROPERTY_SCHEDULE) DashboardSchedule schedule
-  ) {
-  this();
-    this.dashboardId = dashboardId;
-    this.isBuiltIn = isBuiltIn;
-    this.aid = aid;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.isDefaultForUser = isDefaultForUser;
-    this.isDefaultForAccount = isDefaultForAccount;
-    this.isMigratedReport = isMigratedReport;
-    this.schedule = schedule;
   }
 
   public Dashboard globalFilterId(String globalFilterId) {
@@ -634,5 +618,154 @@ public class Dashboard {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Dashboard instance;
+
+    public ModelBuilder() {
+      this(new Dashboard());
+    }
+
+    protected ModelBuilder(Dashboard instance) {
+      this.instance = instance;
+    }
+
+    public Dashboard.ModelBuilder globalFilterId(String globalFilterId) {
+      this.instance.setGlobalFilterId(globalFilterId);
+      return this;
+    }
+    public Dashboard.ModelBuilder dashboardId(String dashboardId) {
+      this.instance.dashboardId = dashboardId;
+      return this;
+    }
+    public Dashboard.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public Dashboard.ModelBuilder isBuiltIn(Boolean isBuiltIn) {
+      this.instance.isBuiltIn = isBuiltIn;
+      return this;
+    }
+    public Dashboard.ModelBuilder aid(String aid) {
+      this.instance.aid = aid;
+      return this;
+    }
+    public Dashboard.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public Dashboard.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public Dashboard.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public Dashboard.ModelBuilder isPrivate(Boolean isPrivate) {
+      this.instance.setIsPrivate(isPrivate);
+      return this;
+    }
+    public Dashboard.ModelBuilder isDefaultForUser(Boolean isDefaultForUser) {
+      this.instance.isDefaultForUser = isDefaultForUser;
+      return this;
+    }
+    public Dashboard.ModelBuilder isDefaultForAccount(Boolean isDefaultForAccount) {
+      this.instance.isDefaultForAccount = isDefaultForAccount;
+      return this;
+    }
+    public Dashboard.ModelBuilder widgets(List<ApiWidget> widgets) {
+      this.instance.setWidgets(widgets);
+      return this;
+    }
+    public Dashboard.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public Dashboard.ModelBuilder defaultTimespan(DefaultTimespan defaultTimespan) {
+      this.instance.setDefaultTimespan(defaultTimespan);
+      return this;
+    }
+    public Dashboard.ModelBuilder isGlobalOverride(Boolean isGlobalOverride) {
+      this.instance.setIsGlobalOverride(isGlobalOverride);
+      return this;
+    }
+    public Dashboard.ModelBuilder isMigratedReport(Boolean isMigratedReport) {
+      this.instance.isMigratedReport = isMigratedReport;
+      return this;
+    }
+    public Dashboard.ModelBuilder layout(DashboardLayout layout) {
+      this.instance.setLayout(layout);
+      return this;
+    }
+    public Dashboard.ModelBuilder schedule(DashboardSchedule schedule) {
+      this.instance.schedule = schedule;
+      return this;
+    }
+    public Dashboard.ModelBuilder refreshRate(RefreshRate refreshRate) {
+      this.instance.setRefreshRate(refreshRate);
+      return this;
+    }
+    public Dashboard.ModelBuilder links(DashboardLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Dashboard instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Dashboard build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Dashboard.ModelBuilder builder() {
+    return new Dashboard.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Dashboard.ModelBuilder toBuilder() {
+    Dashboard.ModelBuilder builder = new Dashboard.ModelBuilder()
+      .globalFilterId(getGlobalFilterId())
+      .dashboardId(getDashboardId())
+      .title(getTitle())
+      .isBuiltIn(getIsBuiltIn())
+      .aid(getAid())
+      .createdBy(getCreatedBy())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .isPrivate(getIsPrivate())
+      .isDefaultForUser(getIsDefaultForUser())
+      .isDefaultForAccount(getIsDefaultForAccount())
+      .widgets(getWidgets())
+      .description(getDescription())
+      .defaultTimespan(getDefaultTimespan())
+      .isGlobalOverride(getIsGlobalOverride())
+      .isMigratedReport(getIsMigratedReport())
+      .layout(getLayout())
+      .schedule(getSchedule())
+      .refreshRate(getRefreshRate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

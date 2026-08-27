@@ -49,25 +49,17 @@ public class PathVisEndpointTestResults {
   private EndpointScheduledTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextAndSelfLink links;
 
   public PathVisEndpointTestResults() { 
-  }
-
-  @JsonCreator
-  public PathVisEndpointTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public PathVisEndpointTestResults results(List<PathVisEndpointTestResult> results) {
@@ -230,5 +222,79 @@ public class PathVisEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new PathVisEndpointTestResults());
+    }
+
+    protected ModelBuilder(PathVisEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PathVisEndpointTestResults.ModelBuilder results(List<PathVisEndpointTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PathVisEndpointTestResults.ModelBuilder test(EndpointScheduledTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PathVisEndpointTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public PathVisEndpointTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public PathVisEndpointTestResults.ModelBuilder links(PaginationNextAndSelfLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisEndpointTestResults.ModelBuilder builder() {
+    return new PathVisEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisEndpointTestResults.ModelBuilder toBuilder() {
+    PathVisEndpointTestResults.ModelBuilder builder = new PathVisEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

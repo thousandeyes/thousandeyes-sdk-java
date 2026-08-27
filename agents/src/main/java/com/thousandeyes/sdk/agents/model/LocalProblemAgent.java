@@ -35,32 +35,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalProblemAgent {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
+  @JsonProperty(JSON_PROPERTY_AGENT_NAME)
   private String agentName;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public LocalProblemAgent() { 
-  }
-
-  @JsonCreator
-  public LocalProblemAgent(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_NAME) String agentName, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location
-  ) {
-  this();
-    this.agentId = agentId;
-    this.agentName = agentName;
-    this.countryId = countryId;
-    this.location = location;
   }
 
    /**
@@ -168,5 +158,74 @@ public class LocalProblemAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalProblemAgent instance;
+
+    public ModelBuilder() {
+      this(new LocalProblemAgent());
+    }
+
+    protected ModelBuilder(LocalProblemAgent instance) {
+      this.instance = instance;
+    }
+
+    public LocalProblemAgent.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public LocalProblemAgent.ModelBuilder agentName(String agentName) {
+      this.instance.agentName = agentName;
+      return this;
+    }
+    public LocalProblemAgent.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public LocalProblemAgent.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+
+    /**
+     * Returns a built LocalProblemAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalProblemAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalProblemAgent.ModelBuilder builder() {
+    return new LocalProblemAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalProblemAgent.ModelBuilder toBuilder() {
+    LocalProblemAgent.ModelBuilder builder = new LocalProblemAgent.ModelBuilder()
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .countryId(getCountryId())
+      .location(getLocation());
+    return builder;
+  }
+
 }
 

@@ -35,25 +35,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SimpleAgentAllOfNetworkProviderInfo {
   public static final String JSON_PROPERTY_ASN = "asn";
+  @JsonProperty(JSON_PROPERTY_ASN)
   private Long asn;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private NetworkProviderType type;
 
   public SimpleAgentAllOfNetworkProviderInfo() { 
-  }
-
-  @JsonCreator
-  public SimpleAgentAllOfNetworkProviderInfo(
-    @JsonProperty(JSON_PROPERTY_ASN) Long asn, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
-  ) {
-  this();
-    this.asn = asn;
-    this.name = name;
   }
 
    /**
@@ -154,5 +146,69 @@ public class SimpleAgentAllOfNetworkProviderInfo {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SimpleAgentAllOfNetworkProviderInfo instance;
+
+    public ModelBuilder() {
+      this(new SimpleAgentAllOfNetworkProviderInfo());
+    }
+
+    protected ModelBuilder(SimpleAgentAllOfNetworkProviderInfo instance) {
+      this.instance = instance;
+    }
+
+    public SimpleAgentAllOfNetworkProviderInfo.ModelBuilder asn(Long asn) {
+      this.instance.asn = asn;
+      return this;
+    }
+    public SimpleAgentAllOfNetworkProviderInfo.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public SimpleAgentAllOfNetworkProviderInfo.ModelBuilder type(NetworkProviderType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built SimpleAgentAllOfNetworkProviderInfo instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SimpleAgentAllOfNetworkProviderInfo build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SimpleAgentAllOfNetworkProviderInfo.ModelBuilder builder() {
+    return new SimpleAgentAllOfNetworkProviderInfo.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SimpleAgentAllOfNetworkProviderInfo.ModelBuilder toBuilder() {
+    SimpleAgentAllOfNetworkProviderInfo.ModelBuilder builder = new SimpleAgentAllOfNetworkProviderInfo.ModelBuilder()
+      .asn(getAsn())
+      .name(getName())
+      .type(getType());
+    return builder;
+  }
+
 }
 

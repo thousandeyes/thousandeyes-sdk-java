@@ -43,22 +43,14 @@ public class EndpointVpnLogItem {
   private EndpointVpnType vpnType;
 
   public static final String JSON_PROPERTY_VPN_SERVER_NAME = "vpnServerName";
+  @JsonProperty(JSON_PROPERTY_VPN_SERVER_NAME)
   private String vpnServerName;
 
   public static final String JSON_PROPERTY_VPN_SERVER_ADDRESS = "vpnServerAddress";
+  @JsonProperty(JSON_PROPERTY_VPN_SERVER_ADDRESS)
   private String vpnServerAddress;
 
   public EndpointVpnLogItem() { 
-  }
-
-  @JsonCreator
-  public EndpointVpnLogItem(
-    @JsonProperty(JSON_PROPERTY_VPN_SERVER_NAME) String vpnServerName, 
-    @JsonProperty(JSON_PROPERTY_VPN_SERVER_ADDRESS) String vpnServerAddress
-  ) {
-  this();
-    this.vpnServerName = vpnServerName;
-    this.vpnServerAddress = vpnServerAddress;
   }
 
   public EndpointVpnLogItem logItemType(EndpointVpnLogItemType logItemType) {
@@ -186,5 +178,74 @@ public class EndpointVpnLogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointVpnLogItem instance;
+
+    public ModelBuilder() {
+      this(new EndpointVpnLogItem());
+    }
+
+    protected ModelBuilder(EndpointVpnLogItem instance) {
+      this.instance = instance;
+    }
+
+    public EndpointVpnLogItem.ModelBuilder logItemType(EndpointVpnLogItemType logItemType) {
+      this.instance.setLogItemType(logItemType);
+      return this;
+    }
+    public EndpointVpnLogItem.ModelBuilder vpnType(EndpointVpnType vpnType) {
+      this.instance.setVpnType(vpnType);
+      return this;
+    }
+    public EndpointVpnLogItem.ModelBuilder vpnServerName(String vpnServerName) {
+      this.instance.vpnServerName = vpnServerName;
+      return this;
+    }
+    public EndpointVpnLogItem.ModelBuilder vpnServerAddress(String vpnServerAddress) {
+      this.instance.vpnServerAddress = vpnServerAddress;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointVpnLogItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointVpnLogItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointVpnLogItem.ModelBuilder builder() {
+    return new EndpointVpnLogItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointVpnLogItem.ModelBuilder toBuilder() {
+    EndpointVpnLogItem.ModelBuilder builder = new EndpointVpnLogItem.ModelBuilder()
+      .logItemType(getLogItemType())
+      .vpnType(getVpnType())
+      .vpnServerName(getVpnServerName())
+      .vpnServerAddress(getVpnServerAddress());
+    return builder;
+  }
+
 }
 

@@ -692,5 +692,149 @@ public class ApiRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequest instance;
+
+    public ModelBuilder() {
+      this(new ApiRequest());
+    }
+
+    protected ModelBuilder(ApiRequest instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequest.ModelBuilder assertions(List<ApiRequestAssertion> assertions) {
+      this.instance.setAssertions(assertions);
+      return this;
+    }
+    public ApiRequest.ModelBuilder authType(ApiRequestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public ApiRequest.ModelBuilder bearerToken(String bearerToken) {
+      this.instance.setBearerToken(bearerToken);
+      return this;
+    }
+    public ApiRequest.ModelBuilder body(String body) {
+      this.instance.setBody(body);
+      return this;
+    }
+    public ApiRequest.ModelBuilder clientAuthentication(ApiClientAuthentication clientAuthentication) {
+      this.instance.setClientAuthentication(clientAuthentication);
+      return this;
+    }
+    public ApiRequest.ModelBuilder clientId(String clientId) {
+      this.instance.setClientId(clientId);
+      return this;
+    }
+    public ApiRequest.ModelBuilder clientSecret(String clientSecret) {
+      this.instance.setClientSecret(clientSecret);
+      return this;
+    }
+    public ApiRequest.ModelBuilder collectApiResponse(Boolean collectApiResponse) {
+      this.instance.setCollectApiResponse(collectApiResponse);
+      return this;
+    }
+    public ApiRequest.ModelBuilder headers(List<ApiRequestHeader> headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public ApiRequest.ModelBuilder method(ApiRequestMethod method) {
+      this.instance.setMethod(method);
+      return this;
+    }
+    public ApiRequest.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiRequest.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public ApiRequest.ModelBuilder scope(String scope) {
+      this.instance.setScope(scope);
+      return this;
+    }
+    public ApiRequest.ModelBuilder tokenUrl(String tokenUrl) {
+      this.instance.setTokenUrl(tokenUrl);
+      return this;
+    }
+    public ApiRequest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public ApiRequest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public ApiRequest.ModelBuilder variables(List<ApiRequestVariable> variables) {
+      this.instance.setVariables(variables);
+      return this;
+    }
+    public ApiRequest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public ApiRequest.ModelBuilder waitTimeMs(Integer waitTimeMs) {
+      this.instance.setWaitTimeMs(waitTimeMs);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequest.ModelBuilder builder() {
+    return new ApiRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequest.ModelBuilder toBuilder() {
+    ApiRequest.ModelBuilder builder = new ApiRequest.ModelBuilder()
+      .assertions(getAssertions())
+      .authType(getAuthType())
+      .bearerToken(getBearerToken())
+      .body(getBody())
+      .clientAuthentication(getClientAuthentication())
+      .clientId(getClientId())
+      .clientSecret(getClientSecret())
+      .collectApiResponse(getCollectApiResponse())
+      .headers(getHeaders())
+      .method(getMethod())
+      .name(getName())
+      .password(getPassword())
+      .scope(getScope())
+      .tokenUrl(getTokenUrl())
+      .url(getUrl())
+      .username(getUsername())
+      .variables(getVariables())
+      .verifyCertificate(getVerifyCertificate())
+      .waitTimeMs(getWaitTimeMs());
+    return builder;
+  }
+
 }
 

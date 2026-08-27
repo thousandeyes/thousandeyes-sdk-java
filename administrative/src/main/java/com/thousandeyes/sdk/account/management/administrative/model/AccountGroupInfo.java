@@ -256,5 +256,84 @@ public class AccountGroupInfo {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroupInfo instance;
+
+    public ModelBuilder() {
+      this(new AccountGroupInfo());
+    }
+
+    protected ModelBuilder(AccountGroupInfo instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroupInfo.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public AccountGroupInfo.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public AccountGroupInfo.ModelBuilder isCurrentAccountGroup(Boolean isCurrentAccountGroup) {
+      this.instance.setIsCurrentAccountGroup(isCurrentAccountGroup);
+      return this;
+    }
+    public AccountGroupInfo.ModelBuilder isDefaultAccountGroup(Boolean isDefaultAccountGroup) {
+      this.instance.setIsDefaultAccountGroup(isDefaultAccountGroup);
+      return this;
+    }
+    public AccountGroupInfo.ModelBuilder organizationName(String organizationName) {
+      this.instance.setOrganizationName(organizationName);
+      return this;
+    }
+    public AccountGroupInfo.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroupInfo instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroupInfo build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroupInfo.ModelBuilder builder() {
+    return new AccountGroupInfo.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroupInfo.ModelBuilder toBuilder() {
+    AccountGroupInfo.ModelBuilder builder = new AccountGroupInfo.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .isCurrentAccountGroup(getIsCurrentAccountGroup())
+      .isDefaultAccountGroup(getIsDefaultAccountGroup())
+      .organizationName(getOrganizationName())
+      .orgId(getOrgId());
+    return builder;
+  }
+
 }
 

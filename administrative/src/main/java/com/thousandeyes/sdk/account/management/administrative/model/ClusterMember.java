@@ -48,24 +48,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ClusterMember {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES)
   private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_MEMBER_ID = "memberId";
+  @JsonProperty(JSON_PROPERTY_MEMBER_ID)
   private String memberId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_SEEN = "lastSeen";
+  @JsonProperty(JSON_PROPERTY_LAST_SEEN)
   private OffsetDateTime lastSeen;
 
   public static final String JSON_PROPERTY_AGENT_STATE = "agentState";
@@ -75,36 +82,14 @@ public class ClusterMember {
   private String targetForTests;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
   private String serialNumber;
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
+  @JsonProperty(JSON_PROPERTY_UTILIZATION)
   private Integer utilization;
 
   public ClusterMember() { 
-  }
-
-  @JsonCreator
-  public ClusterMember(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES) List<String> publicIpAddresses, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_MEMBER_ID) String memberId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
-    @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
-    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
-    @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization
-  ) {
-  this();
-    this.ipAddresses = ipAddresses;
-    this.publicIpAddresses = publicIpAddresses;
-    this.network = network;
-    this.memberId = memberId;
-    this.name = name;
-    this.errorDetails = errorDetails;
-    this.lastSeen = lastSeen;
-    this.serialNumber = serialNumber;
-    this.utilization = utilization;
   }
 
    /**
@@ -351,5 +336,109 @@ public class ClusterMember {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ClusterMember instance;
+
+    public ModelBuilder() {
+      this(new ClusterMember());
+    }
+
+    protected ModelBuilder(ClusterMember instance) {
+      this.instance = instance;
+    }
+
+    public ClusterMember.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+    public ClusterMember.ModelBuilder publicIpAddresses(List<String> publicIpAddresses) {
+      this.instance.publicIpAddresses = publicIpAddresses;
+      return this;
+    }
+    public ClusterMember.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public ClusterMember.ModelBuilder memberId(String memberId) {
+      this.instance.memberId = memberId;
+      return this;
+    }
+    public ClusterMember.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public ClusterMember.ModelBuilder errorDetails(List<ErrorDetail> errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public ClusterMember.ModelBuilder lastSeen(OffsetDateTime lastSeen) {
+      this.instance.lastSeen = lastSeen;
+      return this;
+    }
+    public ClusterMember.ModelBuilder agentState(EnterpriseAgentState agentState) {
+      this.instance.setAgentState(agentState);
+      return this;
+    }
+    public ClusterMember.ModelBuilder targetForTests(String targetForTests) {
+      this.instance.setTargetForTests(targetForTests);
+      return this;
+    }
+    public ClusterMember.ModelBuilder serialNumber(String serialNumber) {
+      this.instance.serialNumber = serialNumber;
+      return this;
+    }
+    public ClusterMember.ModelBuilder utilization(Integer utilization) {
+      this.instance.utilization = utilization;
+      return this;
+    }
+
+    /**
+     * Returns a built ClusterMember instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ClusterMember build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ClusterMember.ModelBuilder builder() {
+    return new ClusterMember.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ClusterMember.ModelBuilder toBuilder() {
+    ClusterMember.ModelBuilder builder = new ClusterMember.ModelBuilder()
+      .ipAddresses(getIpAddresses())
+      .publicIpAddresses(getPublicIpAddresses())
+      .network(getNetwork())
+      .memberId(getMemberId())
+      .name(getName())
+      .errorDetails(getErrorDetails())
+      .lastSeen(getLastSeen())
+      .agentState(getAgentState())
+      .targetForTests(getTargetForTests())
+      .serialNumber(getSerialNumber())
+      .utilization(getUtilization());
+    return builder;
+  }
+
 }
 

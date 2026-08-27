@@ -102,5 +102,59 @@ public class SelfLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SelfLinks instance;
+
+    public ModelBuilder() {
+      this(new SelfLinks());
+    }
+
+    protected ModelBuilder(SelfLinks instance) {
+      this.instance = instance;
+    }
+
+    public SelfLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built SelfLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SelfLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SelfLinks.ModelBuilder builder() {
+    return new SelfLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SelfLinks.ModelBuilder toBuilder() {
+    SelfLinks.ModelBuilder builder = new SelfLinks.ModelBuilder()
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

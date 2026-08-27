@@ -133,5 +133,64 @@ public class TestMatch {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestMatch instance;
+
+    public ModelBuilder() {
+      this(new TestMatch());
+    }
+
+    protected ModelBuilder(TestMatch instance) {
+      this.instance = instance;
+    }
+
+    public TestMatch.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public TestMatch.ModelBuilder domain(TestMatchDomain domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+
+    /**
+     * Returns a built TestMatch instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestMatch build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestMatch.ModelBuilder builder() {
+    return new TestMatch.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestMatch.ModelBuilder toBuilder() {
+    TestMatch.ModelBuilder builder = new TestMatch.ModelBuilder()
+      .id(getId())
+      .domain(getDomain());
+    return builder;
+  }
+
 }
 

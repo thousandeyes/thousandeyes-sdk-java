@@ -165,5 +165,69 @@ public class EndpointTestsDataThresholdFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestsDataThresholdFilter instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestsDataThresholdFilter());
+    }
+
+    protected ModelBuilder(EndpointTestsDataThresholdFilter instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestsDataThresholdFilter.ModelBuilder name(ThresholdFilterName name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public EndpointTestsDataThresholdFilter.ModelBuilder value(Double value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public EndpointTestsDataThresholdFilter.ModelBuilder operator(ThresholdFilterOperator operator) {
+      this.instance.setOperator(operator);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestsDataThresholdFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestsDataThresholdFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestsDataThresholdFilter.ModelBuilder builder() {
+    return new EndpointTestsDataThresholdFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestsDataThresholdFilter.ModelBuilder toBuilder() {
+    EndpointTestsDataThresholdFilter.ModelBuilder builder = new EndpointTestsDataThresholdFilter.ModelBuilder()
+      .name(getName())
+      .value(getValue())
+      .operator(getOperator());
+    return builder;
+  }
+
 }
 

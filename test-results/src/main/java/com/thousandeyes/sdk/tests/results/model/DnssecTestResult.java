@@ -42,48 +42,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnssecTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
+  @JsonProperty(JSON_PROPERTY_IS_VALID)
   private Boolean isValid;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public DnssecTestResult() { 
-  }
-
-  @JsonCreator
-  public DnssecTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_IS_VALID) Boolean isValid, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.isValid = isValid;
-    this.errorDetails = errorDetails;
   }
 
    /**
@@ -279,5 +267,94 @@ public class DnssecTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnssecTestResult instance;
+
+    public ModelBuilder() {
+      this(new DnssecTestResult());
+    }
+
+    protected ModelBuilder(DnssecTestResult instance) {
+      this.instance = instance;
+    }
+
+    public DnssecTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder isValid(Boolean isValid) {
+      this.instance.isValid = isValid;
+      return this;
+    }
+    public DnssecTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+
+    /**
+     * Returns a built DnssecTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnssecTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnssecTestResult.ModelBuilder builder() {
+    return new DnssecTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnssecTestResult.ModelBuilder toBuilder() {
+    DnssecTestResult.ModelBuilder builder = new DnssecTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .isValid(getIsValid())
+      .errorDetails(getErrorDetails());
+    return builder;
+  }
+
 }
 

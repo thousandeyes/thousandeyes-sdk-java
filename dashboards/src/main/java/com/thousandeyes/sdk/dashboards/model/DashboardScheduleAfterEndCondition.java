@@ -133,5 +133,64 @@ public class DashboardScheduleAfterEndCondition {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleAfterEndCondition instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleAfterEndCondition());
+    }
+
+    protected ModelBuilder(DashboardScheduleAfterEndCondition instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleAfterEndCondition.ModelBuilder endConditionType(String endConditionType) {
+      this.instance.setEndConditionType(endConditionType);
+      return this;
+    }
+    public DashboardScheduleAfterEndCondition.ModelBuilder value(Long value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleAfterEndCondition instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleAfterEndCondition build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleAfterEndCondition.ModelBuilder builder() {
+    return new DashboardScheduleAfterEndCondition.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleAfterEndCondition.ModelBuilder toBuilder() {
+    DashboardScheduleAfterEndCondition.ModelBuilder builder = new DashboardScheduleAfterEndCondition.ModelBuilder()
+      .endConditionType(getEndConditionType())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

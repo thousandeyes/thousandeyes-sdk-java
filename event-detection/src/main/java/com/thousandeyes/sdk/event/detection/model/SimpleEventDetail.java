@@ -41,38 +41,28 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SimpleEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_TYPE_NAME = "typeName";
+  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
   private String typeName;
 
   public static final String JSON_PROPERTY_STATE = "state";
   private EventState state;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
   private EventAlertSeverity severity;
 
   public SimpleEventDetail() { 
-  }
-
-  @JsonCreator
-  public SimpleEventDetail(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.id = id;
-    this.typeName = typeName;
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
    /**
@@ -234,5 +224,84 @@ public class SimpleEventDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SimpleEventDetail instance;
+
+    public ModelBuilder() {
+      this(new SimpleEventDetail());
+    }
+
+    protected ModelBuilder(SimpleEventDetail instance) {
+      this.instance = instance;
+    }
+
+    public SimpleEventDetail.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public SimpleEventDetail.ModelBuilder typeName(String typeName) {
+      this.instance.typeName = typeName;
+      return this;
+    }
+    public SimpleEventDetail.ModelBuilder state(EventState state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public SimpleEventDetail.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public SimpleEventDetail.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public SimpleEventDetail.ModelBuilder severity(EventAlertSeverity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+
+    /**
+     * Returns a built SimpleEventDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SimpleEventDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SimpleEventDetail.ModelBuilder builder() {
+    return new SimpleEventDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SimpleEventDetail.ModelBuilder toBuilder() {
+    SimpleEventDetail.ModelBuilder builder = new SimpleEventDetail.ModelBuilder()
+      .id(getId())
+      .typeName(getTypeName())
+      .state(getState())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .severity(getSeverity());
+    return builder;
+  }
+
 }
 

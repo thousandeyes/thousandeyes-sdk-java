@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LabelResponse {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -61,14 +62,6 @@ public class LabelResponse {
   private SelfLinks links;
 
   public LabelResponse() { 
-  }
-
-  @JsonCreator
-  public LabelResponse(
-    @JsonProperty(JSON_PROPERTY_ID) String id
-  ) {
-  this();
-    this.id = id;
   }
 
    /**
@@ -268,5 +261,84 @@ public class LabelResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LabelResponse instance;
+
+    public ModelBuilder() {
+      this(new LabelResponse());
+    }
+
+    protected ModelBuilder(LabelResponse instance) {
+      this.instance = instance;
+    }
+
+    public LabelResponse.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public LabelResponse.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public LabelResponse.ModelBuilder color(String color) {
+      this.instance.setColor(color);
+      return this;
+    }
+    public LabelResponse.ModelBuilder matchType(MatchType matchType) {
+      this.instance.setMatchType(matchType);
+      return this;
+    }
+    public LabelResponse.ModelBuilder filters(List<Filter> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public LabelResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built LabelResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LabelResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LabelResponse.ModelBuilder builder() {
+    return new LabelResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LabelResponse.ModelBuilder toBuilder() {
+    LabelResponse.ModelBuilder builder = new LabelResponse.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .color(getColor())
+      .matchType(getMatchType())
+      .filters(getFilters())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

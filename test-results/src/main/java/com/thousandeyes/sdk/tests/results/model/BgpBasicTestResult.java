@@ -40,9 +40,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BgpBasicTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -58,16 +60,6 @@ public class BgpBasicTestResult {
   private String prefix;
 
   public BgpBasicTestResult() { 
-  }
-
-  @JsonCreator
-  public BgpBasicTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
   }
 
    /**
@@ -249,5 +241,84 @@ public class BgpBasicTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BgpBasicTestResult instance;
+
+    public ModelBuilder() {
+      this(new BgpBasicTestResult());
+    }
+
+    protected ModelBuilder(BgpBasicTestResult instance) {
+      this.instance = instance;
+    }
+
+    public BgpBasicTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public BgpBasicTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public BgpBasicTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public BgpBasicTestResult.ModelBuilder monitor(TestResultMonitor monitor) {
+      this.instance.setMonitor(monitor);
+      return this;
+    }
+    public BgpBasicTestResult.ModelBuilder prefixId(String prefixId) {
+      this.instance.setPrefixId(prefixId);
+      return this;
+    }
+    public BgpBasicTestResult.ModelBuilder prefix(String prefix) {
+      this.instance.setPrefix(prefix);
+      return this;
+    }
+
+    /**
+     * Returns a built BgpBasicTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BgpBasicTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BgpBasicTestResult.ModelBuilder builder() {
+    return new BgpBasicTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BgpBasicTestResult.ModelBuilder toBuilder() {
+    BgpBasicTestResult.ModelBuilder builder = new BgpBasicTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .monitor(getMonitor())
+      .prefixId(getPrefixId())
+      .prefix(getPrefix());
+    return builder;
+  }
+
 }
 

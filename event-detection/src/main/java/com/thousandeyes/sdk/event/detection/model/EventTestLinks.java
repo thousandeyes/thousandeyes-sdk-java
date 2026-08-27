@@ -102,5 +102,59 @@ public class EventTestLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EventTestLinks instance;
+
+    public ModelBuilder() {
+      this(new EventTestLinks());
+    }
+
+    protected ModelBuilder(EventTestLinks instance) {
+      this.instance = instance;
+    }
+
+    public EventTestLinks.ModelBuilder test(Link test) {
+      this.instance.setTest(test);
+      return this;
+    }
+
+    /**
+     * Returns a built EventTestLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EventTestLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EventTestLinks.ModelBuilder builder() {
+    return new EventTestLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EventTestLinks.ModelBuilder toBuilder() {
+    EventTestLinks.ModelBuilder builder = new EventTestLinks.ModelBuilder()
+      .test(getTest());
+    return builder;
+  }
+
 }
 

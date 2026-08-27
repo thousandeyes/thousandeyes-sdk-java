@@ -225,5 +225,74 @@ public class AlertNotification {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertNotification instance;
+
+    public ModelBuilder() {
+      this(new AlertNotification());
+    }
+
+    protected ModelBuilder(AlertNotification instance) {
+      this.instance = instance;
+    }
+
+    public AlertNotification.ModelBuilder email(NotificationEmail email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public AlertNotification.ModelBuilder thirdParty(List<NotificationThirdParty> thirdParty) {
+      this.instance.setThirdParty(thirdParty);
+      return this;
+    }
+    public AlertNotification.ModelBuilder webhook(List<NotificationWebhook> webhook) {
+      this.instance.setWebhook(webhook);
+      return this;
+    }
+    public AlertNotification.ModelBuilder customWebhook(List<NotificationCustomWebhook> customWebhook) {
+      this.instance.setCustomWebhook(customWebhook);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertNotification instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertNotification build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertNotification.ModelBuilder builder() {
+    return new AlertNotification.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertNotification.ModelBuilder toBuilder() {
+    AlertNotification.ModelBuilder builder = new AlertNotification.ModelBuilder()
+      .email(getEmail())
+      .thirdParty(getThirdParty())
+      .webhook(getWebhook())
+      .customWebhook(getCustomWebhook());
+    return builder;
+  }
+
 }
 

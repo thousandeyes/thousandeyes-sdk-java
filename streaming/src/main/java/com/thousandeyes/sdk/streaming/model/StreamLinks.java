@@ -102,5 +102,59 @@ public class StreamLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private StreamLinks instance;
+
+    public ModelBuilder() {
+      this(new StreamLinks());
+    }
+
+    protected ModelBuilder(StreamLinks instance) {
+      this.instance = instance;
+    }
+
+    public StreamLinks.ModelBuilder self(StreamSelfLink self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built StreamLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public StreamLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static StreamLinks.ModelBuilder builder() {
+    return new StreamLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public StreamLinks.ModelBuilder toBuilder() {
+    StreamLinks.ModelBuilder builder = new StreamLinks.ModelBuilder()
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

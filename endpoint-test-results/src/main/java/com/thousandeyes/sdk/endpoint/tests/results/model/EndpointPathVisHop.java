@@ -38,47 +38,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointPathVisHop {
   public static final String JSON_PROPERTY_HOP = "hop";
+  @JsonProperty(JSON_PROPERTY_HOP)
   private Integer hop;
 
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_RDNS = "rdns";
+  @JsonProperty(JSON_PROPERTY_RDNS)
   private String rdns;
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public EndpointPathVisHop() { 
-  }
-
-  @JsonCreator
-  public EndpointPathVisHop(
-    @JsonProperty(JSON_PROPERTY_HOP) Integer hop, 
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_RDNS) String rdns, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location
-  ) {
-  this();
-    this.hop = hop;
-    this.ipAddress = ipAddress;
-    this.prefix = prefix;
-    this.rdns = rdns;
-    this.network = network;
-    this.responseTime = responseTime;
-    this.location = location;
   }
 
    /**
@@ -237,5 +224,89 @@ public class EndpointPathVisHop {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointPathVisHop instance;
+
+    public ModelBuilder() {
+      this(new EndpointPathVisHop());
+    }
+
+    protected ModelBuilder(EndpointPathVisHop instance) {
+      this.instance = instance;
+    }
+
+    public EndpointPathVisHop.ModelBuilder hop(Integer hop) {
+      this.instance.hop = hop;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder rdns(String rdns) {
+      this.instance.rdns = rdns;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public EndpointPathVisHop.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointPathVisHop instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointPathVisHop build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointPathVisHop.ModelBuilder builder() {
+    return new EndpointPathVisHop.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointPathVisHop.ModelBuilder toBuilder() {
+    EndpointPathVisHop.ModelBuilder builder = new EndpointPathVisHop.ModelBuilder()
+      .hop(getHop())
+      .ipAddress(getIpAddress())
+      .prefix(getPrefix())
+      .rdns(getRdns())
+      .network(getNetwork())
+      .responseTime(getResponseTime())
+      .location(getLocation());
+    return builder;
+  }
+
 }
 

@@ -102,5 +102,59 @@ public class Filters {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Filters instance;
+
+    public ModelBuilder() {
+      this(new Filters());
+    }
+
+    protected ModelBuilder(Filters instance) {
+      this.instance = instance;
+    }
+
+    public Filters.ModelBuilder testTypes(FiltersTestTypes testTypes) {
+      this.instance.setTestTypes(testTypes);
+      return this;
+    }
+
+    /**
+     * Returns a built Filters instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Filters build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Filters.ModelBuilder builder() {
+    return new Filters.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Filters.ModelBuilder toBuilder() {
+    Filters.ModelBuilder builder = new Filters.ModelBuilder()
+      .testTypes(getTestTypes());
+    return builder;
+  }
+
 }
 

@@ -259,5 +259,84 @@ public class EndpointDynamicTestUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointDynamicTestUpdate instance;
+
+    public ModelBuilder() {
+      this(new EndpointDynamicTestUpdate());
+    }
+
+    protected ModelBuilder(EndpointDynamicTestUpdate instance) {
+      this.instance = instance;
+    }
+
+    public EndpointDynamicTestUpdate.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public EndpointDynamicTestUpdate.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointDynamicTestUpdate.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointDynamicTestUpdate.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public EndpointDynamicTestUpdate.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointDynamicTestUpdate.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointDynamicTestUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointDynamicTestUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointDynamicTestUpdate.ModelBuilder builder() {
+    return new EndpointDynamicTestUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointDynamicTestUpdate.ModelBuilder toBuilder() {
+    EndpointDynamicTestUpdate.ModelBuilder builder = new EndpointDynamicTestUpdate.ModelBuilder()
+      .interval(getInterval())
+      .testName(getTestName())
+      .protocol(getProtocol())
+      .isEnabled(getIsEnabled())
+      .tcpProbeMode(getTcpProbeMode())
+      .application(getApplication());
+    return builder;
+  }
+
 }
 

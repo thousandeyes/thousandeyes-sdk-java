@@ -68,6 +68,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiGroupedBarchartWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -77,6 +78,7 @@ public class ApiGroupedBarchartWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -101,6 +103,7 @@ public class ApiGroupedBarchartWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -137,18 +140,6 @@ public class ApiGroupedBarchartWidget {
   private GroupedBarChartDatasource dataSource;
 
   public ApiGroupedBarchartWidget() { 
-  }
-
-  @JsonCreator
-  public ApiGroupedBarchartWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -793,5 +784,169 @@ public class ApiGroupedBarchartWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiGroupedBarchartWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiGroupedBarchartWidget());
+    }
+
+    protected ModelBuilder(ApiGroupedBarchartWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiGroupedBarchartWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder axisGroupBy(ApiAggregateProperty axisGroupBy) {
+      this.instance.setAxisGroupBy(axisGroupBy);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder sortBy(LegacyWidgetSortProperty sortBy) {
+      this.instance.setSortBy(sortBy);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder sortDirection(LegacyWidgetSortDirection sortDirection) {
+      this.instance.setSortDirection(sortDirection);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder limit(Integer limit) {
+      this.instance.setLimit(limit);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder showLabels(Boolean showLabels) {
+      this.instance.setShowLabels(showLabels);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder isHorizontalBarChart(Boolean isHorizontalBarChart) {
+      this.instance.setIsHorizontalBarChart(isHorizontalBarChart);
+      return this;
+    }
+    public ApiGroupedBarchartWidget.ModelBuilder dataSource(GroupedBarChartDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiGroupedBarchartWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiGroupedBarchartWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiGroupedBarchartWidget.ModelBuilder builder() {
+    return new ApiGroupedBarchartWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiGroupedBarchartWidget.ModelBuilder toBuilder() {
+    ApiGroupedBarchartWidget.ModelBuilder builder = new ApiGroupedBarchartWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .groupBy(getGroupBy())
+      .axisGroupBy(getAxisGroupBy())
+      .sortBy(getSortBy())
+      .sortDirection(getSortDirection())
+      .limit(getLimit())
+      .showLabels(getShowLabels())
+      .isHorizontalBarChart(getIsHorizontalBarChart())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

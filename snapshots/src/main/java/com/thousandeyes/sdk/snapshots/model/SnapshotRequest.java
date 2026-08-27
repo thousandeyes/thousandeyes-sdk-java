@@ -195,5 +195,74 @@ public class SnapshotRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SnapshotRequest instance;
+
+    public ModelBuilder() {
+      this(new SnapshotRequest());
+    }
+
+    protected ModelBuilder(SnapshotRequest instance) {
+      this.instance = instance;
+    }
+
+    public SnapshotRequest.ModelBuilder displayName(String displayName) {
+      this.instance.setDisplayName(displayName);
+      return this;
+    }
+    public SnapshotRequest.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public SnapshotRequest.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public SnapshotRequest.ModelBuilder isPublic(Boolean isPublic) {
+      this.instance.setIsPublic(isPublic);
+      return this;
+    }
+
+    /**
+     * Returns a built SnapshotRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SnapshotRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SnapshotRequest.ModelBuilder builder() {
+    return new SnapshotRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SnapshotRequest.ModelBuilder toBuilder() {
+    SnapshotRequest.ModelBuilder builder = new SnapshotRequest.ModelBuilder()
+      .displayName(getDisplayName())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .isPublic(getIsPublic());
+    return builder;
+  }
+
 }
 

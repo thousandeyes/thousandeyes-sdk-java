@@ -205,5 +205,74 @@ public class ExporterConfigOAuth2 {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ExporterConfigOAuth2 instance;
+
+    public ModelBuilder() {
+      this(new ExporterConfigOAuth2());
+    }
+
+    protected ModelBuilder(ExporterConfigOAuth2 instance) {
+      this.instance = instance;
+    }
+
+    public ExporterConfigOAuth2.ModelBuilder clientId(String clientId) {
+      this.instance.setClientId(clientId);
+      return this;
+    }
+    public ExporterConfigOAuth2.ModelBuilder clientSecret(String clientSecret) {
+      this.instance.setClientSecret(clientSecret);
+      return this;
+    }
+    public ExporterConfigOAuth2.ModelBuilder tokenUrl(String tokenUrl) {
+      this.instance.setTokenUrl(tokenUrl);
+      return this;
+    }
+    public ExporterConfigOAuth2.ModelBuilder scopes(List<String> scopes) {
+      this.instance.setScopes(scopes);
+      return this;
+    }
+
+    /**
+     * Returns a built ExporterConfigOAuth2 instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ExporterConfigOAuth2 build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ExporterConfigOAuth2.ModelBuilder builder() {
+    return new ExporterConfigOAuth2.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ExporterConfigOAuth2.ModelBuilder toBuilder() {
+    ExporterConfigOAuth2.ModelBuilder builder = new ExporterConfigOAuth2.ModelBuilder()
+      .clientId(getClientId())
+      .clientSecret(getClientSecret())
+      .tokenUrl(getTokenUrl())
+      .scopes(getScopes());
+    return builder;
+  }
+
 }
 

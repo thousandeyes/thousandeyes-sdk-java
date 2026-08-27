@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Marker {
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
+  @JsonProperty(JSON_PROPERTY_DURATION)
   private Integer duration;
 
   public Marker() { 
-  }
-
-  @JsonCreator
-  public Marker(
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_DURATION) Integer duration
-  ) {
-  this();
-    this.name = name;
-    this.duration = duration;
   }
 
    /**
@@ -122,5 +114,64 @@ public class Marker {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Marker instance;
+
+    public ModelBuilder() {
+      this(new Marker());
+    }
+
+    protected ModelBuilder(Marker instance) {
+      this.instance = instance;
+    }
+
+    public Marker.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public Marker.ModelBuilder duration(Integer duration) {
+      this.instance.duration = duration;
+      return this;
+    }
+
+    /**
+     * Returns a built Marker instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Marker build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Marker.ModelBuilder builder() {
+    return new Marker.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Marker.ModelBuilder toBuilder() {
+    Marker.ModelBuilder builder = new Marker.ModelBuilder()
+      .name(getName())
+      .duration(getDuration());
+    return builder;
+  }
+
 }
 

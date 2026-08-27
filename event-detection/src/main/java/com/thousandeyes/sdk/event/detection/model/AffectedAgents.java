@@ -38,25 +38,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AffectedAgents {
   public static final String JSON_PROPERTY_TOTAL = "total";
+  @JsonProperty(JSON_PROPERTY_TOTAL)
   private Integer total;
 
   public static final String JSON_PROPERTY_IN_ACCOUNT_GROUP = "inAccountGroup";
+  @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP)
   private Integer inAccountGroup;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
   private Set<EventApiAffectedAgent> agents = new LinkedHashSet<>();
 
   public AffectedAgents() { 
-  }
-
-  @JsonCreator
-  public AffectedAgents(
-    @JsonProperty(JSON_PROPERTY_TOTAL) Integer total, 
-    @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP) Integer inAccountGroup
-  ) {
-  this();
-    this.total = total;
-    this.inAccountGroup = inAccountGroup;
   }
 
    /**
@@ -166,5 +158,69 @@ public class AffectedAgents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AffectedAgents instance;
+
+    public ModelBuilder() {
+      this(new AffectedAgents());
+    }
+
+    protected ModelBuilder(AffectedAgents instance) {
+      this.instance = instance;
+    }
+
+    public AffectedAgents.ModelBuilder total(Integer total) {
+      this.instance.total = total;
+      return this;
+    }
+    public AffectedAgents.ModelBuilder inAccountGroup(Integer inAccountGroup) {
+      this.instance.inAccountGroup = inAccountGroup;
+      return this;
+    }
+    public AffectedAgents.ModelBuilder agents(Set<EventApiAffectedAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built AffectedAgents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AffectedAgents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AffectedAgents.ModelBuilder builder() {
+    return new AffectedAgents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AffectedAgents.ModelBuilder toBuilder() {
+    AffectedAgents.ModelBuilder builder = new AffectedAgents.ModelBuilder()
+      .total(getTotal())
+      .inAccountGroup(getInAccountGroup())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

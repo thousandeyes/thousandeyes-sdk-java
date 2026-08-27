@@ -208,5 +208,74 @@ public class Repeat {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Repeat instance;
+
+    public ModelBuilder() {
+      this(new Repeat());
+    }
+
+    protected ModelBuilder(Repeat instance) {
+      this.instance = instance;
+    }
+
+    public Repeat.ModelBuilder type(RepeatType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public Repeat.ModelBuilder intervalType(IntervalType intervalType) {
+      this.instance.setIntervalType(intervalType);
+      return this;
+    }
+    public Repeat.ModelBuilder intervalLength(Integer intervalLength) {
+      this.instance.setIntervalLength(intervalLength);
+      return this;
+    }
+    public Repeat.ModelBuilder daysOfWeek(List<DaysOfWeek> daysOfWeek) {
+      this.instance.setDaysOfWeek(daysOfWeek);
+      return this;
+    }
+
+    /**
+     * Returns a built Repeat instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Repeat build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Repeat.ModelBuilder builder() {
+    return new Repeat.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Repeat.ModelBuilder toBuilder() {
+    Repeat.ModelBuilder builder = new Repeat.ModelBuilder()
+      .type(getType())
+      .intervalType(getIntervalType())
+      .intervalLength(getIntervalLength())
+      .daysOfWeek(getDaysOfWeek());
+    return builder;
+  }
+
 }
 

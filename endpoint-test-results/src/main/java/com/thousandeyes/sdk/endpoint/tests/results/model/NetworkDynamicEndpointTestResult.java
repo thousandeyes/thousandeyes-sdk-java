@@ -79,15 +79,19 @@ public class NetworkDynamicEndpointTestResult {
   private String aid;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
@@ -115,12 +119,15 @@ public class NetworkDynamicEndpointTestResult {
   private Platform platform;
 
   public static final String JSON_PROPERTY_AVG_LATENCY = "avgLatency";
+  @JsonProperty(JSON_PROPERTY_AVG_LATENCY)
   private Double avgLatency;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_JITTER = "jitter";
+  @JsonProperty(JSON_PROPERTY_JITTER)
   private Double jitter;
 
   public static final String JSON_PROPERTY_SCORE = "score";
@@ -130,15 +137,19 @@ public class NetworkDynamicEndpointTestResult {
   private List<EndpointZtaMetrics> ztaMetrics = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_ICMP_BLOCKED = "isIcmpBlocked";
+  @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED)
   private Boolean isIcmpBlocked;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Double loss;
 
   public static final String JSON_PROPERTY_MAX_LATENCY = "maxLatency";
+  @JsonProperty(JSON_PROPERTY_MAX_LATENCY)
   private Double maxLatency;
 
   public static final String JSON_PROPERTY_MIN_LATENCY = "minLatency";
+  @JsonProperty(JSON_PROPERTY_MIN_LATENCY)
   private Double minLatency;
 
   public static final String JSON_PROPERTY_APPLICATION = "application";
@@ -157,34 +168,6 @@ public class NetworkDynamicEndpointTestResult {
   private DynamicEndpointTestWebex webex;
 
   public NetworkDynamicEndpointTestResult() { 
-  }
-
-  @JsonCreator
-  public NetworkDynamicEndpointTestResult(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_AVG_LATENCY) Double avgLatency, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails, 
-    @JsonProperty(JSON_PROPERTY_JITTER) Double jitter, 
-    @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED) Boolean isIcmpBlocked, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
-    @JsonProperty(JSON_PROPERTY_MAX_LATENCY) Double maxLatency, 
-    @JsonProperty(JSON_PROPERTY_MIN_LATENCY) Double minLatency
-  ) {
-  this();
-    this.testId = testId;
-    this.agentId = agentId;
-    this.roundId = roundId;
-    this.serverIp = serverIp;
-    this.avgLatency = avgLatency;
-    this.errorDetails = errorDetails;
-    this.jitter = jitter;
-    this.isIcmpBlocked = isIcmpBlocked;
-    this.loss = loss;
-    this.maxLatency = maxLatency;
-    this.minLatency = minLatency;
   }
 
   public NetworkDynamicEndpointTestResult aid(String aid) {
@@ -851,5 +834,189 @@ public class NetworkDynamicEndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkDynamicEndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new NetworkDynamicEndpointTestResult());
+    }
+
+    protected ModelBuilder(NetworkDynamicEndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public NetworkDynamicEndpointTestResult.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder originalTargetProfile(TargetProfile originalTargetProfile) {
+      this.instance.setOriginalTargetProfile(originalTargetProfile);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder userProfile(UserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder vpnProfile(VpnProfile vpnProfile) {
+      this.instance.setVpnProfile(vpnProfile);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder avgLatency(Double avgLatency) {
+      this.instance.avgLatency = avgLatency;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder jitter(Double jitter) {
+      this.instance.jitter = jitter;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder score(EndpointPingDataPointScore score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder ztaMetrics(List<EndpointZtaMetrics> ztaMetrics) {
+      this.instance.setZtaMetrics(ztaMetrics);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder isIcmpBlocked(Boolean isIcmpBlocked) {
+      this.instance.isIcmpBlocked = isIcmpBlocked;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder loss(Double loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder maxLatency(Double maxLatency) {
+      this.instance.maxLatency = maxLatency;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder minLatency(Double minLatency) {
+      this.instance.minLatency = minLatency;
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder protocol(EndpointTestResultProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder udpProbeMode(UdpProbeModeResponse udpProbeMode) {
+      this.instance.setUdpProbeMode(udpProbeMode);
+      return this;
+    }
+    public NetworkDynamicEndpointTestResult.ModelBuilder webex(DynamicEndpointTestWebex webex) {
+      this.instance.setWebex(webex);
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkDynamicEndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkDynamicEndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkDynamicEndpointTestResult.ModelBuilder builder() {
+    return new NetworkDynamicEndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkDynamicEndpointTestResult.ModelBuilder toBuilder() {
+    NetworkDynamicEndpointTestResult.ModelBuilder builder = new NetworkDynamicEndpointTestResult.ModelBuilder()
+      .aid(getAid())
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .roundId(getRoundId())
+      .serverIp(getServerIp())
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .originalTargetProfile(getOriginalTargetProfile())
+      .userProfile(getUserProfile())
+      .vpnProfile(getVpnProfile())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform())
+      .avgLatency(getAvgLatency())
+      .errorDetails(getErrorDetails())
+      .jitter(getJitter())
+      .score(getScore())
+      .ztaMetrics(getZtaMetrics())
+      .isIcmpBlocked(getIsIcmpBlocked())
+      .loss(getLoss())
+      .maxLatency(getMaxLatency())
+      .minLatency(getMinLatency())
+      .application(getApplication())
+      .protocol(getProtocol())
+      .tcpProbeMode(getTcpProbeMode())
+      .udpProbeMode(getUdpProbeMode())
+      .webex(getWebex());
+    return builder;
+  }
+
 }
 

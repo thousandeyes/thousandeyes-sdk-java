@@ -145,5 +145,64 @@ public class AgentToServerTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentToServerTests instance;
+
+    public ModelBuilder() {
+      this(new AgentToServerTests());
+    }
+
+    protected ModelBuilder(AgentToServerTests instance) {
+      this.instance = instance;
+    }
+
+    public AgentToServerTests.ModelBuilder tests(List<UnexpandedAgentToServerTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public AgentToServerTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentToServerTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentToServerTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentToServerTests.ModelBuilder builder() {
+    return new AgentToServerTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentToServerTests.ModelBuilder toBuilder() {
+    AgentToServerTests.ModelBuilder builder = new AgentToServerTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

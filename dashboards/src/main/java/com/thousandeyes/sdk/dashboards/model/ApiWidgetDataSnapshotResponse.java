@@ -53,25 +53,17 @@ public class ApiWidgetDataSnapshotResponse {
   private ApiWidgetsDataV2 data;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
   public ApiWidgetDataSnapshotResponse() { 
-  }
-
-  @JsonCreator
-  public ApiWidgetDataSnapshotResponse(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public ApiWidgetDataSnapshotResponse groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
@@ -261,5 +253,84 @@ public class ApiWidgetDataSnapshotResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetDataSnapshotResponse instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetDataSnapshotResponse());
+    }
+
+    protected ModelBuilder(ApiWidgetDataSnapshotResponse instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetDataSnapshotResponse.ModelBuilder groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
+      this.instance.setGroupLabels(groupLabels);
+      return this;
+    }
+    public ApiWidgetDataSnapshotResponse.ModelBuilder binSize(Long binSize) {
+      this.instance.setBinSize(binSize);
+      return this;
+    }
+    public ApiWidgetDataSnapshotResponse.ModelBuilder data(ApiWidgetsDataV2 data) {
+      this.instance.setData(data);
+      return this;
+    }
+    public ApiWidgetDataSnapshotResponse.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public ApiWidgetDataSnapshotResponse.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public ApiWidgetDataSnapshotResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetDataSnapshotResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetDataSnapshotResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetDataSnapshotResponse.ModelBuilder builder() {
+    return new ApiWidgetDataSnapshotResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetDataSnapshotResponse.ModelBuilder toBuilder() {
+    ApiWidgetDataSnapshotResponse.ModelBuilder builder = new ApiWidgetDataSnapshotResponse.ModelBuilder()
+      .groupLabels(getGroupLabels())
+      .binSize(getBinSize())
+      .data(getData())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

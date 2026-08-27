@@ -145,5 +145,64 @@ public class EndpointClient {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointClient instance;
+
+    public ModelBuilder() {
+      this(new EndpointClient());
+    }
+
+    protected ModelBuilder(EndpointClient instance) {
+      this.instance = instance;
+    }
+
+    public EndpointClient.ModelBuilder userProfile(EndpointUserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public EndpointClient.ModelBuilder browserExtensions(List<EndpointBrowserExtension> browserExtensions) {
+      this.instance.setBrowserExtensions(browserExtensions);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointClient instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointClient build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointClient.ModelBuilder builder() {
+    return new EndpointClient.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointClient.ModelBuilder toBuilder() {
+    EndpointClient.ModelBuilder builder = new EndpointClient.ModelBuilder()
+      .userProfile(getUserProfile())
+      .browserExtensions(getBrowserExtensions());
+    return builder;
+  }
+
 }
 

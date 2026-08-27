@@ -184,5 +184,69 @@ public class ApiDataSourceFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDataSourceFilter instance;
+
+    public ModelBuilder() {
+      this(new ApiDataSourceFilter());
+    }
+
+    protected ModelBuilder(ApiDataSourceFilter instance) {
+      this.instance = instance;
+    }
+
+    public ApiDataSourceFilter.ModelBuilder filterId(String filterId) {
+      this.instance.setFilterId(filterId);
+      return this;
+    }
+    public ApiDataSourceFilter.ModelBuilder values(Set<String> values) {
+      this.instance.setValues(values);
+      return this;
+    }
+    public ApiDataSourceFilter.ModelBuilder metricIds(Set<String> metricIds) {
+      this.instance.setMetricIds(metricIds);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDataSourceFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDataSourceFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDataSourceFilter.ModelBuilder builder() {
+    return new ApiDataSourceFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDataSourceFilter.ModelBuilder toBuilder() {
+    ApiDataSourceFilter.ModelBuilder builder = new ApiDataSourceFilter.ModelBuilder()
+      .filterId(getFilterId())
+      .values(getValues())
+      .metricIds(getMetricIds());
+    return builder;
+  }
+
 }
 

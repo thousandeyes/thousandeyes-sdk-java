@@ -145,5 +145,64 @@ public class AccountGroupRole {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroupRole instance;
+
+    public ModelBuilder() {
+      this(new AccountGroupRole());
+    }
+
+    protected ModelBuilder(AccountGroupRole instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroupRole.ModelBuilder accountGroup(AccountGroup accountGroup) {
+      this.instance.setAccountGroup(accountGroup);
+      return this;
+    }
+    public AccountGroupRole.ModelBuilder roles(List<Role> roles) {
+      this.instance.setRoles(roles);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroupRole instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroupRole build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroupRole.ModelBuilder builder() {
+    return new AccountGroupRole.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroupRole.ModelBuilder toBuilder() {
+    AccountGroupRole.ModelBuilder builder = new AccountGroupRole.ModelBuilder()
+      .accountGroup(getAccountGroup())
+      .roles(getRoles());
+    return builder;
+  }
+
 }
 

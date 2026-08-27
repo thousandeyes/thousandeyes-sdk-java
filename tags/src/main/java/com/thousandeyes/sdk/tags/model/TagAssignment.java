@@ -113,5 +113,59 @@ public class TagAssignment {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TagAssignment instance;
+
+    public ModelBuilder() {
+      this(new TagAssignment());
+    }
+
+    protected ModelBuilder(TagAssignment instance) {
+      this.instance = instance;
+    }
+
+    public TagAssignment.ModelBuilder assignments(List<Assignment> assignments) {
+      this.instance.setAssignments(assignments);
+      return this;
+    }
+
+    /**
+     * Returns a built TagAssignment instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TagAssignment build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TagAssignment.ModelBuilder builder() {
+    return new TagAssignment.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TagAssignment.ModelBuilder toBuilder() {
+    TagAssignment.ModelBuilder builder = new TagAssignment.ModelBuilder()
+      .assignments(getAssignments());
+    return builder;
+  }
+
 }
 

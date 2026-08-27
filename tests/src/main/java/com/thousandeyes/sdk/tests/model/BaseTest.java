@@ -207,5 +207,74 @@ public class BaseTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BaseTest instance;
+
+    public ModelBuilder() {
+      this(new BaseTest());
+    }
+
+    protected ModelBuilder(BaseTest instance) {
+      this.instance = instance;
+    }
+
+    public BaseTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public BaseTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public BaseTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public BaseTest.ModelBuilder alertRules(List<AlertRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+
+    /**
+     * Returns a built BaseTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BaseTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BaseTest.ModelBuilder builder() {
+    return new BaseTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BaseTest.ModelBuilder toBuilder() {
+    BaseTest.ModelBuilder builder = new BaseTest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .alertRules(getAlertRules());
+    return builder;
+  }
+
 }
 

@@ -133,5 +133,64 @@ public class TestVaultCredential {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestVaultCredential instance;
+
+    public ModelBuilder() {
+      this(new TestVaultCredential());
+    }
+
+    protected ModelBuilder(TestVaultCredential instance) {
+      this.instance = instance;
+    }
+
+    public TestVaultCredential.ModelBuilder secretId(String secretId) {
+      this.instance.setSecretId(secretId);
+      return this;
+    }
+    public TestVaultCredential.ModelBuilder target(TestVaultCredentialTarget target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+
+    /**
+     * Returns a built TestVaultCredential instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestVaultCredential build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestVaultCredential.ModelBuilder builder() {
+    return new TestVaultCredential.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestVaultCredential.ModelBuilder toBuilder() {
+    TestVaultCredential.ModelBuilder builder = new TestVaultCredential.ModelBuilder()
+      .secretId(getSecretId())
+      .target(getTarget());
+    return builder;
+  }
+
 }
 

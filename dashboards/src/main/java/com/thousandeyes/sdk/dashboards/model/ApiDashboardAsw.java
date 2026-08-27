@@ -344,5 +344,94 @@ public class ApiDashboardAsw {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDashboardAsw instance;
+
+    public ModelBuilder() {
+      this(new ApiDashboardAsw());
+    }
+
+    protected ModelBuilder(ApiDashboardAsw instance) {
+      this.instance = instance;
+    }
+
+    public ApiDashboardAsw.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder testIds(Set<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder startTimes(List<OffsetDateTime> startTimes) {
+      this.instance.setStartTimes(startTimes);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder durationInSeconds(Long durationInSeconds) {
+      this.instance.setDurationInSeconds(durationInSeconds);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder repeat(AswRepeat repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder repeatEvery(Integer repeatEvery) {
+      this.instance.setRepeatEvery(repeatEvery);
+      return this;
+    }
+    public ApiDashboardAsw.ModelBuilder repeatUnit(AswRepeatUnit repeatUnit) {
+      this.instance.setRepeatUnit(repeatUnit);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDashboardAsw instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDashboardAsw build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDashboardAsw.ModelBuilder builder() {
+    return new ApiDashboardAsw.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDashboardAsw.ModelBuilder toBuilder() {
+    ApiDashboardAsw.ModelBuilder builder = new ApiDashboardAsw.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .testIds(getTestIds())
+      .startTimes(getStartTimes())
+      .durationInSeconds(getDurationInSeconds())
+      .repeat(getRepeat())
+      .repeatEvery(getRepeatEvery())
+      .repeatUnit(getRepeatUnit());
+    return builder;
+  }
+
 }
 

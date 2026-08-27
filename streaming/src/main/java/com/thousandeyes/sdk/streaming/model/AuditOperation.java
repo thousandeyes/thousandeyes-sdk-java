@@ -132,5 +132,64 @@ public class AuditOperation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AuditOperation instance;
+
+    public ModelBuilder() {
+      this(new AuditOperation());
+    }
+
+    protected ModelBuilder(AuditOperation instance) {
+      this.instance = instance;
+    }
+
+    public AuditOperation.ModelBuilder createdBy(Long createdBy) {
+      this.instance.setCreatedBy(createdBy);
+      return this;
+    }
+    public AuditOperation.ModelBuilder createdDate(Long createdDate) {
+      this.instance.setCreatedDate(createdDate);
+      return this;
+    }
+
+    /**
+     * Returns a built AuditOperation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AuditOperation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AuditOperation.ModelBuilder builder() {
+    return new AuditOperation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AuditOperation.ModelBuilder toBuilder() {
+    AuditOperation.ModelBuilder builder = new AuditOperation.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate());
+    return builder;
+  }
+
 }
 

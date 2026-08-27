@@ -101,5 +101,59 @@ public class StartAlertMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private StartAlertMetrics instance;
+
+    public ModelBuilder() {
+      this(new StartAlertMetrics());
+    }
+
+    protected ModelBuilder(StartAlertMetrics instance) {
+      this.instance = instance;
+    }
+
+    public StartAlertMetrics.ModelBuilder metrics(String metrics) {
+      this.instance.setMetrics(metrics);
+      return this;
+    }
+
+    /**
+     * Returns a built StartAlertMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public StartAlertMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static StartAlertMetrics.ModelBuilder builder() {
+    return new StartAlertMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public StartAlertMetrics.ModelBuilder toBuilder() {
+    StartAlertMetrics.ModelBuilder builder = new StartAlertMetrics.ModelBuilder()
+      .metrics(getMetrics());
+    return builder;
+  }
+
 }
 

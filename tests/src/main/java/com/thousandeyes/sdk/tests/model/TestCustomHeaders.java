@@ -189,5 +189,69 @@ public class TestCustomHeaders {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestCustomHeaders instance;
+
+    public ModelBuilder() {
+      this(new TestCustomHeaders());
+    }
+
+    protected ModelBuilder(TestCustomHeaders instance) {
+      this.instance = instance;
+    }
+
+    public TestCustomHeaders.ModelBuilder root(Map<String, String> root) {
+      this.instance.setRoot(root);
+      return this;
+    }
+    public TestCustomHeaders.ModelBuilder domains(Map<String, Map<String, String>> domains) {
+      this.instance.setDomains(domains);
+      return this;
+    }
+    public TestCustomHeaders.ModelBuilder all(Map<String, String> all) {
+      this.instance.setAll(all);
+      return this;
+    }
+
+    /**
+     * Returns a built TestCustomHeaders instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestCustomHeaders build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestCustomHeaders.ModelBuilder builder() {
+    return new TestCustomHeaders.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestCustomHeaders.ModelBuilder toBuilder() {
+    TestCustomHeaders.ModelBuilder builder = new TestCustomHeaders.ModelBuilder()
+      .root(getRoot())
+      .domains(getDomains())
+      .all(getAll());
+    return builder;
+  }
+
 }
 

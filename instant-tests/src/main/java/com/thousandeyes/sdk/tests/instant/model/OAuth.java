@@ -289,5 +289,89 @@ public class OAuth {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OAuth instance;
+
+    public ModelBuilder() {
+      this(new OAuth());
+    }
+
+    protected ModelBuilder(OAuth instance) {
+      this.instance = instance;
+    }
+
+    public OAuth.ModelBuilder testUrl(String testUrl) {
+      this.instance.setTestUrl(testUrl);
+      return this;
+    }
+    public OAuth.ModelBuilder requestMethod(RequestMethod requestMethod) {
+      this.instance.setRequestMethod(requestMethod);
+      return this;
+    }
+    public OAuth.ModelBuilder postBody(String postBody) {
+      this.instance.setPostBody(postBody);
+      return this;
+    }
+    public OAuth.ModelBuilder headers(String headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public OAuth.ModelBuilder authType(OAuthAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public OAuth.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public OAuth.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+
+    /**
+     * Returns a built OAuth instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OAuth build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OAuth.ModelBuilder builder() {
+    return new OAuth.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OAuth.ModelBuilder toBuilder() {
+    OAuth.ModelBuilder builder = new OAuth.ModelBuilder()
+      .testUrl(getTestUrl())
+      .requestMethod(getRequestMethod())
+      .postBody(getPostBody())
+      .headers(getHeaders())
+      .authType(getAuthType())
+      .username(getUsername())
+      .password(getPassword());
+    return builder;
+  }
+
 }
 

@@ -102,5 +102,59 @@ public class DashboardScheduleCronSpecBaseNot {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleCronSpecBaseNot instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleCronSpecBaseNot());
+    }
+
+    protected ModelBuilder(DashboardScheduleCronSpecBaseNot instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleCronSpecBaseNot.ModelBuilder repeat(DashboardScheduleOneTimeRepeatType repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleCronSpecBaseNot instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleCronSpecBaseNot build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleCronSpecBaseNot.ModelBuilder builder() {
+    return new DashboardScheduleCronSpecBaseNot.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleCronSpecBaseNot.ModelBuilder toBuilder() {
+    DashboardScheduleCronSpecBaseNot.ModelBuilder builder = new DashboardScheduleCronSpecBaseNot.ModelBuilder()
+      .repeat(getRepeat());
+    return builder;
+  }
+
 }
 

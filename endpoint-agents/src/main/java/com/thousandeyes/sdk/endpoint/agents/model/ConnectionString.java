@@ -133,5 +133,64 @@ public class ConnectionString {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConnectionString instance;
+
+    public ModelBuilder() {
+      this(new ConnectionString());
+    }
+
+    protected ModelBuilder(ConnectionString instance) {
+      this.instance = instance;
+    }
+
+    public ConnectionString.ModelBuilder connectionString(String connectionString) {
+      this.instance.setConnectionString(connectionString);
+      return this;
+    }
+    public ConnectionString.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ConnectionString instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConnectionString build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConnectionString.ModelBuilder builder() {
+    return new ConnectionString.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConnectionString.ModelBuilder toBuilder() {
+    ConnectionString.ModelBuilder builder = new ConnectionString.ModelBuilder()
+      .connectionString(getConnectionString())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

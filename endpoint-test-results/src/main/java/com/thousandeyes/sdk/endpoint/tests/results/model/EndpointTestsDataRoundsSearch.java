@@ -177,5 +177,69 @@ public class EndpointTestsDataRoundsSearch {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestsDataRoundsSearch instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestsDataRoundsSearch());
+    }
+
+    protected ModelBuilder(EndpointTestsDataRoundsSearch instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestsDataRoundsSearch.ModelBuilder searchSort(List<EndpointTestsDataSearchSort> searchSort) {
+      this.instance.setSearchSort(searchSort);
+      return this;
+    }
+    public EndpointTestsDataRoundsSearch.ModelBuilder thresholdFilter(EndpointTestsDataThresholdFilters thresholdFilter) {
+      this.instance.setThresholdFilter(thresholdFilter);
+      return this;
+    }
+    public EndpointTestsDataRoundsSearch.ModelBuilder searchFilters(EndpointTestsDataSearchFilter searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestsDataRoundsSearch instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestsDataRoundsSearch build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestsDataRoundsSearch.ModelBuilder builder() {
+    return new EndpointTestsDataRoundsSearch.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestsDataRoundsSearch.ModelBuilder toBuilder() {
+    EndpointTestsDataRoundsSearch.ModelBuilder builder = new EndpointTestsDataRoundsSearch.ModelBuilder()
+      .searchSort(getSearchSort())
+      .thresholdFilter(getThresholdFilter())
+      .searchFilters(getSearchFilters());
+    return builder;
+  }
+
 }
 

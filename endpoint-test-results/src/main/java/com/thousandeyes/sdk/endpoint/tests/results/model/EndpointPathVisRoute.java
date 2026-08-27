@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointPathVisRoute {
   public static final String JSON_PROPERTY_PATH_ID = "pathId";
+  @JsonProperty(JSON_PROPERTY_PATH_ID)
   private String pathId;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
@@ -58,14 +59,6 @@ public class EndpointPathVisRoute {
   private List<EndpointPathVisHop> hops = new ArrayList<>();
 
   public EndpointPathVisRoute() { 
-  }
-
-  @JsonCreator
-  public EndpointPathVisRoute(
-    @JsonProperty(JSON_PROPERTY_PATH_ID) String pathId
-  ) {
-  this();
-    this.pathId = pathId;
   }
 
    /**
@@ -238,5 +231,79 @@ public class EndpointPathVisRoute {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointPathVisRoute instance;
+
+    public ModelBuilder() {
+      this(new EndpointPathVisRoute());
+    }
+
+    protected ModelBuilder(EndpointPathVisRoute instance) {
+      this.instance = instance;
+    }
+
+    public EndpointPathVisRoute.ModelBuilder pathId(String pathId) {
+      this.instance.pathId = pathId;
+      return this;
+    }
+    public EndpointPathVisRoute.ModelBuilder protocol(EndpointTestResultProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointPathVisRoute.ModelBuilder tcpPathTraceMode(TcpPathTraceModeResponse tcpPathTraceMode) {
+      this.instance.setTcpPathTraceMode(tcpPathTraceMode);
+      return this;
+    }
+    public EndpointPathVisRoute.ModelBuilder udpPathTraceMode(UdpPathTraceModeResponse udpPathTraceMode) {
+      this.instance.setUdpPathTraceMode(udpPathTraceMode);
+      return this;
+    }
+    public EndpointPathVisRoute.ModelBuilder hops(List<EndpointPathVisHop> hops) {
+      this.instance.setHops(hops);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointPathVisRoute instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointPathVisRoute build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointPathVisRoute.ModelBuilder builder() {
+    return new EndpointPathVisRoute.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointPathVisRoute.ModelBuilder toBuilder() {
+    EndpointPathVisRoute.ModelBuilder builder = new EndpointPathVisRoute.ModelBuilder()
+      .pathId(getPathId())
+      .protocol(getProtocol())
+      .tcpPathTraceMode(getTcpPathTraceMode())
+      .udpPathTraceMode(getUdpPathTraceMode())
+      .hops(getHops());
+    return builder;
+  }
+
 }
 

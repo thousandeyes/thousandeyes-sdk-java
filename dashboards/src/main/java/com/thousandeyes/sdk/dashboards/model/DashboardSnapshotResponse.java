@@ -134,5 +134,64 @@ public class DashboardSnapshotResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardSnapshotResponse instance;
+
+    public ModelBuilder() {
+      this(new DashboardSnapshotResponse());
+    }
+
+    protected ModelBuilder(DashboardSnapshotResponse instance) {
+      this.instance = instance;
+    }
+
+    public DashboardSnapshotResponse.ModelBuilder snapshotId(UUID snapshotId) {
+      this.instance.setSnapshotId(snapshotId);
+      return this;
+    }
+    public DashboardSnapshotResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardSnapshotResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardSnapshotResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardSnapshotResponse.ModelBuilder builder() {
+    return new DashboardSnapshotResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardSnapshotResponse.ModelBuilder toBuilder() {
+    DashboardSnapshotResponse.ModelBuilder builder = new DashboardSnapshotResponse.ModelBuilder()
+      .snapshotId(getSnapshotId())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

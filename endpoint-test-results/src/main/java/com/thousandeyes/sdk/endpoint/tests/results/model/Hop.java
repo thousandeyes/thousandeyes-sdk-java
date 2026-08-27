@@ -34,27 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Hop {
   public static final String JSON_PROPERTY_HOP = "hop";
+  @JsonProperty(JSON_PROPERTY_HOP)
   private Integer hop;
 
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public Hop() { 
-  }
-
-  @JsonCreator
-  public Hop(
-    @JsonProperty(JSON_PROPERTY_HOP) Integer hop, 
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix
-  ) {
-  this();
-    this.hop = hop;
-    this.ipAddress = ipAddress;
-    this.prefix = prefix;
   }
 
    /**
@@ -145,5 +136,69 @@ public class Hop {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Hop instance;
+
+    public ModelBuilder() {
+      this(new Hop());
+    }
+
+    protected ModelBuilder(Hop instance) {
+      this.instance = instance;
+    }
+
+    public Hop.ModelBuilder hop(Integer hop) {
+      this.instance.hop = hop;
+      return this;
+    }
+    public Hop.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public Hop.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+
+    /**
+     * Returns a built Hop instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Hop build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Hop.ModelBuilder builder() {
+    return new Hop.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Hop.ModelBuilder toBuilder() {
+    Hop.ModelBuilder builder = new Hop.ModelBuilder()
+      .hop(getHop())
+      .ipAddress(getIpAddress())
+      .prefix(getPrefix());
+    return builder;
+  }
+
 }
 

@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointBrowser {
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_VERSION = "version";
+  @JsonProperty(JSON_PROPERTY_VERSION)
   private String version;
 
   public EndpointBrowser() { 
-  }
-
-  @JsonCreator
-  public EndpointBrowser(
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_VERSION) String version
-  ) {
-  this();
-    this.name = name;
-    this.version = version;
   }
 
    /**
@@ -122,5 +114,64 @@ public class EndpointBrowser {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointBrowser instance;
+
+    public ModelBuilder() {
+      this(new EndpointBrowser());
+    }
+
+    protected ModelBuilder(EndpointBrowser instance) {
+      this.instance = instance;
+    }
+
+    public EndpointBrowser.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public EndpointBrowser.ModelBuilder version(String version) {
+      this.instance.version = version;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointBrowser instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointBrowser build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointBrowser.ModelBuilder builder() {
+    return new EndpointBrowser.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointBrowser.ModelBuilder toBuilder() {
+    EndpointBrowser.ModelBuilder builder = new EndpointBrowser.ModelBuilder()
+      .name(getName())
+      .version(getVersion());
+    return builder;
+  }
+
 }
 

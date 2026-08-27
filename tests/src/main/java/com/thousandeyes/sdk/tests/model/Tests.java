@@ -145,5 +145,64 @@ public class Tests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Tests instance;
+
+    public ModelBuilder() {
+      this(new Tests());
+    }
+
+    protected ModelBuilder(Tests instance) {
+      this.instance = instance;
+    }
+
+    public Tests.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public Tests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Tests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Tests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Tests.ModelBuilder builder() {
+    return new Tests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Tests.ModelBuilder toBuilder() {
+    Tests.ModelBuilder builder = new Tests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

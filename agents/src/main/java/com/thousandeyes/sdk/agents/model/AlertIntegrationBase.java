@@ -319,5 +319,94 @@ public class AlertIntegrationBase {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertIntegrationBase instance;
+
+    public ModelBuilder() {
+      this(new AlertIntegrationBase());
+    }
+
+    protected ModelBuilder(AlertIntegrationBase instance) {
+      this.instance = instance;
+    }
+
+    public AlertIntegrationBase.ModelBuilder integrationId(String integrationId) {
+      this.instance.setIntegrationId(integrationId);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder integrationName(String integrationName) {
+      this.instance.setIntegrationName(integrationName);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder integrationType(AlertIntegrationType integrationType) {
+      this.instance.setIntegrationType(integrationType);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder authMethod(String authMethod) {
+      this.instance.setAuthMethod(authMethod);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder authUser(String authUser) {
+      this.instance.setAuthUser(authUser);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder authToken(String authToken) {
+      this.instance.setAuthToken(authToken);
+      return this;
+    }
+    public AlertIntegrationBase.ModelBuilder channel(String channel) {
+      this.instance.setChannel(channel);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertIntegrationBase instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertIntegrationBase build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertIntegrationBase.ModelBuilder builder() {
+    return new AlertIntegrationBase.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertIntegrationBase.ModelBuilder toBuilder() {
+    AlertIntegrationBase.ModelBuilder builder = new AlertIntegrationBase.ModelBuilder()
+      .integrationId(getIntegrationId())
+      .integrationName(getIntegrationName())
+      .integrationType(getIntegrationType())
+      .target(getTarget())
+      .authMethod(getAuthMethod())
+      .authUser(getAuthUser())
+      .authToken(getAuthToken())
+      .channel(getChannel());
+    return builder;
+  }
+
 }
 

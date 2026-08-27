@@ -143,5 +143,64 @@ public class NotificationEmail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationEmail instance;
+
+    public ModelBuilder() {
+      this(new NotificationEmail());
+    }
+
+    protected ModelBuilder(NotificationEmail instance) {
+      this.instance = instance;
+    }
+
+    public NotificationEmail.ModelBuilder recipients(List<String> recipients) {
+      this.instance.setRecipients(recipients);
+      return this;
+    }
+    public NotificationEmail.ModelBuilder message(String message) {
+      this.instance.setMessage(message);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationEmail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationEmail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationEmail.ModelBuilder builder() {
+    return new NotificationEmail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationEmail.ModelBuilder toBuilder() {
+    NotificationEmail.ModelBuilder builder = new NotificationEmail.ModelBuilder()
+      .recipients(getRecipients())
+      .message(getMessage());
+    return builder;
+  }
+
 }
 

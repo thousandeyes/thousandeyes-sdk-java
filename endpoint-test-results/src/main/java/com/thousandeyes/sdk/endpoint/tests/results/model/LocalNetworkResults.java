@@ -145,5 +145,64 @@ public class LocalNetworkResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkResults instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkResults());
+    }
+
+    protected ModelBuilder(LocalNetworkResults instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkResults.ModelBuilder localNetworks(List<LocalNetworkResult> localNetworks) {
+      this.instance.setLocalNetworks(localNetworks);
+      return this;
+    }
+    public LocalNetworkResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkResults.ModelBuilder builder() {
+    return new LocalNetworkResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkResults.ModelBuilder toBuilder() {
+    LocalNetworkResults.ModelBuilder builder = new LocalNetworkResults.ModelBuilder()
+      .localNetworks(getLocalNetworks())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

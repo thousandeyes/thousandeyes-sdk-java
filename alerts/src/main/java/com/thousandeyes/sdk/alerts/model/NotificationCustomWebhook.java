@@ -196,5 +196,74 @@ public class NotificationCustomWebhook {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationCustomWebhook instance;
+
+    public ModelBuilder() {
+      this(new NotificationCustomWebhook());
+    }
+
+    protected ModelBuilder(NotificationCustomWebhook instance) {
+      this.instance = instance;
+    }
+
+    public NotificationCustomWebhook.ModelBuilder integrationId(UUID integrationId) {
+      this.instance.setIntegrationId(integrationId);
+      return this;
+    }
+    public NotificationCustomWebhook.ModelBuilder integrationType(CustomWebhookIntegrationType integrationType) {
+      this.instance.setIntegrationType(integrationType);
+      return this;
+    }
+    public NotificationCustomWebhook.ModelBuilder integrationName(String integrationName) {
+      this.instance.setIntegrationName(integrationName);
+      return this;
+    }
+    public NotificationCustomWebhook.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationCustomWebhook instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationCustomWebhook build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationCustomWebhook.ModelBuilder builder() {
+    return new NotificationCustomWebhook.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationCustomWebhook.ModelBuilder toBuilder() {
+    NotificationCustomWebhook.ModelBuilder builder = new NotificationCustomWebhook.ModelBuilder()
+      .integrationId(getIntegrationId())
+      .integrationType(getIntegrationType())
+      .integrationName(getIntegrationName())
+      .target(getTarget());
+    return builder;
+  }
+
 }
 

@@ -51,93 +51,72 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RtpStreamTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_NAME = "dscpName";
+  @JsonProperty(JSON_PROPERTY_DSCP_NAME)
   private String dscpName;
 
   public static final String JSON_PROPERTY_MOS = "mos";
+  @JsonProperty(JSON_PROPERTY_MOS)
   private Float mos;
 
   public static final String JSON_PROPERTY_CODEC_NAME = "codecName";
+  @JsonProperty(JSON_PROPERTY_CODEC_NAME)
   private String codecName;
 
   public static final String JSON_PROPERTY_CODEC_MAX_MOS = "codecMaxMos";
+  @JsonProperty(JSON_PROPERTY_CODEC_MAX_MOS)
   private Float codecMaxMos;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Float loss;
 
   public static final String JSON_PROPERTY_DISCARDS = "discards";
+  @JsonProperty(JSON_PROPERTY_DISCARDS)
   private Float discards;
 
   public static final String JSON_PROPERTY_LATENCY = "latency";
+  @JsonProperty(JSON_PROPERTY_LATENCY)
   private Integer latency;
 
   public static final String JSON_PROPERTY_PDV = "pdv";
+  @JsonProperty(JSON_PROPERTY_PDV)
   private Integer pdv;
 
   public static final String JSON_PROPERTY_ERROR_DETAIL = "errorDetail";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAIL)
   private String errorDetail;
 
   public RtpStreamTestResult() { 
-  }
-
-  @JsonCreator
-  public RtpStreamTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_DSCP_NAME) String dscpName, 
-    @JsonProperty(JSON_PROPERTY_MOS) Float mos, 
-    @JsonProperty(JSON_PROPERTY_CODEC_NAME) String codecName, 
-    @JsonProperty(JSON_PROPERTY_CODEC_MAX_MOS) Float codecMaxMos, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Float loss, 
-    @JsonProperty(JSON_PROPERTY_DISCARDS) Float discards, 
-    @JsonProperty(JSON_PROPERTY_LATENCY) Integer latency, 
-    @JsonProperty(JSON_PROPERTY_PDV) Integer pdv, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAIL) String errorDetail
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.serverIp = serverIp;
-    this.dscp = dscp;
-    this.dscpName = dscpName;
-    this.mos = mos;
-    this.codecName = codecName;
-    this.codecMaxMos = codecMaxMos;
-    this.loss = loss;
-    this.discards = discards;
-    this.latency = latency;
-    this.pdv = pdv;
-    this.errorDetail = errorDetail;
   }
 
    /**
@@ -486,5 +465,139 @@ public class RtpStreamTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RtpStreamTestResult instance;
+
+    public ModelBuilder() {
+      this(new RtpStreamTestResult());
+    }
+
+    protected ModelBuilder(RtpStreamTestResult instance) {
+      this.instance = instance;
+    }
+
+    public RtpStreamTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder dscpName(String dscpName) {
+      this.instance.dscpName = dscpName;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder mos(Float mos) {
+      this.instance.mos = mos;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder codecName(String codecName) {
+      this.instance.codecName = codecName;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder codecMaxMos(Float codecMaxMos) {
+      this.instance.codecMaxMos = codecMaxMos;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder loss(Float loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder discards(Float discards) {
+      this.instance.discards = discards;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder latency(Integer latency) {
+      this.instance.latency = latency;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder pdv(Integer pdv) {
+      this.instance.pdv = pdv;
+      return this;
+    }
+    public RtpStreamTestResult.ModelBuilder errorDetail(String errorDetail) {
+      this.instance.errorDetail = errorDetail;
+      return this;
+    }
+
+    /**
+     * Returns a built RtpStreamTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RtpStreamTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RtpStreamTestResult.ModelBuilder builder() {
+    return new RtpStreamTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RtpStreamTestResult.ModelBuilder toBuilder() {
+    RtpStreamTestResult.ModelBuilder builder = new RtpStreamTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .serverIp(getServerIp())
+      .dscp(getDscp())
+      .dscpName(getDscpName())
+      .mos(getMos())
+      .codecName(getCodecName())
+      .codecMaxMos(getCodecMaxMos())
+      .loss(getLoss())
+      .discards(getDiscards())
+      .latency(getLatency())
+      .pdv(getPdv())
+      .errorDetail(getErrorDetail());
+    return builder;
+  }
+
 }
 

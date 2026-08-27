@@ -165,5 +165,69 @@ public class LocalNetworksThresholdFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworksThresholdFilter instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworksThresholdFilter());
+    }
+
+    protected ModelBuilder(LocalNetworksThresholdFilter instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworksThresholdFilter.ModelBuilder name(LocalNetworksThresholdFilterName name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public LocalNetworksThresholdFilter.ModelBuilder value(Double value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public LocalNetworksThresholdFilter.ModelBuilder operator(ThresholdFilterOperator operator) {
+      this.instance.setOperator(operator);
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworksThresholdFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworksThresholdFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworksThresholdFilter.ModelBuilder builder() {
+    return new LocalNetworksThresholdFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworksThresholdFilter.ModelBuilder toBuilder() {
+    LocalNetworksThresholdFilter.ModelBuilder builder = new LocalNetworksThresholdFilter.ModelBuilder()
+      .name(getName())
+      .value(getValue())
+      .operator(getOperator());
+    return builder;
+  }
+
 }
 

@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentTransfer {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_FROM_AID = "fromAid";
@@ -44,14 +45,6 @@ public class AgentTransfer {
   private String toAid;
 
   public AgentTransfer() { 
-  }
-
-  @JsonCreator
-  public AgentTransfer(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId
-  ) {
-  this();
-    this.agentId = agentId;
   }
 
    /**
@@ -162,5 +155,69 @@ public class AgentTransfer {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentTransfer instance;
+
+    public ModelBuilder() {
+      this(new AgentTransfer());
+    }
+
+    protected ModelBuilder(AgentTransfer instance) {
+      this.instance = instance;
+    }
+
+    public AgentTransfer.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public AgentTransfer.ModelBuilder fromAid(String fromAid) {
+      this.instance.setFromAid(fromAid);
+      return this;
+    }
+    public AgentTransfer.ModelBuilder toAid(String toAid) {
+      this.instance.setToAid(toAid);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentTransfer instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentTransfer build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentTransfer.ModelBuilder builder() {
+    return new AgentTransfer.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentTransfer.ModelBuilder toBuilder() {
+    AgentTransfer.ModelBuilder builder = new AgentTransfer.ModelBuilder()
+      .agentId(getAgentId())
+      .fromAid(getFromAid())
+      .toAid(getToAid());
+    return builder;
+  }
+
 }
 

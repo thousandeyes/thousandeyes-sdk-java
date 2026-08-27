@@ -60,18 +60,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsServerEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_TYPE_NAME = "typeName";
+  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
   private String typeName;
 
   public static final String JSON_PROPERTY_STATE = "state";
   private EventState state;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
@@ -81,6 +85,7 @@ public class DnsServerEventDetail {
   private String aid;
 
   public static final String JSON_PROPERTY_SUMMARY = "summary";
+  @JsonProperty(JSON_PROPERTY_SUMMARY)
   private String summary;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
@@ -108,22 +113,6 @@ public class DnsServerEventDetail {
   private DnsServerEventGrouping grouping;
 
   public DnsServerEventDetail() { 
-  }
-
-  @JsonCreator
-  public DnsServerEventDetail(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate, 
-    @JsonProperty(JSON_PROPERTY_SUMMARY) String summary
-  ) {
-  this();
-    this.id = id;
-    this.typeName = typeName;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.summary = summary;
   }
 
    /**
@@ -554,5 +543,134 @@ public class DnsServerEventDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerEventDetail instance;
+
+    public ModelBuilder() {
+      this(new DnsServerEventDetail());
+    }
+
+    protected ModelBuilder(DnsServerEventDetail instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerEventDetail.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder typeName(String typeName) {
+      this.instance.typeName = typeName;
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder state(EventState state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder severity(EventAlertSeverity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder summary(String summary) {
+      this.instance.summary = summary;
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder agentType(EventAgentType agentType) {
+      this.instance.setAgentType(agentType);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder affectedTests(AffectedTests affectedTests) {
+      this.instance.setAffectedTests(affectedTests);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder affectedTargets(AffectedTargets affectedTargets) {
+      this.instance.setAffectedTargets(affectedTargets);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder affectedAgents(AffectedAgents affectedAgents) {
+      this.instance.setAffectedAgents(affectedAgents);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder cause(Set<String> cause) {
+      this.instance.setCause(cause);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public DnsServerEventDetail.ModelBuilder grouping(DnsServerEventGrouping grouping) {
+      this.instance.setGrouping(grouping);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerEventDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerEventDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerEventDetail.ModelBuilder builder() {
+    return new DnsServerEventDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerEventDetail.ModelBuilder toBuilder() {
+    DnsServerEventDetail.ModelBuilder builder = new DnsServerEventDetail.ModelBuilder()
+      .id(getId())
+      .typeName(getTypeName())
+      .state(getState())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .severity(getSeverity())
+      .aid(getAid())
+      .summary(getSummary())
+      .agentType(getAgentType())
+      .affectedTests(getAffectedTests())
+      .affectedTargets(getAffectedTargets())
+      .affectedAgents(getAffectedAgents())
+      .cause(getCause())
+      .links(getLinks())
+      .type(getType())
+      .grouping(getGrouping());
+    return builder;
+  }
+
 }
 

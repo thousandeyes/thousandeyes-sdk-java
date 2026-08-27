@@ -56,15 +56,19 @@ public class EndpointTestResult {
   private String aid;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
@@ -92,20 +96,6 @@ public class EndpointTestResult {
   private Platform platform;
 
   public EndpointTestResult() { 
-  }
-
-  @JsonCreator
-  public EndpointTestResult(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp
-  ) {
-  this();
-    this.testId = testId;
-    this.agentId = agentId;
-    this.roundId = roundId;
-    this.serverIp = serverIp;
   }
 
   public EndpointTestResult aid(String aid) {
@@ -456,5 +446,119 @@ public class EndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestResult());
+    }
+
+    protected ModelBuilder(EndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestResult.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder originalTargetProfile(TargetProfile originalTargetProfile) {
+      this.instance.setOriginalTargetProfile(originalTargetProfile);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder userProfile(UserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder vpnProfile(VpnProfile vpnProfile) {
+      this.instance.setVpnProfile(vpnProfile);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public EndpointTestResult.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestResult.ModelBuilder builder() {
+    return new EndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestResult.ModelBuilder toBuilder() {
+    EndpointTestResult.ModelBuilder builder = new EndpointTestResult.ModelBuilder()
+      .aid(getAid())
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .roundId(getRoundId())
+      .serverIp(getServerIp())
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .originalTargetProfile(getOriginalTargetProfile())
+      .userProfile(getUserProfile())
+      .vpnProfile(getVpnProfile())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform());
+    return builder;
+  }
+
 }
 

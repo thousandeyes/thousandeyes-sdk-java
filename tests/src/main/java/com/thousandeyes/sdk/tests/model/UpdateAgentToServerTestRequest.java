@@ -115,6 +115,7 @@ public class UpdateAgentToServerTestRequest {
   private String server;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_ID = "dscpId";
@@ -157,14 +158,6 @@ public class UpdateAgentToServerTestRequest {
   private Integer port;
 
   public UpdateAgentToServerTestRequest() { 
-  }
-
-  @JsonCreator
-  public UpdateAgentToServerTestRequest(
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp
-  ) {
-  this();
-    this.dscp = dscp;
   }
 
   public UpdateAgentToServerTestRequest labels(List<String> labels) {
@@ -1031,5 +1024,199 @@ public class UpdateAgentToServerTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UpdateAgentToServerTestRequest instance;
+
+    public ModelBuilder() {
+      this(new UpdateAgentToServerTestRequest());
+    }
+
+    protected ModelBuilder(UpdateAgentToServerTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public UpdateAgentToServerTestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder alertRules(List<String> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder monitors(List<String> monitors) {
+      this.instance.setMonitors(monitors);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder continuousMode(Boolean continuousMode) {
+      this.instance.setContinuousMode(continuousMode);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder server(String server) {
+      this.instance.setServer(server);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder dscpId(TestDscpId dscpId) {
+      this.instance.setDscpId(dscpId);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder pingPayloadSize(Integer pingPayloadSize) {
+      this.instance.setPingPayloadSize(pingPayloadSize);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public UpdateAgentToServerTestRequest.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+
+    /**
+     * Returns a built UpdateAgentToServerTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UpdateAgentToServerTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UpdateAgentToServerTestRequest.ModelBuilder builder() {
+    return new UpdateAgentToServerTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UpdateAgentToServerTestRequest.ModelBuilder toBuilder() {
+    UpdateAgentToServerTestRequest.ModelBuilder builder = new UpdateAgentToServerTestRequest.ModelBuilder()
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .alertRules(getAlertRules())
+      .monitors(getMonitors())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .continuousMode(getContinuousMode())
+      .fixedPacketRate(getFixedPacketRate())
+      .mtuMeasurements(getMtuMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .server(getServer())
+      .dscp(getDscp())
+      .dscpId(getDscpId())
+      .ipv6Policy(getIpv6Policy())
+      .pingPayloadSize(getPingPayloadSize())
+      .networkMeasurements(getNetworkMeasurements())
+      .agents(getAgents())
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .description(getDescription())
+      .testName(getTestName())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .port(getPort());
+    return builder;
+  }
+
 }
 

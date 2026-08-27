@@ -34,27 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestCoordinates {
   public static final String JSON_PROPERTY_LATITUDE = "latitude";
+  @JsonProperty(JSON_PROPERTY_LATITUDE)
   private Double latitude;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_LONGITUDE = "longitude";
+  @JsonProperty(JSON_PROPERTY_LONGITUDE)
   private Double longitude;
 
   public RealUserEndpointTestCoordinates() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestCoordinates(
-    @JsonProperty(JSON_PROPERTY_LATITUDE) Double latitude, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_LONGITUDE) Double longitude
-  ) {
-  this();
-    this.latitude = latitude;
-    this.location = location;
-    this.longitude = longitude;
   }
 
    /**
@@ -145,5 +136,69 @@ public class RealUserEndpointTestCoordinates {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestCoordinates instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestCoordinates());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestCoordinates instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestCoordinates.ModelBuilder latitude(Double latitude) {
+      this.instance.latitude = latitude;
+      return this;
+    }
+    public RealUserEndpointTestCoordinates.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public RealUserEndpointTestCoordinates.ModelBuilder longitude(Double longitude) {
+      this.instance.longitude = longitude;
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestCoordinates instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestCoordinates build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestCoordinates.ModelBuilder builder() {
+    return new RealUserEndpointTestCoordinates.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestCoordinates.ModelBuilder toBuilder() {
+    RealUserEndpointTestCoordinates.ModelBuilder builder = new RealUserEndpointTestCoordinates.ModelBuilder()
+      .latitude(getLatitude())
+      .location(getLocation())
+      .longitude(getLongitude());
+    return builder;
+  }
+
 }
 

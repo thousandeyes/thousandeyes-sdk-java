@@ -145,5 +145,64 @@ public class EnterpriseAgentsUsage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentsUsage instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentsUsage());
+    }
+
+    protected ModelBuilder(EnterpriseAgentsUsage instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentsUsage.ModelBuilder breakdowns(List<EnterpriseAgentUnitsByTestOwnerAccountGroup> breakdowns) {
+      this.instance.setBreakdowns(breakdowns);
+      return this;
+    }
+    public EnterpriseAgentsUsage.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentsUsage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentsUsage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentsUsage.ModelBuilder builder() {
+    return new EnterpriseAgentsUsage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentsUsage.ModelBuilder toBuilder() {
+    EnterpriseAgentsUsage.ModelBuilder builder = new EnterpriseAgentsUsage.ModelBuilder()
+      .breakdowns(getBreakdowns())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

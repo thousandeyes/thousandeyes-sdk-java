@@ -38,9 +38,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Monitor {
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_MONITOR_ID = "monitorId";
+  @JsonProperty(JSON_PROPERTY_MONITOR_ID)
   private String monitorId;
 
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
@@ -56,16 +58,6 @@ public class Monitor {
   private String monitorName;
 
   public Monitor() { 
-  }
-
-  @JsonCreator
-  public Monitor(
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_MONITOR_ID) String monitorId
-  ) {
-  this();
-    this.countryId = countryId;
-    this.monitorId = monitorId;
   }
 
    /**
@@ -247,5 +239,84 @@ public class Monitor {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Monitor instance;
+
+    public ModelBuilder() {
+      this(new Monitor());
+    }
+
+    protected ModelBuilder(Monitor instance) {
+      this.instance = instance;
+    }
+
+    public Monitor.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public Monitor.ModelBuilder monitorId(String monitorId) {
+      this.instance.monitorId = monitorId;
+      return this;
+    }
+    public Monitor.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.setIpAddress(ipAddress);
+      return this;
+    }
+    public Monitor.ModelBuilder network(String network) {
+      this.instance.setNetwork(network);
+      return this;
+    }
+    public Monitor.ModelBuilder monitorType(MonitorType monitorType) {
+      this.instance.setMonitorType(monitorType);
+      return this;
+    }
+    public Monitor.ModelBuilder monitorName(String monitorName) {
+      this.instance.setMonitorName(monitorName);
+      return this;
+    }
+
+    /**
+     * Returns a built Monitor instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Monitor build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Monitor.ModelBuilder builder() {
+    return new Monitor.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Monitor.ModelBuilder toBuilder() {
+    Monitor.ModelBuilder builder = new Monitor.ModelBuilder()
+      .countryId(getCountryId())
+      .monitorId(getMonitorId())
+      .ipAddress(getIpAddress())
+      .network(getNetwork())
+      .monitorType(getMonitorType())
+      .monitorName(getMonitorName());
+    return builder;
+  }
+
 }
 

@@ -176,5 +176,69 @@ public class FilterEndpointAgentsResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FilterEndpointAgentsResponse instance;
+
+    public ModelBuilder() {
+      this(new FilterEndpointAgentsResponse());
+    }
+
+    protected ModelBuilder(FilterEndpointAgentsResponse instance) {
+      this.instance = instance;
+    }
+
+    public FilterEndpointAgentsResponse.ModelBuilder totalAgents(Integer totalAgents) {
+      this.instance.setTotalAgents(totalAgents);
+      return this;
+    }
+    public FilterEndpointAgentsResponse.ModelBuilder agents(List<EndpointAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public FilterEndpointAgentsResponse.ModelBuilder links(PaginationNextLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built FilterEndpointAgentsResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FilterEndpointAgentsResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FilterEndpointAgentsResponse.ModelBuilder builder() {
+    return new FilterEndpointAgentsResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FilterEndpointAgentsResponse.ModelBuilder toBuilder() {
+    FilterEndpointAgentsResponse.ModelBuilder builder = new FilterEndpointAgentsResponse.ModelBuilder()
+      .totalAgents(getTotalAgents())
+      .agents(getAgents())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

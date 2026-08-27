@@ -46,63 +46,48 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestPageResult {
   public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+  @JsonProperty(JSON_PROPERTY_PAGE_ID)
   private String pageId;
 
   public static final String JSON_PROPERTY_PAGE_TITLE = "pageTitle";
+  @JsonProperty(JSON_PROPERTY_PAGE_TITLE)
   private String pageTitle;
 
   public static final String JSON_PROPERTY_PAGE_URL = "pageUrl";
+  @JsonProperty(JSON_PROPERTY_PAGE_URL)
   private String pageUrl;
 
   public static final String JSON_PROPERTY_LOAD_DATE = "loadDate";
+  @JsonProperty(JSON_PROPERTY_LOAD_DATE)
   private OffsetDateTime loadDate;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   private Integer responseCode;
 
   public static final String JSON_PROPERTY_PAGE_TIMINGS = "pageTimings";
   private RealUserEndpointTestPageTimings pageTimings;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public static final String JSON_PROPERTY_SYSTEM_METRICS = "systemMetrics";
   private SystemMetrics systemMetrics;
 
   public RealUserEndpointTestPageResult() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestPageResult(
-    @JsonProperty(JSON_PROPERTY_PAGE_ID) String pageId, 
-    @JsonProperty(JSON_PROPERTY_PAGE_TITLE) String pageTitle, 
-    @JsonProperty(JSON_PROPERTY_PAGE_URL) String pageUrl, 
-    @JsonProperty(JSON_PROPERTY_LOAD_DATE) OffsetDateTime loadDate, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE) Integer responseCode, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime
-  ) {
-  this();
-    this.pageId = pageId;
-    this.pageTitle = pageTitle;
-    this.pageUrl = pageUrl;
-    this.loadDate = loadDate;
-    this.responseCode = responseCode;
-    this.agentId = agentId;
-    this.id = id;
-    this.roundId = roundId;
-    this.responseTime = responseTime;
   }
 
    /**
@@ -349,5 +334,109 @@ public class RealUserEndpointTestPageResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestPageResult instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestPageResult());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestPageResult instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestPageResult.ModelBuilder pageId(String pageId) {
+      this.instance.pageId = pageId;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder pageTitle(String pageTitle) {
+      this.instance.pageTitle = pageTitle;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder pageUrl(String pageUrl) {
+      this.instance.pageUrl = pageUrl;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder loadDate(OffsetDateTime loadDate) {
+      this.instance.loadDate = loadDate;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.responseCode = responseCode;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder pageTimings(RealUserEndpointTestPageTimings pageTimings) {
+      this.instance.setPageTimings(pageTimings);
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public RealUserEndpointTestPageResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestPageResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestPageResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestPageResult.ModelBuilder builder() {
+    return new RealUserEndpointTestPageResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestPageResult.ModelBuilder toBuilder() {
+    RealUserEndpointTestPageResult.ModelBuilder builder = new RealUserEndpointTestPageResult.ModelBuilder()
+      .pageId(getPageId())
+      .pageTitle(getPageTitle())
+      .pageUrl(getPageUrl())
+      .loadDate(getLoadDate())
+      .responseCode(getResponseCode())
+      .pageTimings(getPageTimings())
+      .agentId(getAgentId())
+      .id(getId())
+      .roundId(getRoundId())
+      .responseTime(getResponseTime())
+      .systemMetrics(getSystemMetrics());
+    return builder;
+  }
+
 }
 

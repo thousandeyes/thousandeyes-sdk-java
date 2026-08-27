@@ -380,5 +380,104 @@ public class CellularProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CellularProfile instance;
+
+    public ModelBuilder() {
+      this(new CellularProfile());
+    }
+
+    protected ModelBuilder(CellularProfile instance) {
+      this.instance = instance;
+    }
+
+    public CellularProfile.ModelBuilder carrierName(String carrierName) {
+      this.instance.setCarrierName(carrierName);
+      return this;
+    }
+    public CellularProfile.ModelBuilder networkGen(String networkGen) {
+      this.instance.setNetworkGen(networkGen);
+      return this;
+    }
+    public CellularProfile.ModelBuilder networkSubtype(String networkSubtype) {
+      this.instance.setNetworkSubtype(networkSubtype);
+      return this;
+    }
+    public CellularProfile.ModelBuilder advertisedNetworkGen(String advertisedNetworkGen) {
+      this.instance.setAdvertisedNetworkGen(advertisedNetworkGen);
+      return this;
+    }
+    public CellularProfile.ModelBuilder advertisedNetworkSubtype(String advertisedNetworkSubtype) {
+      this.instance.setAdvertisedNetworkSubtype(advertisedNetworkSubtype);
+      return this;
+    }
+    public CellularProfile.ModelBuilder rssi(Double rssi) {
+      this.instance.setRssi(rssi);
+      return this;
+    }
+    public CellularProfile.ModelBuilder rsrp(Double rsrp) {
+      this.instance.setRsrp(rsrp);
+      return this;
+    }
+    public CellularProfile.ModelBuilder rscp(Double rscp) {
+      this.instance.setRscp(rscp);
+      return this;
+    }
+    public CellularProfile.ModelBuilder rsrq(Double rsrq) {
+      this.instance.setRsrq(rsrq);
+      return this;
+    }
+    public CellularProfile.ModelBuilder sinr(Double sinr) {
+      this.instance.setSinr(sinr);
+      return this;
+    }
+
+    /**
+     * Returns a built CellularProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CellularProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CellularProfile.ModelBuilder builder() {
+    return new CellularProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CellularProfile.ModelBuilder toBuilder() {
+    CellularProfile.ModelBuilder builder = new CellularProfile.ModelBuilder()
+      .carrierName(getCarrierName())
+      .networkGen(getNetworkGen())
+      .networkSubtype(getNetworkSubtype())
+      .advertisedNetworkGen(getAdvertisedNetworkGen())
+      .advertisedNetworkSubtype(getAdvertisedNetworkSubtype())
+      .rssi(getRssi())
+      .rsrp(getRsrp())
+      .rscp(getRscp())
+      .rsrq(getRsrq())
+      .sinr(getSinr());
+    return builder;
+  }
+
 }
 

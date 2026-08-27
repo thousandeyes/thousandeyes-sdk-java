@@ -102,5 +102,59 @@ public class TestResultAppLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestResultAppLinks instance;
+
+    public ModelBuilder() {
+      this(new TestResultAppLinks());
+    }
+
+    protected ModelBuilder(TestResultAppLinks instance) {
+      this.instance = instance;
+    }
+
+    public TestResultAppLinks.ModelBuilder appLink(Link appLink) {
+      this.instance.setAppLink(appLink);
+      return this;
+    }
+
+    /**
+     * Returns a built TestResultAppLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestResultAppLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestResultAppLinks.ModelBuilder builder() {
+    return new TestResultAppLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestResultAppLinks.ModelBuilder toBuilder() {
+    TestResultAppLinks.ModelBuilder builder = new TestResultAppLinks.ModelBuilder()
+      .appLink(getAppLink());
+    return builder;
+  }
+
 }
 

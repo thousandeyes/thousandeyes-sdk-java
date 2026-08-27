@@ -39,30 +39,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VpnProfile {
   public static final String JSON_PROPERTY_VPN_CLIENT_ADDRESSES = "vpnClientAddresses";
+  @JsonProperty(JSON_PROPERTY_VPN_CLIENT_ADDRESSES)
   private List<String> vpnClientAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VPN_CLIENT_NETWORK_RANGE = "vpnClientNetworkRange";
+  @JsonProperty(JSON_PROPERTY_VPN_CLIENT_NETWORK_RANGE)
   private List<String> vpnClientNetworkRange = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VPN_GATEWAY_ADDRESS = "vpnGatewayAddress";
+  @JsonProperty(JSON_PROPERTY_VPN_GATEWAY_ADDRESS)
   private String vpnGatewayAddress;
 
   public static final String JSON_PROPERTY_VPN_TYPE = "vpnType";
   private VpnType vpnType;
 
   public VpnProfile() { 
-  }
-
-  @JsonCreator
-  public VpnProfile(
-    @JsonProperty(JSON_PROPERTY_VPN_CLIENT_ADDRESSES) List<String> vpnClientAddresses, 
-    @JsonProperty(JSON_PROPERTY_VPN_CLIENT_NETWORK_RANGE) List<String> vpnClientNetworkRange, 
-    @JsonProperty(JSON_PROPERTY_VPN_GATEWAY_ADDRESS) String vpnGatewayAddress
-  ) {
-  this();
-    this.vpnClientAddresses = vpnClientAddresses;
-    this.vpnClientNetworkRange = vpnClientNetworkRange;
-    this.vpnGatewayAddress = vpnGatewayAddress;
   }
 
    /**
@@ -180,5 +171,74 @@ public class VpnProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VpnProfile instance;
+
+    public ModelBuilder() {
+      this(new VpnProfile());
+    }
+
+    protected ModelBuilder(VpnProfile instance) {
+      this.instance = instance;
+    }
+
+    public VpnProfile.ModelBuilder vpnClientAddresses(List<String> vpnClientAddresses) {
+      this.instance.vpnClientAddresses = vpnClientAddresses;
+      return this;
+    }
+    public VpnProfile.ModelBuilder vpnClientNetworkRange(List<String> vpnClientNetworkRange) {
+      this.instance.vpnClientNetworkRange = vpnClientNetworkRange;
+      return this;
+    }
+    public VpnProfile.ModelBuilder vpnGatewayAddress(String vpnGatewayAddress) {
+      this.instance.vpnGatewayAddress = vpnGatewayAddress;
+      return this;
+    }
+    public VpnProfile.ModelBuilder vpnType(VpnType vpnType) {
+      this.instance.setVpnType(vpnType);
+      return this;
+    }
+
+    /**
+     * Returns a built VpnProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VpnProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VpnProfile.ModelBuilder builder() {
+    return new VpnProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VpnProfile.ModelBuilder toBuilder() {
+    VpnProfile.ModelBuilder builder = new VpnProfile.ModelBuilder()
+      .vpnClientAddresses(getVpnClientAddresses())
+      .vpnClientNetworkRange(getVpnClientNetworkRange())
+      .vpnGatewayAddress(getVpnGatewayAddress())
+      .vpnType(getVpnType());
+    return builder;
+  }
+
 }
 

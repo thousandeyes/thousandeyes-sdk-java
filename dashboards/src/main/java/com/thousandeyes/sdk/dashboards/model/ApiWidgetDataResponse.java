@@ -53,25 +53,17 @@ public class ApiWidgetDataResponse {
   private ApiWidgetsDataV2 data;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public ApiWidgetDataResponse() { 
-  }
-
-  @JsonCreator
-  public ApiWidgetDataResponse(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public ApiWidgetDataResponse groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
@@ -261,5 +253,84 @@ public class ApiWidgetDataResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetDataResponse instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetDataResponse());
+    }
+
+    protected ModelBuilder(ApiWidgetDataResponse instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetDataResponse.ModelBuilder groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
+      this.instance.setGroupLabels(groupLabels);
+      return this;
+    }
+    public ApiWidgetDataResponse.ModelBuilder binSize(Long binSize) {
+      this.instance.setBinSize(binSize);
+      return this;
+    }
+    public ApiWidgetDataResponse.ModelBuilder data(ApiWidgetsDataV2 data) {
+      this.instance.setData(data);
+      return this;
+    }
+    public ApiWidgetDataResponse.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public ApiWidgetDataResponse.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public ApiWidgetDataResponse.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetDataResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetDataResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetDataResponse.ModelBuilder builder() {
+    return new ApiWidgetDataResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetDataResponse.ModelBuilder toBuilder() {
+    ApiWidgetDataResponse.ModelBuilder builder = new ApiWidgetDataResponse.ModelBuilder()
+      .groupLabels(getGroupLabels())
+      .binSize(getBinSize())
+      .data(getData())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

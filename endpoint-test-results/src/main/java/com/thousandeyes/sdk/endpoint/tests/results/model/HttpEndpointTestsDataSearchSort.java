@@ -134,5 +134,64 @@ public class HttpEndpointTestsDataSearchSort {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpEndpointTestsDataSearchSort instance;
+
+    public ModelBuilder() {
+      this(new HttpEndpointTestsDataSearchSort());
+    }
+
+    protected ModelBuilder(HttpEndpointTestsDataSearchSort instance) {
+      this.instance = instance;
+    }
+
+    public HttpEndpointTestsDataSearchSort.ModelBuilder sort(HttpEndpointTestsDataSearchSortKey sort) {
+      this.instance.setSort(sort);
+      return this;
+    }
+    public HttpEndpointTestsDataSearchSort.ModelBuilder order(SortOrder order) {
+      this.instance.setOrder(order);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpEndpointTestsDataSearchSort instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpEndpointTestsDataSearchSort build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpEndpointTestsDataSearchSort.ModelBuilder builder() {
+    return new HttpEndpointTestsDataSearchSort.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpEndpointTestsDataSearchSort.ModelBuilder toBuilder() {
+    HttpEndpointTestsDataSearchSort.ModelBuilder builder = new HttpEndpointTestsDataSearchSort.ModelBuilder()
+      .sort(getSort())
+      .order(getOrder());
+    return builder;
+  }
+
 }
 

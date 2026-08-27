@@ -133,5 +133,64 @@ public class RealUserEndpointTestPageDetailResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestPageDetailResult instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestPageDetailResult());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestPageDetailResult instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestPageDetailResult.ModelBuilder har(Object har) {
+      this.instance.setHar(har);
+      return this;
+    }
+    public RealUserEndpointTestPageDetailResult.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestPageDetailResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestPageDetailResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestPageDetailResult.ModelBuilder builder() {
+    return new RealUserEndpointTestPageDetailResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestPageDetailResult.ModelBuilder toBuilder() {
+    RealUserEndpointTestPageDetailResult.ModelBuilder builder = new RealUserEndpointTestPageDetailResult.ModelBuilder()
+      .har(getHar())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -61,45 +61,56 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsTraceInstantTestResponse {
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DNS_TRANSPORT_PROTOCOL = "dnsTransportProtocol";
@@ -118,34 +129,6 @@ public class DnsTraceInstantTestResponse {
   private List<TestAgentResponse> agents = new ArrayList<>();
 
   public DnsTraceInstantTestResponse() { 
-  }
-
-  @JsonCreator
-  public DnsTraceInstantTestResponse(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
    /**
@@ -596,5 +579,149 @@ public class DnsTraceInstantTestResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTraceInstantTestResponse instance;
+
+    public ModelBuilder() {
+      this(new DnsTraceInstantTestResponse());
+    }
+
+    protected ModelBuilder(DnsTraceInstantTestResponse instance) {
+      this.instance = instance;
+    }
+
+    public DnsTraceInstantTestResponse.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+      this.instance.setDnsTransportProtocol(dnsTransportProtocol);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder dnsQueryClass(DnsQueryClass dnsQueryClass) {
+      this.instance.setDnsQueryClass(dnsQueryClass);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public DnsTraceInstantTestResponse.ModelBuilder agents(List<TestAgentResponse> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTraceInstantTestResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTraceInstantTestResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTraceInstantTestResponse.ModelBuilder builder() {
+    return new DnsTraceInstantTestResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTraceInstantTestResponse.ModelBuilder toBuilder() {
+    DnsTraceInstantTestResponse.ModelBuilder builder = new DnsTraceInstantTestResponse.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .dnsTransportProtocol(getDnsTransportProtocol())
+      .domain(getDomain())
+      .dnsQueryClass(getDnsQueryClass())
+      .randomizedStartTime(getRandomizedStartTime())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

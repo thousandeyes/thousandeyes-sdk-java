@@ -218,5 +218,74 @@ public class EndpointAgentLabelsSelectorConfig {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentLabelsSelectorConfig instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentLabelsSelectorConfig());
+    }
+
+    protected ModelBuilder(EndpointAgentLabelsSelectorConfig instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentLabelsSelectorConfig.ModelBuilder agentSelectorType(String agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointAgentLabelsSelectorConfig.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointAgentLabelsSelectorConfig.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public EndpointAgentLabelsSelectorConfig.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentLabelsSelectorConfig instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentLabelsSelectorConfig build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentLabelsSelectorConfig.ModelBuilder builder() {
+    return new EndpointAgentLabelsSelectorConfig.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentLabelsSelectorConfig.ModelBuilder toBuilder() {
+    EndpointAgentLabelsSelectorConfig.ModelBuilder builder = new EndpointAgentLabelsSelectorConfig.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .maxMachines(getMaxMachines())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds());
+    return builder;
+  }
+
 }
 

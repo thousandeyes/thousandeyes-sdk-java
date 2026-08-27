@@ -132,5 +132,64 @@ public class ApiGraphletPoint {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiGraphletPoint instance;
+
+    public ModelBuilder() {
+      this(new ApiGraphletPoint());
+    }
+
+    protected ModelBuilder(ApiGraphletPoint instance) {
+      this.instance = instance;
+    }
+
+    public ApiGraphletPoint.ModelBuilder x(Long x) {
+      this.instance.setX(x);
+      return this;
+    }
+    public ApiGraphletPoint.ModelBuilder y(Double y) {
+      this.instance.setY(y);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiGraphletPoint instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiGraphletPoint build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiGraphletPoint.ModelBuilder builder() {
+    return new ApiGraphletPoint.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiGraphletPoint.ModelBuilder toBuilder() {
+    ApiGraphletPoint.ModelBuilder builder = new ApiGraphletPoint.ModelBuilder()
+      .x(getX())
+      .y(getY());
+    return builder;
+  }
+
 }
 

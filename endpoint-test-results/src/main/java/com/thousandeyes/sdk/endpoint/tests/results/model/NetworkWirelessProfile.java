@@ -41,62 +41,46 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkWirelessProfile {
   public static final String JSON_PROPERTY_SSID = "ssid";
+  @JsonProperty(JSON_PROPERTY_SSID)
   private String ssid;
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
+  @JsonProperty(JSON_PROPERTY_BSSID)
   private String bssid;
 
   public static final String JSON_PROPERTY_CHANNEL = "channel";
+  @JsonProperty(JSON_PROPERTY_CHANNEL)
   private Integer channel;
 
   public static final String JSON_PROPERTY_PHY_MODE = "phyMode";
+  @JsonProperty(JSON_PROPERTY_PHY_MODE)
   private String phyMode;
 
   public static final String JSON_PROPERTY_RSSI = "rssi";
+  @JsonProperty(JSON_PROPERTY_RSSI)
   private Integer rssi;
 
   public static final String JSON_PROPERTY_NOISE = "noise";
+  @JsonProperty(JSON_PROPERTY_NOISE)
   private Integer noise;
 
   public static final String JSON_PROPERTY_SNR = "snr";
+  @JsonProperty(JSON_PROPERTY_SNR)
   private Integer snr;
 
   public static final String JSON_PROPERTY_QUALITY = "quality";
+  @JsonProperty(JSON_PROPERTY_QUALITY)
   private Integer quality;
 
   public static final String JSON_PROPERTY_TX_RATE = "txRate";
+  @JsonProperty(JSON_PROPERTY_TX_RATE)
   private Integer txRate;
 
   public static final String JSON_PROPERTY_VENDOR = "vendor";
+  @JsonProperty(JSON_PROPERTY_VENDOR)
   private String vendor;
 
   public NetworkWirelessProfile() { 
-  }
-
-  @JsonCreator
-  public NetworkWirelessProfile(
-    @JsonProperty(JSON_PROPERTY_SSID) String ssid, 
-    @JsonProperty(JSON_PROPERTY_BSSID) String bssid, 
-    @JsonProperty(JSON_PROPERTY_CHANNEL) Integer channel, 
-    @JsonProperty(JSON_PROPERTY_PHY_MODE) String phyMode, 
-    @JsonProperty(JSON_PROPERTY_RSSI) Integer rssi, 
-    @JsonProperty(JSON_PROPERTY_NOISE) Integer noise, 
-    @JsonProperty(JSON_PROPERTY_SNR) Integer snr, 
-    @JsonProperty(JSON_PROPERTY_QUALITY) Integer quality, 
-    @JsonProperty(JSON_PROPERTY_TX_RATE) Integer txRate, 
-    @JsonProperty(JSON_PROPERTY_VENDOR) String vendor
-  ) {
-  this();
-    this.ssid = ssid;
-    this.bssid = bssid;
-    this.channel = channel;
-    this.phyMode = phyMode;
-    this.rssi = rssi;
-    this.noise = noise;
-    this.snr = snr;
-    this.quality = quality;
-    this.txRate = txRate;
-    this.vendor = vendor;
   }
 
    /**
@@ -306,5 +290,104 @@ public class NetworkWirelessProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkWirelessProfile instance;
+
+    public ModelBuilder() {
+      this(new NetworkWirelessProfile());
+    }
+
+    protected ModelBuilder(NetworkWirelessProfile instance) {
+      this.instance = instance;
+    }
+
+    public NetworkWirelessProfile.ModelBuilder ssid(String ssid) {
+      this.instance.ssid = ssid;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder bssid(String bssid) {
+      this.instance.bssid = bssid;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder channel(Integer channel) {
+      this.instance.channel = channel;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder phyMode(String phyMode) {
+      this.instance.phyMode = phyMode;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder rssi(Integer rssi) {
+      this.instance.rssi = rssi;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder noise(Integer noise) {
+      this.instance.noise = noise;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder snr(Integer snr) {
+      this.instance.snr = snr;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder quality(Integer quality) {
+      this.instance.quality = quality;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder txRate(Integer txRate) {
+      this.instance.txRate = txRate;
+      return this;
+    }
+    public NetworkWirelessProfile.ModelBuilder vendor(String vendor) {
+      this.instance.vendor = vendor;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkWirelessProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkWirelessProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkWirelessProfile.ModelBuilder builder() {
+    return new NetworkWirelessProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkWirelessProfile.ModelBuilder toBuilder() {
+    NetworkWirelessProfile.ModelBuilder builder = new NetworkWirelessProfile.ModelBuilder()
+      .ssid(getSsid())
+      .bssid(getBssid())
+      .channel(getChannel())
+      .phyMode(getPhyMode())
+      .rssi(getRssi())
+      .noise(getNoise())
+      .snr(getSnr())
+      .quality(getQuality())
+      .txRate(getTxRate())
+      .vendor(getVendor());
+    return builder;
+  }
+
 }
 

@@ -259,5 +259,84 @@ public class AlertMetricDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertMetricDetail instance;
+
+    public ModelBuilder() {
+      this(new AlertMetricDetail());
+    }
+
+    protected ModelBuilder(AlertMetricDetail instance) {
+      this.instance = instance;
+    }
+
+    public AlertMetricDetail.ModelBuilder end(EndAlertMetrics end) {
+      this.instance.setEnd(end);
+      return this;
+    }
+    public AlertMetricDetail.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public AlertMetricDetail.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public AlertMetricDetail.ModelBuilder start(StartAlertMetrics start) {
+      this.instance.setStart(start);
+      return this;
+    }
+    public AlertMetricDetail.ModelBuilder state(State state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public AlertMetricDetail.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertMetricDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertMetricDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertMetricDetail.ModelBuilder builder() {
+    return new AlertMetricDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertMetricDetail.ModelBuilder toBuilder() {
+    AlertMetricDetail.ModelBuilder builder = new AlertMetricDetail.ModelBuilder()
+      .end(getEnd())
+      .id(getId())
+      .name(getName())
+      .start(getStart())
+      .state(getState())
+      .type(getType());
+    return builder;
+  }
+
 }
 

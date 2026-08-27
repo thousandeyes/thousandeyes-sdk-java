@@ -238,5 +238,79 @@ public class RoleDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RoleDetail instance;
+
+    public ModelBuilder() {
+      this(new RoleDetail());
+    }
+
+    protected ModelBuilder(RoleDetail instance) {
+      this.instance = instance;
+    }
+
+    public RoleDetail.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public RoleDetail.ModelBuilder roleId(String roleId) {
+      this.instance.setRoleId(roleId);
+      return this;
+    }
+    public RoleDetail.ModelBuilder isBuiltin(Boolean isBuiltin) {
+      this.instance.setIsBuiltin(isBuiltin);
+      return this;
+    }
+    public RoleDetail.ModelBuilder permissions(List<Permission> permissions) {
+      this.instance.setPermissions(permissions);
+      return this;
+    }
+    public RoleDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RoleDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RoleDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RoleDetail.ModelBuilder builder() {
+    return new RoleDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RoleDetail.ModelBuilder toBuilder() {
+    RoleDetail.ModelBuilder builder = new RoleDetail.ModelBuilder()
+      .name(getName())
+      .roleId(getRoleId())
+      .isBuiltin(getIsBuiltin())
+      .permissions(getPermissions())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -500,5 +500,119 @@ public class CloneDashboardRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CloneDashboardRequest instance;
+
+    public ModelBuilder() {
+      this(new CloneDashboardRequest());
+    }
+
+    protected ModelBuilder(CloneDashboardRequest instance) {
+      this.instance = instance;
+    }
+
+    public CloneDashboardRequest.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder layout(DashboardLayout layout) {
+      this.instance.setLayout(layout);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder defaultTimespan(DefaultTimespan defaultTimespan) {
+      this.instance.setDefaultTimespan(defaultTimespan);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder isGlobalOverride(Boolean isGlobalOverride) {
+      this.instance.setIsGlobalOverride(isGlobalOverride);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder refreshRate(CloneDashboardRefreshRate refreshRate) {
+      this.instance.setRefreshRate(refreshRate);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder globalFilterId(String globalFilterId) {
+      this.instance.setGlobalFilterId(globalFilterId);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder sharedAccountIds(Set<String> sharedAccountIds) {
+      this.instance.setSharedAccountIds(sharedAccountIds);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder isSharedWithAllAccountGroups(Boolean isSharedWithAllAccountGroups) {
+      this.instance.setIsSharedWithAllAccountGroups(isSharedWithAllAccountGroups);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder isPrivate(Boolean isPrivate) {
+      this.instance.setIsPrivate(isPrivate);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder isDefaultForUser(Boolean isDefaultForUser) {
+      this.instance.setIsDefaultForUser(isDefaultForUser);
+      return this;
+    }
+    public CloneDashboardRequest.ModelBuilder isDefaultForAccount(Boolean isDefaultForAccount) {
+      this.instance.setIsDefaultForAccount(isDefaultForAccount);
+      return this;
+    }
+
+    /**
+     * Returns a built CloneDashboardRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CloneDashboardRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CloneDashboardRequest.ModelBuilder builder() {
+    return new CloneDashboardRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CloneDashboardRequest.ModelBuilder toBuilder() {
+    CloneDashboardRequest.ModelBuilder builder = new CloneDashboardRequest.ModelBuilder()
+      .title(getTitle())
+      .tagIds(getTagIds())
+      .description(getDescription())
+      .layout(getLayout())
+      .defaultTimespan(getDefaultTimespan())
+      .isGlobalOverride(getIsGlobalOverride())
+      .refreshRate(getRefreshRate())
+      .globalFilterId(getGlobalFilterId())
+      .sharedAccountIds(getSharedAccountIds())
+      .isSharedWithAllAccountGroups(getIsSharedWithAllAccountGroups())
+      .isPrivate(getIsPrivate())
+      .isDefaultForUser(getIsDefaultForUser())
+      .isDefaultForAccount(getIsDefaultForAccount());
+    return builder;
+  }
+
 }
 

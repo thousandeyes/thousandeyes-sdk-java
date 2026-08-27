@@ -318,5 +318,94 @@ public class TestSelfLink {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestSelfLink instance;
+
+    public ModelBuilder() {
+      this(new TestSelfLink());
+    }
+
+    protected ModelBuilder(TestSelfLink instance) {
+      this.instance = instance;
+    }
+
+    public TestSelfLink.ModelBuilder href(String href) {
+      this.instance.setHref(href);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder templated(Boolean templated) {
+      this.instance.setTemplated(templated);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder deprecation(String deprecation) {
+      this.instance.setDeprecation(deprecation);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder profile(String profile) {
+      this.instance.setProfile(profile);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public TestSelfLink.ModelBuilder hreflang(String hreflang) {
+      this.instance.setHreflang(hreflang);
+      return this;
+    }
+
+    /**
+     * Returns a built TestSelfLink instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestSelfLink build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestSelfLink.ModelBuilder builder() {
+    return new TestSelfLink.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestSelfLink.ModelBuilder toBuilder() {
+    TestSelfLink.ModelBuilder builder = new TestSelfLink.ModelBuilder()
+      .href(getHref())
+      .templated(getTemplated())
+      .type(getType())
+      .deprecation(getDeprecation())
+      .name(getName())
+      .profile(getProfile())
+      .title(getTitle())
+      .hreflang(getHreflang());
+    return builder;
+  }
+
 }
 

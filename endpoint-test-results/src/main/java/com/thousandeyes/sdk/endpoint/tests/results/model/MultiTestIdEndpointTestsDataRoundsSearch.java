@@ -177,5 +177,69 @@ public class MultiTestIdEndpointTestsDataRoundsSearch {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private MultiTestIdEndpointTestsDataRoundsSearch instance;
+
+    public ModelBuilder() {
+      this(new MultiTestIdEndpointTestsDataRoundsSearch());
+    }
+
+    protected ModelBuilder(MultiTestIdEndpointTestsDataRoundsSearch instance) {
+      this.instance = instance;
+    }
+
+    public MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder searchSort(List<EndpointTestsDataSearchSort> searchSort) {
+      this.instance.setSearchSort(searchSort);
+      return this;
+    }
+    public MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder thresholdFilter(EndpointTestsDataThresholdFilters thresholdFilter) {
+      this.instance.setThresholdFilter(thresholdFilter);
+      return this;
+    }
+    public MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder searchFilters(MultiTestIdEndpointTestsDataSearchFilter searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built MultiTestIdEndpointTestsDataRoundsSearch instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public MultiTestIdEndpointTestsDataRoundsSearch build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder builder() {
+    return new MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder toBuilder() {
+    MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder builder = new MultiTestIdEndpointTestsDataRoundsSearch.ModelBuilder()
+      .searchSort(getSearchSort())
+      .thresholdFilter(getThresholdFilter())
+      .searchFilters(getSearchFilters());
+    return builder;
+  }
+
 }
 

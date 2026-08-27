@@ -83,17 +83,10 @@ public class SipServerProperties {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public SipServerProperties() { 
-  }
-
-  @JsonCreator
-  public SipServerProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public SipServerProperties mtuMeasurements(Boolean mtuMeasurements) {
@@ -482,5 +475,119 @@ public class SipServerProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SipServerProperties instance;
+
+    public ModelBuilder() {
+      this(new SipServerProperties());
+    }
+
+    protected ModelBuilder(SipServerProperties instance) {
+      this.instance = instance;
+    }
+
+    public SipServerProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder optionsRegex(String optionsRegex) {
+      this.instance.setOptionsRegex(optionsRegex);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder registerEnabled(Boolean registerEnabled) {
+      this.instance.setRegisterEnabled(registerEnabled);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder sipTargetTime(Integer sipTargetTime) {
+      this.instance.setSipTargetTime(sipTargetTime);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder sipTimeLimit(Integer sipTimeLimit) {
+      this.instance.setSipTimeLimit(sipTimeLimit);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public SipServerProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built SipServerProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SipServerProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SipServerProperties.ModelBuilder builder() {
+    return new SipServerProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SipServerProperties.ModelBuilder toBuilder() {
+    SipServerProperties.ModelBuilder builder = new SipServerProperties.ModelBuilder()
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .optionsRegex(getOptionsRegex())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .randomizedStartTime(getRandomizedStartTime())
+      .registerEnabled(getRegisterEnabled())
+      .sipTargetTime(getSipTargetTime())
+      .sipTimeLimit(getSipTimeLimit())
+      .fixedPacketRate(getFixedPacketRate())
+      .ipv6Policy(getIpv6Policy())
+      .type(getType());
+    return builder;
+  }
+
 }
 

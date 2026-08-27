@@ -163,5 +163,69 @@ public class ApiAgentStatusSummary {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAgentStatusSummary instance;
+
+    public ModelBuilder() {
+      this(new ApiAgentStatusSummary());
+    }
+
+    protected ModelBuilder(ApiAgentStatusSummary instance) {
+      this.instance = instance;
+    }
+
+    public ApiAgentStatusSummary.ModelBuilder online(Integer online) {
+      this.instance.setOnline(online);
+      return this;
+    }
+    public ApiAgentStatusSummary.ModelBuilder offline(Integer offline) {
+      this.instance.setOffline(offline);
+      return this;
+    }
+    public ApiAgentStatusSummary.ModelBuilder disabled(Integer disabled) {
+      this.instance.setDisabled(disabled);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAgentStatusSummary instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAgentStatusSummary build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAgentStatusSummary.ModelBuilder builder() {
+    return new ApiAgentStatusSummary.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAgentStatusSummary.ModelBuilder toBuilder() {
+    ApiAgentStatusSummary.ModelBuilder builder = new ApiAgentStatusSummary.ModelBuilder()
+      .online(getOnline())
+      .offline(getOffline())
+      .disabled(getDisabled());
+    return builder;
+  }
+
 }
 

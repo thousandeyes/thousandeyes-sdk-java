@@ -50,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertSuppressionWindowDetail {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID = "alertSuppressionWindowId";
+  @JsonProperty(JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID)
   private String alertSuppressionWindowId;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -80,14 +81,6 @@ public class AlertSuppressionWindowDetail {
   private List<SimpleTest> tests = new ArrayList<>();
 
   public AlertSuppressionWindowDetail() { 
-  }
-
-  @JsonCreator
-  public AlertSuppressionWindowDetail(
-    @JsonProperty(JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID) String alertSuppressionWindowId
-  ) {
-  this();
-    this.alertSuppressionWindowId = alertSuppressionWindowId;
   }
 
    /**
@@ -395,5 +388,104 @@ public class AlertSuppressionWindowDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertSuppressionWindowDetail instance;
+
+    public ModelBuilder() {
+      this(new AlertSuppressionWindowDetail());
+    }
+
+    protected ModelBuilder(AlertSuppressionWindowDetail instance) {
+      this.instance = instance;
+    }
+
+    public AlertSuppressionWindowDetail.ModelBuilder alertSuppressionWindowId(String alertSuppressionWindowId) {
+      this.instance.alertSuppressionWindowId = alertSuppressionWindowId;
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder status(AlertSuppressionWindowState status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder duration(Integer duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder repeat(Repeat repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder endRepeat(EndRepeat endRepeat) {
+      this.instance.setEndRepeat(endRepeat);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public AlertSuppressionWindowDetail.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertSuppressionWindowDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertSuppressionWindowDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertSuppressionWindowDetail.ModelBuilder builder() {
+    return new AlertSuppressionWindowDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertSuppressionWindowDetail.ModelBuilder toBuilder() {
+    AlertSuppressionWindowDetail.ModelBuilder builder = new AlertSuppressionWindowDetail.ModelBuilder()
+      .alertSuppressionWindowId(getAlertSuppressionWindowId())
+      .name(getName())
+      .isEnabled(getIsEnabled())
+      .status(getStatus())
+      .startDate(getStartDate())
+      .duration(getDuration())
+      .repeat(getRepeat())
+      .endRepeat(getEndRepeat())
+      .links(getLinks())
+      .tests(getTests());
+    return builder;
+  }
+
 }
 

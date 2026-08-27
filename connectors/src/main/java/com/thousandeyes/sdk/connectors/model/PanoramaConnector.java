@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PanoramaConnector {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   /**
@@ -87,6 +88,7 @@ public class PanoramaConnector {
   private String target;
 
   public static final String JSON_PROPERTY_LAST_MODIFIED_DATE = "lastModifiedDate";
+  @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE)
   private Long lastModifiedDate;
 
   public static final String JSON_PROPERTY_AUTHENTICATION = "authentication";
@@ -96,16 +98,6 @@ public class PanoramaConnector {
   private SelfLinks links;
 
   public PanoramaConnector() { 
-  }
-
-  @JsonCreator
-  public PanoramaConnector(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE) Long lastModifiedDate
-  ) {
-  this();
-    this.id = id;
-    this.lastModifiedDate = lastModifiedDate;
   }
 
    /**
@@ -314,5 +306,89 @@ public class PanoramaConnector {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PanoramaConnector instance;
+
+    public ModelBuilder() {
+      this(new PanoramaConnector());
+    }
+
+    protected ModelBuilder(PanoramaConnector instance) {
+      this.instance = instance;
+    }
+
+    public PanoramaConnector.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder type(TypeEnum type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder lastModifiedDate(Long lastModifiedDate) {
+      this.instance.lastModifiedDate = lastModifiedDate;
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder authentication(PanoramaConnectorAuth authentication) {
+      this.instance.setAuthentication(authentication);
+      return this;
+    }
+    public PanoramaConnector.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PanoramaConnector instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PanoramaConnector build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PanoramaConnector.ModelBuilder builder() {
+    return new PanoramaConnector.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PanoramaConnector.ModelBuilder toBuilder() {
+    PanoramaConnector.ModelBuilder builder = new PanoramaConnector.ModelBuilder()
+      .id(getId())
+      .type(getType())
+      .name(getName())
+      .target(getTarget())
+      .lastModifiedDate(getLastModifiedDate())
+      .authentication(getAuthentication())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

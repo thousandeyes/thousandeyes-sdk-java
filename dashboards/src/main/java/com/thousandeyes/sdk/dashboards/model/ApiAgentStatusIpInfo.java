@@ -194,5 +194,74 @@ public class ApiAgentStatusIpInfo {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAgentStatusIpInfo instance;
+
+    public ModelBuilder() {
+      this(new ApiAgentStatusIpInfo());
+    }
+
+    protected ModelBuilder(ApiAgentStatusIpInfo instance) {
+      this.instance = instance;
+    }
+
+    public ApiAgentStatusIpInfo.ModelBuilder publicIp(String publicIp) {
+      this.instance.setPublicIp(publicIp);
+      return this;
+    }
+    public ApiAgentStatusIpInfo.ModelBuilder privateIp(String privateIp) {
+      this.instance.setPrivateIp(privateIp);
+      return this;
+    }
+    public ApiAgentStatusIpInfo.ModelBuilder ipv6(String ipv6) {
+      this.instance.setIpv6(ipv6);
+      return this;
+    }
+    public ApiAgentStatusIpInfo.ModelBuilder operativeSystemVersion(String operativeSystemVersion) {
+      this.instance.setOperativeSystemVersion(operativeSystemVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAgentStatusIpInfo instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAgentStatusIpInfo build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAgentStatusIpInfo.ModelBuilder builder() {
+    return new ApiAgentStatusIpInfo.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAgentStatusIpInfo.ModelBuilder toBuilder() {
+    ApiAgentStatusIpInfo.ModelBuilder builder = new ApiAgentStatusIpInfo.ModelBuilder()
+      .publicIp(getPublicIp())
+      .privateIp(getPrivateIp())
+      .ipv6(getIpv6())
+      .operativeSystemVersion(getOperativeSystemVersion());
+    return builder;
+  }
+
 }
 

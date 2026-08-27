@@ -50,6 +50,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WebhookOperation {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -83,14 +84,6 @@ public class WebhookOperation {
   private SelfLinks links;
 
   public WebhookOperation() { 
-  }
-
-  @JsonCreator
-  public WebhookOperation(
-    @JsonProperty(JSON_PROPERTY_ID) String id
-  ) {
-  this();
-    this.id = id;
   }
 
    /**
@@ -425,5 +418,109 @@ public class WebhookOperation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebhookOperation instance;
+
+    public ModelBuilder() {
+      this(new WebhookOperation());
+    }
+
+    protected ModelBuilder(WebhookOperation instance) {
+      this.instance = instance;
+    }
+
+    public WebhookOperation.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public WebhookOperation.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder category(OperationCategory category) {
+      this.instance.setCategory(category);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder status(OperationStatus status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder path(String path) {
+      this.instance.setPath(path);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder payload(String payload) {
+      this.instance.setPayload(payload);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder headers(List<Header> headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder queryParams(String queryParams) {
+      this.instance.setQueryParams(queryParams);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder type(OperationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public WebhookOperation.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built WebhookOperation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebhookOperation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebhookOperation.ModelBuilder builder() {
+    return new WebhookOperation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebhookOperation.ModelBuilder toBuilder() {
+    WebhookOperation.ModelBuilder builder = new WebhookOperation.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .enabled(getEnabled())
+      .category(getCategory())
+      .status(getStatus())
+      .path(getPath())
+      .payload(getPayload())
+      .headers(getHeaders())
+      .queryParams(getQueryParams())
+      .type(getType())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -176,5 +176,69 @@ public class Filter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Filter instance;
+
+    public ModelBuilder() {
+      this(new Filter());
+    }
+
+    protected ModelBuilder(Filter instance) {
+      this.instance = instance;
+    }
+
+    public Filter.ModelBuilder key(FilterType key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public Filter.ModelBuilder values(List<String> values) {
+      this.instance.setValues(values);
+      return this;
+    }
+    public Filter.ModelBuilder mode(LabelFilterMode mode) {
+      this.instance.setMode(mode);
+      return this;
+    }
+
+    /**
+     * Returns a built Filter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Filter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Filter.ModelBuilder builder() {
+    return new Filter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Filter.ModelBuilder toBuilder() {
+    Filter.ModelBuilder builder = new Filter.ModelBuilder()
+      .key(getKey())
+      .values(getValues())
+      .mode(getMode());
+    return builder;
+  }
+
 }
 

@@ -43,20 +43,13 @@ public class BulkTagResponse {
   private List<Tag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
+  @JsonProperty(JSON_PROPERTY_ERRORS)
   private List<TagBulkCreateError> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
   public BulkTagResponse() { 
-  }
-
-  @JsonCreator
-  public BulkTagResponse(
-    @JsonProperty(JSON_PROPERTY_ERRORS) List<TagBulkCreateError> errors
-  ) {
-  this();
-    this.errors = errors;
   }
 
   public BulkTagResponse tags(List<Tag> tags) {
@@ -175,5 +168,69 @@ public class BulkTagResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BulkTagResponse instance;
+
+    public ModelBuilder() {
+      this(new BulkTagResponse());
+    }
+
+    protected ModelBuilder(BulkTagResponse instance) {
+      this.instance = instance;
+    }
+
+    public BulkTagResponse.ModelBuilder tags(List<Tag> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public BulkTagResponse.ModelBuilder errors(List<TagBulkCreateError> errors) {
+      this.instance.errors = errors;
+      return this;
+    }
+    public BulkTagResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built BulkTagResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BulkTagResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BulkTagResponse.ModelBuilder builder() {
+    return new BulkTagResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BulkTagResponse.ModelBuilder toBuilder() {
+    BulkTagResponse.ModelBuilder builder = new BulkTagResponse.ModelBuilder()
+      .tags(getTags())
+      .errors(getErrors())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

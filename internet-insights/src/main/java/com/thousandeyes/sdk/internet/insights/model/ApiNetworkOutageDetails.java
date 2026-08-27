@@ -578,5 +578,129 @@ public class ApiNetworkOutageDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiNetworkOutageDetails instance;
+
+    public ModelBuilder() {
+      this(new ApiNetworkOutageDetails());
+    }
+
+    protected ModelBuilder(ApiNetworkOutageDetails instance) {
+      this.instance = instance;
+    }
+
+    public ApiNetworkOutageDetails.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder providerName(String providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder providerType(String providerType) {
+      this.instance.setProviderType(providerType);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder networkName(String networkName) {
+      this.instance.setNetworkName(networkName);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder asn(Integer asn) {
+      this.instance.setAsn(asn);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder startDate(String startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder startRoundId(Long startRoundId) {
+      this.instance.setStartRoundId(startRoundId);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder endDate(String endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder endRoundId(Long endRoundId) {
+      this.instance.setEndRoundId(endRoundId);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder affectedTests(Set<InternetInsightsApiAffectedTest> affectedTests) {
+      this.instance.setAffectedTests(affectedTests);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder affectedDomains(Set<String> affectedDomains) {
+      this.instance.setAffectedDomains(affectedDomains);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder affectedAgents(Set<InternetInsightsApiAffectedAgent> affectedAgents) {
+      this.instance.setAffectedAgents(affectedAgents);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder affectedLocations(Set<ApiNetworkOutageAffectedLocation> affectedLocations) {
+      this.instance.setAffectedLocations(affectedLocations);
+      return this;
+    }
+    public ApiNetworkOutageDetails.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiNetworkOutageDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiNetworkOutageDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiNetworkOutageDetails.ModelBuilder builder() {
+    return new ApiNetworkOutageDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiNetworkOutageDetails.ModelBuilder toBuilder() {
+    ApiNetworkOutageDetails.ModelBuilder builder = new ApiNetworkOutageDetails.ModelBuilder()
+      .id(getId())
+      .providerName(getProviderName())
+      .providerType(getProviderType())
+      .networkName(getNetworkName())
+      .asn(getAsn())
+      .startDate(getStartDate())
+      .startRoundId(getStartRoundId())
+      .endDate(getEndDate())
+      .endRoundId(getEndRoundId())
+      .duration(getDuration())
+      .affectedTests(getAffectedTests())
+      .affectedDomains(getAffectedDomains())
+      .affectedAgents(getAffectedAgents())
+      .affectedLocations(getAffectedLocations())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

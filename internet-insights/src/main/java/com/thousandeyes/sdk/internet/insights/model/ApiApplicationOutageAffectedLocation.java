@@ -144,5 +144,64 @@ public class ApiApplicationOutageAffectedLocation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiApplicationOutageAffectedLocation instance;
+
+    public ModelBuilder() {
+      this(new ApiApplicationOutageAffectedLocation());
+    }
+
+    protected ModelBuilder(ApiApplicationOutageAffectedLocation instance) {
+      this.instance = instance;
+    }
+
+    public ApiApplicationOutageAffectedLocation.ModelBuilder location(String location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public ApiApplicationOutageAffectedLocation.ModelBuilder affectedServers(List<ApiApplicationOutageAffectedServer> affectedServers) {
+      this.instance.setAffectedServers(affectedServers);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiApplicationOutageAffectedLocation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiApplicationOutageAffectedLocation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiApplicationOutageAffectedLocation.ModelBuilder builder() {
+    return new ApiApplicationOutageAffectedLocation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiApplicationOutageAffectedLocation.ModelBuilder toBuilder() {
+    ApiApplicationOutageAffectedLocation.ModelBuilder builder = new ApiApplicationOutageAffectedLocation.ModelBuilder()
+      .location(getLocation())
+      .affectedServers(getAffectedServers());
+    return builder;
+  }
+
 }
 

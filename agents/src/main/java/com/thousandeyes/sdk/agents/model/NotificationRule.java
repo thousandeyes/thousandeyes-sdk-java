@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NotificationRule {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
@@ -51,14 +52,6 @@ public class NotificationRule {
   private Boolean isDefault;
 
   public NotificationRule() { 
-  }
-
-  @JsonCreator
-  public NotificationRule(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId
-  ) {
-  this();
-    this.ruleId = ruleId;
   }
 
    /**
@@ -223,5 +216,79 @@ public class NotificationRule {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationRule instance;
+
+    public ModelBuilder() {
+      this(new NotificationRule());
+    }
+
+    protected ModelBuilder(NotificationRule instance) {
+      this.instance = instance;
+    }
+
+    public NotificationRule.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public NotificationRule.ModelBuilder ruleName(String ruleName) {
+      this.instance.setRuleName(ruleName);
+      return this;
+    }
+    public NotificationRule.ModelBuilder expression(String expression) {
+      this.instance.setExpression(expression);
+      return this;
+    }
+    public NotificationRule.ModelBuilder notifyOnClear(Boolean notifyOnClear) {
+      this.instance.setNotifyOnClear(notifyOnClear);
+      return this;
+    }
+    public NotificationRule.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.setIsDefault(isDefault);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationRule instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationRule build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationRule.ModelBuilder builder() {
+    return new NotificationRule.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationRule.ModelBuilder toBuilder() {
+    NotificationRule.ModelBuilder builder = new NotificationRule.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .notifyOnClear(getNotifyOnClear())
+      .isDefault(getIsDefault());
+    return builder;
+  }
+
 }
 

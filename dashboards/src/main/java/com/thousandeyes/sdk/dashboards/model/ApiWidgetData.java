@@ -51,22 +51,14 @@ public class ApiWidgetData {
   private ApiWidgetsDataV2 data;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public ApiWidgetData() { 
-  }
-
-  @JsonCreator
-  public ApiWidgetData(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public ApiWidgetData groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
@@ -229,5 +221,79 @@ public class ApiWidgetData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetData instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetData());
+    }
+
+    protected ModelBuilder(ApiWidgetData instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetData.ModelBuilder groupLabels(List<ApiReportDataComponentLabelMap> groupLabels) {
+      this.instance.setGroupLabels(groupLabels);
+      return this;
+    }
+    public ApiWidgetData.ModelBuilder binSize(Long binSize) {
+      this.instance.setBinSize(binSize);
+      return this;
+    }
+    public ApiWidgetData.ModelBuilder data(ApiWidgetsDataV2 data) {
+      this.instance.setData(data);
+      return this;
+    }
+    public ApiWidgetData.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public ApiWidgetData.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetData.ModelBuilder builder() {
+    return new ApiWidgetData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetData.ModelBuilder toBuilder() {
+    ApiWidgetData.ModelBuilder builder = new ApiWidgetData.ModelBuilder()
+      .groupLabels(getGroupLabels())
+      .binSize(getBinSize())
+      .data(getData())
+      .startDate(getStartDate())
+      .endDate(getEndDate());
+    return builder;
+  }
+
 }
 

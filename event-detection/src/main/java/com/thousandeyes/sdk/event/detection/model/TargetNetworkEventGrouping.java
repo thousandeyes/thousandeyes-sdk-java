@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TargetNetworkEventGrouping {
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public TargetNetworkEventGrouping() { 
-  }
-
-  @JsonCreator
-  public TargetNetworkEventGrouping(
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix
-  ) {
-  this();
-    this.prefix = prefix;
   }
 
    /**
@@ -99,5 +92,59 @@ public class TargetNetworkEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TargetNetworkEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new TargetNetworkEventGrouping());
+    }
+
+    protected ModelBuilder(TargetNetworkEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public TargetNetworkEventGrouping.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+
+    /**
+     * Returns a built TargetNetworkEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TargetNetworkEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TargetNetworkEventGrouping.ModelBuilder builder() {
+    return new TargetNetworkEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TargetNetworkEventGrouping.ModelBuilder toBuilder() {
+    TargetNetworkEventGrouping.ModelBuilder builder = new TargetNetworkEventGrouping.ModelBuilder()
+      .prefix(getPrefix());
+    return builder;
+  }
+
 }
 

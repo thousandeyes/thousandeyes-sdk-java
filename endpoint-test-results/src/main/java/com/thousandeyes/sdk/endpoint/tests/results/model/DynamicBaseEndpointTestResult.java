@@ -229,5 +229,79 @@ public class DynamicBaseEndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicBaseEndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new DynamicBaseEndpointTestResult());
+    }
+
+    protected ModelBuilder(DynamicBaseEndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public DynamicBaseEndpointTestResult.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+    public DynamicBaseEndpointTestResult.ModelBuilder protocol(EndpointTestResultProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public DynamicBaseEndpointTestResult.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public DynamicBaseEndpointTestResult.ModelBuilder udpProbeMode(UdpProbeModeResponse udpProbeMode) {
+      this.instance.setUdpProbeMode(udpProbeMode);
+      return this;
+    }
+    public DynamicBaseEndpointTestResult.ModelBuilder webex(DynamicEndpointTestWebex webex) {
+      this.instance.setWebex(webex);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicBaseEndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicBaseEndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicBaseEndpointTestResult.ModelBuilder builder() {
+    return new DynamicBaseEndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicBaseEndpointTestResult.ModelBuilder toBuilder() {
+    DynamicBaseEndpointTestResult.ModelBuilder builder = new DynamicBaseEndpointTestResult.ModelBuilder()
+      .application(getApplication())
+      .protocol(getProtocol())
+      .tcpProbeMode(getTcpProbeMode())
+      .udpProbeMode(getUdpProbeMode())
+      .webex(getWebex());
+    return builder;
+  }
+
 }
 

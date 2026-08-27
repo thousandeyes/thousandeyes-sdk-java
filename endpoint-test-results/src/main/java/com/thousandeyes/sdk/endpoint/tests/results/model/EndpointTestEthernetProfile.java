@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointTestEthernetProfile {
   public static final String JSON_PROPERTY_LINK_SPEED = "linkSpeed";
+  @JsonProperty(JSON_PROPERTY_LINK_SPEED)
   private Integer linkSpeed;
 
   public EndpointTestEthernetProfile() { 
-  }
-
-  @JsonCreator
-  public EndpointTestEthernetProfile(
-    @JsonProperty(JSON_PROPERTY_LINK_SPEED) Integer linkSpeed
-  ) {
-  this();
-    this.linkSpeed = linkSpeed;
   }
 
    /**
@@ -99,5 +92,59 @@ public class EndpointTestEthernetProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestEthernetProfile instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestEthernetProfile());
+    }
+
+    protected ModelBuilder(EndpointTestEthernetProfile instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestEthernetProfile.ModelBuilder linkSpeed(Integer linkSpeed) {
+      this.instance.linkSpeed = linkSpeed;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestEthernetProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestEthernetProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestEthernetProfile.ModelBuilder builder() {
+    return new EndpointTestEthernetProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestEthernetProfile.ModelBuilder toBuilder() {
+    EndpointTestEthernetProfile.ModelBuilder builder = new EndpointTestEthernetProfile.ModelBuilder()
+      .linkSpeed(getLinkSpeed());
+    return builder;
+  }
+
 }
 

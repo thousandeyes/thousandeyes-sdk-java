@@ -67,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiTimeseriesWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -76,6 +77,7 @@ public class ApiTimeseriesWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -100,6 +102,7 @@ public class ApiTimeseriesWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -136,18 +139,6 @@ public class ApiTimeseriesWidget {
   private TimeseriesDatasource dataSource;
 
   public ApiTimeseriesWidget() { 
-  }
-
-  @JsonCreator
-  public ApiTimeseriesWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -788,5 +779,169 @@ public class ApiTimeseriesWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTimeseriesWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiTimeseriesWidget());
+    }
+
+    protected ModelBuilder(ApiTimeseriesWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiTimeseriesWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder minScale(Float minScale) {
+      this.instance.setMinScale(minScale);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder maxScale(Float maxScale) {
+      this.instance.setMaxScale(maxScale);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder unit(ApiWidgetFixedYScalePrefix unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder showTimeseriesOverallBaseline(Boolean showTimeseriesOverallBaseline) {
+      this.instance.setShowTimeseriesOverallBaseline(showTimeseriesOverallBaseline);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder isTimeseriesOneChartPerLine(Boolean isTimeseriesOneChartPerLine) {
+      this.instance.setIsTimeseriesOneChartPerLine(isTimeseriesOneChartPerLine);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder showZoomSlider(Boolean showZoomSlider) {
+      this.instance.setShowZoomSlider(showZoomSlider);
+      return this;
+    }
+    public ApiTimeseriesWidget.ModelBuilder dataSource(TimeseriesDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTimeseriesWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTimeseriesWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTimeseriesWidget.ModelBuilder builder() {
+    return new ApiTimeseriesWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTimeseriesWidget.ModelBuilder toBuilder() {
+    ApiTimeseriesWidget.ModelBuilder builder = new ApiTimeseriesWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .minScale(getMinScale())
+      .maxScale(getMaxScale())
+      .unit(getUnit())
+      .type(getType())
+      .showTimeseriesOverallBaseline(getShowTimeseriesOverallBaseline())
+      .groupBy(getGroupBy())
+      .isTimeseriesOneChartPerLine(getIsTimeseriesOneChartPerLine())
+      .showZoomSlider(getShowZoomSlider())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

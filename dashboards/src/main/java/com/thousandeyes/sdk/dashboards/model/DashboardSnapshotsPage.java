@@ -188,5 +188,69 @@ public class DashboardSnapshotsPage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardSnapshotsPage instance;
+
+    public ModelBuilder() {
+      this(new DashboardSnapshotsPage());
+    }
+
+    protected ModelBuilder(DashboardSnapshotsPage instance) {
+      this.instance = instance;
+    }
+
+    public DashboardSnapshotsPage.ModelBuilder pages(Map<String, Object> pages) {
+      this.instance.setPages(pages);
+      return this;
+    }
+    public DashboardSnapshotsPage.ModelBuilder dashboardSnapshots(List<ApiDashboardSnapshot> dashboardSnapshots) {
+      this.instance.setDashboardSnapshots(dashboardSnapshots);
+      return this;
+    }
+    public DashboardSnapshotsPage.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardSnapshotsPage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardSnapshotsPage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardSnapshotsPage.ModelBuilder builder() {
+    return new DashboardSnapshotsPage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardSnapshotsPage.ModelBuilder toBuilder() {
+    DashboardSnapshotsPage.ModelBuilder builder = new DashboardSnapshotsPage.ModelBuilder()
+      .pages(getPages())
+      .dashboardSnapshots(getDashboardSnapshots())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

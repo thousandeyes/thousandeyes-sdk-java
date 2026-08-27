@@ -41,9 +41,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointPathTrace {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_NUMBER_OF_HOPS = "numberOfHops";
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_HOPS)
   private Integer numberOfHops;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
@@ -56,26 +58,14 @@ public class EndpointPathTrace {
   private UdpPathTraceModeResponse udpPathTraceMode = UdpPathTraceModeResponse.UNKNOWN;
 
   public static final String JSON_PROPERTY_PATH_ID = "pathId";
+  @JsonProperty(JSON_PROPERTY_PATH_ID)
   private String pathId;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public EndpointPathTrace() { 
-  }
-
-  @JsonCreator
-  public EndpointPathTrace(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_NUMBER_OF_HOPS) Integer numberOfHops, 
-    @JsonProperty(JSON_PROPERTY_PATH_ID) String pathId, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime
-  ) {
-  this();
-    this.ipAddress = ipAddress;
-    this.numberOfHops = numberOfHops;
-    this.pathId = pathId;
-    this.responseTime = responseTime;
   }
 
    /**
@@ -264,5 +254,89 @@ public class EndpointPathTrace {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointPathTrace instance;
+
+    public ModelBuilder() {
+      this(new EndpointPathTrace());
+    }
+
+    protected ModelBuilder(EndpointPathTrace instance) {
+      this.instance = instance;
+    }
+
+    public EndpointPathTrace.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder numberOfHops(Integer numberOfHops) {
+      this.instance.numberOfHops = numberOfHops;
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder protocol(EndpointTestResultProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder tcpPathTraceMode(TcpPathTraceModeResponse tcpPathTraceMode) {
+      this.instance.setTcpPathTraceMode(tcpPathTraceMode);
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder udpPathTraceMode(UdpPathTraceModeResponse udpPathTraceMode) {
+      this.instance.setUdpPathTraceMode(udpPathTraceMode);
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder pathId(String pathId) {
+      this.instance.pathId = pathId;
+      return this;
+    }
+    public EndpointPathTrace.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointPathTrace instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointPathTrace build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointPathTrace.ModelBuilder builder() {
+    return new EndpointPathTrace.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointPathTrace.ModelBuilder toBuilder() {
+    EndpointPathTrace.ModelBuilder builder = new EndpointPathTrace.ModelBuilder()
+      .ipAddress(getIpAddress())
+      .numberOfHops(getNumberOfHops())
+      .protocol(getProtocol())
+      .tcpPathTraceMode(getTcpPathTraceMode())
+      .udpPathTraceMode(getUdpPathTraceMode())
+      .pathId(getPathId())
+      .responseTime(getResponseTime());
+    return builder;
+  }
+
 }
 

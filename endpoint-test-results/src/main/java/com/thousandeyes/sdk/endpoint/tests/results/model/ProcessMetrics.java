@@ -225,5 +225,79 @@ public class ProcessMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ProcessMetrics instance;
+
+    public ModelBuilder() {
+      this(new ProcessMetrics());
+    }
+
+    protected ModelBuilder(ProcessMetrics instance) {
+      this.instance = instance;
+    }
+
+    public ProcessMetrics.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ProcessMetrics.ModelBuilder pid(Integer pid) {
+      this.instance.setPid(pid);
+      return this;
+    }
+    public ProcessMetrics.ModelBuilder cpu(Double cpu) {
+      this.instance.setCpu(cpu);
+      return this;
+    }
+    public ProcessMetrics.ModelBuilder memoryPercentage(Double memoryPercentage) {
+      this.instance.setMemoryPercentage(memoryPercentage);
+      return this;
+    }
+    public ProcessMetrics.ModelBuilder memoryBytes(Long memoryBytes) {
+      this.instance.setMemoryBytes(memoryBytes);
+      return this;
+    }
+
+    /**
+     * Returns a built ProcessMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ProcessMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ProcessMetrics.ModelBuilder builder() {
+    return new ProcessMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ProcessMetrics.ModelBuilder toBuilder() {
+    ProcessMetrics.ModelBuilder builder = new ProcessMetrics.ModelBuilder()
+      .name(getName())
+      .pid(getPid())
+      .cpu(getCpu())
+      .memoryPercentage(getMemoryPercentage())
+      .memoryBytes(getMemoryBytes());
+    return builder;
+  }
+
 }
 

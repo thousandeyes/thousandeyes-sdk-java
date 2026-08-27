@@ -164,5 +164,69 @@ public class UnexpandedTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UnexpandedTest instance;
+
+    public ModelBuilder() {
+      this(new UnexpandedTest());
+    }
+
+    protected ModelBuilder(UnexpandedTest instance) {
+      this.instance = instance;
+    }
+
+    public UnexpandedTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public UnexpandedTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public UnexpandedTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+
+    /**
+     * Returns a built UnexpandedTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UnexpandedTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UnexpandedTest.ModelBuilder builder() {
+    return new UnexpandedTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UnexpandedTest.ModelBuilder toBuilder() {
+    UnexpandedTest.ModelBuilder builder = new UnexpandedTest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled());
+    return builder;
+  }
+
 }
 

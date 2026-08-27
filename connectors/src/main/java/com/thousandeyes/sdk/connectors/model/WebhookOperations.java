@@ -145,5 +145,64 @@ public class WebhookOperations {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebhookOperations instance;
+
+    public ModelBuilder() {
+      this(new WebhookOperations());
+    }
+
+    protected ModelBuilder(WebhookOperations instance) {
+      this.instance = instance;
+    }
+
+    public WebhookOperations.ModelBuilder items(List<WebhookOperation> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public WebhookOperations.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built WebhookOperations instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebhookOperations build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebhookOperations.ModelBuilder builder() {
+    return new WebhookOperations.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebhookOperations.ModelBuilder toBuilder() {
+    WebhookOperations.ModelBuilder builder = new WebhookOperations.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

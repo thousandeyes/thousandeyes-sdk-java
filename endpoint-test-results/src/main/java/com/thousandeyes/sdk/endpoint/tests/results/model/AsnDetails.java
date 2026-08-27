@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AsnDetails {
   public static final String JSON_PROPERTY_AS_NAME = "asName";
+  @JsonProperty(JSON_PROPERTY_AS_NAME)
   private String asName;
 
   public static final String JSON_PROPERTY_AS_NUMBER = "asNumber";
+  @JsonProperty(JSON_PROPERTY_AS_NUMBER)
   private Integer asNumber;
 
   public AsnDetails() { 
-  }
-
-  @JsonCreator
-  public AsnDetails(
-    @JsonProperty(JSON_PROPERTY_AS_NAME) String asName, 
-    @JsonProperty(JSON_PROPERTY_AS_NUMBER) Integer asNumber
-  ) {
-  this();
-    this.asName = asName;
-    this.asNumber = asNumber;
   }
 
    /**
@@ -122,5 +114,64 @@ public class AsnDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AsnDetails instance;
+
+    public ModelBuilder() {
+      this(new AsnDetails());
+    }
+
+    protected ModelBuilder(AsnDetails instance) {
+      this.instance = instance;
+    }
+
+    public AsnDetails.ModelBuilder asName(String asName) {
+      this.instance.asName = asName;
+      return this;
+    }
+    public AsnDetails.ModelBuilder asNumber(Integer asNumber) {
+      this.instance.asNumber = asNumber;
+      return this;
+    }
+
+    /**
+     * Returns a built AsnDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AsnDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AsnDetails.ModelBuilder builder() {
+    return new AsnDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AsnDetails.ModelBuilder toBuilder() {
+    AsnDetails.ModelBuilder builder = new AsnDetails.ModelBuilder()
+      .asName(getAsName())
+      .asNumber(getAsNumber());
+    return builder;
+  }
+
 }
 

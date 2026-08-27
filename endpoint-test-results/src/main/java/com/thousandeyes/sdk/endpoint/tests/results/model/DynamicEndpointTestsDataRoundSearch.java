@@ -177,5 +177,69 @@ public class DynamicEndpointTestsDataRoundSearch {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicEndpointTestsDataRoundSearch instance;
+
+    public ModelBuilder() {
+      this(new DynamicEndpointTestsDataRoundSearch());
+    }
+
+    protected ModelBuilder(DynamicEndpointTestsDataRoundSearch instance) {
+      this.instance = instance;
+    }
+
+    public DynamicEndpointTestsDataRoundSearch.ModelBuilder searchSort(List<EndpointTestsDataSearchSort> searchSort) {
+      this.instance.setSearchSort(searchSort);
+      return this;
+    }
+    public DynamicEndpointTestsDataRoundSearch.ModelBuilder thresholdFilter(EndpointTestsDataThresholdFilters thresholdFilter) {
+      this.instance.setThresholdFilter(thresholdFilter);
+      return this;
+    }
+    public DynamicEndpointTestsDataRoundSearch.ModelBuilder searchFilters(DynamicEndpointTestsDataSearchFilter searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicEndpointTestsDataRoundSearch instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicEndpointTestsDataRoundSearch build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicEndpointTestsDataRoundSearch.ModelBuilder builder() {
+    return new DynamicEndpointTestsDataRoundSearch.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicEndpointTestsDataRoundSearch.ModelBuilder toBuilder() {
+    DynamicEndpointTestsDataRoundSearch.ModelBuilder builder = new DynamicEndpointTestsDataRoundSearch.ModelBuilder()
+      .searchSort(getSearchSort())
+      .thresholdFilter(getThresholdFilter())
+      .searchFilters(getSearchFilters());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class UserProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserProfile instance;
+
+    public ModelBuilder() {
+      this(new UserProfile());
+    }
+
+    protected ModelBuilder(UserProfile instance) {
+      this.instance = instance;
+    }
+
+    public UserProfile.ModelBuilder userName(String userName) {
+      this.instance.setUserName(userName);
+      return this;
+    }
+    public UserProfile.ModelBuilder userPrincipalName(String userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+
+    /**
+     * Returns a built UserProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserProfile.ModelBuilder builder() {
+    return new UserProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserProfile.ModelBuilder toBuilder() {
+    UserProfile.ModelBuilder builder = new UserProfile.ModelBuilder()
+      .userName(getUserName())
+      .userPrincipalName(getUserPrincipalName());
+    return builder;
+  }
+
 }
 

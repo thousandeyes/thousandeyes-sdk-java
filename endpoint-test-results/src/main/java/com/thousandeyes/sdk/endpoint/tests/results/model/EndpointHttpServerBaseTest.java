@@ -353,5 +353,99 @@ public class EndpointHttpServerBaseTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointHttpServerBaseTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointHttpServerBaseTest());
+    }
+
+    protected ModelBuilder(EndpointHttpServerBaseTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointHttpServerBaseTest.ModelBuilder authType(EndpointTestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public EndpointHttpServerBaseTest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointHttpServerBaseTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointHttpServerBaseTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointHttpServerBaseTest.ModelBuilder builder() {
+    return new EndpointHttpServerBaseTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointHttpServerBaseTest.ModelBuilder toBuilder() {
+    EndpointHttpServerBaseTest.ModelBuilder builder = new EndpointHttpServerBaseTest.ModelBuilder()
+      .authType(getAuthType())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .httpTimeLimit(getHttpTimeLimit())
+      .protocol(getProtocol())
+      .username(getUsername())
+      .sslVersionId(getSslVersionId())
+      .tcpProbeMode(getTcpProbeMode())
+      .verifyCertificate(getVerifyCertificate())
+      .url(getUrl());
+    return builder;
+  }
+
 }
 

@@ -331,5 +331,94 @@ public class CreatedAccountGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CreatedAccountGroup instance;
+
+    public ModelBuilder() {
+      this(new CreatedAccountGroup());
+    }
+
+    protected ModelBuilder(CreatedAccountGroup instance) {
+      this.instance = instance;
+    }
+
+    public CreatedAccountGroup.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder isCurrentAccountGroup(Boolean isCurrentAccountGroup) {
+      this.instance.setIsCurrentAccountGroup(isCurrentAccountGroup);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder isDefaultAccountGroup(Boolean isDefaultAccountGroup) {
+      this.instance.setIsDefaultAccountGroup(isDefaultAccountGroup);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder organizationName(String organizationName) {
+      this.instance.setOrganizationName(organizationName);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder users(List<UserAccountGroup> users) {
+      this.instance.setUsers(users);
+      return this;
+    }
+    public CreatedAccountGroup.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CreatedAccountGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CreatedAccountGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CreatedAccountGroup.ModelBuilder builder() {
+    return new CreatedAccountGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CreatedAccountGroup.ModelBuilder toBuilder() {
+    CreatedAccountGroup.ModelBuilder builder = new CreatedAccountGroup.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .isCurrentAccountGroup(getIsCurrentAccountGroup())
+      .isDefaultAccountGroup(getIsDefaultAccountGroup())
+      .organizationName(getOrganizationName())
+      .orgId(getOrgId())
+      .users(getUsers())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

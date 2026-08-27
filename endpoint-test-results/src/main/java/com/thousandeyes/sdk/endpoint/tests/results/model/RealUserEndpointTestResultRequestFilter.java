@@ -701,5 +701,134 @@ public class RealUserEndpointTestResultRequestFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestResultRequestFilter instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestResultRequestFilter());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestResultRequestFilter instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder location(List<String> location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder connection(List<InterfaceHardwareType> connection) {
+      this.instance.setConnection(connection);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder platform(List<Platform> platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder gateway(List<String> gateway) {
+      this.instance.setGateway(gateway);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder proxyTarget(List<String> proxyTarget) {
+      this.instance.setProxyTarget(proxyTarget);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder vpnTarget(List<String> vpnTarget) {
+      this.instance.setVpnTarget(vpnTarget);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder networkId(List<String> networkId) {
+      this.instance.setNetworkId(networkId);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder ssid(List<String> ssid) {
+      this.instance.setSsid(ssid);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder bssid(List<String> bssid) {
+      this.instance.setBssid(bssid);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder destinationIp(List<String> destinationIp) {
+      this.instance.setDestinationIp(destinationIp);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder domain(List<String> domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder trigger(List<Trigger> trigger) {
+      this.instance.setTrigger(trigger);
+      return this;
+    }
+    public RealUserEndpointTestResultRequestFilter.ModelBuilder visitedSite(List<String> visitedSite) {
+      this.instance.setVisitedSite(visitedSite);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestResultRequestFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestResultRequestFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestResultRequestFilter.ModelBuilder builder() {
+    return new RealUserEndpointTestResultRequestFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestResultRequestFilter.ModelBuilder toBuilder() {
+    RealUserEndpointTestResultRequestFilter.ModelBuilder builder = new RealUserEndpointTestResultRequestFilter.ModelBuilder()
+      .location(getLocation())
+      .connection(getConnection())
+      .platform(getPlatform())
+      .gateway(getGateway())
+      .proxyTarget(getProxyTarget())
+      .vpnTarget(getVpnTarget())
+      .agentId(getAgentId())
+      .networkId(getNetworkId())
+      .ssid(getSsid())
+      .bssid(getBssid())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion())
+      .destinationIp(getDestinationIp())
+      .domain(getDomain())
+      .trigger(getTrigger())
+      .visitedSite(getVisitedSite());
+    return builder;
+  }
+
 }
 

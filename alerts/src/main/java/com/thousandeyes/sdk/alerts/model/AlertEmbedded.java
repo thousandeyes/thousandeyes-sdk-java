@@ -102,5 +102,59 @@ public class AlertEmbedded {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertEmbedded instance;
+
+    public ModelBuilder() {
+      this(new AlertEmbedded());
+    }
+
+    protected ModelBuilder(AlertEmbedded instance) {
+      this.instance = instance;
+    }
+
+    public AlertEmbedded.ModelBuilder asn(Asn asn) {
+      this.instance.setAsn(asn);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertEmbedded instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertEmbedded build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertEmbedded.ModelBuilder builder() {
+    return new AlertEmbedded.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertEmbedded.ModelBuilder toBuilder() {
+    AlertEmbedded.ModelBuilder builder = new AlertEmbedded.ModelBuilder()
+      .asn(getAsn());
+    return builder;
+  }
+
 }
 

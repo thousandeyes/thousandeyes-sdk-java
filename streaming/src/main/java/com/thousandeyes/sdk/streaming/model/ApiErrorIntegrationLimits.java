@@ -205,5 +205,74 @@ public class ApiErrorIntegrationLimits {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiErrorIntegrationLimits instance;
+
+    public ModelBuilder() {
+      this(new ApiErrorIntegrationLimits());
+    }
+
+    protected ModelBuilder(ApiErrorIntegrationLimits instance) {
+      this.instance = instance;
+    }
+
+    public ApiErrorIntegrationLimits.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public ApiErrorIntegrationLimits.ModelBuilder httpStatus(String httpStatus) {
+      this.instance.setHttpStatus(httpStatus);
+      return this;
+    }
+    public ApiErrorIntegrationLimits.ModelBuilder errors(List<String> errors) {
+      this.instance.setErrors(errors);
+      return this;
+    }
+    public ApiErrorIntegrationLimits.ModelBuilder path(String path) {
+      this.instance.setPath(path);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiErrorIntegrationLimits instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiErrorIntegrationLimits build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiErrorIntegrationLimits.ModelBuilder builder() {
+    return new ApiErrorIntegrationLimits.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiErrorIntegrationLimits.ModelBuilder toBuilder() {
+    ApiErrorIntegrationLimits.ModelBuilder builder = new ApiErrorIntegrationLimits.ModelBuilder()
+      .timestamp(getTimestamp())
+      .httpStatus(getHttpStatus())
+      .errors(getErrors())
+      .path(getPath());
+    return builder;
+  }
+
 }
 

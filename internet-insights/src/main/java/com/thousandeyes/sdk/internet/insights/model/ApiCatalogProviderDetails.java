@@ -343,5 +343,94 @@ public class ApiCatalogProviderDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiCatalogProviderDetails instance;
+
+    public ModelBuilder() {
+      this(new ApiCatalogProviderDetails());
+    }
+
+    protected ModelBuilder(ApiCatalogProviderDetails instance) {
+      this.instance = instance;
+    }
+
+    public ApiCatalogProviderDetails.ModelBuilder id(UUID id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder providerName(String providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder providerType(String providerType) {
+      this.instance.setProviderType(providerType);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder region(String region) {
+      this.instance.setRegion(region);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder dataType(String dataType) {
+      this.instance.setDataType(dataType);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder asns(Set<ApiAsn> asns) {
+      this.instance.setAsns(asns);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder locations(Set<ProviderLocation> locations) {
+      this.instance.setLocations(locations);
+      return this;
+    }
+    public ApiCatalogProviderDetails.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiCatalogProviderDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiCatalogProviderDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiCatalogProviderDetails.ModelBuilder builder() {
+    return new ApiCatalogProviderDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiCatalogProviderDetails.ModelBuilder toBuilder() {
+    ApiCatalogProviderDetails.ModelBuilder builder = new ApiCatalogProviderDetails.ModelBuilder()
+      .id(getId())
+      .providerName(getProviderName())
+      .providerType(getProviderType())
+      .region(getRegion())
+      .dataType(getDataType())
+      .asns(getAsns())
+      .locations(getLocations())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

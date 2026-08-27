@@ -101,5 +101,59 @@ public class EndpointRunScheduledInstantTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointRunScheduledInstantTestResult instance;
+
+    public ModelBuilder() {
+      this(new EndpointRunScheduledInstantTestResult());
+    }
+
+    protected ModelBuilder(EndpointRunScheduledInstantTestResult instance) {
+      this.instance = instance;
+    }
+
+    public EndpointRunScheduledInstantTestResult.ModelBuilder message(String message) {
+      this.instance.setMessage(message);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointRunScheduledInstantTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointRunScheduledInstantTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointRunScheduledInstantTestResult.ModelBuilder builder() {
+    return new EndpointRunScheduledInstantTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointRunScheduledInstantTestResult.ModelBuilder toBuilder() {
+    EndpointRunScheduledInstantTestResult.ModelBuilder builder = new EndpointRunScheduledInstantTestResult.ModelBuilder()
+      .message(getMessage());
+    return builder;
+  }
+
 }
 

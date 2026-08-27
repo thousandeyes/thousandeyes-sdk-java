@@ -163,5 +163,69 @@ public class EndpointAgentsEssentials {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentsEssentials instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentsEssentials());
+    }
+
+    protected ModelBuilder(EndpointAgentsEssentials instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentsEssentials.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointAgentsEssentials.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public EndpointAgentsEssentials.ModelBuilder endpointAgentsEssentialsUsed(Long endpointAgentsEssentialsUsed) {
+      this.instance.setEndpointAgentsEssentialsUsed(endpointAgentsEssentialsUsed);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentsEssentials instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentsEssentials build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentsEssentials.ModelBuilder builder() {
+    return new EndpointAgentsEssentials.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentsEssentials.ModelBuilder toBuilder() {
+    EndpointAgentsEssentials.ModelBuilder builder = new EndpointAgentsEssentials.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .endpointAgentsEssentialsUsed(getEndpointAgentsEssentialsUsed());
+    return builder;
+  }
+
 }
 

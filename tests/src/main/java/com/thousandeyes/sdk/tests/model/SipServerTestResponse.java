@@ -105,48 +105,60 @@ public class SipServerTestResponse {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
+  @JsonProperty(JSON_PROPERTY_MONITORS)
   private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MTU_MEASUREMENTS = "mtuMeasurements";
@@ -207,36 +219,6 @@ public class SipServerTestResponse {
   private List<TestAgentResponse> agents = new ArrayList<>();
 
   public SipServerTestResponse() { 
-  }
-
-  @JsonCreator
-  public SipServerTestResponse(
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts
-  ) {
-  this();
-    this.monitors = monitors;
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
   }
 
   public SipServerTestResponse interval(TestInterval interval) {
@@ -1262,5 +1244,254 @@ public class SipServerTestResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SipServerTestResponse instance;
+
+    public ModelBuilder() {
+      this(new SipServerTestResponse());
+    }
+
+    protected ModelBuilder(SipServerTestResponse instance) {
+      this.instance = instance;
+    }
+
+    public SipServerTestResponse.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder alertRules(List<AlertRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder monitors(List<Monitor> monitors) {
+      this.instance.monitors = monitors;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder optionsRegex(String optionsRegex) {
+      this.instance.setOptionsRegex(optionsRegex);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder registerEnabled(Boolean registerEnabled) {
+      this.instance.setRegisterEnabled(registerEnabled);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder sipTargetTime(Integer sipTargetTime) {
+      this.instance.setSipTargetTime(sipTargetTime);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder sipTimeLimit(Integer sipTimeLimit) {
+      this.instance.setSipTimeLimit(sipTimeLimit);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder authUser(String authUser) {
+      this.instance.setAuthUser(authUser);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder protocol(SipTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder sipRegistrar(String sipRegistrar) {
+      this.instance.setSipRegistrar(sipRegistrar);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder user(String user) {
+      this.instance.setUser(user);
+      return this;
+    }
+    public SipServerTestResponse.ModelBuilder agents(List<TestAgentResponse> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built SipServerTestResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SipServerTestResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SipServerTestResponse.ModelBuilder builder() {
+    return new SipServerTestResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SipServerTestResponse.ModelBuilder toBuilder() {
+    SipServerTestResponse.ModelBuilder builder = new SipServerTestResponse.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .alertRules(getAlertRules())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .monitors(getMonitors())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .optionsRegex(getOptionsRegex())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .randomizedStartTime(getRandomizedStartTime())
+      .registerEnabled(getRegisterEnabled())
+      .sipTargetTime(getSipTargetTime())
+      .sipTimeLimit(getSipTimeLimit())
+      .fixedPacketRate(getFixedPacketRate())
+      .ipv6Policy(getIpv6Policy())
+      .authUser(getAuthUser())
+      .password(getPassword())
+      .port(getPort())
+      .protocol(getProtocol())
+      .sipRegistrar(getSipRegistrar())
+      .user(getUser())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

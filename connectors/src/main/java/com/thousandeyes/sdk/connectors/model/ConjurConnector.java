@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ConjurConnector {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -54,6 +55,7 @@ public class ConjurConnector {
   private String target;
 
   public static final String JSON_PROPERTY_LAST_MODIFIED_DATE = "lastModifiedDate";
+  @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE)
   private Long lastModifiedDate;
 
   public static final String JSON_PROPERTY_ACCOUNT = "account";
@@ -66,16 +68,6 @@ public class ConjurConnector {
   private SelfLinks links;
 
   public ConjurConnector() { 
-  }
-
-  @JsonCreator
-  public ConjurConnector(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE) Long lastModifiedDate
-  ) {
-  this();
-    this.id = id;
-    this.lastModifiedDate = lastModifiedDate;
   }
 
    /**
@@ -311,5 +303,94 @@ public class ConjurConnector {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConjurConnector instance;
+
+    public ModelBuilder() {
+      this(new ConjurConnector());
+    }
+
+    protected ModelBuilder(ConjurConnector instance) {
+      this.instance = instance;
+    }
+
+    public ConjurConnector.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ConjurConnector.ModelBuilder type(ConnectorType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ConjurConnector.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ConjurConnector.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+    public ConjurConnector.ModelBuilder lastModifiedDate(Long lastModifiedDate) {
+      this.instance.lastModifiedDate = lastModifiedDate;
+      return this;
+    }
+    public ConjurConnector.ModelBuilder account(String account) {
+      this.instance.setAccount(account);
+      return this;
+    }
+    public ConjurConnector.ModelBuilder authentication(ConjurHostAuthentication authentication) {
+      this.instance.setAuthentication(authentication);
+      return this;
+    }
+    public ConjurConnector.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ConjurConnector instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConjurConnector build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConjurConnector.ModelBuilder builder() {
+    return new ConjurConnector.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConjurConnector.ModelBuilder toBuilder() {
+    ConjurConnector.ModelBuilder builder = new ConjurConnector.ModelBuilder()
+      .id(getId())
+      .type(getType())
+      .name(getName())
+      .target(getTarget())
+      .lastModifiedDate(getLastModifiedDate())
+      .account(getAccount())
+      .authentication(getAuthentication())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

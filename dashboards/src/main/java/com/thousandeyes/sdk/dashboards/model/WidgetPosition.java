@@ -225,5 +225,79 @@ public class WidgetPosition {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WidgetPosition instance;
+
+    public ModelBuilder() {
+      this(new WidgetPosition());
+    }
+
+    protected ModelBuilder(WidgetPosition instance) {
+      this.instance = instance;
+    }
+
+    public WidgetPosition.ModelBuilder x(Integer x) {
+      this.instance.setX(x);
+      return this;
+    }
+    public WidgetPosition.ModelBuilder y(Integer y) {
+      this.instance.setY(y);
+      return this;
+    }
+    public WidgetPosition.ModelBuilder w(Integer w) {
+      this.instance.setW(w);
+      return this;
+    }
+    public WidgetPosition.ModelBuilder h(Integer h) {
+      this.instance.setH(h);
+      return this;
+    }
+    public WidgetPosition.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+
+    /**
+     * Returns a built WidgetPosition instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WidgetPosition build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WidgetPosition.ModelBuilder builder() {
+    return new WidgetPosition.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WidgetPosition.ModelBuilder toBuilder() {
+    WidgetPosition.ModelBuilder builder = new WidgetPosition.ModelBuilder()
+      .x(getX())
+      .y(getY())
+      .w(getW())
+      .h(getH())
+      .id(getId());
+    return builder;
+  }
+
 }
 

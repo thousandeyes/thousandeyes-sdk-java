@@ -145,5 +145,64 @@ public class FtpServerTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FtpServerTests instance;
+
+    public ModelBuilder() {
+      this(new FtpServerTests());
+    }
+
+    protected ModelBuilder(FtpServerTests instance) {
+      this.instance = instance;
+    }
+
+    public FtpServerTests.ModelBuilder tests(List<UnexpandedFtpServerTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public FtpServerTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built FtpServerTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FtpServerTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FtpServerTests.ModelBuilder builder() {
+    return new FtpServerTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FtpServerTests.ModelBuilder toBuilder() {
+    FtpServerTests.ModelBuilder builder = new FtpServerTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

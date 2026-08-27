@@ -49,25 +49,17 @@ public class DnsTraceTestResults {
   private SimpleTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public DnsTraceTestResults() { 
-  }
-
-  @JsonCreator
-  public DnsTraceTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public DnsTraceTestResults results(List<DnsTraceTestResult> results) {
@@ -230,5 +222,79 @@ public class DnsTraceTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTraceTestResults instance;
+
+    public ModelBuilder() {
+      this(new DnsTraceTestResults());
+    }
+
+    protected ModelBuilder(DnsTraceTestResults instance) {
+      this.instance = instance;
+    }
+
+    public DnsTraceTestResults.ModelBuilder results(List<DnsTraceTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public DnsTraceTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public DnsTraceTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public DnsTraceTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public DnsTraceTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTraceTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTraceTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTraceTestResults.ModelBuilder builder() {
+    return new DnsTraceTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTraceTestResults.ModelBuilder toBuilder() {
+    DnsTraceTestResults.ModelBuilder builder = new DnsTraceTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

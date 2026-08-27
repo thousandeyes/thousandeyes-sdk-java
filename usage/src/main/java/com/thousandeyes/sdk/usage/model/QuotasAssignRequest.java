@@ -113,5 +113,59 @@ public class QuotasAssignRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private QuotasAssignRequest instance;
+
+    public ModelBuilder() {
+      this(new QuotasAssignRequest());
+    }
+
+    protected ModelBuilder(QuotasAssignRequest instance) {
+      this.instance = instance;
+    }
+
+    public QuotasAssignRequest.ModelBuilder organizations(List<OrganizationQuota> organizations) {
+      this.instance.setOrganizations(organizations);
+      return this;
+    }
+
+    /**
+     * Returns a built QuotasAssignRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public QuotasAssignRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static QuotasAssignRequest.ModelBuilder builder() {
+    return new QuotasAssignRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public QuotasAssignRequest.ModelBuilder toBuilder() {
+    QuotasAssignRequest.ModelBuilder builder = new QuotasAssignRequest.ModelBuilder()
+      .organizations(getOrganizations());
+    return builder;
+  }
+
 }
 

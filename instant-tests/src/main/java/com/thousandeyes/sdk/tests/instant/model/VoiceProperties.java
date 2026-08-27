@@ -43,12 +43,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VoiceProperties {
   public static final String JSON_PROPERTY_CODEC = "codec";
+  @JsonProperty(JSON_PROPERTY_CODEC)
   private String codec;
 
   public static final String JSON_PROPERTY_CODEC_ID = "codecId";
   private String codecId;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_ID = "dscpId";
@@ -73,21 +75,10 @@ public class VoiceProperties {
   private String targetAgentId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public VoiceProperties() { 
-  }
-
-  @JsonCreator
-  public VoiceProperties(
-    @JsonProperty(JSON_PROPERTY_CODEC) String codec, 
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.codec = codec;
-    this.dscp = dscp;
-    this.type = type;
   }
 
    /**
@@ -402,5 +393,109 @@ public class VoiceProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VoiceProperties instance;
+
+    public ModelBuilder() {
+      this(new VoiceProperties());
+    }
+
+    protected ModelBuilder(VoiceProperties instance) {
+      this.instance = instance;
+    }
+
+    public VoiceProperties.ModelBuilder codec(String codec) {
+      this.instance.codec = codec;
+      return this;
+    }
+    public VoiceProperties.ModelBuilder codecId(String codecId) {
+      this.instance.setCodecId(codecId);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public VoiceProperties.ModelBuilder dscpId(TestDscpId dscpId) {
+      this.instance.setDscpId(dscpId);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder duration(Integer duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder jitterBuffer(Integer jitterBuffer) {
+      this.instance.setJitterBuffer(jitterBuffer);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder targetAgentId(String targetAgentId) {
+      this.instance.setTargetAgentId(targetAgentId);
+      return this;
+    }
+    public VoiceProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built VoiceProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VoiceProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VoiceProperties.ModelBuilder builder() {
+    return new VoiceProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VoiceProperties.ModelBuilder toBuilder() {
+    VoiceProperties.ModelBuilder builder = new VoiceProperties.ModelBuilder()
+      .codec(getCodec())
+      .codecId(getCodecId())
+      .dscp(getDscp())
+      .dscpId(getDscpId())
+      .duration(getDuration())
+      .jitterBuffer(getJitterBuffer())
+      .numPathTraces(getNumPathTraces())
+      .port(getPort())
+      .randomizedStartTime(getRandomizedStartTime())
+      .targetAgentId(getTargetAgentId())
+      .type(getType());
+    return builder;
+  }
+
 }
 

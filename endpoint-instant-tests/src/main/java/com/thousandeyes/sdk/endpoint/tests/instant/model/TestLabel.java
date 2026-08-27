@@ -163,5 +163,69 @@ public class TestLabel {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestLabel instance;
+
+    public ModelBuilder() {
+      this(new TestLabel());
+    }
+
+    protected ModelBuilder(TestLabel instance) {
+      this.instance = instance;
+    }
+
+    public TestLabel.ModelBuilder labelId(String labelId) {
+      this.instance.setLabelId(labelId);
+      return this;
+    }
+    public TestLabel.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public TestLabel.ModelBuilder isBuiltin(Boolean isBuiltin) {
+      this.instance.setIsBuiltin(isBuiltin);
+      return this;
+    }
+
+    /**
+     * Returns a built TestLabel instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestLabel build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestLabel.ModelBuilder builder() {
+    return new TestLabel.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestLabel.ModelBuilder toBuilder() {
+    TestLabel.ModelBuilder builder = new TestLabel.ModelBuilder()
+      .labelId(getLabelId())
+      .name(getName())
+      .isBuiltin(getIsBuiltin());
+    return builder;
+  }
+
 }
 

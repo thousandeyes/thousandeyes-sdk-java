@@ -133,5 +133,64 @@ public class BearerTokenAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BearerTokenAuthentication instance;
+
+    public ModelBuilder() {
+      this(new BearerTokenAuthentication());
+    }
+
+    protected ModelBuilder(BearerTokenAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public BearerTokenAuthentication.ModelBuilder token(String token) {
+      this.instance.setToken(token);
+      return this;
+    }
+    public BearerTokenAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built BearerTokenAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BearerTokenAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BearerTokenAuthentication.ModelBuilder builder() {
+    return new BearerTokenAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BearerTokenAuthentication.ModelBuilder toBuilder() {
+    BearerTokenAuthentication.ModelBuilder builder = new BearerTokenAuthentication.ModelBuilder()
+      .token(getToken())
+      .type(getType());
+    return builder;
+  }
+
 }
 

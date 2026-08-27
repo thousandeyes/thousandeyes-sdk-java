@@ -145,5 +145,64 @@ public class EndpointAgentLogItemsResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentLogItemsResponse instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentLogItemsResponse());
+    }
+
+    protected ModelBuilder(EndpointAgentLogItemsResponse instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentLogItemsResponse.ModelBuilder logs(List<EndpointAgentLogItem> logs) {
+      this.instance.setLogs(logs);
+      return this;
+    }
+    public EndpointAgentLogItemsResponse.ModelBuilder links(PaginationNextAndSelfLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentLogItemsResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentLogItemsResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentLogItemsResponse.ModelBuilder builder() {
+    return new EndpointAgentLogItemsResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentLogItemsResponse.ModelBuilder toBuilder() {
+    EndpointAgentLogItemsResponse.ModelBuilder builder = new EndpointAgentLogItemsResponse.ModelBuilder()
+      .logs(getLogs())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

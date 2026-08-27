@@ -164,5 +164,69 @@ public class CredentialWithoutValue {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CredentialWithoutValue instance;
+
+    public ModelBuilder() {
+      this(new CredentialWithoutValue());
+    }
+
+    protected ModelBuilder(CredentialWithoutValue instance) {
+      this.instance = instance;
+    }
+
+    public CredentialWithoutValue.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public CredentialWithoutValue.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public CredentialWithoutValue.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CredentialWithoutValue instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CredentialWithoutValue build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CredentialWithoutValue.ModelBuilder builder() {
+    return new CredentialWithoutValue.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CredentialWithoutValue.ModelBuilder toBuilder() {
+    CredentialWithoutValue.ModelBuilder builder = new CredentialWithoutValue.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

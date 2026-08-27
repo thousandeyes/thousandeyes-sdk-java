@@ -68,24 +68,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
@@ -131,9 +136,11 @@ public class HttpTestResult {
   private HttpTestResultHeaders headers;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
+  @JsonProperty(JSON_PROPERTY_ERROR_TYPE)
   private String errorType;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_SSL_CIPHER = "sslCipher";
@@ -149,26 +156,6 @@ public class HttpTestResult {
   private BigDecimal healthScore;
 
   public HttpTestResult() { 
-  }
-
-  @JsonCreator
-  public HttpTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_ERROR_TYPE) String errorType, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.serverIp = serverIp;
-    this.errorType = errorType;
-    this.errorDetails = errorDetails;
   }
 
    /**
@@ -875,5 +862,189 @@ public class HttpTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpTestResult instance;
+
+    public ModelBuilder() {
+      this(new HttpTestResult());
+    }
+
+    protected ModelBuilder(HttpTestResult instance) {
+      this.instance = instance;
+    }
+
+    public HttpTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.setResponseCode(responseCode);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder numRedirects(Integer numRedirects) {
+      this.instance.setNumRedirects(numRedirects);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder redirectTime(Integer redirectTime) {
+      this.instance.setRedirectTime(redirectTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder dnsTime(Integer dnsTime) {
+      this.instance.setDnsTime(dnsTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder dnsServerMeasurement(DnsServerMeasurement dnsServerMeasurement) {
+      this.instance.setDnsServerMeasurement(dnsServerMeasurement);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder sslTime(Integer sslTime) {
+      this.instance.setSslTime(sslTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder connectTime(Integer connectTime) {
+      this.instance.setConnectTime(connectTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder waitTime(Integer waitTime) {
+      this.instance.setWaitTime(waitTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder receiveTime(Integer receiveTime) {
+      this.instance.setReceiveTime(receiveTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder wireSize(Integer wireSize) {
+      this.instance.setWireSize(wireSize);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.setResponseTime(responseTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder throughput(Double throughput) {
+      this.instance.setThroughput(throughput);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder totalTime(Integer totalTime) {
+      this.instance.setTotalTime(totalTime);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder headers(HttpTestResultHeaders headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder errorType(String errorType) {
+      this.instance.errorType = errorType;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public HttpTestResult.ModelBuilder sslCipher(String sslCipher) {
+      this.instance.setSslCipher(sslCipher);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder sslVersion(String sslVersion) {
+      this.instance.setSslVersion(sslVersion);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder sslCertificates(List<SslCert> sslCertificates) {
+      this.instance.setSslCertificates(sslCertificates);
+      return this;
+    }
+    public HttpTestResult.ModelBuilder healthScore(BigDecimal healthScore) {
+      this.instance.setHealthScore(healthScore);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpTestResult.ModelBuilder builder() {
+    return new HttpTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpTestResult.ModelBuilder toBuilder() {
+    HttpTestResult.ModelBuilder builder = new HttpTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .serverIp(getServerIp())
+      .responseCode(getResponseCode())
+      .numRedirects(getNumRedirects())
+      .redirectTime(getRedirectTime())
+      .dnsTime(getDnsTime())
+      .dnsServerMeasurement(getDnsServerMeasurement())
+      .sslTime(getSslTime())
+      .connectTime(getConnectTime())
+      .waitTime(getWaitTime())
+      .receiveTime(getReceiveTime())
+      .wireSize(getWireSize())
+      .responseTime(getResponseTime())
+      .throughput(getThroughput())
+      .totalTime(getTotalTime())
+      .headers(getHeaders())
+      .errorType(getErrorType())
+      .errorDetails(getErrorDetails())
+      .sslCipher(getSslCipher())
+      .sslVersion(getSslVersion())
+      .sslCertificates(getSslCertificates())
+      .healthScore(getHealthScore());
+    return builder;
+  }
+
 }
 

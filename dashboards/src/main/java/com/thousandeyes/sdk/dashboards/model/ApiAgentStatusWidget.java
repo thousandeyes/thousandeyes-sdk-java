@@ -62,6 +62,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiAgentStatusWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -71,6 +72,7 @@ public class ApiAgentStatusWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -95,6 +97,7 @@ public class ApiAgentStatusWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -116,18 +119,6 @@ public class ApiAgentStatusWidget {
   private AgentStatusDatasource dataSource;
 
   public ApiAgentStatusWidget() { 
-  }
-
-  @JsonCreator
-  public ApiAgentStatusWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -633,5 +624,144 @@ public class ApiAgentStatusWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAgentStatusWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiAgentStatusWidget());
+    }
+
+    protected ModelBuilder(ApiAgentStatusWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiAgentStatusWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder agents(LegacyAgentWidgetType agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder show(LegacyAgentWidgetShow show) {
+      this.instance.setShow(show);
+      return this;
+    }
+    public ApiAgentStatusWidget.ModelBuilder dataSource(AgentStatusDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAgentStatusWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAgentStatusWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAgentStatusWidget.ModelBuilder builder() {
+    return new ApiAgentStatusWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAgentStatusWidget.ModelBuilder toBuilder() {
+    ApiAgentStatusWidget.ModelBuilder builder = new ApiAgentStatusWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .agents(getAgents())
+      .show(getShow())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

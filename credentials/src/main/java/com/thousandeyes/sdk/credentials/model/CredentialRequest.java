@@ -132,5 +132,64 @@ public class CredentialRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CredentialRequest instance;
+
+    public ModelBuilder() {
+      this(new CredentialRequest());
+    }
+
+    protected ModelBuilder(CredentialRequest instance) {
+      this.instance = instance;
+    }
+
+    public CredentialRequest.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public CredentialRequest.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built CredentialRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CredentialRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CredentialRequest.ModelBuilder builder() {
+    return new CredentialRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CredentialRequest.ModelBuilder toBuilder() {
+    CredentialRequest.ModelBuilder builder = new CredentialRequest.ModelBuilder()
+      .name(getName())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

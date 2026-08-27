@@ -145,5 +145,64 @@ public class Tags {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Tags instance;
+
+    public ModelBuilder() {
+      this(new Tags());
+    }
+
+    protected ModelBuilder(Tags instance) {
+      this.instance = instance;
+    }
+
+    public Tags.ModelBuilder tags(List<Tag> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public Tags.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Tags instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Tags build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Tags.ModelBuilder builder() {
+    return new Tags.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Tags.ModelBuilder toBuilder() {
+    Tags.ModelBuilder builder = new Tags.ModelBuilder()
+      .tags(getTags())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

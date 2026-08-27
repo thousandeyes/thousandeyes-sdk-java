@@ -43,57 +43,42 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VpnNetworkPing {
   public static final String JSON_PROPERTY_AVG_RTT = "avgRtt";
+  @JsonProperty(JSON_PROPERTY_AVG_RTT)
   private Integer avgRtt;
 
   public static final String JSON_PROPERTY_MAX_RTT = "maxRtt";
+  @JsonProperty(JSON_PROPERTY_MAX_RTT)
   private Integer maxRtt;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Double loss;
 
   public static final String JSON_PROPERTY_MEAN_DEV_RTT = "meanDevRtt";
+  @JsonProperty(JSON_PROPERTY_MEAN_DEV_RTT)
   private Integer meanDevRtt;
 
   public static final String JSON_PROPERTY_MIN_RTT = "minRtt";
+  @JsonProperty(JSON_PROPERTY_MIN_RTT)
   private Integer minRtt;
 
   public static final String JSON_PROPERTY_PKTS_RECEIVED = "pktsReceived";
+  @JsonProperty(JSON_PROPERTY_PKTS_RECEIVED)
   private Integer pktsReceived;
 
   public static final String JSON_PROPERTY_PKTS_SENT = "pktsSent";
+  @JsonProperty(JSON_PROPERTY_PKTS_SENT)
   private Integer pktsSent;
 
   public static final String JSON_PROPERTY_ERROR = "error";
+  @JsonProperty(JSON_PROPERTY_ERROR)
   private String error;
 
   public static final String JSON_PROPERTY_INFO_FLAGS = "infoFlags";
+  @JsonProperty(JSON_PROPERTY_INFO_FLAGS)
   private List<String> infoFlags = new ArrayList<>();
 
   public VpnNetworkPing() { 
-  }
-
-  @JsonCreator
-  public VpnNetworkPing(
-    @JsonProperty(JSON_PROPERTY_AVG_RTT) Integer avgRtt, 
-    @JsonProperty(JSON_PROPERTY_MAX_RTT) Integer maxRtt, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
-    @JsonProperty(JSON_PROPERTY_MEAN_DEV_RTT) Integer meanDevRtt, 
-    @JsonProperty(JSON_PROPERTY_MIN_RTT) Integer minRtt, 
-    @JsonProperty(JSON_PROPERTY_PKTS_RECEIVED) Integer pktsReceived, 
-    @JsonProperty(JSON_PROPERTY_PKTS_SENT) Integer pktsSent, 
-    @JsonProperty(JSON_PROPERTY_ERROR) String error, 
-    @JsonProperty(JSON_PROPERTY_INFO_FLAGS) List<String> infoFlags
-  ) {
-  this();
-    this.avgRtt = avgRtt;
-    this.maxRtt = maxRtt;
-    this.loss = loss;
-    this.meanDevRtt = meanDevRtt;
-    this.minRtt = minRtt;
-    this.pktsReceived = pktsReceived;
-    this.pktsSent = pktsSent;
-    this.error = error;
-    this.infoFlags = infoFlags;
   }
 
    /**
@@ -286,5 +271,99 @@ public class VpnNetworkPing {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VpnNetworkPing instance;
+
+    public ModelBuilder() {
+      this(new VpnNetworkPing());
+    }
+
+    protected ModelBuilder(VpnNetworkPing instance) {
+      this.instance = instance;
+    }
+
+    public VpnNetworkPing.ModelBuilder avgRtt(Integer avgRtt) {
+      this.instance.avgRtt = avgRtt;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder maxRtt(Integer maxRtt) {
+      this.instance.maxRtt = maxRtt;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder loss(Double loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder meanDevRtt(Integer meanDevRtt) {
+      this.instance.meanDevRtt = meanDevRtt;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder minRtt(Integer minRtt) {
+      this.instance.minRtt = minRtt;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder pktsReceived(Integer pktsReceived) {
+      this.instance.pktsReceived = pktsReceived;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder pktsSent(Integer pktsSent) {
+      this.instance.pktsSent = pktsSent;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder error(String error) {
+      this.instance.error = error;
+      return this;
+    }
+    public VpnNetworkPing.ModelBuilder infoFlags(List<String> infoFlags) {
+      this.instance.infoFlags = infoFlags;
+      return this;
+    }
+
+    /**
+     * Returns a built VpnNetworkPing instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VpnNetworkPing build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VpnNetworkPing.ModelBuilder builder() {
+    return new VpnNetworkPing.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VpnNetworkPing.ModelBuilder toBuilder() {
+    VpnNetworkPing.ModelBuilder builder = new VpnNetworkPing.ModelBuilder()
+      .avgRtt(getAvgRtt())
+      .maxRtt(getMaxRtt())
+      .loss(getLoss())
+      .meanDevRtt(getMeanDevRtt())
+      .minRtt(getMinRtt())
+      .pktsReceived(getPktsReceived())
+      .pktsSent(getPktsSent())
+      .error(getError())
+      .infoFlags(getInfoFlags());
+    return builder;
+  }
+
 }
 

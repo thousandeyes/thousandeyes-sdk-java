@@ -48,27 +48,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointProxy {
   public static final String JSON_PROPERTY_PROXY_ID = "proxyId";
+  @JsonProperty(JSON_PROPERTY_PROXY_ID)
   private String proxyId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private EndpointProxyType type;
 
   public static final String JSON_PROPERTY_HOST = "host";
+  @JsonProperty(JSON_PROPERTY_HOST)
   private String host;
 
   public static final String JSON_PROPERTY_PORT = "port";
+  @JsonProperty(JSON_PROPERTY_PORT)
   private Integer port;
 
   public static final String JSON_PROPERTY_PAC = "pac";
+  @JsonProperty(JSON_PROPERTY_PAC)
   private String pac;
 
   public static final String JSON_PROPERTY_USER_NAME = "userName";
+  @JsonProperty(JSON_PROPERTY_USER_NAME)
   private String userName;
 
   public static final String JSON_PROPERTY_BYPASS_LIST = "bypassList";
+  @JsonProperty(JSON_PROPERTY_BYPASS_LIST)
   private String bypassList;
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
@@ -81,26 +88,6 @@ public class EndpointProxy {
   private List<String> testIds;
 
   public EndpointProxy() { 
-  }
-
-  @JsonCreator
-  public EndpointProxy(
-    @JsonProperty(JSON_PROPERTY_PROXY_ID) String proxyId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_HOST) String host, 
-    @JsonProperty(JSON_PROPERTY_PORT) Integer port, 
-    @JsonProperty(JSON_PROPERTY_PAC) String pac, 
-    @JsonProperty(JSON_PROPERTY_USER_NAME) String userName, 
-    @JsonProperty(JSON_PROPERTY_BYPASS_LIST) String bypassList
-  ) {
-  this();
-    this.proxyId = proxyId;
-    this.name = name;
-    this.host = host;
-    this.port = port;
-    this.pac = pac;
-    this.userName = userName;
-    this.bypassList = bypassList;
   }
 
    /**
@@ -383,5 +370,109 @@ public class EndpointProxy {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProxy instance;
+
+    public ModelBuilder() {
+      this(new EndpointProxy());
+    }
+
+    protected ModelBuilder(EndpointProxy instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProxy.ModelBuilder proxyId(String proxyId) {
+      this.instance.proxyId = proxyId;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder type(EndpointProxyType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public EndpointProxy.ModelBuilder host(String host) {
+      this.instance.host = host;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder port(Integer port) {
+      this.instance.port = port;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder pac(String pac) {
+      this.instance.pac = pac;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder userName(String userName) {
+      this.instance.userName = userName;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder bypassList(String bypassList) {
+      this.instance.bypassList = bypassList;
+      return this;
+    }
+    public EndpointProxy.ModelBuilder authType(EndpointProxyAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public EndpointProxy.ModelBuilder agentIds(List<UUID> agentIds) {
+      this.instance.setAgentIds(agentIds);
+      return this;
+    }
+    public EndpointProxy.ModelBuilder testIds(List<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProxy instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProxy build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProxy.ModelBuilder builder() {
+    return new EndpointProxy.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProxy.ModelBuilder toBuilder() {
+    EndpointProxy.ModelBuilder builder = new EndpointProxy.ModelBuilder()
+      .proxyId(getProxyId())
+      .name(getName())
+      .type(getType())
+      .host(getHost())
+      .port(getPort())
+      .pac(getPac())
+      .userName(getUserName())
+      .bypassList(getBypassList())
+      .authType(getAuthType())
+      .agentIds(getAgentIds())
+      .testIds(getTestIds());
+    return builder;
+  }
+
 }
 

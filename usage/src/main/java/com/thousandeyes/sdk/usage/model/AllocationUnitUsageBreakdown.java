@@ -132,5 +132,64 @@ public class AllocationUnitUsageBreakdown {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AllocationUnitUsageBreakdown instance;
+
+    public ModelBuilder() {
+      this(new AllocationUnitUsageBreakdown());
+    }
+
+    protected ModelBuilder(AllocationUnitUsageBreakdown instance) {
+      this.instance = instance;
+    }
+
+    public AllocationUnitUsageBreakdown.ModelBuilder productName(String productName) {
+      this.instance.setProductName(productName);
+      return this;
+    }
+    public AllocationUnitUsageBreakdown.ModelBuilder allocatedUnits(Long allocatedUnits) {
+      this.instance.setAllocatedUnits(allocatedUnits);
+      return this;
+    }
+
+    /**
+     * Returns a built AllocationUnitUsageBreakdown instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AllocationUnitUsageBreakdown build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AllocationUnitUsageBreakdown.ModelBuilder builder() {
+    return new AllocationUnitUsageBreakdown.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AllocationUnitUsageBreakdown.ModelBuilder toBuilder() {
+    AllocationUnitUsageBreakdown.ModelBuilder builder = new AllocationUnitUsageBreakdown.ModelBuilder()
+      .productName(getProductName())
+      .allocatedUnits(getAllocatedUnits());
+    return builder;
+  }
+
 }
 

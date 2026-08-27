@@ -257,5 +257,84 @@ public class AgentTransferStatus {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentTransferStatus instance;
+
+    public ModelBuilder() {
+      this(new AgentTransferStatus());
+    }
+
+    protected ModelBuilder(AgentTransferStatus instance) {
+      this.instance = instance;
+    }
+
+    public AgentTransferStatus.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public AgentTransferStatus.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public AgentTransferStatus.ModelBuilder status(Integer status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public AgentTransferStatus.ModelBuilder detail(String detail) {
+      this.instance.setDetail(detail);
+      return this;
+    }
+    public AgentTransferStatus.ModelBuilder instance(String instance) {
+      this.instance.setInstance(instance);
+      return this;
+    }
+    public AgentTransferStatus.ModelBuilder request(AgentTransfer request) {
+      this.instance.setRequest(request);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentTransferStatus instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentTransferStatus build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentTransferStatus.ModelBuilder builder() {
+    return new AgentTransferStatus.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentTransferStatus.ModelBuilder toBuilder() {
+    AgentTransferStatus.ModelBuilder builder = new AgentTransferStatus.ModelBuilder()
+      .type(getType())
+      .title(getTitle())
+      .status(getStatus())
+      .detail(getDetail())
+      .instance(getInstance())
+      .request(getRequest());
+    return builder;
+  }
+
 }
 

@@ -143,5 +143,64 @@ public class ApiNetworkOutageAffectedLocation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiNetworkOutageAffectedLocation instance;
+
+    public ModelBuilder() {
+      this(new ApiNetworkOutageAffectedLocation());
+    }
+
+    protected ModelBuilder(ApiNetworkOutageAffectedLocation instance) {
+      this.instance = instance;
+    }
+
+    public ApiNetworkOutageAffectedLocation.ModelBuilder location(String location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public ApiNetworkOutageAffectedLocation.ModelBuilder affectedInterfaces(List<String> affectedInterfaces) {
+      this.instance.setAffectedInterfaces(affectedInterfaces);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiNetworkOutageAffectedLocation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiNetworkOutageAffectedLocation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiNetworkOutageAffectedLocation.ModelBuilder builder() {
+    return new ApiNetworkOutageAffectedLocation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiNetworkOutageAffectedLocation.ModelBuilder toBuilder() {
+    ApiNetworkOutageAffectedLocation.ModelBuilder builder = new ApiNetworkOutageAffectedLocation.ModelBuilder()
+      .location(getLocation())
+      .affectedInterfaces(getAffectedInterfaces());
+    return builder;
+  }
+
 }
 

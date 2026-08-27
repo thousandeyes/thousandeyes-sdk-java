@@ -38,22 +38,14 @@ public class EndpointWirelessConnectionFailure {
   private EndpointWirelessConnectionFailureType type;
 
   public static final String JSON_PROPERTY_CONTEXT = "context";
+  @JsonProperty(JSON_PROPERTY_CONTEXT)
   private String context;
 
   public static final String JSON_PROPERTY_CODE = "code";
+  @JsonProperty(JSON_PROPERTY_CODE)
   private Long code;
 
   public EndpointWirelessConnectionFailure() { 
-  }
-
-  @JsonCreator
-  public EndpointWirelessConnectionFailure(
-    @JsonProperty(JSON_PROPERTY_CONTEXT) String context, 
-    @JsonProperty(JSON_PROPERTY_CODE) Long code
-  ) {
-  this();
-    this.context = context;
-    this.code = code;
   }
 
   public EndpointWirelessConnectionFailure type(EndpointWirelessConnectionFailureType type) {
@@ -154,5 +146,69 @@ public class EndpointWirelessConnectionFailure {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointWirelessConnectionFailure instance;
+
+    public ModelBuilder() {
+      this(new EndpointWirelessConnectionFailure());
+    }
+
+    protected ModelBuilder(EndpointWirelessConnectionFailure instance) {
+      this.instance = instance;
+    }
+
+    public EndpointWirelessConnectionFailure.ModelBuilder type(EndpointWirelessConnectionFailureType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public EndpointWirelessConnectionFailure.ModelBuilder context(String context) {
+      this.instance.context = context;
+      return this;
+    }
+    public EndpointWirelessConnectionFailure.ModelBuilder code(Long code) {
+      this.instance.code = code;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointWirelessConnectionFailure instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointWirelessConnectionFailure build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointWirelessConnectionFailure.ModelBuilder builder() {
+    return new EndpointWirelessConnectionFailure.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointWirelessConnectionFailure.ModelBuilder toBuilder() {
+    EndpointWirelessConnectionFailure.ModelBuilder builder = new EndpointWirelessConnectionFailure.ModelBuilder()
+      .type(getType())
+      .context(getContext())
+      .code(getCode());
+    return builder;
+  }
+
 }
 

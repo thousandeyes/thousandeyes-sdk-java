@@ -36,37 +36,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Page {
   public static final String JSON_PROPERTY_PAGE_NUM = "pageNum";
+  @JsonProperty(JSON_PROPERTY_PAGE_NUM)
   private Integer pageNum;
 
   public static final String JSON_PROPERTY_PAGE_NAME = "pageName";
+  @JsonProperty(JSON_PROPERTY_PAGE_NAME)
   private String pageName;
 
   public static final String JSON_PROPERTY_COMPONENT_COUNT = "componentCount";
+  @JsonProperty(JSON_PROPERTY_COMPONENT_COUNT)
   private Integer componentCount;
 
   public static final String JSON_PROPERTY_ERROR_COUNT = "errorCount";
+  @JsonProperty(JSON_PROPERTY_ERROR_COUNT)
   private Integer errorCount;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
+  @JsonProperty(JSON_PROPERTY_DURATION)
   private Float duration;
 
   public Page() { 
-  }
-
-  @JsonCreator
-  public Page(
-    @JsonProperty(JSON_PROPERTY_PAGE_NUM) Integer pageNum, 
-    @JsonProperty(JSON_PROPERTY_PAGE_NAME) String pageName, 
-    @JsonProperty(JSON_PROPERTY_COMPONENT_COUNT) Integer componentCount, 
-    @JsonProperty(JSON_PROPERTY_ERROR_COUNT) Integer errorCount, 
-    @JsonProperty(JSON_PROPERTY_DURATION) Float duration
-  ) {
-  this();
-    this.pageNum = pageNum;
-    this.pageName = pageName;
-    this.componentCount = componentCount;
-    this.errorCount = errorCount;
-    this.duration = duration;
   }
 
    /**
@@ -191,5 +180,79 @@ public class Page {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Page instance;
+
+    public ModelBuilder() {
+      this(new Page());
+    }
+
+    protected ModelBuilder(Page instance) {
+      this.instance = instance;
+    }
+
+    public Page.ModelBuilder pageNum(Integer pageNum) {
+      this.instance.pageNum = pageNum;
+      return this;
+    }
+    public Page.ModelBuilder pageName(String pageName) {
+      this.instance.pageName = pageName;
+      return this;
+    }
+    public Page.ModelBuilder componentCount(Integer componentCount) {
+      this.instance.componentCount = componentCount;
+      return this;
+    }
+    public Page.ModelBuilder errorCount(Integer errorCount) {
+      this.instance.errorCount = errorCount;
+      return this;
+    }
+    public Page.ModelBuilder duration(Float duration) {
+      this.instance.duration = duration;
+      return this;
+    }
+
+    /**
+     * Returns a built Page instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Page build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Page.ModelBuilder builder() {
+    return new Page.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Page.ModelBuilder toBuilder() {
+    Page.ModelBuilder builder = new Page.ModelBuilder()
+      .pageNum(getPageNum())
+      .pageName(getPageName())
+      .componentCount(getComponentCount())
+      .errorCount(getErrorCount())
+      .duration(getDuration());
+    return builder;
+  }
+
 }
 

@@ -43,9 +43,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ConsoleLogsResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -58,16 +60,6 @@ public class ConsoleLogsResult {
   private List<ConsoleLogs> consoleLogs = new ArrayList<>();
 
   public ConsoleLogsResult() { 
-  }
-
-  @JsonCreator
-  public ConsoleLogsResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
   }
 
    /**
@@ -230,5 +222,79 @@ public class ConsoleLogsResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConsoleLogsResult instance;
+
+    public ModelBuilder() {
+      this(new ConsoleLogsResult());
+    }
+
+    protected ModelBuilder(ConsoleLogsResult instance) {
+      this.instance = instance;
+    }
+
+    public ConsoleLogsResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public ConsoleLogsResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public ConsoleLogsResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ConsoleLogsResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public ConsoleLogsResult.ModelBuilder consoleLogs(List<ConsoleLogs> consoleLogs) {
+      this.instance.setConsoleLogs(consoleLogs);
+      return this;
+    }
+
+    /**
+     * Returns a built ConsoleLogsResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConsoleLogsResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConsoleLogsResult.ModelBuilder builder() {
+    return new ConsoleLogsResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConsoleLogsResult.ModelBuilder toBuilder() {
+    ConsoleLogsResult.ModelBuilder builder = new ConsoleLogsResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .agent(getAgent())
+      .consoleLogs(getConsoleLogs());
+    return builder;
+  }
+
 }
 

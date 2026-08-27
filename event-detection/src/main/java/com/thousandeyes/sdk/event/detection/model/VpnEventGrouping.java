@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class VpnEventGrouping {
   public static final String JSON_PROPERTY_VPN_TYPE = "vpnType";
+  @JsonProperty(JSON_PROPERTY_VPN_TYPE)
   private String vpnType;
 
   public static final String JSON_PROPERTY_VPN_SERVER_IP_ADDRESS = "vpnServerIpAddress";
+  @JsonProperty(JSON_PROPERTY_VPN_SERVER_IP_ADDRESS)
   private String vpnServerIpAddress;
 
   public VpnEventGrouping() { 
-  }
-
-  @JsonCreator
-  public VpnEventGrouping(
-    @JsonProperty(JSON_PROPERTY_VPN_TYPE) String vpnType, 
-    @JsonProperty(JSON_PROPERTY_VPN_SERVER_IP_ADDRESS) String vpnServerIpAddress
-  ) {
-  this();
-    this.vpnType = vpnType;
-    this.vpnServerIpAddress = vpnServerIpAddress;
   }
 
    /**
@@ -122,5 +114,64 @@ public class VpnEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private VpnEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new VpnEventGrouping());
+    }
+
+    protected ModelBuilder(VpnEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public VpnEventGrouping.ModelBuilder vpnType(String vpnType) {
+      this.instance.vpnType = vpnType;
+      return this;
+    }
+    public VpnEventGrouping.ModelBuilder vpnServerIpAddress(String vpnServerIpAddress) {
+      this.instance.vpnServerIpAddress = vpnServerIpAddress;
+      return this;
+    }
+
+    /**
+     * Returns a built VpnEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public VpnEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static VpnEventGrouping.ModelBuilder builder() {
+    return new VpnEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public VpnEventGrouping.ModelBuilder toBuilder() {
+    VpnEventGrouping.ModelBuilder builder = new VpnEventGrouping.ModelBuilder()
+      .vpnType(getVpnType())
+      .vpnServerIpAddress(getVpnServerIpAddress());
+    return builder;
+  }
+
 }
 

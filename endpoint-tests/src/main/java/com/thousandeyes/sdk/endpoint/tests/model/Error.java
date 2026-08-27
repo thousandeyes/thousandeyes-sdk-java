@@ -225,5 +225,79 @@ public class Error {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Error instance;
+
+    public ModelBuilder() {
+      this(new Error());
+    }
+
+    protected ModelBuilder(Error instance) {
+      this.instance = instance;
+    }
+
+    public Error.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public Error.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public Error.ModelBuilder status(Integer status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public Error.ModelBuilder detail(String detail) {
+      this.instance.setDetail(detail);
+      return this;
+    }
+    public Error.ModelBuilder instance(String instance) {
+      this.instance.setInstance(instance);
+      return this;
+    }
+
+    /**
+     * Returns a built Error instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Error build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Error.ModelBuilder builder() {
+    return new Error.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Error.ModelBuilder toBuilder() {
+    Error.ModelBuilder builder = new Error.ModelBuilder()
+      .type(getType())
+      .title(getTitle())
+      .status(getStatus())
+      .detail(getDetail())
+      .instance(getInstance());
+    return builder;
+  }
+
 }
 

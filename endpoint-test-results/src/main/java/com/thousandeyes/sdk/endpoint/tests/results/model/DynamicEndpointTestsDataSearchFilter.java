@@ -347,5 +347,89 @@ public class DynamicEndpointTestsDataSearchFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicEndpointTestsDataSearchFilter instance;
+
+    public ModelBuilder() {
+      this(new DynamicEndpointTestsDataSearchFilter());
+    }
+
+    protected ModelBuilder(DynamicEndpointTestsDataSearchFilter instance) {
+      this.instance = instance;
+    }
+
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder userPrincipalName(List<String> userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder webexConferenceId(List<String> webexConferenceId) {
+      this.instance.setWebexConferenceId(webexConferenceId);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder webexCorrelationId(List<UUID> webexCorrelationId) {
+      this.instance.setWebexCorrelationId(webexCorrelationId);
+      return this;
+    }
+    public DynamicEndpointTestsDataSearchFilter.ModelBuilder webexLocalSipSessionId(List<String> webexLocalSipSessionId) {
+      this.instance.setWebexLocalSipSessionId(webexLocalSipSessionId);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicEndpointTestsDataSearchFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicEndpointTestsDataSearchFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicEndpointTestsDataSearchFilter.ModelBuilder builder() {
+    return new DynamicEndpointTestsDataSearchFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicEndpointTestsDataSearchFilter.ModelBuilder toBuilder() {
+    DynamicEndpointTestsDataSearchFilter.ModelBuilder builder = new DynamicEndpointTestsDataSearchFilter.ModelBuilder()
+      .agentId(getAgentId())
+      .userPrincipalName(getUserPrincipalName())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion())
+      .webexConferenceId(getWebexConferenceId())
+      .webexCorrelationId(getWebexCorrelationId())
+      .webexLocalSipSessionId(getWebexLocalSipSessionId());
+    return builder;
+  }
+
 }
 

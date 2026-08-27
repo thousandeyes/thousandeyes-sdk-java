@@ -102,5 +102,59 @@ public class InputConfigMetric {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InputConfigMetric instance;
+
+    public ModelBuilder() {
+      this(new InputConfigMetric());
+    }
+
+    protected ModelBuilder(InputConfigMetric instance) {
+      this.instance = instance;
+    }
+
+    public InputConfigMetric.ModelBuilder connectedDevices(ConnectedDevices connectedDevices) {
+      this.instance.setConnectedDevices(connectedDevices);
+      return this;
+    }
+
+    /**
+     * Returns a built InputConfigMetric instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InputConfigMetric build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InputConfigMetric.ModelBuilder builder() {
+    return new InputConfigMetric.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InputConfigMetric.ModelBuilder toBuilder() {
+    InputConfigMetric.ModelBuilder builder = new InputConfigMetric.ModelBuilder()
+      .connectedDevices(getConnectedDevices());
+    return builder;
+  }
+
 }
 

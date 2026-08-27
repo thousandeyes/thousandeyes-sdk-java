@@ -132,5 +132,64 @@ public class TestAgentRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestAgentRequest instance;
+
+    public ModelBuilder() {
+      this(new TestAgentRequest());
+    }
+
+    protected ModelBuilder(TestAgentRequest instance) {
+      this.instance = instance;
+    }
+
+    public TestAgentRequest.ModelBuilder agentId(String agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public TestAgentRequest.ModelBuilder sourceIpAddress(String sourceIpAddress) {
+      this.instance.setSourceIpAddress(sourceIpAddress);
+      return this;
+    }
+
+    /**
+     * Returns a built TestAgentRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestAgentRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestAgentRequest.ModelBuilder builder() {
+    return new TestAgentRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestAgentRequest.ModelBuilder toBuilder() {
+    TestAgentRequest.ModelBuilder builder = new TestAgentRequest.ModelBuilder()
+      .agentId(getAgentId())
+      .sourceIpAddress(getSourceIpAddress());
+    return builder;
+  }
+
 }
 

@@ -46,6 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class GenericConnector {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -58,6 +59,7 @@ public class GenericConnector {
   private String target;
 
   public static final String JSON_PROPERTY_LAST_MODIFIED_DATE = "lastModifiedDate";
+  @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE)
   private Long lastModifiedDate;
 
   public static final String JSON_PROPERTY_AUTHENTICATION = "authentication";
@@ -70,16 +72,6 @@ public class GenericConnector {
   private SelfLinks links;
 
   public GenericConnector() { 
-  }
-
-  @JsonCreator
-  public GenericConnector(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_LAST_MODIFIED_DATE) Long lastModifiedDate
-  ) {
-  this();
-    this.id = id;
-    this.lastModifiedDate = lastModifiedDate;
   }
 
    /**
@@ -323,5 +315,94 @@ public class GenericConnector {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private GenericConnector instance;
+
+    public ModelBuilder() {
+      this(new GenericConnector());
+    }
+
+    protected ModelBuilder(GenericConnector instance) {
+      this.instance = instance;
+    }
+
+    public GenericConnector.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public GenericConnector.ModelBuilder type(ConnectorType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public GenericConnector.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public GenericConnector.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+    public GenericConnector.ModelBuilder lastModifiedDate(Long lastModifiedDate) {
+      this.instance.lastModifiedDate = lastModifiedDate;
+      return this;
+    }
+    public GenericConnector.ModelBuilder authentication(GenericConnectorAuth authentication) {
+      this.instance.setAuthentication(authentication);
+      return this;
+    }
+    public GenericConnector.ModelBuilder headers(List<Header> headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public GenericConnector.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built GenericConnector instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public GenericConnector build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static GenericConnector.ModelBuilder builder() {
+    return new GenericConnector.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public GenericConnector.ModelBuilder toBuilder() {
+    GenericConnector.ModelBuilder builder = new GenericConnector.ModelBuilder()
+      .id(getId())
+      .type(getType())
+      .name(getName())
+      .target(getTarget())
+      .lastModifiedDate(getLastModifiedDate())
+      .authentication(getAuthentication())
+      .headers(getHeaders())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

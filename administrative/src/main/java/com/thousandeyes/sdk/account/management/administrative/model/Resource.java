@@ -132,5 +132,64 @@ public class Resource {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Resource instance;
+
+    public ModelBuilder() {
+      this(new Resource());
+    }
+
+    protected ModelBuilder(Resource instance) {
+      this.instance = instance;
+    }
+
+    public Resource.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public Resource.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+
+    /**
+     * Returns a built Resource instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Resource build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Resource.ModelBuilder builder() {
+    return new Resource.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Resource.ModelBuilder toBuilder() {
+    Resource.ModelBuilder builder = new Resource.ModelBuilder()
+      .type(getType())
+      .name(getName());
+    return builder;
+  }
+
 }
 

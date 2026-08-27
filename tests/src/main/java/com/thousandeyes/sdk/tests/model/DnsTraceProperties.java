@@ -50,17 +50,10 @@ public class DnsTraceProperties {
   private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public DnsTraceProperties() { 
-  }
-
-  @JsonCreator
-  public DnsTraceProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public DnsTraceProperties dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
@@ -225,5 +218,79 @@ public class DnsTraceProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTraceProperties instance;
+
+    public ModelBuilder() {
+      this(new DnsTraceProperties());
+    }
+
+    protected ModelBuilder(DnsTraceProperties instance) {
+      this.instance = instance;
+    }
+
+    public DnsTraceProperties.ModelBuilder dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+      this.instance.setDnsTransportProtocol(dnsTransportProtocol);
+      return this;
+    }
+    public DnsTraceProperties.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public DnsTraceProperties.ModelBuilder dnsQueryClass(DnsQueryClass dnsQueryClass) {
+      this.instance.setDnsQueryClass(dnsQueryClass);
+      return this;
+    }
+    public DnsTraceProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public DnsTraceProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTraceProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTraceProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTraceProperties.ModelBuilder builder() {
+    return new DnsTraceProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTraceProperties.ModelBuilder toBuilder() {
+    DnsTraceProperties.ModelBuilder builder = new DnsTraceProperties.ModelBuilder()
+      .dnsTransportProtocol(getDnsTransportProtocol())
+      .domain(getDomain())
+      .dnsQueryClass(getDnsQueryClass())
+      .randomizedStartTime(getRandomizedStartTime())
+      .type(getType());
+    return builder;
+  }
+
 }
 

@@ -508,5 +508,119 @@ public class DynamicTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicTestRequest instance;
+
+    public ModelBuilder() {
+      this(new DynamicTestRequest());
+    }
+
+    protected ModelBuilder(DynamicTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public DynamicTestRequest.ModelBuilder agentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder isPrioritized(Boolean isPrioritized) {
+      this.instance.setIsPrioritized(isPrioritized);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public DynamicTestRequest.ModelBuilder ipVersion(EndpointIpVersionIn ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicTestRequest.ModelBuilder builder() {
+    return new DynamicTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicTestRequest.ModelBuilder toBuilder() {
+    DynamicTestRequest.ModelBuilder builder = new DynamicTestRequest.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .agents(getAgents())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds())
+      .isPrioritized(getIsPrioritized())
+      .interval(getInterval())
+      .maxMachines(getMaxMachines())
+      .application(getApplication())
+      .protocol(getProtocol())
+      .tcpProbeMode(getTcpProbeMode())
+      .testName(getTestName())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .ipVersion(getIpVersion());
+    return builder;
+  }
+
 }
 

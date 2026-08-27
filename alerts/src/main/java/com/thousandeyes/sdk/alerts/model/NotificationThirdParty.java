@@ -133,5 +133,64 @@ public class NotificationThirdParty {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationThirdParty instance;
+
+    public ModelBuilder() {
+      this(new NotificationThirdParty());
+    }
+
+    protected ModelBuilder(NotificationThirdParty instance) {
+      this.instance = instance;
+    }
+
+    public NotificationThirdParty.ModelBuilder integrationId(String integrationId) {
+      this.instance.setIntegrationId(integrationId);
+      return this;
+    }
+    public NotificationThirdParty.ModelBuilder integrationType(ThirdPartyIntegrationType integrationType) {
+      this.instance.setIntegrationType(integrationType);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationThirdParty instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationThirdParty build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationThirdParty.ModelBuilder builder() {
+    return new NotificationThirdParty.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationThirdParty.ModelBuilder toBuilder() {
+    NotificationThirdParty.ModelBuilder builder = new NotificationThirdParty.ModelBuilder()
+      .integrationId(getIntegrationId())
+      .integrationType(getIntegrationType());
+    return builder;
+  }
+
 }
 

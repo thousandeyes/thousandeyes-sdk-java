@@ -288,5 +288,89 @@ public class GenerateDashboardSnapshotRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private GenerateDashboardSnapshotRequest instance;
+
+    public ModelBuilder() {
+      this(new GenerateDashboardSnapshotRequest());
+    }
+
+    protected ModelBuilder(GenerateDashboardSnapshotRequest instance) {
+      this.instance = instance;
+    }
+
+    public GenerateDashboardSnapshotRequest.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder displayName(String displayName) {
+      this.instance.setDisplayName(displayName);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder dashboardId(String dashboardId) {
+      this.instance.setDashboardId(dashboardId);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder anonymizeData(Boolean anonymizeData) {
+      this.instance.setAnonymizeData(anonymizeData);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder timezone(String timezone) {
+      this.instance.setTimezone(timezone);
+      return this;
+    }
+    public GenerateDashboardSnapshotRequest.ModelBuilder expirationDate(OffsetDateTime expirationDate) {
+      this.instance.setExpirationDate(expirationDate);
+      return this;
+    }
+
+    /**
+     * Returns a built GenerateDashboardSnapshotRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public GenerateDashboardSnapshotRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static GenerateDashboardSnapshotRequest.ModelBuilder builder() {
+    return new GenerateDashboardSnapshotRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public GenerateDashboardSnapshotRequest.ModelBuilder toBuilder() {
+    GenerateDashboardSnapshotRequest.ModelBuilder builder = new GenerateDashboardSnapshotRequest.ModelBuilder()
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .displayName(getDisplayName())
+      .dashboardId(getDashboardId())
+      .anonymizeData(getAnonymizeData())
+      .timezone(getTimezone())
+      .expirationDate(getExpirationDate());
+    return builder;
+  }
+
 }
 

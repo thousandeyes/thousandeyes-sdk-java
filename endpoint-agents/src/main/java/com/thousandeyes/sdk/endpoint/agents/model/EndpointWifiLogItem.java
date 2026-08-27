@@ -45,50 +45,37 @@ public class EndpointWifiLogItem {
   private EndpointWifiLogItemType logItemType;
 
   public static final String JSON_PROPERTY_SSID = "ssid";
+  @JsonProperty(JSON_PROPERTY_SSID)
   private String ssid;
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
+  @JsonProperty(JSON_PROPERTY_BSSID)
   private String bssid;
 
   public static final String JSON_PROPERTY_BSSID_FROM = "bssidFrom";
+  @JsonProperty(JSON_PROPERTY_BSSID_FROM)
   private String bssidFrom;
 
   public static final String JSON_PROPERTY_CHANNEL = "channel";
+  @JsonProperty(JSON_PROPERTY_CHANNEL)
   private String channel;
 
   public static final String JSON_PROPERTY_CHANNEL_FROM = "channelFrom";
+  @JsonProperty(JSON_PROPERTY_CHANNEL_FROM)
   private String channelFrom;
 
   public static final String JSON_PROPERTY_PHYSICAL_MODE = "physicalMode";
+  @JsonProperty(JSON_PROPERTY_PHYSICAL_MODE)
   private String physicalMode;
 
   public static final String JSON_PROPERTY_PHYSICAL_MODE_FROM = "physicalModeFrom";
+  @JsonProperty(JSON_PROPERTY_PHYSICAL_MODE_FROM)
   private String physicalModeFrom;
 
   public static final String JSON_PROPERTY_FAILURE = "failure";
   private EndpointWirelessConnectionFailure failure;
 
   public EndpointWifiLogItem() { 
-  }
-
-  @JsonCreator
-  public EndpointWifiLogItem(
-    @JsonProperty(JSON_PROPERTY_SSID) String ssid, 
-    @JsonProperty(JSON_PROPERTY_BSSID) String bssid, 
-    @JsonProperty(JSON_PROPERTY_BSSID_FROM) String bssidFrom, 
-    @JsonProperty(JSON_PROPERTY_CHANNEL) String channel, 
-    @JsonProperty(JSON_PROPERTY_CHANNEL_FROM) String channelFrom, 
-    @JsonProperty(JSON_PROPERTY_PHYSICAL_MODE) String physicalMode, 
-    @JsonProperty(JSON_PROPERTY_PHYSICAL_MODE_FROM) String physicalModeFrom
-  ) {
-  this();
-    this.ssid = ssid;
-    this.bssid = bssid;
-    this.bssidFrom = bssidFrom;
-    this.channel = channel;
-    this.channelFrom = channelFrom;
-    this.physicalMode = physicalMode;
-    this.physicalModeFrom = physicalModeFrom;
   }
 
   public EndpointWifiLogItem logItemType(EndpointWifiLogItemType logItemType) {
@@ -301,5 +288,99 @@ public class EndpointWifiLogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointWifiLogItem instance;
+
+    public ModelBuilder() {
+      this(new EndpointWifiLogItem());
+    }
+
+    protected ModelBuilder(EndpointWifiLogItem instance) {
+      this.instance = instance;
+    }
+
+    public EndpointWifiLogItem.ModelBuilder logItemType(EndpointWifiLogItemType logItemType) {
+      this.instance.setLogItemType(logItemType);
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder ssid(String ssid) {
+      this.instance.ssid = ssid;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder bssid(String bssid) {
+      this.instance.bssid = bssid;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder bssidFrom(String bssidFrom) {
+      this.instance.bssidFrom = bssidFrom;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder channel(String channel) {
+      this.instance.channel = channel;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder channelFrom(String channelFrom) {
+      this.instance.channelFrom = channelFrom;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder physicalMode(String physicalMode) {
+      this.instance.physicalMode = physicalMode;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder physicalModeFrom(String physicalModeFrom) {
+      this.instance.physicalModeFrom = physicalModeFrom;
+      return this;
+    }
+    public EndpointWifiLogItem.ModelBuilder failure(EndpointWirelessConnectionFailure failure) {
+      this.instance.setFailure(failure);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointWifiLogItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointWifiLogItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointWifiLogItem.ModelBuilder builder() {
+    return new EndpointWifiLogItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointWifiLogItem.ModelBuilder toBuilder() {
+    EndpointWifiLogItem.ModelBuilder builder = new EndpointWifiLogItem.ModelBuilder()
+      .logItemType(getLogItemType())
+      .ssid(getSsid())
+      .bssid(getBssid())
+      .bssidFrom(getBssidFrom())
+      .channel(getChannel())
+      .channelFrom(getChannelFrom())
+      .physicalMode(getPhysicalMode())
+      .physicalModeFrom(getPhysicalModeFrom())
+      .failure(getFailure());
+    return builder;
+  }
+
 }
 

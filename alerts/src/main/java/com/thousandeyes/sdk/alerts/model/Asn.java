@@ -163,5 +163,69 @@ public class Asn {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Asn instance;
+
+    public ModelBuilder() {
+      this(new Asn());
+    }
+
+    protected ModelBuilder(Asn instance) {
+      this.instance = instance;
+    }
+
+    public Asn.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public Asn.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public Asn.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built Asn instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Asn build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Asn.ModelBuilder builder() {
+    return new Asn.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Asn.ModelBuilder toBuilder() {
+    Asn.ModelBuilder builder = new Asn.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .type(getType());
+    return builder;
+  }
+
 }
 

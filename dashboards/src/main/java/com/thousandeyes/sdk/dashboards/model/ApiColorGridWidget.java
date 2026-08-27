@@ -73,6 +73,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiColorGridWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -82,6 +83,7 @@ public class ApiColorGridWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -106,6 +108,7 @@ public class ApiColorGridWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -154,18 +157,6 @@ public class ApiColorGridWidget {
   private ColorGridDatasource dataSource;
 
   public ApiColorGridWidget() { 
-  }
-
-  @JsonCreator
-  public ApiColorGridWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -922,5 +913,189 @@ public class ApiColorGridWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiColorGridWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiColorGridWidget());
+    }
+
+    protected ModelBuilder(ApiColorGridWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiColorGridWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder minScale(Float minScale) {
+      this.instance.setMinScale(minScale);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder maxScale(Float maxScale) {
+      this.instance.setMaxScale(maxScale);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder unit(ApiWidgetFixedYScalePrefix unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder cards(ApiAggregateProperty cards) {
+      this.instance.setCards(cards);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder groupCardsBy(ApiAggregateProperty groupCardsBy) {
+      this.instance.setGroupCardsBy(groupCardsBy);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder columns(Integer columns) {
+      this.instance.setColumns(columns);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder limit(Integer limit) {
+      this.instance.setLimit(limit);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder sortBy(LegacyWidgetSortProperty sortBy) {
+      this.instance.setSortBy(sortBy);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder sortDirection(LegacyWidgetSortDirection sortDirection) {
+      this.instance.setSortDirection(sortDirection);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder sortGroupBy(LegacyWidgetSortProperty sortGroupBy) {
+      this.instance.setSortGroupBy(sortGroupBy);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder sortGroupDirection(LegacyWidgetSortDirection sortGroupDirection) {
+      this.instance.setSortGroupDirection(sortGroupDirection);
+      return this;
+    }
+    public ApiColorGridWidget.ModelBuilder dataSource(ColorGridDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiColorGridWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiColorGridWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiColorGridWidget.ModelBuilder builder() {
+    return new ApiColorGridWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiColorGridWidget.ModelBuilder toBuilder() {
+    ApiColorGridWidget.ModelBuilder builder = new ApiColorGridWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .minScale(getMinScale())
+      .maxScale(getMaxScale())
+      .unit(getUnit())
+      .type(getType())
+      .cards(getCards())
+      .groupCardsBy(getGroupCardsBy())
+      .columns(getColumns())
+      .limit(getLimit())
+      .sortBy(getSortBy())
+      .sortDirection(getSortDirection())
+      .sortGroupBy(getSortGroupBy())
+      .sortGroupDirection(getSortGroupDirection())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

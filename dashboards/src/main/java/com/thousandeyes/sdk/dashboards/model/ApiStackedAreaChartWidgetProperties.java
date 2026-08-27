@@ -196,5 +196,74 @@ public class ApiStackedAreaChartWidgetProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiStackedAreaChartWidgetProperties instance;
+
+    public ModelBuilder() {
+      this(new ApiStackedAreaChartWidgetProperties());
+    }
+
+    protected ModelBuilder(ApiStackedAreaChartWidgetProperties instance) {
+      this.instance = instance;
+    }
+
+    public ApiStackedAreaChartWidgetProperties.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiStackedAreaChartWidgetProperties.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiStackedAreaChartWidgetProperties.ModelBuilder dataSource(StackedAreaChartDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+    public ApiStackedAreaChartWidgetProperties.ModelBuilder showSubmetrics(Boolean showSubmetrics) {
+      this.instance.setShowSubmetrics(showSubmetrics);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiStackedAreaChartWidgetProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiStackedAreaChartWidgetProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiStackedAreaChartWidgetProperties.ModelBuilder builder() {
+    return new ApiStackedAreaChartWidgetProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiStackedAreaChartWidgetProperties.ModelBuilder toBuilder() {
+    ApiStackedAreaChartWidgetProperties.ModelBuilder builder = new ApiStackedAreaChartWidgetProperties.ModelBuilder()
+      .type(getType())
+      .groupBy(getGroupBy())
+      .dataSource(getDataSource())
+      .showSubmetrics(getShowSubmetrics());
+    return builder;
+  }
+
 }
 

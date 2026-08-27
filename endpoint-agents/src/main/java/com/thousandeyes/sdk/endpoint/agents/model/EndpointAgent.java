@@ -83,6 +83,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointAgent {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_AID = "aid";
@@ -92,78 +93,99 @@ public class EndpointAgent {
   private String name;
 
   public static final String JSON_PROPERTY_COMPUTER_NAME = "computerName";
+  @JsonProperty(JSON_PROPERTY_COMPUTER_NAME)
   private String computerName;
 
   public static final String JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED = "freeDiskSpaceNormalized";
+  @JsonProperty(JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED)
   private Double freeDiskSpaceNormalized;
 
   public static final String JSON_PROPERTY_OS_VERSION = "osVersion";
+  @JsonProperty(JSON_PROPERTY_OS_VERSION)
   private String osVersion;
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
   private Platform platform;
 
   public static final String JSON_PROPERTY_KERNEL_VERSION = "kernelVersion";
+  @JsonProperty(JSON_PROPERTY_KERNEL_VERSION)
   private String kernelVersion;
 
   public static final String JSON_PROPERTY_MANUFACTURER = "manufacturer";
+  @JsonProperty(JSON_PROPERTY_MANUFACTURER)
   private String manufacturer;
 
   public static final String JSON_PROPERTY_MODEL = "model";
+  @JsonProperty(JSON_PROPERTY_MODEL)
   private String model;
 
   public static final String JSON_PROPERTY_NIC_DRIVER_VERSION = "nicDriverVersion";
+  @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION)
   private String nicDriverVersion;
 
   public static final String JSON_PROPERTY_NIC_MODEL = "nicModel";
+  @JsonProperty(JSON_PROPERTY_NIC_MODEL)
   private String nicModel;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
   private String serialNumber;
 
   public static final String JSON_PROPERTY_LAST_SEEN = "lastSeen";
+  @JsonProperty(JSON_PROPERTY_LAST_SEEN)
   private OffsetDateTime lastSeen;
 
   public static final String JSON_PROPERTY_STATUS = "status";
   private Status status;
 
   public static final String JSON_PROPERTY_DELETED = "deleted";
+  @JsonProperty(JSON_PROPERTY_DELETED)
   private Boolean deleted;
 
   public static final String JSON_PROPERTY_VERSION = "version";
+  @JsonProperty(JSON_PROPERTY_VERSION)
   private String version;
 
   public static final String JSON_PROPERTY_TARGET_VERSION = "targetVersion";
+  @JsonProperty(JSON_PROPERTY_TARGET_VERSION)
   private String targetVersion;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
   private OffsetDateTime createdAt;
 
   public static final String JSON_PROPERTY_NUMBER_OF_CLIENTS = "numberOfClients";
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_CLIENTS)
   private Long numberOfClients;
 
   public static final String JSON_PROPERTY_PUBLIC_I_P = "publicIP";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_I_P)
   private String publicIP;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
   private EndpointAgentLocation location;
 
   public static final String JSON_PROPERTY_CLIENTS = "clients";
+  @JsonProperty(JSON_PROPERTY_CLIENTS)
   private List<EndpointClient> clients = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_MEMORY = "totalMemory";
+  @JsonProperty(JSON_PROPERTY_TOTAL_MEMORY)
   private String totalMemory;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
+  @JsonProperty(JSON_PROPERTY_AGENT_TYPE)
   private String agentType;
 
   public static final String JSON_PROPERTY_VPN_PROFILES = "vpnProfiles";
+  @JsonProperty(JSON_PROPERTY_VPN_PROFILES)
   private List<EndpointVpnProfile> vpnProfiles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EXTERNAL_METADATA = "externalMetadata";
   private List<ExternalMetadataItem> externalMetadata = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK_INTERFACE_PROFILES = "networkInterfaceProfiles";
+  @JsonProperty(JSON_PROPERTY_NETWORK_INTERFACE_PROFILES)
   private List<InterfaceProfile> networkInterfaceProfiles = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ASN_DETAILS = "asnDetails";
@@ -173,9 +195,11 @@ public class EndpointAgent {
   private AgentLicenseType licenseType;
 
   public static final String JSON_PROPERTY_TCP_DRIVER_AVAILABLE = "tcpDriverAvailable";
+  @JsonProperty(JSON_PROPERTY_TCP_DRIVER_AVAILABLE)
   private Boolean tcpDriverAvailable;
 
   public static final String JSON_PROPERTY_NPCAP_VERSION = "npcapVersion";
+  @JsonProperty(JSON_PROPERTY_NPCAP_VERSION)
   private String npcapVersion;
 
   public static final String JSON_PROPERTY_BATTERY_METRICS = "batteryMetrics";
@@ -188,60 +212,6 @@ public class EndpointAgent {
   private SelfLinks links;
 
   public EndpointAgent() { 
-  }
-
-  @JsonCreator
-  public EndpointAgent(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_COMPUTER_NAME) String computerName, 
-    @JsonProperty(JSON_PROPERTY_FREE_DISK_SPACE_NORMALIZED) Double freeDiskSpaceNormalized, 
-    @JsonProperty(JSON_PROPERTY_OS_VERSION) String osVersion, 
-    @JsonProperty(JSON_PROPERTY_KERNEL_VERSION) String kernelVersion, 
-    @JsonProperty(JSON_PROPERTY_MANUFACTURER) String manufacturer, 
-    @JsonProperty(JSON_PROPERTY_MODEL) String model, 
-    @JsonProperty(JSON_PROPERTY_NIC_DRIVER_VERSION) String nicDriverVersion, 
-    @JsonProperty(JSON_PROPERTY_NIC_MODEL) String nicModel, 
-    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
-    @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
-    @JsonProperty(JSON_PROPERTY_DELETED) Boolean deleted, 
-    @JsonProperty(JSON_PROPERTY_VERSION) String version, 
-    @JsonProperty(JSON_PROPERTY_TARGET_VERSION) String targetVersion, 
-    @JsonProperty(JSON_PROPERTY_CREATED_AT) OffsetDateTime createdAt, 
-    @JsonProperty(JSON_PROPERTY_NUMBER_OF_CLIENTS) Long numberOfClients, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_I_P) String publicIP, 
-    @JsonProperty(JSON_PROPERTY_CLIENTS) List<EndpointClient> clients, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_MEMORY) String totalMemory, 
-    @JsonProperty(JSON_PROPERTY_AGENT_TYPE) String agentType, 
-    @JsonProperty(JSON_PROPERTY_VPN_PROFILES) List<EndpointVpnProfile> vpnProfiles, 
-    @JsonProperty(JSON_PROPERTY_NETWORK_INTERFACE_PROFILES) List<InterfaceProfile> networkInterfaceProfiles, 
-    @JsonProperty(JSON_PROPERTY_TCP_DRIVER_AVAILABLE) Boolean tcpDriverAvailable, 
-    @JsonProperty(JSON_PROPERTY_NPCAP_VERSION) String npcapVersion
-  ) {
-  this();
-    this.id = id;
-    this.computerName = computerName;
-    this.freeDiskSpaceNormalized = freeDiskSpaceNormalized;
-    this.osVersion = osVersion;
-    this.kernelVersion = kernelVersion;
-    this.manufacturer = manufacturer;
-    this.model = model;
-    this.nicDriverVersion = nicDriverVersion;
-    this.nicModel = nicModel;
-    this.serialNumber = serialNumber;
-    this.lastSeen = lastSeen;
-    this.deleted = deleted;
-    this.version = version;
-    this.targetVersion = targetVersion;
-    this.createdAt = createdAt;
-    this.numberOfClients = numberOfClients;
-    this.publicIP = publicIP;
-    this.clients = clients;
-    this.totalMemory = totalMemory;
-    this.agentType = agentType;
-    this.vpnProfiles = vpnProfiles;
-    this.networkInterfaceProfiles = networkInterfaceProfiles;
-    this.tcpDriverAvailable = tcpDriverAvailable;
-    this.npcapVersion = npcapVersion;
   }
 
    /**
@@ -996,5 +966,229 @@ public class EndpointAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgent instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgent());
+    }
+
+    protected ModelBuilder(EndpointAgent instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgent.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder computerName(String computerName) {
+      this.instance.computerName = computerName;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder freeDiskSpaceNormalized(Double freeDiskSpaceNormalized) {
+      this.instance.freeDiskSpaceNormalized = freeDiskSpaceNormalized;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder osVersion(String osVersion) {
+      this.instance.osVersion = osVersion;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder kernelVersion(String kernelVersion) {
+      this.instance.kernelVersion = kernelVersion;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder manufacturer(String manufacturer) {
+      this.instance.manufacturer = manufacturer;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder model(String model) {
+      this.instance.model = model;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder nicDriverVersion(String nicDriverVersion) {
+      this.instance.nicDriverVersion = nicDriverVersion;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder nicModel(String nicModel) {
+      this.instance.nicModel = nicModel;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder serialNumber(String serialNumber) {
+      this.instance.serialNumber = serialNumber;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder lastSeen(OffsetDateTime lastSeen) {
+      this.instance.lastSeen = lastSeen;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder status(Status status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder deleted(Boolean deleted) {
+      this.instance.deleted = deleted;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder version(String version) {
+      this.instance.version = version;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder targetVersion(String targetVersion) {
+      this.instance.targetVersion = targetVersion;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder createdAt(OffsetDateTime createdAt) {
+      this.instance.createdAt = createdAt;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder numberOfClients(Long numberOfClients) {
+      this.instance.numberOfClients = numberOfClients;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder publicIP(String publicIP) {
+      this.instance.publicIP = publicIP;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder location(EndpointAgentLocation location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder clients(List<EndpointClient> clients) {
+      this.instance.clients = clients;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder totalMemory(String totalMemory) {
+      this.instance.totalMemory = totalMemory;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder agentType(String agentType) {
+      this.instance.agentType = agentType;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder vpnProfiles(List<EndpointVpnProfile> vpnProfiles) {
+      this.instance.vpnProfiles = vpnProfiles;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder externalMetadata(List<ExternalMetadataItem> externalMetadata) {
+      this.instance.setExternalMetadata(externalMetadata);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder networkInterfaceProfiles(List<InterfaceProfile> networkInterfaceProfiles) {
+      this.instance.networkInterfaceProfiles = networkInterfaceProfiles;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder asnDetails(EndpointAsnDetails asnDetails) {
+      this.instance.setAsnDetails(asnDetails);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder licenseType(AgentLicenseType licenseType) {
+      this.instance.setLicenseType(licenseType);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder tcpDriverAvailable(Boolean tcpDriverAvailable) {
+      this.instance.tcpDriverAvailable = tcpDriverAvailable;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder npcapVersion(String npcapVersion) {
+      this.instance.npcapVersion = npcapVersion;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public EndpointAgent.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgent.ModelBuilder builder() {
+    return new EndpointAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgent.ModelBuilder toBuilder() {
+    EndpointAgent.ModelBuilder builder = new EndpointAgent.ModelBuilder()
+      .id(getId())
+      .aid(getAid())
+      .name(getName())
+      .computerName(getComputerName())
+      .freeDiskSpaceNormalized(getFreeDiskSpaceNormalized())
+      .osVersion(getOsVersion())
+      .platform(getPlatform())
+      .kernelVersion(getKernelVersion())
+      .manufacturer(getManufacturer())
+      .model(getModel())
+      .nicDriverVersion(getNicDriverVersion())
+      .nicModel(getNicModel())
+      .serialNumber(getSerialNumber())
+      .lastSeen(getLastSeen())
+      .status(getStatus())
+      .deleted(getDeleted())
+      .version(getVersion())
+      .targetVersion(getTargetVersion())
+      .createdAt(getCreatedAt())
+      .numberOfClients(getNumberOfClients())
+      .publicIP(getPublicIP())
+      .location(getLocation())
+      .clients(getClients())
+      .totalMemory(getTotalMemory())
+      .agentType(getAgentType())
+      .vpnProfiles(getVpnProfiles())
+      .externalMetadata(getExternalMetadata())
+      .networkInterfaceProfiles(getNetworkInterfaceProfiles())
+      .asnDetails(getAsnDetails())
+      .licenseType(getLicenseType())
+      .tcpDriverAvailable(getTcpDriverAvailable())
+      .npcapVersion(getNpcapVersion())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

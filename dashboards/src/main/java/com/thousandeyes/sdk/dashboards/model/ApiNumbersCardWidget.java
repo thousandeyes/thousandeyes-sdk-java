@@ -63,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiNumbersCardWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -72,6 +73,7 @@ public class ApiNumbersCardWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -96,6 +98,7 @@ public class ApiNumbersCardWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -114,18 +117,6 @@ public class ApiNumbersCardWidget {
   private NumbersCardDatasource dataSource;
 
   public ApiNumbersCardWidget() { 
-  }
-
-  @JsonCreator
-  public ApiNumbersCardWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -612,5 +603,139 @@ public class ApiNumbersCardWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiNumbersCardWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiNumbersCardWidget());
+    }
+
+    protected ModelBuilder(ApiNumbersCardWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiNumbersCardWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder numberCards(List<ApiNumbersCard> numberCards) {
+      this.instance.setNumberCards(numberCards);
+      return this;
+    }
+    public ApiNumbersCardWidget.ModelBuilder dataSource(NumbersCardDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiNumbersCardWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiNumbersCardWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiNumbersCardWidget.ModelBuilder builder() {
+    return new ApiNumbersCardWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiNumbersCardWidget.ModelBuilder toBuilder() {
+    ApiNumbersCardWidget.ModelBuilder builder = new ApiNumbersCardWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .numberCards(getNumberCards())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

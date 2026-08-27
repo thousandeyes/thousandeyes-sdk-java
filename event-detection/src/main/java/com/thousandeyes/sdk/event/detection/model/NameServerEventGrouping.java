@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NameServerEventGrouping {
   public static final String JSON_PROPERTY_SERVER_NAME = "serverName";
+  @JsonProperty(JSON_PROPERTY_SERVER_NAME)
   private String serverName;
 
   public NameServerEventGrouping() { 
-  }
-
-  @JsonCreator
-  public NameServerEventGrouping(
-    @JsonProperty(JSON_PROPERTY_SERVER_NAME) String serverName
-  ) {
-  this();
-    this.serverName = serverName;
   }
 
    /**
@@ -99,5 +92,59 @@ public class NameServerEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NameServerEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new NameServerEventGrouping());
+    }
+
+    protected ModelBuilder(NameServerEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public NameServerEventGrouping.ModelBuilder serverName(String serverName) {
+      this.instance.serverName = serverName;
+      return this;
+    }
+
+    /**
+     * Returns a built NameServerEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NameServerEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NameServerEventGrouping.ModelBuilder builder() {
+    return new NameServerEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NameServerEventGrouping.ModelBuilder toBuilder() {
+    NameServerEventGrouping.ModelBuilder builder = new NameServerEventGrouping.ModelBuilder()
+      .serverName(getServerName());
+    return builder;
+  }
+
 }
 

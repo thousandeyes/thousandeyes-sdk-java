@@ -58,15 +58,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertDetail {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
   private AlertType alertType;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_VIOLATION_COUNT = "violationCount";
@@ -103,18 +106,6 @@ public class AlertDetail {
   private AlertEmbedded embedded;
 
   public AlertDetail() { 
-  }
-
-  @JsonCreator
-  public AlertDetail(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.id = id;
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
    /**
@@ -537,5 +528,129 @@ public class AlertDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertDetail instance;
+
+    public ModelBuilder() {
+      this(new AlertDetail());
+    }
+
+    protected ModelBuilder(AlertDetail instance) {
+      this.instance = instance;
+    }
+
+    public AlertDetail.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public AlertDetail.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public AlertDetail.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public AlertDetail.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public AlertDetail.ModelBuilder violationCount(Integer violationCount) {
+      this.instance.setViolationCount(violationCount);
+      return this;
+    }
+    public AlertDetail.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public AlertDetail.ModelBuilder suppressed(Boolean suppressed) {
+      this.instance.setSuppressed(suppressed);
+      return this;
+    }
+    public AlertDetail.ModelBuilder meta(AlertMeta meta) {
+      this.instance.setMeta(meta);
+      return this;
+    }
+    public AlertDetail.ModelBuilder links(AlertLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public AlertDetail.ModelBuilder state(State state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public AlertDetail.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public AlertDetail.ModelBuilder alertState(State alertState) {
+      this.instance.setAlertState(alertState);
+      return this;
+    }
+    public AlertDetail.ModelBuilder alertSeverity(Severity alertSeverity) {
+      this.instance.setAlertSeverity(alertSeverity);
+      return this;
+    }
+    public AlertDetail.ModelBuilder details(List<AlertMetricDetail> details) {
+      this.instance.setDetails(details);
+      return this;
+    }
+    public AlertDetail.ModelBuilder embedded(AlertEmbedded embedded) {
+      this.instance.setEmbedded(embedded);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertDetail.ModelBuilder builder() {
+    return new AlertDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertDetail.ModelBuilder toBuilder() {
+    AlertDetail.ModelBuilder builder = new AlertDetail.ModelBuilder()
+      .id(getId())
+      .alertType(getAlertType())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .violationCount(getViolationCount())
+      .duration(getDuration())
+      .suppressed(getSuppressed())
+      .meta(getMeta())
+      .links(getLinks())
+      .state(getState())
+      .severity(getSeverity())
+      .alertState(getAlertState())
+      .alertSeverity(getAlertSeverity())
+      .details(getDetails())
+      .embedded(getEmbedded());
+    return builder;
+  }
+
 }
 

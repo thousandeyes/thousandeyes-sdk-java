@@ -168,5 +168,69 @@ public class EmulatedDevice {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EmulatedDevice instance;
+
+    public ModelBuilder() {
+      this(new EmulatedDevice());
+    }
+
+    protected ModelBuilder(EmulatedDevice instance) {
+      this.instance = instance;
+    }
+
+    public EmulatedDevice.ModelBuilder category(EmulatedDeviceCategory category) {
+      this.instance.setCategory(category);
+      return this;
+    }
+    public EmulatedDevice.ModelBuilder width(Integer width) {
+      this.instance.setWidth(width);
+      return this;
+    }
+    public EmulatedDevice.ModelBuilder height(Integer height) {
+      this.instance.setHeight(height);
+      return this;
+    }
+
+    /**
+     * Returns a built EmulatedDevice instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EmulatedDevice build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EmulatedDevice.ModelBuilder builder() {
+    return new EmulatedDevice.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EmulatedDevice.ModelBuilder toBuilder() {
+    EmulatedDevice.ModelBuilder builder = new EmulatedDevice.ModelBuilder()
+      .category(getCategory())
+      .width(getWidth())
+      .height(getHeight());
+    return builder;
+  }
+
 }
 

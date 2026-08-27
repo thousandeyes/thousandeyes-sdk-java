@@ -194,5 +194,74 @@ public class Permission {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Permission instance;
+
+    public ModelBuilder() {
+      this(new Permission());
+    }
+
+    protected ModelBuilder(Permission instance) {
+      this.instance = instance;
+    }
+
+    public Permission.ModelBuilder label(String label) {
+      this.instance.setLabel(label);
+      return this;
+    }
+    public Permission.ModelBuilder permissionId(String permissionId) {
+      this.instance.setPermissionId(permissionId);
+      return this;
+    }
+    public Permission.ModelBuilder isManagementPermission(Boolean isManagementPermission) {
+      this.instance.setIsManagementPermission(isManagementPermission);
+      return this;
+    }
+    public Permission.ModelBuilder permission(String permission) {
+      this.instance.setPermission(permission);
+      return this;
+    }
+
+    /**
+     * Returns a built Permission instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Permission build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Permission.ModelBuilder builder() {
+    return new Permission.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Permission.ModelBuilder toBuilder() {
+    Permission.ModelBuilder builder = new Permission.ModelBuilder()
+      .label(getLabel())
+      .permissionId(getPermissionId())
+      .isManagementPermission(getIsManagementPermission())
+      .permission(getPermission());
+    return builder;
+  }
+
 }
 

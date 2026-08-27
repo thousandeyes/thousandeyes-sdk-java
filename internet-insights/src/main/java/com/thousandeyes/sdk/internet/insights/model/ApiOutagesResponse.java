@@ -145,5 +145,64 @@ public class ApiOutagesResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiOutagesResponse instance;
+
+    public ModelBuilder() {
+      this(new ApiOutagesResponse());
+    }
+
+    protected ModelBuilder(ApiOutagesResponse instance) {
+      this.instance = instance;
+    }
+
+    public ApiOutagesResponse.ModelBuilder outages(List<ApiOutage> outages) {
+      this.instance.setOutages(outages);
+      return this;
+    }
+    public ApiOutagesResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiOutagesResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiOutagesResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiOutagesResponse.ModelBuilder builder() {
+    return new ApiOutagesResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiOutagesResponse.ModelBuilder toBuilder() {
+    ApiOutagesResponse.ModelBuilder builder = new ApiOutagesResponse.ModelBuilder()
+      .outages(getOutages())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

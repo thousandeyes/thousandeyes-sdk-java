@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DomainEventGrouping {
   public static final String JSON_PROPERTY_FQDN = "fqdn";
+  @JsonProperty(JSON_PROPERTY_FQDN)
   private String fqdn;
 
   public DomainEventGrouping() { 
-  }
-
-  @JsonCreator
-  public DomainEventGrouping(
-    @JsonProperty(JSON_PROPERTY_FQDN) String fqdn
-  ) {
-  this();
-    this.fqdn = fqdn;
   }
 
    /**
@@ -99,5 +92,59 @@ public class DomainEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DomainEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new DomainEventGrouping());
+    }
+
+    protected ModelBuilder(DomainEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public DomainEventGrouping.ModelBuilder fqdn(String fqdn) {
+      this.instance.fqdn = fqdn;
+      return this;
+    }
+
+    /**
+     * Returns a built DomainEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DomainEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DomainEventGrouping.ModelBuilder builder() {
+    return new DomainEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DomainEventGrouping.ModelBuilder toBuilder() {
+    DomainEventGrouping.ModelBuilder builder = new DomainEventGrouping.ModelBuilder()
+      .fqdn(getFqdn());
+    return builder;
+  }
+
 }
 

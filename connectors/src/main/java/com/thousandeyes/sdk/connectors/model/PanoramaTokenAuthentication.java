@@ -167,5 +167,64 @@ public class PanoramaTokenAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PanoramaTokenAuthentication instance;
+
+    public ModelBuilder() {
+      this(new PanoramaTokenAuthentication());
+    }
+
+    protected ModelBuilder(PanoramaTokenAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public PanoramaTokenAuthentication.ModelBuilder token(String token) {
+      this.instance.setToken(token);
+      return this;
+    }
+    public PanoramaTokenAuthentication.ModelBuilder type(TypeEnum type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built PanoramaTokenAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PanoramaTokenAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PanoramaTokenAuthentication.ModelBuilder builder() {
+    return new PanoramaTokenAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PanoramaTokenAuthentication.ModelBuilder toBuilder() {
+    PanoramaTokenAuthentication.ModelBuilder builder = new PanoramaTokenAuthentication.ModelBuilder()
+      .token(getToken())
+      .type(getType());
+    return builder;
+  }
+
 }
 

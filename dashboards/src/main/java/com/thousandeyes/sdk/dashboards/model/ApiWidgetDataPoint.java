@@ -206,5 +206,74 @@ public class ApiWidgetDataPoint {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetDataPoint instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetDataPoint());
+    }
+
+    protected ModelBuilder(ApiWidgetDataPoint instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetDataPoint.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public ApiWidgetDataPoint.ModelBuilder numberOfDataPoints(Long numberOfDataPoints) {
+      this.instance.setNumberOfDataPoints(numberOfDataPoints);
+      return this;
+    }
+    public ApiWidgetDataPoint.ModelBuilder value(Double value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public ApiWidgetDataPoint.ModelBuilder groups(List<ApiDataPointGroup> groups) {
+      this.instance.setGroups(groups);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetDataPoint instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetDataPoint build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetDataPoint.ModelBuilder builder() {
+    return new ApiWidgetDataPoint.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetDataPoint.ModelBuilder toBuilder() {
+    ApiWidgetDataPoint.ModelBuilder builder = new ApiWidgetDataPoint.ModelBuilder()
+      .timestamp(getTimestamp())
+      .numberOfDataPoints(getNumberOfDataPoints())
+      .value(getValue())
+      .groups(getGroups());
+    return builder;
+  }
+
 }
 

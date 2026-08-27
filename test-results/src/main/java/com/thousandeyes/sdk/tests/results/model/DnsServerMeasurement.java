@@ -45,22 +45,14 @@ public class DnsServerMeasurement {
   private List<DnsServerResponse> unusedDnsResponses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USED_HOSTS_FILE = "usedHostsFile";
+  @JsonProperty(JSON_PROPERTY_USED_HOSTS_FILE)
   private Boolean usedHostsFile;
 
   public static final String JSON_PROPERTY_RESOLVED_IP = "resolvedIp";
+  @JsonProperty(JSON_PROPERTY_RESOLVED_IP)
   private String resolvedIp;
 
   public DnsServerMeasurement() { 
-  }
-
-  @JsonCreator
-  public DnsServerMeasurement(
-    @JsonProperty(JSON_PROPERTY_USED_HOSTS_FILE) Boolean usedHostsFile, 
-    @JsonProperty(JSON_PROPERTY_RESOLVED_IP) String resolvedIp
-  ) {
-  this();
-    this.usedHostsFile = usedHostsFile;
-    this.resolvedIp = resolvedIp;
   }
 
   public DnsServerMeasurement usedDnsResponse(DnsServerResponse usedDnsResponse) {
@@ -196,5 +188,74 @@ public class DnsServerMeasurement {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerMeasurement instance;
+
+    public ModelBuilder() {
+      this(new DnsServerMeasurement());
+    }
+
+    protected ModelBuilder(DnsServerMeasurement instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerMeasurement.ModelBuilder usedDnsResponse(DnsServerResponse usedDnsResponse) {
+      this.instance.setUsedDnsResponse(usedDnsResponse);
+      return this;
+    }
+    public DnsServerMeasurement.ModelBuilder unusedDnsResponses(List<DnsServerResponse> unusedDnsResponses) {
+      this.instance.setUnusedDnsResponses(unusedDnsResponses);
+      return this;
+    }
+    public DnsServerMeasurement.ModelBuilder usedHostsFile(Boolean usedHostsFile) {
+      this.instance.usedHostsFile = usedHostsFile;
+      return this;
+    }
+    public DnsServerMeasurement.ModelBuilder resolvedIp(String resolvedIp) {
+      this.instance.resolvedIp = resolvedIp;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerMeasurement instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerMeasurement build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerMeasurement.ModelBuilder builder() {
+    return new DnsServerMeasurement.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerMeasurement.ModelBuilder toBuilder() {
+    DnsServerMeasurement.ModelBuilder builder = new DnsServerMeasurement.ModelBuilder()
+      .usedDnsResponse(getUsedDnsResponse())
+      .unusedDnsResponses(getUnusedDnsResponses())
+      .usedHostsFile(getUsedHostsFile())
+      .resolvedIp(getResolvedIp());
+    return builder;
+  }
+
 }
 

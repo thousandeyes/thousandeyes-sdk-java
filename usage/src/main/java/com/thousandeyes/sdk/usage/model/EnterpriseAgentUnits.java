@@ -256,5 +256,84 @@ public class EnterpriseAgentUnits {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentUnits instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentUnits());
+    }
+
+    protected ModelBuilder(EnterpriseAgentUnits instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentUnits.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EnterpriseAgentUnits.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public EnterpriseAgentUnits.ModelBuilder agentId(String agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public EnterpriseAgentUnits.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public EnterpriseAgentUnits.ModelBuilder enterpriseUnitsUsed(Long enterpriseUnitsUsed) {
+      this.instance.setEnterpriseUnitsUsed(enterpriseUnitsUsed);
+      return this;
+    }
+    public EnterpriseAgentUnits.ModelBuilder enterpriseUnitsProjected(Long enterpriseUnitsProjected) {
+      this.instance.setEnterpriseUnitsProjected(enterpriseUnitsProjected);
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentUnits instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentUnits build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentUnits.ModelBuilder builder() {
+    return new EnterpriseAgentUnits.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentUnits.ModelBuilder toBuilder() {
+    EnterpriseAgentUnits.ModelBuilder builder = new EnterpriseAgentUnits.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .enterpriseUnitsUsed(getEnterpriseUnitsUsed())
+      .enterpriseUnitsProjected(getEnterpriseUnitsProjected());
+    return builder;
+  }
+
 }
 

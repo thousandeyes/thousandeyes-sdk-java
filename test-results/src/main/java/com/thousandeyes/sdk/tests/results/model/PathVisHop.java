@@ -39,52 +39,38 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PathVisHop {
   public static final String JSON_PROPERTY_HOP = "hop";
+  @JsonProperty(JSON_PROPERTY_HOP)
   private Integer hop;
 
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_RDNS = "rdns";
+  @JsonProperty(JSON_PROPERTY_RDNS)
   private String rdns;
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_MPLS = "mpls";
+  @JsonProperty(JSON_PROPERTY_MPLS)
   private String mpls;
 
   public PathVisHop() { 
-  }
-
-  @JsonCreator
-  public PathVisHop(
-    @JsonProperty(JSON_PROPERTY_HOP) Integer hop, 
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_RDNS) String rdns, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_MPLS) String mpls
-  ) {
-  this();
-    this.hop = hop;
-    this.ipAddress = ipAddress;
-    this.prefix = prefix;
-    this.rdns = rdns;
-    this.network = network;
-    this.responseTime = responseTime;
-    this.location = location;
-    this.mpls = mpls;
   }
 
    /**
@@ -260,5 +246,94 @@ public class PathVisHop {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisHop instance;
+
+    public ModelBuilder() {
+      this(new PathVisHop());
+    }
+
+    protected ModelBuilder(PathVisHop instance) {
+      this.instance = instance;
+    }
+
+    public PathVisHop.ModelBuilder hop(Integer hop) {
+      this.instance.hop = hop;
+      return this;
+    }
+    public PathVisHop.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public PathVisHop.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public PathVisHop.ModelBuilder rdns(String rdns) {
+      this.instance.rdns = rdns;
+      return this;
+    }
+    public PathVisHop.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public PathVisHop.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public PathVisHop.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public PathVisHop.ModelBuilder mpls(String mpls) {
+      this.instance.mpls = mpls;
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisHop instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisHop build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisHop.ModelBuilder builder() {
+    return new PathVisHop.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisHop.ModelBuilder toBuilder() {
+    PathVisHop.ModelBuilder builder = new PathVisHop.ModelBuilder()
+      .hop(getHop())
+      .ipAddress(getIpAddress())
+      .prefix(getPrefix())
+      .rdns(getRdns())
+      .network(getNetwork())
+      .responseTime(getResponseTime())
+      .location(getLocation())
+      .mpls(getMpls());
+    return builder;
+  }
+
 }
 

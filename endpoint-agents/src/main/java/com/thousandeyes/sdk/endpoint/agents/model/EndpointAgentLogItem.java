@@ -43,12 +43,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointAgentLogItem {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_AGENT_LOG_ITEM_TYPE = "agentLogItemType";
   private EndpointAgentLogItemType agentLogItemType;
 
   public static final String JSON_PROPERTY_TIMESTAMP_MS = "timestampMs";
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP_MS)
   private Long timestampMs;
 
   public static final String JSON_PROPERTY_WIFI_LOG_ITEM = "wifiLogItem";
@@ -64,16 +66,6 @@ public class EndpointAgentLogItem {
   private EndpointStateChangesLogItem stateChangesLogItem;
 
   public EndpointAgentLogItem() { 
-  }
-
-  @JsonCreator
-  public EndpointAgentLogItem(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_TIMESTAMP_MS) Long timestampMs
-  ) {
-  this();
-    this.id = id;
-    this.timestampMs = timestampMs;
   }
 
    /**
@@ -282,5 +274,89 @@ public class EndpointAgentLogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentLogItem instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentLogItem());
+    }
+
+    protected ModelBuilder(EndpointAgentLogItem instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentLogItem.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder agentLogItemType(EndpointAgentLogItemType agentLogItemType) {
+      this.instance.setAgentLogItemType(agentLogItemType);
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder timestampMs(Long timestampMs) {
+      this.instance.timestampMs = timestampMs;
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder wifiLogItem(EndpointWifiLogItem wifiLogItem) {
+      this.instance.setWifiLogItem(wifiLogItem);
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder vpnLogItem(EndpointVpnLogItem vpnLogItem) {
+      this.instance.setVpnLogItem(vpnLogItem);
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder onlineOfflineLogItem(EndpointOnlineOfflineLogItem onlineOfflineLogItem) {
+      this.instance.setOnlineOfflineLogItem(onlineOfflineLogItem);
+      return this;
+    }
+    public EndpointAgentLogItem.ModelBuilder stateChangesLogItem(EndpointStateChangesLogItem stateChangesLogItem) {
+      this.instance.setStateChangesLogItem(stateChangesLogItem);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentLogItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentLogItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentLogItem.ModelBuilder builder() {
+    return new EndpointAgentLogItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentLogItem.ModelBuilder toBuilder() {
+    EndpointAgentLogItem.ModelBuilder builder = new EndpointAgentLogItem.ModelBuilder()
+      .id(getId())
+      .agentLogItemType(getAgentLogItemType())
+      .timestampMs(getTimestampMs())
+      .wifiLogItem(getWifiLogItem())
+      .vpnLogItem(getVpnLogItem())
+      .onlineOfflineLogItem(getOnlineOfflineLogItem())
+      .stateChangesLogItem(getStateChangesLogItem());
+    return builder;
+  }
+
 }
 

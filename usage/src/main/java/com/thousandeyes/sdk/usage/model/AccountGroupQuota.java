@@ -132,5 +132,64 @@ public class AccountGroupQuota {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroupQuota instance;
+
+    public ModelBuilder() {
+      this(new AccountGroupQuota());
+    }
+
+    protected ModelBuilder(AccountGroupQuota instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroupQuota.ModelBuilder value(Long value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public AccountGroupQuota.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroupQuota instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroupQuota build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroupQuota.ModelBuilder builder() {
+    return new AccountGroupQuota.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroupQuota.ModelBuilder toBuilder() {
+    AccountGroupQuota.ModelBuilder builder = new AccountGroupQuota.ModelBuilder()
+      .value(getValue())
+      .aid(getAid());
+    return builder;
+  }
+
 }
 

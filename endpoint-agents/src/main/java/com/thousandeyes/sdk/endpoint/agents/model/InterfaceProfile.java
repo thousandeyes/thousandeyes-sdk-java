@@ -240,5 +240,79 @@ public class InterfaceProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InterfaceProfile instance;
+
+    public ModelBuilder() {
+      this(new InterfaceProfile());
+    }
+
+    protected ModelBuilder(InterfaceProfile instance) {
+      this.instance = instance;
+    }
+
+    public InterfaceProfile.ModelBuilder interfaceName(String interfaceName) {
+      this.instance.setInterfaceName(interfaceName);
+      return this;
+    }
+    public InterfaceProfile.ModelBuilder addressProfiles(List<AddressProfile> addressProfiles) {
+      this.instance.setAddressProfiles(addressProfiles);
+      return this;
+    }
+    public InterfaceProfile.ModelBuilder hardwareType(InterfaceHardwareType hardwareType) {
+      this.instance.setHardwareType(hardwareType);
+      return this;
+    }
+    public InterfaceProfile.ModelBuilder ethernetProfile(EndpointAgentEthernetProfile ethernetProfile) {
+      this.instance.setEthernetProfile(ethernetProfile);
+      return this;
+    }
+    public InterfaceProfile.ModelBuilder wirelessProfile(WirelessProfile wirelessProfile) {
+      this.instance.setWirelessProfile(wirelessProfile);
+      return this;
+    }
+
+    /**
+     * Returns a built InterfaceProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InterfaceProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InterfaceProfile.ModelBuilder builder() {
+    return new InterfaceProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InterfaceProfile.ModelBuilder toBuilder() {
+    InterfaceProfile.ModelBuilder builder = new InterfaceProfile.ModelBuilder()
+      .interfaceName(getInterfaceName())
+      .addressProfiles(getAddressProfiles())
+      .hardwareType(getHardwareType())
+      .ethernetProfile(getEthernetProfile())
+      .wirelessProfile(getWirelessProfile());
+    return builder;
+  }
+
 }
 

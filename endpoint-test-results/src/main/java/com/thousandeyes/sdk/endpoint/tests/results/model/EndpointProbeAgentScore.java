@@ -133,5 +133,64 @@ public class EndpointProbeAgentScore {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProbeAgentScore instance;
+
+    public ModelBuilder() {
+      this(new EndpointProbeAgentScore());
+    }
+
+    protected ModelBuilder(EndpointProbeAgentScore instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProbeAgentScore.ModelBuilder score(Double score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public EndpointProbeAgentScore.ModelBuilder quality(ApplicationScoreQuality quality) {
+      this.instance.setQuality(quality);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProbeAgentScore instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProbeAgentScore build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProbeAgentScore.ModelBuilder builder() {
+    return new EndpointProbeAgentScore.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProbeAgentScore.ModelBuilder toBuilder() {
+    EndpointProbeAgentScore.ModelBuilder builder = new EndpointProbeAgentScore.ModelBuilder()
+      .score(getScore())
+      .quality(getQuality());
+    return builder;
+  }
+
 }
 

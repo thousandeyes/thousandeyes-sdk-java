@@ -258,5 +258,84 @@ public class ExtendedUser {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ExtendedUser instance;
+
+    public ModelBuilder() {
+      this(new ExtendedUser());
+    }
+
+    protected ModelBuilder(ExtendedUser instance) {
+      this.instance = instance;
+    }
+
+    public ExtendedUser.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ExtendedUser.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public ExtendedUser.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public ExtendedUser.ModelBuilder dateRegistered(OffsetDateTime dateRegistered) {
+      this.instance.setDateRegistered(dateRegistered);
+      return this;
+    }
+    public ExtendedUser.ModelBuilder loginAccountGroup(AccountGroup loginAccountGroup) {
+      this.instance.setLoginAccountGroup(loginAccountGroup);
+      return this;
+    }
+    public ExtendedUser.ModelBuilder lastLogin(OffsetDateTime lastLogin) {
+      this.instance.setLastLogin(lastLogin);
+      return this;
+    }
+
+    /**
+     * Returns a built ExtendedUser instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ExtendedUser build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ExtendedUser.ModelBuilder builder() {
+    return new ExtendedUser.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ExtendedUser.ModelBuilder toBuilder() {
+    ExtendedUser.ModelBuilder builder = new ExtendedUser.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .uid(getUid())
+      .dateRegistered(getDateRegistered())
+      .loginAccountGroup(getLoginAccountGroup())
+      .lastLogin(getLastLogin());
+    return builder;
+  }
+
 }
 

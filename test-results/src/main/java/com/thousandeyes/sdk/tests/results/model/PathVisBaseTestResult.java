@@ -47,66 +47,51 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PathVisBaseTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER = "server";
+  @JsonProperty(JSON_PROPERTY_SERVER)
   private String server;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_SOURCE_IP = "sourceIp";
+  @JsonProperty(JSON_PROPERTY_SOURCE_IP)
   private String sourceIp;
 
   public static final String JSON_PROPERTY_SOURCE_PREFIX = "sourcePrefix";
+  @JsonProperty(JSON_PROPERTY_SOURCE_PREFIX)
   private String sourcePrefix;
 
   public static final String JSON_PROPERTY_TARGET_IS_PROXY = "targetIsProxy";
+  @JsonProperty(JSON_PROPERTY_TARGET_IS_PROXY)
   private Boolean targetIsProxy;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private PathVisDirection direction;
 
   public PathVisBaseTestResult() { 
-  }
-
-  @JsonCreator
-  public PathVisBaseTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_SERVER) String server, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_IP) String sourceIp, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_PREFIX) String sourcePrefix, 
-    @JsonProperty(JSON_PROPERTY_TARGET_IS_PROXY) Boolean targetIsProxy
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.server = server;
-    this.serverIp = serverIp;
-    this.sourceIp = sourceIp;
-    this.sourcePrefix = sourcePrefix;
-    this.targetIsProxy = targetIsProxy;
   }
 
    /**
@@ -380,5 +365,114 @@ public class PathVisBaseTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisBaseTestResult instance;
+
+    public ModelBuilder() {
+      this(new PathVisBaseTestResult());
+    }
+
+    protected ModelBuilder(PathVisBaseTestResult instance) {
+      this.instance = instance;
+    }
+
+    public PathVisBaseTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder server(String server) {
+      this.instance.server = server;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder sourceIp(String sourceIp) {
+      this.instance.sourceIp = sourceIp;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder sourcePrefix(String sourcePrefix) {
+      this.instance.sourcePrefix = sourcePrefix;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder targetIsProxy(Boolean targetIsProxy) {
+      this.instance.targetIsProxy = targetIsProxy;
+      return this;
+    }
+    public PathVisBaseTestResult.ModelBuilder direction(PathVisDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisBaseTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisBaseTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisBaseTestResult.ModelBuilder builder() {
+    return new PathVisBaseTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisBaseTestResult.ModelBuilder toBuilder() {
+    PathVisBaseTestResult.ModelBuilder builder = new PathVisBaseTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .server(getServer())
+      .serverIp(getServerIp())
+      .sourceIp(getSourceIp())
+      .sourcePrefix(getSourcePrefix())
+      .targetIsProxy(getTargetIsProxy())
+      .direction(getDirection());
+    return builder;
+  }
+
 }
 

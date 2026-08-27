@@ -43,15 +43,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestNetworkResult {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_DESTINATION = "destination";
@@ -67,20 +71,6 @@ public class RealUserEndpointTestNetworkResult {
   private SystemMetrics systemMetrics;
 
   public RealUserEndpointTestNetworkResult() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestNetworkResult(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId
-  ) {
-  this();
-    this.agentId = agentId;
-    this.date = date;
-    this.id = id;
-    this.roundId = roundId;
   }
 
    /**
@@ -296,5 +286,94 @@ public class RealUserEndpointTestNetworkResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestNetworkResult instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestNetworkResult());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestNetworkResult instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestNetworkResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder destination(NetworkMetrics destination) {
+      this.instance.setDestination(destination);
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder vpn(NetworkMetrics vpn) {
+      this.instance.setVpn(vpn);
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder proxy(NetworkMetrics proxy) {
+      this.instance.setProxy(proxy);
+      return this;
+    }
+    public RealUserEndpointTestNetworkResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestNetworkResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestNetworkResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestNetworkResult.ModelBuilder builder() {
+    return new RealUserEndpointTestNetworkResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestNetworkResult.ModelBuilder toBuilder() {
+    RealUserEndpointTestNetworkResult.ModelBuilder builder = new RealUserEndpointTestNetworkResult.ModelBuilder()
+      .agentId(getAgentId())
+      .date(getDate())
+      .id(getId())
+      .roundId(getRoundId())
+      .destination(getDestination())
+      .vpn(getVpn())
+      .proxy(getProxy())
+      .systemMetrics(getSystemMetrics());
+    return builder;
+  }
+
 }
 

@@ -113,5 +113,59 @@ public class EndpointProxiesResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProxiesResponse instance;
+
+    public ModelBuilder() {
+      this(new EndpointProxiesResponse());
+    }
+
+    protected ModelBuilder(EndpointProxiesResponse instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProxiesResponse.ModelBuilder proxies(List<EndpointProxy> proxies) {
+      this.instance.setProxies(proxies);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProxiesResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProxiesResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProxiesResponse.ModelBuilder builder() {
+    return new EndpointProxiesResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProxiesResponse.ModelBuilder toBuilder() {
+    EndpointProxiesResponse.ModelBuilder builder = new EndpointProxiesResponse.ModelBuilder()
+      .proxies(getProxies());
+    return builder;
+  }
+
 }
 

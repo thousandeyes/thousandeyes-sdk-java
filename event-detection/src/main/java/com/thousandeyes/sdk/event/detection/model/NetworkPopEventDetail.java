@@ -60,18 +60,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkPopEventDetail {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_TYPE_NAME = "typeName";
+  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
   private String typeName;
 
   public static final String JSON_PROPERTY_STATE = "state";
   private EventState state;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
@@ -81,6 +85,7 @@ public class NetworkPopEventDetail {
   private String aid;
 
   public static final String JSON_PROPERTY_SUMMARY = "summary";
+  @JsonProperty(JSON_PROPERTY_SUMMARY)
   private String summary;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
@@ -108,22 +113,6 @@ public class NetworkPopEventDetail {
   private NetworkEventGrouping grouping;
 
   public NetworkPopEventDetail() { 
-  }
-
-  @JsonCreator
-  public NetworkPopEventDetail(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_TYPE_NAME) String typeName, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate, 
-    @JsonProperty(JSON_PROPERTY_SUMMARY) String summary
-  ) {
-  this();
-    this.id = id;
-    this.typeName = typeName;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.summary = summary;
   }
 
    /**
@@ -554,5 +543,134 @@ public class NetworkPopEventDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkPopEventDetail instance;
+
+    public ModelBuilder() {
+      this(new NetworkPopEventDetail());
+    }
+
+    protected ModelBuilder(NetworkPopEventDetail instance) {
+      this.instance = instance;
+    }
+
+    public NetworkPopEventDetail.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder typeName(String typeName) {
+      this.instance.typeName = typeName;
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder state(EventState state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder severity(EventAlertSeverity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder summary(String summary) {
+      this.instance.summary = summary;
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder agentType(EventAgentType agentType) {
+      this.instance.setAgentType(agentType);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder affectedTests(AffectedTests affectedTests) {
+      this.instance.setAffectedTests(affectedTests);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder affectedTargets(AffectedTargets affectedTargets) {
+      this.instance.setAffectedTargets(affectedTargets);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder affectedAgents(AffectedAgents affectedAgents) {
+      this.instance.setAffectedAgents(affectedAgents);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder cause(Set<String> cause) {
+      this.instance.setCause(cause);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public NetworkPopEventDetail.ModelBuilder grouping(NetworkEventGrouping grouping) {
+      this.instance.setGrouping(grouping);
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkPopEventDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkPopEventDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkPopEventDetail.ModelBuilder builder() {
+    return new NetworkPopEventDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkPopEventDetail.ModelBuilder toBuilder() {
+    NetworkPopEventDetail.ModelBuilder builder = new NetworkPopEventDetail.ModelBuilder()
+      .id(getId())
+      .typeName(getTypeName())
+      .state(getState())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .severity(getSeverity())
+      .aid(getAid())
+      .summary(getSummary())
+      .agentType(getAgentType())
+      .affectedTests(getAffectedTests())
+      .affectedTargets(getAffectedTargets())
+      .affectedAgents(getAffectedAgents())
+      .cause(getCause())
+      .links(getLinks())
+      .type(getType())
+      .grouping(getGrouping());
+    return builder;
+  }
+
 }
 

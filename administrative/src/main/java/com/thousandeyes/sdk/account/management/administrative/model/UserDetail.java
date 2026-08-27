@@ -373,5 +373,99 @@ public class UserDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserDetail instance;
+
+    public ModelBuilder() {
+      this(new UserDetail());
+    }
+
+    protected ModelBuilder(UserDetail instance) {
+      this.instance = instance;
+    }
+
+    public UserDetail.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public UserDetail.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public UserDetail.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public UserDetail.ModelBuilder dateRegistered(OffsetDateTime dateRegistered) {
+      this.instance.setDateRegistered(dateRegistered);
+      return this;
+    }
+    public UserDetail.ModelBuilder loginAccountGroup(AccountGroup loginAccountGroup) {
+      this.instance.setLoginAccountGroup(loginAccountGroup);
+      return this;
+    }
+    public UserDetail.ModelBuilder lastLogin(OffsetDateTime lastLogin) {
+      this.instance.setLastLogin(lastLogin);
+      return this;
+    }
+    public UserDetail.ModelBuilder accountGroupRoles(List<AccountGroupRole> accountGroupRoles) {
+      this.instance.setAccountGroupRoles(accountGroupRoles);
+      return this;
+    }
+    public UserDetail.ModelBuilder allAccountGroupRoles(List<Role> allAccountGroupRoles) {
+      this.instance.setAllAccountGroupRoles(allAccountGroupRoles);
+      return this;
+    }
+    public UserDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built UserDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserDetail.ModelBuilder builder() {
+    return new UserDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserDetail.ModelBuilder toBuilder() {
+    UserDetail.ModelBuilder builder = new UserDetail.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .uid(getUid())
+      .dateRegistered(getDateRegistered())
+      .loginAccountGroup(getLoginAccountGroup())
+      .lastLogin(getLastLogin())
+      .accountGroupRoles(getAccountGroupRoles())
+      .allAccountGroupRoles(getAllAccountGroupRoles())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

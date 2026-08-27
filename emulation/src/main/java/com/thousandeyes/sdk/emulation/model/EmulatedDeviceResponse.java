@@ -334,5 +334,94 @@ public class EmulatedDeviceResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EmulatedDeviceResponse instance;
+
+    public ModelBuilder() {
+      this(new EmulatedDeviceResponse());
+    }
+
+    protected ModelBuilder(EmulatedDeviceResponse instance) {
+      this.instance = instance;
+    }
+
+    public EmulatedDeviceResponse.ModelBuilder category(EmulatedDeviceCategory category) {
+      this.instance.setCategory(category);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder width(Integer width) {
+      this.instance.setWidth(width);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder height(Integer height) {
+      this.instance.setHeight(height);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder codeName(String codeName) {
+      this.instance.setCodeName(codeName);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder availableUserAgents(List<String> availableUserAgents) {
+      this.instance.setAvailableUserAgents(availableUserAgents);
+      return this;
+    }
+    public EmulatedDeviceResponse.ModelBuilder defaultUserAgentTemplate(String defaultUserAgentTemplate) {
+      this.instance.setDefaultUserAgentTemplate(defaultUserAgentTemplate);
+      return this;
+    }
+
+    /**
+     * Returns a built EmulatedDeviceResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EmulatedDeviceResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EmulatedDeviceResponse.ModelBuilder builder() {
+    return new EmulatedDeviceResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EmulatedDeviceResponse.ModelBuilder toBuilder() {
+    EmulatedDeviceResponse.ModelBuilder builder = new EmulatedDeviceResponse.ModelBuilder()
+      .category(getCategory())
+      .width(getWidth())
+      .height(getHeight())
+      .name(getName())
+      .codeName(getCodeName())
+      .id(getId())
+      .availableUserAgents(getAvailableUserAgents())
+      .defaultUserAgentTemplate(getDefaultUserAgentTemplate());
+    return builder;
+  }
+
 }
 

@@ -143,5 +143,64 @@ public class AlertEmail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertEmail instance;
+
+    public ModelBuilder() {
+      this(new AlertEmail());
+    }
+
+    protected ModelBuilder(AlertEmail instance) {
+      this.instance = instance;
+    }
+
+    public AlertEmail.ModelBuilder message(String message) {
+      this.instance.setMessage(message);
+      return this;
+    }
+    public AlertEmail.ModelBuilder recipients(List<String> recipients) {
+      this.instance.setRecipients(recipients);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertEmail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertEmail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertEmail.ModelBuilder builder() {
+    return new AlertEmail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertEmail.ModelBuilder toBuilder() {
+    AlertEmail.ModelBuilder builder = new AlertEmail.ModelBuilder()
+      .message(getMessage())
+      .recipients(getRecipients());
+    return builder;
+  }
+
 }
 

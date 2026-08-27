@@ -41,47 +41,34 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TracerouteHop {
   public static final String JSON_PROPERTY_HOP = "hop";
+  @JsonProperty(JSON_PROPERTY_HOP)
   private Integer hop;
 
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_ASN = "asn";
+  @JsonProperty(JSON_PROPERTY_ASN)
   private Integer asn;
 
   public static final String JSON_PROPERTY_DELAY = "delay";
+  @JsonProperty(JSON_PROPERTY_DELAY)
   private Integer delay;
 
   public static final String JSON_PROPERTY_MPLS = "mpls";
+  @JsonProperty(JSON_PROPERTY_MPLS)
   private List<String> mpls = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public TracerouteHop() { 
-  }
-
-  @JsonCreator
-  public TracerouteHop(
-    @JsonProperty(JSON_PROPERTY_HOP) Integer hop, 
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_ASN) Integer asn, 
-    @JsonProperty(JSON_PROPERTY_DELAY) Integer delay, 
-    @JsonProperty(JSON_PROPERTY_MPLS) List<String> mpls, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
-  ) {
-  this();
-    this.hop = hop;
-    this.ipAddress = ipAddress;
-    this.prefix = prefix;
-    this.asn = asn;
-    this.delay = delay;
-    this.mpls = mpls;
-    this.name = name;
   }
 
    /**
@@ -240,5 +227,89 @@ public class TracerouteHop {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TracerouteHop instance;
+
+    public ModelBuilder() {
+      this(new TracerouteHop());
+    }
+
+    protected ModelBuilder(TracerouteHop instance) {
+      this.instance = instance;
+    }
+
+    public TracerouteHop.ModelBuilder hop(Integer hop) {
+      this.instance.hop = hop;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder asn(Integer asn) {
+      this.instance.asn = asn;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder delay(Integer delay) {
+      this.instance.delay = delay;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder mpls(List<String> mpls) {
+      this.instance.mpls = mpls;
+      return this;
+    }
+    public TracerouteHop.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+
+    /**
+     * Returns a built TracerouteHop instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TracerouteHop build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TracerouteHop.ModelBuilder builder() {
+    return new TracerouteHop.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TracerouteHop.ModelBuilder toBuilder() {
+    TracerouteHop.ModelBuilder builder = new TracerouteHop.ModelBuilder()
+      .hop(getHop())
+      .ipAddress(getIpAddress())
+      .prefix(getPrefix())
+      .asn(getAsn())
+      .delay(getDelay())
+      .mpls(getMpls())
+      .name(getName());
+    return builder;
+  }
+
 }
 

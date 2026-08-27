@@ -46,15 +46,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LegacyAlert {
   public static final String JSON_PROPERTY_ALERT_ID = "alertId";
+  @JsonProperty(JSON_PROPERTY_ALERT_ID)
   private UUID alertId;
 
   public static final String JSON_PROPERTY_DATE_START = "dateStart";
+  @JsonProperty(JSON_PROPERTY_DATE_START)
   private String dateStart;
 
   public static final String JSON_PROPERTY_DATE_END = "dateEnd";
+  @JsonProperty(JSON_PROPERTY_DATE_END)
   private String dateEnd;
 
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private Long ruleId;
 
   /**
@@ -95,6 +99,7 @@ public class LegacyAlert {
   }
 
   public static final String JSON_PROPERTY_STATE = "state";
+  @JsonProperty(JSON_PROPERTY_STATE)
   private StateEnum state;
 
   /**
@@ -148,22 +153,6 @@ public class LegacyAlert {
   private List<Map<String, Object>> apiLinks = new ArrayList<>();
 
   public LegacyAlert() { 
-  }
-
-  @JsonCreator
-  public LegacyAlert(
-    @JsonProperty(JSON_PROPERTY_ALERT_ID) UUID alertId, 
-    @JsonProperty(JSON_PROPERTY_DATE_START) String dateStart, 
-    @JsonProperty(JSON_PROPERTY_DATE_END) String dateEnd, 
-    @JsonProperty(JSON_PROPERTY_RULE_ID) Long ruleId, 
-    @JsonProperty(JSON_PROPERTY_STATE) StateEnum state
-  ) {
-  this();
-    this.alertId = alertId;
-    this.dateStart = dateStart;
-    this.dateEnd = dateEnd;
-    this.ruleId = ruleId;
-    this.state = state;
   }
 
    /**
@@ -393,5 +382,94 @@ public class LegacyAlert {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LegacyAlert instance;
+
+    public ModelBuilder() {
+      this(new LegacyAlert());
+    }
+
+    protected ModelBuilder(LegacyAlert instance) {
+      this.instance = instance;
+    }
+
+    public LegacyAlert.ModelBuilder alertId(UUID alertId) {
+      this.instance.alertId = alertId;
+      return this;
+    }
+    public LegacyAlert.ModelBuilder dateStart(String dateStart) {
+      this.instance.dateStart = dateStart;
+      return this;
+    }
+    public LegacyAlert.ModelBuilder dateEnd(String dateEnd) {
+      this.instance.dateEnd = dateEnd;
+      return this;
+    }
+    public LegacyAlert.ModelBuilder ruleId(Long ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public LegacyAlert.ModelBuilder state(StateEnum state) {
+      this.instance.state = state;
+      return this;
+    }
+    public LegacyAlert.ModelBuilder severity(SeverityEnum severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public LegacyAlert.ModelBuilder permalink(String permalink) {
+      this.instance.setPermalink(permalink);
+      return this;
+    }
+    public LegacyAlert.ModelBuilder apiLinks(List<Map<String, Object>> apiLinks) {
+      this.instance.setApiLinks(apiLinks);
+      return this;
+    }
+
+    /**
+     * Returns a built LegacyAlert instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LegacyAlert build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LegacyAlert.ModelBuilder builder() {
+    return new LegacyAlert.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LegacyAlert.ModelBuilder toBuilder() {
+    LegacyAlert.ModelBuilder builder = new LegacyAlert.ModelBuilder()
+      .alertId(getAlertId())
+      .dateStart(getDateStart())
+      .dateEnd(getDateEnd())
+      .ruleId(getRuleId())
+      .state(getState())
+      .severity(getSeverity())
+      .permalink(getPermalink())
+      .apiLinks(getApiLinks());
+    return builder;
+  }
+
 }
 

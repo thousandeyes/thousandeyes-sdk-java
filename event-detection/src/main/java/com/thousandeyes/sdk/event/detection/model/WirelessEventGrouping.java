@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WirelessEventGrouping {
   public static final String JSON_PROPERTY_SSID = "ssid";
+  @JsonProperty(JSON_PROPERTY_SSID)
   private String ssid;
 
   public static final String JSON_PROPERTY_BSSID = "bssid";
+  @JsonProperty(JSON_PROPERTY_BSSID)
   private String bssid;
 
   public WirelessEventGrouping() { 
-  }
-
-  @JsonCreator
-  public WirelessEventGrouping(
-    @JsonProperty(JSON_PROPERTY_SSID) String ssid, 
-    @JsonProperty(JSON_PROPERTY_BSSID) String bssid
-  ) {
-  this();
-    this.ssid = ssid;
-    this.bssid = bssid;
   }
 
    /**
@@ -122,5 +114,64 @@ public class WirelessEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WirelessEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new WirelessEventGrouping());
+    }
+
+    protected ModelBuilder(WirelessEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public WirelessEventGrouping.ModelBuilder ssid(String ssid) {
+      this.instance.ssid = ssid;
+      return this;
+    }
+    public WirelessEventGrouping.ModelBuilder bssid(String bssid) {
+      this.instance.bssid = bssid;
+      return this;
+    }
+
+    /**
+     * Returns a built WirelessEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WirelessEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WirelessEventGrouping.ModelBuilder builder() {
+    return new WirelessEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WirelessEventGrouping.ModelBuilder toBuilder() {
+    WirelessEventGrouping.ModelBuilder builder = new WirelessEventGrouping.ModelBuilder()
+      .ssid(getSsid())
+      .bssid(getBssid());
+    return builder;
+  }
+
 }
 

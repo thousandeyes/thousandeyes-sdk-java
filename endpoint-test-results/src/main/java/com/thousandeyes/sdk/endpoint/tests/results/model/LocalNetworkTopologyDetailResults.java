@@ -145,5 +145,64 @@ public class LocalNetworkTopologyDetailResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkTopologyDetailResults instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkTopologyDetailResults());
+    }
+
+    protected ModelBuilder(LocalNetworkTopologyDetailResults instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkTopologyDetailResults.ModelBuilder results(List<LocalNetworkTopologyResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public LocalNetworkTopologyDetailResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkTopologyDetailResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkTopologyDetailResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkTopologyDetailResults.ModelBuilder builder() {
+    return new LocalNetworkTopologyDetailResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkTopologyDetailResults.ModelBuilder toBuilder() {
+    LocalNetworkTopologyDetailResults.ModelBuilder builder = new LocalNetworkTopologyDetailResults.ModelBuilder()
+      .results(getResults())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

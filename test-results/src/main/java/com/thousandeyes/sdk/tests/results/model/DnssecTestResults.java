@@ -49,25 +49,17 @@ public class DnssecTestResults {
   private SimpleTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public DnssecTestResults() { 
-  }
-
-  @JsonCreator
-  public DnssecTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public DnssecTestResults results(List<DnssecTestResult> results) {
@@ -230,5 +222,79 @@ public class DnssecTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnssecTestResults instance;
+
+    public ModelBuilder() {
+      this(new DnssecTestResults());
+    }
+
+    protected ModelBuilder(DnssecTestResults instance) {
+      this.instance = instance;
+    }
+
+    public DnssecTestResults.ModelBuilder results(List<DnssecTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public DnssecTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public DnssecTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public DnssecTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public DnssecTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DnssecTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnssecTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnssecTestResults.ModelBuilder builder() {
+    return new DnssecTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnssecTestResults.ModelBuilder toBuilder() {
+    DnssecTestResults.ModelBuilder builder = new DnssecTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -88,33 +88,41 @@ public class UnexpandedApiTest {
   private Boolean enabled = true;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -187,28 +195,6 @@ public class UnexpandedApiTest {
   private Boolean usePublicBgp = true;
 
   public UnexpandedApiTest() { 
-  }
-
-  @JsonCreator
-  public UnexpandedApiTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
   }
 
   public UnexpandedApiTest interval(TestInterval interval) {
@@ -1162,5 +1148,234 @@ public class UnexpandedApiTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UnexpandedApiTest instance;
+
+    public ModelBuilder() {
+      this(new UnexpandedApiTest());
+    }
+
+    protected ModelBuilder(UnexpandedApiTest instance) {
+      this.instance = instance;
+    }
+
+    public UnexpandedApiTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder clientCertDomainsAllowList(String clientCertDomainsAllowList) {
+      this.instance.setClientCertDomainsAllowList(clientCertDomainsAllowList);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder predefinedVariables(List<ApiPredefinedVariable> predefinedVariables) {
+      this.instance.setPredefinedVariables(predefinedVariables);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder requests(List<ApiRequest> requests) {
+      this.instance.setRequests(requests);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder targetTime(Integer targetTime) {
+      this.instance.setTargetTime(targetTime);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder timeLimit(Integer timeLimit) {
+      this.instance.setTimeLimit(timeLimit);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public UnexpandedApiTest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+
+    /**
+     * Returns a built UnexpandedApiTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UnexpandedApiTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UnexpandedApiTest.ModelBuilder builder() {
+    return new UnexpandedApiTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UnexpandedApiTest.ModelBuilder toBuilder() {
+    UnexpandedApiTest.ModelBuilder builder = new UnexpandedApiTest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .clientCertificate(getClientCertificate())
+      .clientCertDomainsAllowList(getClientCertDomainsAllowList())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .distributedTracing(getDistributedTracing())
+      .followRedirects(getFollowRedirects())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .pathTraceMode(getPathTraceMode())
+      .predefinedVariables(getPredefinedVariables())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requests(getRequests())
+      .sslVersionId(getSslVersionId())
+      .targetTime(getTargetTime())
+      .timeLimit(getTimeLimit())
+      .url(getUrl())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp());
+    return builder;
+  }
+
 }
 

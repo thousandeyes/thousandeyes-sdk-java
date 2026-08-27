@@ -351,5 +351,99 @@ public class ApiAlertListAlert {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAlertListAlert instance;
+
+    public ModelBuilder() {
+      this(new ApiAlertListAlert());
+    }
+
+    protected ModelBuilder(ApiAlertListAlert instance) {
+      this.instance = instance;
+    }
+
+    public ApiAlertListAlert.ModelBuilder alertId(String alertId) {
+      this.instance.setAlertId(alertId);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder ruleId(String ruleId) {
+      this.instance.setRuleId(ruleId);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder alertSource(String alertSource) {
+      this.instance.setAlertSource(alertSource);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder alertRule(String alertRule) {
+      this.instance.setAlertRule(alertRule);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder alertType(AlertListAlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder startTime(OffsetDateTime startTime) {
+      this.instance.setStartTime(startTime);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder durationInSeconds(Long durationInSeconds) {
+      this.instance.setDurationInSeconds(durationInSeconds);
+      return this;
+    }
+    public ApiAlertListAlert.ModelBuilder active(Boolean active) {
+      this.instance.setActive(active);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAlertListAlert instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAlertListAlert build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAlertListAlert.ModelBuilder builder() {
+    return new ApiAlertListAlert.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAlertListAlert.ModelBuilder toBuilder() {
+    ApiAlertListAlert.ModelBuilder builder = new ApiAlertListAlert.ModelBuilder()
+      .alertId(getAlertId())
+      .testId(getTestId())
+      .ruleId(getRuleId())
+      .alertSource(getAlertSource())
+      .alertRule(getAlertRule())
+      .alertType(getAlertType())
+      .startTime(getStartTime())
+      .durationInSeconds(getDurationInSeconds())
+      .active(getActive());
+    return builder;
+  }
+
 }
 

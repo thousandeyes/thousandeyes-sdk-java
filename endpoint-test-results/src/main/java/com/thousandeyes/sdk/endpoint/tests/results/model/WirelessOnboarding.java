@@ -35,32 +35,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class WirelessOnboarding {
   public static final String JSON_PROPERTY_DOT11_AUTH_TIME_MS = "dot11AuthTimeMs";
+  @JsonProperty(JSON_PROPERTY_DOT11_AUTH_TIME_MS)
   private Long dot11AuthTimeMs;
 
   public static final String JSON_PROPERTY_DOT11_ASSOC_TIME_MS = "dot11AssocTimeMs";
+  @JsonProperty(JSON_PROPERTY_DOT11_ASSOC_TIME_MS)
   private Long dot11AssocTimeMs;
 
   public static final String JSON_PROPERTY_DOT1X_AUTH_TIME_MS = "dot1xAuthTimeMs";
+  @JsonProperty(JSON_PROPERTY_DOT1X_AUTH_TIME_MS)
   private Long dot1xAuthTimeMs;
 
   public static final String JSON_PROPERTY_EAPOL_KEY_TIME_MS = "eapolKeyTimeMs";
+  @JsonProperty(JSON_PROPERTY_EAPOL_KEY_TIME_MS)
   private Long eapolKeyTimeMs;
 
   public WirelessOnboarding() { 
-  }
-
-  @JsonCreator
-  public WirelessOnboarding(
-    @JsonProperty(JSON_PROPERTY_DOT11_AUTH_TIME_MS) Long dot11AuthTimeMs, 
-    @JsonProperty(JSON_PROPERTY_DOT11_ASSOC_TIME_MS) Long dot11AssocTimeMs, 
-    @JsonProperty(JSON_PROPERTY_DOT1X_AUTH_TIME_MS) Long dot1xAuthTimeMs, 
-    @JsonProperty(JSON_PROPERTY_EAPOL_KEY_TIME_MS) Long eapolKeyTimeMs
-  ) {
-  this();
-    this.dot11AuthTimeMs = dot11AuthTimeMs;
-    this.dot11AssocTimeMs = dot11AssocTimeMs;
-    this.dot1xAuthTimeMs = dot1xAuthTimeMs;
-    this.eapolKeyTimeMs = eapolKeyTimeMs;
   }
 
    /**
@@ -168,5 +158,74 @@ public class WirelessOnboarding {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WirelessOnboarding instance;
+
+    public ModelBuilder() {
+      this(new WirelessOnboarding());
+    }
+
+    protected ModelBuilder(WirelessOnboarding instance) {
+      this.instance = instance;
+    }
+
+    public WirelessOnboarding.ModelBuilder dot11AuthTimeMs(Long dot11AuthTimeMs) {
+      this.instance.dot11AuthTimeMs = dot11AuthTimeMs;
+      return this;
+    }
+    public WirelessOnboarding.ModelBuilder dot11AssocTimeMs(Long dot11AssocTimeMs) {
+      this.instance.dot11AssocTimeMs = dot11AssocTimeMs;
+      return this;
+    }
+    public WirelessOnboarding.ModelBuilder dot1xAuthTimeMs(Long dot1xAuthTimeMs) {
+      this.instance.dot1xAuthTimeMs = dot1xAuthTimeMs;
+      return this;
+    }
+    public WirelessOnboarding.ModelBuilder eapolKeyTimeMs(Long eapolKeyTimeMs) {
+      this.instance.eapolKeyTimeMs = eapolKeyTimeMs;
+      return this;
+    }
+
+    /**
+     * Returns a built WirelessOnboarding instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WirelessOnboarding build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WirelessOnboarding.ModelBuilder builder() {
+    return new WirelessOnboarding.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WirelessOnboarding.ModelBuilder toBuilder() {
+    WirelessOnboarding.ModelBuilder builder = new WirelessOnboarding.ModelBuilder()
+      .dot11AuthTimeMs(getDot11AuthTimeMs())
+      .dot11AssocTimeMs(getDot11AssocTimeMs())
+      .dot1xAuthTimeMs(getDot1xAuthTimeMs())
+      .eapolKeyTimeMs(getEapolKeyTimeMs());
+    return builder;
+  }
+
 }
 

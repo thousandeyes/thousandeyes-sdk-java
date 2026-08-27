@@ -318,5 +318,94 @@ public class EndpointTestSelfLink {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestSelfLink instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestSelfLink());
+    }
+
+    protected ModelBuilder(EndpointTestSelfLink instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestSelfLink.ModelBuilder href(String href) {
+      this.instance.setHref(href);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder templated(Boolean templated) {
+      this.instance.setTemplated(templated);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder deprecation(String deprecation) {
+      this.instance.setDeprecation(deprecation);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder profile(String profile) {
+      this.instance.setProfile(profile);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public EndpointTestSelfLink.ModelBuilder hreflang(String hreflang) {
+      this.instance.setHreflang(hreflang);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestSelfLink instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestSelfLink build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestSelfLink.ModelBuilder builder() {
+    return new EndpointTestSelfLink.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestSelfLink.ModelBuilder toBuilder() {
+    EndpointTestSelfLink.ModelBuilder builder = new EndpointTestSelfLink.ModelBuilder()
+      .href(getHref())
+      .templated(getTemplated())
+      .type(getType())
+      .deprecation(getDeprecation())
+      .name(getName())
+      .profile(getProfile())
+      .title(getTitle())
+      .hreflang(getHreflang());
+    return builder;
+  }
+
 }
 

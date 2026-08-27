@@ -44,17 +44,10 @@ public class TestMonitorsProperties {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
+  @JsonProperty(JSON_PROPERTY_MONITORS)
   private List<Monitor> monitors = new ArrayList<>();
 
   public TestMonitorsProperties() { 
-  }
-
-  @JsonCreator
-  public TestMonitorsProperties(
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
-  ) {
-  this();
-    this.monitors = monitors;
   }
 
   public TestMonitorsProperties bgpMeasurements(Boolean bgpMeasurements) {
@@ -165,5 +158,69 @@ public class TestMonitorsProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestMonitorsProperties instance;
+
+    public ModelBuilder() {
+      this(new TestMonitorsProperties());
+    }
+
+    protected ModelBuilder(TestMonitorsProperties instance) {
+      this.instance = instance;
+    }
+
+    public TestMonitorsProperties.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public TestMonitorsProperties.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public TestMonitorsProperties.ModelBuilder monitors(List<Monitor> monitors) {
+      this.instance.monitors = monitors;
+      return this;
+    }
+
+    /**
+     * Returns a built TestMonitorsProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestMonitorsProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestMonitorsProperties.ModelBuilder builder() {
+    return new TestMonitorsProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestMonitorsProperties.ModelBuilder toBuilder() {
+    TestMonitorsProperties.ModelBuilder builder = new TestMonitorsProperties.ModelBuilder()
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .monitors(getMonitors());
+    return builder;
+  }
+
 }
 

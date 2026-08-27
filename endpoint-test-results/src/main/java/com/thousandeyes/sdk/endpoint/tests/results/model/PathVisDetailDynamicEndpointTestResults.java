@@ -177,5 +177,69 @@ public class PathVisDetailDynamicEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisDetailDynamicEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new PathVisDetailDynamicEndpointTestResults());
+    }
+
+    protected ModelBuilder(PathVisDetailDynamicEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PathVisDetailDynamicEndpointTestResults.ModelBuilder results(List<PathVisDetailDynamicEndpointTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PathVisDetailDynamicEndpointTestResults.ModelBuilder test(DynamicTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PathVisDetailDynamicEndpointTestResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisDetailDynamicEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisDetailDynamicEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisDetailDynamicEndpointTestResults.ModelBuilder builder() {
+    return new PathVisDetailDynamicEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisDetailDynamicEndpointTestResults.ModelBuilder toBuilder() {
+    PathVisDetailDynamicEndpointTestResults.ModelBuilder builder = new PathVisDetailDynamicEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

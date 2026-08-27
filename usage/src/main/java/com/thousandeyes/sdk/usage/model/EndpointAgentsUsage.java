@@ -163,5 +163,69 @@ public class EndpointAgentsUsage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentsUsage instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentsUsage());
+    }
+
+    protected ModelBuilder(EndpointAgentsUsage instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentsUsage.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointAgentsUsage.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public EndpointAgentsUsage.ModelBuilder endpointAgentsUsed(Long endpointAgentsUsed) {
+      this.instance.setEndpointAgentsUsed(endpointAgentsUsed);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentsUsage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentsUsage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentsUsage.ModelBuilder builder() {
+    return new EndpointAgentsUsage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentsUsage.ModelBuilder toBuilder() {
+    EndpointAgentsUsage.ModelBuilder builder = new EndpointAgentsUsage.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .endpointAgentsUsed(getEndpointAgentsUsed());
+    return builder;
+  }
+
 }
 

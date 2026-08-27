@@ -65,6 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Rule {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
@@ -134,14 +135,6 @@ public class Rule {
   private SelfLinks links;
 
   public Rule() { 
-  }
-
-  @JsonCreator
-  public Rule(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId
-  ) {
-  this();
-    this.ruleId = ruleId;
   }
 
    /**
@@ -824,5 +817,169 @@ public class Rule {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Rule instance;
+
+    public ModelBuilder() {
+      this(new Rule());
+    }
+
+    protected ModelBuilder(Rule instance) {
+      this.instance = instance;
+    }
+
+    public Rule.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public Rule.ModelBuilder ruleName(String ruleName) {
+      this.instance.setRuleName(ruleName);
+      return this;
+    }
+    public Rule.ModelBuilder expression(String expression) {
+      this.instance.setExpression(expression);
+      return this;
+    }
+    public Rule.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public Rule.ModelBuilder direction(AlertDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public Rule.ModelBuilder notifyOnClear(Boolean notifyOnClear) {
+      this.instance.setNotifyOnClear(notifyOnClear);
+      return this;
+    }
+    public Rule.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.setIsDefault(isDefault);
+      return this;
+    }
+    public Rule.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public Rule.ModelBuilder alertGroupType(AlertGroupType alertGroupType) {
+      this.instance.setAlertGroupType(alertGroupType);
+      return this;
+    }
+    public Rule.ModelBuilder minimumSources(Integer minimumSources) {
+      this.instance.setMinimumSources(minimumSources);
+      return this;
+    }
+    public Rule.ModelBuilder minimumSourcesPct(Integer minimumSourcesPct) {
+      this.instance.setMinimumSourcesPct(minimumSourcesPct);
+      return this;
+    }
+    public Rule.ModelBuilder roundsViolatingMode(AlertRoundsViolationMode roundsViolatingMode) {
+      this.instance.setRoundsViolatingMode(roundsViolatingMode);
+      return this;
+    }
+    public Rule.ModelBuilder roundsViolatingOutOf(Integer roundsViolatingOutOf) {
+      this.instance.setRoundsViolatingOutOf(roundsViolatingOutOf);
+      return this;
+    }
+    public Rule.ModelBuilder roundsViolatingRequired(Integer roundsViolatingRequired) {
+      this.instance.setRoundsViolatingRequired(roundsViolatingRequired);
+      return this;
+    }
+    public Rule.ModelBuilder includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
+      this.instance.setIncludeCoveredPrefixes(includeCoveredPrefixes);
+      return this;
+    }
+    public Rule.ModelBuilder sensitivityLevel(SensitivityLevel sensitivityLevel) {
+      this.instance.setSensitivityLevel(sensitivityLevel);
+      return this;
+    }
+    public Rule.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public Rule.ModelBuilder endpointAgentIds(List<String> endpointAgentIds) {
+      this.instance.setEndpointAgentIds(endpointAgentIds);
+      return this;
+    }
+    public Rule.ModelBuilder endpointLabelIds(List<String> endpointLabelIds) {
+      this.instance.setEndpointLabelIds(endpointLabelIds);
+      return this;
+    }
+    public Rule.ModelBuilder visitedSitesFilter(List<String> visitedSitesFilter) {
+      this.instance.setVisitedSitesFilter(visitedSitesFilter);
+      return this;
+    }
+    public Rule.ModelBuilder notifications(AlertNotification notifications) {
+      this.instance.setNotifications(notifications);
+      return this;
+    }
+    public Rule.ModelBuilder testIds(List<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+    public Rule.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Rule instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Rule build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Rule.ModelBuilder builder() {
+    return new Rule.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Rule.ModelBuilder toBuilder() {
+    Rule.ModelBuilder builder = new Rule.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .description(getDescription())
+      .direction(getDirection())
+      .notifyOnClear(getNotifyOnClear())
+      .isDefault(getIsDefault())
+      .alertType(getAlertType())
+      .alertGroupType(getAlertGroupType())
+      .minimumSources(getMinimumSources())
+      .minimumSourcesPct(getMinimumSourcesPct())
+      .roundsViolatingMode(getRoundsViolatingMode())
+      .roundsViolatingOutOf(getRoundsViolatingOutOf())
+      .roundsViolatingRequired(getRoundsViolatingRequired())
+      .includeCoveredPrefixes(getIncludeCoveredPrefixes())
+      .sensitivityLevel(getSensitivityLevel())
+      .severity(getSeverity())
+      .endpointAgentIds(getEndpointAgentIds())
+      .endpointLabelIds(getEndpointLabelIds())
+      .visitedSitesFilter(getVisitedSitesFilter())
+      .notifications(getNotifications())
+      .testIds(getTestIds())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

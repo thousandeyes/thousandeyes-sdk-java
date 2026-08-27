@@ -194,5 +194,74 @@ public class AuditOperationWithUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AuditOperationWithUpdate instance;
+
+    public ModelBuilder() {
+      this(new AuditOperationWithUpdate());
+    }
+
+    protected ModelBuilder(AuditOperationWithUpdate instance) {
+      this.instance = instance;
+    }
+
+    public AuditOperationWithUpdate.ModelBuilder createdBy(Long createdBy) {
+      this.instance.setCreatedBy(createdBy);
+      return this;
+    }
+    public AuditOperationWithUpdate.ModelBuilder createdDate(Long createdDate) {
+      this.instance.setCreatedDate(createdDate);
+      return this;
+    }
+    public AuditOperationWithUpdate.ModelBuilder updatedBy(Long updatedBy) {
+      this.instance.setUpdatedBy(updatedBy);
+      return this;
+    }
+    public AuditOperationWithUpdate.ModelBuilder updatedDate(Long updatedDate) {
+      this.instance.setUpdatedDate(updatedDate);
+      return this;
+    }
+
+    /**
+     * Returns a built AuditOperationWithUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AuditOperationWithUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AuditOperationWithUpdate.ModelBuilder builder() {
+    return new AuditOperationWithUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AuditOperationWithUpdate.ModelBuilder toBuilder() {
+    AuditOperationWithUpdate.ModelBuilder builder = new AuditOperationWithUpdate.ModelBuilder()
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .updatedBy(getUpdatedBy())
+      .updatedDate(getUpdatedDate());
+    return builder;
+  }
+
 }
 

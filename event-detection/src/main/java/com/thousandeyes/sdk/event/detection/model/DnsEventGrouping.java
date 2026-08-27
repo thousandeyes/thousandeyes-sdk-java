@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsEventGrouping {
   public static final String JSON_PROPERTY_ROOT_DOMAIN = "rootDomain";
+  @JsonProperty(JSON_PROPERTY_ROOT_DOMAIN)
   private String rootDomain;
 
   public DnsEventGrouping() { 
-  }
-
-  @JsonCreator
-  public DnsEventGrouping(
-    @JsonProperty(JSON_PROPERTY_ROOT_DOMAIN) String rootDomain
-  ) {
-  this();
-    this.rootDomain = rootDomain;
   }
 
    /**
@@ -99,5 +92,59 @@ public class DnsEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new DnsEventGrouping());
+    }
+
+    protected ModelBuilder(DnsEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public DnsEventGrouping.ModelBuilder rootDomain(String rootDomain) {
+      this.instance.rootDomain = rootDomain;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsEventGrouping.ModelBuilder builder() {
+    return new DnsEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsEventGrouping.ModelBuilder toBuilder() {
+    DnsEventGrouping.ModelBuilder builder = new DnsEventGrouping.ModelBuilder()
+      .rootDomain(getRootDomain());
+    return builder;
+  }
+
 }
 

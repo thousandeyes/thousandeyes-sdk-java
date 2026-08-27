@@ -145,5 +145,64 @@ public class WebTransactionTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebTransactionTests instance;
+
+    public ModelBuilder() {
+      this(new WebTransactionTests());
+    }
+
+    protected ModelBuilder(WebTransactionTests instance) {
+      this.instance = instance;
+    }
+
+    public WebTransactionTests.ModelBuilder tests(List<UnexpandedWebTransactionTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public WebTransactionTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built WebTransactionTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebTransactionTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebTransactionTests.ModelBuilder builder() {
+    return new WebTransactionTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebTransactionTests.ModelBuilder toBuilder() {
+    WebTransactionTests.ModelBuilder builder = new WebTransactionTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class DnsTraceTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTraceTests instance;
+
+    public ModelBuilder() {
+      this(new DnsTraceTests());
+    }
+
+    protected ModelBuilder(DnsTraceTests instance) {
+      this.instance = instance;
+    }
+
+    public DnsTraceTests.ModelBuilder tests(List<UnexpandedDnsTraceTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public DnsTraceTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTraceTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTraceTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTraceTests.ModelBuilder builder() {
+    return new DnsTraceTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTraceTests.ModelBuilder toBuilder() {
+    DnsTraceTests.ModelBuilder builder = new DnsTraceTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

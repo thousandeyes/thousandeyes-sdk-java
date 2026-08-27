@@ -35,25 +35,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkProviderInfo {
   public static final String JSON_PROPERTY_ASN = "asn";
+  @JsonProperty(JSON_PROPERTY_ASN)
   private Long asn;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   private NetworkProviderType type;
 
   public NetworkProviderInfo() { 
-  }
-
-  @JsonCreator
-  public NetworkProviderInfo(
-    @JsonProperty(JSON_PROPERTY_ASN) Long asn, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
-  ) {
-  this();
-    this.asn = asn;
-    this.name = name;
   }
 
    /**
@@ -154,5 +146,69 @@ public class NetworkProviderInfo {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkProviderInfo instance;
+
+    public ModelBuilder() {
+      this(new NetworkProviderInfo());
+    }
+
+    protected ModelBuilder(NetworkProviderInfo instance) {
+      this.instance = instance;
+    }
+
+    public NetworkProviderInfo.ModelBuilder asn(Long asn) {
+      this.instance.asn = asn;
+      return this;
+    }
+    public NetworkProviderInfo.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public NetworkProviderInfo.ModelBuilder type(NetworkProviderType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkProviderInfo instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkProviderInfo build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkProviderInfo.ModelBuilder builder() {
+    return new NetworkProviderInfo.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkProviderInfo.ModelBuilder toBuilder() {
+    NetworkProviderInfo.ModelBuilder builder = new NetworkProviderInfo.ModelBuilder()
+      .asn(getAsn())
+      .name(getName())
+      .type(getType());
+    return builder;
+  }
+
 }
 

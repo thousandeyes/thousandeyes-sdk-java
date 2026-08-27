@@ -70,15 +70,19 @@ public class NetworkEndpointTestResult {
   private String aid;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
@@ -106,12 +110,15 @@ public class NetworkEndpointTestResult {
   private Platform platform;
 
   public static final String JSON_PROPERTY_AVG_LATENCY = "avgLatency";
+  @JsonProperty(JSON_PROPERTY_AVG_LATENCY)
   private Double avgLatency;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_JITTER = "jitter";
+  @JsonProperty(JSON_PROPERTY_JITTER)
   private Double jitter;
 
   public static final String JSON_PROPERTY_SCORE = "score";
@@ -121,46 +128,22 @@ public class NetworkEndpointTestResult {
   private List<EndpointZtaMetrics> ztaMetrics = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_ICMP_BLOCKED = "isIcmpBlocked";
+  @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED)
   private Boolean isIcmpBlocked;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Double loss;
 
   public static final String JSON_PROPERTY_MAX_LATENCY = "maxLatency";
+  @JsonProperty(JSON_PROPERTY_MAX_LATENCY)
   private Double maxLatency;
 
   public static final String JSON_PROPERTY_MIN_LATENCY = "minLatency";
+  @JsonProperty(JSON_PROPERTY_MIN_LATENCY)
   private Double minLatency;
 
   public NetworkEndpointTestResult() { 
-  }
-
-  @JsonCreator
-  public NetworkEndpointTestResult(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_AVG_LATENCY) Double avgLatency, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails, 
-    @JsonProperty(JSON_PROPERTY_JITTER) Double jitter, 
-    @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED) Boolean isIcmpBlocked, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
-    @JsonProperty(JSON_PROPERTY_MAX_LATENCY) Double maxLatency, 
-    @JsonProperty(JSON_PROPERTY_MIN_LATENCY) Double minLatency
-  ) {
-  this();
-    this.testId = testId;
-    this.agentId = agentId;
-    this.roundId = roundId;
-    this.serverIp = serverIp;
-    this.avgLatency = avgLatency;
-    this.errorDetails = errorDetails;
-    this.jitter = jitter;
-    this.isIcmpBlocked = isIcmpBlocked;
-    this.loss = loss;
-    this.maxLatency = maxLatency;
-    this.minLatency = minLatency;
   }
 
   public NetworkEndpointTestResult aid(String aid) {
@@ -692,5 +675,164 @@ public class NetworkEndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkEndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new NetworkEndpointTestResult());
+    }
+
+    protected ModelBuilder(NetworkEndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public NetworkEndpointTestResult.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder originalTargetProfile(TargetProfile originalTargetProfile) {
+      this.instance.setOriginalTargetProfile(originalTargetProfile);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder userProfile(UserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder vpnProfile(VpnProfile vpnProfile) {
+      this.instance.setVpnProfile(vpnProfile);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder avgLatency(Double avgLatency) {
+      this.instance.avgLatency = avgLatency;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder jitter(Double jitter) {
+      this.instance.jitter = jitter;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder score(EndpointPingDataPointScore score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder ztaMetrics(List<EndpointZtaMetrics> ztaMetrics) {
+      this.instance.setZtaMetrics(ztaMetrics);
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder isIcmpBlocked(Boolean isIcmpBlocked) {
+      this.instance.isIcmpBlocked = isIcmpBlocked;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder loss(Double loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder maxLatency(Double maxLatency) {
+      this.instance.maxLatency = maxLatency;
+      return this;
+    }
+    public NetworkEndpointTestResult.ModelBuilder minLatency(Double minLatency) {
+      this.instance.minLatency = minLatency;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkEndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkEndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkEndpointTestResult.ModelBuilder builder() {
+    return new NetworkEndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkEndpointTestResult.ModelBuilder toBuilder() {
+    NetworkEndpointTestResult.ModelBuilder builder = new NetworkEndpointTestResult.ModelBuilder()
+      .aid(getAid())
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .roundId(getRoundId())
+      .serverIp(getServerIp())
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .originalTargetProfile(getOriginalTargetProfile())
+      .userProfile(getUserProfile())
+      .vpnProfile(getVpnProfile())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform())
+      .avgLatency(getAvgLatency())
+      .errorDetails(getErrorDetails())
+      .jitter(getJitter())
+      .score(getScore())
+      .ztaMetrics(getZtaMetrics())
+      .isIcmpBlocked(getIsIcmpBlocked())
+      .loss(getLoss())
+      .maxLatency(getMaxLatency())
+      .minLatency(getMinLatency());
+    return builder;
+  }
+
 }
 

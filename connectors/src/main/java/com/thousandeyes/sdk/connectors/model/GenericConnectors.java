@@ -145,5 +145,64 @@ public class GenericConnectors {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private GenericConnectors instance;
+
+    public ModelBuilder() {
+      this(new GenericConnectors());
+    }
+
+    protected ModelBuilder(GenericConnectors instance) {
+      this.instance = instance;
+    }
+
+    public GenericConnectors.ModelBuilder items(List<GenericConnector> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public GenericConnectors.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built GenericConnectors instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public GenericConnectors build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static GenericConnectors.ModelBuilder builder() {
+    return new GenericConnectors.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public GenericConnectors.ModelBuilder toBuilder() {
+    GenericConnectors.ModelBuilder builder = new GenericConnectors.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

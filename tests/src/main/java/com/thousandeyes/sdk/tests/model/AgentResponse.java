@@ -50,24 +50,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentResponse {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES)
   private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private String agentName;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
@@ -80,37 +86,17 @@ public class AgentResponse {
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
+  @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES)
   private Boolean verifySslCertificates;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
   private CloudEnterpriseAgentType agentType;
 
   public AgentResponse() { 
-  }
-
-  @JsonCreator
-  public AgentResponse(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES) List<String> publicIpAddresses, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix
-  ) {
-  this();
-    this.ipAddresses = ipAddresses;
-    this.publicIpAddresses = publicIpAddresses;
-    this.network = network;
-    this.agentId = agentId;
-    this.location = location;
-    this.countryId = countryId;
-    this.verifySslCertificates = verifySslCertificates;
-    this.prefix = prefix;
   }
 
    /**
@@ -421,5 +407,119 @@ public class AgentResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentResponse instance;
+
+    public ModelBuilder() {
+      this(new AgentResponse());
+    }
+
+    protected ModelBuilder(AgentResponse instance) {
+      this.instance = instance;
+    }
+
+    public AgentResponse.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+    public AgentResponse.ModelBuilder publicIpAddresses(List<String> publicIpAddresses) {
+      this.instance.publicIpAddresses = publicIpAddresses;
+      return this;
+    }
+    public AgentResponse.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public AgentResponse.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public AgentResponse.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public AgentResponse.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public AgentResponse.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public AgentResponse.ModelBuilder coordinates(Coordinates coordinates) {
+      this.instance.setCoordinates(coordinates);
+      return this;
+    }
+    public AgentResponse.ModelBuilder networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+      this.instance.setNetworkProviderInfo(networkProviderInfo);
+      return this;
+    }
+    public AgentResponse.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public AgentResponse.ModelBuilder verifySslCertificates(Boolean verifySslCertificates) {
+      this.instance.verifySslCertificates = verifySslCertificates;
+      return this;
+    }
+    public AgentResponse.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public AgentResponse.ModelBuilder agentType(CloudEnterpriseAgentType agentType) {
+      this.instance.setAgentType(agentType);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentResponse.ModelBuilder builder() {
+    return new AgentResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentResponse.ModelBuilder toBuilder() {
+    AgentResponse.ModelBuilder builder = new AgentResponse.ModelBuilder()
+      .ipAddresses(getIpAddresses())
+      .publicIpAddresses(getPublicIpAddresses())
+      .network(getNetwork())
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .location(getLocation())
+      .countryId(getCountryId())
+      .coordinates(getCoordinates())
+      .networkProviderInfo(getNetworkProviderInfo())
+      .enabled(getEnabled())
+      .verifySslCertificates(getVerifySslCertificates())
+      .prefix(getPrefix())
+      .agentType(getAgentType());
+    return builder;
+  }
+
 }
 

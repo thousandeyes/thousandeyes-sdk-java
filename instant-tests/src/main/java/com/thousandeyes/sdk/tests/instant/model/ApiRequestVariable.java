@@ -132,5 +132,64 @@ public class ApiRequestVariable {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequestVariable instance;
+
+    public ModelBuilder() {
+      this(new ApiRequestVariable());
+    }
+
+    protected ModelBuilder(ApiRequestVariable instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequestVariable.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiRequestVariable.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequestVariable instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequestVariable build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequestVariable.ModelBuilder builder() {
+    return new ApiRequestVariable.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequestVariable.ModelBuilder toBuilder() {
+    ApiRequestVariable.ModelBuilder builder = new ApiRequestVariable.ModelBuilder()
+      .name(getName())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

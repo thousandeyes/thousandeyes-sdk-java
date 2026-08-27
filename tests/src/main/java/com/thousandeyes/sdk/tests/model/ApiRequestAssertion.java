@@ -165,5 +165,69 @@ public class ApiRequestAssertion {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequestAssertion instance;
+
+    public ModelBuilder() {
+      this(new ApiRequestAssertion());
+    }
+
+    protected ModelBuilder(ApiRequestAssertion instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequestAssertion.ModelBuilder name(ApiRequestAssertionName name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiRequestAssertion.ModelBuilder operator(ApiRequestAssertionOperator operator) {
+      this.instance.setOperator(operator);
+      return this;
+    }
+    public ApiRequestAssertion.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequestAssertion instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequestAssertion build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequestAssertion.ModelBuilder builder() {
+    return new ApiRequestAssertion.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequestAssertion.ModelBuilder toBuilder() {
+    ApiRequestAssertion.ModelBuilder builder = new ApiRequestAssertion.ModelBuilder()
+      .name(getName())
+      .operator(getOperator())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

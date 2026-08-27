@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApplicationEventGrouping {
   public static final String JSON_PROPERTY_FQDN = "fqdn";
+  @JsonProperty(JSON_PROPERTY_FQDN)
   private String fqdn;
 
   public ApplicationEventGrouping() { 
-  }
-
-  @JsonCreator
-  public ApplicationEventGrouping(
-    @JsonProperty(JSON_PROPERTY_FQDN) String fqdn
-  ) {
-  this();
-    this.fqdn = fqdn;
   }
 
    /**
@@ -99,5 +92,59 @@ public class ApplicationEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApplicationEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new ApplicationEventGrouping());
+    }
+
+    protected ModelBuilder(ApplicationEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public ApplicationEventGrouping.ModelBuilder fqdn(String fqdn) {
+      this.instance.fqdn = fqdn;
+      return this;
+    }
+
+    /**
+     * Returns a built ApplicationEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApplicationEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApplicationEventGrouping.ModelBuilder builder() {
+    return new ApplicationEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApplicationEventGrouping.ModelBuilder toBuilder() {
+    ApplicationEventGrouping.ModelBuilder builder = new ApplicationEventGrouping.ModelBuilder()
+      .fqdn(getFqdn());
+    return builder;
+  }
+
 }
 

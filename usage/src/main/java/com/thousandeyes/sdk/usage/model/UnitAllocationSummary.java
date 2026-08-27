@@ -175,5 +175,69 @@ public class UnitAllocationSummary {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UnitAllocationSummary instance;
+
+    public ModelBuilder() {
+      this(new UnitAllocationSummary());
+    }
+
+    protected ModelBuilder(UnitAllocationSummary instance) {
+      this.instance = instance;
+    }
+
+    public UnitAllocationSummary.ModelBuilder used(Long used) {
+      this.instance.setUsed(used);
+      return this;
+    }
+    public UnitAllocationSummary.ModelBuilder projected(Long projected) {
+      this.instance.setProjected(projected);
+      return this;
+    }
+    public UnitAllocationSummary.ModelBuilder allocations(List<AllocationUnitUsageBreakdown> allocations) {
+      this.instance.setAllocations(allocations);
+      return this;
+    }
+
+    /**
+     * Returns a built UnitAllocationSummary instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UnitAllocationSummary build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UnitAllocationSummary.ModelBuilder builder() {
+    return new UnitAllocationSummary.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UnitAllocationSummary.ModelBuilder toBuilder() {
+    UnitAllocationSummary.ModelBuilder builder = new UnitAllocationSummary.ModelBuilder()
+      .used(getUsed())
+      .projected(getProjected())
+      .allocations(getAllocations());
+    return builder;
+  }
+
 }
 

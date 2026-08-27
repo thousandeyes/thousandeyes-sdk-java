@@ -144,5 +144,64 @@ public class Assignments {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Assignments instance;
+
+    public ModelBuilder() {
+      this(new Assignments());
+    }
+
+    protected ModelBuilder(Assignments instance) {
+      this.instance = instance;
+    }
+
+    public Assignments.ModelBuilder items(List<String> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public Assignments.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Assignments instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Assignments build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Assignments.ModelBuilder builder() {
+    return new Assignments.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Assignments.ModelBuilder toBuilder() {
+    Assignments.ModelBuilder builder = new Assignments.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

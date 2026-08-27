@@ -38,32 +38,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TcpConnect {
   public static final String JSON_PROPERTY_RTT = "rtt";
+  @JsonProperty(JSON_PROPERTY_RTT)
   private Double rtt;
 
   public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
+  @JsonProperty(JSON_PROPERTY_ERROR_CODE)
   private String errorCode;
 
   public static final String JSON_PROPERTY_ERROR = "error";
+  @JsonProperty(JSON_PROPERTY_ERROR)
   private String error;
 
   public static final String JSON_PROPERTY_INFO_FLAGS = "infoFlags";
+  @JsonProperty(JSON_PROPERTY_INFO_FLAGS)
   private List<String> infoFlags = new ArrayList<>();
 
   public TcpConnect() { 
-  }
-
-  @JsonCreator
-  public TcpConnect(
-    @JsonProperty(JSON_PROPERTY_RTT) Double rtt, 
-    @JsonProperty(JSON_PROPERTY_ERROR_CODE) String errorCode, 
-    @JsonProperty(JSON_PROPERTY_ERROR) String error, 
-    @JsonProperty(JSON_PROPERTY_INFO_FLAGS) List<String> infoFlags
-  ) {
-  this();
-    this.rtt = rtt;
-    this.errorCode = errorCode;
-    this.error = error;
-    this.infoFlags = infoFlags;
   }
 
    /**
@@ -171,5 +161,74 @@ public class TcpConnect {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TcpConnect instance;
+
+    public ModelBuilder() {
+      this(new TcpConnect());
+    }
+
+    protected ModelBuilder(TcpConnect instance) {
+      this.instance = instance;
+    }
+
+    public TcpConnect.ModelBuilder rtt(Double rtt) {
+      this.instance.rtt = rtt;
+      return this;
+    }
+    public TcpConnect.ModelBuilder errorCode(String errorCode) {
+      this.instance.errorCode = errorCode;
+      return this;
+    }
+    public TcpConnect.ModelBuilder error(String error) {
+      this.instance.error = error;
+      return this;
+    }
+    public TcpConnect.ModelBuilder infoFlags(List<String> infoFlags) {
+      this.instance.infoFlags = infoFlags;
+      return this;
+    }
+
+    /**
+     * Returns a built TcpConnect instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TcpConnect build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TcpConnect.ModelBuilder builder() {
+    return new TcpConnect.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TcpConnect.ModelBuilder toBuilder() {
+    TcpConnect.ModelBuilder builder = new TcpConnect.ModelBuilder()
+      .rtt(getRtt())
+      .errorCode(getErrorCode())
+      .error(getError())
+      .infoFlags(getInfoFlags());
+    return builder;
+  }
+
 }
 

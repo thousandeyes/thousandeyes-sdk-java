@@ -47,73 +47,56 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsTraceTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_OUTPUT = "output";
+  @JsonProperty(JSON_PROPERTY_OUTPUT)
   private String output;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_QUERIES = "queries";
+  @JsonProperty(JSON_PROPERTY_QUERIES)
   private Integer queries;
 
   public static final String JSON_PROPERTY_FAILED_QUERIES = "failedQueries";
+  @JsonProperty(JSON_PROPERTY_FAILED_QUERIES)
   private Integer failedQueries;
 
   public static final String JSON_PROPERTY_FINAL_SERVER_QUERIED = "finalServerQueried";
+  @JsonProperty(JSON_PROPERTY_FINAL_SERVER_QUERIED)
   private String finalServerQueried;
 
   public static final String JSON_PROPERTY_FINAL_QUERY_TIME = "finalQueryTime";
+  @JsonProperty(JSON_PROPERTY_FINAL_QUERY_TIME)
   private Integer finalQueryTime;
 
   public static final String JSON_PROPERTY_MAPPINGS = "mappings";
+  @JsonProperty(JSON_PROPERTY_MAPPINGS)
   private String mappings;
 
   public DnsTraceTestResult() { 
-  }
-
-  @JsonCreator
-  public DnsTraceTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_OUTPUT) String output, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails, 
-    @JsonProperty(JSON_PROPERTY_QUERIES) Integer queries, 
-    @JsonProperty(JSON_PROPERTY_FAILED_QUERIES) Integer failedQueries, 
-    @JsonProperty(JSON_PROPERTY_FINAL_SERVER_QUERIED) String finalServerQueried, 
-    @JsonProperty(JSON_PROPERTY_FINAL_QUERY_TIME) Integer finalQueryTime, 
-    @JsonProperty(JSON_PROPERTY_MAPPINGS) String mappings
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.output = output;
-    this.errorDetails = errorDetails;
-    this.queries = queries;
-    this.failedQueries = failedQueries;
-    this.finalServerQueried = finalServerQueried;
-    this.finalQueryTime = finalQueryTime;
-    this.mappings = mappings;
   }
 
    /**
@@ -394,5 +377,119 @@ public class DnsTraceTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTraceTestResult instance;
+
+    public ModelBuilder() {
+      this(new DnsTraceTestResult());
+    }
+
+    protected ModelBuilder(DnsTraceTestResult instance) {
+      this.instance = instance;
+    }
+
+    public DnsTraceTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder output(String output) {
+      this.instance.output = output;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder queries(Integer queries) {
+      this.instance.queries = queries;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder failedQueries(Integer failedQueries) {
+      this.instance.failedQueries = failedQueries;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder finalServerQueried(String finalServerQueried) {
+      this.instance.finalServerQueried = finalServerQueried;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder finalQueryTime(Integer finalQueryTime) {
+      this.instance.finalQueryTime = finalQueryTime;
+      return this;
+    }
+    public DnsTraceTestResult.ModelBuilder mappings(String mappings) {
+      this.instance.mappings = mappings;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTraceTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTraceTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTraceTestResult.ModelBuilder builder() {
+    return new DnsTraceTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTraceTestResult.ModelBuilder toBuilder() {
+    DnsTraceTestResult.ModelBuilder builder = new DnsTraceTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .output(getOutput())
+      .errorDetails(getErrorDetails())
+      .queries(getQueries())
+      .failedQueries(getFailedQueries())
+      .finalServerQueried(getFinalServerQueried())
+      .finalQueryTime(getFinalQueryTime())
+      .mappings(getMappings());
+    return builder;
+  }
+
 }
 

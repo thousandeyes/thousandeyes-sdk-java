@@ -145,5 +145,64 @@ public class Credentials {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Credentials instance;
+
+    public ModelBuilder() {
+      this(new Credentials());
+    }
+
+    protected ModelBuilder(Credentials instance) {
+      this.instance = instance;
+    }
+
+    public Credentials.ModelBuilder credentials(List<Credential> credentials) {
+      this.instance.setCredentials(credentials);
+      return this;
+    }
+    public Credentials.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Credentials instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Credentials build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Credentials.ModelBuilder builder() {
+    return new Credentials.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Credentials.ModelBuilder toBuilder() {
+    Credentials.ModelBuilder builder = new Credentials.ModelBuilder()
+      .credentials(getCredentials())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

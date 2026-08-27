@@ -44,43 +44,32 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LegacyApiDashboard {
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   private Long accountId;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private Long createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private Long modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private String modifiedDate;
 
   public static final String JSON_PROPERTY_GLOBAL_OVERRIDE = "globalOverride";
   private Boolean globalOverride;
 
   public static final String JSON_PROPERTY_MIGRATED_REPORT = "migratedReport";
+  @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT)
   private Boolean migratedReport;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
   private List<Map<String, Object>> apiLink = new ArrayList<>();
 
   public LegacyApiDashboard() { 
-  }
-
-  @JsonCreator
-  public LegacyApiDashboard(
-    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Long accountId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) Long createdBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Long modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) String modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT) Boolean migratedReport
-  ) {
-  this();
-    this.accountId = accountId;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.migratedReport = migratedReport;
   }
 
    /**
@@ -281,5 +270,89 @@ public class LegacyApiDashboard {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LegacyApiDashboard instance;
+
+    public ModelBuilder() {
+      this(new LegacyApiDashboard());
+    }
+
+    protected ModelBuilder(LegacyApiDashboard instance) {
+      this.instance = instance;
+    }
+
+    public LegacyApiDashboard.ModelBuilder accountId(Long accountId) {
+      this.instance.accountId = accountId;
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder createdBy(Long createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder modifiedBy(Long modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder modifiedDate(String modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder globalOverride(Boolean globalOverride) {
+      this.instance.setGlobalOverride(globalOverride);
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder migratedReport(Boolean migratedReport) {
+      this.instance.migratedReport = migratedReport;
+      return this;
+    }
+    public LegacyApiDashboard.ModelBuilder apiLink(List<Map<String, Object>> apiLink) {
+      this.instance.setApiLink(apiLink);
+      return this;
+    }
+
+    /**
+     * Returns a built LegacyApiDashboard instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LegacyApiDashboard build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LegacyApiDashboard.ModelBuilder builder() {
+    return new LegacyApiDashboard.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LegacyApiDashboard.ModelBuilder toBuilder() {
+    LegacyApiDashboard.ModelBuilder builder = new LegacyApiDashboard.ModelBuilder()
+      .accountId(getAccountId())
+      .createdBy(getCreatedBy())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .globalOverride(getGlobalOverride())
+      .migratedReport(getMigratedReport())
+      .apiLink(getApiLink());
+    return builder;
+  }
+
 }
 

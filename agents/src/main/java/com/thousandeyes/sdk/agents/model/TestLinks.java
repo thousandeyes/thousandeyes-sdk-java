@@ -145,5 +145,64 @@ public class TestLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestLinks instance;
+
+    public ModelBuilder() {
+      this(new TestLinks());
+    }
+
+    protected ModelBuilder(TestLinks instance) {
+      this.instance = instance;
+    }
+
+    public TestLinks.ModelBuilder self(TestSelfLink self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+    public TestLinks.ModelBuilder testResults(List<Link> testResults) {
+      this.instance.setTestResults(testResults);
+      return this;
+    }
+
+    /**
+     * Returns a built TestLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestLinks.ModelBuilder builder() {
+    return new TestLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestLinks.ModelBuilder toBuilder() {
+    TestLinks.ModelBuilder builder = new TestLinks.ModelBuilder()
+      .self(getSelf())
+      .testResults(getTestResults());
+    return builder;
+  }
+
 }
 

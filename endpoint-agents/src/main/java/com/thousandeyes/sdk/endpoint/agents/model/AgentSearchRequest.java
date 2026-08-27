@@ -177,5 +177,69 @@ public class AgentSearchRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentSearchRequest instance;
+
+    public ModelBuilder() {
+      this(new AgentSearchRequest());
+    }
+
+    protected ModelBuilder(AgentSearchRequest instance) {
+      this.instance = instance;
+    }
+
+    public AgentSearchRequest.ModelBuilder searchFilters(AgentSearchFilters searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+    public AgentSearchRequest.ModelBuilder thresholdFilter(AgentThresholdFilters thresholdFilter) {
+      this.instance.setThresholdFilter(thresholdFilter);
+      return this;
+    }
+    public AgentSearchRequest.ModelBuilder searchSort(List<AgentSearchSort> searchSort) {
+      this.instance.setSearchSort(searchSort);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentSearchRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentSearchRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentSearchRequest.ModelBuilder builder() {
+    return new AgentSearchRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentSearchRequest.ModelBuilder toBuilder() {
+    AgentSearchRequest.ModelBuilder builder = new AgentSearchRequest.ModelBuilder()
+      .searchFilters(getSearchFilters())
+      .thresholdFilter(getThresholdFilter())
+      .searchSort(getSearchSort());
+    return builder;
+  }
+
 }
 

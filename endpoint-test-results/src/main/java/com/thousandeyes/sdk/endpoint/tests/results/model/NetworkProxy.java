@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkProxy {
   public static final String JSON_PROPERTY_BYPASS = "bypass";
+  @JsonProperty(JSON_PROPERTY_BYPASS)
   private String bypass;
 
   public static final String JSON_PROPERTY_PROXY = "proxy";
+  @JsonProperty(JSON_PROPERTY_PROXY)
   private String proxy;
 
   public NetworkProxy() { 
-  }
-
-  @JsonCreator
-  public NetworkProxy(
-    @JsonProperty(JSON_PROPERTY_BYPASS) String bypass, 
-    @JsonProperty(JSON_PROPERTY_PROXY) String proxy
-  ) {
-  this();
-    this.bypass = bypass;
-    this.proxy = proxy;
   }
 
    /**
@@ -122,5 +114,64 @@ public class NetworkProxy {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkProxy instance;
+
+    public ModelBuilder() {
+      this(new NetworkProxy());
+    }
+
+    protected ModelBuilder(NetworkProxy instance) {
+      this.instance = instance;
+    }
+
+    public NetworkProxy.ModelBuilder bypass(String bypass) {
+      this.instance.bypass = bypass;
+      return this;
+    }
+    public NetworkProxy.ModelBuilder proxy(String proxy) {
+      this.instance.proxy = proxy;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkProxy instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkProxy build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkProxy.ModelBuilder builder() {
+    return new NetworkProxy.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkProxy.ModelBuilder toBuilder() {
+    NetworkProxy.ModelBuilder builder = new NetworkProxy.ModelBuilder()
+      .bypass(getBypass())
+      .proxy(getProxy());
+    return builder;
+  }
+
 }
 
