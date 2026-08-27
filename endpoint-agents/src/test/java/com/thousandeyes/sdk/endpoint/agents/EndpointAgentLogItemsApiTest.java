@@ -86,7 +86,6 @@ public class EndpointAgentLogItemsApiTest {
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -191,7 +190,16 @@ public class EndpointAgentLogItemsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointAgentLogItems(agentId, null, null, null, null, null, null);
+        var request = EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .max(1000)
+                .cursor("WyIxNzA5MjQwMDAwMDAwIl0=")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getEndpointAgentLogItems(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

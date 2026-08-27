@@ -85,7 +85,6 @@ public class TagsApiTest {
     public void createTagRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "assignments" : [ {
@@ -193,7 +192,11 @@ public class TagsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createTag(null, mappedRequest);
+        var request = TagsApi.CreateTagRequest.builder()
+                .aid("1234")
+                .tagInfo(mappedRequest)
+                .build();
+        var apiResponse = api.createTag(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -208,7 +211,6 @@ public class TagsApiTest {
     public void createTagsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -610,7 +612,11 @@ public class TagsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createTags(null, mappedRequest);
+        var request = TagsApi.CreateTagsRequest.builder()
+                .aid("1234")
+                .bulkTagResponse(mappedRequest)
+                .build();
+        var apiResponse = api.createTags(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -627,7 +633,6 @@ public class TagsApiTest {
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
 
-
         var statusCode = 204;
 
         var path = "/tags/{id}";
@@ -637,7 +642,11 @@ public class TagsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteTagWithHttpInfo(id, null);
+        var request = TagsApi.DeleteTagRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteTagWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -653,7 +662,6 @@ public class TagsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
-
 
         var responseBodyJson = """
                 {
@@ -719,7 +727,12 @@ public class TagsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTag(id, null, null);
+        var request = TagsApi.GetTagRequest.builder()
+                .id(id)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getTag(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -734,7 +747,6 @@ public class TagsApiTest {
     public void getTagsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -859,7 +871,11 @@ public class TagsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTags(null, null);
+        var request = TagsApi.GetTagsRequest.builder()
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getTags(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -875,7 +891,6 @@ public class TagsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
-
         var requestBodyJson = """
                 {
                   "assignments" : [ {
@@ -984,7 +999,12 @@ public class TagsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateTag(id, null, mappedRequest);
+        var request = TagsApi.UpdateTagRequest.builder()
+                .id(id)
+                .aid("1234")
+                .tagInfo(mappedRequest)
+                .build();
+        var apiResponse = api.updateTag(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

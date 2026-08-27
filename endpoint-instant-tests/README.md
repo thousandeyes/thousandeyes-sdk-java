@@ -118,7 +118,11 @@ public class AgentToServerEndpointInstantScheduledTestsApiExample {
         EndpointAgentToServerInstantTest endpointAgentToServerInstantTest = new EndpointAgentToServerInstantTest(); // EndpointAgentToServerInstantTest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointAgentToServerTest result = apiInstance.createAgentToServerScheduledInstantTest(endpointAgentToServerInstantTest, aid);
+            AgentToServerEndpointInstantScheduledTestsApi.CreateAgentToServerScheduledInstantTestRequest request = AgentToServerEndpointInstantScheduledTestsApi.CreateAgentToServerScheduledInstantTestRequest.builder()
+                .endpointAgentToServerInstantTest(endpointAgentToServerInstantTest)
+                .aid(aid)
+                .build();
+            EndpointAgentToServerTest result = apiInstance.createAgentToServerScheduledInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointInstantScheduledTestsApi#createAgentToServerScheduledInstantTest");

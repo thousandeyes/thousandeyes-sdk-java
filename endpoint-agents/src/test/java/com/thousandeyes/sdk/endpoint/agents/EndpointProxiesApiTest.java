@@ -80,7 +80,6 @@ public class EndpointProxiesApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "proxies" : [ {
@@ -124,7 +123,10 @@ public class EndpointProxiesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointProxies(null);
+        var request = EndpointProxiesApi.GetEndpointProxiesRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointProxies(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createEmulatedDevice
 
-> EmulatedDeviceResponse createEmulatedDevice(emulatedDevice, aid)
+> EmulatedDeviceResponse createEmulatedDevice(CreateEmulatedDeviceRequest)
 
 Create emulated device
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -45,7 +45,11 @@ public class Example {
         EmulatedDevice emulatedDevice = new EmulatedDevice(); // EmulatedDevice | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EmulatedDeviceResponse result = apiInstance.createEmulatedDevice(emulatedDevice, aid);
+            EmulationApi.CreateEmulatedDeviceRequest request = EmulationApi.CreateEmulatedDeviceRequest.builder()
+                .emulatedDevice(emulatedDevice)
+                .aid(aid)
+                .build();
+            EmulatedDeviceResponse result = apiInstance.createEmulatedDevice(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmulationApi#createEmulatedDevice");
@@ -60,11 +64,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **emulatedDevice** | [**EmulatedDevice**](EmulatedDevice.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateEmulatedDeviceRequest**](EmulationApi.md#CreateEmulatedDeviceRequest)|-|-|
 
 ### Return type
 
@@ -92,7 +94,7 @@ public class Example {
 
 ## createEmulatedDeviceWithHttpInfo
 
-> ApiResponse<EmulatedDeviceResponse> createEmulatedDevice createEmulatedDeviceWithHttpInfo(emulatedDevice, aid)
+> ApiResponse<EmulatedDeviceResponse> createEmulatedDevice createEmulatedDeviceWithHttpInfo(CreateEmulatedDeviceRequest)
 
 Create emulated device
 
@@ -107,7 +109,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -123,7 +125,11 @@ public class Example {
         EmulatedDevice emulatedDevice = new EmulatedDevice(); // EmulatedDevice | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EmulatedDeviceResponse> response = apiInstance.createEmulatedDeviceWithHttpInfo(emulatedDevice, aid);
+            EmulationApi.CreateEmulatedDeviceRequest request = EmulationApi.CreateEmulatedDeviceRequest.builder()
+                .emulatedDevice(emulatedDevice)
+                .aid(aid)
+                .build();
+            ApiResponse<EmulatedDeviceResponse> response = apiInstance.createEmulatedDeviceWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -140,11 +146,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **emulatedDevice** | [**EmulatedDevice**](EmulatedDevice.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateEmulatedDeviceRequest**](EmulationApi.md#CreateEmulatedDeviceRequest)|-|-|
 
 ### Return type
 
@@ -171,9 +175,20 @@ ApiResponse<[**EmulatedDeviceResponse**](EmulatedDeviceResponse.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateEmulatedDeviceRequest"></a>
+## CreateEmulatedDeviceRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **emulatedDevice** | [**EmulatedDevice**](EmulatedDevice.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getEmulatedDevices
 
-> EmulatedDeviceResponses getEmulatedDevices(expand)
+> EmulatedDeviceResponses getEmulatedDevices(GetEmulatedDevicesRequest)
 
 List emulated devices
 
@@ -187,7 +202,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -202,7 +217,10 @@ public class Example {
         EmulationApi apiInstance = new EmulationApi(defaultClient);
         List<ExpandEmulatedDeviceOptions> expand = Arrays.asList(); // List<ExpandEmulatedDeviceOptions> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
         try {
-            EmulatedDeviceResponses result = apiInstance.getEmulatedDevices(expand);
+            EmulationApi.GetEmulatedDevicesRequest request = EmulationApi.GetEmulatedDevicesRequest.builder()
+                .expand(expand)
+                .build();
+            EmulatedDeviceResponses result = apiInstance.getEmulatedDevices(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmulationApi#getEmulatedDevices");
@@ -217,10 +235,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **expand** | [**List&lt;ExpandEmulatedDeviceOptions&gt;**](ExpandEmulatedDeviceOptions.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
+| request | [**GetEmulatedDevicesRequest**](EmulationApi.md#GetEmulatedDevicesRequest)|-|-|
 
 ### Return type
 
@@ -248,7 +265,7 @@ public class Example {
 
 ## getEmulatedDevicesWithHttpInfo
 
-> ApiResponse<EmulatedDeviceResponses> getEmulatedDevices getEmulatedDevicesWithHttpInfo(expand)
+> ApiResponse<EmulatedDeviceResponses> getEmulatedDevices getEmulatedDevicesWithHttpInfo(GetEmulatedDevicesRequest)
 
 List emulated devices
 
@@ -263,7 +280,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -278,7 +295,10 @@ public class Example {
         EmulationApi apiInstance = new EmulationApi(defaultClient);
         List<ExpandEmulatedDeviceOptions> expand = Arrays.asList(); // List<ExpandEmulatedDeviceOptions> | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request. 
         try {
-            ApiResponse<EmulatedDeviceResponses> response = apiInstance.getEmulatedDevicesWithHttpInfo(expand);
+            EmulationApi.GetEmulatedDevicesRequest request = EmulationApi.GetEmulatedDevicesRequest.builder()
+                .expand(expand)
+                .build();
+            ApiResponse<EmulatedDeviceResponses> response = apiInstance.getEmulatedDevicesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -295,10 +315,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **expand** | [**List&lt;ExpandEmulatedDeviceOptions&gt;**](ExpandEmulatedDeviceOptions.md)| Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
+| request | [**GetEmulatedDevicesRequest**](EmulationApi.md#GetEmulatedDevicesRequest)|-|-|
 
 ### Return type
 
@@ -325,9 +344,19 @@ ApiResponse<[**EmulatedDeviceResponses**](EmulatedDeviceResponses.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetEmulatedDevicesRequest"></a>
+## GetEmulatedDevicesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **expand** | [**List&lt;ExpandEmulatedDeviceOptions&gt;**](ExpandEmulatedDeviceOptions.md) | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add &#x60;?expand&#x3D;user-agent&#x60; to the request.  | [optional] |
+
+
+
 ## getUserAgents
 
-> UserAgents getUserAgents(aid)
+> UserAgents getUserAgents(GetUserAgentsRequest)
 
 List user-agents
 
@@ -341,7 +370,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -356,7 +385,10 @@ public class Example {
         EmulationApi apiInstance = new EmulationApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            UserAgents result = apiInstance.getUserAgents(aid);
+            EmulationApi.GetUserAgentsRequest request = EmulationApi.GetUserAgentsRequest.builder()
+                .aid(aid)
+                .build();
+            UserAgents result = apiInstance.getUserAgents(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EmulationApi#getUserAgents");
@@ -371,10 +403,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUserAgentsRequest**](EmulationApi.md#GetUserAgentsRequest)|-|-|
 
 ### Return type
 
@@ -402,7 +433,7 @@ public class Example {
 
 ## getUserAgentsWithHttpInfo
 
-> ApiResponse<UserAgents> getUserAgents getUserAgentsWithHttpInfo(aid)
+> ApiResponse<UserAgents> getUserAgents getUserAgentsWithHttpInfo(GetUserAgentsRequest)
 
 List user-agents
 
@@ -417,7 +448,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.emulation.model.*;
 import com.thousandeyes.sdk.emulation.EmulationApi;
 
 public class Example {
@@ -432,7 +463,10 @@ public class Example {
         EmulationApi apiInstance = new EmulationApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<UserAgents> response = apiInstance.getUserAgentsWithHttpInfo(aid);
+            EmulationApi.GetUserAgentsRequest request = EmulationApi.GetUserAgentsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<UserAgents> response = apiInstance.getUserAgentsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -449,10 +483,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetUserAgentsRequest**](EmulationApi.md#GetUserAgentsRequest)|-|-|
 
 ### Return type
 
@@ -477,4 +510,14 @@ ApiResponse<[**UserAgents**](UserAgents.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="GetUserAgentsRequest"></a>
+## GetUserAgentsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

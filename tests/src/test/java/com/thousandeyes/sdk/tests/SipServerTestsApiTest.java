@@ -84,7 +84,6 @@ public class SipServerTestsApiTest {
     public void createSipServerTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -342,7 +341,12 @@ public class SipServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createSipServerTest(mappedRequest, null, null);
+        var request = SipServerTestsApi.CreateSipServerTestRequest.builder()
+                .sipServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createSipServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -359,7 +363,6 @@ public class SipServerTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/sip-server/{testId}";
@@ -369,7 +372,11 @@ public class SipServerTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteSipServerTestWithHttpInfo(testId, null);
+        var request = SipServerTestsApi.DeleteSipServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteSipServerTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -385,7 +392,6 @@ public class SipServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -570,7 +576,13 @@ public class SipServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getSipServerTest(testId, null, null, null);
+        var request = SipServerTestsApi.GetSipServerTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getSipServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -585,7 +597,6 @@ public class SipServerTestsApiTest {
     public void getSipServerTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -720,7 +731,10 @@ public class SipServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getSipServerTests(null);
+        var request = SipServerTestsApi.GetSipServerTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getSipServerTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -736,7 +750,6 @@ public class SipServerTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -995,7 +1008,13 @@ public class SipServerTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateSipServerTest(testId, mappedRequest, null, null);
+        var request = SipServerTestsApi.UpdateSipServerTestRequest.builder()
+                .testId(testId)
+                .sipServerTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateSipServerTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

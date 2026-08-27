@@ -83,7 +83,6 @@ public class AgentToServerInstantTestsApiTest {
     public void createAgentToServerInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "server" : "www.thousandeyes.com:80",
@@ -277,7 +276,12 @@ public class AgentToServerInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToServerInstantTest(mappedRequest, null, null);
+        var request = AgentToServerInstantTestsApi.CreateAgentToServerInstantTestRequest.builder()
+                .agentToServerInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createAgentToServerInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

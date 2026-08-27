@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createHttpServerInstantTest
 
-> HttpServerInstantTestResponse createHttpServerInstantTest(httpServerInstantTestRequest, aid, expand)
+> HttpServerInstantTestResponse createHttpServerInstantTest(CreateHttpServerInstantTestRequest)
 
 Create HTTP server instant test
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.HttpServerInstantTestsApi;
 
 public class Example {
@@ -42,7 +42,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandInstantTestOptions> expand = Arrays.asList(); // List<ExpandInstantTestOptions> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            HttpServerInstantTestResponse result = apiInstance.createHttpServerInstantTest(httpServerInstantTestRequest, aid, expand);
+            HttpServerInstantTestsApi.CreateHttpServerInstantTestRequest request = HttpServerInstantTestsApi.CreateHttpServerInstantTestRequest.builder()
+                .httpServerInstantTestRequest(httpServerInstantTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            HttpServerInstantTestResponse result = apiInstance.createHttpServerInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerInstantTestsApi#createHttpServerInstantTest");
@@ -57,12 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **httpServerInstantTestRequest** | [**HttpServerInstantTestRequest**](HttpServerInstantTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md)| (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+| request | [**CreateHttpServerInstantTestRequest**](HttpServerInstantTestsApi.md#CreateHttpServerInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -93,7 +95,7 @@ public class Example {
 
 ## createHttpServerInstantTestWithHttpInfo
 
-> ApiResponse<HttpServerInstantTestResponse> createHttpServerInstantTest createHttpServerInstantTestWithHttpInfo(httpServerInstantTestRequest, aid, expand)
+> ApiResponse<HttpServerInstantTestResponse> createHttpServerInstantTest createHttpServerInstantTestWithHttpInfo(CreateHttpServerInstantTestRequest)
 
 Create HTTP server instant test
 
@@ -108,7 +110,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.HttpServerInstantTestsApi;
 
 public class Example {
@@ -125,7 +127,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandInstantTestOptions> expand = Arrays.asList(); // List<ExpandInstantTestOptions> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<HttpServerInstantTestResponse> response = apiInstance.createHttpServerInstantTestWithHttpInfo(httpServerInstantTestRequest, aid, expand);
+            HttpServerInstantTestsApi.CreateHttpServerInstantTestRequest request = HttpServerInstantTestsApi.CreateHttpServerInstantTestRequest.builder()
+                .httpServerInstantTestRequest(httpServerInstantTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<HttpServerInstantTestResponse> response = apiInstance.createHttpServerInstantTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,12 +149,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **httpServerInstantTestRequest** | [**HttpServerInstantTestRequest**](HttpServerInstantTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md)| (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+| request | [**CreateHttpServerInstantTestRequest**](HttpServerInstantTestsApi.md#CreateHttpServerInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -175,4 +179,16 @@ ApiResponse<[**HttpServerInstantTestResponse**](HttpServerInstantTestResponse.md
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="CreateHttpServerInstantTestRequest"></a>
+## CreateHttpServerInstantTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **httpServerInstantTestRequest** | [**HttpServerInstantTestRequest**](HttpServerInstantTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md) | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+
 

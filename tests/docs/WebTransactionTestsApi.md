@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createWebTransactionsTest
 
-> WebTransactionTestResponse createWebTransactionsTest(webTransactionTestRequest, aid, expand)
+> WebTransactionTestResponse createWebTransactionsTest(CreateWebTransactionsTestRequest)
 
 Create Web Transactions test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            WebTransactionTestResponse result = apiInstance.createWebTransactionsTest(webTransactionTestRequest, aid, expand);
+            WebTransactionTestsApi.CreateWebTransactionsTestRequest request = WebTransactionTestsApi.CreateWebTransactionsTestRequest.builder()
+                .webTransactionTestRequest(webTransactionTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            WebTransactionTestResponse result = apiInstance.createWebTransactionsTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#createWebTransactionsTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateWebTransactionsTestRequest**](WebTransactionTestsApi.md#CreateWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createWebTransactionsTestWithHttpInfo
 
-> ApiResponse<WebTransactionTestResponse> createWebTransactionsTest createWebTransactionsTestWithHttpInfo(webTransactionTestRequest, aid, expand)
+> ApiResponse<WebTransactionTestResponse> createWebTransactionsTest createWebTransactionsTestWithHttpInfo(CreateWebTransactionsTestRequest)
 
 Create Web Transactions test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<WebTransactionTestResponse> response = apiInstance.createWebTransactionsTestWithHttpInfo(webTransactionTestRequest, aid, expand);
+            WebTransactionTestsApi.CreateWebTransactionsTestRequest request = WebTransactionTestsApi.CreateWebTransactionsTestRequest.builder()
+                .webTransactionTestRequest(webTransactionTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<WebTransactionTestResponse> response = apiInstance.createWebTransactionsTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateWebTransactionsTestRequest**](WebTransactionTestsApi.md#CreateWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**WebTransactionTestResponse**](WebTransactionTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateWebTransactionsTestRequest"></a>
+## CreateWebTransactionsTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deleteWebTransactionsTest
 
-> void deleteWebTransactionsTest(testId, aid)
+> void deleteWebTransactionsTest(DeleteWebTransactionsTestRequest)
 
 Delete Web Transactions test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteWebTransactionsTest(testId, aid);
+            WebTransactionTestsApi.DeleteWebTransactionsTestRequest request = WebTransactionTestsApi.DeleteWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteWebTransactionsTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#deleteWebTransactionsTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteWebTransactionsTestRequest**](WebTransactionTestsApi.md#DeleteWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ null (empty response body)
 
 ## deleteWebTransactionsTestWithHttpInfo
 
-> ApiResponse<Void> deleteWebTransactionsTest deleteWebTransactionsTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteWebTransactionsTest deleteWebTransactionsTestWithHttpInfo(DeleteWebTransactionsTestRequest)
 
 Delete Web Transactions test
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -296,7 +314,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteWebTransactionsTestWithHttpInfo(testId, aid);
+            WebTransactionTestsApi.DeleteWebTransactionsTestRequest request = WebTransactionTestsApi.DeleteWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteWebTransactionsTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -312,11 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteWebTransactionsTestRequest**](WebTransactionTestsApi.md#DeleteWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteWebTransactionsTestRequest"></a>
+## DeleteWebTransactionsTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getWebTransactionsTest
 
-> WebTransactionTestResponse getWebTransactionsTest(testId, aid, versionId, expand)
+> WebTransactionTestResponse getWebTransactionsTest(GetWebTransactionsTestRequest)
 
 Get Web Transactions test
 
@@ -361,7 +392,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -379,7 +410,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            WebTransactionTestResponse result = apiInstance.getWebTransactionsTest(testId, aid, versionId, expand);
+            WebTransactionTestsApi.GetWebTransactionsTestRequest request = WebTransactionTestsApi.GetWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            WebTransactionTestResponse result = apiInstance.getWebTransactionsTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#getWebTransactionsTest");
@@ -394,13 +431,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetWebTransactionsTestRequest**](WebTransactionTestsApi.md#GetWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -430,7 +463,7 @@ public class Example {
 
 ## getWebTransactionsTestWithHttpInfo
 
-> ApiResponse<WebTransactionTestResponse> getWebTransactionsTest getWebTransactionsTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<WebTransactionTestResponse> getWebTransactionsTest getWebTransactionsTestWithHttpInfo(GetWebTransactionsTestRequest)
 
 Get Web Transactions test
 
@@ -445,7 +478,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -463,7 +496,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<WebTransactionTestResponse> response = apiInstance.getWebTransactionsTestWithHttpInfo(testId, aid, versionId, expand);
+            WebTransactionTestsApi.GetWebTransactionsTestRequest request = WebTransactionTestsApi.GetWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<WebTransactionTestResponse> response = apiInstance.getWebTransactionsTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -480,13 +519,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetWebTransactionsTestRequest**](WebTransactionTestsApi.md#GetWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -515,9 +550,22 @@ ApiResponse<[**WebTransactionTestResponse**](WebTransactionTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetWebTransactionsTestRequest"></a>
+## GetWebTransactionsTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getWebTransactionsTests
 
-> WebTransactionTests getWebTransactionsTests(aid)
+> WebTransactionTests getWebTransactionsTests(GetWebTransactionsTestsRequest)
 
 List Web Transactions tests
 
@@ -531,7 +579,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -546,7 +594,10 @@ public class Example {
         WebTransactionTestsApi apiInstance = new WebTransactionTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebTransactionTests result = apiInstance.getWebTransactionsTests(aid);
+            WebTransactionTestsApi.GetWebTransactionsTestsRequest request = WebTransactionTestsApi.GetWebTransactionsTestsRequest.builder()
+                .aid(aid)
+                .build();
+            WebTransactionTests result = apiInstance.getWebTransactionsTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#getWebTransactionsTests");
@@ -561,10 +612,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebTransactionsTestsRequest**](WebTransactionTestsApi.md#GetWebTransactionsTestsRequest)|-|-|
 
 ### Return type
 
@@ -594,7 +644,7 @@ public class Example {
 
 ## getWebTransactionsTestsWithHttpInfo
 
-> ApiResponse<WebTransactionTests> getWebTransactionsTests getWebTransactionsTestsWithHttpInfo(aid)
+> ApiResponse<WebTransactionTests> getWebTransactionsTests getWebTransactionsTestsWithHttpInfo(GetWebTransactionsTestsRequest)
 
 List Web Transactions tests
 
@@ -609,7 +659,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -624,7 +674,10 @@ public class Example {
         WebTransactionTestsApi apiInstance = new WebTransactionTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebTransactionTests> response = apiInstance.getWebTransactionsTestsWithHttpInfo(aid);
+            WebTransactionTestsApi.GetWebTransactionsTestsRequest request = WebTransactionTestsApi.GetWebTransactionsTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<WebTransactionTests> response = apiInstance.getWebTransactionsTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -641,10 +694,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebTransactionsTestsRequest**](WebTransactionTestsApi.md#GetWebTransactionsTestsRequest)|-|-|
 
 ### Return type
 
@@ -673,9 +725,19 @@ ApiResponse<[**WebTransactionTests**](WebTransactionTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetWebTransactionsTestsRequest"></a>
+## GetWebTransactionsTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateWebTransactionsTest
 
-> WebTransactionTestResponse updateWebTransactionsTest(testId, webTransactionTestRequest, aid, expand)
+> WebTransactionTestResponse updateWebTransactionsTest(UpdateWebTransactionsTestRequest)
 
 Update Web Transactions test
 
@@ -689,7 +751,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -707,7 +769,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            WebTransactionTestResponse result = apiInstance.updateWebTransactionsTest(testId, webTransactionTestRequest, aid, expand);
+            WebTransactionTestsApi.UpdateWebTransactionsTestRequest request = WebTransactionTestsApi.UpdateWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .webTransactionTestRequest(webTransactionTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            WebTransactionTestResponse result = apiInstance.updateWebTransactionsTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebTransactionTestsApi#updateWebTransactionsTest");
@@ -722,13 +790,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateWebTransactionsTestRequest**](WebTransactionTestsApi.md#UpdateWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -759,7 +823,7 @@ public class Example {
 
 ## updateWebTransactionsTestWithHttpInfo
 
-> ApiResponse<WebTransactionTestResponse> updateWebTransactionsTest updateWebTransactionsTestWithHttpInfo(testId, webTransactionTestRequest, aid, expand)
+> ApiResponse<WebTransactionTestResponse> updateWebTransactionsTest updateWebTransactionsTestWithHttpInfo(UpdateWebTransactionsTestRequest)
 
 Update Web Transactions test
 
@@ -774,7 +838,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.WebTransactionTestsApi;
 
 public class Example {
@@ -792,7 +856,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<WebTransactionTestResponse> response = apiInstance.updateWebTransactionsTestWithHttpInfo(testId, webTransactionTestRequest, aid, expand);
+            WebTransactionTestsApi.UpdateWebTransactionsTestRequest request = WebTransactionTestsApi.UpdateWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .webTransactionTestRequest(webTransactionTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<WebTransactionTestResponse> response = apiInstance.updateWebTransactionsTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,13 +879,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateWebTransactionsTestRequest**](WebTransactionTestsApi.md#UpdateWebTransactionsTestRequest)|-|-|
 
 ### Return type
 
@@ -843,4 +909,17 @@ ApiResponse<[**WebTransactionTestResponse**](WebTransactionTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateWebTransactionsTestRequest"></a>
+## UpdateWebTransactionsTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **webTransactionTestRequest** | [**WebTransactionTestRequest**](WebTransactionTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

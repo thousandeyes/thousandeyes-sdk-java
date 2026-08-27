@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,30 +61,29 @@ public class TagAssignmentApi {
   /**
    * Assign tag to multiple objects
    * Assigns a static tag to one or more objects. This operation has cumulative behavior: The tag is statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param id Tag ID (required)
-   * @param tagAssignment  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return BulkTagAssignment
    * @throws ApiException if fails to make API call
    */
-  public BulkTagAssignment assignTag(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    ApiResponse<BulkTagAssignment> response = assignTagWithHttpInfo(id, tagAssignment, aid);
+  public BulkTagAssignment assignTag(AssignTagRequest request) throws ApiException {
+    ApiResponse<BulkTagAssignment> response = assignTagWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign tag to multiple objects
    * Assigns a static tag to one or more objects. This operation has cumulative behavior: The tag is statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param id Tag ID (required)
-   * @param tagAssignment  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BulkTagAssignment&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkTagAssignment> assignTagWithHttpInfo(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    assignTagValidateRequest(id, tagAssignment);
+  public ApiResponse<BulkTagAssignment> assignTagWithHttpInfo(AssignTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignTag");
+    }
+    assignTagValidateRequest(request.getId(), request.getTagAssignment());
 
-    var requestBuilder = assignTagRequestBuilder(id, tagAssignment, aid);
+    var requestBuilder = assignTagRequestBuilder(request.getId(), request.getTagAssignment(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), BulkTagAssignment.class);
   }
@@ -103,8 +99,8 @@ public class TagAssignmentApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder assignTagRequestBuilder(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignTagRequestBuilder(String id, TagAssignment tagAssignment, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags/{id}/assign"
@@ -124,31 +120,86 @@ public class TagAssignmentApi {
     requestBuilder.requestBody(tagAssignment);
     return requestBuilder;
   }
+
+  public static final class AssignTagRequest {
+    private final String id;
+    private final TagAssignment tagAssignment;
+    private final String aid;
+
+    private AssignTagRequest(Builder builder) {
+      this.id = builder.id;
+      this.tagAssignment = builder.tagAssignment;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public TagAssignment getTagAssignment() {
+      return tagAssignment;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .tagAssignment(tagAssignment)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private TagAssignment tagAssignment;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder tagAssignment(TagAssignment tagAssignment) {
+        this.tagAssignment = tagAssignment;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public AssignTagRequest build() {
+        return new AssignTagRequest(this);
+      }
+    }
+  }
+
   /**
    * Assign multiple tags to multiple objects
    * Assigns the specified static tags to the specified objects. This operation has cumulative behavior: The tags are statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param bulkTagAssignments  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return BulkTagAssignments
    * @throws ApiException if fails to make API call
    */
-  public BulkTagAssignments assignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    ApiResponse<BulkTagAssignments> response = assignTagsWithHttpInfo(bulkTagAssignments, aid);
+  public BulkTagAssignments assignTags(AssignTagsRequest request) throws ApiException {
+    ApiResponse<BulkTagAssignments> response = assignTagsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign multiple tags to multiple objects
    * Assigns the specified static tags to the specified objects. This operation has cumulative behavior: The tags are statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param bulkTagAssignments  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BulkTagAssignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkTagAssignments> assignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    assignTagsValidateRequest(bulkTagAssignments);
+  public ApiResponse<BulkTagAssignments> assignTagsWithHttpInfo(AssignTagsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignTags");
+    }
+    assignTagsValidateRequest(request.getBulkTagAssignments());
 
-    var requestBuilder = assignTagsRequestBuilder(bulkTagAssignments, aid);
+    var requestBuilder = assignTagsRequestBuilder(request.getBulkTagAssignments(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), BulkTagAssignments.class);
   }
@@ -160,8 +211,8 @@ public class TagAssignmentApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder assignTagsRequestBuilder(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignTagsRequestBuilder(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags/assign";
@@ -180,31 +231,73 @@ public class TagAssignmentApi {
     requestBuilder.requestBody(bulkTagAssignments);
     return requestBuilder;
   }
-  /**
-   * Remove tag from multiple objects
-   * Removes a static tag from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param id Tag ID (required)
-   * @param tagAssignment  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void unassignTag(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    unassignTagWithHttpInfo(id, tagAssignment, aid);
+
+  public static final class AssignTagsRequest {
+    private final BulkTagAssignments bulkTagAssignments;
+    private final String aid;
+
+    private AssignTagsRequest(Builder builder) {
+      this.bulkTagAssignments = builder.bulkTagAssignments;
+      this.aid = builder.aid;
+    }
+    public BulkTagAssignments getBulkTagAssignments() {
+      return bulkTagAssignments;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .bulkTagAssignments(bulkTagAssignments)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private BulkTagAssignments bulkTagAssignments;
+      private String aid;
+
+      public Builder bulkTagAssignments(BulkTagAssignments bulkTagAssignments) {
+        this.bulkTagAssignments = bulkTagAssignments;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public AssignTagsRequest build() {
+        return new AssignTagsRequest(this);
+      }
+    }
   }
 
   /**
    * Remove tag from multiple objects
    * Removes a static tag from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param id Tag ID (required)
-   * @param tagAssignment  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void unassignTag(UnassignTagRequest request) throws ApiException {
+    unassignTagWithHttpInfo(request);
+  }
+
+  /**
+   * Remove tag from multiple objects
+   * Removes a static tag from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> unassignTagWithHttpInfo(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    unassignTagValidateRequest(id, tagAssignment);
+  public ApiResponse<Void> unassignTagWithHttpInfo(UnassignTagRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignTag");
+    }
+    unassignTagValidateRequest(request.getId(), request.getTagAssignment());
 
-    var requestBuilder = unassignTagRequestBuilder(id, tagAssignment, aid);
+    var requestBuilder = unassignTagRequestBuilder(request.getId(), request.getTagAssignment(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -220,8 +313,8 @@ public class TagAssignmentApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder unassignTagRequestBuilder(String id, TagAssignment tagAssignment, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignTagRequestBuilder(String id, TagAssignment tagAssignment, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags/{id}/unassign"
@@ -241,31 +334,86 @@ public class TagAssignmentApi {
     requestBuilder.requestBody(tagAssignment);
     return requestBuilder;
   }
+
+  public static final class UnassignTagRequest {
+    private final String id;
+    private final TagAssignment tagAssignment;
+    private final String aid;
+
+    private UnassignTagRequest(Builder builder) {
+      this.id = builder.id;
+      this.tagAssignment = builder.tagAssignment;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public TagAssignment getTagAssignment() {
+      return tagAssignment;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .tagAssignment(tagAssignment)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private TagAssignment tagAssignment;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder tagAssignment(TagAssignment tagAssignment) {
+        this.tagAssignment = tagAssignment;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UnassignTagRequest build() {
+        return new UnassignTagRequest(this);
+      }
+    }
+  }
+
   /**
    * Remove multiple tags from multiple objects
    * Removes the specified static tags from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param bulkTagAssignments  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return BulkTagAssignments
    * @throws ApiException if fails to make API call
    */
-  public BulkTagAssignments unassignTags(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    ApiResponse<BulkTagAssignments> response = unassignTagsWithHttpInfo(bulkTagAssignments, aid);
+  public BulkTagAssignments unassignTags(UnassignTagsRequest request) throws ApiException {
+    ApiResponse<BulkTagAssignments> response = unassignTagsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Remove multiple tags from multiple objects
    * Removes the specified static tags from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
-   * @param bulkTagAssignments  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BulkTagAssignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkTagAssignments> unassignTagsWithHttpInfo(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    unassignTagsValidateRequest(bulkTagAssignments);
+  public ApiResponse<BulkTagAssignments> unassignTagsWithHttpInfo(UnassignTagsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignTags");
+    }
+    unassignTagsValidateRequest(request.getBulkTagAssignments());
 
-    var requestBuilder = unassignTagsRequestBuilder(bulkTagAssignments, aid);
+    var requestBuilder = unassignTagsRequestBuilder(request.getBulkTagAssignments(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), BulkTagAssignments.class);
   }
@@ -277,8 +425,8 @@ public class TagAssignmentApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder unassignTagsRequestBuilder(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignTagsRequestBuilder(BulkTagAssignments bulkTagAssignments, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tags/unassign";
@@ -297,4 +445,47 @@ public class TagAssignmentApi {
     requestBuilder.requestBody(bulkTagAssignments);
     return requestBuilder;
   }
+
+  public static final class UnassignTagsRequest {
+    private final BulkTagAssignments bulkTagAssignments;
+    private final String aid;
+
+    private UnassignTagsRequest(Builder builder) {
+      this.bulkTagAssignments = builder.bulkTagAssignments;
+      this.aid = builder.aid;
+    }
+    public BulkTagAssignments getBulkTagAssignments() {
+      return bulkTagAssignments;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .bulkTagAssignments(bulkTagAssignments)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private BulkTagAssignments bulkTagAssignments;
+      private String aid;
+
+      public Builder bulkTagAssignments(BulkTagAssignments bulkTagAssignments) {
+        this.bulkTagAssignments = bulkTagAssignments;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UnassignTagsRequest build() {
+        return new UnassignTagsRequest(this);
+      }
+    }
+  }
+
 }

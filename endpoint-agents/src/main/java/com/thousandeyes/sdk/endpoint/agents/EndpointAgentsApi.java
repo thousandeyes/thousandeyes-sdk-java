@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -46,12 +45,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -73,28 +70,27 @@ public class EndpointAgentsApi {
   /**
    * Delete endpoint agent
    * Deletes the agent with the specified &#x60;agent_id&#x60;. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
+   * @param request operation parameters (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteEndpointAgent(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand) throws ApiException {
-    deleteEndpointAgentWithHttpInfo(agentId, aid, expand);
+  public void deleteEndpointAgent(DeleteEndpointAgentRequest request) throws ApiException {
+    deleteEndpointAgentWithHttpInfo(request);
   }
 
   /**
    * Delete endpoint agent
    * Deletes the agent with the specified &#x60;agent_id&#x60;. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteEndpointAgentWithHttpInfo(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand) throws ApiException {
-    deleteEndpointAgentValidateRequest(agentId);
+  public ApiResponse<Void> deleteEndpointAgentWithHttpInfo(DeleteEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteEndpointAgent");
+    }
+    deleteEndpointAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = deleteEndpointAgentRequestBuilder(agentId, aid, expand);
+    var requestBuilder = deleteEndpointAgentRequestBuilder(request.getAgentId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -106,8 +102,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/endpoint/agents/{agentId}"
@@ -126,31 +122,86 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteEndpointAgentRequest {
+    private final UUID agentId;
+    private final String aid;
+    private final List<ExpandEndpointAgentOptions> expand;
+
+    private DeleteEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandEndpointAgentOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+      private List<ExpandEndpointAgentOptions> expand;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointAgentOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public DeleteEndpointAgentRequest build() {
+        return new DeleteEndpointAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * Disable endpoint agent
    * Disables an endpoint agent. If it&#39;s already disabled, it has no effect (no operation).
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgent disableEndpointAgent(UUID agentId, String aid) throws ApiException {
-    ApiResponse<EndpointAgent> response = disableEndpointAgentWithHttpInfo(agentId, aid);
+  public EndpointAgent disableEndpointAgent(DisableEndpointAgentRequest request) throws ApiException {
+    ApiResponse<EndpointAgent> response = disableEndpointAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Disable endpoint agent
    * Disables an endpoint agent. If it&#39;s already disabled, it has no effect (no operation).
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgent> disableEndpointAgentWithHttpInfo(UUID agentId, String aid) throws ApiException {
-    disableEndpointAgentValidateRequest(agentId);
+  public ApiResponse<EndpointAgent> disableEndpointAgentWithHttpInfo(DisableEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling disableEndpointAgent");
+    }
+    disableEndpointAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = disableEndpointAgentRequestBuilder(agentId, aid);
+    var requestBuilder = disableEndpointAgentRequestBuilder(request.getAgentId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgent.class);
   }
@@ -162,8 +213,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder disableEndpointAgentRequestBuilder(UUID agentId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder disableEndpointAgentRequestBuilder(UUID agentId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/agents/{agentId}/disable"
@@ -181,31 +232,75 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DisableEndpointAgentRequest {
+    private final UUID agentId;
+    private final String aid;
+
+    private DisableEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DisableEndpointAgentRequest build() {
+        return new DisableEndpointAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * Enable endpoint agent
    * Enables an endpoint agent. If it&#39;s already enabled, it has no effect (no operation).
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgent enableEndpointAgent(UUID agentId, String aid) throws ApiException {
-    ApiResponse<EndpointAgent> response = enableEndpointAgentWithHttpInfo(agentId, aid);
+  public EndpointAgent enableEndpointAgent(EnableEndpointAgentRequest request) throws ApiException {
+    ApiResponse<EndpointAgent> response = enableEndpointAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Enable endpoint agent
    * Enables an endpoint agent. If it&#39;s already enabled, it has no effect (no operation).
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgent> enableEndpointAgentWithHttpInfo(UUID agentId, String aid) throws ApiException {
-    enableEndpointAgentValidateRequest(agentId);
+  public ApiResponse<EndpointAgent> enableEndpointAgentWithHttpInfo(EnableEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling enableEndpointAgent");
+    }
+    enableEndpointAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = enableEndpointAgentRequestBuilder(agentId, aid);
+    var requestBuilder = enableEndpointAgentRequestBuilder(request.getAgentId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), EndpointAgent.class);
   }
@@ -217,8 +312,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder enableEndpointAgentRequestBuilder(UUID agentId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder enableEndpointAgentRequestBuilder(UUID agentId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/agents/{agentId}/enable"
@@ -236,54 +331,91 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class EnableEndpointAgentRequest {
+    private final UUID agentId;
+    private final String aid;
+
+    private EnableEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public EnableEndpointAgentRequest build() {
+        return new EnableEndpointAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * Filter endpoint agents with pagination
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<EndpointAgent, FilterEndpointAgentsResponse>
    */
-  public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(AgentSearchRequest agentSearchRequest, Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) {
-    return new Paginator<>(cursor -> filterEndpointAgents(agentSearchRequest, max, cursor, aid, expand, includeDeleted),
+  public Paginator<EndpointAgent, FilterEndpointAgentsResponse> filterEndpointAgentsPaginated(FilterEndpointAgentsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterEndpointAgentsPaginated");
+    }
+    return new Paginator<>(cursor -> filterEndpointAgents(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            FilterEndpointAgentsResponse::getAgents);
 
   }
   /**
    * Filter endpoint agents
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param request operation parameters (required)
    * @return FilterEndpointAgentsResponse
    * @throws ApiException if fails to make API call
    */
-  public FilterEndpointAgentsResponse filterEndpointAgents(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    ApiResponse<FilterEndpointAgentsResponse> response = filterEndpointAgentsWithHttpInfo(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+  public FilterEndpointAgentsResponse filterEndpointAgents(FilterEndpointAgentsRequest request) throws ApiException {
+    ApiResponse<FilterEndpointAgentsResponse> response = filterEndpointAgentsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Filter endpoint agents
    * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
-   * @param agentSearchRequest The filter options for advanced search filtering for agents. (required)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;FilterEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgentsWithHttpInfo(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    filterEndpointAgentsValidateRequest(agentSearchRequest);
+  public ApiResponse<FilterEndpointAgentsResponse> filterEndpointAgentsWithHttpInfo(FilterEndpointAgentsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterEndpointAgents");
+    }
+    filterEndpointAgentsValidateRequest(request.getAgentSearchRequest());
 
-    var requestBuilder = filterEndpointAgentsRequestBuilder(agentSearchRequest, max, cursor, aid, expand, includeDeleted);
+    var requestBuilder = filterEndpointAgentsRequestBuilder(request.getAgentSearchRequest(), request.getMax(), request.getCursor(), request.getAid(), request.getExpand(), request.getIncludeDeleted());
 
     return apiClient.send(requestBuilder.build(), FilterEndpointAgentsResponse.class);
   }
@@ -295,8 +427,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterEndpointAgentsRequestBuilder(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterEndpointAgentsRequestBuilder(AgentSearchRequest agentSearchRequest, Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/agents/filter";
@@ -319,35 +451,119 @@ public class EndpointAgentsApi {
     requestBuilder.requestBody(agentSearchRequest);
     return requestBuilder;
   }
+
+  public static final class FilterEndpointAgentsRequest {
+    private final AgentSearchRequest agentSearchRequest;
+    private final Integer max;
+    private final String cursor;
+    private final String aid;
+    private final List<ExpandEndpointAgentOptions> expand;
+    private final Boolean includeDeleted;
+
+    private FilterEndpointAgentsRequest(Builder builder) {
+      this.agentSearchRequest = builder.agentSearchRequest;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+      this.includeDeleted = builder.includeDeleted;
+    }
+    public AgentSearchRequest getAgentSearchRequest() {
+      return agentSearchRequest;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandEndpointAgentOptions> getExpand() {
+      return expand;
+    }
+    public Boolean getIncludeDeleted() {
+      return includeDeleted;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentSearchRequest(agentSearchRequest)
+          .max(max)
+          .cursor(cursor)
+          .aid(aid)
+          .expand(expand)
+          .includeDeleted(includeDeleted);
+    }
+
+    public static final class Builder {
+      private AgentSearchRequest agentSearchRequest;
+      private Integer max;
+      private String cursor;
+      private String aid;
+      private List<ExpandEndpointAgentOptions> expand;
+      private Boolean includeDeleted;
+
+      public Builder agentSearchRequest(AgentSearchRequest agentSearchRequest) {
+        this.agentSearchRequest = agentSearchRequest;
+        return this;
+      }
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointAgentOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder includeDeleted(Boolean includeDeleted) {
+        this.includeDeleted = includeDeleted;
+        return this;
+      }
+      public FilterEndpointAgentsRequest build() {
+        return new FilterEndpointAgentsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve endpoint agent
    * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgent getEndpointAgent(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    ApiResponse<EndpointAgent> response = getEndpointAgentWithHttpInfo(agentId, aid, expand, includeDeleted);
+  public EndpointAgent getEndpointAgent(GetEndpointAgentRequest request) throws ApiException {
+    ApiResponse<EndpointAgent> response = getEndpointAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve endpoint agent
    * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgent> getEndpointAgentWithHttpInfo(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    getEndpointAgentValidateRequest(agentId);
+  public ApiResponse<EndpointAgent> getEndpointAgentWithHttpInfo(GetEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointAgent");
+    }
+    getEndpointAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = getEndpointAgentRequestBuilder(agentId, aid, expand, includeDeleted);
+    var requestBuilder = getEndpointAgentRequestBuilder(request.getAgentId(), request.getAid(), request.getExpand(), request.getIncludeDeleted());
 
     return apiClient.send(requestBuilder.build(), EndpointAgent.class);
   }
@@ -359,8 +575,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/agents/{agentId}"
@@ -380,60 +596,113 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointAgentRequest {
+    private final UUID agentId;
+    private final String aid;
+    private final List<ExpandEndpointAgentOptions> expand;
+    private final Boolean includeDeleted;
+
+    private GetEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+      this.includeDeleted = builder.includeDeleted;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandEndpointAgentOptions> getExpand() {
+      return expand;
+    }
+    public Boolean getIncludeDeleted() {
+      return includeDeleted;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid)
+          .expand(expand)
+          .includeDeleted(includeDeleted);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+      private List<ExpandEndpointAgentOptions> expand;
+      private Boolean includeDeleted;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointAgentOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder includeDeleted(Boolean includeDeleted) {
+        this.includeDeleted = includeDeleted;
+        return this;
+      }
+      public GetEndpointAgentRequest build() {
+        return new GetEndpointAgentRequest(this);
+      }
+    }
+  }
+
   /**
    * List endpoint agents with pagination
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param agentName Returns only agents with the specified name.  This is an exact match only.  (optional)
-   * @param computerName Returns only agents with the specified computer name. This is an exact match only.  (optional)
+   * @param request operation parameters (required)
    * @return Paginator<EndpointAgent, ListEndpointAgentsResponse>
    */
-  public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(Integer max, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) {
-    return new Paginator<>(cursor -> getEndpointAgents(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName),
+  public Paginator<EndpointAgent, ListEndpointAgentsResponse> getEndpointAgentsPaginated(GetEndpointAgentsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getEndpointAgentsPaginated");
+    }
+    return new Paginator<>(cursor -> getEndpointAgents(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            ListEndpointAgentsResponse::getAgents);
 
   }
   /**
    * List endpoint agents
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param agentName Returns only agents with the specified name.  This is an exact match only.  (optional)
-   * @param computerName Returns only agents with the specified computer name. This is an exact match only.  (optional)
+   * @param request operation parameters (required)
    * @return ListEndpointAgentsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListEndpointAgentsResponse getEndpointAgents(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
-    ApiResponse<ListEndpointAgentsResponse> response = getEndpointAgentsWithHttpInfo(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+  public ListEndpointAgentsResponse getEndpointAgents(GetEndpointAgentsRequest request) throws ApiException {
+    ApiResponse<ListEndpointAgentsResponse> response = getEndpointAgentsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint agents
    * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param includeDeleted When requesting entities, set to &#x60;true&#x60; if you want to see deleted entities. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param agentName Returns only agents with the specified name.  This is an exact match only.  (optional)
-   * @param computerName Returns only agents with the specified computer name. This is an exact match only.  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ListEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListEndpointAgentsResponse> getEndpointAgentsWithHttpInfo(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+  public ApiResponse<ListEndpointAgentsResponse> getEndpointAgentsWithHttpInfo(GetEndpointAgentsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointAgents");
+    }
     getEndpointAgentsValidateRequest();
 
-    var requestBuilder = getEndpointAgentsRequestBuilder(max, cursor, aid, expand, includeDeleted, useAllPermittedAids, agentName, computerName);
+    var requestBuilder = getEndpointAgentsRequestBuilder(request.getMax(), request.getCursor(), request.getAid(), request.getExpand(), request.getIncludeDeleted(), request.getUseAllPermittedAids(), request.getAgentName(), request.getComputerName());
 
     return apiClient.send(requestBuilder.build(), ListEndpointAgentsResponse.class);
   }
@@ -441,8 +710,8 @@ public class EndpointAgentsApi {
   private void getEndpointAgentsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointAgentsRequestBuilder(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointAgentsRequestBuilder(Integer max, String cursor, String aid, List<ExpandEndpointAgentOptions> expand, Boolean includeDeleted, Boolean useAllPermittedAids, String agentName, String computerName) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/agents";
@@ -466,29 +735,141 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointAgentsRequest {
+    private final Integer max;
+    private final String cursor;
+    private final String aid;
+    private final List<ExpandEndpointAgentOptions> expand;
+    private final Boolean includeDeleted;
+    private final Boolean useAllPermittedAids;
+    private final String agentName;
+    private final String computerName;
+
+    private GetEndpointAgentsRequest(Builder builder) {
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+      this.includeDeleted = builder.includeDeleted;
+      this.useAllPermittedAids = builder.useAllPermittedAids;
+      this.agentName = builder.agentName;
+      this.computerName = builder.computerName;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandEndpointAgentOptions> getExpand() {
+      return expand;
+    }
+    public Boolean getIncludeDeleted() {
+      return includeDeleted;
+    }
+    public Boolean getUseAllPermittedAids() {
+      return useAllPermittedAids;
+    }
+    public String getAgentName() {
+      return agentName;
+    }
+    public String getComputerName() {
+      return computerName;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .max(max)
+          .cursor(cursor)
+          .aid(aid)
+          .expand(expand)
+          .includeDeleted(includeDeleted)
+          .useAllPermittedAids(useAllPermittedAids)
+          .agentName(agentName)
+          .computerName(computerName);
+    }
+
+    public static final class Builder {
+      private Integer max;
+      private String cursor;
+      private String aid;
+      private List<ExpandEndpointAgentOptions> expand;
+      private Boolean includeDeleted;
+      private Boolean useAllPermittedAids;
+      private String agentName;
+      private String computerName;
+
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointAgentOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder includeDeleted(Boolean includeDeleted) {
+        this.includeDeleted = includeDeleted;
+        return this;
+      }
+      public Builder useAllPermittedAids(Boolean useAllPermittedAids) {
+        this.useAllPermittedAids = useAllPermittedAids;
+        return this;
+      }
+      public Builder agentName(String agentName) {
+        this.agentName = agentName;
+        return this;
+      }
+      public Builder computerName(String computerName) {
+        this.computerName = computerName;
+        return this;
+      }
+      public GetEndpointAgentsRequest build() {
+        return new GetEndpointAgentsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get agent connection string
    * 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ConnectionString
    * @throws ApiException if fails to make API call
    */
-  public ConnectionString getEndpointAgentsConnectionString(String aid) throws ApiException {
-    ApiResponse<ConnectionString> response = getEndpointAgentsConnectionStringWithHttpInfo(aid);
+  public ConnectionString getEndpointAgentsConnectionString(GetEndpointAgentsConnectionStringRequest request) throws ApiException {
+    ApiResponse<ConnectionString> response = getEndpointAgentsConnectionStringWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get agent connection string
    * 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ConnectionString&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ConnectionString> getEndpointAgentsConnectionStringWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<ConnectionString> getEndpointAgentsConnectionStringWithHttpInfo(GetEndpointAgentsConnectionStringRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointAgentsConnectionString");
+    }
     getEndpointAgentsConnectionStringValidateRequest();
 
-    var requestBuilder = getEndpointAgentsConnectionStringRequestBuilder(aid);
+    var requestBuilder = getEndpointAgentsConnectionStringRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), ConnectionString.class);
   }
@@ -496,8 +877,8 @@ public class EndpointAgentsApi {
   private void getEndpointAgentsConnectionStringValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointAgentsConnectionStringRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointAgentsConnectionStringRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/agents/connection-string";
@@ -514,35 +895,64 @@ public class EndpointAgentsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointAgentsConnectionStringRequest {
+    private final String aid;
+
+    private GetEndpointAgentsConnectionStringRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetEndpointAgentsConnectionStringRequest build() {
+        return new GetEndpointAgentsConnectionStringRequest(this);
+      }
+    }
+  }
+
   /**
    * Update endpoint agent
    * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  Any attempt to update fields other than those listed above, with a value different from their current value, will result in a 400 Bad Request response. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param endpointAgentUpdate Fields to modify on the agent (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgent updateEndpointAgent(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, EndpointAgentUpdate endpointAgentUpdate) throws ApiException {
-    ApiResponse<EndpointAgent> response = updateEndpointAgentWithHttpInfo(agentId, aid, expand, endpointAgentUpdate);
+  public EndpointAgent updateEndpointAgent(UpdateEndpointAgentRequest request) throws ApiException {
+    ApiResponse<EndpointAgent> response = updateEndpointAgentWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update endpoint agent
    * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  Any attempt to update fields other than those listed above, with a value different from their current value, will result in a 400 Bad Request response. 
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand This optional parameter allows you to control the expansion of test resources associated with the agent. By default, no expansion occurs when this query parameter is omitted. To expand the \&quot;clients\&quot; resource, include the query parameter &#x60;?expand&#x3D;clients&#x60;.  For multiple expansions, you have two options:    * Separate the values with commas. For example, &#x60;?expandAgent&#x3D;clients,tasks&#x60;. * Specify the parameter multiple times. For example, &#x60;?expandAgent&#x3D;clients&amp;expandAgent&#x3D;tasks&#x60;.  This parameter offers flexibility for users to customize the expansion of specific resources related to the agent.  (optional
-   * @param endpointAgentUpdate Fields to modify on the agent (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgent> updateEndpointAgentWithHttpInfo(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, EndpointAgentUpdate endpointAgentUpdate) throws ApiException {
-    updateEndpointAgentValidateRequest(agentId);
+  public ApiResponse<EndpointAgent> updateEndpointAgentWithHttpInfo(UpdateEndpointAgentRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateEndpointAgent");
+    }
+    updateEndpointAgentValidateRequest(request.getAgentId());
 
-    var requestBuilder = updateEndpointAgentRequestBuilder(agentId, aid, expand, endpointAgentUpdate);
+    var requestBuilder = updateEndpointAgentRequestBuilder(request.getAgentId(), request.getAid(), request.getExpand(), request.getEndpointAgentUpdate());
 
     return apiClient.send(requestBuilder.build(), EndpointAgent.class);
   }
@@ -554,8 +964,8 @@ public class EndpointAgentsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, EndpointAgentUpdate endpointAgentUpdate) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateEndpointAgentRequestBuilder(UUID agentId, String aid, List<ExpandEndpointAgentOptions> expand, EndpointAgentUpdate endpointAgentUpdate) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
     String path = "/endpoint/agents/{agentId}"
@@ -576,4 +986,69 @@ public class EndpointAgentsApi {
     requestBuilder.requestBody(endpointAgentUpdate);
     return requestBuilder;
   }
+
+  public static final class UpdateEndpointAgentRequest {
+    private final UUID agentId;
+    private final String aid;
+    private final List<ExpandEndpointAgentOptions> expand;
+    private final EndpointAgentUpdate endpointAgentUpdate;
+
+    private UpdateEndpointAgentRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+      this.endpointAgentUpdate = builder.endpointAgentUpdate;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandEndpointAgentOptions> getExpand() {
+      return expand;
+    }
+    public EndpointAgentUpdate getEndpointAgentUpdate() {
+      return endpointAgentUpdate;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid)
+          .expand(expand)
+          .endpointAgentUpdate(endpointAgentUpdate);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+      private List<ExpandEndpointAgentOptions> expand;
+      private EndpointAgentUpdate endpointAgentUpdate;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointAgentOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder endpointAgentUpdate(EndpointAgentUpdate endpointAgentUpdate) {
+        this.endpointAgentUpdate = endpointAgentUpdate;
+        return this;
+      }
+      public UpdateEndpointAgentRequest build() {
+        return new UpdateEndpointAgentRequest(this);
+      }
+    }
+  }
+
 }

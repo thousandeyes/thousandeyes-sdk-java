@@ -83,7 +83,6 @@ public class DashboardsFiltersApiTest {
     public void createDashboardFilterRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "context" : [ {
@@ -157,7 +156,11 @@ public class DashboardsFiltersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDashboardFilter(mappedRequest, null);
+        var request = DashboardsFiltersApi.CreateDashboardFilterRequest.builder()
+                .apiContextFilterRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createDashboardFilter(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -174,7 +177,6 @@ public class DashboardsFiltersApiTest {
     {
         String id = "65bc18e8f2073a4a469cd958";
 
-
         var statusCode = 204;
 
         var path = "/dashboards/filters/{id}";
@@ -184,7 +186,11 @@ public class DashboardsFiltersApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDashboardFilterWithHttpInfo(id, null);
+        var request = DashboardsFiltersApi.DeleteDashboardFilterRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDashboardFilterWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -200,7 +206,6 @@ public class DashboardsFiltersApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "65bc18e8f2073a4a469cd958";
-
 
         var responseBodyJson = """
                 {
@@ -255,7 +260,11 @@ public class DashboardsFiltersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardFilter(id, null);
+        var request = DashboardsFiltersApi.GetDashboardFilterRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboardFilter(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -270,7 +279,6 @@ public class DashboardsFiltersApiTest {
     public void getDashboardsFiltersRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -361,7 +369,11 @@ public class DashboardsFiltersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardsFilters(null, null);
+        var request = DashboardsFiltersApi.GetDashboardsFiltersRequest.builder()
+                .searchPattern("cea-filter")
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboardsFilters(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -377,7 +389,6 @@ public class DashboardsFiltersApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "65bc18e8f2073a4a469cd958";
-
         var requestBodyJson = """
                 {
                   "context" : [ {
@@ -452,7 +463,12 @@ public class DashboardsFiltersApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDashboardFilter(id, mappedRequest, null);
+        var request = DashboardsFiltersApi.UpdateDashboardFilterRequest.builder()
+                .id(id)
+                .apiContextFilterRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateDashboardFilter(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

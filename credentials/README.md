@@ -119,7 +119,11 @@ public class CredentialsApiExample {
         CredentialRequest credentialRequest = new CredentialRequest(); // CredentialRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            CredentialWithoutValue result = apiInstance.createCredential(credentialRequest, aid);
+            CredentialsApi.CreateCredentialRequest request = CredentialsApi.CreateCredentialRequest.builder()
+                .credentialRequest(credentialRequest)
+                .aid(aid)
+                .build();
+            CredentialWithoutValue result = apiInstance.createCredential(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CredentialsApi#createCredential");

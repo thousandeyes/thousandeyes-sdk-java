@@ -82,7 +82,6 @@ public class PathVisualizationInterfaceGroupsApiTest {
     public void createPathVisInterfaceGroupsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "groupName" : "PathVis Interface Group",
@@ -122,7 +121,11 @@ public class PathVisualizationInterfaceGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createPathVisInterfaceGroups(mappedRequest, null);
+        var request = PathVisualizationInterfaceGroupsApi.CreatePathVisInterfaceGroupsRequest.builder()
+                .interfaceGroup(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createPathVisInterfaceGroups(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -139,7 +142,6 @@ public class PathVisualizationInterfaceGroupsApiTest {
     {
         String interfaceGroupId = "281474976710706";
 
-
         var statusCode = 204;
 
         var path = "/network/path-vis/interface-groups/{interfaceGroupId}";
@@ -149,7 +151,11 @@ public class PathVisualizationInterfaceGroupsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deletePathVisInterfaceGroupWithHttpInfo(interfaceGroupId, null);
+        var request = PathVisualizationInterfaceGroupsApi.DeletePathVisInterfaceGroupRequest.builder()
+                .interfaceGroupId(interfaceGroupId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deletePathVisInterfaceGroupWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -164,7 +170,6 @@ public class PathVisualizationInterfaceGroupsApiTest {
     public void getPathVisInterfaceGroupsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -209,7 +214,10 @@ public class PathVisualizationInterfaceGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPathVisInterfaceGroups(null);
+        var request = PathVisualizationInterfaceGroupsApi.GetPathVisInterfaceGroupsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPathVisInterfaceGroups(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -225,7 +233,6 @@ public class PathVisualizationInterfaceGroupsApiTest {
             throws JsonProcessingException, ApiException
     {
         String interfaceGroupId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "groupName" : "PathVis Interface Group",
@@ -266,7 +273,12 @@ public class PathVisualizationInterfaceGroupsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updatePathVisInterfaceGroup(interfaceGroupId, mappedRequest, null);
+        var request = PathVisualizationInterfaceGroupsApi.UpdatePathVisInterfaceGroupRequest.builder()
+                .interfaceGroupId(interfaceGroupId)
+                .interfaceGroup(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updatePathVisInterfaceGroup(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

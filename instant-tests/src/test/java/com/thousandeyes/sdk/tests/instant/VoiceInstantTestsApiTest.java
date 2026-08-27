@@ -83,7 +83,6 @@ public class VoiceInstantTestsApiTest {
     public void createVoiceInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -267,7 +266,12 @@ public class VoiceInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createVoiceInstantTest(mappedRequest, null, null);
+        var request = VoiceInstantTestsApi.CreateVoiceInstantTestRequest.builder()
+                .voiceInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createVoiceInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

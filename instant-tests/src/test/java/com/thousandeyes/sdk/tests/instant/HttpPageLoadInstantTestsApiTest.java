@@ -83,7 +83,6 @@ public class HttpPageLoadInstantTestsApiTest {
     public void createPageLoadInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -405,7 +404,12 @@ public class HttpPageLoadInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createPageLoadInstantTest(mappedRequest, null, null);
+        var request = HttpPageLoadInstantTestsApi.CreatePageLoadInstantTestRequest.builder()
+                .pageLoadInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createPageLoadInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

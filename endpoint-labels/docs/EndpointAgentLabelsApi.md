@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createEndpointLabel
 
-> LabelResponse createEndpointLabel(aid, labelRequest)
+> LabelResponse createEndpointLabel(CreateEndpointLabelRequest)
 
 Create label
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            LabelResponse result = apiInstance.createEndpointLabel(aid, labelRequest);
+            EndpointAgentLabelsApi.CreateEndpointLabelRequest request = EndpointAgentLabelsApi.CreateEndpointLabelRequest.builder()
+                .aid(aid)
+                .labelRequest(labelRequest)
+                .build();
+            LabelResponse result = apiInstance.createEndpointLabel(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#createEndpointLabel");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **labelRequest** | [**LabelRequest**](LabelRequest.md)| Label settings | [optional] |
+| request | [**CreateEndpointLabelRequest**](EndpointAgentLabelsApi.md#CreateEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -95,7 +97,7 @@ public class Example {
 
 ## createEndpointLabelWithHttpInfo
 
-> ApiResponse<LabelResponse> createEndpointLabel createEndpointLabelWithHttpInfo(aid, labelRequest)
+> ApiResponse<LabelResponse> createEndpointLabel createEndpointLabelWithHttpInfo(CreateEndpointLabelRequest)
 
 Create label
 
@@ -110,7 +112,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -126,7 +128,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            ApiResponse<LabelResponse> response = apiInstance.createEndpointLabelWithHttpInfo(aid, labelRequest);
+            EndpointAgentLabelsApi.CreateEndpointLabelRequest request = EndpointAgentLabelsApi.CreateEndpointLabelRequest.builder()
+                .aid(aid)
+                .labelRequest(labelRequest)
+                .build();
+            ApiResponse<LabelResponse> response = apiInstance.createEndpointLabelWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -143,11 +149,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **labelRequest** | [**LabelRequest**](LabelRequest.md)| Label settings | [optional] |
+| request | [**CreateEndpointLabelRequest**](EndpointAgentLabelsApi.md#CreateEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +177,20 @@ ApiResponse<[**LabelResponse**](LabelResponse.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="CreateEndpointLabelRequest"></a>
+## CreateEndpointLabelRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **labelRequest** | [**LabelRequest**](LabelRequest.md) | Label settings | [optional] |
+
+
+
 ## deleteEndpointLabel
 
-> void deleteEndpointLabel(id, aid)
+> void deleteEndpointLabel(DeleteEndpointLabelRequest)
 
 Delete label
 
@@ -189,7 +204,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -205,7 +220,11 @@ public class Example {
         String id = "id_example"; // String | The unique identifier of the label to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteEndpointLabel(id, aid);
+            EndpointAgentLabelsApi.DeleteEndpointLabelRequest request = EndpointAgentLabelsApi.DeleteEndpointLabelRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteEndpointLabel(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#deleteEndpointLabel");
             System.err.println("Status code: " + e.getCode());
@@ -219,11 +238,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteEndpointLabelRequest**](EndpointAgentLabelsApi.md#DeleteEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -250,7 +267,7 @@ null (empty response body)
 
 ## deleteEndpointLabelWithHttpInfo
 
-> ApiResponse<Void> deleteEndpointLabel deleteEndpointLabelWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteEndpointLabel deleteEndpointLabelWithHttpInfo(DeleteEndpointLabelRequest)
 
 Delete label
 
@@ -265,7 +282,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -281,7 +298,11 @@ public class Example {
         String id = "id_example"; // String | The unique identifier of the label to operate on.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteEndpointLabelWithHttpInfo(id, aid);
+            EndpointAgentLabelsApi.DeleteEndpointLabelRequest request = EndpointAgentLabelsApi.DeleteEndpointLabelRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteEndpointLabelWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -297,11 +318,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteEndpointLabelRequest**](EndpointAgentLabelsApi.md#DeleteEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -327,9 +346,20 @@ ApiResponse<Void>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="DeleteEndpointLabelRequest"></a>
+## DeleteEndpointLabelRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The unique identifier of the label to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getEndpointLabel
 
-> LabelResponse getEndpointLabel(id, expand, aid)
+> LabelResponse getEndpointLabel(GetEndpointLabelRequest)
 
 Retrieve label
 
@@ -343,7 +373,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -360,7 +390,12 @@ public class Example {
         List<ExpandLabelOptions> expand = Arrays.asList(); // List<ExpandLabelOptions> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            LabelResponse result = apiInstance.getEndpointLabel(id, expand, aid);
+            EndpointAgentLabelsApi.GetEndpointLabelRequest request = EndpointAgentLabelsApi.GetEndpointLabelRequest.builder()
+                .id(id)
+                .expand(expand)
+                .aid(aid)
+                .build();
+            LabelResponse result = apiInstance.getEndpointLabel(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#getEndpointLabel");
@@ -375,12 +410,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointLabelRequest**](EndpointAgentLabelsApi.md#GetEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -407,7 +439,7 @@ public class Example {
 
 ## getEndpointLabelWithHttpInfo
 
-> ApiResponse<LabelResponse> getEndpointLabel getEndpointLabelWithHttpInfo(id, expand, aid)
+> ApiResponse<LabelResponse> getEndpointLabel getEndpointLabelWithHttpInfo(GetEndpointLabelRequest)
 
 Retrieve label
 
@@ -422,7 +454,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -439,7 +471,12 @@ public class Example {
         List<ExpandLabelOptions> expand = Arrays.asList(); // List<ExpandLabelOptions> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<LabelResponse> response = apiInstance.getEndpointLabelWithHttpInfo(id, expand, aid);
+            EndpointAgentLabelsApi.GetEndpointLabelRequest request = EndpointAgentLabelsApi.GetEndpointLabelRequest.builder()
+                .id(id)
+                .expand(expand)
+                .aid(aid)
+                .build();
+            ApiResponse<LabelResponse> response = apiInstance.getEndpointLabelWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -456,12 +493,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointLabelRequest**](EndpointAgentLabelsApi.md#GetEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -487,9 +521,21 @@ ApiResponse<[**LabelResponse**](LabelResponse.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="GetEndpointLabelRequest"></a>
+## GetEndpointLabelRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The unique identifier of the label to operate on. | |
+| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md) | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getEndpointLabels
 
-> Labels getEndpointLabels(max, cursor, expand, aid)
+> Labels getEndpointLabels(GetEndpointLabelsRequest)
 
 List labels
 
@@ -503,7 +549,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -521,7 +567,13 @@ public class Example {
         List<ExpandLabelOptions> expand = Arrays.asList(); // List<ExpandLabelOptions> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Labels result = apiInstance.getEndpointLabels(max, cursor, expand, aid);
+            EndpointAgentLabelsApi.GetEndpointLabelsRequest request = EndpointAgentLabelsApi.GetEndpointLabelsRequest.builder()
+                .max(max)
+                .cursor(cursor)
+                .expand(expand)
+                .aid(aid)
+                .build();
+            Labels result = apiInstance.getEndpointLabels(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#getEndpointLabels");
@@ -536,13 +588,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointLabelsRequest**](EndpointAgentLabelsApi.md#GetEndpointLabelsRequest)|-|-|
 
 ### Return type
 
@@ -568,7 +616,7 @@ public class Example {
 
 ## getEndpointLabelsWithHttpInfo
 
-> ApiResponse<Labels> getEndpointLabels getEndpointLabelsWithHttpInfo(max, cursor, expand, aid)
+> ApiResponse<Labels> getEndpointLabels getEndpointLabelsWithHttpInfo(GetEndpointLabelsRequest)
 
 List labels
 
@@ -583,7 +631,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -601,7 +649,13 @@ public class Example {
         List<ExpandLabelOptions> expand = Arrays.asList(); // List<ExpandLabelOptions> | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Labels> response = apiInstance.getEndpointLabelsWithHttpInfo(max, cursor, expand, aid);
+            EndpointAgentLabelsApi.GetEndpointLabelsRequest request = EndpointAgentLabelsApi.GetEndpointLabelsRequest.builder()
+                .max(max)
+                .cursor(cursor)
+                .expand(expand)
+                .aid(aid)
+                .build();
+            ApiResponse<Labels> response = apiInstance.getEndpointLabelsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -618,13 +672,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md)| This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointLabelsRequest**](EndpointAgentLabelsApi.md#GetEndpointLabelsRequest)|-|-|
 
 ### Return type
 
@@ -649,9 +699,22 @@ ApiResponse<[**Labels**](Labels.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 
 
+<a id="GetEndpointLabelsRequest"></a>
+## GetEndpointLabelsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandLabelOptions&gt;**](ExpandLabelOptions.md) | This parameter is optional and determines whether to include additional details in the response. To specify multiple expansions, you can either separate the values with commas or specify the parameter multiple times. | [optional] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateEndpointLabel
 
-> LabelResponse updateEndpointLabel(id, aid, label)
+> LabelResponse updateEndpointLabel(UpdateEndpointLabelRequest)
 
 Update label
 
@@ -665,7 +728,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -682,7 +745,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
-            LabelResponse result = apiInstance.updateEndpointLabel(id, aid, label);
+            EndpointAgentLabelsApi.UpdateEndpointLabelRequest request = EndpointAgentLabelsApi.UpdateEndpointLabelRequest.builder()
+                .id(id)
+                .aid(aid)
+                .label(label)
+                .build();
+            LabelResponse result = apiInstance.updateEndpointLabel(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#updateEndpointLabel");
@@ -697,12 +765,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **label** | [**Label**](Label.md)| Fields to change on the agent | [optional] |
+| request | [**UpdateEndpointLabelRequest**](EndpointAgentLabelsApi.md#UpdateEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -730,7 +795,7 @@ public class Example {
 
 ## updateEndpointLabelWithHttpInfo
 
-> ApiResponse<LabelResponse> updateEndpointLabel updateEndpointLabelWithHttpInfo(id, aid, label)
+> ApiResponse<LabelResponse> updateEndpointLabel updateEndpointLabelWithHttpInfo(UpdateEndpointLabelRequest)
 
 Update label
 
@@ -745,7 +810,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.labels.model.*;
 import com.thousandeyes.sdk.endpoint.labels.EndpointAgentLabelsApi;
 
 public class Example {
@@ -762,7 +827,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Label label = new Label(); // Label | Fields to change on the agent
         try {
-            ApiResponse<LabelResponse> response = apiInstance.updateEndpointLabelWithHttpInfo(id, aid, label);
+            EndpointAgentLabelsApi.UpdateEndpointLabelRequest request = EndpointAgentLabelsApi.UpdateEndpointLabelRequest.builder()
+                .id(id)
+                .aid(aid)
+                .label(label)
+                .build();
+            ApiResponse<LabelResponse> response = apiInstance.updateEndpointLabelWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -779,12 +849,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The unique identifier of the label to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **label** | [**Label**](Label.md)| Fields to change on the agent | [optional] |
+| request | [**UpdateEndpointLabelRequest**](EndpointAgentLabelsApi.md#UpdateEndpointLabelRequest)|-|-|
 
 ### Return type
 
@@ -809,4 +876,16 @@ ApiResponse<[**LabelResponse**](LabelResponse.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
+
+
+<a id="UpdateEndpointLabelRequest"></a>
+## UpdateEndpointLabelRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The unique identifier of the label to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **label** | [**Label**](Label.md) | Fields to change on the agent | [optional] |
+
 

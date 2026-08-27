@@ -87,7 +87,6 @@ public class LocalNetworkEndpointTestResultsApiTest {
     public void filterLocalNetworksTestResultsTopologiesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchFilters" : {
@@ -499,7 +498,15 @@ public class LocalNetworkEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterLocalNetworksTestResultsTopologies(null, null, null, null, null, null, mappedRequest);
+        var request = LocalNetworkEndpointTestResultsApi.FilterLocalNetworksTestResultsTopologiesRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .expand(Arrays.asList())
+                .endpointNetworkTopologyResultRequest(mappedRequest)
+                .build();
+        var apiResponse = api.filterLocalNetworksTestResultsTopologies(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -514,7 +521,6 @@ public class LocalNetworkEndpointTestResultsApiTest {
     public void getLocalNetworksTestResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -557,7 +563,10 @@ public class LocalNetworkEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getLocalNetworksTestResults(null);
+        var request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getLocalNetworksTestResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -573,7 +582,6 @@ public class LocalNetworkEndpointTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String networkTopologyId = "00160:39c518560de9:1491651900:236e6f18";
-
 
         var responseBodyJson = """
                 {
@@ -1187,7 +1195,12 @@ public class LocalNetworkEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getLocalNetworksTestResultsTopology(networkTopologyId, null, null);
+        var request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsTopologyRequest.builder()
+                .networkTopologyId(networkTopologyId)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getLocalNetworksTestResultsTopology(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

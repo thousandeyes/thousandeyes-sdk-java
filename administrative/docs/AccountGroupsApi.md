@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAccountGroup
 
-> CreatedAccountGroup createAccountGroup(accountGroupRequest, expand)
+> CreatedAccountGroup createAccountGroup(CreateAccountGroupRequest)
 
 Create account group
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            CreatedAccountGroup result = apiInstance.createAccountGroup(accountGroupRequest, expand);
+            AccountGroupsApi.CreateAccountGroupRequest request = AccountGroupsApi.CreateAccountGroupRequest.builder()
+                .accountGroupRequest(accountGroupRequest)
+                .expand(expand)
+                .build();
+            CreatedAccountGroup result = apiInstance.createAccountGroup(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#createAccountGroup");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**CreateAccountGroupRequest**](AccountGroupsApi.md#CreateAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## createAccountGroupWithHttpInfo
 
-> ApiResponse<CreatedAccountGroup> createAccountGroup createAccountGroupWithHttpInfo(accountGroupRequest, expand)
+> ApiResponse<CreatedAccountGroup> createAccountGroup createAccountGroupWithHttpInfo(CreateAccountGroupRequest)
 
 Create account group
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -128,7 +130,11 @@ public class Example {
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            ApiResponse<CreatedAccountGroup> response = apiInstance.createAccountGroupWithHttpInfo(accountGroupRequest, expand);
+            AccountGroupsApi.CreateAccountGroupRequest request = AccountGroupsApi.CreateAccountGroupRequest.builder()
+                .accountGroupRequest(accountGroupRequest)
+                .expand(expand)
+                .build();
+            ApiResponse<CreatedAccountGroup> response = apiInstance.createAccountGroupWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -145,11 +151,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**CreateAccountGroupRequest**](AccountGroupsApi.md#CreateAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,20 @@ ApiResponse<[**CreatedAccountGroup**](CreatedAccountGroup.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateAccountGroupRequest"></a>
+## CreateAccountGroupRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md) |  | |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md) | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+
+
+
 ## deleteAccountGroup
 
-> void deleteAccountGroup(id)
+> void deleteAccountGroup(DeleteAccountGroupRequest)
 
 Delete account group
 
@@ -193,7 +208,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -208,7 +223,10 @@ public class Example {
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
         try {
-            apiInstance.deleteAccountGroup(id);
+            AccountGroupsApi.DeleteAccountGroupRequest request = AccountGroupsApi.DeleteAccountGroupRequest.builder()
+                .id(id)
+                .build();
+            apiInstance.deleteAccountGroup(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#deleteAccountGroup");
             System.err.println("Status code: " + e.getCode());
@@ -222,10 +240,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
+| request | [**DeleteAccountGroupRequest**](AccountGroupsApi.md#DeleteAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -254,7 +271,7 @@ null (empty response body)
 
 ## deleteAccountGroupWithHttpInfo
 
-> ApiResponse<Void> deleteAccountGroup deleteAccountGroupWithHttpInfo(id)
+> ApiResponse<Void> deleteAccountGroup deleteAccountGroupWithHttpInfo(DeleteAccountGroupRequest)
 
 Delete account group
 
@@ -269,7 +286,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -284,7 +301,10 @@ public class Example {
         AccountGroupsApi apiInstance = new AccountGroupsApi(defaultClient);
         String id = "1234"; // String | Identifier for the account group.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAccountGroupWithHttpInfo(id);
+            AccountGroupsApi.DeleteAccountGroupRequest request = AccountGroupsApi.DeleteAccountGroupRequest.builder()
+                .id(id)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAccountGroupWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -300,10 +320,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
+| request | [**DeleteAccountGroupRequest**](AccountGroupsApi.md#DeleteAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -331,9 +350,19 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteAccountGroupRequest"></a>
+## DeleteAccountGroupRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the account group. | |
+
+
+
 ## getAccountGroup
 
-> AccountGroupDetail getAccountGroup(id, expand)
+> AccountGroupDetail getAccountGroup(GetAccountGroupRequest)
 
 Retrieve account group
 
@@ -347,7 +376,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -363,7 +392,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the account group.
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            AccountGroupDetail result = apiInstance.getAccountGroup(id, expand);
+            AccountGroupsApi.GetAccountGroupRequest request = AccountGroupsApi.GetAccountGroupRequest.builder()
+                .id(id)
+                .expand(expand)
+                .build();
+            AccountGroupDetail result = apiInstance.getAccountGroup(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#getAccountGroup");
@@ -378,11 +411,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**GetAccountGroupRequest**](AccountGroupsApi.md#GetAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -411,7 +442,7 @@ public class Example {
 
 ## getAccountGroupWithHttpInfo
 
-> ApiResponse<AccountGroupDetail> getAccountGroup getAccountGroupWithHttpInfo(id, expand)
+> ApiResponse<AccountGroupDetail> getAccountGroup getAccountGroupWithHttpInfo(GetAccountGroupRequest)
 
 Retrieve account group
 
@@ -426,7 +457,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -442,7 +473,11 @@ public class Example {
         String id = "1234"; // String | Identifier for the account group.
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            ApiResponse<AccountGroupDetail> response = apiInstance.getAccountGroupWithHttpInfo(id, expand);
+            AccountGroupsApi.GetAccountGroupRequest request = AccountGroupsApi.GetAccountGroupRequest.builder()
+                .id(id)
+                .expand(expand)
+                .build();
+            ApiResponse<AccountGroupDetail> response = apiInstance.getAccountGroupWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -459,11 +494,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**GetAccountGroupRequest**](AccountGroupsApi.md#GetAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -491,6 +524,17 @@ ApiResponse<[**AccountGroupDetail**](AccountGroupDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAccountGroupRequest"></a>
+## GetAccountGroupRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the account group. | |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md) | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+
+
+
 ## getAccountGroups
 
 > AccountGroups getAccountGroups()
@@ -507,7 +551,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -580,7 +624,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -641,7 +685,7 @@ ApiResponse<[**AccountGroups**](AccountGroups.md)>
 
 ## updateAccountGroup
 
-> AccountGroupDetail updateAccountGroup(id, accountGroupRequest, expand)
+> AccountGroupDetail updateAccountGroup(UpdateAccountGroupRequest)
 
 Update account group
 
@@ -655,7 +699,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -672,7 +716,12 @@ public class Example {
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            AccountGroupDetail result = apiInstance.updateAccountGroup(id, accountGroupRequest, expand);
+            AccountGroupsApi.UpdateAccountGroupRequest request = AccountGroupsApi.UpdateAccountGroupRequest.builder()
+                .id(id)
+                .accountGroupRequest(accountGroupRequest)
+                .expand(expand)
+                .build();
+            AccountGroupDetail result = apiInstance.updateAccountGroup(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#updateAccountGroup");
@@ -687,12 +736,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
-| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**UpdateAccountGroupRequest**](AccountGroupsApi.md#UpdateAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -721,7 +767,7 @@ public class Example {
 
 ## updateAccountGroupWithHttpInfo
 
-> ApiResponse<AccountGroupDetail> updateAccountGroup updateAccountGroupWithHttpInfo(id, accountGroupRequest, expand)
+> ApiResponse<AccountGroupDetail> updateAccountGroup updateAccountGroupWithHttpInfo(UpdateAccountGroupRequest)
 
 Update account group
 
@@ -736,7 +782,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.AccountGroupsApi;
 
 public class Example {
@@ -753,7 +799,12 @@ public class Example {
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            ApiResponse<AccountGroupDetail> response = apiInstance.updateAccountGroupWithHttpInfo(id, accountGroupRequest, expand);
+            AccountGroupsApi.UpdateAccountGroupRequest request = AccountGroupsApi.UpdateAccountGroupRequest.builder()
+                .id(id)
+                .accountGroupRequest(accountGroupRequest)
+                .expand(expand)
+                .build();
+            ApiResponse<AccountGroupDetail> response = apiInstance.updateAccountGroupWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -770,12 +821,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Identifier for the account group. | |
-| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md)|  | |
-| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md)| Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+| request | [**UpdateAccountGroupRequest**](AccountGroupsApi.md#UpdateAccountGroupRequest)|-|-|
 
 ### Return type
 
@@ -801,4 +849,16 @@ ApiResponse<[**AccountGroupDetail**](AccountGroupDetail.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateAccountGroupRequest"></a>
+## UpdateAccountGroupRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Identifier for the account group. | |
+| **accountGroupRequest** | [**AccountGroupRequest**](AccountGroupRequest.md) |  | |
+| **expand** | [**List&lt;ExpandAccountGroupOptions&gt;**](ExpandAccountGroupOptions.md) | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the &#x60;users&#x60; resource, pass the &#x60;?expand&#x3D;user&#x60; query. | [optional] |
+
 

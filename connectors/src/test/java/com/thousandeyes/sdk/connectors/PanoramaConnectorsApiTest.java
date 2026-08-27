@@ -82,7 +82,6 @@ public class PanoramaConnectorsApiTest {
     public void createPanoramaConnectorRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "lastModifiedDate" : 1770293655756,
@@ -154,7 +153,11 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createPanoramaConnector(mappedRequest, null);
+        var request = PanoramaConnectorsApi.CreatePanoramaConnectorRequest.builder()
+                .panoramaConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createPanoramaConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -171,7 +174,6 @@ public class PanoramaConnectorsApiTest {
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
-
         var statusCode = 204;
 
         var path = "/connectors/panorama/{id}";
@@ -181,7 +183,11 @@ public class PanoramaConnectorsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deletePanoramaConnectorWithHttpInfo(id, null);
+        var request = PanoramaConnectorsApi.DeletePanoramaConnectorRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deletePanoramaConnectorWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -197,7 +203,6 @@ public class PanoramaConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -239,7 +244,11 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPanoramaConnector(id, null);
+        var request = PanoramaConnectorsApi.GetPanoramaConnectorRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPanoramaConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -255,7 +264,6 @@ public class PanoramaConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -289,7 +297,11 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPanoramaConnectorOperations(id, null);
+        var request = PanoramaConnectorsApi.GetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPanoramaConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -304,7 +316,6 @@ public class PanoramaConnectorsApiTest {
     public void getPanoramaConnectorsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -381,7 +392,10 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPanoramaConnectors(null);
+        var request = PanoramaConnectorsApi.GetPanoramaConnectorsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPanoramaConnectors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -397,7 +411,6 @@ public class PanoramaConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff", "a32cfbab-32f6-41d8-9027-7127cba965dd" ]
                                  """;
@@ -440,7 +453,12 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.setPanoramaConnectorOperations(id, mappedRequest, null);
+        var request = PanoramaConnectorsApi.SetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.setPanoramaConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -456,7 +474,6 @@ public class PanoramaConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 {
                   "lastModifiedDate" : 1770293655756,
@@ -529,7 +546,12 @@ public class PanoramaConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updatePanoramaConnector(id, mappedRequest, null);
+        var request = PanoramaConnectorsApi.UpdatePanoramaConnectorRequest.builder()
+                .id(id)
+                .panoramaConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updatePanoramaConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

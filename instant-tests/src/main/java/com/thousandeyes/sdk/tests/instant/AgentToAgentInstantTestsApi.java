@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,30 +62,29 @@ public class AgentToAgentInstantTestsApi {
   /**
    * Create agent-to-agent instant test
    * Creates and runs a new agent-to-agent instant test.
-   * @param agentToAgentInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return AgentToAgentInstantTestResponse
    * @throws ApiException if fails to make API call
    */
-  public AgentToAgentInstantTestResponse createAgentToAgentInstantTest(AgentToAgentInstantTestRequest agentToAgentInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiResponse<AgentToAgentInstantTestResponse> response = createAgentToAgentInstantTestWithHttpInfo(agentToAgentInstantTestRequest, aid, expand);
+  public AgentToAgentInstantTestResponse createAgentToAgentInstantTest(CreateAgentToAgentInstantTestRequest request) throws ApiException {
+    ApiResponse<AgentToAgentInstantTestResponse> response = createAgentToAgentInstantTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create agent-to-agent instant test
    * Creates and runs a new agent-to-agent instant test.
-   * @param agentToAgentInstantTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AgentToAgentInstantTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AgentToAgentInstantTestResponse> createAgentToAgentInstantTestWithHttpInfo(AgentToAgentInstantTestRequest agentToAgentInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    createAgentToAgentInstantTestValidateRequest(agentToAgentInstantTestRequest);
+  public ApiResponse<AgentToAgentInstantTestResponse> createAgentToAgentInstantTestWithHttpInfo(CreateAgentToAgentInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAgentToAgentInstantTest");
+    }
+    createAgentToAgentInstantTestValidateRequest(request.getAgentToAgentInstantTestRequest());
 
-    var requestBuilder = createAgentToAgentInstantTestRequestBuilder(agentToAgentInstantTestRequest, aid, expand);
+    var requestBuilder = createAgentToAgentInstantTestRequestBuilder(request.getAgentToAgentInstantTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AgentToAgentInstantTestResponse.class);
   }
@@ -100,8 +96,8 @@ public class AgentToAgentInstantTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAgentToAgentInstantTestRequestBuilder(AgentToAgentInstantTestRequest agentToAgentInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAgentToAgentInstantTestRequestBuilder(AgentToAgentInstantTestRequest agentToAgentInstantTestRequest, String aid, List<ExpandInstantTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/agent-to-agent/instant";
@@ -121,4 +117,58 @@ public class AgentToAgentInstantTestsApi {
     requestBuilder.requestBody(agentToAgentInstantTestRequest);
     return requestBuilder;
   }
+
+  public static final class CreateAgentToAgentInstantTestRequest {
+    private final AgentToAgentInstantTestRequest agentToAgentInstantTestRequest;
+    private final String aid;
+    private final List<ExpandInstantTestOptions> expand;
+
+    private CreateAgentToAgentInstantTestRequest(Builder builder) {
+      this.agentToAgentInstantTestRequest = builder.agentToAgentInstantTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public AgentToAgentInstantTestRequest getAgentToAgentInstantTestRequest() {
+      return agentToAgentInstantTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandInstantTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentToAgentInstantTestRequest(agentToAgentInstantTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private AgentToAgentInstantTestRequest agentToAgentInstantTestRequest;
+      private String aid;
+      private List<ExpandInstantTestOptions> expand;
+
+      public Builder agentToAgentInstantTestRequest(AgentToAgentInstantTestRequest agentToAgentInstantTestRequest) {
+        this.agentToAgentInstantTestRequest = agentToAgentInstantTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandInstantTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateAgentToAgentInstantTestRequest build() {
+        return new CreateAgentToAgentInstantTestRequest(this);
+      }
+    }
+  }
+
 }

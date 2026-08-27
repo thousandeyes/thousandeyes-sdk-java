@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class HttpServerTestsApi {
   /**
    * Create HTTP Server test
    * Creates a new HTTP Server test. This method requires Account Admin permissions. 
-   * @param httpServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return HttpServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public HttpServerTestResponse createHttpServerTest(HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<HttpServerTestResponse> response = createHttpServerTestWithHttpInfo(httpServerTestRequest, aid, expand);
+  public HttpServerTestResponse createHttpServerTest(CreateHttpServerTestRequest request) throws ApiException {
+    ApiResponse<HttpServerTestResponse> response = createHttpServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create HTTP Server test
    * Creates a new HTTP Server test. This method requires Account Admin permissions. 
-   * @param httpServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;HttpServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpServerTestResponse> createHttpServerTestWithHttpInfo(HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createHttpServerTestValidateRequest(httpServerTestRequest);
+  public ApiResponse<HttpServerTestResponse> createHttpServerTestWithHttpInfo(CreateHttpServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createHttpServerTest");
+    }
+    createHttpServerTestValidateRequest(request.getHttpServerTestRequest());
 
-    var requestBuilder = createHttpServerTestRequestBuilder(httpServerTestRequest, aid, expand);
+    var requestBuilder = createHttpServerTestRequestBuilder(request.getHttpServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), HttpServerTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class HttpServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createHttpServerTestRequestBuilder(HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createHttpServerTestRequestBuilder(HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/http-server";
@@ -122,29 +118,84 @@ public class HttpServerTestsApi {
     requestBuilder.requestBody(httpServerTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete HTTP Server test
-   * Deletes the specified HTTP Server test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteHttpServerTest(String testId, String aid) throws ApiException {
-    deleteHttpServerTestWithHttpInfo(testId, aid);
+
+  public static final class CreateHttpServerTestRequest {
+    private final HttpServerTestRequest httpServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateHttpServerTestRequest(Builder builder) {
+      this.httpServerTestRequest = builder.httpServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public HttpServerTestRequest getHttpServerTestRequest() {
+      return httpServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .httpServerTestRequest(httpServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private HttpServerTestRequest httpServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder httpServerTestRequest(HttpServerTestRequest httpServerTestRequest) {
+        this.httpServerTestRequest = httpServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateHttpServerTestRequest build() {
+        return new CreateHttpServerTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete HTTP Server test
    * Deletes the specified HTTP Server test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteHttpServerTest(DeleteHttpServerTestRequest request) throws ApiException {
+    deleteHttpServerTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete HTTP Server test
+   * Deletes the specified HTTP Server test. This method requires Account Admin permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteHttpServerTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteHttpServerTestValidateRequest(testId);
+  public ApiResponse<Void> deleteHttpServerTestWithHttpInfo(DeleteHttpServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteHttpServerTest");
+    }
+    deleteHttpServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteHttpServerTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteHttpServerTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class HttpServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteHttpServerTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteHttpServerTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/http-server/{testId}"
@@ -175,35 +226,75 @@ public class HttpServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteHttpServerTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteHttpServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteHttpServerTestRequest build() {
+        return new DeleteHttpServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get HTTP Server test
    * Returns details for a HTTP Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return HttpServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public HttpServerTestResponse getHttpServerTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<HttpServerTestResponse> response = getHttpServerTestWithHttpInfo(testId, aid, versionId, expand);
+  public HttpServerTestResponse getHttpServerTest(GetHttpServerTestRequest request) throws ApiException {
+    ApiResponse<HttpServerTestResponse> response = getHttpServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get HTTP Server test
    * Returns details for a HTTP Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;HttpServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpServerTestResponse> getHttpServerTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getHttpServerTestValidateRequest(testId);
+  public ApiResponse<HttpServerTestResponse> getHttpServerTestWithHttpInfo(GetHttpServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getHttpServerTest");
+    }
+    getHttpServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getHttpServerTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getHttpServerTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), HttpServerTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class HttpServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getHttpServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getHttpServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/http-server/{testId}"
@@ -236,29 +327,97 @@ public class HttpServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetHttpServerTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetHttpServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetHttpServerTestRequest build() {
+        return new GetHttpServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List HTTP Server tests
    * Returns a list of all HTTP Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return HttpServerTests
    * @throws ApiException if fails to make API call
    */
-  public HttpServerTests getHttpServerTests(String aid) throws ApiException {
-    ApiResponse<HttpServerTests> response = getHttpServerTestsWithHttpInfo(aid);
+  public HttpServerTests getHttpServerTests(GetHttpServerTestsRequest request) throws ApiException {
+    ApiResponse<HttpServerTests> response = getHttpServerTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List HTTP Server tests
    * Returns a list of all HTTP Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;HttpServerTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpServerTests> getHttpServerTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<HttpServerTests> getHttpServerTestsWithHttpInfo(GetHttpServerTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getHttpServerTests");
+    }
     getHttpServerTestsValidateRequest();
 
-    var requestBuilder = getHttpServerTestsRequestBuilder(aid);
+    var requestBuilder = getHttpServerTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), HttpServerTests.class);
   }
@@ -266,8 +425,8 @@ public class HttpServerTestsApi {
   private void getHttpServerTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getHttpServerTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getHttpServerTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/http-server";
@@ -284,35 +443,64 @@ public class HttpServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetHttpServerTestsRequest {
+    private final String aid;
+
+    private GetHttpServerTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetHttpServerTestsRequest build() {
+        return new GetHttpServerTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update HTTP Server test
    * Updates a HTTP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param httpServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return HttpServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public HttpServerTestResponse updateHttpServerTest(String testId, HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<HttpServerTestResponse> response = updateHttpServerTestWithHttpInfo(testId, httpServerTestRequest, aid, expand);
+  public HttpServerTestResponse updateHttpServerTest(UpdateHttpServerTestRequest request) throws ApiException {
+    ApiResponse<HttpServerTestResponse> response = updateHttpServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update HTTP Server test
    * Updates a HTTP Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param httpServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;HttpServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<HttpServerTestResponse> updateHttpServerTestWithHttpInfo(String testId, HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateHttpServerTestValidateRequest(testId, httpServerTestRequest);
+  public ApiResponse<HttpServerTestResponse> updateHttpServerTestWithHttpInfo(UpdateHttpServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateHttpServerTest");
+    }
+    updateHttpServerTestValidateRequest(request.getTestId(), request.getHttpServerTestRequest());
 
-    var requestBuilder = updateHttpServerTestRequestBuilder(testId, httpServerTestRequest, aid, expand);
+    var requestBuilder = updateHttpServerTestRequestBuilder(request.getTestId(), request.getHttpServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), HttpServerTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class HttpServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateHttpServerTestRequestBuilder(String testId, HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateHttpServerTestRequestBuilder(String testId, HttpServerTestRequest httpServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/http-server/{testId}"
@@ -350,4 +538,69 @@ public class HttpServerTestsApi {
     requestBuilder.requestBody(httpServerTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateHttpServerTestRequest {
+    private final String testId;
+    private final HttpServerTestRequest httpServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateHttpServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.httpServerTestRequest = builder.httpServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public HttpServerTestRequest getHttpServerTestRequest() {
+      return httpServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .httpServerTestRequest(httpServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private HttpServerTestRequest httpServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder httpServerTestRequest(HttpServerTestRequest httpServerTestRequest) {
+        this.httpServerTestRequest = httpServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateHttpServerTestRequest build() {
+        return new UpdateHttpServerTestRequest(this);
+      }
+    }
+  }
+
 }

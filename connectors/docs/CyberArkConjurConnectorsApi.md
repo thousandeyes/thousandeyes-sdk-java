@@ -23,7 +23,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createConjurConnector
 
-> ConjurConnector createConjurConnector(conjurConnector, aid)
+> ConjurConnector createConjurConnector(CreateConjurConnectorRequest)
 
 Create Conjur connector
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -53,7 +53,11 @@ public class Example {
         ConjurConnector conjurConnector = new ConjurConnector(); // ConjurConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConjurConnector result = apiInstance.createConjurConnector(conjurConnector, aid);
+            CyberArkConjurConnectorsApi.CreateConjurConnectorRequest request = CyberArkConjurConnectorsApi.CreateConjurConnectorRequest.builder()
+                .conjurConnector(conjurConnector)
+                .aid(aid)
+                .build();
+            ConjurConnector result = apiInstance.createConjurConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#createConjurConnector");
@@ -68,11 +72,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#CreateConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -100,7 +102,7 @@ public class Example {
 
 ## createConjurConnectorWithHttpInfo
 
-> ApiResponse<ConjurConnector> createConjurConnector createConjurConnectorWithHttpInfo(conjurConnector, aid)
+> ApiResponse<ConjurConnector> createConjurConnector createConjurConnectorWithHttpInfo(CreateConjurConnectorRequest)
 
 Create Conjur connector
 
@@ -115,7 +117,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -131,7 +133,11 @@ public class Example {
         ConjurConnector conjurConnector = new ConjurConnector(); // ConjurConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConjurConnector> response = apiInstance.createConjurConnectorWithHttpInfo(conjurConnector, aid);
+            CyberArkConjurConnectorsApi.CreateConjurConnectorRequest request = CyberArkConjurConnectorsApi.CreateConjurConnectorRequest.builder()
+                .conjurConnector(conjurConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<ConjurConnector> response = apiInstance.createConjurConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,11 +154,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#CreateConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -179,9 +183,20 @@ ApiResponse<[**ConjurConnector**](ConjurConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateConjurConnectorRequest"></a>
+## CreateConjurConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteConjurConnector
 
-> void deleteConjurConnector(id, confirmDisabledObjects, aid)
+> void deleteConjurConnector(DeleteConjurConnectorRequest)
 
 Delete a Conjur connector
 
@@ -195,7 +210,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -212,7 +227,12 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for Conjur connectors.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteConjurConnector(id, confirmDisabledObjects, aid);
+            CyberArkConjurConnectorsApi.DeleteConjurConnectorRequest request = CyberArkConjurConnectorsApi.DeleteConjurConnectorRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            apiInstance.deleteConjurConnector(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#deleteConjurConnector");
             System.err.println("Status code: " + e.getCode());
@@ -226,12 +246,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#DeleteConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -259,7 +276,7 @@ null (empty response body)
 
 ## deleteConjurConnectorWithHttpInfo
 
-> ApiResponse<Void> deleteConjurConnector deleteConjurConnectorWithHttpInfo(id, confirmDisabledObjects, aid)
+> ApiResponse<Void> deleteConjurConnector deleteConjurConnectorWithHttpInfo(DeleteConjurConnectorRequest)
 
 Delete a Conjur connector
 
@@ -274,7 +291,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -291,7 +308,12 @@ public class Example {
         Boolean confirmDisabledObjects = false; // Boolean | Confirmation to disable affected objects (for example, tests) for Conjur connectors.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteConjurConnectorWithHttpInfo(id, confirmDisabledObjects, aid);
+            CyberArkConjurConnectorsApi.DeleteConjurConnectorRequest request = CyberArkConjurConnectorsApi.DeleteConjurConnectorRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteConjurConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -307,12 +329,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#DeleteConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -339,9 +358,21 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteConjurConnectorRequest"></a>
+## DeleteConjurConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **confirmDisabledObjects** | **Boolean** | Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getConjurConnector
 
-> ConjurConnector getConjurConnector(id, aid)
+> ConjurConnector getConjurConnector(GetConjurConnectorRequest)
 
 Retrieve a Conjur connector
 
@@ -355,7 +386,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -371,7 +402,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConjurConnector result = apiInstance.getConjurConnector(id, aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ConjurConnector result = apiInstance.getConjurConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#getConjurConnector");
@@ -386,11 +421,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -418,7 +451,7 @@ public class Example {
 
 ## getConjurConnectorWithHttpInfo
 
-> ApiResponse<ConjurConnector> getConjurConnector getConjurConnectorWithHttpInfo(id, aid)
+> ApiResponse<ConjurConnector> getConjurConnector getConjurConnectorWithHttpInfo(GetConjurConnectorRequest)
 
 Retrieve a Conjur connector
 
@@ -433,7 +466,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -449,7 +482,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConjurConnector> response = apiInstance.getConjurConnectorWithHttpInfo(id, aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<ConjurConnector> response = apiInstance.getConjurConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -466,11 +503,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -497,9 +532,20 @@ ApiResponse<[**ConjurConnector**](ConjurConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetConjurConnectorRequest"></a>
+## GetConjurConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getConjurConnectorOperations
 
-> Assignments getConjurConnectorOperations(id, aid)
+> Assignments getConjurConnectorOperations(GetConjurConnectorOperationsRequest)
 
 List operation IDs for a Conjur connector
 
@@ -513,7 +559,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -529,7 +575,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.getConjurConnectorOperations(id, aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorOperationsRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.getConjurConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#getConjurConnectorOperations");
@@ -544,11 +594,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorOperationsRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -576,7 +624,7 @@ public class Example {
 
 ## getConjurConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> getConjurConnectorOperations getConjurConnectorOperationsWithHttpInfo(id, aid)
+> ApiResponse<Assignments> getConjurConnectorOperations getConjurConnectorOperationsWithHttpInfo(GetConjurConnectorOperationsRequest)
 
 List operation IDs for a Conjur connector
 
@@ -591,7 +639,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -607,7 +655,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.getConjurConnectorOperationsWithHttpInfo(id, aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorOperationsRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.getConjurConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -624,11 +676,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorOperationsRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -655,9 +705,20 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetConjurConnectorOperationsRequest"></a>
+## GetConjurConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getConjurConnectors
 
-> ConjurConnectors getConjurConnectors(aid)
+> ConjurConnectors getConjurConnectors(GetConjurConnectorsRequest)
 
 List Conjur connectors
 
@@ -671,7 +732,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -686,7 +747,10 @@ public class Example {
         CyberArkConjurConnectorsApi apiInstance = new CyberArkConjurConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConjurConnectors result = apiInstance.getConjurConnectors(aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorsRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            ConjurConnectors result = apiInstance.getConjurConnectors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#getConjurConnectors");
@@ -701,10 +765,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorsRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -732,7 +795,7 @@ public class Example {
 
 ## getConjurConnectorsWithHttpInfo
 
-> ApiResponse<ConjurConnectors> getConjurConnectors getConjurConnectorsWithHttpInfo(aid)
+> ApiResponse<ConjurConnectors> getConjurConnectors getConjurConnectorsWithHttpInfo(GetConjurConnectorsRequest)
 
 List Conjur connectors
 
@@ -747,7 +810,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -762,7 +825,10 @@ public class Example {
         CyberArkConjurConnectorsApi apiInstance = new CyberArkConjurConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConjurConnectors> response = apiInstance.getConjurConnectorsWithHttpInfo(aid);
+            CyberArkConjurConnectorsApi.GetConjurConnectorsRequest request = CyberArkConjurConnectorsApi.GetConjurConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<ConjurConnectors> response = apiInstance.getConjurConnectorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -779,10 +845,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetConjurConnectorsRequest**](CyberArkConjurConnectorsApi.md#GetConjurConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -809,9 +874,19 @@ ApiResponse<[**ConjurConnectors**](ConjurConnectors.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetConjurConnectorsRequest"></a>
+## GetConjurConnectorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## setConjurConnectorOperations
 
-> Assignments setConjurConnectorOperations(id, confirmDisabledObjects, requestBody, aid)
+> Assignments setConjurConnectorOperations(SetConjurConnectorOperationsRequest)
 
 Assign operations to a Conjur connector
 
@@ -825,7 +900,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -843,7 +918,13 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.setConjurConnectorOperations(id, confirmDisabledObjects, requestBody, aid);
+            CyberArkConjurConnectorsApi.SetConjurConnectorOperationsRequest request = CyberArkConjurConnectorsApi.SetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.setConjurConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#setConjurConnectorOperations");
@@ -858,13 +939,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetConjurConnectorOperationsRequest**](CyberArkConjurConnectorsApi.md#SetConjurConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -892,7 +969,7 @@ public class Example {
 
 ## setConjurConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> setConjurConnectorOperations setConjurConnectorOperationsWithHttpInfo(id, confirmDisabledObjects, requestBody, aid)
+> ApiResponse<Assignments> setConjurConnectorOperations setConjurConnectorOperationsWithHttpInfo(SetConjurConnectorOperationsRequest)
 
 Assign operations to a Conjur connector
 
@@ -907,7 +984,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -925,7 +1002,13 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.setConjurConnectorOperationsWithHttpInfo(id, confirmDisabledObjects, requestBody, aid);
+            CyberArkConjurConnectorsApi.SetConjurConnectorOperationsRequest request = CyberArkConjurConnectorsApi.SetConjurConnectorOperationsRequest.builder()
+                .id(id)
+                .confirmDisabledObjects(confirmDisabledObjects)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.setConjurConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -942,13 +1025,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **confirmDisabledObjects** | **Boolean**| Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetConjurConnectorOperationsRequest**](CyberArkConjurConnectorsApi.md#SetConjurConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -975,9 +1054,22 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="SetConjurConnectorOperationsRequest"></a>
+## SetConjurConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **confirmDisabledObjects** | **Boolean** | Confirmation to disable affected objects (for example, tests) for Conjur connectors. | [default to false] |
+| **requestBody** | [**List&lt;String&gt;**](String.md) | List of operation IDs to assign to the connector. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateConjurConnector
 
-> ConjurConnector updateConjurConnector(id, conjurConnector, aid)
+> ConjurConnector updateConjurConnector(UpdateConjurConnectorRequest)
 
 Update a Conjur connector
 
@@ -991,7 +1083,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -1008,7 +1100,12 @@ public class Example {
         ConjurConnector conjurConnector = new ConjurConnector(); // ConjurConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ConjurConnector result = apiInstance.updateConjurConnector(id, conjurConnector, aid);
+            CyberArkConjurConnectorsApi.UpdateConjurConnectorRequest request = CyberArkConjurConnectorsApi.UpdateConjurConnectorRequest.builder()
+                .id(id)
+                .conjurConnector(conjurConnector)
+                .aid(aid)
+                .build();
+            ConjurConnector result = apiInstance.updateConjurConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CyberArkConjurConnectorsApi#updateConjurConnector");
@@ -1023,12 +1120,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#UpdateConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1056,7 +1150,7 @@ public class Example {
 
 ## updateConjurConnectorWithHttpInfo
 
-> ApiResponse<ConjurConnector> updateConjurConnector updateConjurConnectorWithHttpInfo(id, conjurConnector, aid)
+> ApiResponse<ConjurConnector> updateConjurConnector updateConjurConnectorWithHttpInfo(UpdateConjurConnectorRequest)
 
 Update a Conjur connector
 
@@ -1071,7 +1165,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.CyberArkConjurConnectorsApi;
 
 public class Example {
@@ -1088,7 +1182,12 @@ public class Example {
         ConjurConnector conjurConnector = new ConjurConnector(); // ConjurConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ConjurConnector> response = apiInstance.updateConjurConnectorWithHttpInfo(id, conjurConnector, aid);
+            CyberArkConjurConnectorsApi.UpdateConjurConnectorRequest request = CyberArkConjurConnectorsApi.UpdateConjurConnectorRequest.builder()
+                .id(id)
+                .conjurConnector(conjurConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<ConjurConnector> response = apiInstance.updateConjurConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1105,12 +1204,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateConjurConnectorRequest**](CyberArkConjurConnectorsApi.md#UpdateConjurConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1135,4 +1231,16 @@ ApiResponse<[**ConjurConnector**](ConjurConnector.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateConjurConnectorRequest"></a>
+## UpdateConjurConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **conjurConnector** | [**ConjurConnector**](ConjurConnector.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -84,7 +84,6 @@ public class HttpServerEndpointScheduledTestsApiTest {
     public void createHttpServerEndpointScheduledTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "verifyCertificate" : true,
@@ -195,7 +194,11 @@ public class HttpServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createHttpServerEndpointScheduledTest(mappedRequest, null);
+        var request = HttpServerEndpointScheduledTestsApi.CreateHttpServerEndpointScheduledTestRequest.builder()
+                .endpointHttpServerTestRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createHttpServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -212,7 +215,6 @@ public class HttpServerEndpointScheduledTestsApiTest {
     {
         String testId = "584739201";
 
-
         var statusCode = 204;
 
         var path = "/endpoint/tests/scheduled-tests/http-server/{testId}";
@@ -222,7 +224,11 @@ public class HttpServerEndpointScheduledTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteHttpServerEndpointScheduledTestWithHttpInfo(testId, null);
+        var request = HttpServerEndpointScheduledTestsApi.DeleteHttpServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteHttpServerEndpointScheduledTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -238,7 +244,6 @@ public class HttpServerEndpointScheduledTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
 
         var responseBodyJson = """
                 {
@@ -317,7 +322,11 @@ public class HttpServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerEndpointScheduledTest(testId, null);
+        var request = HttpServerEndpointScheduledTestsApi.GetHttpServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getHttpServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -332,7 +341,6 @@ public class HttpServerEndpointScheduledTestsApiTest {
     public void getHttpServerEndpointScheduledTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -483,7 +491,10 @@ public class HttpServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getHttpServerEndpointScheduledTests(null);
+        var request = HttpServerEndpointScheduledTestsApi.GetHttpServerEndpointScheduledTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getHttpServerEndpointScheduledTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -499,7 +510,6 @@ public class HttpServerEndpointScheduledTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
         var requestBodyJson = """
                 {
                   "protocol" : "icmp",
@@ -594,7 +604,12 @@ public class HttpServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateHttpServerEndpointScheduledTest(testId, mappedRequest, null);
+        var request = HttpServerEndpointScheduledTestsApi.UpdateHttpServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .endpointHttpTestUpdate(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateHttpServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## assignTests
 
-> AgentDetails assignTests(agentId, agentTestsAssignRequest, aid)
+> AgentDetails assignTests(AssignTestsRequest)
 
 Assign tests to an agent
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -46,7 +46,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentDetails result = apiInstance.assignTests(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.AssignTestsRequest request = TestsAssignmentOnAgentsApi.AssignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            AgentDetails result = apiInstance.assignTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestsAssignmentOnAgentsApi#assignTests");
@@ -61,12 +66,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTestsRequest**](TestsAssignmentOnAgentsApi.md#AssignTestsRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## assignTestsWithHttpInfo
 
-> ApiResponse<AgentDetails> assignTests assignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid)
+> ApiResponse<AgentDetails> assignTests assignTestsWithHttpInfo(AssignTestsRequest)
 
 Assign tests to an agent
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -129,7 +131,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.assignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.AssignTestsRequest request = TestsAssignmentOnAgentsApi.AssignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<AgentDetails> response = apiInstance.assignTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -146,12 +153,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTestsRequest**](TestsAssignmentOnAgentsApi.md#AssignTestsRequest)|-|-|
 
 ### Return type
 
@@ -181,9 +185,21 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="AssignTestsRequest"></a>
+## AssignTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **String** | Unique ID for the Enterprise Agent cluster to add new agents to. | |
+| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## overwriteTests
 
-> AgentDetails overwriteTests(agentId, agentTestsAssignRequest, aid)
+> AgentDetails overwriteTests(OverwriteTestsRequest)
 
 Overwrite tests assigned to an agent
 
@@ -197,7 +213,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -214,7 +230,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentDetails result = apiInstance.overwriteTests(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.OverwriteTestsRequest request = TestsAssignmentOnAgentsApi.OverwriteTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            AgentDetails result = apiInstance.overwriteTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestsAssignmentOnAgentsApi#overwriteTests");
@@ -229,12 +250,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**OverwriteTestsRequest**](TestsAssignmentOnAgentsApi.md#OverwriteTestsRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ public class Example {
 
 ## overwriteTestsWithHttpInfo
 
-> ApiResponse<AgentDetails> overwriteTests overwriteTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid)
+> ApiResponse<AgentDetails> overwriteTests overwriteTestsWithHttpInfo(OverwriteTestsRequest)
 
 Overwrite tests assigned to an agent
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -297,7 +315,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.overwriteTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.OverwriteTestsRequest request = TestsAssignmentOnAgentsApi.OverwriteTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<AgentDetails> response = apiInstance.overwriteTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -314,12 +337,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**OverwriteTestsRequest**](TestsAssignmentOnAgentsApi.md#OverwriteTestsRequest)|-|-|
 
 ### Return type
 
@@ -349,9 +369,21 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="OverwriteTestsRequest"></a>
+## OverwriteTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **String** | Unique ID for the Enterprise Agent cluster to add new agents to. | |
+| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## unassignTests
 
-> AgentDetails unassignTests(agentId, agentTestsAssignRequest, aid)
+> AgentDetails unassignTests(UnassignTestsRequest)
 
 Unassign tests from an agent
 
@@ -365,7 +397,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -382,7 +414,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentDetails result = apiInstance.unassignTests(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.UnassignTestsRequest request = TestsAssignmentOnAgentsApi.UnassignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            AgentDetails result = apiInstance.unassignTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TestsAssignmentOnAgentsApi#unassignTests");
@@ -397,12 +434,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTestsRequest**](TestsAssignmentOnAgentsApi.md#UnassignTestsRequest)|-|-|
 
 ### Return type
 
@@ -433,7 +467,7 @@ public class Example {
 
 ## unassignTestsWithHttpInfo
 
-> ApiResponse<AgentDetails> unassignTests unassignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid)
+> ApiResponse<AgentDetails> unassignTests unassignTestsWithHttpInfo(UnassignTestsRequest)
 
 Unassign tests from an agent
 
@@ -448,7 +482,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.TestsAssignmentOnAgentsApi;
 
 public class Example {
@@ -465,7 +499,12 @@ public class Example {
         AgentTestsAssignRequest agentTestsAssignRequest = new AgentTestsAssignRequest(); // AgentTestsAssignRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.unassignTestsWithHttpInfo(agentId, agentTestsAssignRequest, aid);
+            TestsAssignmentOnAgentsApi.UnassignTestsRequest request = TestsAssignmentOnAgentsApi.UnassignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(agentTestsAssignRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<AgentDetails> response = apiInstance.unassignTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -482,12 +521,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTestsRequest**](TestsAssignmentOnAgentsApi.md#UnassignTestsRequest)|-|-|
 
 ### Return type
 
@@ -515,4 +551,16 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UnassignTestsRequest"></a>
+## UnassignTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **String** | Unique ID for the Enterprise Agent cluster to add new agents to. | |
+| **agentTestsAssignRequest** | [**AgentTestsAssignRequest**](AgentTestsAssignRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

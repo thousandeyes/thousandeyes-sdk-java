@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterLocalNetworksTestResultsTopologies
 
-> LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest)
+> LocalNetworkTopologyResults filterLocalNetworksTestResultsTopologies(FilterLocalNetworksTestResultsTopologiesRequest)
 
 List endpoint network topologies probes
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -50,7 +50,16 @@ public class Example {
         List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
+            LocalNetworkEndpointTestResultsApi.FilterLocalNetworksTestResultsTopologiesRequest request = LocalNetworkEndpointTestResultsApi.FilterLocalNetworksTestResultsTopologiesRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .endpointNetworkTopologyResultRequest(endpointNetworkTopologyResultRequest)
+                .build();
+            LocalNetworkTopologyResults result = apiInstance.filterLocalNetworksTestResultsTopologies(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkEndpointTestResultsApi#filterLocalNetworksTestResultsTopologies");
@@ -65,16 +74,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
-| **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
+| request | [**FilterLocalNetworksTestResultsTopologiesRequest**](LocalNetworkEndpointTestResultsApi.md#FilterLocalNetworksTestResultsTopologiesRequest)|-|-|
 
 ### Return type
 
@@ -104,7 +106,7 @@ public class Example {
 
 ## filterLocalNetworksTestResultsTopologiesWithHttpInfo
 
-> ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologies filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest)
+> ApiResponse<LocalNetworkTopologyResults> filterLocalNetworksTestResultsTopologies filterLocalNetworksTestResultsTopologiesWithHttpInfo(FilterLocalNetworksTestResultsTopologiesRequest)
 
 List endpoint network topologies probes
 
@@ -119,7 +121,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -140,7 +142,16 @@ public class Example {
         List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         EndpointNetworkTopologyResultRequest endpointNetworkTopologyResultRequest = new EndpointNetworkTopologyResultRequest(); // EndpointNetworkTopologyResultRequest | 
         try {
-            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.filterLocalNetworksTestResultsTopologiesWithHttpInfo(aid, window, startDate, endDate, cursor, expand, endpointNetworkTopologyResultRequest);
+            LocalNetworkEndpointTestResultsApi.FilterLocalNetworksTestResultsTopologiesRequest request = LocalNetworkEndpointTestResultsApi.FilterLocalNetworksTestResultsTopologiesRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .expand(expand)
+                .endpointNetworkTopologyResultRequest(endpointNetworkTopologyResultRequest)
+                .build();
+            ApiResponse<LocalNetworkTopologyResults> response = apiInstance.filterLocalNetworksTestResultsTopologiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -157,16 +168,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
-| **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md)|  | [optional] |
+| request | [**FilterLocalNetworksTestResultsTopologiesRequest**](LocalNetworkEndpointTestResultsApi.md#FilterLocalNetworksTestResultsTopologiesRequest)|-|-|
 
 ### Return type
 
@@ -195,9 +199,25 @@ ApiResponse<[**LocalNetworkTopologyResults**](LocalNetworkTopologyResults.md)>
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterLocalNetworksTestResultsTopologiesRequest"></a>
+## FilterLocalNetworksTestResultsTopologiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md) | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
+| **endpointNetworkTopologyResultRequest** | [**EndpointNetworkTopologyResultRequest**](EndpointNetworkTopologyResultRequest.md) |  | [optional] |
+
+
+
 ## getLocalNetworksTestResults
 
-> LocalNetworkResults getLocalNetworksTestResults(aid)
+> LocalNetworkResults getLocalNetworksTestResults(GetLocalNetworksTestResultsRequest)
 
 List local networks
 
@@ -211,7 +231,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -226,7 +246,10 @@ public class Example {
         LocalNetworkEndpointTestResultsApi apiInstance = new LocalNetworkEndpointTestResultsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            LocalNetworkResults result = apiInstance.getLocalNetworksTestResults(aid);
+            LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsRequest request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsRequest.builder()
+                .aid(aid)
+                .build();
+            LocalNetworkResults result = apiInstance.getLocalNetworksTestResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkEndpointTestResultsApi#getLocalNetworksTestResults");
@@ -241,10 +264,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetLocalNetworksTestResultsRequest**](LocalNetworkEndpointTestResultsApi.md#GetLocalNetworksTestResultsRequest)|-|-|
 
 ### Return type
 
@@ -273,7 +295,7 @@ public class Example {
 
 ## getLocalNetworksTestResultsWithHttpInfo
 
-> ApiResponse<LocalNetworkResults> getLocalNetworksTestResults getLocalNetworksTestResultsWithHttpInfo(aid)
+> ApiResponse<LocalNetworkResults> getLocalNetworksTestResults getLocalNetworksTestResultsWithHttpInfo(GetLocalNetworksTestResultsRequest)
 
 List local networks
 
@@ -288,7 +310,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -303,7 +325,10 @@ public class Example {
         LocalNetworkEndpointTestResultsApi apiInstance = new LocalNetworkEndpointTestResultsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<LocalNetworkResults> response = apiInstance.getLocalNetworksTestResultsWithHttpInfo(aid);
+            LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsRequest request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<LocalNetworkResults> response = apiInstance.getLocalNetworksTestResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -320,10 +345,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetLocalNetworksTestResultsRequest**](LocalNetworkEndpointTestResultsApi.md#GetLocalNetworksTestResultsRequest)|-|-|
 
 ### Return type
 
@@ -351,9 +375,19 @@ ApiResponse<[**LocalNetworkResults**](LocalNetworkResults.md)>
 | **502** | Bad Gateway |  -  |
 
 
+<a id="GetLocalNetworksTestResultsRequest"></a>
+## GetLocalNetworksTestResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getLocalNetworksTestResultsTopology
 
-> LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(networkTopologyId, aid, expand)
+> LocalNetworkTopologyDetailResults getLocalNetworksTestResultsTopology(GetLocalNetworksTestResultsTopologyRequest)
 
 Retrieve endpoint local network topology
 
@@ -367,7 +401,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -384,7 +418,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         try {
-            LocalNetworkTopologyDetailResults result = apiInstance.getLocalNetworksTestResultsTopology(networkTopologyId, aid, expand);
+            LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsTopologyRequest request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsTopologyRequest.builder()
+                .networkTopologyId(networkTopologyId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            LocalNetworkTopologyDetailResults result = apiInstance.getLocalNetworksTestResultsTopology(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling LocalNetworkEndpointTestResultsApi#getLocalNetworksTestResultsTopology");
@@ -399,12 +438,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **networkTopologyId** | **String**| The network topology ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
+| request | [**GetLocalNetworksTestResultsTopologyRequest**](LocalNetworkEndpointTestResultsApi.md#GetLocalNetworksTestResultsTopologyRequest)|-|-|
 
 ### Return type
 
@@ -433,7 +469,7 @@ public class Example {
 
 ## getLocalNetworksTestResultsTopologyWithHttpInfo
 
-> ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopology getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand)
+> ApiResponse<LocalNetworkTopologyDetailResults> getLocalNetworksTestResultsTopology getLocalNetworksTestResultsTopologyWithHttpInfo(GetLocalNetworksTestResultsTopologyRequest)
 
 Retrieve endpoint local network topology
 
@@ -448,7 +484,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.LocalNetworkEndpointTestResultsApi;
 
 public class Example {
@@ -465,7 +501,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandLocalNetworkTopologyOptions> expand = Arrays.asList(); // List<ExpandLocalNetworkTopologyOptions> | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as `systemMetricDetails`, append  `?expand=system-metric-detail` to the query.
         try {
-            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getLocalNetworksTestResultsTopologyWithHttpInfo(networkTopologyId, aid, expand);
+            LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsTopologyRequest request = LocalNetworkEndpointTestResultsApi.GetLocalNetworksTestResultsTopologyRequest.builder()
+                .networkTopologyId(networkTopologyId)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<LocalNetworkTopologyDetailResults> response = apiInstance.getLocalNetworksTestResultsTopologyWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -482,12 +523,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **networkTopologyId** | **String**| The network topology ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md)| This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
+| request | [**GetLocalNetworksTestResultsTopologyRequest**](LocalNetworkEndpointTestResultsApi.md#GetLocalNetworksTestResultsTopologyRequest)|-|-|
 
 ### Return type
 
@@ -513,4 +551,16 @@ ApiResponse<[**LocalNetworkTopologyDetailResults**](LocalNetworkTopologyDetailRe
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
+
+
+<a id="GetLocalNetworksTestResultsTopologyRequest"></a>
+## GetLocalNetworksTestResultsTopologyRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **networkTopologyId** | **String** | The network topology ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandLocalNetworkTopologyOptions&gt;**](ExpandLocalNetworkTopologyOptions.md) | This parameter is optional and determines whether to expand resources related to local network topologies. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as &#x60;systemMetricDetails&#x60;, append  &#x60;?expand&#x3D;system-metric-detail&#x60; to the query. | [optional] |
+
 

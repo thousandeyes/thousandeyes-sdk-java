@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createWebhookOperation
 
-> WebhookOperation createWebhookOperation(webhookOperation, aid)
+> WebhookOperation createWebhookOperation(CreateWebhookOperationRequest)
 
 Create webhook operation
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebhookOperation result = apiInstance.createWebhookOperation(webhookOperation, aid);
+            WebhookOperationsApi.CreateWebhookOperationRequest request = WebhookOperationsApi.CreateWebhookOperationRequest.builder()
+                .webhookOperation(webhookOperation)
+                .aid(aid)
+                .build();
+            WebhookOperation result = apiInstance.createWebhookOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhookOperationsApi#createWebhookOperation");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateWebhookOperationRequest**](WebhookOperationsApi.md#CreateWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -96,7 +98,7 @@ public class Example {
 
 ## createWebhookOperationWithHttpInfo
 
-> ApiResponse<WebhookOperation> createWebhookOperation createWebhookOperationWithHttpInfo(webhookOperation, aid)
+> ApiResponse<WebhookOperation> createWebhookOperation createWebhookOperationWithHttpInfo(CreateWebhookOperationRequest)
 
 Create webhook operation
 
@@ -111,7 +113,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -127,7 +129,11 @@ public class Example {
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebhookOperation> response = apiInstance.createWebhookOperationWithHttpInfo(webhookOperation, aid);
+            WebhookOperationsApi.CreateWebhookOperationRequest request = WebhookOperationsApi.CreateWebhookOperationRequest.builder()
+                .webhookOperation(webhookOperation)
+                .aid(aid)
+                .build();
+            ApiResponse<WebhookOperation> response = apiInstance.createWebhookOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -144,11 +150,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateWebhookOperationRequest**](WebhookOperationsApi.md#CreateWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -175,9 +179,20 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateWebhookOperationRequest"></a>
+## CreateWebhookOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteWebhookOperation
 
-> void deleteWebhookOperation(id, aid)
+> void deleteWebhookOperation(DeleteWebhookOperationRequest)
 
 Delete webhook operation
 
@@ -191,7 +206,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -207,7 +222,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteWebhookOperation(id, aid);
+            WebhookOperationsApi.DeleteWebhookOperationRequest request = WebhookOperationsApi.DeleteWebhookOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteWebhookOperation(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhookOperationsApi#deleteWebhookOperation");
             System.err.println("Status code: " + e.getCode());
@@ -221,11 +240,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteWebhookOperationRequest**](WebhookOperationsApi.md#DeleteWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -253,7 +270,7 @@ null (empty response body)
 
 ## deleteWebhookOperationWithHttpInfo
 
-> ApiResponse<Void> deleteWebhookOperation deleteWebhookOperationWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteWebhookOperation deleteWebhookOperationWithHttpInfo(DeleteWebhookOperationRequest)
 
 Delete webhook operation
 
@@ -268,7 +285,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -284,7 +301,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteWebhookOperationWithHttpInfo(id, aid);
+            WebhookOperationsApi.DeleteWebhookOperationRequest request = WebhookOperationsApi.DeleteWebhookOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteWebhookOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -300,11 +321,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteWebhookOperationRequest**](WebhookOperationsApi.md#DeleteWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -331,9 +350,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteWebhookOperationRequest"></a>
+## DeleteWebhookOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getWebhookOperation
 
-> WebhookOperation getWebhookOperation(id, aid)
+> WebhookOperation getWebhookOperation(GetWebhookOperationRequest)
 
 Retrieve webhook operation
 
@@ -347,7 +377,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -363,7 +393,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebhookOperation result = apiInstance.getWebhookOperation(id, aid);
+            WebhookOperationsApi.GetWebhookOperationRequest request = WebhookOperationsApi.GetWebhookOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            WebhookOperation result = apiInstance.getWebhookOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhookOperationsApi#getWebhookOperation");
@@ -378,11 +412,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebhookOperationRequest**](WebhookOperationsApi.md#GetWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -410,7 +442,7 @@ public class Example {
 
 ## getWebhookOperationWithHttpInfo
 
-> ApiResponse<WebhookOperation> getWebhookOperation getWebhookOperationWithHttpInfo(id, aid)
+> ApiResponse<WebhookOperation> getWebhookOperation getWebhookOperationWithHttpInfo(GetWebhookOperationRequest)
 
 Retrieve webhook operation
 
@@ -425,7 +457,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -441,7 +473,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The operation ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebhookOperation> response = apiInstance.getWebhookOperationWithHttpInfo(id, aid);
+            WebhookOperationsApi.GetWebhookOperationRequest request = WebhookOperationsApi.GetWebhookOperationRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<WebhookOperation> response = apiInstance.getWebhookOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -458,11 +494,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebhookOperationRequest**](WebhookOperationsApi.md#GetWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -489,9 +523,20 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetWebhookOperationRequest"></a>
+## GetWebhookOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getWebhookOperations
 
-> WebhookOperations getWebhookOperations(aid)
+> WebhookOperations getWebhookOperations(GetWebhookOperationsRequest)
 
 List webhook operations
 
@@ -505,7 +550,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -520,7 +565,10 @@ public class Example {
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebhookOperations result = apiInstance.getWebhookOperations(aid);
+            WebhookOperationsApi.GetWebhookOperationsRequest request = WebhookOperationsApi.GetWebhookOperationsRequest.builder()
+                .aid(aid)
+                .build();
+            WebhookOperations result = apiInstance.getWebhookOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhookOperationsApi#getWebhookOperations");
@@ -535,10 +583,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebhookOperationsRequest**](WebhookOperationsApi.md#GetWebhookOperationsRequest)|-|-|
 
 ### Return type
 
@@ -566,7 +613,7 @@ public class Example {
 
 ## getWebhookOperationsWithHttpInfo
 
-> ApiResponse<WebhookOperations> getWebhookOperations getWebhookOperationsWithHttpInfo(aid)
+> ApiResponse<WebhookOperations> getWebhookOperations getWebhookOperationsWithHttpInfo(GetWebhookOperationsRequest)
 
 List webhook operations
 
@@ -581,7 +628,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -596,7 +643,10 @@ public class Example {
         WebhookOperationsApi apiInstance = new WebhookOperationsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebhookOperations> response = apiInstance.getWebhookOperationsWithHttpInfo(aid);
+            WebhookOperationsApi.GetWebhookOperationsRequest request = WebhookOperationsApi.GetWebhookOperationsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<WebhookOperations> response = apiInstance.getWebhookOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -613,10 +663,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetWebhookOperationsRequest**](WebhookOperationsApi.md#GetWebhookOperationsRequest)|-|-|
 
 ### Return type
 
@@ -643,9 +692,19 @@ ApiResponse<[**WebhookOperations**](WebhookOperations.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetWebhookOperationsRequest"></a>
+## GetWebhookOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateWebhookOperation
 
-> WebhookOperation updateWebhookOperation(id, webhookOperation, aid)
+> WebhookOperation updateWebhookOperation(UpdateWebhookOperationRequest)
 
 Update webhook operation
 
@@ -659,7 +718,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -676,7 +735,12 @@ public class Example {
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            WebhookOperation result = apiInstance.updateWebhookOperation(id, webhookOperation, aid);
+            WebhookOperationsApi.UpdateWebhookOperationRequest request = WebhookOperationsApi.UpdateWebhookOperationRequest.builder()
+                .id(id)
+                .webhookOperation(webhookOperation)
+                .aid(aid)
+                .build();
+            WebhookOperation result = apiInstance.updateWebhookOperation(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhookOperationsApi#updateWebhookOperation");
@@ -691,12 +755,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateWebhookOperationRequest**](WebhookOperationsApi.md#UpdateWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -724,7 +785,7 @@ public class Example {
 
 ## updateWebhookOperationWithHttpInfo
 
-> ApiResponse<WebhookOperation> updateWebhookOperation updateWebhookOperationWithHttpInfo(id, webhookOperation, aid)
+> ApiResponse<WebhookOperation> updateWebhookOperation updateWebhookOperationWithHttpInfo(UpdateWebhookOperationRequest)
 
 Update webhook operation
 
@@ -739,7 +800,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.WebhookOperationsApi;
 
 public class Example {
@@ -756,7 +817,12 @@ public class Example {
         WebhookOperation webhookOperation = new WebhookOperation(); // WebhookOperation | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<WebhookOperation> response = apiInstance.updateWebhookOperationWithHttpInfo(id, webhookOperation, aid);
+            WebhookOperationsApi.UpdateWebhookOperationRequest request = WebhookOperationsApi.UpdateWebhookOperationRequest.builder()
+                .id(id)
+                .webhookOperation(webhookOperation)
+                .aid(aid)
+                .build();
+            ApiResponse<WebhookOperation> response = apiInstance.updateWebhookOperationWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -773,12 +839,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The operation ID. | |
-| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateWebhookOperationRequest**](WebhookOperationsApi.md#UpdateWebhookOperationRequest)|-|-|
 
 ### Return type
 
@@ -803,4 +866,16 @@ ApiResponse<[**WebhookOperation**](WebhookOperation.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateWebhookOperationRequest"></a>
+## UpdateWebhookOperationRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The operation ID. | |
+| **webhookOperation** | [**WebhookOperation**](WebhookOperation.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

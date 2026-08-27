@@ -110,7 +110,11 @@ public class EndpointAgentLabelsApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         LabelRequest labelRequest = new LabelRequest(); // LabelRequest | Label settings
         try {
-            LabelResponse result = apiInstance.createEndpointLabel(aid, labelRequest);
+            EndpointAgentLabelsApi.CreateEndpointLabelRequest request = EndpointAgentLabelsApi.CreateEndpointLabelRequest.builder()
+                .aid(aid)
+                .labelRequest(labelRequest)
+                .build();
+            LabelResponse result = apiInstance.createEndpointLabel(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLabelsApi#createEndpointLabel");

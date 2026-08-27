@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -35,12 +34,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -62,30 +59,29 @@ public class TestsApi {
   /**
    * Get test version history
    * Retrieve the version history of a specific test.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param limit The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. (optional, default to 50)
+   * @param request operation parameters (required)
    * @return TestVersionHistoryResponse
    * @throws ApiException if fails to make API call
    */
-  public TestVersionHistoryResponse getTestVersionHistory(String testId, String aid, Integer limit) throws ApiException {
-    ApiResponse<TestVersionHistoryResponse> response = getTestVersionHistoryWithHttpInfo(testId, aid, limit);
+  public TestVersionHistoryResponse getTestVersionHistory(GetTestVersionHistoryRequest request) throws ApiException {
+    ApiResponse<TestVersionHistoryResponse> response = getTestVersionHistoryWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get test version history
    * Retrieve the version history of a specific test.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param limit The maximum number of version history entries to return. If not specified, the default is 50 or the total number of available versions, whichever is fewer. (optional, default to 50)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;TestVersionHistoryResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<TestVersionHistoryResponse> getTestVersionHistoryWithHttpInfo(String testId, String aid, Integer limit) throws ApiException {
-    getTestVersionHistoryValidateRequest(testId);
+  public ApiResponse<TestVersionHistoryResponse> getTestVersionHistoryWithHttpInfo(GetTestVersionHistoryRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestVersionHistory");
+    }
+    getTestVersionHistoryValidateRequest(request.getTestId());
 
-    var requestBuilder = getTestVersionHistoryRequestBuilder(testId, aid, limit);
+    var requestBuilder = getTestVersionHistoryRequestBuilder(request.getTestId(), request.getAid(), request.getLimit());
 
     return apiClient.send(requestBuilder.build(), TestVersionHistoryResponse.class);
   }
@@ -97,8 +93,8 @@ public class TestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestVersionHistoryRequestBuilder(String testId, String aid, Integer limit) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestVersionHistoryRequestBuilder(String testId, String aid, Integer limit) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/{testId}/history"
@@ -117,29 +113,86 @@ public class TestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestVersionHistoryRequest {
+    private final String testId;
+    private final String aid;
+    private final Integer limit;
+
+    private GetTestVersionHistoryRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.limit = builder.limit;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public Integer getLimit() {
+      return limit;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .limit(limit);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private Integer limit;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder limit(Integer limit) {
+        this.limit = limit;
+        return this;
+      }
+      public GetTestVersionHistoryRequest build() {
+        return new GetTestVersionHistoryRequest(this);
+      }
+    }
+  }
+
   /**
    * List configured tests
    * Returns configured tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Tests
    * @throws ApiException if fails to make API call
    */
-  public Tests getTests(String aid) throws ApiException {
-    ApiResponse<Tests> response = getTestsWithHttpInfo(aid);
+  public Tests getTests(GetTestsRequest request) throws ApiException {
+    ApiResponse<Tests> response = getTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List configured tests
    * Returns configured tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Tests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Tests> getTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<Tests> getTestsWithHttpInfo(GetTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTests");
+    }
     getTestsValidateRequest();
 
-    var requestBuilder = getTestsRequestBuilder(aid);
+    var requestBuilder = getTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), Tests.class);
   }
@@ -147,8 +200,8 @@ public class TestsApi {
   private void getTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests";
@@ -165,4 +218,36 @@ public class TestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestsRequest {
+    private final String aid;
+
+    private GetTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestsRequest build() {
+        return new GetTestsRequest(this);
+      }
+    }
+  }
+
 }

@@ -84,7 +84,6 @@ public class WebTransactionTestsApiTest {
     public void createWebTransactionsTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -470,7 +469,12 @@ public class WebTransactionTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createWebTransactionsTest(mappedRequest, null, null);
+        var request = WebTransactionTestsApi.CreateWebTransactionsTestRequest.builder()
+                .webTransactionTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createWebTransactionsTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -487,7 +491,6 @@ public class WebTransactionTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/web-transactions/{testId}";
@@ -497,7 +500,11 @@ public class WebTransactionTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteWebTransactionsTestWithHttpInfo(testId, null);
+        var request = WebTransactionTestsApi.DeleteWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteWebTransactionsTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -513,7 +520,6 @@ public class WebTransactionTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -763,7 +769,13 @@ public class WebTransactionTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getWebTransactionsTest(testId, null, null, null);
+        var request = WebTransactionTestsApi.GetWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getWebTransactionsTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -778,7 +790,6 @@ public class WebTransactionTestsApiTest {
     public void getWebTransactionsTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -1041,7 +1052,10 @@ public class WebTransactionTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getWebTransactionsTests(null);
+        var request = WebTransactionTestsApi.GetWebTransactionsTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getWebTransactionsTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1057,7 +1071,6 @@ public class WebTransactionTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -1444,7 +1457,13 @@ public class WebTransactionTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateWebTransactionsTest(testId, mappedRequest, null, null);
+        var request = WebTransactionTestsApi.UpdateWebTransactionsTestRequest.builder()
+                .testId(testId)
+                .webTransactionTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateWebTransactionsTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

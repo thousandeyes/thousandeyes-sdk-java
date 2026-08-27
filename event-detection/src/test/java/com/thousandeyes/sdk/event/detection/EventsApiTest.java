@@ -87,7 +87,6 @@ public class EventsApiTest {
     {
         UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
-
         var responseBodyJson = """
                 {
                   "severity" : "medium",
@@ -236,7 +235,11 @@ public class EventsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEvent(id, null);
+        var request = EventsApi.GetEventRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEvent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -251,7 +254,6 @@ public class EventsApiTest {
     public void getEventsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -365,7 +367,15 @@ public class EventsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEvents(null, null, null, null, null, null, null);
+        var request = EventsApi.GetEventsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .max(5)
+                .ongoing(true)
+                .build();
+        var apiResponse = api.getEvents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

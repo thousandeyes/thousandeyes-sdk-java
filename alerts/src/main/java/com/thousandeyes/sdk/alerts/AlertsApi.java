@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,28 +64,29 @@ public class AlertsApi {
   /**
    * Retrieve alert details
    * Returns detailed information about an alert using its ID.
-   * @param alertId Unique alert ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return AlertDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertDetail getAlert(UUID alertId, String aid) throws ApiException {
-    ApiResponse<AlertDetail> response = getAlertWithHttpInfo(alertId, aid);
+  public AlertDetail getAlert(GetAlertRequest request) throws ApiException {
+    ApiResponse<AlertDetail> response = getAlertWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve alert details
    * Returns detailed information about an alert using its ID.
-   * @param alertId Unique alert ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AlertDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertDetail> getAlertWithHttpInfo(UUID alertId, String aid) throws ApiException {
-    getAlertValidateRequest(alertId);
+  public ApiResponse<AlertDetail> getAlertWithHttpInfo(GetAlertRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlert");
+    }
+    getAlertValidateRequest(request.getAlertId());
 
-    var requestBuilder = getAlertRequestBuilder(alertId, aid);
+    var requestBuilder = getAlertRequestBuilder(request.getAlertId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), AlertDetail.class);
   }
@@ -100,8 +98,8 @@ public class AlertsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertRequestBuilder(UUID alertId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertRequestBuilder(UUID alertId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alerts/{alertId}"
@@ -119,57 +117,91 @@ public class AlertsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertRequest {
+    private final UUID alertId;
+    private final String aid;
+
+    private GetAlertRequest(Builder builder) {
+      this.alertId = builder.alertId;
+      this.aid = builder.aid;
+    }
+    public UUID getAlertId() {
+      return alertId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .alertId(alertId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID alertId;
+      private String aid;
+
+      public Builder alertId(UUID alertId) {
+        this.alertId = alertId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAlertRequest build() {
+        return new GetAlertRequest(this);
+      }
+    }
+  }
+
   /**
    * List alerts with pagination
    * Returns a list of alerts. Only active (triggered) alerts are returned by default. When no time filter is specified, only triggered alerts from the last 90 days are returned. To retrieve triggered alerts from a specific date range, specify &#x60;state&#x3D;trigger&#x60; with &#x60;startDate&#x60; and &#x60;endDate&#x60;. Only use &#x60;window&#x60; for a lookback interval ending at the current request time. To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<Alert, Alerts>
    */
-  public Paginator<Alert, Alerts> getAlertsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, State state) {
-    return new Paginator<>(cursor -> getAlerts(aid, window, startDate, endDate, max, cursor, state),
+  public Paginator<Alert, Alerts> getAlertsPaginated(GetAlertsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getAlertsPaginated");
+    }
+    return new Paginator<>(cursor -> getAlerts(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            Alerts::getAlerts);
 
   }
   /**
    * List alerts
    * Returns a list of alerts. Only active (triggered) alerts are returned by default. When no time filter is specified, only triggered alerts from the last 90 days are returned. To retrieve triggered alerts from a specific date range, specify &#x60;state&#x3D;trigger&#x60; with &#x60;startDate&#x60; and &#x60;endDate&#x60;. Only use &#x60;window&#x60; for a lookback interval ending at the current request time. To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Alerts
    * @throws ApiException if fails to make API call
    */
-  public Alerts getAlerts(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
-    ApiResponse<Alerts> response = getAlertsWithHttpInfo(aid, window, startDate, endDate, max, cursor, state);
+  public Alerts getAlerts(GetAlertsRequest request) throws ApiException {
+    ApiResponse<Alerts> response = getAlertsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List alerts
    * Returns a list of alerts. Only active (triggered) alerts are returned by default. When no time filter is specified, only triggered alerts from the last 90 days are returned. To retrieve triggered alerts from a specific date range, specify &#x60;state&#x3D;trigger&#x60; with &#x60;startDate&#x60; and &#x60;endDate&#x60;. Only use &#x60;window&#x60; for a lookback interval ending at the current request time. To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param state Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Alerts&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Alerts> getAlertsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
+  public ApiResponse<Alerts> getAlertsWithHttpInfo(GetAlertsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlerts");
+    }
     getAlertsValidateRequest();
 
-    var requestBuilder = getAlertsRequestBuilder(aid, window, startDate, endDate, max, cursor, state);
+    var requestBuilder = getAlertsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getMax(), request.getCursor(), request.getState());
 
     return apiClient.send(requestBuilder.build(), Alerts.class);
   }
@@ -177,8 +209,8 @@ public class AlertsApi {
   private void getAlertsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, State state) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alerts";
@@ -201,4 +233,102 @@ public class AlertsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final Integer max;
+    private final String cursor;
+    private final State state;
+
+    private GetAlertsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.state = builder.state;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public State getState() {
+      return state;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .max(max)
+          .cursor(cursor)
+          .state(state);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private Integer max;
+      private String cursor;
+      private State state;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder state(State state) {
+        this.state = state;
+        return this;
+      }
+      public GetAlertsRequest build() {
+        return new GetAlertsRequest(this);
+      }
+    }
+  }
+
 }

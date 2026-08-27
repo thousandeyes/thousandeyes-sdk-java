@@ -111,7 +111,13 @@ public class ApiTestResultsApiExample {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiDetailTestResults result = apiInstance.getTestApiAgentRoundResults(testId, agentId, roundId, aid);
+            ApiTestResultsApi.GetTestApiAgentRoundResultsRequest request = ApiTestResultsApi.GetTestApiAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiDetailTestResults result = apiInstance.getTestApiAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ApiTestResultsApi#getTestApiAgentRoundResults");

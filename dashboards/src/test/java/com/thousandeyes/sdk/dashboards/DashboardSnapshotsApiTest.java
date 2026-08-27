@@ -86,7 +86,6 @@ public class DashboardSnapshotsApiTest {
     public void createDashboardSnapshotRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "endDate" : "2023-05-16T10:14:28Z",
@@ -136,7 +135,11 @@ public class DashboardSnapshotsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDashboardSnapshot(mappedRequest, null);
+        var request = DashboardSnapshotsApi.CreateDashboardSnapshotRequest.builder()
+                .generateDashboardSnapshotRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createDashboardSnapshot(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -153,7 +156,6 @@ public class DashboardSnapshotsApiTest {
     {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
 
-
         var statusCode = 204;
 
         var path = "/dashboard-snapshots/{snapshotId}";
@@ -163,7 +165,11 @@ public class DashboardSnapshotsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDashboardSnapshotWithHttpInfo(snapshotId, null);
+        var request = DashboardSnapshotsApi.DeleteDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDashboardSnapshotWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -179,7 +185,6 @@ public class DashboardSnapshotsApiTest {
             throws JsonProcessingException, ApiException
     {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
-
 
         var responseBodyJson = """
                 {
@@ -489,7 +494,11 @@ public class DashboardSnapshotsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardSnapshot(snapshotId, null);
+        var request = DashboardSnapshotsApi.GetDashboardSnapshotRequest.builder()
+                .snapshotId(snapshotId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboardSnapshot(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -506,7 +515,6 @@ public class DashboardSnapshotsApiTest {
     {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
         String widgetId = "unpmg";
-
 
         var responseBodyJson = """
                 {
@@ -957,7 +965,12 @@ public class DashboardSnapshotsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardSnapshotWidgetData(snapshotId, widgetId, null);
+        var request = DashboardSnapshotsApi.GetDashboardSnapshotWidgetDataRequest.builder()
+                .snapshotId(snapshotId)
+                .widgetId(widgetId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboardSnapshotWidgetData(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -972,7 +985,6 @@ public class DashboardSnapshotsApiTest {
     public void getDashboardSnapshotsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -1608,7 +1620,10 @@ public class DashboardSnapshotsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardSnapshots(null, null, null);
+        var request = DashboardSnapshotsApi.GetDashboardSnapshotsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboardSnapshots(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1624,7 +1639,6 @@ public class DashboardSnapshotsApiTest {
             throws JsonProcessingException, ApiException
     {
         String snapshotId = "d28bb71f-5a47-4783-8f12-d4b115e61b0c";
-
         var requestBodyJson = """
                 {
                   "snapshotExpirationDate" : "2023-05-16T10:14:28Z",
@@ -1647,7 +1661,12 @@ public class DashboardSnapshotsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, mappedRequest, null);
+        var request = DashboardSnapshotsApi.UpdateDashboardSnapshotExpirationDateRequest.builder()
+                .snapshotId(snapshotId)
+                .updateSnapshotExpirationDateApiRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateDashboardSnapshotExpirationDateWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     

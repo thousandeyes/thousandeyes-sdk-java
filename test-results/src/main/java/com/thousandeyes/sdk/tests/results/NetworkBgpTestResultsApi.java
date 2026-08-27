@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,51 +63,45 @@ public class NetworkBgpTestResultsApi {
   /**
    * Get BGP test results with pagination
    * Returns a list of BGP monitors actively monitoring the destination&#39;s target prefix. This list includes information about the prefix, its associated AS Number, and provides details regarding reachability, path updates, and any changes in the path for the target network. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<BgpTestResult, BgpTestResults>
    */
-  public Paginator<BgpTestResult, BgpTestResults> getTestBgpResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getTestBgpResults(testId, aid, window, startDate, endDate, cursor),
+  public Paginator<BgpTestResult, BgpTestResults> getTestBgpResultsPaginated(GetTestBgpResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getTestBgpResultsPaginated");
+    }
+    return new Paginator<>(cursor -> getTestBgpResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            BgpTestResults::getResults);
 
   }
   /**
    * Get BGP test results
    * Returns a list of BGP monitors actively monitoring the destination&#39;s target prefix. This list includes information about the prefix, its associated AS Number, and provides details regarding reachability, path updates, and any changes in the path for the target network. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return BgpTestResults
    * @throws ApiException if fails to make API call
    */
-  public BgpTestResults getTestBgpResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<BgpTestResults> response = getTestBgpResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+  public BgpTestResults getTestBgpResults(GetTestBgpResultsRequest request) throws ApiException {
+    ApiResponse<BgpTestResults> response = getTestBgpResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get BGP test results
    * Returns a list of BGP monitors actively monitoring the destination&#39;s target prefix. This list includes information about the prefix, its associated AS Number, and provides details regarding reachability, path updates, and any changes in the path for the target network. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTestResults> getTestBgpResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    getTestBgpResultsValidateRequest(testId);
+  public ApiResponse<BgpTestResults> getTestBgpResultsWithHttpInfo(GetTestBgpResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestBgpResults");
+    }
+    getTestBgpResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = getTestBgpResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor);
+    var requestBuilder = getTestBgpResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), BgpTestResults.class);
   }
@@ -122,8 +113,8 @@ public class NetworkBgpTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestBgpResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestBgpResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/bgp"
@@ -145,35 +136,119 @@ public class NetworkBgpTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestBgpResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetTestBgpResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetTestBgpResultsRequest build() {
+        return new GetTestBgpResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Get BGP route test results by prefix
    * Returns an ordered list of networks crossed by a particular network prefix, including assigned monitors for the test and the paths taken to reach the destination. This is similar to revealing ASPath details found in a BGP Routing Information Base (rib) dump. 
-   * @param testId Test ID (required)
-   * @param prefixId The ID of the prefix. You can get &#x60;prefixId&#x60; from the &#x60;/test-results/{testId}/bgp&#x60; endpoint. (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return BgpTestRouteInformationResults
    * @throws ApiException if fails to make API call
    */
-  public BgpTestRouteInformationResults getTestBgpRoutesPrefixRoundResults(String testId, String prefixId, String roundId, String aid) throws ApiException {
-    ApiResponse<BgpTestRouteInformationResults> response = getTestBgpRoutesPrefixRoundResultsWithHttpInfo(testId, prefixId, roundId, aid);
+  public BgpTestRouteInformationResults getTestBgpRoutesPrefixRoundResults(GetTestBgpRoutesPrefixRoundResultsRequest request) throws ApiException {
+    ApiResponse<BgpTestRouteInformationResults> response = getTestBgpRoutesPrefixRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get BGP route test results by prefix
    * Returns an ordered list of networks crossed by a particular network prefix, including assigned monitors for the test and the paths taken to reach the destination. This is similar to revealing ASPath details found in a BGP Routing Information Base (rib) dump. 
-   * @param testId Test ID (required)
-   * @param prefixId The ID of the prefix. You can get &#x60;prefixId&#x60; from the &#x60;/test-results/{testId}/bgp&#x60; endpoint. (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;BgpTestRouteInformationResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BgpTestRouteInformationResults> getTestBgpRoutesPrefixRoundResultsWithHttpInfo(String testId, String prefixId, String roundId, String aid) throws ApiException {
-    getTestBgpRoutesPrefixRoundResultsValidateRequest(testId, prefixId, roundId);
+  public ApiResponse<BgpTestRouteInformationResults> getTestBgpRoutesPrefixRoundResultsWithHttpInfo(GetTestBgpRoutesPrefixRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getTestBgpRoutesPrefixRoundResults");
+    }
+    getTestBgpRoutesPrefixRoundResultsValidateRequest(request.getTestId(), request.getPrefixId(), request.getRoundId());
 
-    var requestBuilder = getTestBgpRoutesPrefixRoundResultsRequestBuilder(testId, prefixId, roundId, aid);
+    var requestBuilder = getTestBgpRoutesPrefixRoundResultsRequestBuilder(request.getTestId(), request.getPrefixId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), BgpTestRouteInformationResults.class);
   }
@@ -193,8 +268,8 @@ public class NetworkBgpTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getTestBgpRoutesPrefixRoundResultsRequestBuilder(String testId, String prefixId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getTestBgpRoutesPrefixRoundResultsRequestBuilder(String testId, String prefixId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/test-results/{testId}/bgp/routes/prefix/{prefixId}/round/{roundId}"
@@ -214,4 +289,69 @@ public class NetworkBgpTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetTestBgpRoutesPrefixRoundResultsRequest {
+    private final String testId;
+    private final String prefixId;
+    private final String roundId;
+    private final String aid;
+
+    private GetTestBgpRoutesPrefixRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.prefixId = builder.prefixId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getPrefixId() {
+      return prefixId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .prefixId(prefixId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String prefixId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder prefixId(String prefixId) {
+        this.prefixId = prefixId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetTestBgpRoutesPrefixRoundResultsRequest build() {
+        return new GetTestBgpRoutesPrefixRoundResultsRequest(this);
+      }
+    }
+  }
+
 }

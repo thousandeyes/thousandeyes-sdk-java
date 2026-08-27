@@ -93,7 +93,6 @@ public class EndpointAgentsApiTest {
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
-
         var statusCode = 204;
 
         var path = "/endpoint/agents/{agentId}";
@@ -103,7 +102,11 @@ public class EndpointAgentsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteEndpointAgentWithHttpInfo(agentId, null, null);
+        var request = EndpointAgentsApi.DeleteEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteEndpointAgentWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -119,7 +122,6 @@ public class EndpointAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
-
 
         var responseBodyJson = """
                 {
@@ -318,7 +320,11 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.disableEndpointAgent(agentId, null);
+        var request = EndpointAgentsApi.DisableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.disableEndpointAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -334,7 +340,6 @@ public class EndpointAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
-
 
         var responseBodyJson = """
                 {
@@ -533,7 +538,11 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.enableEndpointAgent(agentId, null);
+        var request = EndpointAgentsApi.EnableEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.enableEndpointAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -548,7 +557,6 @@ public class EndpointAgentsApiTest {
     public void filterEndpointAgentsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchSort" : [ {
@@ -986,7 +994,12 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterEndpointAgents(mappedRequest, null, null, null, null, null);
+        var request = EndpointAgentsApi.FilterEndpointAgentsRequest.builder()
+                .agentSearchRequest(mappedRequest)
+                .max(5)
+                .aid("1234")
+                .build();
+        var apiResponse = api.filterEndpointAgents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1002,7 +1015,6 @@ public class EndpointAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
-
 
         var responseBodyJson = """
                 {
@@ -1201,7 +1213,11 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointAgent(agentId, null, null, null);
+        var request = EndpointAgentsApi.GetEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1216,7 +1232,6 @@ public class EndpointAgentsApiTest {
     public void getEndpointAgentsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -1618,7 +1633,14 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointAgents(null, null, null, null, null, null, null, null);
+        var request = EndpointAgentsApi.GetEndpointAgentsRequest.builder()
+                .max(5)
+                .aid("1234")
+                .useAllPermittedAids(false)
+                .agentName("agentName_example")
+                .computerName("computerName_example")
+                .build();
+        var apiResponse = api.getEndpointAgents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1633,7 +1655,6 @@ public class EndpointAgentsApiTest {
     public void getEndpointAgentsConnectionStringRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -1666,7 +1687,10 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEndpointAgentsConnectionString(null);
+        var request = EndpointAgentsApi.GetEndpointAgentsConnectionStringRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getEndpointAgentsConnectionString(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1682,7 +1706,6 @@ public class EndpointAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
-
         var requestBodyJson = """
                 {
                   "licenseType" : "essentials",
@@ -1893,7 +1916,12 @@ public class EndpointAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateEndpointAgent(agentId, null, null, mappedRequest);
+        var request = EndpointAgentsApi.UpdateEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .endpointAgentUpdate(mappedRequest)
+                .build();
+        var apiResponse = api.updateEndpointAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

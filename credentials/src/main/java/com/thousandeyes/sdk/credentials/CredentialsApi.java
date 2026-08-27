@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,28 +63,29 @@ public class CredentialsApi {
   /**
    * Create credential
    * Creates a new credential for ThousandEyes transaction tests, based on properties provided in the request data. To create a new credential, you must have permission to update tests.
-   * @param credentialRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialWithoutValue
    * @throws ApiException if fails to make API call
    */
-  public CredentialWithoutValue createCredential(CredentialRequest credentialRequest, String aid) throws ApiException {
-    ApiResponse<CredentialWithoutValue> response = createCredentialWithHttpInfo(credentialRequest, aid);
+  public CredentialWithoutValue createCredential(CreateCredentialRequest request) throws ApiException {
+    ApiResponse<CredentialWithoutValue> response = createCredentialWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create credential
    * Creates a new credential for ThousandEyes transaction tests, based on properties provided in the request data. To create a new credential, you must have permission to update tests.
-   * @param credentialRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialWithoutValue&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialWithoutValue> createCredentialWithHttpInfo(CredentialRequest credentialRequest, String aid) throws ApiException {
-    createCredentialValidateRequest(credentialRequest);
+  public ApiResponse<CredentialWithoutValue> createCredentialWithHttpInfo(CreateCredentialRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createCredential");
+    }
+    createCredentialValidateRequest(request.getCredentialRequest());
 
-    var requestBuilder = createCredentialRequestBuilder(credentialRequest, aid);
+    var requestBuilder = createCredentialRequestBuilder(request.getCredentialRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
   }
@@ -99,8 +97,8 @@ public class CredentialsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createCredentialRequestBuilder(CredentialRequest credentialRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createCredentialRequestBuilder(CredentialRequest credentialRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/credentials";
@@ -119,29 +117,73 @@ public class CredentialsApi {
     requestBuilder.requestBody(credentialRequest);
     return requestBuilder;
   }
-  /**
-   * Delete credential
-   * Deletes a ThousandEyes transaction test credential, using the request parameters. To delete a credential, you must have permission to update tests and access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteCredential(String id, String aid) throws ApiException {
-    deleteCredentialWithHttpInfo(id, aid);
+
+  public static final class CreateCredentialRequest {
+    private final CredentialRequest credentialRequest;
+    private final String aid;
+
+    private CreateCredentialRequest(Builder builder) {
+      this.credentialRequest = builder.credentialRequest;
+      this.aid = builder.aid;
+    }
+    public CredentialRequest getCredentialRequest() {
+      return credentialRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .credentialRequest(credentialRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private CredentialRequest credentialRequest;
+      private String aid;
+
+      public Builder credentialRequest(CredentialRequest credentialRequest) {
+        this.credentialRequest = credentialRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateCredentialRequest build() {
+        return new CreateCredentialRequest(this);
+      }
+    }
   }
 
   /**
    * Delete credential
    * Deletes a ThousandEyes transaction test credential, using the request parameters. To delete a credential, you must have permission to update tests and access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteCredential(DeleteCredentialRequest request) throws ApiException {
+    deleteCredentialWithHttpInfo(request);
+  }
+
+  /**
+   * Delete credential
+   * Deletes a ThousandEyes transaction test credential, using the request parameters. To delete a credential, you must have permission to update tests and access to the credential based on its default or provided account ID.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteCredentialWithHttpInfo(String id, String aid) throws ApiException {
-    deleteCredentialValidateRequest(id);
+  public ApiResponse<Void> deleteCredentialWithHttpInfo(DeleteCredentialRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteCredential");
+    }
+    deleteCredentialValidateRequest(request.getId());
 
-    var requestBuilder = deleteCredentialRequestBuilder(id, aid);
+    var requestBuilder = deleteCredentialRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -153,8 +195,8 @@ public class CredentialsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteCredentialRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteCredentialRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/credentials/{id}"
@@ -172,31 +214,75 @@ public class CredentialsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteCredentialRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteCredentialRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteCredentialRequest build() {
+        return new DeleteCredentialRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve credential
    * Retrieves detailed information about a ThousandEyes transaction test credential. To access this information, you must have access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Credential
    * @throws ApiException if fails to make API call
    */
-  public Credential getCredential(String id, String aid) throws ApiException {
-    ApiResponse<Credential> response = getCredentialWithHttpInfo(id, aid);
+  public Credential getCredential(GetCredentialRequest request) throws ApiException {
+    ApiResponse<Credential> response = getCredentialWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve credential
    * Retrieves detailed information about a ThousandEyes transaction test credential. To access this information, you must have access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Credential&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Credential> getCredentialWithHttpInfo(String id, String aid) throws ApiException {
-    getCredentialValidateRequest(id);
+  public ApiResponse<Credential> getCredentialWithHttpInfo(GetCredentialRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getCredential");
+    }
+    getCredentialValidateRequest(request.getId());
 
-    var requestBuilder = getCredentialRequestBuilder(id, aid);
+    var requestBuilder = getCredentialRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Credential.class);
   }
@@ -208,8 +294,8 @@ public class CredentialsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getCredentialRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCredentialRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/credentials/{id}"
@@ -227,29 +313,75 @@ public class CredentialsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetCredentialRequest {
+    private final String id;
+    private final String aid;
+
+    private GetCredentialRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetCredentialRequest build() {
+        return new GetCredentialRequest(this);
+      }
+    }
+  }
+
   /**
    * List credentials
    * Retrieves a list of credentials configured in ThousandEyes. Users have access to the list of credentials based on the default settings or the specified account ID.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Credentials
    * @throws ApiException if fails to make API call
    */
-  public Credentials getCredentials(String aid) throws ApiException {
-    ApiResponse<Credentials> response = getCredentialsWithHttpInfo(aid);
+  public Credentials getCredentials(GetCredentialsRequest request) throws ApiException {
+    ApiResponse<Credentials> response = getCredentialsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List credentials
    * Retrieves a list of credentials configured in ThousandEyes. Users have access to the list of credentials based on the default settings or the specified account ID.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Credentials&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Credentials> getCredentialsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<Credentials> getCredentialsWithHttpInfo(GetCredentialsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getCredentials");
+    }
     getCredentialsValidateRequest();
 
-    var requestBuilder = getCredentialsRequestBuilder(aid);
+    var requestBuilder = getCredentialsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), Credentials.class);
   }
@@ -257,8 +389,8 @@ public class CredentialsApi {
   private void getCredentialsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getCredentialsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCredentialsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/credentials";
@@ -275,33 +407,64 @@ public class CredentialsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetCredentialsRequest {
+    private final String aid;
+
+    private GetCredentialsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetCredentialsRequest build() {
+        return new GetCredentialsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update credential
    * Updates the credential for ThousandEyes transaction tests, based on properties provided in the request data. To update a credential, you must have permission to update tests and access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param credentialRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return CredentialWithoutValue
    * @throws ApiException if fails to make API call
    */
-  public CredentialWithoutValue updateCredential(String id, CredentialRequest credentialRequest, String aid) throws ApiException {
-    ApiResponse<CredentialWithoutValue> response = updateCredentialWithHttpInfo(id, credentialRequest, aid);
+  public CredentialWithoutValue updateCredential(UpdateCredentialRequest request) throws ApiException {
+    ApiResponse<CredentialWithoutValue> response = updateCredentialWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update credential
    * Updates the credential for ThousandEyes transaction tests, based on properties provided in the request data. To update a credential, you must have permission to update tests and access to the credential based on its default or provided account ID.
-   * @param id The ID of the desired credential. (required)
-   * @param credentialRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;CredentialWithoutValue&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<CredentialWithoutValue> updateCredentialWithHttpInfo(String id, CredentialRequest credentialRequest, String aid) throws ApiException {
-    updateCredentialValidateRequest(id, credentialRequest);
+  public ApiResponse<CredentialWithoutValue> updateCredentialWithHttpInfo(UpdateCredentialRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateCredential");
+    }
+    updateCredentialValidateRequest(request.getId(), request.getCredentialRequest());
 
-    var requestBuilder = updateCredentialRequestBuilder(id, credentialRequest, aid);
+    var requestBuilder = updateCredentialRequestBuilder(request.getId(), request.getCredentialRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), CredentialWithoutValue.class);
   }
@@ -317,8 +480,8 @@ public class CredentialsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateCredentialRequestBuilder(String id, CredentialRequest credentialRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateCredentialRequestBuilder(String id, CredentialRequest credentialRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/credentials/{id}"
@@ -338,4 +501,58 @@ public class CredentialsApi {
     requestBuilder.requestBody(credentialRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateCredentialRequest {
+    private final String id;
+    private final CredentialRequest credentialRequest;
+    private final String aid;
+
+    private UpdateCredentialRequest(Builder builder) {
+      this.id = builder.id;
+      this.credentialRequest = builder.credentialRequest;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public CredentialRequest getCredentialRequest() {
+      return credentialRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .credentialRequest(credentialRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private CredentialRequest credentialRequest;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder credentialRequest(CredentialRequest credentialRequest) {
+        this.credentialRequest = credentialRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateCredentialRequest build() {
+        return new UpdateCredentialRequest(this);
+      }
+    }
+  }
+
 }

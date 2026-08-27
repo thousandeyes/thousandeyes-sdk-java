@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,54 +63,45 @@ public class EndpointAgentLogItemsApi {
   /**
    * List endpoint agent log items with pagination
    * Returns paginated logs for an endpoint agent within the requested time range.
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param max Maximum number of log items returned per page. (optional, default to 1000)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<EndpointAgentLogItem, EndpointAgentLogItemsResponse>
    */
-  public Paginator<EndpointAgentLogItem, EndpointAgentLogItemsResponse> getEndpointAgentLogItemsPaginated(UUID agentId, String aid, Integer max, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getEndpointAgentLogItems(agentId, aid, max, cursor, window, startDate, endDate),
+  public Paginator<EndpointAgentLogItem, EndpointAgentLogItemsResponse> getEndpointAgentLogItemsPaginated(GetEndpointAgentLogItemsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getEndpointAgentLogItemsPaginated");
+    }
+    return new Paginator<>(cursor -> getEndpointAgentLogItems(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            EndpointAgentLogItemsResponse::getLogs);
 
   }
   /**
    * List endpoint agent log items
    * Returns paginated logs for an endpoint agent within the requested time range.
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param max Maximum number of log items returned per page. (optional, default to 1000)
-   * @param cursor Opaque cursor from the &#x60;_links.next.href&#x60; URL in the previous response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return EndpointAgentLogItemsResponse
    * @throws ApiException if fails to make API call
    */
-  public EndpointAgentLogItemsResponse getEndpointAgentLogItems(UUID agentId, String aid, Integer max, String cursor, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiResponse<EndpointAgentLogItemsResponse> response = getEndpointAgentLogItemsWithHttpInfo(agentId, aid, max, cursor, window, startDate, endDate);
+  public EndpointAgentLogItemsResponse getEndpointAgentLogItems(GetEndpointAgentLogItemsRequest request) throws ApiException {
+    ApiResponse<EndpointAgentLogItemsResponse> response = getEndpointAgentLogItemsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint agent log items
    * Returns paginated logs for an endpoint agent within the requested time range.
-   * @param agentId The identifier of the agent to operate on. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param max Maximum number of log items returned per page. (optional, default to 1000)
-   * @param cursor Opaque cursor from the &#x60;_links.next.href&#x60; URL in the previous response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgentLogItemsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<EndpointAgentLogItemsResponse> getEndpointAgentLogItemsWithHttpInfo(UUID agentId, String aid, Integer max, String cursor, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    getEndpointAgentLogItemsValidateRequest(agentId);
+  public ApiResponse<EndpointAgentLogItemsResponse> getEndpointAgentLogItemsWithHttpInfo(GetEndpointAgentLogItemsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getEndpointAgentLogItems");
+    }
+    getEndpointAgentLogItemsValidateRequest(request.getAgentId());
 
-    var requestBuilder = getEndpointAgentLogItemsRequestBuilder(agentId, aid, max, cursor, window, startDate, endDate);
+    var requestBuilder = getEndpointAgentLogItemsRequestBuilder(request.getAgentId(), request.getAid(), request.getMax(), request.getCursor(), request.getWindow(), request.getStartDate(), request.getEndDate());
 
     return apiClient.send(requestBuilder.build(), EndpointAgentLogItemsResponse.class);
   }
@@ -125,8 +113,8 @@ public class EndpointAgentLogItemsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getEndpointAgentLogItemsRequestBuilder(UUID agentId, String aid, Integer max, String cursor, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getEndpointAgentLogItemsRequestBuilder(UUID agentId, String aid, Integer max, String cursor, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/agents/{agentId}/logs"
@@ -149,4 +137,102 @@ public class EndpointAgentLogItemsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetEndpointAgentLogItemsRequest {
+    private final UUID agentId;
+    private final String aid;
+    private final Integer max;
+    private final String cursor;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+
+    private GetEndpointAgentLogItemsRequest(Builder builder) {
+      this.agentId = builder.agentId;
+      this.aid = builder.aid;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+    }
+    public UUID getAgentId() {
+      return agentId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .agentId(agentId)
+          .aid(aid)
+          .max(max)
+          .cursor(cursor)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate);
+    }
+
+    public static final class Builder {
+      private UUID agentId;
+      private String aid;
+      private Integer max;
+      private String cursor;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+
+      public Builder agentId(UUID agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public GetEndpointAgentLogItemsRequest build() {
+        return new GetEndpointAgentLogItemsRequest(this);
+      }
+    }
+  }
+
 }

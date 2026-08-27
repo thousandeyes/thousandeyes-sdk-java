@@ -84,7 +84,6 @@ public class AlertSuppressionWindowsApiTest {
     public void createAlertSuppressionWindowRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "duration" : 0,
@@ -224,7 +223,12 @@ public class AlertSuppressionWindowsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAlertSuppressionWindow(mappedRequest, null, null);
+        var request = AlertSuppressionWindowsApi.CreateAlertSuppressionWindowRequest.builder()
+                .alertSuppressionWindowRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createAlertSuppressionWindow(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -241,7 +245,6 @@ public class AlertSuppressionWindowsApiTest {
     {
         String windowId = "2411";
 
-
         var statusCode = 204;
 
         var path = "/alert-suppression-windows/{windowId}";
@@ -251,7 +254,11 @@ public class AlertSuppressionWindowsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAlertSuppressionWindowWithHttpInfo(windowId, null);
+        var request = AlertSuppressionWindowsApi.DeleteAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAlertSuppressionWindowWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -267,7 +274,6 @@ public class AlertSuppressionWindowsApiTest {
             throws JsonProcessingException, ApiException
     {
         String windowId = "2411";
-
 
         var responseBodyJson = """
                 {
@@ -380,7 +386,12 @@ public class AlertSuppressionWindowsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlertSuppressionWindow(windowId, null, null);
+        var request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getAlertSuppressionWindow(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -395,7 +406,6 @@ public class AlertSuppressionWindowsApiTest {
     public void getAlertSuppressionWindowsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -488,7 +498,10 @@ public class AlertSuppressionWindowsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAlertSuppressionWindows(null);
+        var request = AlertSuppressionWindowsApi.GetAlertSuppressionWindowsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAlertSuppressionWindows(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -504,7 +517,6 @@ public class AlertSuppressionWindowsApiTest {
             throws JsonProcessingException, ApiException
     {
         String windowId = "2411";
-
         var requestBodyJson = """
                 {
                   "duration" : 0,
@@ -645,7 +657,13 @@ public class AlertSuppressionWindowsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAlertSuppressionWindow(windowId, mappedRequest, null, null);
+        var request = AlertSuppressionWindowsApi.UpdateAlertSuppressionWindowRequest.builder()
+                .windowId(windowId)
+                .alertSuppressionWindowRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateAlertSuppressionWindow(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

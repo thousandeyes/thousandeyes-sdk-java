@@ -93,7 +93,6 @@ public class NetworkEndpointScheduledTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "searchSort" : [ {
@@ -476,7 +475,16 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterScheduledTestNetworkResults(testId, null, null, null, null, null, null, mappedRequest);
+        var request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .expand(Arrays.asList())
+                .endpointTestsDataRoundsSearch(mappedRequest)
+                .build();
+        var apiResponse = api.filterScheduledTestNetworkResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -491,7 +499,6 @@ public class NetworkEndpointScheduledTestResultsApiTest {
     public void filterScheduledTestsNetworkResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchSort" : [ {
@@ -824,7 +831,17 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterScheduledTestsNetworkResults(null, null, null, null, null, null, null, null, mappedRequest);
+        var request = NetworkEndpointScheduledTestResultsApi.FilterScheduledTestsNetworkResultsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .max(5)
+                .useAllPermittedAids(false)
+                .expand(Arrays.asList())
+                .multiTestIdEndpointTestsDataRoundsSearch(mappedRequest)
+                .build();
+        var apiResponse = api.filterScheduledTestsNetworkResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -842,7 +859,6 @@ public class NetworkEndpointScheduledTestResultsApiTest {
         String testId = "202701";
         String agentId = "11";
         String roundId = "1384309800";
-
 
         var responseBodyJson = """
                 {
@@ -1335,7 +1351,13 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getScheduledTestPathVisAgentRoundResults(testId, agentId, roundId, null);
+        var request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getScheduledTestPathVisAgentRoundResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1351,7 +1373,6 @@ public class NetworkEndpointScheduledTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -1710,7 +1731,14 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getScheduledTestPathVisResults(testId, null, null, null, null, null);
+        var request = NetworkEndpointScheduledTestResultsApi.GetScheduledTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getScheduledTestPathVisResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

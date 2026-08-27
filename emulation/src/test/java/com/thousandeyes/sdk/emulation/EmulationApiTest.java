@@ -83,7 +83,6 @@ public class EmulationApiTest {
     public void createEmulatedDeviceRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "width" : 1024,
@@ -124,7 +123,11 @@ public class EmulationApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createEmulatedDevice(mappedRequest, null);
+        var request = EmulationApi.CreateEmulatedDeviceRequest.builder()
+                .emulatedDevice(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createEmulatedDevice(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -139,7 +142,6 @@ public class EmulationApiTest {
     public void getEmulatedDevicesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -190,7 +192,10 @@ public class EmulationApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getEmulatedDevices(null);
+        var request = EmulationApi.GetEmulatedDevicesRequest.builder()
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getEmulatedDevices(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -205,7 +210,6 @@ public class EmulationApiTest {
     public void getUserAgentsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -246,7 +250,10 @@ public class EmulationApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getUserAgents(null);
+        var request = EmulationApi.GetUserAgentsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getUserAgents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

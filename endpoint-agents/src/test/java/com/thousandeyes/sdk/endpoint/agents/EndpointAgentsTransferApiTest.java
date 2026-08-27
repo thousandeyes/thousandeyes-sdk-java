@@ -84,7 +84,6 @@ public class EndpointAgentsTransferApiTest {
             throws JsonProcessingException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
-
         var requestBodyJson = """
                 {
                   "toAid" : "1234"
@@ -106,7 +105,12 @@ public class EndpointAgentsTransferApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.transferEndpointAgentWithHttpInfo(agentId, mappedRequest, null);
+        var request = EndpointAgentsTransferApi.TransferEndpointAgentRequest.builder()
+                .agentId(agentId)
+                .agentTransferRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.transferEndpointAgentWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -121,7 +125,6 @@ public class EndpointAgentsTransferApiTest {
     public void transferEndpointAgentsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "transfers" : [ {
@@ -185,7 +188,11 @@ public class EndpointAgentsTransferApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.transferEndpointAgents(null, mappedRequest);
+        var request = EndpointAgentsTransferApi.TransferEndpointAgentsRequest.builder()
+                .aid("1234")
+                .bulkAgentTransferRequest(mappedRequest)
+                .build();
+        var apiResponse = api.transferEndpointAgents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

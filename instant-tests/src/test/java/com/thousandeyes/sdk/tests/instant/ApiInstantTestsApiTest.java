@@ -83,7 +83,6 @@ public class ApiInstantTestsApiTest {
     public void createApiInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -475,7 +474,12 @@ public class ApiInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createApiInstantTest(mappedRequest, null, null);
+        var request = ApiInstantTestsApi.CreateApiInstantTestRequest.builder()
+                .apiInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createApiInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

@@ -82,7 +82,6 @@ public class TestsAssignmentOnAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "testIds" : [ "281474976710706" ]
@@ -225,7 +224,12 @@ public class TestsAssignmentOnAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.assignTests(agentId, mappedRequest, null);
+        var request = TestsAssignmentOnAgentsApi.AssignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.assignTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -241,7 +245,6 @@ public class TestsAssignmentOnAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "testIds" : [ "281474976710706" ]
@@ -384,7 +387,12 @@ public class TestsAssignmentOnAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.overwriteTests(agentId, mappedRequest, null);
+        var request = TestsAssignmentOnAgentsApi.OverwriteTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.overwriteTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -400,7 +408,6 @@ public class TestsAssignmentOnAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "testIds" : [ "281474976710706" ]
@@ -543,7 +550,12 @@ public class TestsAssignmentOnAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.unassignTests(agentId, mappedRequest, null);
+        var request = TestsAssignmentOnAgentsApi.UnassignTestsRequest.builder()
+                .agentId(agentId)
+                .agentTestsAssignRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.unassignTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

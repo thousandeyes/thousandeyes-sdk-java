@@ -83,7 +83,6 @@ public class FtpServerInstantTestsApiTest {
     public void createFtpServerInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -285,7 +284,12 @@ public class FtpServerInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createFtpServerInstantTest(mappedRequest, null, null);
+        var request = FtpServerInstantTestsApi.CreateFtpServerInstantTestRequest.builder()
+                .ftpServerInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createFtpServerInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

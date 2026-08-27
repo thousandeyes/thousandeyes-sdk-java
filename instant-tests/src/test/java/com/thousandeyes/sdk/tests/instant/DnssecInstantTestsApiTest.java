@@ -83,7 +83,6 @@ public class DnssecInstantTestsApiTest {
     public void createDnsSecInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -253,7 +252,12 @@ public class DnssecInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsSecInstantTest(mappedRequest, null, null);
+        var request = DnssecInstantTestsApi.CreateDnsSecInstantTestRequest.builder()
+                .dnsSecInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsSecInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

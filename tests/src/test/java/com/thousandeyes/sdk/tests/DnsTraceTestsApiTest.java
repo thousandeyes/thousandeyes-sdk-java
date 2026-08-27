@@ -84,7 +84,6 @@ public class DnsTraceTestsApiTest {
     public void createDnsTraceTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -292,7 +291,12 @@ public class DnsTraceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsTraceTest(mappedRequest, null, null);
+        var request = DnsTraceTestsApi.CreateDnsTraceTestRequest.builder()
+                .dnsTraceTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsTraceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -309,7 +313,6 @@ public class DnsTraceTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/dns-trace/{testId}";
@@ -319,7 +322,11 @@ public class DnsTraceTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDnsTraceTestWithHttpInfo(testId, null);
+        var request = DnsTraceTestsApi.DeleteDnsTraceTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDnsTraceTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -335,7 +342,6 @@ public class DnsTraceTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -489,7 +495,13 @@ public class DnsTraceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsTraceTest(testId, null, null, null);
+        var request = DnsTraceTestsApi.GetDnsTraceTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getDnsTraceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -504,7 +516,6 @@ public class DnsTraceTestsApiTest {
     public void getDnsTraceTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -607,7 +618,10 @@ public class DnsTraceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDnsTraceTests(null);
+        var request = DnsTraceTestsApi.GetDnsTraceTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDnsTraceTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -623,7 +637,6 @@ public class DnsTraceTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "dnsQueryClass" : "in",
@@ -832,7 +845,13 @@ public class DnsTraceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDnsTraceTest(testId, mappedRequest, null, null);
+        var request = DnsTraceTestsApi.UpdateDnsTraceTestRequest.builder()
+                .testId(testId)
+                .dnsTraceTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateDnsTraceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

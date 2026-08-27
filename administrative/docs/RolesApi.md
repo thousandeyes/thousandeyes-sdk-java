@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createRole
 
-> RoleDetail createRole(roleRequestBody, aid)
+> RoleDetail createRole(CreateRoleRequest)
 
 Create role
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RoleDetail result = apiInstance.createRole(roleRequestBody, aid);
+            RolesApi.CreateRoleRequest request = RolesApi.CreateRoleRequest.builder()
+                .roleRequestBody(roleRequestBody)
+                .aid(aid)
+                .build();
+            RoleDetail result = apiInstance.createRole(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RolesApi#createRole");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateRoleRequest**](RolesApi.md#CreateRoleRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## createRoleWithHttpInfo
 
-> ApiResponse<RoleDetail> createRole createRoleWithHttpInfo(roleRequestBody, aid)
+> ApiResponse<RoleDetail> createRole createRoleWithHttpInfo(CreateRoleRequest)
 
 Create role
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -128,7 +130,11 @@ public class Example {
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RoleDetail> response = apiInstance.createRoleWithHttpInfo(roleRequestBody, aid);
+            RolesApi.CreateRoleRequest request = RolesApi.CreateRoleRequest.builder()
+                .roleRequestBody(roleRequestBody)
+                .aid(aid)
+                .build();
+            ApiResponse<RoleDetail> response = apiInstance.createRoleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -145,11 +151,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateRoleRequest**](RolesApi.md#CreateRoleRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,20 @@ ApiResponse<[**RoleDetail**](RoleDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateRoleRequest"></a>
+## CreateRoleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteRole
 
-> void deleteRole(id, aid)
+> void deleteRole(DeleteRoleRequest)
 
 Delete role
 
@@ -193,7 +208,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -209,7 +224,11 @@ public class Example {
         String id = "23"; // String | The ID of the desired role.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteRole(id, aid);
+            RolesApi.DeleteRoleRequest request = RolesApi.DeleteRoleRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteRole(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling RolesApi#deleteRole");
             System.err.println("Status code: " + e.getCode());
@@ -223,11 +242,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteRoleRequest**](RolesApi.md#DeleteRoleRequest)|-|-|
 
 ### Return type
 
@@ -256,7 +273,7 @@ null (empty response body)
 
 ## deleteRoleWithHttpInfo
 
-> ApiResponse<Void> deleteRole deleteRoleWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteRole deleteRoleWithHttpInfo(DeleteRoleRequest)
 
 Delete role
 
@@ -271,7 +288,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -287,7 +304,11 @@ public class Example {
         String id = "23"; // String | The ID of the desired role.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteRoleWithHttpInfo(id, aid);
+            RolesApi.DeleteRoleRequest request = RolesApi.DeleteRoleRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteRoleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -303,11 +324,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteRoleRequest**](RolesApi.md#DeleteRoleRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +354,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteRoleRequest"></a>
+## DeleteRoleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired role. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getRole
 
-> RoleDetail getRole(id, aid)
+> RoleDetail getRole(GetRoleRequest)
 
 Retrieve role
 
@@ -351,7 +381,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -367,7 +397,11 @@ public class Example {
         String id = "23"; // String | The ID of the desired role.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RoleDetail result = apiInstance.getRole(id, aid);
+            RolesApi.GetRoleRequest request = RolesApi.GetRoleRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            RoleDetail result = apiInstance.getRole(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RolesApi#getRole");
@@ -382,11 +416,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRoleRequest**](RolesApi.md#GetRoleRequest)|-|-|
 
 ### Return type
 
@@ -415,7 +447,7 @@ public class Example {
 
 ## getRoleWithHttpInfo
 
-> ApiResponse<RoleDetail> getRole getRoleWithHttpInfo(id, aid)
+> ApiResponse<RoleDetail> getRole getRoleWithHttpInfo(GetRoleRequest)
 
 Retrieve role
 
@@ -430,7 +462,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -446,7 +478,11 @@ public class Example {
         String id = "23"; // String | The ID of the desired role.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RoleDetail> response = apiInstance.getRoleWithHttpInfo(id, aid);
+            RolesApi.GetRoleRequest request = RolesApi.GetRoleRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<RoleDetail> response = apiInstance.getRoleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -463,11 +499,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRoleRequest**](RolesApi.md#GetRoleRequest)|-|-|
 
 ### Return type
 
@@ -495,9 +529,20 @@ ApiResponse<[**RoleDetail**](RoleDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetRoleRequest"></a>
+## GetRoleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired role. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getRoles
 
-> Roles getRoles(aid)
+> Roles getRoles(GetRolesRequest)
 
 List roles
 
@@ -511,7 +556,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -526,7 +571,10 @@ public class Example {
         RolesApi apiInstance = new RolesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Roles result = apiInstance.getRoles(aid);
+            RolesApi.GetRolesRequest request = RolesApi.GetRolesRequest.builder()
+                .aid(aid)
+                .build();
+            Roles result = apiInstance.getRoles(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RolesApi#getRoles");
@@ -541,10 +589,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRolesRequest**](RolesApi.md#GetRolesRequest)|-|-|
 
 ### Return type
 
@@ -573,7 +620,7 @@ public class Example {
 
 ## getRolesWithHttpInfo
 
-> ApiResponse<Roles> getRoles getRolesWithHttpInfo(aid)
+> ApiResponse<Roles> getRoles getRolesWithHttpInfo(GetRolesRequest)
 
 List roles
 
@@ -588,7 +635,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -603,7 +650,10 @@ public class Example {
         RolesApi apiInstance = new RolesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Roles> response = apiInstance.getRolesWithHttpInfo(aid);
+            RolesApi.GetRolesRequest request = RolesApi.GetRolesRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<Roles> response = apiInstance.getRolesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -620,10 +670,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRolesRequest**](RolesApi.md#GetRolesRequest)|-|-|
 
 ### Return type
 
@@ -651,9 +700,19 @@ ApiResponse<[**Roles**](Roles.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetRolesRequest"></a>
+## GetRolesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateRole
 
-> RoleDetail updateRole(id, roleRequestBody, aid)
+> RoleDetail updateRole(UpdateRoleRequest)
 
 Update role
 
@@ -667,7 +726,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -684,7 +743,12 @@ public class Example {
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RoleDetail result = apiInstance.updateRole(id, roleRequestBody, aid);
+            RolesApi.UpdateRoleRequest request = RolesApi.UpdateRoleRequest.builder()
+                .id(id)
+                .roleRequestBody(roleRequestBody)
+                .aid(aid)
+                .build();
+            RoleDetail result = apiInstance.updateRole(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RolesApi#updateRole");
@@ -699,12 +763,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateRoleRequest**](RolesApi.md#UpdateRoleRequest)|-|-|
 
 ### Return type
 
@@ -733,7 +794,7 @@ public class Example {
 
 ## updateRoleWithHttpInfo
 
-> ApiResponse<RoleDetail> updateRole updateRoleWithHttpInfo(id, roleRequestBody, aid)
+> ApiResponse<RoleDetail> updateRole updateRoleWithHttpInfo(UpdateRoleRequest)
 
 Update role
 
@@ -748,7 +809,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.account.management.Configuration;
 import com.thousandeyes.sdk.account.management.authentication.*;
-import com.thousandeyes.sdk.account.management.models.*;
+import com.thousandeyes.sdk.account.management.administrative.model.*;
 import com.thousandeyes.sdk.account.management.administrative.RolesApi;
 
 public class Example {
@@ -765,7 +826,12 @@ public class Example {
         RoleRequestBody roleRequestBody = new RoleRequestBody(); // RoleRequestBody | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RoleDetail> response = apiInstance.updateRoleWithHttpInfo(id, roleRequestBody, aid);
+            RolesApi.UpdateRoleRequest request = RolesApi.UpdateRoleRequest.builder()
+                .id(id)
+                .roleRequestBody(roleRequestBody)
+                .aid(aid)
+                .build();
+            ApiResponse<RoleDetail> response = apiInstance.updateRoleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -782,12 +848,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The ID of the desired role. | |
-| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateRoleRequest**](RolesApi.md#UpdateRoleRequest)|-|-|
 
 ### Return type
 
@@ -813,4 +876,16 @@ ApiResponse<[**RoleDetail**](RoleDetail.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateRoleRequest"></a>
+## UpdateRoleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The ID of the desired role. | |
+| **roleRequestBody** | [**RoleRequestBody**](RoleRequestBody.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -93,7 +93,6 @@ public class RealUserEndpointTestResultsApiTest {
     public void filterRealUserTestsNetworkResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchFilters" : {
@@ -244,7 +243,14 @@ public class RealUserEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterRealUserTestsNetworkResults(null, null, null, null, null, mappedRequest);
+        var request = RealUserEndpointTestResultsApi.FilterRealUserTestsNetworkResultsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .realUserEndpointTestResultsRequest(mappedRequest)
+                .build();
+        var apiResponse = api.filterRealUserTestsNetworkResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -259,7 +265,6 @@ public class RealUserEndpointTestResultsApiTest {
     public void filterRealUserTestsResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "searchFilters" : {
@@ -350,7 +355,14 @@ public class RealUserEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterRealUserTestsResults(null, null, null, null, null, mappedRequest);
+        var request = RealUserEndpointTestResultsApi.FilterRealUserTestsResultsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .realUserEndpointTestResultsRequest(mappedRequest)
+                .build();
+        var apiResponse = api.filterRealUserTestsResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -365,7 +377,6 @@ public class RealUserEndpointTestResultsApiTest {
     public void filterRealUserTestsVisitedPagesResultsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "agentId" : [ "3fde6422-f119-40e1-ae32-d08a1243c038", "236e6f18-9637-4a2f-b15f-7aa6a29c9fce" ],
@@ -496,7 +507,14 @@ public class RealUserEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterRealUserTestsVisitedPagesResults(null, null, null, null, null, mappedRequest);
+        var request = RealUserEndpointTestResultsApi.FilterRealUserTestsVisitedPagesResultsRequest.builder()
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .realUserEndpointTestResultRequestFilter(mappedRequest)
+                .build();
+        var apiResponse = api.filterRealUserTestsVisitedPagesResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -513,7 +531,6 @@ public class RealUserEndpointTestResultsApiTest {
     {
         String id = "07625:1490529480:h3qJQTpl";
         String pageId = "281474976710706";
-
 
         var responseBodyJson = """
                 {
@@ -770,7 +787,12 @@ public class RealUserEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getRealUserTestPageResults(id, pageId, null);
+        var request = RealUserEndpointTestResultsApi.GetRealUserTestPageResultsRequest.builder()
+                .id(id)
+                .pageId(pageId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getRealUserTestPageResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -786,7 +808,6 @@ public class RealUserEndpointTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "07625:1490529480:h3qJQTpl";
-
 
         var responseBodyJson = """
                 {
@@ -1210,7 +1231,11 @@ public class RealUserEndpointTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getRealUserTestResults(id, null);
+        var request = RealUserEndpointTestResultsApi.GetRealUserTestResultsRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getRealUserTestResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

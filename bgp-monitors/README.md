@@ -115,7 +115,10 @@ public class BgpMonitorsApiExample {
         BgpMonitorsApi apiInstance = new BgpMonitorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Monitors result = apiInstance.getBgpMonitors(aid);
+            BgpMonitorsApi.GetBgpMonitorsRequest request = BgpMonitorsApi.GetBgpMonitorsRequest.builder()
+                .aid(aid)
+                .build();
+            Monitors result = apiInstance.getBgpMonitors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BgpMonitorsApi#getBgpMonitors");

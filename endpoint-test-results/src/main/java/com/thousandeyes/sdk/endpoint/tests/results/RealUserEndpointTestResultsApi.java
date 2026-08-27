@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -48,12 +47,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -75,51 +72,45 @@ public class RealUserEndpointTestResultsApi {
   /**
    * List endpoint real user tests networks with pagination
    * Returns a list of all endpoint real user tests.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{    \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests.  Network sessions shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return Paginator<RealUserEndpointTestNetworkResult, RealUserEndpointTestNetworkResults>
    */
-  public Paginator<RealUserEndpointTestNetworkResult, RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) {
-    return new Paginator<>(cursor -> filterRealUserTestsNetworkResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest),
+  public Paginator<RealUserEndpointTestNetworkResult, RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResultsPaginated(FilterRealUserTestsNetworkResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterRealUserTestsNetworkResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterRealUserTestsNetworkResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            RealUserEndpointTestNetworkResults::getResults);
 
   }
   /**
    * List endpoint real user tests networks
    * Returns a list of all endpoint real user tests.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{    \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests.  Network sessions shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return RealUserEndpointTestNetworkResults
    * @throws ApiException if fails to make API call
    */
-  public RealUserEndpointTestNetworkResults filterRealUserTestsNetworkResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
-    ApiResponse<RealUserEndpointTestNetworkResults> response = filterRealUserTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+  public RealUserEndpointTestNetworkResults filterRealUserTestsNetworkResults(FilterRealUserTestsNetworkResultsRequest request) throws ApiException {
+    ApiResponse<RealUserEndpointTestNetworkResults> response = filterRealUserTestsNetworkResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint real user tests networks
    * Returns a list of all endpoint real user tests.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{    \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/networks/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests.  Network sessions shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RealUserEndpointTestNetworkResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
+  public ApiResponse<RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResultsWithHttpInfo(FilterRealUserTestsNetworkResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterRealUserTestsNetworkResults");
+    }
     filterRealUserTestsNetworkResultsValidateRequest();
 
-    var requestBuilder = filterRealUserTestsNetworkResultsRequestBuilder(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+    var requestBuilder = filterRealUserTestsNetworkResultsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getRealUserEndpointTestResultsRequest());
 
     return apiClient.send(requestBuilder.build(), RealUserEndpointTestNetworkResults.class);
   }
@@ -127,8 +118,8 @@ public class RealUserEndpointTestResultsApi {
   private void filterRealUserTestsNetworkResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterRealUserTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterRealUserTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/real-user-tests/networks/filter";
@@ -151,54 +142,135 @@ public class RealUserEndpointTestResultsApi {
     requestBuilder.requestBody(realUserEndpointTestResultsRequest);
     return requestBuilder;
   }
+
+  public static final class FilterRealUserTestsNetworkResultsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest;
+
+    private FilterRealUserTestsNetworkResultsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.realUserEndpointTestResultsRequest = builder.realUserEndpointTestResultsRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public RealUserEndpointTestResultsRequest getRealUserEndpointTestResultsRequest() {
+      return realUserEndpointTestResultsRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder realUserEndpointTestResultsRequest(RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) {
+        this.realUserEndpointTestResultsRequest = realUserEndpointTestResultsRequest;
+        return this;
+      }
+      public FilterRealUserTestsNetworkResultsRequest build() {
+        return new FilterRealUserTestsNetworkResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * List endpoint real user tests with pagination
    * Returns a list of all endpoint real user tests. All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;platform\&quot;: [ \&quot;mac\&quot; ],       \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests. Either the latest results, or based on the time range and body filters specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return Paginator<RealUserEndpointTest, RealUserEndpointTestResults>
    */
-  public Paginator<RealUserEndpointTest, RealUserEndpointTestResults> filterRealUserTestsResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) {
-    return new Paginator<>(cursor -> filterRealUserTestsResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest),
+  public Paginator<RealUserEndpointTest, RealUserEndpointTestResults> filterRealUserTestsResultsPaginated(FilterRealUserTestsResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterRealUserTestsResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterRealUserTestsResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            RealUserEndpointTestResults::getResults);
 
   }
   /**
    * List endpoint real user tests
    * Returns a list of all endpoint real user tests. All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;platform\&quot;: [ \&quot;mac\&quot; ],       \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests. Either the latest results, or based on the time range and body filters specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return RealUserEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public RealUserEndpointTestResults filterRealUserTestsResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
-    ApiResponse<RealUserEndpointTestResults> response = filterRealUserTestsResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+  public RealUserEndpointTestResults filterRealUserTestsResults(FilterRealUserTestsResultsRequest request) throws ApiException {
+    ApiResponse<RealUserEndpointTestResults> response = filterRealUserTestsResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint real user tests
    * Returns a list of all endpoint real user tests. All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;searchFilters\&quot;: {       \&quot;platform\&quot;: [ \&quot;mac\&quot; ],       \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],       \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]     }   }&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of endpoint real user tests. Either the latest results, or based on the time range and body filters specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultsRequest  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RealUserEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RealUserEndpointTestResults> filterRealUserTestsResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
+  public ApiResponse<RealUserEndpointTestResults> filterRealUserTestsResultsWithHttpInfo(FilterRealUserTestsResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterRealUserTestsResults");
+    }
     filterRealUserTestsResultsValidateRequest();
 
-    var requestBuilder = filterRealUserTestsResultsRequestBuilder(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+    var requestBuilder = filterRealUserTestsResultsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getRealUserEndpointTestResultsRequest());
 
     return apiClient.send(requestBuilder.build(), RealUserEndpointTestResults.class);
   }
@@ -206,8 +278,8 @@ public class RealUserEndpointTestResultsApi {
   private void filterRealUserTestsResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterRealUserTestsResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterRealUserTestsResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/real-user-tests/filter";
@@ -230,54 +302,135 @@ public class RealUserEndpointTestResultsApi {
     requestBuilder.requestBody(realUserEndpointTestResultsRequest);
     return requestBuilder;
   }
+
+  public static final class FilterRealUserTestsResultsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest;
+
+    private FilterRealUserTestsResultsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.realUserEndpointTestResultsRequest = builder.realUserEndpointTestResultsRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public RealUserEndpointTestResultsRequest getRealUserEndpointTestResultsRequest() {
+      return realUserEndpointTestResultsRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder realUserEndpointTestResultsRequest(RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest) {
+        this.realUserEndpointTestResultsRequest = realUserEndpointTestResultsRequest;
+        return this;
+      }
+      public FilterRealUserTestsResultsRequest build() {
+        return new FilterRealUserTestsResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * List endpoint real user tests visited pages with pagination
    * Returns a list of all endpoint real user tests visited pages.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of user loaded pages in an endpoint real user test.  Pages shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param realUserEndpointTestResultRequestFilter  (optional)
+   * @param request operation parameters (required)
    * @return Paginator<RealUserEndpointTestPageResult, RealUserEndpointTestPageResults>
    */
-  public Paginator<RealUserEndpointTestPageResult, RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) {
-    return new Paginator<>(cursor -> filterRealUserTestsVisitedPagesResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter),
+  public Paginator<RealUserEndpointTestPageResult, RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResultsPaginated(FilterRealUserTestsVisitedPagesResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterRealUserTestsVisitedPagesResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterRealUserTestsVisitedPagesResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            RealUserEndpointTestPageResults::getResults);
 
   }
   /**
    * List endpoint real user tests visited pages
    * Returns a list of all endpoint real user tests visited pages.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of user loaded pages in an endpoint real user test.  Pages shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultRequestFilter  (optional)
+   * @param request operation parameters (required)
    * @return RealUserEndpointTestPageResults
    * @throws ApiException if fails to make API call
    */
-  public RealUserEndpointTestPageResults filterRealUserTestsVisitedPagesResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) throws ApiException {
-    ApiResponse<RealUserEndpointTestPageResults> response = filterRealUserTestsVisitedPagesResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter);
+  public RealUserEndpointTestPageResults filterRealUserTestsVisitedPagesResults(FilterRealUserTestsVisitedPagesResultsRequest request) throws ApiException {
+    ApiResponse<RealUserEndpointTestPageResults> response = filterRealUserTestsVisitedPagesResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List endpoint real user tests visited pages
    * Returns a list of all endpoint real user tests visited pages.  Sessions from the last round are provided unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/real-user-tests/pages/filter?window&#x3D;1w&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  Returns a &#x60;results&#x60; array of user loaded pages in an endpoint real user test.  Pages shown are from the latest round, or based on the time range specified. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param realUserEndpointTestResultRequestFilter  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RealUserEndpointTestPageResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) throws ApiException {
+  public ApiResponse<RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResultsWithHttpInfo(FilterRealUserTestsVisitedPagesResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterRealUserTestsVisitedPagesResults");
+    }
     filterRealUserTestsVisitedPagesResultsValidateRequest();
 
-    var requestBuilder = filterRealUserTestsVisitedPagesResultsRequestBuilder(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter);
+    var requestBuilder = filterRealUserTestsVisitedPagesResultsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getRealUserEndpointTestResultRequestFilter());
 
     return apiClient.send(requestBuilder.build(), RealUserEndpointTestPageResults.class);
   }
@@ -285,8 +438,8 @@ public class RealUserEndpointTestResultsApi {
   private void filterRealUserTestsVisitedPagesResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterRealUserTestsVisitedPagesResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterRealUserTestsVisitedPagesResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/real-user-tests/pages/filter";
@@ -309,33 +462,119 @@ public class RealUserEndpointTestResultsApi {
     requestBuilder.requestBody(realUserEndpointTestResultRequestFilter);
     return requestBuilder;
   }
+
+  public static final class FilterRealUserTestsVisitedPagesResultsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter;
+
+    private FilterRealUserTestsVisitedPagesResultsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.realUserEndpointTestResultRequestFilter = builder.realUserEndpointTestResultRequestFilter;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public RealUserEndpointTestResultRequestFilter getRealUserEndpointTestResultRequestFilter() {
+      return realUserEndpointTestResultRequestFilter;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .realUserEndpointTestResultRequestFilter(realUserEndpointTestResultRequestFilter);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder realUserEndpointTestResultRequestFilter(RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter) {
+        this.realUserEndpointTestResultRequestFilter = realUserEndpointTestResultRequestFilter;
+        return this;
+      }
+      public FilterRealUserTestsVisitedPagesResultsRequest build() {
+        return new FilterRealUserTestsVisitedPagesResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve endpoint real user test page
    * Returns details for endpoint real user test web page request.  Provides complete waterfall information with all object requests.  Sends back detailed endpoint real user test web page request.  Returned object has a single field: &#x60;har&#x60; which is an HAR object according to the HTTP Archive 1.2 specifications.  [You can read more about the specification](http://www.softwareishard.com/blog/har-12-spec/).  In addition to standard fields, the object har includes a custom property &#x60;systemMetrics&#x60; which contain metrics about CPU and physical memory usage.  Check &#x60;SystemMetrics&#x60; on schemas tab for more information. 
-   * @param id The real user test id. (required)
-   * @param pageId Web page ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RealUserEndpointTestPageDetailResult
    * @throws ApiException if fails to make API call
    */
-  public RealUserEndpointTestPageDetailResult getRealUserTestPageResults(String id, String pageId, String aid) throws ApiException {
-    ApiResponse<RealUserEndpointTestPageDetailResult> response = getRealUserTestPageResultsWithHttpInfo(id, pageId, aid);
+  public RealUserEndpointTestPageDetailResult getRealUserTestPageResults(GetRealUserTestPageResultsRequest request) throws ApiException {
+    ApiResponse<RealUserEndpointTestPageDetailResult> response = getRealUserTestPageResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve endpoint real user test page
    * Returns details for endpoint real user test web page request.  Provides complete waterfall information with all object requests.  Sends back detailed endpoint real user test web page request.  Returned object has a single field: &#x60;har&#x60; which is an HAR object according to the HTTP Archive 1.2 specifications.  [You can read more about the specification](http://www.softwareishard.com/blog/har-12-spec/).  In addition to standard fields, the object har includes a custom property &#x60;systemMetrics&#x60; which contain metrics about CPU and physical memory usage.  Check &#x60;SystemMetrics&#x60; on schemas tab for more information. 
-   * @param id The real user test id. (required)
-   * @param pageId Web page ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RealUserEndpointTestPageDetailResult&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RealUserEndpointTestPageDetailResult> getRealUserTestPageResultsWithHttpInfo(String id, String pageId, String aid) throws ApiException {
-    getRealUserTestPageResultsValidateRequest(id, pageId);
+  public ApiResponse<RealUserEndpointTestPageDetailResult> getRealUserTestPageResultsWithHttpInfo(GetRealUserTestPageResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getRealUserTestPageResults");
+    }
+    getRealUserTestPageResultsValidateRequest(request.getId(), request.getPageId());
 
-    var requestBuilder = getRealUserTestPageResultsRequestBuilder(id, pageId, aid);
+    var requestBuilder = getRealUserTestPageResultsRequestBuilder(request.getId(), request.getPageId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RealUserEndpointTestPageDetailResult.class);
   }
@@ -351,8 +590,8 @@ public class RealUserEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getRealUserTestPageResultsRequestBuilder(String id, String pageId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getRealUserTestPageResultsRequestBuilder(String id, String pageId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/real-user-tests/{id}/pages/{pageId}"
@@ -371,31 +610,86 @@ public class RealUserEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetRealUserTestPageResultsRequest {
+    private final String id;
+    private final String pageId;
+    private final String aid;
+
+    private GetRealUserTestPageResultsRequest(Builder builder) {
+      this.id = builder.id;
+      this.pageId = builder.pageId;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getPageId() {
+      return pageId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .pageId(pageId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String pageId;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder pageId(String pageId) {
+        this.pageId = pageId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetRealUserTestPageResultsRequest build() {
+        return new GetRealUserTestPageResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve endpoint real user test
    * Provides details for an endpoint real user test. Returns a results array containing detailed information about endpoint real user tests.\&quot; 
-   * @param id The real user test id. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RealUserEndpointTestDetailResults
    * @throws ApiException if fails to make API call
    */
-  public RealUserEndpointTestDetailResults getRealUserTestResults(String id, String aid) throws ApiException {
-    ApiResponse<RealUserEndpointTestDetailResults> response = getRealUserTestResultsWithHttpInfo(id, aid);
+  public RealUserEndpointTestDetailResults getRealUserTestResults(GetRealUserTestResultsRequest request) throws ApiException {
+    ApiResponse<RealUserEndpointTestDetailResults> response = getRealUserTestResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve endpoint real user test
    * Provides details for an endpoint real user test. Returns a results array containing detailed information about endpoint real user tests.\&quot; 
-   * @param id The real user test id. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RealUserEndpointTestDetailResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RealUserEndpointTestDetailResults> getRealUserTestResultsWithHttpInfo(String id, String aid) throws ApiException {
-    getRealUserTestResultsValidateRequest(id);
+  public ApiResponse<RealUserEndpointTestDetailResults> getRealUserTestResultsWithHttpInfo(GetRealUserTestResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getRealUserTestResults");
+    }
+    getRealUserTestResultsValidateRequest(request.getId());
 
-    var requestBuilder = getRealUserTestResultsRequestBuilder(id, aid);
+    var requestBuilder = getRealUserTestResultsRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RealUserEndpointTestDetailResults.class);
   }
@@ -407,8 +701,8 @@ public class RealUserEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getRealUserTestResultsRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getRealUserTestResultsRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/real-user-tests/{id}"
@@ -426,4 +720,47 @@ public class RealUserEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetRealUserTestResultsRequest {
+    private final String id;
+    private final String aid;
+
+    private GetRealUserTestResultsRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetRealUserTestResultsRequest build() {
+        return new GetRealUserTestResultsRequest(this);
+      }
+    }
+  }
+
 }

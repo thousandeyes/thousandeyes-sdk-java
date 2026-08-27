@@ -85,7 +85,6 @@ public class StreamingApiTest {
     public void createStreamRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "endpointAgentLabel" : [ {
@@ -256,7 +255,11 @@ public class StreamingApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createStream(null, mappedRequest);
+        var request = StreamingApi.CreateStreamRequest.builder()
+                .aid("1234")
+                .stream(mappedRequest)
+                .build();
+        var apiResponse = api.createStream(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -273,7 +276,6 @@ public class StreamingApiTest {
     {
         String id = "id_example";
 
-
         var statusCode = 204;
 
         var path = "/streams/{id}";
@@ -283,7 +285,11 @@ public class StreamingApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteStreamWithHttpInfo(id, null);
+        var request = StreamingApi.DeleteStreamRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteStreamWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -299,7 +305,6 @@ public class StreamingApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "id_example";
-
 
         var responseBodyJson = """
                 {
@@ -400,7 +405,11 @@ public class StreamingApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getStream(id, null, null);
+        var request = StreamingApi.GetStreamRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getStream(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -415,7 +424,6 @@ public class StreamingApiTest {
     public void getStreamsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 [ {
@@ -596,7 +604,10 @@ public class StreamingApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getStreams(null, null);
+        var request = StreamingApi.GetStreamsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getStreams(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -612,7 +623,6 @@ public class StreamingApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "id_example";
-
         var requestBodyJson = """
                 {
                   "endpointAgentLabel" : [ {
@@ -782,7 +792,12 @@ public class StreamingApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateStream(id, null, mappedRequest);
+        var request = StreamingApi.UpdateStreamRequest.builder()
+                .id(id)
+                .aid("1234")
+                .putStream(mappedRequest)
+                .build();
+        var apiResponse = api.updateStream(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

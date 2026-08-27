@@ -83,7 +83,6 @@ public class WebTransactionInstantTestsApiTest {
     public void createWebTransactionInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -411,7 +410,12 @@ public class WebTransactionInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createWebTransactionInstantTest(mappedRequest, null, null);
+        var request = WebTransactionInstantTestsApi.CreateWebTransactionInstantTestRequest.builder()
+                .webTransactionInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createWebTransactionInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

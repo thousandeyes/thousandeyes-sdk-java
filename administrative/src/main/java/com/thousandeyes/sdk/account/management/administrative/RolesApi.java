@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,29 @@ public class RolesApi {
   /**
    * Create role
    * Creates a new role.
-   * @param roleRequestBody  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RoleDetail
    * @throws ApiException if fails to make API call
    */
-  public RoleDetail createRole(RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    ApiResponse<RoleDetail> response = createRoleWithHttpInfo(roleRequestBody, aid);
+  public RoleDetail createRole(CreateRoleRequest request) throws ApiException {
+    ApiResponse<RoleDetail> response = createRoleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create role
    * Creates a new role.
-   * @param roleRequestBody  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RoleDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RoleDetail> createRoleWithHttpInfo(RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    createRoleValidateRequest(roleRequestBody);
+  public ApiResponse<RoleDetail> createRoleWithHttpInfo(CreateRoleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createRole");
+    }
+    createRoleValidateRequest(request.getRoleRequestBody());
 
-    var requestBuilder = createRoleRequestBuilder(roleRequestBody, aid);
+    var requestBuilder = createRoleRequestBuilder(request.getRoleRequestBody(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RoleDetail.class);
   }
@@ -98,8 +96,8 @@ public class RolesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createRoleRequestBuilder(RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createRoleRequestBuilder(RoleRequestBody roleRequestBody, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/roles";
@@ -118,29 +116,73 @@ public class RolesApi {
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;
   }
-  /**
-   * Delete role
-   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this operation.
-   * @param id The ID of the desired role. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteRole(String id, String aid) throws ApiException {
-    deleteRoleWithHttpInfo(id, aid);
+
+  public static final class CreateRoleRequest {
+    private final RoleRequestBody roleRequestBody;
+    private final String aid;
+
+    private CreateRoleRequest(Builder builder) {
+      this.roleRequestBody = builder.roleRequestBody;
+      this.aid = builder.aid;
+    }
+    public RoleRequestBody getRoleRequestBody() {
+      return roleRequestBody;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .roleRequestBody(roleRequestBody)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private RoleRequestBody roleRequestBody;
+      private String aid;
+
+      public Builder roleRequestBody(RoleRequestBody roleRequestBody) {
+        this.roleRequestBody = roleRequestBody;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateRoleRequest build() {
+        return new CreateRoleRequest(this);
+      }
+    }
   }
 
   /**
    * Delete role
    * Deletes a role using its ID. The user needs appropriate permissions to successfully call this operation.
-   * @param id The ID of the desired role. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteRole(DeleteRoleRequest request) throws ApiException {
+    deleteRoleWithHttpInfo(request);
+  }
+
+  /**
+   * Delete role
+   * Deletes a role using its ID. The user needs appropriate permissions to successfully call this operation.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteRoleWithHttpInfo(String id, String aid) throws ApiException {
-    deleteRoleValidateRequest(id);
+  public ApiResponse<Void> deleteRoleWithHttpInfo(DeleteRoleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteRole");
+    }
+    deleteRoleValidateRequest(request.getId());
 
-    var requestBuilder = deleteRoleRequestBuilder(id, aid);
+    var requestBuilder = deleteRoleRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -152,8 +194,8 @@ public class RolesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteRoleRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteRoleRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/roles/{id}"
@@ -171,31 +213,75 @@ public class RolesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteRoleRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteRoleRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteRoleRequest build() {
+        return new DeleteRoleRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve role
    * Returns detailed information about a role using its ID.
-   * @param id The ID of the desired role. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RoleDetail
    * @throws ApiException if fails to make API call
    */
-  public RoleDetail getRole(String id, String aid) throws ApiException {
-    ApiResponse<RoleDetail> response = getRoleWithHttpInfo(id, aid);
+  public RoleDetail getRole(GetRoleRequest request) throws ApiException {
+    ApiResponse<RoleDetail> response = getRoleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve role
    * Returns detailed information about a role using its ID.
-   * @param id The ID of the desired role. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RoleDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RoleDetail> getRoleWithHttpInfo(String id, String aid) throws ApiException {
-    getRoleValidateRequest(id);
+  public ApiResponse<RoleDetail> getRoleWithHttpInfo(GetRoleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getRole");
+    }
+    getRoleValidateRequest(request.getId());
 
-    var requestBuilder = getRoleRequestBuilder(id, aid);
+    var requestBuilder = getRoleRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RoleDetail.class);
   }
@@ -207,8 +293,8 @@ public class RolesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getRoleRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getRoleRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/roles/{id}"
@@ -226,29 +312,75 @@ public class RolesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetRoleRequest {
+    private final String id;
+    private final String aid;
+
+    private GetRoleRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetRoleRequest build() {
+        return new GetRoleRequest(this);
+      }
+    }
+  }
+
   /**
    * List roles
    * Retrieves a list of defined roles visible to the current user.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Roles
    * @throws ApiException if fails to make API call
    */
-  public Roles getRoles(String aid) throws ApiException {
-    ApiResponse<Roles> response = getRolesWithHttpInfo(aid);
+  public Roles getRoles(GetRolesRequest request) throws ApiException {
+    ApiResponse<Roles> response = getRolesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List roles
    * Retrieves a list of defined roles visible to the current user.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Roles&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Roles> getRolesWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<Roles> getRolesWithHttpInfo(GetRolesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getRoles");
+    }
     getRolesValidateRequest();
 
-    var requestBuilder = getRolesRequestBuilder(aid);
+    var requestBuilder = getRolesRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), Roles.class);
   }
@@ -256,8 +388,8 @@ public class RolesApi {
   private void getRolesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getRolesRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getRolesRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/roles";
@@ -274,33 +406,64 @@ public class RolesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetRolesRequest {
+    private final String aid;
+
+    private GetRolesRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetRolesRequest build() {
+        return new GetRolesRequest(this);
+      }
+    }
+  }
+
   /**
    * Update role
    * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This operation does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions operation.
-   * @param id The ID of the desired role. (required)
-   * @param roleRequestBody  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return RoleDetail
    * @throws ApiException if fails to make API call
    */
-  public RoleDetail updateRole(String id, RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    ApiResponse<RoleDetail> response = updateRoleWithHttpInfo(id, roleRequestBody, aid);
+  public RoleDetail updateRole(UpdateRoleRequest request) throws ApiException {
+    ApiResponse<RoleDetail> response = updateRoleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update role
    * Updates a user-defined role using its ID.  When updating a role, the following applies:  * The full list of permissions must be sent, This operation does not support delta-based grant or revoking of permissions.  * Permission definitions and details can be obtained from the Permissions operation.
-   * @param id The ID of the desired role. (required)
-   * @param roleRequestBody  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;RoleDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RoleDetail> updateRoleWithHttpInfo(String id, RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    updateRoleValidateRequest(id, roleRequestBody);
+  public ApiResponse<RoleDetail> updateRoleWithHttpInfo(UpdateRoleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateRole");
+    }
+    updateRoleValidateRequest(request.getId(), request.getRoleRequestBody());
 
-    var requestBuilder = updateRoleRequestBuilder(id, roleRequestBody, aid);
+    var requestBuilder = updateRoleRequestBuilder(request.getId(), request.getRoleRequestBody(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), RoleDetail.class);
   }
@@ -316,8 +479,8 @@ public class RolesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateRoleRequestBuilder(String id, RoleRequestBody roleRequestBody, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateRoleRequestBuilder(String id, RoleRequestBody roleRequestBody, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/roles/{id}"
@@ -337,4 +500,58 @@ public class RolesApi {
     requestBuilder.requestBody(roleRequestBody);
     return requestBuilder;
   }
+
+  public static final class UpdateRoleRequest {
+    private final String id;
+    private final RoleRequestBody roleRequestBody;
+    private final String aid;
+
+    private UpdateRoleRequest(Builder builder) {
+      this.id = builder.id;
+      this.roleRequestBody = builder.roleRequestBody;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public RoleRequestBody getRoleRequestBody() {
+      return roleRequestBody;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .roleRequestBody(roleRequestBody)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private RoleRequestBody roleRequestBody;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder roleRequestBody(RoleRequestBody roleRequestBody) {
+        this.roleRequestBody = roleRequestBody;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateRoleRequest build() {
+        return new UpdateRoleRequest(this);
+      }
+    }
+  }
+
 }

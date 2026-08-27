@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -44,12 +43,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -71,57 +68,45 @@ public class NetworkDynamicEndpointTestResultsApi {
   /**
    * Retrieve network dynamic test results with pagination
    * Returns network metrics (&#x60;loss&#x60;, &#x60;latency&#x60;, &#x60;jitter&#x60; and &#x60;bandwidth&#x60;) from each endpoint agent, for each &#x60;roundId&#x60; in the requested window. When Time Frame is provided the rounds specific to the time frame is returned and the order is not pre-defined unless a user specifies the sort order in filter. When no time frame is provided the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults>
    */
-  public Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) {
-    return new Paginator<>(cursor -> filterDynamicTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch),
+  public Paginator<NetworkDynamicEndpointTestResult, NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsPaginated(FilterDynamicTestNetworkResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterDynamicTestNetworkResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterDynamicTestNetworkResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            NetworkDynamicEndpointTestResults::getResults);
 
   }
   /**
    * Retrieve network dynamic test results
    * Returns network metrics (&#x60;loss&#x60;, &#x60;latency&#x60;, &#x60;jitter&#x60; and &#x60;bandwidth&#x60;) from each endpoint agent, for each &#x60;roundId&#x60; in the requested window. When Time Frame is provided the rounds specific to the time frame is returned and the order is not pre-defined unless a user specifies the sort order in filter. When no time frame is provided the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return NetworkDynamicEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
-    ApiResponse<NetworkDynamicEndpointTestResults> response = filterDynamicTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
+  public NetworkDynamicEndpointTestResults filterDynamicTestNetworkResults(FilterDynamicTestNetworkResultsRequest request) throws ApiException {
+    ApiResponse<NetworkDynamicEndpointTestResults> response = filterDynamicTestNetworkResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve network dynamic test results
    * Returns network metrics (&#x60;loss&#x60;, &#x60;latency&#x60;, &#x60;jitter&#x60; and &#x60;bandwidth&#x60;) from each endpoint agent, for each &#x60;roundId&#x60; in the requested window. When Time Frame is provided the rounds specific to the time frame is returned and the order is not pre-defined unless a user specifies the sort order in filter. When no time frame is provided the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param dynamicEndpointTestsDataRoundSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;NetworkDynamicEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
-    filterDynamicTestNetworkResultsValidateRequest(testId);
+  public ApiResponse<NetworkDynamicEndpointTestResults> filterDynamicTestNetworkResultsWithHttpInfo(FilterDynamicTestNetworkResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterDynamicTestNetworkResults");
+    }
+    filterDynamicTestNetworkResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = filterDynamicTestNetworkResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor, expand, dynamicEndpointTestsDataRoundSearch);
+    var requestBuilder = filterDynamicTestNetworkResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getExpand(), request.getDynamicEndpointTestsDataRoundSearch());
 
     return apiClient.send(requestBuilder.build(), NetworkDynamicEndpointTestResults.class);
   }
@@ -133,8 +118,8 @@ public class NetworkDynamicEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterDynamicTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterDynamicTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointDynamicNetworkOptions> expand, DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/dynamic-tests/{testId}/network/filter"
@@ -159,35 +144,141 @@ public class NetworkDynamicEndpointTestResultsApi {
     requestBuilder.requestBody(dynamicEndpointTestsDataRoundSearch);
     return requestBuilder;
   }
+
+  public static final class FilterDynamicTestNetworkResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final List<ExpandEndpointDynamicNetworkOptions> expand;
+    private final DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch;
+
+    private FilterDynamicTestNetworkResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.expand = builder.expand;
+      this.dynamicEndpointTestsDataRoundSearch = builder.dynamicEndpointTestsDataRoundSearch;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public List<ExpandEndpointDynamicNetworkOptions> getExpand() {
+      return expand;
+    }
+    public DynamicEndpointTestsDataRoundSearch getDynamicEndpointTestsDataRoundSearch() {
+      return dynamicEndpointTestsDataRoundSearch;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .expand(expand)
+          .dynamicEndpointTestsDataRoundSearch(dynamicEndpointTestsDataRoundSearch);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private List<ExpandEndpointDynamicNetworkOptions> expand;
+      private DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointDynamicNetworkOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder dynamicEndpointTestsDataRoundSearch(DynamicEndpointTestsDataRoundSearch dynamicEndpointTestsDataRoundSearch) {
+        this.dynamicEndpointTestsDataRoundSearch = dynamicEndpointTestsDataRoundSearch;
+        return this;
+      }
+      public FilterDynamicTestNetworkResultsRequest build() {
+        return new FilterDynamicTestNetworkResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve path visualization network dynamic test results details
    * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PathVisDetailDynamicEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public PathVisDetailDynamicEndpointTestResults getDynamicTestPathVisAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiResponse<PathVisDetailDynamicEndpointTestResults> response = getDynamicTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+  public PathVisDetailDynamicEndpointTestResults getDynamicTestPathVisAgentRoundResults(GetDynamicTestPathVisAgentRoundResultsRequest request) throws ApiException {
+    ApiResponse<PathVisDetailDynamicEndpointTestResults> response = getDynamicTestPathVisAgentRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve path visualization network dynamic test results details
    * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PathVisDetailDynamicEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PathVisDetailDynamicEndpointTestResults> getDynamicTestPathVisAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
-    getDynamicTestPathVisAgentRoundResultsValidateRequest(testId, agentId, roundId);
+  public ApiResponse<PathVisDetailDynamicEndpointTestResults> getDynamicTestPathVisAgentRoundResultsWithHttpInfo(GetDynamicTestPathVisAgentRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDynamicTestPathVisAgentRoundResults");
+    }
+    getDynamicTestPathVisAgentRoundResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId());
 
-    var requestBuilder = getDynamicTestPathVisAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+    var requestBuilder = getDynamicTestPathVisAgentRoundResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PathVisDetailDynamicEndpointTestResults.class);
   }
@@ -207,8 +298,8 @@ public class NetworkDynamicEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDynamicTestPathVisAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDynamicTestPathVisAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/dynamic-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
@@ -228,54 +319,113 @@ public class NetworkDynamicEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDynamicTestPathVisAgentRoundResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String aid;
+
+    private GetDynamicTestPathVisAgentRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDynamicTestPathVisAgentRoundResultsRequest build() {
+        return new GetDynamicTestPathVisAgentRoundResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve path visualization network dynamic test results with pagination
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours will be returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<PathVisDynamicEndpointTestResult, PathVisDynamicEndpointTestResults>
    */
-  public Paginator<PathVisDynamicEndpointTestResult, PathVisDynamicEndpointTestResults> getDynamicTestPathVisResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getDynamicTestPathVisResults(testId, aid, window, startDate, endDate, cursor),
+  public Paginator<PathVisDynamicEndpointTestResult, PathVisDynamicEndpointTestResults> getDynamicTestPathVisResultsPaginated(GetDynamicTestPathVisResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getDynamicTestPathVisResultsPaginated");
+    }
+    return new Paginator<>(cursor -> getDynamicTestPathVisResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            PathVisDynamicEndpointTestResults::getResults);
 
   }
   /**
    * Retrieve path visualization network dynamic test results
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours will be returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return PathVisDynamicEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public PathVisDynamicEndpointTestResults getDynamicTestPathVisResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<PathVisDynamicEndpointTestResults> response = getDynamicTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+  public PathVisDynamicEndpointTestResults getDynamicTestPathVisResults(GetDynamicTestPathVisResultsRequest request) throws ApiException {
+    ApiResponse<PathVisDynamicEndpointTestResults> response = getDynamicTestPathVisResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve path visualization network dynamic test results
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours will be returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PathVisDynamicEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PathVisDynamicEndpointTestResults> getDynamicTestPathVisResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    getDynamicTestPathVisResultsValidateRequest(testId);
+  public ApiResponse<PathVisDynamicEndpointTestResults> getDynamicTestPathVisResultsWithHttpInfo(GetDynamicTestPathVisResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDynamicTestPathVisResults");
+    }
+    getDynamicTestPathVisResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = getDynamicTestPathVisResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor);
+    var requestBuilder = getDynamicTestPathVisResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), PathVisDynamicEndpointTestResults.class);
   }
@@ -287,8 +437,8 @@ public class NetworkDynamicEndpointTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDynamicTestPathVisResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDynamicTestPathVisResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/dynamic-tests/{testId}/path-vis"
@@ -310,4 +460,91 @@ public class NetworkDynamicEndpointTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDynamicTestPathVisResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetDynamicTestPathVisResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetDynamicTestPathVisResultsRequest build() {
+        return new GetDynamicTestPathVisResultsRequest(this);
+      }
+    }
+  }
+
 }

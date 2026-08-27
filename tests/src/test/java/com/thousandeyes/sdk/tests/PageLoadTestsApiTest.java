@@ -84,7 +84,6 @@ public class PageLoadTestsApiTest {
     public void createPageLoadTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -466,7 +465,12 @@ public class PageLoadTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createPageLoadTest(mappedRequest, null, null);
+        var request = PageLoadTestsApi.CreatePageLoadTestRequest.builder()
+                .pageLoadTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createPageLoadTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -483,7 +487,6 @@ public class PageLoadTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/page-load/{testId}";
@@ -493,7 +496,11 @@ public class PageLoadTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deletePageLoadTestWithHttpInfo(testId, null);
+        var request = PageLoadTestsApi.DeletePageLoadTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deletePageLoadTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -509,7 +516,6 @@ public class PageLoadTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -757,7 +763,13 @@ public class PageLoadTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPageLoadTest(testId, null, null, null);
+        var request = PageLoadTestsApi.GetPageLoadTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getPageLoadTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -772,7 +784,6 @@ public class PageLoadTestsApiTest {
     public void getPageLoadTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -1033,7 +1044,10 @@ public class PageLoadTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPageLoadTests(null);
+        var request = PageLoadTestsApi.GetPageLoadTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPageLoadTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1049,7 +1063,6 @@ public class PageLoadTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "clientCertificate" : "-----BEGIN PRIVATE KEY-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END PRIVATE KEY-----\\n-----BEGIN CERTIFICATE-----\\nMIICUTCCAfugAwIBAgIBADANBgkqhkiG9w0BAQQFADBXMQswCQYDVQQGEwJDTjEL\\n-----END CERTIFICATE-----\\n",
@@ -1432,7 +1445,13 @@ public class PageLoadTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updatePageLoadTest(testId, mappedRequest, null, null);
+        var request = PageLoadTestsApi.UpdatePageLoadTestRequest.builder()
+                .testId(testId)
+                .pageLoadTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updatePageLoadTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

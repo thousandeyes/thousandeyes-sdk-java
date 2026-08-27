@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createStream
 
-> CreateStreamResponse createStream(aid, stream)
+> CreateStreamResponse createStream(CreateStreamRequest)
 
 Create data stream
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
-            CreateStreamResponse result = apiInstance.createStream(aid, stream);
+            StreamingApi.CreateStreamRequest request = StreamingApi.CreateStreamRequest.builder()
+                .aid(aid)
+                .stream(stream)
+                .build();
+            CreateStreamResponse result = apiInstance.createStream(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#createStream");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **stream** | [**Stream**](Stream.md)| Stream to configure | [optional] |
+| request | [**CreateStreamRequest**](StreamingApi.md#CreateStreamRequest)|-|-|
 
 ### Return type
 
@@ -96,7 +98,7 @@ public class Example {
 
 ## createStreamWithHttpInfo
 
-> ApiResponse<CreateStreamResponse> createStream createStreamWithHttpInfo(aid, stream)
+> ApiResponse<CreateStreamResponse> createStream createStreamWithHttpInfo(CreateStreamRequest)
 
 Create data stream
 
@@ -111,7 +113,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -127,7 +129,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
-            ApiResponse<CreateStreamResponse> response = apiInstance.createStreamWithHttpInfo(aid, stream);
+            StreamingApi.CreateStreamRequest request = StreamingApi.CreateStreamRequest.builder()
+                .aid(aid)
+                .stream(stream)
+                .build();
+            ApiResponse<CreateStreamResponse> response = apiInstance.createStreamWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -144,11 +150,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **stream** | [**Stream**](Stream.md)| Stream to configure | [optional] |
+| request | [**CreateStreamRequest**](StreamingApi.md#CreateStreamRequest)|-|-|
 
 ### Return type
 
@@ -175,9 +179,20 @@ ApiResponse<[**CreateStreamResponse**](CreateStreamResponse.md)>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="CreateStreamRequest"></a>
+## CreateStreamRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **stream** | [**Stream**](Stream.md) | Stream to configure | [optional] |
+
+
+
 ## deleteStream
 
-> void deleteStream(id, aid)
+> void deleteStream(DeleteStreamRequest)
 
 Delete a data stream
 
@@ -191,7 +206,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -207,7 +222,11 @@ public class Example {
         String id = "id_example"; // String | ID of stream to query
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteStream(id, aid);
+            StreamingApi.DeleteStreamRequest request = StreamingApi.DeleteStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteStream(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#deleteStream");
             System.err.println("Status code: " + e.getCode());
@@ -221,11 +240,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteStreamRequest**](StreamingApi.md#DeleteStreamRequest)|-|-|
 
 ### Return type
 
@@ -253,7 +270,7 @@ null (empty response body)
 
 ## deleteStreamWithHttpInfo
 
-> ApiResponse<Void> deleteStream deleteStreamWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteStream deleteStreamWithHttpInfo(DeleteStreamRequest)
 
 Delete a data stream
 
@@ -268,7 +285,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -284,7 +301,11 @@ public class Example {
         String id = "id_example"; // String | ID of stream to query
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteStreamWithHttpInfo(id, aid);
+            StreamingApi.DeleteStreamRequest request = StreamingApi.DeleteStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteStreamWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -300,11 +321,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteStreamRequest**](StreamingApi.md#DeleteStreamRequest)|-|-|
 
 ### Return type
 
@@ -331,9 +350,20 @@ ApiResponse<Void>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="DeleteStreamRequest"></a>
+## DeleteStreamRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | ID of stream to query | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getStream
 
-> GetStreamResponse getStream(id, aid, type)
+> GetStreamResponse getStream(GetStreamRequest)
 
 Retrieve data stream
 
@@ -347,7 +377,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -364,7 +394,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
-            GetStreamResponse result = apiInstance.getStream(id, aid, type);
+            StreamingApi.GetStreamRequest request = StreamingApi.GetStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .type(type)
+                .build();
+            GetStreamResponse result = apiInstance.getStream(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#getStream");
@@ -379,12 +414,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+| request | [**GetStreamRequest**](StreamingApi.md#GetStreamRequest)|-|-|
 
 ### Return type
 
@@ -412,7 +444,7 @@ public class Example {
 
 ## getStreamWithHttpInfo
 
-> ApiResponse<GetStreamResponse> getStream getStreamWithHttpInfo(id, aid, type)
+> ApiResponse<GetStreamResponse> getStream getStreamWithHttpInfo(GetStreamRequest)
 
 Retrieve data stream
 
@@ -427,7 +459,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -444,7 +476,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
-            ApiResponse<GetStreamResponse> response = apiInstance.getStreamWithHttpInfo(id, aid, type);
+            StreamingApi.GetStreamRequest request = StreamingApi.GetStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .type(type)
+                .build();
+            ApiResponse<GetStreamResponse> response = apiInstance.getStreamWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -461,12 +498,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+| request | [**GetStreamRequest**](StreamingApi.md#GetStreamRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +527,21 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="GetStreamRequest"></a>
+## GetStreamRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | ID of stream to query | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **type** | [**StreamType**](.md) | Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+
+
+
 ## getStreams
 
-> List<GetStreamResponse> getStreams(aid, type)
+> List<GetStreamResponse> getStreams(GetStreamsRequest)
 
 List data streams
 
@@ -509,7 +555,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -525,7 +571,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
-            List<GetStreamResponse> result = apiInstance.getStreams(aid, type);
+            StreamingApi.GetStreamsRequest request = StreamingApi.GetStreamsRequest.builder()
+                .aid(aid)
+                .type(type)
+                .build();
+            List<GetStreamResponse> result = apiInstance.getStreams(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#getStreams");
@@ -540,11 +590,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+| request | [**GetStreamsRequest**](StreamingApi.md#GetStreamsRequest)|-|-|
 
 ### Return type
 
@@ -572,7 +620,7 @@ public class Example {
 
 ## getStreamsWithHttpInfo
 
-> ApiResponse<List<GetStreamResponse>> getStreams getStreamsWithHttpInfo(aid, type)
+> ApiResponse<List<GetStreamResponse>> getStreams getStreamsWithHttpInfo(GetStreamsRequest)
 
 List data streams
 
@@ -587,7 +635,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -603,7 +651,11 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         StreamType type = StreamType.fromValue("opentelemetry"); // StreamType | Optional filter on type of Stream; should match one of Stream `type` enum
         try {
-            ApiResponse<List<GetStreamResponse>> response = apiInstance.getStreamsWithHttpInfo(aid, type);
+            StreamingApi.GetStreamsRequest request = StreamingApi.GetStreamsRequest.builder()
+                .aid(aid)
+                .type(type)
+                .build();
+            ApiResponse<List<GetStreamResponse>> response = apiInstance.getStreamsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -620,11 +672,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **type** | [**StreamType**](.md)| Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+| request | [**GetStreamsRequest**](StreamingApi.md#GetStreamsRequest)|-|-|
 
 ### Return type
 
@@ -651,9 +701,20 @@ ApiResponse<[**List&lt;GetStreamResponse&gt;**](GetStreamResponse.md)>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="GetStreamsRequest"></a>
+## GetStreamsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **type** | [**StreamType**](.md) | Optional filter on type of Stream; should match one of Stream &#x60;type&#x60; enum | [optional] [enum: opentelemetry, splunk-hec] |
+
+
+
 ## updateStream
 
-> GetStreamResponse updateStream(id, aid, putStream)
+> GetStreamResponse updateStream(UpdateStreamRequest)
 
 Update data stream
 
@@ -667,7 +728,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -684,7 +745,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
-            GetStreamResponse result = apiInstance.updateStream(id, aid, putStream);
+            StreamingApi.UpdateStreamRequest request = StreamingApi.UpdateStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .putStream(putStream)
+                .build();
+            GetStreamResponse result = apiInstance.updateStream(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#updateStream");
@@ -699,12 +765,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **putStream** | [**PutStream**](PutStream.md)|  | [optional] |
+| request | [**UpdateStreamRequest**](StreamingApi.md#UpdateStreamRequest)|-|-|
 
 ### Return type
 
@@ -735,7 +798,7 @@ public class Example {
 
 ## updateStreamWithHttpInfo
 
-> ApiResponse<GetStreamResponse> updateStream updateStreamWithHttpInfo(id, aid, putStream)
+> ApiResponse<GetStreamResponse> updateStream updateStreamWithHttpInfo(UpdateStreamRequest)
 
 Update data stream
 
@@ -750,7 +813,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.streaming.model.*;
 import com.thousandeyes.sdk.streaming.StreamingApi;
 
 public class Example {
@@ -767,7 +830,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PutStream putStream = new PutStream(); // PutStream | 
         try {
-            ApiResponse<GetStreamResponse> response = apiInstance.updateStreamWithHttpInfo(id, aid, putStream);
+            StreamingApi.UpdateStreamRequest request = StreamingApi.UpdateStreamRequest.builder()
+                .id(id)
+                .aid(aid)
+                .putStream(putStream)
+                .build();
+            ApiResponse<GetStreamResponse> response = apiInstance.updateStreamWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -784,12 +852,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| ID of stream to query | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **putStream** | [**PutStream**](PutStream.md)|  | [optional] |
+| request | [**UpdateStreamRequest**](StreamingApi.md#UpdateStreamRequest)|-|-|
 
 ### Return type
 
@@ -817,4 +882,16 @@ ApiResponse<[**GetStreamResponse**](GetStreamResponse.md)>
 | **409** | A data stream with the same name already exists |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |
+
+
+<a id="UpdateStreamRequest"></a>
+## UpdateStreamRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | ID of stream to query | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **putStream** | [**PutStream**](PutStream.md) |  | [optional] |
+
 

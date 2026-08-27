@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getEndpointAgentLogItems
 
-> EndpointAgentLogItemsResponse getEndpointAgentLogItems(agentId, aid, max, cursor, window, startDate, endDate)
+> EndpointAgentLogItemsResponse getEndpointAgentLogItems(GetEndpointAgentLogItemsRequest)
 
 List endpoint agent log items
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentLogItemsApi;
 
 public class Example {
@@ -46,7 +46,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            EndpointAgentLogItemsResponse result = apiInstance.getEndpointAgentLogItems(agentId, aid, max, cursor, window, startDate, endDate);
+            EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest request = EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .max(max)
+                .cursor(cursor)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            EndpointAgentLogItemsResponse result = apiInstance.getEndpointAgentLogItems(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointAgentLogItemsApi#getEndpointAgentLogItems");
@@ -61,16 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **max** | **Integer**| Maximum number of log items returned per page. | [optional] [default to 1000] |
-| **cursor** | **String**| Opaque cursor from the &#x60;_links.next.href&#x60; URL in the previous response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetEndpointAgentLogItemsRequest**](EndpointAgentLogItemsApi.md#GetEndpointAgentLogItemsRequest)|-|-|
 
 ### Return type
 
@@ -100,7 +102,7 @@ public class Example {
 
 ## getEndpointAgentLogItemsWithHttpInfo
 
-> ApiResponse<EndpointAgentLogItemsResponse> getEndpointAgentLogItems getEndpointAgentLogItemsWithHttpInfo(agentId, aid, max, cursor, window, startDate, endDate)
+> ApiResponse<EndpointAgentLogItemsResponse> getEndpointAgentLogItems getEndpointAgentLogItemsWithHttpInfo(GetEndpointAgentLogItemsRequest)
 
 List endpoint agent log items
 
@@ -115,7 +117,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointAgentLogItemsApi;
 
 public class Example {
@@ -136,7 +138,16 @@ public class Example {
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
-            ApiResponse<EndpointAgentLogItemsResponse> response = apiInstance.getEndpointAgentLogItemsWithHttpInfo(agentId, aid, max, cursor, window, startDate, endDate);
+            EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest request = EndpointAgentLogItemsApi.GetEndpointAgentLogItemsRequest.builder()
+                .agentId(agentId)
+                .aid(aid)
+                .max(max)
+                .cursor(cursor)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiResponse<EndpointAgentLogItemsResponse> response = apiInstance.getEndpointAgentLogItemsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,16 +164,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **UUID**| The identifier of the agent to operate on. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **max** | **Integer**| Maximum number of log items returned per page. | [optional] [default to 1000] |
-| **cursor** | **String**| Opaque cursor from the &#x60;_links.next.href&#x60; URL in the previous response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| request | [**GetEndpointAgentLogItemsRequest**](EndpointAgentLogItemsApi.md#GetEndpointAgentLogItemsRequest)|-|-|
 
 ### Return type
 
@@ -189,4 +193,20 @@ ApiResponse<[**EndpointAgentLogItemsResponse**](EndpointAgentLogItemsResponse.md
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetEndpointAgentLogItemsRequest"></a>
+## GetEndpointAgentLogItemsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **UUID** | The identifier of the agent to operate on. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **max** | **Integer** | Maximum number of log items returned per page. | [optional] [default to 1000] |
+| **cursor** | **String** | Opaque cursor from the &#x60;_links.next.href&#x60; URL in the previous response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+
 

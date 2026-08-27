@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,28 +61,29 @@ public class PathVisualizationInterfaceGroupsApi {
   /**
    * Create interface group for path visualization
    * Creates a new path visualization interface group.
-   * @param interfaceGroup  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return InterfaceGroup
    * @throws ApiException if fails to make API call
    */
-  public InterfaceGroup createPathVisInterfaceGroups(InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    ApiResponse<InterfaceGroup> response = createPathVisInterfaceGroupsWithHttpInfo(interfaceGroup, aid);
+  public InterfaceGroup createPathVisInterfaceGroups(CreatePathVisInterfaceGroupsRequest request) throws ApiException {
+    ApiResponse<InterfaceGroup> response = createPathVisInterfaceGroupsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create interface group for path visualization
    * Creates a new path visualization interface group.
-   * @param interfaceGroup  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;InterfaceGroup&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InterfaceGroup> createPathVisInterfaceGroupsWithHttpInfo(InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    createPathVisInterfaceGroupsValidateRequest(interfaceGroup);
+  public ApiResponse<InterfaceGroup> createPathVisInterfaceGroupsWithHttpInfo(CreatePathVisInterfaceGroupsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createPathVisInterfaceGroups");
+    }
+    createPathVisInterfaceGroupsValidateRequest(request.getInterfaceGroup());
 
-    var requestBuilder = createPathVisInterfaceGroupsRequestBuilder(interfaceGroup, aid);
+    var requestBuilder = createPathVisInterfaceGroupsRequestBuilder(request.getInterfaceGroup(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), InterfaceGroup.class);
   }
@@ -97,8 +95,8 @@ public class PathVisualizationInterfaceGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createPathVisInterfaceGroupsRequestBuilder(InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createPathVisInterfaceGroupsRequestBuilder(InterfaceGroup interfaceGroup, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/network/path-vis/interface-groups";
@@ -117,29 +115,73 @@ public class PathVisualizationInterfaceGroupsApi {
     requestBuilder.requestBody(interfaceGroup);
     return requestBuilder;
   }
-  /**
-   * Delete interface group
-   * Deletes a path visualization interface group.
-   * @param interfaceGroupId ID of the network path vis interface group (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deletePathVisInterfaceGroup(String interfaceGroupId, String aid) throws ApiException {
-    deletePathVisInterfaceGroupWithHttpInfo(interfaceGroupId, aid);
+
+  public static final class CreatePathVisInterfaceGroupsRequest {
+    private final InterfaceGroup interfaceGroup;
+    private final String aid;
+
+    private CreatePathVisInterfaceGroupsRequest(Builder builder) {
+      this.interfaceGroup = builder.interfaceGroup;
+      this.aid = builder.aid;
+    }
+    public InterfaceGroup getInterfaceGroup() {
+      return interfaceGroup;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .interfaceGroup(interfaceGroup)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private InterfaceGroup interfaceGroup;
+      private String aid;
+
+      public Builder interfaceGroup(InterfaceGroup interfaceGroup) {
+        this.interfaceGroup = interfaceGroup;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreatePathVisInterfaceGroupsRequest build() {
+        return new CreatePathVisInterfaceGroupsRequest(this);
+      }
+    }
   }
 
   /**
    * Delete interface group
    * Deletes a path visualization interface group.
-   * @param interfaceGroupId ID of the network path vis interface group (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePathVisInterfaceGroup(DeletePathVisInterfaceGroupRequest request) throws ApiException {
+    deletePathVisInterfaceGroupWithHttpInfo(request);
+  }
+
+  /**
+   * Delete interface group
+   * Deletes a path visualization interface group.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deletePathVisInterfaceGroupWithHttpInfo(String interfaceGroupId, String aid) throws ApiException {
-    deletePathVisInterfaceGroupValidateRequest(interfaceGroupId);
+  public ApiResponse<Void> deletePathVisInterfaceGroupWithHttpInfo(DeletePathVisInterfaceGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deletePathVisInterfaceGroup");
+    }
+    deletePathVisInterfaceGroupValidateRequest(request.getInterfaceGroupId());
 
-    var requestBuilder = deletePathVisInterfaceGroupRequestBuilder(interfaceGroupId, aid);
+    var requestBuilder = deletePathVisInterfaceGroupRequestBuilder(request.getInterfaceGroupId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -151,8 +193,8 @@ public class PathVisualizationInterfaceGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deletePathVisInterfaceGroupRequestBuilder(String interfaceGroupId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deletePathVisInterfaceGroupRequestBuilder(String interfaceGroupId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
@@ -170,29 +212,75 @@ public class PathVisualizationInterfaceGroupsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeletePathVisInterfaceGroupRequest {
+    private final String interfaceGroupId;
+    private final String aid;
+
+    private DeletePathVisInterfaceGroupRequest(Builder builder) {
+      this.interfaceGroupId = builder.interfaceGroupId;
+      this.aid = builder.aid;
+    }
+    public String getInterfaceGroupId() {
+      return interfaceGroupId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .interfaceGroupId(interfaceGroupId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String interfaceGroupId;
+      private String aid;
+
+      public Builder interfaceGroupId(String interfaceGroupId) {
+        this.interfaceGroupId = interfaceGroupId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeletePathVisInterfaceGroupRequest build() {
+        return new DeletePathVisInterfaceGroupRequest(this);
+      }
+    }
+  }
+
   /**
    * List interface groups for path visualization
    * Returns a list of all path visualization interface groups. For more information about interface groups, see https://docs.thousandeyes.com/product-documentation/end-user-monitoring/viewing-data/endpoint-agent-views-reference#grouping.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return InterfaceGroups
    * @throws ApiException if fails to make API call
    */
-  public InterfaceGroups getPathVisInterfaceGroups(String aid) throws ApiException {
-    ApiResponse<InterfaceGroups> response = getPathVisInterfaceGroupsWithHttpInfo(aid);
+  public InterfaceGroups getPathVisInterfaceGroups(GetPathVisInterfaceGroupsRequest request) throws ApiException {
+    ApiResponse<InterfaceGroups> response = getPathVisInterfaceGroupsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List interface groups for path visualization
    * Returns a list of all path visualization interface groups. For more information about interface groups, see https://docs.thousandeyes.com/product-documentation/end-user-monitoring/viewing-data/endpoint-agent-views-reference#grouping.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;InterfaceGroups&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InterfaceGroups> getPathVisInterfaceGroupsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<InterfaceGroups> getPathVisInterfaceGroupsWithHttpInfo(GetPathVisInterfaceGroupsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPathVisInterfaceGroups");
+    }
     getPathVisInterfaceGroupsValidateRequest();
 
-    var requestBuilder = getPathVisInterfaceGroupsRequestBuilder(aid);
+    var requestBuilder = getPathVisInterfaceGroupsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), InterfaceGroups.class);
   }
@@ -200,8 +288,8 @@ public class PathVisualizationInterfaceGroupsApi {
   private void getPathVisInterfaceGroupsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getPathVisInterfaceGroupsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPathVisInterfaceGroupsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/network/path-vis/interface-groups";
@@ -218,33 +306,64 @@ public class PathVisualizationInterfaceGroupsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPathVisInterfaceGroupsRequest {
+    private final String aid;
+
+    private GetPathVisInterfaceGroupsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetPathVisInterfaceGroupsRequest build() {
+        return new GetPathVisInterfaceGroupsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update interface group
    * Updates a path visualization interface group..
-   * @param interfaceGroupId ID of the network path vis interface group (required)
-   * @param interfaceGroup  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return InterfaceGroup
    * @throws ApiException if fails to make API call
    */
-  public InterfaceGroup updatePathVisInterfaceGroup(String interfaceGroupId, InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    ApiResponse<InterfaceGroup> response = updatePathVisInterfaceGroupWithHttpInfo(interfaceGroupId, interfaceGroup, aid);
+  public InterfaceGroup updatePathVisInterfaceGroup(UpdatePathVisInterfaceGroupRequest request) throws ApiException {
+    ApiResponse<InterfaceGroup> response = updatePathVisInterfaceGroupWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update interface group
    * Updates a path visualization interface group..
-   * @param interfaceGroupId ID of the network path vis interface group (required)
-   * @param interfaceGroup  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;InterfaceGroup&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<InterfaceGroup> updatePathVisInterfaceGroupWithHttpInfo(String interfaceGroupId, InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    updatePathVisInterfaceGroupValidateRequest(interfaceGroupId, interfaceGroup);
+  public ApiResponse<InterfaceGroup> updatePathVisInterfaceGroupWithHttpInfo(UpdatePathVisInterfaceGroupRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updatePathVisInterfaceGroup");
+    }
+    updatePathVisInterfaceGroupValidateRequest(request.getInterfaceGroupId(), request.getInterfaceGroup());
 
-    var requestBuilder = updatePathVisInterfaceGroupRequestBuilder(interfaceGroupId, interfaceGroup, aid);
+    var requestBuilder = updatePathVisInterfaceGroupRequestBuilder(request.getInterfaceGroupId(), request.getInterfaceGroup(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), InterfaceGroup.class);
   }
@@ -260,8 +379,8 @@ public class PathVisualizationInterfaceGroupsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updatePathVisInterfaceGroupRequestBuilder(String interfaceGroupId, InterfaceGroup interfaceGroup, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updatePathVisInterfaceGroupRequestBuilder(String interfaceGroupId, InterfaceGroup interfaceGroup, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
@@ -281,4 +400,58 @@ public class PathVisualizationInterfaceGroupsApi {
     requestBuilder.requestBody(interfaceGroup);
     return requestBuilder;
   }
+
+  public static final class UpdatePathVisInterfaceGroupRequest {
+    private final String interfaceGroupId;
+    private final InterfaceGroup interfaceGroup;
+    private final String aid;
+
+    private UpdatePathVisInterfaceGroupRequest(Builder builder) {
+      this.interfaceGroupId = builder.interfaceGroupId;
+      this.interfaceGroup = builder.interfaceGroup;
+      this.aid = builder.aid;
+    }
+    public String getInterfaceGroupId() {
+      return interfaceGroupId;
+    }
+    public InterfaceGroup getInterfaceGroup() {
+      return interfaceGroup;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .interfaceGroupId(interfaceGroupId)
+          .interfaceGroup(interfaceGroup)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String interfaceGroupId;
+      private InterfaceGroup interfaceGroup;
+      private String aid;
+
+      public Builder interfaceGroupId(String interfaceGroupId) {
+        this.interfaceGroupId = interfaceGroupId;
+        return this;
+      }
+      public Builder interfaceGroup(InterfaceGroup interfaceGroup) {
+        this.interfaceGroup = interfaceGroup;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdatePathVisInterfaceGroupRequest build() {
+        return new UpdatePathVisInterfaceGroupRequest(this);
+      }
+    }
+  }
+
 }

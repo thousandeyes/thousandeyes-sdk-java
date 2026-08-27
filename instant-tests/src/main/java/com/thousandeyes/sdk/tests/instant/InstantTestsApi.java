@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -33,12 +32,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -60,26 +57,27 @@ public class InstantTestsApi {
   /**
    * Run instant test
    * Run an existing instant test.
-   * @param testId Identifier for the instant test you wish to rerun. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @throws ApiException if fails to make API call
    */
-  public void runInstantTest(String testId, String aid) throws ApiException {
-    runInstantTestWithHttpInfo(testId, aid);
+  public void runInstantTest(RunInstantTestRequest request) throws ApiException {
+    runInstantTestWithHttpInfo(request);
   }
 
   /**
    * Run instant test
    * Run an existing instant test.
-   * @param testId Identifier for the instant test you wish to rerun. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> runInstantTestWithHttpInfo(String testId, String aid) throws ApiException {
-    runInstantTestValidateRequest(testId);
+  public ApiResponse<Void> runInstantTestWithHttpInfo(RunInstantTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling runInstantTest");
+    }
+    runInstantTestValidateRequest(request.getTestId());
 
-    var requestBuilder = runInstantTestRequestBuilder(testId, aid);
+    var requestBuilder = runInstantTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -91,8 +89,8 @@ public class InstantTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder runInstantTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder runInstantTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/{testId}/run"
@@ -110,4 +108,47 @@ public class InstantTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class RunInstantTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private RunInstantTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public RunInstantTestRequest build() {
+        return new RunInstantTestRequest(this);
+      }
+    }
+  }
+
 }

@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -41,12 +40,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -68,28 +65,29 @@ public class DashboardSnapshotsApi {
   /**
    * Create dashboard snapshot
    * Creates a new dashboard snapshot within your account group. The &#x60;Edit Snapshots&#x60; permission is required to use this endpoint. 
-   * @param generateDashboardSnapshotRequest Request body schema to create a dashboard snapshot. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DashboardSnapshotResponse
    * @throws ApiException if fails to make API call
    */
-  public DashboardSnapshotResponse createDashboardSnapshot(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest, String aid) throws ApiException {
-    ApiResponse<DashboardSnapshotResponse> response = createDashboardSnapshotWithHttpInfo(generateDashboardSnapshotRequest, aid);
+  public DashboardSnapshotResponse createDashboardSnapshot(CreateDashboardSnapshotRequest request) throws ApiException {
+    ApiResponse<DashboardSnapshotResponse> response = createDashboardSnapshotWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create dashboard snapshot
    * Creates a new dashboard snapshot within your account group. The &#x60;Edit Snapshots&#x60; permission is required to use this endpoint. 
-   * @param generateDashboardSnapshotRequest Request body schema to create a dashboard snapshot. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DashboardSnapshotResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DashboardSnapshotResponse> createDashboardSnapshotWithHttpInfo(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest, String aid) throws ApiException {
-    createDashboardSnapshotValidateRequest(generateDashboardSnapshotRequest);
+  public ApiResponse<DashboardSnapshotResponse> createDashboardSnapshotWithHttpInfo(CreateDashboardSnapshotRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDashboardSnapshot");
+    }
+    createDashboardSnapshotValidateRequest(request.getGenerateDashboardSnapshotRequest());
 
-    var requestBuilder = createDashboardSnapshotRequestBuilder(generateDashboardSnapshotRequest, aid);
+    var requestBuilder = createDashboardSnapshotRequestBuilder(request.getGenerateDashboardSnapshotRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), DashboardSnapshotResponse.class);
   }
@@ -101,8 +99,8 @@ public class DashboardSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDashboardSnapshotRequestBuilder(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDashboardSnapshotRequestBuilder(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/dashboard-snapshots";
@@ -121,29 +119,73 @@ public class DashboardSnapshotsApi {
     requestBuilder.requestBody(generateDashboardSnapshotRequest);
     return requestBuilder;
   }
-  /**
-   * Delete dashboard snapshot
-   * Deletes a dashboard snapshot using the &#x60;snapshotId&#x60; provided in the request. Users with the &#x60;Edit reports for all users in account group&#x60; permission (Account Admin) can delete any dashboard snapshot. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDashboardSnapshot(String snapshotId, String aid) throws ApiException {
-    deleteDashboardSnapshotWithHttpInfo(snapshotId, aid);
+
+  public static final class CreateDashboardSnapshotRequest {
+    private final GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest;
+    private final String aid;
+
+    private CreateDashboardSnapshotRequest(Builder builder) {
+      this.generateDashboardSnapshotRequest = builder.generateDashboardSnapshotRequest;
+      this.aid = builder.aid;
+    }
+    public GenerateDashboardSnapshotRequest getGenerateDashboardSnapshotRequest() {
+      return generateDashboardSnapshotRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .generateDashboardSnapshotRequest(generateDashboardSnapshotRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest;
+      private String aid;
+
+      public Builder generateDashboardSnapshotRequest(GenerateDashboardSnapshotRequest generateDashboardSnapshotRequest) {
+        this.generateDashboardSnapshotRequest = generateDashboardSnapshotRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateDashboardSnapshotRequest build() {
+        return new CreateDashboardSnapshotRequest(this);
+      }
+    }
   }
 
   /**
    * Delete dashboard snapshot
    * Deletes a dashboard snapshot using the &#x60;snapshotId&#x60; provided in the request. Users with the &#x60;Edit reports for all users in account group&#x60; permission (Account Admin) can delete any dashboard snapshot. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDashboardSnapshot(DeleteDashboardSnapshotRequest request) throws ApiException {
+    deleteDashboardSnapshotWithHttpInfo(request);
+  }
+
+  /**
+   * Delete dashboard snapshot
+   * Deletes a dashboard snapshot using the &#x60;snapshotId&#x60; provided in the request. Users with the &#x60;Edit reports for all users in account group&#x60; permission (Account Admin) can delete any dashboard snapshot. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDashboardSnapshotWithHttpInfo(String snapshotId, String aid) throws ApiException {
-    deleteDashboardSnapshotValidateRequest(snapshotId);
+  public ApiResponse<Void> deleteDashboardSnapshotWithHttpInfo(DeleteDashboardSnapshotRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDashboardSnapshot");
+    }
+    deleteDashboardSnapshotValidateRequest(request.getSnapshotId());
 
-    var requestBuilder = deleteDashboardSnapshotRequestBuilder(snapshotId, aid);
+    var requestBuilder = deleteDashboardSnapshotRequestBuilder(request.getSnapshotId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -155,8 +197,8 @@ public class DashboardSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDashboardSnapshotRequestBuilder(String snapshotId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDashboardSnapshotRequestBuilder(String snapshotId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/dashboard-snapshots/{snapshotId}"
@@ -174,31 +216,75 @@ public class DashboardSnapshotsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDashboardSnapshotRequest {
+    private final String snapshotId;
+    private final String aid;
+
+    private DeleteDashboardSnapshotRequest(Builder builder) {
+      this.snapshotId = builder.snapshotId;
+      this.aid = builder.aid;
+    }
+    public String getSnapshotId() {
+      return snapshotId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .snapshotId(snapshotId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String snapshotId;
+      private String aid;
+
+      public Builder snapshotId(String snapshotId) {
+        this.snapshotId = snapshotId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDashboardSnapshotRequest build() {
+        return new DeleteDashboardSnapshotRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve dashboard snapshot
    * This operation returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiDashboardSnapshot
    * @throws ApiException if fails to make API call
    */
-  public ApiDashboardSnapshot getDashboardSnapshot(String snapshotId, String aid) throws ApiException {
-    ApiResponse<ApiDashboardSnapshot> response = getDashboardSnapshotWithHttpInfo(snapshotId, aid);
+  public ApiDashboardSnapshot getDashboardSnapshot(GetDashboardSnapshotRequest request) throws ApiException {
+    ApiResponse<ApiDashboardSnapshot> response = getDashboardSnapshotWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve dashboard snapshot
    * This operation returns a list of widgets configured in dashboard snapshot configured in ThousandEyes. Seed this endpoint with a snapshotId found from the /dashboard-snapshots endpoint. This endpoint requires the &#x60;View Snapshots&#x60; permission be assigned to the role of the user accessing this endpoint. Returns a list of widgets configured within a dashboard snapshot. Use the &#x60;snapshotId&#x60; obtained from the &#x60;/dashboard-snapshots&#x60; endpoint. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot;
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiDashboardSnapshot&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiDashboardSnapshot> getDashboardSnapshotWithHttpInfo(String snapshotId, String aid) throws ApiException {
-    getDashboardSnapshotValidateRequest(snapshotId);
+  public ApiResponse<ApiDashboardSnapshot> getDashboardSnapshotWithHttpInfo(GetDashboardSnapshotRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardSnapshot");
+    }
+    getDashboardSnapshotValidateRequest(request.getSnapshotId());
 
-    var requestBuilder = getDashboardSnapshotRequestBuilder(snapshotId, aid);
+    var requestBuilder = getDashboardSnapshotRequestBuilder(request.getSnapshotId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiDashboardSnapshot.class);
   }
@@ -210,8 +296,8 @@ public class DashboardSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardSnapshotRequestBuilder(String snapshotId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardSnapshotRequestBuilder(String snapshotId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboard-snapshots/{snapshotId}"
@@ -229,33 +315,75 @@ public class DashboardSnapshotsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardSnapshotRequest {
+    private final String snapshotId;
+    private final String aid;
+
+    private GetDashboardSnapshotRequest(Builder builder) {
+      this.snapshotId = builder.snapshotId;
+      this.aid = builder.aid;
+    }
+    public String getSnapshotId() {
+      return snapshotId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .snapshotId(snapshotId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String snapshotId;
+      private String aid;
+
+      public Builder snapshotId(String snapshotId) {
+        this.snapshotId = snapshotId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardSnapshotRequest build() {
+        return new GetDashboardSnapshotRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve dashboard snapshot data
    * Returns actual metrics used in the generation of a dashboard snapshot. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiWidgetDataSnapshotResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiWidgetDataSnapshotResponse getDashboardSnapshotWidgetData(String snapshotId, String widgetId, String aid) throws ApiException {
-    ApiResponse<ApiWidgetDataSnapshotResponse> response = getDashboardSnapshotWidgetDataWithHttpInfo(snapshotId, widgetId, aid);
+  public ApiWidgetDataSnapshotResponse getDashboardSnapshotWidgetData(GetDashboardSnapshotWidgetDataRequest request) throws ApiException {
+    ApiResponse<ApiWidgetDataSnapshotResponse> response = getDashboardSnapshotWidgetDataWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve dashboard snapshot data
    * Returns actual metrics used in the generation of a dashboard snapshot. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param widgetId A Identifier for a widget. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiWidgetDataSnapshotResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiWidgetDataSnapshotResponse> getDashboardSnapshotWidgetDataWithHttpInfo(String snapshotId, String widgetId, String aid) throws ApiException {
-    getDashboardSnapshotWidgetDataValidateRequest(snapshotId, widgetId);
+  public ApiResponse<ApiWidgetDataSnapshotResponse> getDashboardSnapshotWidgetDataWithHttpInfo(GetDashboardSnapshotWidgetDataRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardSnapshotWidgetData");
+    }
+    getDashboardSnapshotWidgetDataValidateRequest(request.getSnapshotId(), request.getWidgetId());
 
-    var requestBuilder = getDashboardSnapshotWidgetDataRequestBuilder(snapshotId, widgetId, aid);
+    var requestBuilder = getDashboardSnapshotWidgetDataRequestBuilder(request.getSnapshotId(), request.getWidgetId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiWidgetDataSnapshotResponse.class);
   }
@@ -271,8 +399,8 @@ public class DashboardSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardSnapshotWidgetDataRequestBuilder(String snapshotId, String widgetId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardSnapshotWidgetDataRequestBuilder(String snapshotId, String widgetId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboard-snapshots/{snapshotId}/widgets/{widgetId}"
@@ -291,33 +419,86 @@ public class DashboardSnapshotsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDashboardSnapshotWidgetDataRequest {
+    private final String snapshotId;
+    private final String widgetId;
+    private final String aid;
+
+    private GetDashboardSnapshotWidgetDataRequest(Builder builder) {
+      this.snapshotId = builder.snapshotId;
+      this.widgetId = builder.widgetId;
+      this.aid = builder.aid;
+    }
+    public String getSnapshotId() {
+      return snapshotId;
+    }
+    public String getWidgetId() {
+      return widgetId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .snapshotId(snapshotId)
+          .widgetId(widgetId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String snapshotId;
+      private String widgetId;
+      private String aid;
+
+      public Builder snapshotId(String snapshotId) {
+        this.snapshotId = snapshotId;
+        return this;
+      }
+      public Builder widgetId(String widgetId) {
+        this.widgetId = widgetId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDashboardSnapshotWidgetDataRequest build() {
+        return new GetDashboardSnapshotWidgetDataRequest(this);
+      }
+    }
+  }
+
   /**
    * List dashboard snapshots
    * Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param dashboardId  (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return DashboardSnapshotsPage
    * @throws ApiException if fails to make API call
    */
-  public DashboardSnapshotsPage getDashboardSnapshots(String aid, String dashboardId, String cursor) throws ApiException {
-    ApiResponse<DashboardSnapshotsPage> response = getDashboardSnapshotsWithHttpInfo(aid, dashboardId, cursor);
+  public DashboardSnapshotsPage getDashboardSnapshots(GetDashboardSnapshotsRequest request) throws ApiException {
+    ApiResponse<DashboardSnapshotsPage> response = getDashboardSnapshotsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List dashboard snapshots
    * Returns a list of dashboard snapshots within your account group. Use this data to identify a specific dashboard snapshot, which can be used in other endpoints to access aggregated data. The &#x60;View Snapshots&#x60; permission is required to use this endpoint.\&quot; 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param dashboardId  (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DashboardSnapshotsPage&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DashboardSnapshotsPage> getDashboardSnapshotsWithHttpInfo(String aid, String dashboardId, String cursor) throws ApiException {
+  public ApiResponse<DashboardSnapshotsPage> getDashboardSnapshotsWithHttpInfo(GetDashboardSnapshotsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDashboardSnapshots");
+    }
     getDashboardSnapshotsValidateRequest();
 
-    var requestBuilder = getDashboardSnapshotsRequestBuilder(aid, dashboardId, cursor);
+    var requestBuilder = getDashboardSnapshotsRequestBuilder(request.getAid(), request.getDashboardId(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), DashboardSnapshotsPage.class);
   }
@@ -325,8 +506,8 @@ public class DashboardSnapshotsApi {
   private void getDashboardSnapshotsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDashboardSnapshotsRequestBuilder(String aid, String dashboardId, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDashboardSnapshotsRequestBuilder(String aid, String dashboardId, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/dashboard-snapshots";
@@ -345,31 +526,84 @@ public class DashboardSnapshotsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
-  /**
-   * Update snapshot expiration
-   * Updates the expiration date of a dashboard snapshot. The &#x60;Edit snapshots&#x60; permission is required to access this endpoint. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param updateSnapshotExpirationDateApiRequest Request body schema to update a snapshot expiration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void updateDashboardSnapshotExpirationDate(String snapshotId, UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest, String aid) throws ApiException {
-    updateDashboardSnapshotExpirationDateWithHttpInfo(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+
+  public static final class GetDashboardSnapshotsRequest {
+    private final String aid;
+    private final String dashboardId;
+    private final String cursor;
+
+    private GetDashboardSnapshotsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.dashboardId = builder.dashboardId;
+      this.cursor = builder.cursor;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getDashboardId() {
+      return dashboardId;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .dashboardId(dashboardId)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String dashboardId;
+      private String cursor;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder dashboardId(String dashboardId) {
+        this.dashboardId = dashboardId;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetDashboardSnapshotsRequest build() {
+        return new GetDashboardSnapshotsRequest(this);
+      }
+    }
   }
 
   /**
    * Update snapshot expiration
    * Updates the expiration date of a dashboard snapshot. The &#x60;Edit snapshots&#x60; permission is required to access this endpoint. 
-   * @param snapshotId A Identifier for a dashboard snapshot which can be obtained from the &#x60;/dashboards-snapshots&#x60; endpoint. (required)
-   * @param updateSnapshotExpirationDateApiRequest Request body schema to update a snapshot expiration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void updateDashboardSnapshotExpirationDate(UpdateDashboardSnapshotExpirationDateRequest request) throws ApiException {
+    updateDashboardSnapshotExpirationDateWithHttpInfo(request);
+  }
+
+  /**
+   * Update snapshot expiration
+   * Updates the expiration date of a dashboard snapshot. The &#x60;Edit snapshots&#x60; permission is required to access this endpoint. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateDashboardSnapshotExpirationDateWithHttpInfo(String snapshotId, UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest, String aid) throws ApiException {
-    updateDashboardSnapshotExpirationDateValidateRequest(snapshotId, updateSnapshotExpirationDateApiRequest);
+  public ApiResponse<Void> updateDashboardSnapshotExpirationDateWithHttpInfo(UpdateDashboardSnapshotExpirationDateRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDashboardSnapshotExpirationDate");
+    }
+    updateDashboardSnapshotExpirationDateValidateRequest(request.getSnapshotId(), request.getUpdateSnapshotExpirationDateApiRequest());
 
-    var requestBuilder = updateDashboardSnapshotExpirationDateRequestBuilder(snapshotId, updateSnapshotExpirationDateApiRequest, aid);
+    var requestBuilder = updateDashboardSnapshotExpirationDateRequestBuilder(request.getSnapshotId(), request.getUpdateSnapshotExpirationDateApiRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -385,8 +619,8 @@ public class DashboardSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDashboardSnapshotExpirationDateRequestBuilder(String snapshotId, UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDashboardSnapshotExpirationDateRequestBuilder(String snapshotId, UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
     String path = "/dashboard-snapshots/{snapshotId}"
@@ -406,4 +640,58 @@ public class DashboardSnapshotsApi {
     requestBuilder.requestBody(updateSnapshotExpirationDateApiRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDashboardSnapshotExpirationDateRequest {
+    private final String snapshotId;
+    private final UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest;
+    private final String aid;
+
+    private UpdateDashboardSnapshotExpirationDateRequest(Builder builder) {
+      this.snapshotId = builder.snapshotId;
+      this.updateSnapshotExpirationDateApiRequest = builder.updateSnapshotExpirationDateApiRequest;
+      this.aid = builder.aid;
+    }
+    public String getSnapshotId() {
+      return snapshotId;
+    }
+    public UpdateSnapshotExpirationDateApiRequest getUpdateSnapshotExpirationDateApiRequest() {
+      return updateSnapshotExpirationDateApiRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .snapshotId(snapshotId)
+          .updateSnapshotExpirationDateApiRequest(updateSnapshotExpirationDateApiRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String snapshotId;
+      private UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest;
+      private String aid;
+
+      public Builder snapshotId(String snapshotId) {
+        this.snapshotId = snapshotId;
+        return this;
+      }
+      public Builder updateSnapshotExpirationDateApiRequest(UpdateSnapshotExpirationDateApiRequest updateSnapshotExpirationDateApiRequest) {
+        this.updateSnapshotExpirationDateApiRequest = updateSnapshotExpirationDateApiRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateDashboardSnapshotExpirationDateRequest build() {
+        return new UpdateDashboardSnapshotExpirationDateRequest(this);
+      }
+    }
+  }
+
 }

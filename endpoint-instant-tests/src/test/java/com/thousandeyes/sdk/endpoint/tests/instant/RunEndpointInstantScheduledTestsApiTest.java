@@ -82,7 +82,6 @@ public class RunEndpointInstantScheduledTestsApiTest {
     {
         String testId = "765231567";
 
-
         var responseBodyJson = """
                 {
                   "message" : "Successfully reran the instant scheduled test with testId=765231567"
@@ -103,7 +102,11 @@ public class RunEndpointInstantScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.runEndpointScheduledInstantTest(testId, null);
+        var request = RunEndpointInstantScheduledTestsApi.RunEndpointScheduledInstantTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.runEndpointScheduledInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

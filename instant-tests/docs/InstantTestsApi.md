@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## runInstantTest
 
-> void runInstantTest(testId, aid)
+> void runInstantTest(RunInstantTestRequest)
 
 Run instant test
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.InstantTestsApi;
 
 public class Example {
@@ -41,7 +41,11 @@ public class Example {
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.runInstantTest(testId, aid);
+            InstantTestsApi.RunInstantTestRequest request = InstantTestsApi.RunInstantTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.runInstantTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling InstantTestsApi#runInstantTest");
             System.err.println("Status code: " + e.getCode());
@@ -55,11 +59,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Identifier for the instant test you wish to rerun. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**RunInstantTestRequest**](InstantTestsApi.md#RunInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -89,7 +91,7 @@ null (empty response body)
 
 ## runInstantTestWithHttpInfo
 
-> ApiResponse<Void> runInstantTest runInstantTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> runInstantTest runInstantTestWithHttpInfo(RunInstantTestRequest)
 
 Run instant test
 
@@ -104,7 +106,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.InstantTestsApi;
 
 public class Example {
@@ -120,7 +122,11 @@ public class Example {
         String testId = "105"; // String | Identifier for the instant test you wish to rerun.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.runInstantTestWithHttpInfo(testId, aid);
+            InstantTestsApi.RunInstantTestRequest request = InstantTestsApi.RunInstantTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.runInstantTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -136,11 +142,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Identifier for the instant test you wish to rerun. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**RunInstantTestRequest**](InstantTestsApi.md#RunInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -167,4 +171,15 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="RunInstantTestRequest"></a>
+## RunInstantTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Identifier for the instant test you wish to rerun. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

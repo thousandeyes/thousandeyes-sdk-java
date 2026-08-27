@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,29 @@ public class InternetInsightsCatalogProvidersApi {
   /**
    * List catalog providers
    * Returns a list of catalog providers using the specified filters. Returns high-level information about each catalog provider. For more details about a specific provider, call the Get a catalog provider endpoint.  &lt;b&gt;Note:&lt;/b&gt; Support for pagination will be added in the future. 
-   * @param apiCatalogProviderFilter  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiCatalogProviderResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiCatalogProviderResponse filterCatalogProviders(ApiCatalogProviderFilter apiCatalogProviderFilter, String aid) throws ApiException {
-    ApiResponse<ApiCatalogProviderResponse> response = filterCatalogProvidersWithHttpInfo(apiCatalogProviderFilter, aid);
+  public ApiCatalogProviderResponse filterCatalogProviders(FilterCatalogProvidersRequest request) throws ApiException {
+    ApiResponse<ApiCatalogProviderResponse> response = filterCatalogProvidersWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List catalog providers
    * Returns a list of catalog providers using the specified filters. Returns high-level information about each catalog provider. For more details about a specific provider, call the Get a catalog provider endpoint.  &lt;b&gt;Note:&lt;/b&gt; Support for pagination will be added in the future. 
-   * @param apiCatalogProviderFilter  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiCatalogProviderResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiCatalogProviderResponse> filterCatalogProvidersWithHttpInfo(ApiCatalogProviderFilter apiCatalogProviderFilter, String aid) throws ApiException {
-    filterCatalogProvidersValidateRequest(apiCatalogProviderFilter);
+  public ApiResponse<ApiCatalogProviderResponse> filterCatalogProvidersWithHttpInfo(FilterCatalogProvidersRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterCatalogProviders");
+    }
+    filterCatalogProvidersValidateRequest(request.getApiCatalogProviderFilter());
 
-    var requestBuilder = filterCatalogProvidersRequestBuilder(apiCatalogProviderFilter, aid);
+    var requestBuilder = filterCatalogProvidersRequestBuilder(request.getApiCatalogProviderFilter(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiCatalogProviderResponse.class);
   }
@@ -98,8 +96,8 @@ public class InternetInsightsCatalogProvidersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterCatalogProvidersRequestBuilder(ApiCatalogProviderFilter apiCatalogProviderFilter, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterCatalogProvidersRequestBuilder(ApiCatalogProviderFilter apiCatalogProviderFilter, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/internet-insights/catalog/providers/filter";
@@ -118,31 +116,75 @@ public class InternetInsightsCatalogProvidersApi {
     requestBuilder.requestBody(apiCatalogProviderFilter);
     return requestBuilder;
   }
+
+  public static final class FilterCatalogProvidersRequest {
+    private final ApiCatalogProviderFilter apiCatalogProviderFilter;
+    private final String aid;
+
+    private FilterCatalogProvidersRequest(Builder builder) {
+      this.apiCatalogProviderFilter = builder.apiCatalogProviderFilter;
+      this.aid = builder.aid;
+    }
+    public ApiCatalogProviderFilter getApiCatalogProviderFilter() {
+      return apiCatalogProviderFilter;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .apiCatalogProviderFilter(apiCatalogProviderFilter)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private ApiCatalogProviderFilter apiCatalogProviderFilter;
+      private String aid;
+
+      public Builder apiCatalogProviderFilter(ApiCatalogProviderFilter apiCatalogProviderFilter) {
+        this.apiCatalogProviderFilter = apiCatalogProviderFilter;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public FilterCatalogProvidersRequest build() {
+        return new FilterCatalogProvidersRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve a catalog provider
    * Returns the details of a catalog provider. 
-   * @param providerId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiCatalogProviderDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiCatalogProviderDetails getCatalogProvider(UUID providerId, String aid) throws ApiException {
-    ApiResponse<ApiCatalogProviderDetails> response = getCatalogProviderWithHttpInfo(providerId, aid);
+  public ApiCatalogProviderDetails getCatalogProvider(GetCatalogProviderRequest request) throws ApiException {
+    ApiResponse<ApiCatalogProviderDetails> response = getCatalogProviderWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve a catalog provider
    * Returns the details of a catalog provider. 
-   * @param providerId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiCatalogProviderDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiCatalogProviderDetails> getCatalogProviderWithHttpInfo(UUID providerId, String aid) throws ApiException {
-    getCatalogProviderValidateRequest(providerId);
+  public ApiResponse<ApiCatalogProviderDetails> getCatalogProviderWithHttpInfo(GetCatalogProviderRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getCatalogProvider");
+    }
+    getCatalogProviderValidateRequest(request.getProviderId());
 
-    var requestBuilder = getCatalogProviderRequestBuilder(providerId, aid);
+    var requestBuilder = getCatalogProviderRequestBuilder(request.getProviderId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiCatalogProviderDetails.class);
   }
@@ -154,8 +196,8 @@ public class InternetInsightsCatalogProvidersApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getCatalogProviderRequestBuilder(UUID providerId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getCatalogProviderRequestBuilder(UUID providerId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/internet-insights/catalog/providers/{providerId}"
@@ -173,4 +215,47 @@ public class InternetInsightsCatalogProvidersApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetCatalogProviderRequest {
+    private final UUID providerId;
+    private final String aid;
+
+    private GetCatalogProviderRequest(Builder builder) {
+      this.providerId = builder.providerId;
+      this.aid = builder.aid;
+    }
+    public UUID getProviderId() {
+      return providerId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .providerId(providerId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private UUID providerId;
+      private String aid;
+
+      public Builder providerId(UUID providerId) {
+        this.providerId = providerId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetCatalogProviderRequest build() {
+        return new GetCatalogProviderRequest(this);
+      }
+    }
+  }
+
 }

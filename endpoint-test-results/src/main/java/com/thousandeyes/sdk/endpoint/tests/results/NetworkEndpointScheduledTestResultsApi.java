@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -47,12 +46,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -74,57 +71,45 @@ public class NetworkEndpointScheduledTestResultsApi {
   /**
    * Retrieve network scheduled test results with pagination
    * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param endpointTestsDataRoundsSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<NetworkEndpointTestResult, NetworkEndpointTestResults>
    */
-  public Paginator<NetworkEndpointTestResult, NetworkEndpointTestResults> filterScheduledTestNetworkResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, List<ExpandEndpointNetworkOptions> expand, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) {
-    return new Paginator<>(cursor -> filterScheduledTestNetworkResults(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch),
+  public Paginator<NetworkEndpointTestResult, NetworkEndpointTestResults> filterScheduledTestNetworkResultsPaginated(FilterScheduledTestNetworkResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterScheduledTestNetworkResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterScheduledTestNetworkResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            NetworkEndpointTestResults::getResults);
 
   }
   /**
    * Retrieve network scheduled test results
    * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param endpointTestsDataRoundsSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return NetworkEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public NetworkEndpointTestResults filterScheduledTestNetworkResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointNetworkOptions> expand, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) throws ApiException {
-    ApiResponse<NetworkEndpointTestResults> response = filterScheduledTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
+  public NetworkEndpointTestResults filterScheduledTestNetworkResults(FilterScheduledTestNetworkResultsRequest request) throws ApiException {
+    ApiResponse<NetworkEndpointTestResults> response = filterScheduledTestNetworkResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve network scheduled test results
    * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param endpointTestsDataRoundsSearch Tests data search filters. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;NetworkEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointNetworkOptions> expand, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) throws ApiException {
-    filterScheduledTestNetworkResultsValidateRequest(testId);
+  public ApiResponse<NetworkEndpointTestResults> filterScheduledTestNetworkResultsWithHttpInfo(FilterScheduledTestNetworkResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterScheduledTestNetworkResults");
+    }
+    filterScheduledTestNetworkResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = filterScheduledTestNetworkResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor, expand, endpointTestsDataRoundsSearch);
+    var requestBuilder = filterScheduledTestNetworkResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor(), request.getExpand(), request.getEndpointTestsDataRoundsSearch());
 
     return apiClient.send(requestBuilder.build(), NetworkEndpointTestResults.class);
   }
@@ -136,8 +121,8 @@ public class NetworkEndpointScheduledTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterScheduledTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointNetworkOptions> expand, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterScheduledTestNetworkResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor, List<ExpandEndpointNetworkOptions> expand, EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/scheduled-tests/{testId}/network/filter"
@@ -162,63 +147,157 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.requestBody(endpointTestsDataRoundsSearch);
     return requestBuilder;
   }
+
+  public static final class FilterScheduledTestNetworkResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+    private final List<ExpandEndpointNetworkOptions> expand;
+    private final EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch;
+
+    private FilterScheduledTestNetworkResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+      this.expand = builder.expand;
+      this.endpointTestsDataRoundsSearch = builder.endpointTestsDataRoundsSearch;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public List<ExpandEndpointNetworkOptions> getExpand() {
+      return expand;
+    }
+    public EndpointTestsDataRoundsSearch getEndpointTestsDataRoundsSearch() {
+      return endpointTestsDataRoundsSearch;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor)
+          .expand(expand)
+          .endpointTestsDataRoundsSearch(endpointTestsDataRoundsSearch);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+      private List<ExpandEndpointNetworkOptions> expand;
+      private EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointNetworkOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder endpointTestsDataRoundsSearch(EndpointTestsDataRoundsSearch endpointTestsDataRoundsSearch) {
+        this.endpointTestsDataRoundsSearch = endpointTestsDataRoundsSearch;
+        return this;
+      }
+      public FilterScheduledTestNetworkResultsRequest build() {
+        return new FilterScheduledTestNetworkResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve network scheduled test results from multiple tests with pagination
    * Returns network metrics, including loss, latency, and jitter, for multiple test IDs obtained from each endpoint agent. It allows you to specify a time window using search filters to retrieve metrics for specific round IDs within that time frame. The default order of results is unspecified unless you include a sorting preference in the filter. When no time frame is provided, the API returns metrics for the most recent rounds. Access to all accounts associated with the specified test IDs is required to use this endpoint. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults>
    */
-  public Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsPaginated(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, Boolean useAllPermittedAids, List<ExpandEndpointNetworkOptions> expand, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) {
-    return new Paginator<>(cursor -> filterScheduledTestsNetworkResults(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch),
+  public Paginator<NetworkEndpointTestResult, MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsPaginated(FilterScheduledTestsNetworkResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling filterScheduledTestsNetworkResultsPaginated");
+    }
+    return new Paginator<>(cursor -> filterScheduledTestsNetworkResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            MultiTestIdNetworkEndpointTestResults::getResults);
 
   }
   /**
    * Retrieve network scheduled test results from multiple tests
    * Returns network metrics, including loss, latency, and jitter, for multiple test IDs obtained from each endpoint agent. It allows you to specify a time window using search filters to retrieve metrics for specific round IDs within that time frame. The default order of results is unspecified unless you include a sorting preference in the filter. When no time frame is provided, the API returns metrics for the most recent rounds. Access to all accounts associated with the specified test IDs is required to use this endpoint. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
+   * @param request operation parameters (required)
    * @return MultiTestIdNetworkEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointNetworkOptions> expand, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
-    ApiResponse<MultiTestIdNetworkEndpointTestResults> response = filterScheduledTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
+  public MultiTestIdNetworkEndpointTestResults filterScheduledTestsNetworkResults(FilterScheduledTestsNetworkResultsRequest request) throws ApiException {
+    ApiResponse<MultiTestIdNetworkEndpointTestResults> response = filterScheduledTestsNetworkResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve network scheduled test results from multiple tests
    * Returns network metrics, including loss, latency, and jitter, for multiple test IDs obtained from each endpoint agent. It allows you to specify a time window using search filters to retrieve metrics for specific round IDs within that time frame. The default order of results is unspecified unless you include a sorting preference in the filter. When no time frame is provided, the API returns metrics for the most recent rounds. Access to all accounts associated with the specified test IDs is required to use this endpoint. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param max (Optional) Maximum number of objects to return. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
-   * @param useAllPermittedAids Set to &#x60;true&#x60; to load data from all accounts the user has access to. (optional, default to false)
-   * @param expand This parameter is optional and determines whether to expand resources related to test results. By default, no expansion occurs when this query parameter is omitted. To expand a specific resource, such as \&quot;user-profile,\&quot; append &#x60;?expand&#x3D;user-profile&#x60; to the query. (optional
-   * @param multiTestIdEndpointTestsDataRoundsSearch Test data search filters. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;MultiTestIdNetworkEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointNetworkOptions> expand, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
+  public ApiResponse<MultiTestIdNetworkEndpointTestResults> filterScheduledTestsNetworkResultsWithHttpInfo(FilterScheduledTestsNetworkResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterScheduledTestsNetworkResults");
+    }
     filterScheduledTestsNetworkResultsValidateRequest();
 
-    var requestBuilder = filterScheduledTestsNetworkResultsRequestBuilder(aid, window, startDate, endDate, max, cursor, useAllPermittedAids, expand, multiTestIdEndpointTestsDataRoundsSearch);
+    var requestBuilder = filterScheduledTestsNetworkResultsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getMax(), request.getCursor(), request.getUseAllPermittedAids(), request.getExpand(), request.getMultiTestIdEndpointTestsDataRoundsSearch());
 
     return apiClient.send(requestBuilder.build(), MultiTestIdNetworkEndpointTestResults.class);
   }
@@ -226,8 +305,8 @@ public class NetworkEndpointScheduledTestResultsApi {
   private void filterScheduledTestsNetworkResultsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder filterScheduledTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointNetworkOptions> expand, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterScheduledTestsNetworkResultsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, Integer max, String cursor, Boolean useAllPermittedAids, List<ExpandEndpointNetworkOptions> expand, MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/endpoint/test-results/scheduled-tests/network/filter";
@@ -253,35 +332,152 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.requestBody(multiTestIdEndpointTestsDataRoundsSearch);
     return requestBuilder;
   }
+
+  public static final class FilterScheduledTestsNetworkResultsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final Integer max;
+    private final String cursor;
+    private final Boolean useAllPermittedAids;
+    private final List<ExpandEndpointNetworkOptions> expand;
+    private final MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch;
+
+    private FilterScheduledTestsNetworkResultsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.max = builder.max;
+      this.cursor = builder.cursor;
+      this.useAllPermittedAids = builder.useAllPermittedAids;
+      this.expand = builder.expand;
+      this.multiTestIdEndpointTestsDataRoundsSearch = builder.multiTestIdEndpointTestsDataRoundsSearch;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public Integer getMax() {
+      return max;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public Boolean getUseAllPermittedAids() {
+      return useAllPermittedAids;
+    }
+    public List<ExpandEndpointNetworkOptions> getExpand() {
+      return expand;
+    }
+    public MultiTestIdEndpointTestsDataRoundsSearch getMultiTestIdEndpointTestsDataRoundsSearch() {
+      return multiTestIdEndpointTestsDataRoundsSearch;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .max(max)
+          .cursor(cursor)
+          .useAllPermittedAids(useAllPermittedAids)
+          .expand(expand)
+          .multiTestIdEndpointTestsDataRoundsSearch(multiTestIdEndpointTestsDataRoundsSearch);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private Integer max;
+      private String cursor;
+      private Boolean useAllPermittedAids;
+      private List<ExpandEndpointNetworkOptions> expand;
+      private MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder max(Integer max) {
+        this.max = max;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public Builder useAllPermittedAids(Boolean useAllPermittedAids) {
+        this.useAllPermittedAids = useAllPermittedAids;
+        return this;
+      }
+      public Builder expand(List<ExpandEndpointNetworkOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public Builder multiTestIdEndpointTestsDataRoundsSearch(MultiTestIdEndpointTestsDataRoundsSearch multiTestIdEndpointTestsDataRoundsSearch) {
+        this.multiTestIdEndpointTestsDataRoundsSearch = multiTestIdEndpointTestsDataRoundsSearch;
+        return this;
+      }
+      public FilterScheduledTestsNetworkResultsRequest build() {
+        return new FilterScheduledTestsNetworkResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve path visualization network scheduled test results details
    * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PathVisDetailEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public PathVisDetailEndpointTestResults getScheduledTestPathVisAgentRoundResults(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiResponse<PathVisDetailEndpointTestResults> response = getScheduledTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid);
+  public PathVisDetailEndpointTestResults getScheduledTestPathVisAgentRoundResults(GetScheduledTestPathVisAgentRoundResultsRequest request) throws ApiException {
+    ApiResponse<PathVisDetailEndpointTestResults> response = getScheduledTestPathVisAgentRoundResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve path visualization network scheduled test results details
    * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
-   * @param testId Test ID (required)
-   * @param agentId Agent ID (required)
-   * @param roundId Round ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PathVisDetailEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PathVisDetailEndpointTestResults> getScheduledTestPathVisAgentRoundResultsWithHttpInfo(String testId, String agentId, String roundId, String aid) throws ApiException {
-    getScheduledTestPathVisAgentRoundResultsValidateRequest(testId, agentId, roundId);
+  public ApiResponse<PathVisDetailEndpointTestResults> getScheduledTestPathVisAgentRoundResultsWithHttpInfo(GetScheduledTestPathVisAgentRoundResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getScheduledTestPathVisAgentRoundResults");
+    }
+    getScheduledTestPathVisAgentRoundResultsValidateRequest(request.getTestId(), request.getAgentId(), request.getRoundId());
 
-    var requestBuilder = getScheduledTestPathVisAgentRoundResultsRequestBuilder(testId, agentId, roundId, aid);
+    var requestBuilder = getScheduledTestPathVisAgentRoundResultsRequestBuilder(request.getTestId(), request.getAgentId(), request.getRoundId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PathVisDetailEndpointTestResults.class);
   }
@@ -301,8 +497,8 @@ public class NetworkEndpointScheduledTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getScheduledTestPathVisAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getScheduledTestPathVisAgentRoundResultsRequestBuilder(String testId, String agentId, String roundId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis/agent/{agentId}/round/{roundId}"
@@ -322,54 +518,113 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetScheduledTestPathVisAgentRoundResultsRequest {
+    private final String testId;
+    private final String agentId;
+    private final String roundId;
+    private final String aid;
+
+    private GetScheduledTestPathVisAgentRoundResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.agentId = builder.agentId;
+      this.roundId = builder.roundId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAgentId() {
+      return agentId;
+    }
+    public String getRoundId() {
+      return roundId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .agentId(agentId)
+          .roundId(roundId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String agentId;
+      private String roundId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder agentId(String agentId) {
+        this.agentId = agentId;
+        return this;
+      }
+      public Builder roundId(String roundId) {
+        this.roundId = roundId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetScheduledTestPathVisAgentRoundResultsRequest build() {
+        return new GetScheduledTestPathVisAgentRoundResultsRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve path visualization network scheduled test results with pagination
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours is returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return Paginator<PathVisEndpointTestResult, PathVisEndpointTestResults>
    */
-  public Paginator<PathVisEndpointTestResult, PathVisEndpointTestResults> getScheduledTestPathVisResultsPaginated(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) {
-    return new Paginator<>(cursor -> getScheduledTestPathVisResults(testId, aid, window, startDate, endDate, cursor),
+  public Paginator<PathVisEndpointTestResult, PathVisEndpointTestResults> getScheduledTestPathVisResultsPaginated(GetScheduledTestPathVisResultsRequest request) {
+    if (request == null) {
+      throw new IllegalArgumentException("Request must not be null when calling getScheduledTestPathVisResultsPaginated");
+    }
+    return new Paginator<>(cursor -> getScheduledTestPathVisResults(request.toBuilder()
+        .cursor(cursor != null ? cursor : request.getCursor())
+        .build()),
                            PathVisEndpointTestResults::getResults);
 
   }
   /**
    * Retrieve path visualization network scheduled test results
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours is returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return PathVisEndpointTestResults
    * @throws ApiException if fails to make API call
    */
-  public PathVisEndpointTestResults getScheduledTestPathVisResults(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiResponse<PathVisEndpointTestResults> response = getScheduledTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+  public PathVisEndpointTestResults getScheduledTestPathVisResults(GetScheduledTestPathVisResultsRequest request) throws ApiException {
+    ApiResponse<PathVisEndpointTestResults> response = getScheduledTestPathVisResultsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve path visualization network scheduled test results
    * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours is returned. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param cursor (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PathVisEndpointTestResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PathVisEndpointTestResults> getScheduledTestPathVisResultsWithHttpInfo(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    getScheduledTestPathVisResultsValidateRequest(testId);
+  public ApiResponse<PathVisEndpointTestResults> getScheduledTestPathVisResultsWithHttpInfo(GetScheduledTestPathVisResultsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getScheduledTestPathVisResults");
+    }
+    getScheduledTestPathVisResultsValidateRequest(request.getTestId());
 
-    var requestBuilder = getScheduledTestPathVisResultsRequestBuilder(testId, aid, window, startDate, endDate, cursor);
+    var requestBuilder = getScheduledTestPathVisResultsRequestBuilder(request.getTestId(), request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate(), request.getCursor());
 
     return apiClient.send(requestBuilder.build(), PathVisEndpointTestResults.class);
   }
@@ -381,8 +636,8 @@ public class NetworkEndpointScheduledTestResultsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getScheduledTestPathVisResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getScheduledTestPathVisResultsRequestBuilder(String testId, String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate, String cursor) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/endpoint/test-results/scheduled-tests/{testId}/path-vis"
@@ -404,4 +659,91 @@ public class NetworkEndpointScheduledTestResultsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetScheduledTestPathVisResultsRequest {
+    private final String testId;
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+    private final String cursor;
+
+    private GetScheduledTestPathVisResultsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+      this.cursor = builder.cursor;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public String getCursor() {
+      return cursor;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate)
+          .cursor(cursor);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+      private String cursor;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public Builder cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+      }
+      public GetScheduledTestPathVisResultsRequest build() {
+        return new GetScheduledTestPathVisResultsRequest(this);
+      }
+    }
+  }
+
 }

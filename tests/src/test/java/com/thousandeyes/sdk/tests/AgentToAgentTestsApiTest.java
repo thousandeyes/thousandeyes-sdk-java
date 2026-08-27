@@ -84,7 +84,6 @@ public class AgentToAgentTestsApiTest {
     public void createAgentToAgentTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -332,7 +331,12 @@ public class AgentToAgentTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToAgentTest(mappedRequest, null, null);
+        var request = AgentToAgentTestsApi.CreateAgentToAgentTestRequest.builder()
+                .agentToAgentTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createAgentToAgentTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -349,7 +353,6 @@ public class AgentToAgentTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/agent-to-agent/{testId}";
@@ -359,7 +362,11 @@ public class AgentToAgentTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAgentToAgentTestWithHttpInfo(testId, null);
+        var request = AgentToAgentTestsApi.DeleteAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAgentToAgentTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -375,7 +382,6 @@ public class AgentToAgentTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -556,7 +562,13 @@ public class AgentToAgentTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToAgentTest(testId, null, null, null);
+        var request = AgentToAgentTestsApi.GetAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getAgentToAgentTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -571,7 +583,6 @@ public class AgentToAgentTestsApiTest {
     public void getAgentToAgentTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -698,7 +709,10 @@ public class AgentToAgentTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToAgentTests(null);
+        var request = AgentToAgentTestsApi.GetAgentToAgentTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentToAgentTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -714,7 +728,6 @@ public class AgentToAgentTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -963,7 +976,13 @@ public class AgentToAgentTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAgentToAgentTest(testId, mappedRequest, null, null);
+        var request = AgentToAgentTestsApi.UpdateAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .agentToAgentTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateAgentToAgentTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

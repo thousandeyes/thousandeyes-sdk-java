@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getEndpointProxies
 
-> EndpointProxiesResponse getEndpointProxies(aid)
+> EndpointProxiesResponse getEndpointProxies(GetEndpointProxiesRequest)
 
 List endpoint proxy settings
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointProxiesApi;
 
 public class Example {
@@ -40,7 +40,10 @@ public class Example {
         EndpointProxiesApi apiInstance = new EndpointProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EndpointProxiesResponse result = apiInstance.getEndpointProxies(aid);
+            EndpointProxiesApi.GetEndpointProxiesRequest request = EndpointProxiesApi.GetEndpointProxiesRequest.builder()
+                .aid(aid)
+                .build();
+            EndpointProxiesResponse result = apiInstance.getEndpointProxies(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointProxiesApi#getEndpointProxies");
@@ -55,10 +58,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointProxiesRequest**](EndpointProxiesApi.md#GetEndpointProxiesRequest)|-|-|
 
 ### Return type
 
@@ -86,7 +88,7 @@ public class Example {
 
 ## getEndpointProxiesWithHttpInfo
 
-> ApiResponse<EndpointProxiesResponse> getEndpointProxies getEndpointProxiesWithHttpInfo(aid)
+> ApiResponse<EndpointProxiesResponse> getEndpointProxies getEndpointProxiesWithHttpInfo(GetEndpointProxiesRequest)
 
 List endpoint proxy settings
 
@@ -101,7 +103,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.agents.model.*;
 import com.thousandeyes.sdk.endpoint.agents.EndpointProxiesApi;
 
 public class Example {
@@ -116,7 +118,10 @@ public class Example {
         EndpointProxiesApi apiInstance = new EndpointProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EndpointProxiesResponse> response = apiInstance.getEndpointProxiesWithHttpInfo(aid);
+            EndpointProxiesApi.GetEndpointProxiesRequest request = EndpointProxiesApi.GetEndpointProxiesRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointProxiesResponse> response = apiInstance.getEndpointProxiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -133,10 +138,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEndpointProxiesRequest**](EndpointProxiesApi.md#GetEndpointProxiesRequest)|-|-|
 
 ### Return type
 
@@ -161,4 +165,14 @@ ApiResponse<[**EndpointProxiesResponse**](EndpointProxiesResponse.md)>
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetEndpointProxiesRequest"></a>
+## GetEndpointProxiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

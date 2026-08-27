@@ -110,7 +110,10 @@ public class AgentProxiesApiExample {
         AgentProxiesApi apiInstance = new AgentProxiesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentProxies result = apiInstance.getAgentsProxies(aid);
+            AgentProxiesApi.GetAgentsProxiesRequest request = AgentProxiesApi.GetAgentsProxiesRequest.builder()
+                .aid(aid)
+                .build();
+            AgentProxies result = apiInstance.getAgentsProxies(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentProxiesApi#getAgentsProxies");

@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -40,12 +39,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -67,26 +64,29 @@ public class QuotasApi {
   /**
    * Create or update accout group quotas
    * This operation assigns quota values to multiple account groups across multiple organizations. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission. This operation follows a cumulative behavior––This means that the quotas are assigned to the designated account groups, and any previous assignments remain in place without any unassignment occurring.
-   * @param organizationsQuotasAssign  (optional)
+   * @param request operation parameters (required)
    * @return OrganizationsQuotasAssign
    * @throws ApiException if fails to make API call
    */
-  public OrganizationsQuotasAssign assignOrganizationsAccountGroupsQuotas(OrganizationsQuotasAssign organizationsQuotasAssign) throws ApiException {
-    ApiResponse<OrganizationsQuotasAssign> response = assignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasAssign);
+  public OrganizationsQuotasAssign assignOrganizationsAccountGroupsQuotas(AssignOrganizationsAccountGroupsQuotasRequest request) throws ApiException {
+    ApiResponse<OrganizationsQuotasAssign> response = assignOrganizationsAccountGroupsQuotasWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create or update accout group quotas
    * This operation assigns quota values to multiple account groups across multiple organizations. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission. This operation follows a cumulative behavior––This means that the quotas are assigned to the designated account groups, and any previous assignments remain in place without any unassignment occurring.
-   * @param organizationsQuotasAssign  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;OrganizationsQuotasAssign&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<OrganizationsQuotasAssign> assignOrganizationsAccountGroupsQuotasWithHttpInfo(OrganizationsQuotasAssign organizationsQuotasAssign) throws ApiException {
+  public ApiResponse<OrganizationsQuotasAssign> assignOrganizationsAccountGroupsQuotasWithHttpInfo(AssignOrganizationsAccountGroupsQuotasRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignOrganizationsAccountGroupsQuotas");
+    }
     assignOrganizationsAccountGroupsQuotasValidateRequest();
 
-    var requestBuilder = assignOrganizationsAccountGroupsQuotasRequestBuilder(organizationsQuotasAssign);
+    var requestBuilder = assignOrganizationsAccountGroupsQuotasRequestBuilder(request.getOrganizationsQuotasAssign());
 
     return apiClient.send(requestBuilder.build(), OrganizationsQuotasAssign.class);
   }
@@ -94,8 +94,8 @@ public class QuotasApi {
   private void assignOrganizationsAccountGroupsQuotasValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder assignOrganizationsAccountGroupsQuotasRequestBuilder(OrganizationsQuotasAssign organizationsQuotasAssign) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignOrganizationsAccountGroupsQuotasRequestBuilder(OrganizationsQuotasAssign organizationsQuotasAssign) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/quotas/account-groups/assign";
@@ -108,29 +108,64 @@ public class QuotasApi {
     requestBuilder.requestBody(organizationsQuotasAssign);
     return requestBuilder;
   }
+
+  public static final class AssignOrganizationsAccountGroupsQuotasRequest {
+    private final OrganizationsQuotasAssign organizationsQuotasAssign;
+
+    private AssignOrganizationsAccountGroupsQuotasRequest(Builder builder) {
+      this.organizationsQuotasAssign = builder.organizationsQuotasAssign;
+    }
+    public OrganizationsQuotasAssign getOrganizationsQuotasAssign() {
+      return organizationsQuotasAssign;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .organizationsQuotasAssign(organizationsQuotasAssign);
+    }
+
+    public static final class Builder {
+      private OrganizationsQuotasAssign organizationsQuotasAssign;
+
+      public Builder organizationsQuotasAssign(OrganizationsQuotasAssign organizationsQuotasAssign) {
+        this.organizationsQuotasAssign = organizationsQuotasAssign;
+        return this;
+      }
+      public AssignOrganizationsAccountGroupsQuotasRequest build() {
+        return new AssignOrganizationsAccountGroupsQuotasRequest(this);
+      }
+    }
+  }
+
   /**
    * Create or update organizations quotas
    * This operation recieves a list of organization quotas to create or update. If there&#39;s no specific &#x60;orgId&#x60; defined for a quota, it defaults to using the authenticated organization. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission. This operation follows cumulative behavior––This means that the quotas are assigned to the specified organizations, and any previous assignments remain unchanged; no unassignments occur.
-   * @param quotasAssignRequest  (optional)
+   * @param request operation parameters (required)
    * @return QuotasAssignResponse
    * @throws ApiException if fails to make API call
    */
-  public QuotasAssignResponse assignOrganizationsQuotas(QuotasAssignRequest quotasAssignRequest) throws ApiException {
-    ApiResponse<QuotasAssignResponse> response = assignOrganizationsQuotasWithHttpInfo(quotasAssignRequest);
+  public QuotasAssignResponse assignOrganizationsQuotas(AssignOrganizationsQuotasRequest request) throws ApiException {
+    ApiResponse<QuotasAssignResponse> response = assignOrganizationsQuotasWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create or update organizations quotas
    * This operation recieves a list of organization quotas to create or update. If there&#39;s no specific &#x60;orgId&#x60; defined for a quota, it defaults to using the authenticated organization. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission. This operation follows cumulative behavior––This means that the quotas are assigned to the specified organizations, and any previous assignments remain unchanged; no unassignments occur.
-   * @param quotasAssignRequest  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;QuotasAssignResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<QuotasAssignResponse> assignOrganizationsQuotasWithHttpInfo(QuotasAssignRequest quotasAssignRequest) throws ApiException {
+  public ApiResponse<QuotasAssignResponse> assignOrganizationsQuotasWithHttpInfo(AssignOrganizationsQuotasRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling assignOrganizationsQuotas");
+    }
     assignOrganizationsQuotasValidateRequest();
 
-    var requestBuilder = assignOrganizationsQuotasRequestBuilder(quotasAssignRequest);
+    var requestBuilder = assignOrganizationsQuotasRequestBuilder(request.getQuotasAssignRequest());
 
     return apiClient.send(requestBuilder.build(), QuotasAssignResponse.class);
   }
@@ -138,8 +173,8 @@ public class QuotasApi {
   private void assignOrganizationsQuotasValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder assignOrganizationsQuotasRequestBuilder(QuotasAssignRequest quotasAssignRequest) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder assignOrganizationsQuotasRequestBuilder(QuotasAssignRequest quotasAssignRequest) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/quotas/assign";
@@ -152,6 +187,38 @@ public class QuotasApi {
     requestBuilder.requestBody(quotasAssignRequest);
     return requestBuilder;
   }
+
+  public static final class AssignOrganizationsQuotasRequest {
+    private final QuotasAssignRequest quotasAssignRequest;
+
+    private AssignOrganizationsQuotasRequest(Builder builder) {
+      this.quotasAssignRequest = builder.quotasAssignRequest;
+    }
+    public QuotasAssignRequest getQuotasAssignRequest() {
+      return quotasAssignRequest;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .quotasAssignRequest(quotasAssignRequest);
+    }
+
+    public static final class Builder {
+      private QuotasAssignRequest quotasAssignRequest;
+
+      public Builder quotasAssignRequest(QuotasAssignRequest quotasAssignRequest) {
+        this.quotasAssignRequest = quotasAssignRequest;
+        return this;
+      }
+      public AssignOrganizationsQuotasRequest build() {
+        return new AssignOrganizationsQuotasRequest(this);
+      }
+    }
+  }
+
   /**
    * Get organization and account group usage quota
    * This operation retrieves usage quotas for both organization and account groups. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission. If a user has quota update permission in multiple organizations, the API returns data from all such organizations.
@@ -180,8 +247,8 @@ public class QuotasApi {
   private void getQuotasValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getQuotasRequestBuilder() throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getQuotasRequestBuilder() throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/quotas";
@@ -195,24 +262,27 @@ public class QuotasApi {
   /**
    * Remove account group quotas from organizations
    * This operation removes quotas from multiple account groups across multiple organizations. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission.
-   * @param organizationsQuotasUnassign  (optional)
+   * @param request operation parameters (required)
    * @throws ApiException if fails to make API call
    */
-  public void unassignOrganizationsAccountGroupsQuotas(OrganizationsQuotasUnassign organizationsQuotasUnassign) throws ApiException {
-    unassignOrganizationsAccountGroupsQuotasWithHttpInfo(organizationsQuotasUnassign);
+  public void unassignOrganizationsAccountGroupsQuotas(UnassignOrganizationsAccountGroupsQuotasRequest request) throws ApiException {
+    unassignOrganizationsAccountGroupsQuotasWithHttpInfo(request);
   }
 
   /**
    * Remove account group quotas from organizations
    * This operation removes quotas from multiple account groups across multiple organizations. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission.
-   * @param organizationsQuotasUnassign  (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> unassignOrganizationsAccountGroupsQuotasWithHttpInfo(OrganizationsQuotasUnassign organizationsQuotasUnassign) throws ApiException {
+  public ApiResponse<Void> unassignOrganizationsAccountGroupsQuotasWithHttpInfo(UnassignOrganizationsAccountGroupsQuotasRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignOrganizationsAccountGroupsQuotas");
+    }
     unassignOrganizationsAccountGroupsQuotasValidateRequest();
 
-    var requestBuilder = unassignOrganizationsAccountGroupsQuotasRequestBuilder(organizationsQuotasUnassign);
+    var requestBuilder = unassignOrganizationsAccountGroupsQuotasRequestBuilder(request.getOrganizationsQuotasUnassign());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -220,8 +290,8 @@ public class QuotasApi {
   private void unassignOrganizationsAccountGroupsQuotasValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder unassignOrganizationsAccountGroupsQuotasRequestBuilder(OrganizationsQuotasUnassign organizationsQuotasUnassign) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignOrganizationsAccountGroupsQuotasRequestBuilder(OrganizationsQuotasUnassign organizationsQuotasUnassign) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/quotas/account-groups/unassign";
@@ -234,27 +304,62 @@ public class QuotasApi {
     requestBuilder.requestBody(organizationsQuotasUnassign);
     return requestBuilder;
   }
-  /**
-   * Remove organization quotas
-   * This operation recieves a list of organization IDs to remove their current quota. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission.
-   * @param quotasUnassign  (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void unassignOrganizationsQuotas(QuotasUnassign quotasUnassign) throws ApiException {
-    unassignOrganizationsQuotasWithHttpInfo(quotasUnassign);
+
+  public static final class UnassignOrganizationsAccountGroupsQuotasRequest {
+    private final OrganizationsQuotasUnassign organizationsQuotasUnassign;
+
+    private UnassignOrganizationsAccountGroupsQuotasRequest(Builder builder) {
+      this.organizationsQuotasUnassign = builder.organizationsQuotasUnassign;
+    }
+    public OrganizationsQuotasUnassign getOrganizationsQuotasUnassign() {
+      return organizationsQuotasUnassign;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .organizationsQuotasUnassign(organizationsQuotasUnassign);
+    }
+
+    public static final class Builder {
+      private OrganizationsQuotasUnassign organizationsQuotasUnassign;
+
+      public Builder organizationsQuotasUnassign(OrganizationsQuotasUnassign organizationsQuotasUnassign) {
+        this.organizationsQuotasUnassign = organizationsQuotasUnassign;
+        return this;
+      }
+      public UnassignOrganizationsAccountGroupsQuotasRequest build() {
+        return new UnassignOrganizationsAccountGroupsQuotasRequest(this);
+      }
+    }
   }
 
   /**
    * Remove organization quotas
    * This operation recieves a list of organization IDs to remove their current quota. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission.
-   * @param quotasUnassign  (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void unassignOrganizationsQuotas(UnassignOrganizationsQuotasRequest request) throws ApiException {
+    unassignOrganizationsQuotasWithHttpInfo(request);
+  }
+
+  /**
+   * Remove organization quotas
+   * This operation recieves a list of organization IDs to remove their current quota. To use this endpoint, you need the &#x60;Edit organization and account group quotas&#x60; permission, which is a management-level permission.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> unassignOrganizationsQuotasWithHttpInfo(QuotasUnassign quotasUnassign) throws ApiException {
+  public ApiResponse<Void> unassignOrganizationsQuotasWithHttpInfo(UnassignOrganizationsQuotasRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling unassignOrganizationsQuotas");
+    }
     unassignOrganizationsQuotasValidateRequest();
 
-    var requestBuilder = unassignOrganizationsQuotasRequestBuilder(quotasUnassign);
+    var requestBuilder = unassignOrganizationsQuotasRequestBuilder(request.getQuotasUnassign());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -262,8 +367,8 @@ public class QuotasApi {
   private void unassignOrganizationsQuotasValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder unassignOrganizationsQuotasRequestBuilder(QuotasUnassign quotasUnassign) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder unassignOrganizationsQuotasRequestBuilder(QuotasUnassign quotasUnassign) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/quotas/unassign";
@@ -276,4 +381,36 @@ public class QuotasApi {
     requestBuilder.requestBody(quotasUnassign);
     return requestBuilder;
   }
+
+  public static final class UnassignOrganizationsQuotasRequest {
+    private final QuotasUnassign quotasUnassign;
+
+    private UnassignOrganizationsQuotasRequest(Builder builder) {
+      this.quotasUnassign = builder.quotasUnassign;
+    }
+    public QuotasUnassign getQuotasUnassign() {
+      return quotasUnassign;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .quotasUnassign(quotasUnassign);
+    }
+
+    public static final class Builder {
+      private QuotasUnassign quotasUnassign;
+
+      public Builder quotasUnassign(QuotasUnassign quotasUnassign) {
+        this.quotasUnassign = quotasUnassign;
+        return this;
+      }
+      public UnassignOrganizationsQuotasRequest build() {
+        return new UnassignOrganizationsQuotasRequest(this);
+      }
+    }
+  }
+
 }

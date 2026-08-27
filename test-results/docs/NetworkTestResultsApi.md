@@ -15,7 +15,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getTestNetworkResults
 
-> NetworkTestResults getTestNetworkResults(testId, aid, window, startDate, endDate, cursor, direction)
+> NetworkTestResults getTestNetworkResults(GetTestNetworkResultsRequest)
 
 Get network test results
 
@@ -29,7 +29,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -50,7 +50,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestDirection direction = TestDirection.fromValue("to-target"); // TestDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`, `bidirectional`]. This applies when you're doing bidirectional Agent-to-Agent tests. For bidirectional data, you'll get combined results; otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            NetworkTestResults result = apiInstance.getTestNetworkResults(testId, aid, window, startDate, endDate, cursor, direction);
+            NetworkTestResultsApi.GetTestNetworkResultsRequest request = NetworkTestResultsApi.GetTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .direction(direction)
+                .build();
+            NetworkTestResults result = apiInstance.getTestNetworkResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkTestResultsApi#getTestNetworkResults");
@@ -65,16 +74,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **direction** | [**TestDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;, &#x60;bidirectional&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. For bidirectional data, you&#39;ll get combined results; otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [default to to-target] [enum: to-target, from-target, bidirectional] |
+| request | [**GetTestNetworkResultsRequest**](NetworkTestResultsApi.md#GetTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -105,7 +107,7 @@ public class Example {
 
 ## getTestNetworkResultsWithHttpInfo
 
-> ApiResponse<NetworkTestResults> getTestNetworkResults getTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
+> ApiResponse<NetworkTestResults> getTestNetworkResults getTestNetworkResultsWithHttpInfo(GetTestNetworkResultsRequest)
 
 Get network test results
 
@@ -120,7 +122,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -141,7 +143,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         TestDirection direction = TestDirection.fromValue("to-target"); // TestDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`, `bidirectional`]. This applies when you're doing bidirectional Agent-to-Agent tests. For bidirectional data, you'll get combined results; otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            ApiResponse<NetworkTestResults> response = apiInstance.getTestNetworkResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
+            NetworkTestResultsApi.GetTestNetworkResultsRequest request = NetworkTestResultsApi.GetTestNetworkResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .direction(direction)
+                .build();
+            ApiResponse<NetworkTestResults> response = apiInstance.getTestNetworkResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -158,16 +169,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **direction** | [**TestDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;, &#x60;bidirectional&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. For bidirectional data, you&#39;ll get combined results; otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [default to to-target] [enum: to-target, from-target, bidirectional] |
+| request | [**GetTestNetworkResultsRequest**](NetworkTestResultsApi.md#GetTestNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -197,9 +201,25 @@ ApiResponse<[**NetworkTestResults**](NetworkTestResults.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestNetworkResultsRequest"></a>
+## GetTestNetworkResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **direction** | [**TestDirection**](.md) | Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;, &#x60;bidirectional&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. For bidirectional data, you&#39;ll get combined results; otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [default to to-target] [enum: to-target, from-target, bidirectional] |
+
+
+
 ## getTestPathVisAgentRoundResults
 
-> PathVisDetailTestResults getTestPathVisAgentRoundResults(testId, agentId, roundId, aid, direction)
+> PathVisDetailTestResults getTestPathVisAgentRoundResults(GetTestPathVisAgentRoundResultsRequest)
 
 Get path visualization test results by agent and round
 
@@ -213,7 +233,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -232,7 +252,14 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            PathVisDetailTestResults result = apiInstance.getTestPathVisAgentRoundResults(testId, agentId, roundId, aid, direction);
+            NetworkTestResultsApi.GetTestPathVisAgentRoundResultsRequest request = NetworkTestResultsApi.GetTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .direction(direction)
+                .build();
+            PathVisDetailTestResults result = apiInstance.getTestPathVisAgentRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkTestResultsApi#getTestPathVisAgentRoundResults");
@@ -247,14 +274,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+| request | [**GetTestPathVisAgentRoundResultsRequest**](NetworkTestResultsApi.md#GetTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -285,7 +307,7 @@ public class Example {
 
 ## getTestPathVisAgentRoundResultsWithHttpInfo
 
-> ApiResponse<PathVisDetailTestResults> getTestPathVisAgentRoundResults getTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid, direction)
+> ApiResponse<PathVisDetailTestResults> getTestPathVisAgentRoundResults getTestPathVisAgentRoundResultsWithHttpInfo(GetTestPathVisAgentRoundResultsRequest)
 
 Get path visualization test results by agent and round
 
@@ -300,7 +322,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -319,7 +341,14 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            ApiResponse<PathVisDetailTestResults> response = apiInstance.getTestPathVisAgentRoundResultsWithHttpInfo(testId, agentId, roundId, aid, direction);
+            NetworkTestResultsApi.GetTestPathVisAgentRoundResultsRequest request = NetworkTestResultsApi.GetTestPathVisAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid(aid)
+                .direction(direction)
+                .build();
+            ApiResponse<PathVisDetailTestResults> response = apiInstance.getTestPathVisAgentRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -336,14 +365,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentId** | **String**| Agent ID | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+| request | [**GetTestPathVisAgentRoundResultsRequest**](NetworkTestResultsApi.md#GetTestPathVisAgentRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -373,9 +397,23 @@ ApiResponse<[**PathVisDetailTestResults**](PathVisDetailTestResults.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestPathVisAgentRoundResultsRequest"></a>
+## GetTestPathVisAgentRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentId** | **String** | Agent ID | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **direction** | [**PathVisDirection**](.md) | Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+
+
+
 ## getTestPathVisResults
 
-> PathVisTestResults getTestPathVisResults(testId, aid, window, startDate, endDate, cursor, direction)
+> PathVisTestResults getTestPathVisResults(GetTestPathVisResultsRequest)
 
 Get path visualization network test results
 
@@ -389,7 +427,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -410,7 +448,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            PathVisTestResults result = apiInstance.getTestPathVisResults(testId, aid, window, startDate, endDate, cursor, direction);
+            NetworkTestResultsApi.GetTestPathVisResultsRequest request = NetworkTestResultsApi.GetTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .direction(direction)
+                .build();
+            PathVisTestResults result = apiInstance.getTestPathVisResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkTestResultsApi#getTestPathVisResults");
@@ -425,16 +472,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+| request | [**GetTestPathVisResultsRequest**](NetworkTestResultsApi.md#GetTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -465,7 +505,7 @@ public class Example {
 
 ## getTestPathVisResultsWithHttpInfo
 
-> ApiResponse<PathVisTestResults> getTestPathVisResults getTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction)
+> ApiResponse<PathVisTestResults> getTestPathVisResults getTestPathVisResultsWithHttpInfo(GetTestPathVisResultsRequest)
 
 Get path visualization network test results
 
@@ -480,7 +520,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkTestResultsApi;
 
 public class Example {
@@ -501,7 +541,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         PathVisDirection direction = PathVisDirection.fromValue("to-target"); // PathVisDirection | Choose the direction for the metrics you want: [`from-target`, `to-target`]. This applies when you're doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both `from-target` and `to-target` values (bidirectional); otherwise, you'll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response.
         try {
-            ApiResponse<PathVisTestResults> response = apiInstance.getTestPathVisResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor, direction);
+            NetworkTestResultsApi.GetTestPathVisResultsRequest request = NetworkTestResultsApi.GetTestPathVisResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .direction(direction)
+                .build();
+            ApiResponse<PathVisTestResults> response = apiInstance.getTestPathVisResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -518,16 +567,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **direction** | [**PathVisDirection**](.md)| Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+| request | [**GetTestPathVisResultsRequest**](NetworkTestResultsApi.md#GetTestPathVisResultsRequest)|-|-|
 
 ### Return type
 
@@ -555,4 +597,20 @@ ApiResponse<[**PathVisTestResults**](PathVisTestResults.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetTestPathVisResultsRequest"></a>
+## GetTestPathVisResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **direction** | [**PathVisDirection**](.md) | Choose the direction for the metrics you want: [&#x60;from-target&#x60;, &#x60;to-target&#x60;]. This applies when you&#39;re doing bidirectional Agent-to-Agent tests. Omitting the parameter will default the results to both &#x60;from-target&#x60; and &#x60;to-target&#x60; values (bidirectional); otherwise, you&#39;ll get data for one direction. If you try to get unidirectional test data with an incorrect direction parameter, it will trigger an error response. | [optional] [enum: to-target, from-target] |
+
 

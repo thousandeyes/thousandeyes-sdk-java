@@ -80,7 +80,6 @@ public class AgentProxiesApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -136,7 +135,10 @@ public class AgentProxiesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentsProxies(null);
+        var request = AgentProxiesApi.GetAgentsProxiesRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentsProxies(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

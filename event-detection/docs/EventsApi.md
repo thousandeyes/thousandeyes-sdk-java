@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getEvent
 
-> EventDetail getEvent(id, aid)
+> EventDetail getEvent(GetEventRequest)
 
 Retrieve event
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.event.Configuration;
 import com.thousandeyes.sdk.event.authentication.*;
-import com.thousandeyes.sdk.event.models.*;
+import com.thousandeyes.sdk.event.detection.model.*;
 import com.thousandeyes.sdk.event.detection.EventsApi;
 
 public class Example {
@@ -43,7 +43,11 @@ public class Example {
         UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique event ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EventDetail result = apiInstance.getEvent(id, aid);
+            EventsApi.GetEventRequest request = EventsApi.GetEventRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            EventDetail result = apiInstance.getEvent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EventsApi#getEvent");
@@ -58,11 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**| Unique event ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEventRequest**](EventsApi.md#GetEventRequest)|-|-|
 
 ### Return type
 
@@ -92,7 +94,7 @@ public class Example {
 
 ## getEventWithHttpInfo
 
-> ApiResponse<EventDetail> getEvent getEventWithHttpInfo(id, aid)
+> ApiResponse<EventDetail> getEvent getEventWithHttpInfo(GetEventRequest)
 
 Retrieve event
 
@@ -107,7 +109,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.event.Configuration;
 import com.thousandeyes.sdk.event.authentication.*;
-import com.thousandeyes.sdk.event.models.*;
+import com.thousandeyes.sdk.event.detection.model.*;
 import com.thousandeyes.sdk.event.detection.EventsApi;
 
 public class Example {
@@ -123,7 +125,11 @@ public class Example {
         UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique event ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<EventDetail> response = apiInstance.getEventWithHttpInfo(id, aid);
+            EventsApi.GetEventRequest request = EventsApi.GetEventRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<EventDetail> response = apiInstance.getEventWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -140,11 +146,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**| Unique event ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetEventRequest**](EventsApi.md#GetEventRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +177,20 @@ ApiResponse<[**EventDetail**](EventDetail.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetEventRequest"></a>
+## GetEventRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **UUID** | Unique event ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getEvents
 
-> Events getEvents(aid, window, startDate, endDate, max, cursor, ongoing)
+> Events getEvents(GetEventsRequest)
 
 List events
 
@@ -189,7 +204,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.event.Configuration;
 import com.thousandeyes.sdk.event.authentication.*;
-import com.thousandeyes.sdk.event.models.*;
+import com.thousandeyes.sdk.event.detection.model.*;
 import com.thousandeyes.sdk.event.detection.EventsApi;
 
 public class Example {
@@ -210,7 +225,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         Boolean ongoing = true; // Boolean | When set to `true`, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to `false`, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response.
         try {
-            Events result = apiInstance.getEvents(aid, window, startDate, endDate, max, cursor, ongoing);
+            EventsApi.GetEventsRequest request = EventsApi.GetEventsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .ongoing(ongoing)
+                .build();
+            Events result = apiInstance.getEvents(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EventsApi#getEvents");
@@ -225,16 +249,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **ongoing** | **Boolean**| When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. | [optional] |
+| request | [**GetEventsRequest**](EventsApi.md#GetEventsRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +282,7 @@ public class Example {
 
 ## getEventsWithHttpInfo
 
-> ApiResponse<Events> getEvents getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing)
+> ApiResponse<Events> getEvents getEventsWithHttpInfo(GetEventsRequest)
 
 List events
 
@@ -280,7 +297,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.event.Configuration;
 import com.thousandeyes.sdk.event.authentication.*;
-import com.thousandeyes.sdk.event.models.*;
+import com.thousandeyes.sdk.event.detection.model.*;
 import com.thousandeyes.sdk.event.detection.EventsApi;
 
 public class Example {
@@ -301,7 +318,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         Boolean ongoing = true; // Boolean | When set to `true`, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to `false`, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response.
         try {
-            ApiResponse<Events> response = apiInstance.getEventsWithHttpInfo(aid, window, startDate, endDate, max, cursor, ongoing);
+            EventsApi.GetEventsRequest request = EventsApi.GetEventsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .ongoing(ongoing)
+                .build();
+            ApiResponse<Events> response = apiInstance.getEventsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -318,16 +344,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **ongoing** | **Boolean**| When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. | [optional] |
+| request | [**GetEventsRequest**](EventsApi.md#GetEventsRequest)|-|-|
 
 ### Return type
 
@@ -355,4 +374,20 @@ ApiResponse<[**Events**](Events.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetEventsRequest"></a>
+## GetEventsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **ongoing** | **Boolean** | When set to &#x60;true&#x60;, only ongoing (active) events whose start date is within the specified time window are included in the response. When set to &#x60;false&#x60;, ongoing events are excluded from the response. If not set, both ongoing and concluded events appear in the response. | [optional] |
+
 

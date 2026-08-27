@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class PageLoadTestsApi {
   /**
    * Create Page Load test
    * Creates a new Page Load test. This method requires Account Admin permissions.
-   * @param pageLoadTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return PageLoadTestResponse
    * @throws ApiException if fails to make API call
    */
-  public PageLoadTestResponse createPageLoadTest(PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<PageLoadTestResponse> response = createPageLoadTestWithHttpInfo(pageLoadTestRequest, aid, expand);
+  public PageLoadTestResponse createPageLoadTest(CreatePageLoadTestRequest request) throws ApiException {
+    ApiResponse<PageLoadTestResponse> response = createPageLoadTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create Page Load test
    * Creates a new Page Load test. This method requires Account Admin permissions.
-   * @param pageLoadTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadTestResponse> createPageLoadTestWithHttpInfo(PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createPageLoadTestValidateRequest(pageLoadTestRequest);
+  public ApiResponse<PageLoadTestResponse> createPageLoadTestWithHttpInfo(CreatePageLoadTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createPageLoadTest");
+    }
+    createPageLoadTestValidateRequest(request.getPageLoadTestRequest());
 
-    var requestBuilder = createPageLoadTestRequestBuilder(pageLoadTestRequest, aid, expand);
+    var requestBuilder = createPageLoadTestRequestBuilder(request.getPageLoadTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), PageLoadTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class PageLoadTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createPageLoadTestRequestBuilder(PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createPageLoadTestRequestBuilder(PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/page-load";
@@ -122,29 +118,84 @@ public class PageLoadTestsApi {
     requestBuilder.requestBody(pageLoadTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete Page Load test
-   * Deletes the specified Page Load test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deletePageLoadTest(String testId, String aid) throws ApiException {
-    deletePageLoadTestWithHttpInfo(testId, aid);
+
+  public static final class CreatePageLoadTestRequest {
+    private final PageLoadTestRequest pageLoadTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreatePageLoadTestRequest(Builder builder) {
+      this.pageLoadTestRequest = builder.pageLoadTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public PageLoadTestRequest getPageLoadTestRequest() {
+      return pageLoadTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .pageLoadTestRequest(pageLoadTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private PageLoadTestRequest pageLoadTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder pageLoadTestRequest(PageLoadTestRequest pageLoadTestRequest) {
+        this.pageLoadTestRequest = pageLoadTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreatePageLoadTestRequest build() {
+        return new CreatePageLoadTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete Page Load test
    * Deletes the specified Page Load test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePageLoadTest(DeletePageLoadTestRequest request) throws ApiException {
+    deletePageLoadTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete Page Load test
+   * Deletes the specified Page Load test. This method requires Account Admin permissions. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deletePageLoadTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deletePageLoadTestValidateRequest(testId);
+  public ApiResponse<Void> deletePageLoadTestWithHttpInfo(DeletePageLoadTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deletePageLoadTest");
+    }
+    deletePageLoadTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deletePageLoadTestRequestBuilder(testId, aid);
+    var requestBuilder = deletePageLoadTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class PageLoadTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deletePageLoadTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deletePageLoadTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/page-load/{testId}"
@@ -175,35 +226,75 @@ public class PageLoadTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeletePageLoadTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeletePageLoadTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeletePageLoadTestRequest build() {
+        return new DeletePageLoadTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get Page Load test
    * Returns details for a Page Load test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return PageLoadTestResponse
    * @throws ApiException if fails to make API call
    */
-  public PageLoadTestResponse getPageLoadTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<PageLoadTestResponse> response = getPageLoadTestWithHttpInfo(testId, aid, versionId, expand);
+  public PageLoadTestResponse getPageLoadTest(GetPageLoadTestRequest request) throws ApiException {
+    ApiResponse<PageLoadTestResponse> response = getPageLoadTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get Page Load test
    * Returns details for a Page Load test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadTestResponse> getPageLoadTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getPageLoadTestValidateRequest(testId);
+  public ApiResponse<PageLoadTestResponse> getPageLoadTestWithHttpInfo(GetPageLoadTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPageLoadTest");
+    }
+    getPageLoadTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getPageLoadTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getPageLoadTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), PageLoadTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class PageLoadTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getPageLoadTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPageLoadTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/page-load/{testId}"
@@ -236,29 +327,97 @@ public class PageLoadTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPageLoadTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetPageLoadTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetPageLoadTestRequest build() {
+        return new GetPageLoadTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List Page Load tests
    * Returns a list of all Page Load tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PageLoadTests
    * @throws ApiException if fails to make API call
    */
-  public PageLoadTests getPageLoadTests(String aid) throws ApiException {
-    ApiResponse<PageLoadTests> response = getPageLoadTestsWithHttpInfo(aid);
+  public PageLoadTests getPageLoadTests(GetPageLoadTestsRequest request) throws ApiException {
+    ApiResponse<PageLoadTests> response = getPageLoadTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Page Load tests
    * Returns a list of all Page Load tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadTests> getPageLoadTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<PageLoadTests> getPageLoadTestsWithHttpInfo(GetPageLoadTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPageLoadTests");
+    }
     getPageLoadTestsValidateRequest();
 
-    var requestBuilder = getPageLoadTestsRequestBuilder(aid);
+    var requestBuilder = getPageLoadTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), PageLoadTests.class);
   }
@@ -266,8 +425,8 @@ public class PageLoadTestsApi {
   private void getPageLoadTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getPageLoadTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPageLoadTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/page-load";
@@ -284,35 +443,64 @@ public class PageLoadTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPageLoadTestsRequest {
+    private final String aid;
+
+    private GetPageLoadTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetPageLoadTestsRequest build() {
+        return new GetPageLoadTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update Page Load test
    * Updates a Page Load test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param pageLoadTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return PageLoadTestResponse
    * @throws ApiException if fails to make API call
    */
-  public PageLoadTestResponse updatePageLoadTest(String testId, PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<PageLoadTestResponse> response = updatePageLoadTestWithHttpInfo(testId, pageLoadTestRequest, aid, expand);
+  public PageLoadTestResponse updatePageLoadTest(UpdatePageLoadTestRequest request) throws ApiException {
+    ApiResponse<PageLoadTestResponse> response = updatePageLoadTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update Page Load test
    * Updates a Page Load test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param pageLoadTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PageLoadTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageLoadTestResponse> updatePageLoadTestWithHttpInfo(String testId, PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updatePageLoadTestValidateRequest(testId, pageLoadTestRequest);
+  public ApiResponse<PageLoadTestResponse> updatePageLoadTestWithHttpInfo(UpdatePageLoadTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updatePageLoadTest");
+    }
+    updatePageLoadTestValidateRequest(request.getTestId(), request.getPageLoadTestRequest());
 
-    var requestBuilder = updatePageLoadTestRequestBuilder(testId, pageLoadTestRequest, aid, expand);
+    var requestBuilder = updatePageLoadTestRequestBuilder(request.getTestId(), request.getPageLoadTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), PageLoadTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class PageLoadTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updatePageLoadTestRequestBuilder(String testId, PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updatePageLoadTestRequestBuilder(String testId, PageLoadTestRequest pageLoadTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/page-load/{testId}"
@@ -350,4 +538,69 @@ public class PageLoadTestsApi {
     requestBuilder.requestBody(pageLoadTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdatePageLoadTestRequest {
+    private final String testId;
+    private final PageLoadTestRequest pageLoadTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdatePageLoadTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.pageLoadTestRequest = builder.pageLoadTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public PageLoadTestRequest getPageLoadTestRequest() {
+      return pageLoadTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .pageLoadTestRequest(pageLoadTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private PageLoadTestRequest pageLoadTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder pageLoadTestRequest(PageLoadTestRequest pageLoadTestRequest) {
+        this.pageLoadTestRequest = pageLoadTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdatePageLoadTestRequest build() {
+        return new UpdatePageLoadTestRequest(this);
+      }
+    }
+  }
+
 }

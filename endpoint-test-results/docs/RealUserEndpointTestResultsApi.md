@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterRealUserTestsNetworkResults
 
-> RealUserEndpointTestNetworkResults filterRealUserTestsNetworkResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest)
+> RealUserEndpointTestNetworkResults filterRealUserTestsNetworkResults(FilterRealUserTestsNetworkResultsRequest)
 
 List endpoint real user tests networks
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -53,7 +53,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest = new RealUserEndpointTestResultsRequest(); // RealUserEndpointTestResultsRequest | 
         try {
-            RealUserEndpointTestNetworkResults result = apiInstance.filterRealUserTestsNetworkResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsNetworkResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsNetworkResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest)
+                .build();
+            RealUserEndpointTestNetworkResults result = apiInstance.filterRealUserTestsNetworkResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserEndpointTestResultsApi#filterRealUserTestsNetworkResults");
@@ -68,15 +76,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md)|  | [optional] |
+| request | [**FilterRealUserTestsNetworkResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -106,7 +108,7 @@ public class Example {
 
 ## filterRealUserTestsNetworkResultsWithHttpInfo
 
-> ApiResponse<RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResults filterRealUserTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest)
+> ApiResponse<RealUserEndpointTestNetworkResults> filterRealUserTestsNetworkResults filterRealUserTestsNetworkResultsWithHttpInfo(FilterRealUserTestsNetworkResultsRequest)
 
 List endpoint real user tests networks
 
@@ -121,7 +123,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -141,7 +143,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest = new RealUserEndpointTestResultsRequest(); // RealUserEndpointTestResultsRequest | 
         try {
-            ApiResponse<RealUserEndpointTestNetworkResults> response = apiInstance.filterRealUserTestsNetworkResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsNetworkResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsNetworkResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest)
+                .build();
+            ApiResponse<RealUserEndpointTestNetworkResults> response = apiInstance.filterRealUserTestsNetworkResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -158,15 +168,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md)|  | [optional] |
+| request | [**FilterRealUserTestsNetworkResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsNetworkResultsRequest)|-|-|
 
 ### Return type
 
@@ -195,9 +199,24 @@ ApiResponse<[**RealUserEndpointTestNetworkResults**](RealUserEndpointTestNetwork
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterRealUserTestsNetworkResultsRequest"></a>
+## FilterRealUserTestsNetworkResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md) |  | [optional] |
+
+
+
 ## filterRealUserTestsResults
 
-> RealUserEndpointTestResults filterRealUserTestsResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest)
+> RealUserEndpointTestResults filterRealUserTestsResults(FilterRealUserTestsResultsRequest)
 
 List endpoint real user tests
 
@@ -211,7 +230,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -231,7 +250,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest = new RealUserEndpointTestResultsRequest(); // RealUserEndpointTestResultsRequest | 
         try {
-            RealUserEndpointTestResults result = apiInstance.filterRealUserTestsResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest)
+                .build();
+            RealUserEndpointTestResults result = apiInstance.filterRealUserTestsResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserEndpointTestResultsApi#filterRealUserTestsResults");
@@ -246,15 +273,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md)|  | [optional] |
+| request | [**FilterRealUserTestsResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsResultsRequest)|-|-|
 
 ### Return type
 
@@ -284,7 +305,7 @@ public class Example {
 
 ## filterRealUserTestsResultsWithHttpInfo
 
-> ApiResponse<RealUserEndpointTestResults> filterRealUserTestsResults filterRealUserTestsResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest)
+> ApiResponse<RealUserEndpointTestResults> filterRealUserTestsResults filterRealUserTestsResultsWithHttpInfo(FilterRealUserTestsResultsRequest)
 
 List endpoint real user tests
 
@@ -299,7 +320,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -319,7 +340,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultsRequest realUserEndpointTestResultsRequest = new RealUserEndpointTestResultsRequest(); // RealUserEndpointTestResultsRequest | 
         try {
-            ApiResponse<RealUserEndpointTestResults> response = apiInstance.filterRealUserTestsResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultsRequest);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultsRequest(realUserEndpointTestResultsRequest)
+                .build();
+            ApiResponse<RealUserEndpointTestResults> response = apiInstance.filterRealUserTestsResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -336,15 +365,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md)|  | [optional] |
+| request | [**FilterRealUserTestsResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsResultsRequest)|-|-|
 
 ### Return type
 
@@ -373,9 +396,24 @@ ApiResponse<[**RealUserEndpointTestResults**](RealUserEndpointTestResults.md)>
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterRealUserTestsResultsRequest"></a>
+## FilterRealUserTestsResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **realUserEndpointTestResultsRequest** | [**RealUserEndpointTestResultsRequest**](RealUserEndpointTestResultsRequest.md) |  | [optional] |
+
+
+
 ## filterRealUserTestsVisitedPagesResults
 
-> RealUserEndpointTestPageResults filterRealUserTestsVisitedPagesResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter)
+> RealUserEndpointTestPageResults filterRealUserTestsVisitedPagesResults(FilterRealUserTestsVisitedPagesResultsRequest)
 
 List endpoint real user tests visited pages
 
@@ -389,7 +427,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -409,7 +447,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter = new RealUserEndpointTestResultRequestFilter(); // RealUserEndpointTestResultRequestFilter | 
         try {
-            RealUserEndpointTestPageResults result = apiInstance.filterRealUserTestsVisitedPagesResults(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsVisitedPagesResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsVisitedPagesResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultRequestFilter(realUserEndpointTestResultRequestFilter)
+                .build();
+            RealUserEndpointTestPageResults result = apiInstance.filterRealUserTestsVisitedPagesResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserEndpointTestResultsApi#filterRealUserTestsVisitedPagesResults");
@@ -424,15 +470,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultRequestFilter** | [**RealUserEndpointTestResultRequestFilter**](RealUserEndpointTestResultRequestFilter.md)|  | [optional] |
+| request | [**FilterRealUserTestsVisitedPagesResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsVisitedPagesResultsRequest)|-|-|
 
 ### Return type
 
@@ -462,7 +502,7 @@ public class Example {
 
 ## filterRealUserTestsVisitedPagesResultsWithHttpInfo
 
-> ApiResponse<RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResults filterRealUserTestsVisitedPagesResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter)
+> ApiResponse<RealUserEndpointTestPageResults> filterRealUserTestsVisitedPagesResults filterRealUserTestsVisitedPagesResultsWithHttpInfo(FilterRealUserTestsVisitedPagesResultsRequest)
 
 List endpoint real user tests visited pages
 
@@ -477,7 +517,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -497,7 +537,15 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         RealUserEndpointTestResultRequestFilter realUserEndpointTestResultRequestFilter = new RealUserEndpointTestResultRequestFilter(); // RealUserEndpointTestResultRequestFilter | 
         try {
-            ApiResponse<RealUserEndpointTestPageResults> response = apiInstance.filterRealUserTestsVisitedPagesResultsWithHttpInfo(aid, window, startDate, endDate, cursor, realUserEndpointTestResultRequestFilter);
+            RealUserEndpointTestResultsApi.FilterRealUserTestsVisitedPagesResultsRequest request = RealUserEndpointTestResultsApi.FilterRealUserTestsVisitedPagesResultsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .realUserEndpointTestResultRequestFilter(realUserEndpointTestResultRequestFilter)
+                .build();
+            ApiResponse<RealUserEndpointTestPageResults> response = apiInstance.filterRealUserTestsVisitedPagesResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -514,15 +562,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **realUserEndpointTestResultRequestFilter** | [**RealUserEndpointTestResultRequestFilter**](RealUserEndpointTestResultRequestFilter.md)|  | [optional] |
+| request | [**FilterRealUserTestsVisitedPagesResultsRequest**](RealUserEndpointTestResultsApi.md#FilterRealUserTestsVisitedPagesResultsRequest)|-|-|
 
 ### Return type
 
@@ -551,9 +593,24 @@ ApiResponse<[**RealUserEndpointTestPageResults**](RealUserEndpointTestPageResult
 | **502** | Bad Gateway |  -  |
 
 
+<a id="FilterRealUserTestsVisitedPagesResultsRequest"></a>
+## FilterRealUserTestsVisitedPagesResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **realUserEndpointTestResultRequestFilter** | [**RealUserEndpointTestResultRequestFilter**](RealUserEndpointTestResultRequestFilter.md) |  | [optional] |
+
+
+
 ## getRealUserTestPageResults
 
-> RealUserEndpointTestPageDetailResult getRealUserTestPageResults(id, pageId, aid)
+> RealUserEndpointTestPageDetailResult getRealUserTestPageResults(GetRealUserTestPageResultsRequest)
 
 Retrieve endpoint real user test page
 
@@ -567,7 +624,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -584,7 +641,12 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RealUserEndpointTestPageDetailResult result = apiInstance.getRealUserTestPageResults(id, pageId, aid);
+            RealUserEndpointTestResultsApi.GetRealUserTestPageResultsRequest request = RealUserEndpointTestResultsApi.GetRealUserTestPageResultsRequest.builder()
+                .id(id)
+                .pageId(pageId)
+                .aid(aid)
+                .build();
+            RealUserEndpointTestPageDetailResult result = apiInstance.getRealUserTestPageResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserEndpointTestResultsApi#getRealUserTestPageResults");
@@ -599,12 +661,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The real user test id. | |
-| **pageId** | **String**| Web page ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRealUserTestPageResultsRequest**](RealUserEndpointTestResultsApi.md#GetRealUserTestPageResultsRequest)|-|-|
 
 ### Return type
 
@@ -633,7 +692,7 @@ public class Example {
 
 ## getRealUserTestPageResultsWithHttpInfo
 
-> ApiResponse<RealUserEndpointTestPageDetailResult> getRealUserTestPageResults getRealUserTestPageResultsWithHttpInfo(id, pageId, aid)
+> ApiResponse<RealUserEndpointTestPageDetailResult> getRealUserTestPageResults getRealUserTestPageResultsWithHttpInfo(GetRealUserTestPageResultsRequest)
 
 Retrieve endpoint real user test page
 
@@ -648,7 +707,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -665,7 +724,12 @@ public class Example {
         String pageId = "281474976710706"; // String | Web page ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RealUserEndpointTestPageDetailResult> response = apiInstance.getRealUserTestPageResultsWithHttpInfo(id, pageId, aid);
+            RealUserEndpointTestResultsApi.GetRealUserTestPageResultsRequest request = RealUserEndpointTestResultsApi.GetRealUserTestPageResultsRequest.builder()
+                .id(id)
+                .pageId(pageId)
+                .aid(aid)
+                .build();
+            ApiResponse<RealUserEndpointTestPageDetailResult> response = apiInstance.getRealUserTestPageResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -682,12 +746,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The real user test id. | |
-| **pageId** | **String**| Web page ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRealUserTestPageResultsRequest**](RealUserEndpointTestResultsApi.md#GetRealUserTestPageResultsRequest)|-|-|
 
 ### Return type
 
@@ -715,9 +776,21 @@ ApiResponse<[**RealUserEndpointTestPageDetailResult**](RealUserEndpointTestPageD
 | **502** | Bad Gateway |  -  |
 
 
+<a id="GetRealUserTestPageResultsRequest"></a>
+## GetRealUserTestPageResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The real user test id. | |
+| **pageId** | **String** | Web page ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getRealUserTestResults
 
-> RealUserEndpointTestDetailResults getRealUserTestResults(id, aid)
+> RealUserEndpointTestDetailResults getRealUserTestResults(GetRealUserTestResultsRequest)
 
 Retrieve endpoint real user test
 
@@ -731,7 +804,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -747,7 +820,11 @@ public class Example {
         String id = "07625:1490529480:h3qJQTpl"; // String | The real user test id.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            RealUserEndpointTestDetailResults result = apiInstance.getRealUserTestResults(id, aid);
+            RealUserEndpointTestResultsApi.GetRealUserTestResultsRequest request = RealUserEndpointTestResultsApi.GetRealUserTestResultsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            RealUserEndpointTestDetailResults result = apiInstance.getRealUserTestResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RealUserEndpointTestResultsApi#getRealUserTestResults");
@@ -762,11 +839,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The real user test id. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRealUserTestResultsRequest**](RealUserEndpointTestResultsApi.md#GetRealUserTestResultsRequest)|-|-|
 
 ### Return type
 
@@ -795,7 +870,7 @@ public class Example {
 
 ## getRealUserTestResultsWithHttpInfo
 
-> ApiResponse<RealUserEndpointTestDetailResults> getRealUserTestResults getRealUserTestResultsWithHttpInfo(id, aid)
+> ApiResponse<RealUserEndpointTestDetailResults> getRealUserTestResults getRealUserTestResultsWithHttpInfo(GetRealUserTestResultsRequest)
 
 Retrieve endpoint real user test
 
@@ -810,7 +885,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.tests.Configuration;
 import com.thousandeyes.sdk.endpoint.tests.authentication.*;
-import com.thousandeyes.sdk.endpoint.tests.models.*;
+import com.thousandeyes.sdk.endpoint.tests.results.model.*;
 import com.thousandeyes.sdk.endpoint.tests.results.RealUserEndpointTestResultsApi;
 
 public class Example {
@@ -826,7 +901,11 @@ public class Example {
         String id = "07625:1490529480:h3qJQTpl"; // String | The real user test id.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<RealUserEndpointTestDetailResults> response = apiInstance.getRealUserTestResultsWithHttpInfo(id, aid);
+            RealUserEndpointTestResultsApi.GetRealUserTestResultsRequest request = RealUserEndpointTestResultsApi.GetRealUserTestResultsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<RealUserEndpointTestDetailResults> response = apiInstance.getRealUserTestResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -843,11 +922,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The real user test id. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetRealUserTestResultsRequest**](RealUserEndpointTestResultsApi.md#GetRealUserTestResultsRequest)|-|-|
 
 ### Return type
 
@@ -873,4 +950,15 @@ ApiResponse<[**RealUserEndpointTestDetailResults**](RealUserEndpointTestDetailRe
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
+
+
+<a id="GetRealUserTestResultsRequest"></a>
+## GetRealUserTestResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The real user test id. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

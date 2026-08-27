@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class VoiceTestsApi {
   /**
    * Create Voice test
    * Creates a new Voice test. This method requires Account Admin permissions.
-   * @param voiceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return VoiceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public VoiceTestResponse createVoiceTest(VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<VoiceTestResponse> response = createVoiceTestWithHttpInfo(voiceTestRequest, aid, expand);
+  public VoiceTestResponse createVoiceTest(CreateVoiceTestRequest request) throws ApiException {
+    ApiResponse<VoiceTestResponse> response = createVoiceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create Voice test
    * Creates a new Voice test. This method requires Account Admin permissions.
-   * @param voiceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;VoiceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<VoiceTestResponse> createVoiceTestWithHttpInfo(VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createVoiceTestValidateRequest(voiceTestRequest);
+  public ApiResponse<VoiceTestResponse> createVoiceTestWithHttpInfo(CreateVoiceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createVoiceTest");
+    }
+    createVoiceTestValidateRequest(request.getVoiceTestRequest());
 
-    var requestBuilder = createVoiceTestRequestBuilder(voiceTestRequest, aid, expand);
+    var requestBuilder = createVoiceTestRequestBuilder(request.getVoiceTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), VoiceTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class VoiceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createVoiceTestRequestBuilder(VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createVoiceTestRequestBuilder(VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/voice";
@@ -122,29 +118,84 @@ public class VoiceTestsApi {
     requestBuilder.requestBody(voiceTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete Voice test
-   * Deletes the specified Voice test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteVoiceTest(String testId, String aid) throws ApiException {
-    deleteVoiceTestWithHttpInfo(testId, aid);
+
+  public static final class CreateVoiceTestRequest {
+    private final VoiceTestRequest voiceTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateVoiceTestRequest(Builder builder) {
+      this.voiceTestRequest = builder.voiceTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public VoiceTestRequest getVoiceTestRequest() {
+      return voiceTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .voiceTestRequest(voiceTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private VoiceTestRequest voiceTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder voiceTestRequest(VoiceTestRequest voiceTestRequest) {
+        this.voiceTestRequest = voiceTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateVoiceTestRequest build() {
+        return new CreateVoiceTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete Voice test
    * Deletes the specified Voice test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteVoiceTest(DeleteVoiceTestRequest request) throws ApiException {
+    deleteVoiceTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete Voice test
+   * Deletes the specified Voice test. This method requires Account Admin permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteVoiceTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteVoiceTestValidateRequest(testId);
+  public ApiResponse<Void> deleteVoiceTestWithHttpInfo(DeleteVoiceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteVoiceTest");
+    }
+    deleteVoiceTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteVoiceTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteVoiceTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class VoiceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteVoiceTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteVoiceTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/voice/{testId}"
@@ -175,35 +226,75 @@ public class VoiceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteVoiceTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteVoiceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteVoiceTestRequest build() {
+        return new DeleteVoiceTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get Voice test
    * Returns details for a Voice test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return VoiceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public VoiceTestResponse getVoiceTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<VoiceTestResponse> response = getVoiceTestWithHttpInfo(testId, aid, versionId, expand);
+  public VoiceTestResponse getVoiceTest(GetVoiceTestRequest request) throws ApiException {
+    ApiResponse<VoiceTestResponse> response = getVoiceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get Voice test
    * Returns details for a Voice test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;VoiceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<VoiceTestResponse> getVoiceTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getVoiceTestValidateRequest(testId);
+  public ApiResponse<VoiceTestResponse> getVoiceTestWithHttpInfo(GetVoiceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getVoiceTest");
+    }
+    getVoiceTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getVoiceTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getVoiceTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), VoiceTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class VoiceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getVoiceTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getVoiceTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/voice/{testId}"
@@ -236,29 +327,97 @@ public class VoiceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetVoiceTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetVoiceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetVoiceTestRequest build() {
+        return new GetVoiceTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List Voice tests
    * Returns a list of Voice tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return VoiceTests
    * @throws ApiException if fails to make API call
    */
-  public VoiceTests getVoiceTests(String aid) throws ApiException {
-    ApiResponse<VoiceTests> response = getVoiceTestsWithHttpInfo(aid);
+  public VoiceTests getVoiceTests(GetVoiceTestsRequest request) throws ApiException {
+    ApiResponse<VoiceTests> response = getVoiceTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Voice tests
    * Returns a list of Voice tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;VoiceTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<VoiceTests> getVoiceTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<VoiceTests> getVoiceTestsWithHttpInfo(GetVoiceTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getVoiceTests");
+    }
     getVoiceTestsValidateRequest();
 
-    var requestBuilder = getVoiceTestsRequestBuilder(aid);
+    var requestBuilder = getVoiceTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), VoiceTests.class);
   }
@@ -266,8 +425,8 @@ public class VoiceTestsApi {
   private void getVoiceTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getVoiceTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getVoiceTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/voice";
@@ -284,35 +443,64 @@ public class VoiceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetVoiceTestsRequest {
+    private final String aid;
+
+    private GetVoiceTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetVoiceTestsRequest build() {
+        return new GetVoiceTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update Voice test
    * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param voiceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return VoiceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public VoiceTestResponse updateVoiceTest(String testId, VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<VoiceTestResponse> response = updateVoiceTestWithHttpInfo(testId, voiceTestRequest, aid, expand);
+  public VoiceTestResponse updateVoiceTest(UpdateVoiceTestRequest request) throws ApiException {
+    ApiResponse<VoiceTestResponse> response = updateVoiceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update Voice test
    * Updates a Voice test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param voiceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;VoiceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<VoiceTestResponse> updateVoiceTestWithHttpInfo(String testId, VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateVoiceTestValidateRequest(testId, voiceTestRequest);
+  public ApiResponse<VoiceTestResponse> updateVoiceTestWithHttpInfo(UpdateVoiceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateVoiceTest");
+    }
+    updateVoiceTestValidateRequest(request.getTestId(), request.getVoiceTestRequest());
 
-    var requestBuilder = updateVoiceTestRequestBuilder(testId, voiceTestRequest, aid, expand);
+    var requestBuilder = updateVoiceTestRequestBuilder(request.getTestId(), request.getVoiceTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), VoiceTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class VoiceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateVoiceTestRequestBuilder(String testId, VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateVoiceTestRequestBuilder(String testId, VoiceTestRequest voiceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/voice/{testId}"
@@ -350,4 +538,69 @@ public class VoiceTestsApi {
     requestBuilder.requestBody(voiceTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateVoiceTestRequest {
+    private final String testId;
+    private final VoiceTestRequest voiceTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateVoiceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.voiceTestRequest = builder.voiceTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public VoiceTestRequest getVoiceTestRequest() {
+      return voiceTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .voiceTestRequest(voiceTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private VoiceTestRequest voiceTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder voiceTestRequest(VoiceTestRequest voiceTestRequest) {
+        this.voiceTestRequest = voiceTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateVoiceTestRequest build() {
+        return new UpdateVoiceTestRequest(this);
+      }
+    }
+  }
+
 }

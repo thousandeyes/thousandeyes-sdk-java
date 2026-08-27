@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class DnsServerTestsApi {
   /**
    * Create DNS Server test
    * Creates a new DNS Server test. This method requires Account Admin permissions.
-   * @param dnsServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsServerTestResponse createDnsServerTest(DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsServerTestResponse> response = createDnsServerTestWithHttpInfo(dnsServerTestRequest, aid, expand);
+  public DnsServerTestResponse createDnsServerTest(CreateDnsServerTestRequest request) throws ApiException {
+    ApiResponse<DnsServerTestResponse> response = createDnsServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create DNS Server test
    * Creates a new DNS Server test. This method requires Account Admin permissions.
-   * @param dnsServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsServerTestResponse> createDnsServerTestWithHttpInfo(DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createDnsServerTestValidateRequest(dnsServerTestRequest);
+  public ApiResponse<DnsServerTestResponse> createDnsServerTestWithHttpInfo(CreateDnsServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDnsServerTest");
+    }
+    createDnsServerTestValidateRequest(request.getDnsServerTestRequest());
 
-    var requestBuilder = createDnsServerTestRequestBuilder(dnsServerTestRequest, aid, expand);
+    var requestBuilder = createDnsServerTestRequestBuilder(request.getDnsServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsServerTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class DnsServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDnsServerTestRequestBuilder(DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDnsServerTestRequestBuilder(DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/dns-server";
@@ -122,29 +118,84 @@ public class DnsServerTestsApi {
     requestBuilder.requestBody(dnsServerTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete DNS Server test
-   * Deletes the specified DNS Server test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDnsServerTest(String testId, String aid) throws ApiException {
-    deleteDnsServerTestWithHttpInfo(testId, aid);
+
+  public static final class CreateDnsServerTestRequest {
+    private final DnsServerTestRequest dnsServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateDnsServerTestRequest(Builder builder) {
+      this.dnsServerTestRequest = builder.dnsServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public DnsServerTestRequest getDnsServerTestRequest() {
+      return dnsServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dnsServerTestRequest(dnsServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private DnsServerTestRequest dnsServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder dnsServerTestRequest(DnsServerTestRequest dnsServerTestRequest) {
+        this.dnsServerTestRequest = dnsServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateDnsServerTestRequest build() {
+        return new CreateDnsServerTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete DNS Server test
    * Deletes the specified DNS Server test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDnsServerTest(DeleteDnsServerTestRequest request) throws ApiException {
+    deleteDnsServerTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete DNS Server test
+   * Deletes the specified DNS Server test. This method requires Account Admin permissions. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDnsServerTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteDnsServerTestValidateRequest(testId);
+  public ApiResponse<Void> deleteDnsServerTestWithHttpInfo(DeleteDnsServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDnsServerTest");
+    }
+    deleteDnsServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteDnsServerTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteDnsServerTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class DnsServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDnsServerTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDnsServerTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/dns-server/{testId}"
@@ -175,35 +226,75 @@ public class DnsServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDnsServerTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteDnsServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDnsServerTestRequest build() {
+        return new DeleteDnsServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get DNS Server test
    * Returns details for a DNS Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsServerTestResponse getDnsServerTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsServerTestResponse> response = getDnsServerTestWithHttpInfo(testId, aid, versionId, expand);
+  public DnsServerTestResponse getDnsServerTest(GetDnsServerTestRequest request) throws ApiException {
+    ApiResponse<DnsServerTestResponse> response = getDnsServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get DNS Server test
    * Returns details for a DNS Server test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsServerTestResponse> getDnsServerTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getDnsServerTestValidateRequest(testId);
+  public ApiResponse<DnsServerTestResponse> getDnsServerTestWithHttpInfo(GetDnsServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsServerTest");
+    }
+    getDnsServerTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getDnsServerTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getDnsServerTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsServerTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class DnsServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsServerTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dns-server/{testId}"
@@ -236,29 +327,97 @@ public class DnsServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsServerTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetDnsServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetDnsServerTestRequest build() {
+        return new GetDnsServerTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List DNS Server tests
    * Returns a list of all DNS Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DnsServerTests
    * @throws ApiException if fails to make API call
    */
-  public DnsServerTests getDnsServerTests(String aid) throws ApiException {
-    ApiResponse<DnsServerTests> response = getDnsServerTestsWithHttpInfo(aid);
+  public DnsServerTests getDnsServerTests(GetDnsServerTestsRequest request) throws ApiException {
+    ApiResponse<DnsServerTests> response = getDnsServerTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List DNS Server tests
    * Returns a list of all DNS Server tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsServerTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsServerTests> getDnsServerTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<DnsServerTests> getDnsServerTestsWithHttpInfo(GetDnsServerTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsServerTests");
+    }
     getDnsServerTestsValidateRequest();
 
-    var requestBuilder = getDnsServerTestsRequestBuilder(aid);
+    var requestBuilder = getDnsServerTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), DnsServerTests.class);
   }
@@ -266,8 +425,8 @@ public class DnsServerTestsApi {
   private void getDnsServerTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsServerTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsServerTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dns-server";
@@ -284,35 +443,64 @@ public class DnsServerTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsServerTestsRequest {
+    private final String aid;
+
+    private GetDnsServerTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDnsServerTestsRequest build() {
+        return new GetDnsServerTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update DNS Server test
    * Updates a DNS Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsServerTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsServerTestResponse updateDnsServerTest(String testId, DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsServerTestResponse> response = updateDnsServerTestWithHttpInfo(testId, dnsServerTestRequest, aid, expand);
+  public DnsServerTestResponse updateDnsServerTest(UpdateDnsServerTestRequest request) throws ApiException {
+    ApiResponse<DnsServerTestResponse> response = updateDnsServerTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update DNS Server test
    * Updates a DNS Server test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsServerTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsServerTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsServerTestResponse> updateDnsServerTestWithHttpInfo(String testId, DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateDnsServerTestValidateRequest(testId, dnsServerTestRequest);
+  public ApiResponse<DnsServerTestResponse> updateDnsServerTestWithHttpInfo(UpdateDnsServerTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDnsServerTest");
+    }
+    updateDnsServerTestValidateRequest(request.getTestId(), request.getDnsServerTestRequest());
 
-    var requestBuilder = updateDnsServerTestRequestBuilder(testId, dnsServerTestRequest, aid, expand);
+    var requestBuilder = updateDnsServerTestRequestBuilder(request.getTestId(), request.getDnsServerTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsServerTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class DnsServerTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDnsServerTestRequestBuilder(String testId, DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDnsServerTestRequestBuilder(String testId, DnsServerTestRequest dnsServerTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/dns-server/{testId}"
@@ -350,4 +538,69 @@ public class DnsServerTestsApi {
     requestBuilder.requestBody(dnsServerTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDnsServerTestRequest {
+    private final String testId;
+    private final DnsServerTestRequest dnsServerTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateDnsServerTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.dnsServerTestRequest = builder.dnsServerTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public DnsServerTestRequest getDnsServerTestRequest() {
+      return dnsServerTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .dnsServerTestRequest(dnsServerTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private DnsServerTestRequest dnsServerTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder dnsServerTestRequest(DnsServerTestRequest dnsServerTestRequest) {
+        this.dnsServerTestRequest = dnsServerTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateDnsServerTestRequest build() {
+        return new UpdateDnsServerTestRequest(this);
+      }
+    }
+  }
+
 }

@@ -88,7 +88,6 @@ public class WebPageLoadTestResultsApiTest {
         String agentId = "11";
         String roundId = "1384309800";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -665,7 +664,13 @@ public class WebPageLoadTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestPageLoadAgentRoundResults(testId, agentId, roundId, null);
+        var request = WebPageLoadTestResultsApi.GetTestPageLoadAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getTestPageLoadAgentRoundResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -681,7 +686,6 @@ public class WebPageLoadTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -827,7 +831,14 @@ public class WebPageLoadTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestPageLoadResults(testId, null, null, null, null, null);
+        var request = WebPageLoadTestResultsApi.GetTestPageLoadResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestPageLoadResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

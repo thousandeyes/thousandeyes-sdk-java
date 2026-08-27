@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class AlertSuppressionWindowsApi {
   /**
    * Create alert suppression window
    * Creates a new alert suppression window in ThousandEyes, using the  provided POST data. Only Account Admins can create alert suppression windows.
-   * @param alertSuppressionWindowRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail createAlertSuppressionWindow(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiResponse<AlertSuppressionWindowDetail> response = createAlertSuppressionWindowWithHttpInfo(alertSuppressionWindowRequest, aid, expand);
+  public AlertSuppressionWindowDetail createAlertSuppressionWindow(CreateAlertSuppressionWindowRequest request) throws ApiException {
+    ApiResponse<AlertSuppressionWindowDetail> response = createAlertSuppressionWindowWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create alert suppression window
    * Creates a new alert suppression window in ThousandEyes, using the  provided POST data. Only Account Admins can create alert suppression windows.
-   * @param alertSuppressionWindowRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindowWithHttpInfo(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    createAlertSuppressionWindowValidateRequest(alertSuppressionWindowRequest);
+  public ApiResponse<AlertSuppressionWindowDetail> createAlertSuppressionWindowWithHttpInfo(CreateAlertSuppressionWindowRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createAlertSuppressionWindow");
+    }
+    createAlertSuppressionWindowValidateRequest(request.getAlertSuppressionWindowRequest());
 
-    var requestBuilder = createAlertSuppressionWindowRequestBuilder(alertSuppressionWindowRequest, aid, expand);
+    var requestBuilder = createAlertSuppressionWindowRequestBuilder(request.getAlertSuppressionWindowRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AlertSuppressionWindowDetail.class);
   }
@@ -101,8 +97,8 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createAlertSuppressionWindowRequestBuilder(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createAlertSuppressionWindowRequestBuilder(AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/alert-suppression-windows";
@@ -122,29 +118,84 @@ public class AlertSuppressionWindowsApi {
     requestBuilder.requestBody(alertSuppressionWindowRequest);
     return requestBuilder;
   }
-  /**
-   * Delete alert suppression window
-   * Deletes an alert suppression window.
-   * @param windowId Unique window ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteAlertSuppressionWindow(String windowId, String aid) throws ApiException {
-    deleteAlertSuppressionWindowWithHttpInfo(windowId, aid);
+
+  public static final class CreateAlertSuppressionWindowRequest {
+    private final AlertSuppressionWindowRequest alertSuppressionWindowRequest;
+    private final String aid;
+    private final List<ExpandAlertTestOptions> expand;
+
+    private CreateAlertSuppressionWindowRequest(Builder builder) {
+      this.alertSuppressionWindowRequest = builder.alertSuppressionWindowRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public AlertSuppressionWindowRequest getAlertSuppressionWindowRequest() {
+      return alertSuppressionWindowRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandAlertTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private AlertSuppressionWindowRequest alertSuppressionWindowRequest;
+      private String aid;
+      private List<ExpandAlertTestOptions> expand;
+
+      public Builder alertSuppressionWindowRequest(AlertSuppressionWindowRequest alertSuppressionWindowRequest) {
+        this.alertSuppressionWindowRequest = alertSuppressionWindowRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandAlertTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateAlertSuppressionWindowRequest build() {
+        return new CreateAlertSuppressionWindowRequest(this);
+      }
+    }
   }
 
   /**
    * Delete alert suppression window
    * Deletes an alert suppression window.
-   * @param windowId Unique window ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAlertSuppressionWindow(DeleteAlertSuppressionWindowRequest request) throws ApiException {
+    deleteAlertSuppressionWindowWithHttpInfo(request);
+  }
+
+  /**
+   * Delete alert suppression window
+   * Deletes an alert suppression window.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteAlertSuppressionWindowWithHttpInfo(String windowId, String aid) throws ApiException {
-    deleteAlertSuppressionWindowValidateRequest(windowId);
+  public ApiResponse<Void> deleteAlertSuppressionWindowWithHttpInfo(DeleteAlertSuppressionWindowRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteAlertSuppressionWindow");
+    }
+    deleteAlertSuppressionWindowValidateRequest(request.getWindowId());
 
-    var requestBuilder = deleteAlertSuppressionWindowRequestBuilder(windowId, aid);
+    var requestBuilder = deleteAlertSuppressionWindowRequestBuilder(request.getWindowId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteAlertSuppressionWindowRequestBuilder(String windowId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteAlertSuppressionWindowRequestBuilder(String windowId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/alert-suppression-windows/{windowId}"
@@ -175,33 +226,75 @@ public class AlertSuppressionWindowsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteAlertSuppressionWindowRequest {
+    private final String windowId;
+    private final String aid;
+
+    private DeleteAlertSuppressionWindowRequest(Builder builder) {
+      this.windowId = builder.windowId;
+      this.aid = builder.aid;
+    }
+    public String getWindowId() {
+      return windowId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .windowId(windowId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String windowId;
+      private String aid;
+
+      public Builder windowId(String windowId) {
+        this.windowId = windowId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteAlertSuppressionWindowRequest build() {
+        return new DeleteAlertSuppressionWindowRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve alert suppression window
    * Returns detailed information about an alert suppression window configured in your account group.
-   * @param windowId Unique window ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail getAlertSuppressionWindow(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiResponse<AlertSuppressionWindowDetail> response = getAlertSuppressionWindowWithHttpInfo(windowId, aid, expand);
+  public AlertSuppressionWindowDetail getAlertSuppressionWindow(GetAlertSuppressionWindowRequest request) throws ApiException {
+    ApiResponse<AlertSuppressionWindowDetail> response = getAlertSuppressionWindowWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve alert suppression window
    * Returns detailed information about an alert suppression window configured in your account group.
-   * @param windowId Unique window ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindowWithHttpInfo(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    getAlertSuppressionWindowValidateRequest(windowId);
+  public ApiResponse<AlertSuppressionWindowDetail> getAlertSuppressionWindowWithHttpInfo(GetAlertSuppressionWindowRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlertSuppressionWindow");
+    }
+    getAlertSuppressionWindowValidateRequest(request.getWindowId());
 
-    var requestBuilder = getAlertSuppressionWindowRequestBuilder(windowId, aid, expand);
+    var requestBuilder = getAlertSuppressionWindowRequestBuilder(request.getWindowId(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AlertSuppressionWindowDetail.class);
   }
@@ -213,8 +306,8 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertSuppressionWindowRequestBuilder(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertSuppressionWindowRequestBuilder(String windowId, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alert-suppression-windows/{windowId}"
@@ -233,29 +326,86 @@ public class AlertSuppressionWindowsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertSuppressionWindowRequest {
+    private final String windowId;
+    private final String aid;
+    private final List<ExpandAlertTestOptions> expand;
+
+    private GetAlertSuppressionWindowRequest(Builder builder) {
+      this.windowId = builder.windowId;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getWindowId() {
+      return windowId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandAlertTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .windowId(windowId)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String windowId;
+      private String aid;
+      private List<ExpandAlertTestOptions> expand;
+
+      public Builder windowId(String windowId) {
+        this.windowId = windowId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandAlertTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetAlertSuppressionWindowRequest build() {
+        return new GetAlertSuppressionWindowRequest(this);
+      }
+    }
+  }
+
   /**
    * List alert suppression windows
    * Returns a list of all alert suppression windows configured in your account group.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return AlertSuppressionWindows
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindows getAlertSuppressionWindows(String aid) throws ApiException {
-    ApiResponse<AlertSuppressionWindows> response = getAlertSuppressionWindowsWithHttpInfo(aid);
+  public AlertSuppressionWindows getAlertSuppressionWindows(GetAlertSuppressionWindowsRequest request) throws ApiException {
+    ApiResponse<AlertSuppressionWindows> response = getAlertSuppressionWindowsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List alert suppression windows
    * Returns a list of all alert suppression windows configured in your account group.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AlertSuppressionWindows&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindows> getAlertSuppressionWindowsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<AlertSuppressionWindows> getAlertSuppressionWindowsWithHttpInfo(GetAlertSuppressionWindowsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAlertSuppressionWindows");
+    }
     getAlertSuppressionWindowsValidateRequest();
 
-    var requestBuilder = getAlertSuppressionWindowsRequestBuilder(aid);
+    var requestBuilder = getAlertSuppressionWindowsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), AlertSuppressionWindows.class);
   }
@@ -263,8 +413,8 @@ public class AlertSuppressionWindowsApi {
   private void getAlertSuppressionWindowsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAlertSuppressionWindowsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertSuppressionWindowsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/alert-suppression-windows";
@@ -281,35 +431,64 @@ public class AlertSuppressionWindowsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAlertSuppressionWindowsRequest {
+    private final String aid;
+
+    private GetAlertSuppressionWindowsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAlertSuppressionWindowsRequest build() {
+        return new GetAlertSuppressionWindowsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update alert suppression window
    * Updates an alert suppression window in ThousandEyes, using the  provided POST data. Only Account Admins can update alert suppression windows.
-   * @param windowId Unique window ID. (required)
-   * @param alertSuppressionWindowRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return AlertSuppressionWindowDetail
    * @throws ApiException if fails to make API call
    */
-  public AlertSuppressionWindowDetail updateAlertSuppressionWindow(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiResponse<AlertSuppressionWindowDetail> response = updateAlertSuppressionWindowWithHttpInfo(windowId, alertSuppressionWindowRequest, aid, expand);
+  public AlertSuppressionWindowDetail updateAlertSuppressionWindow(UpdateAlertSuppressionWindowRequest request) throws ApiException {
+    ApiResponse<AlertSuppressionWindowDetail> response = updateAlertSuppressionWindowWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update alert suppression window
    * Updates an alert suppression window in ThousandEyes, using the  provided POST data. Only Account Admins can update alert suppression windows.
-   * @param windowId Unique window ID. (required)
-   * @param alertSuppressionWindowRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand alert related resources.  Without this parameter, there&#39;s no default expansion. For example, to expand the \&quot;tests\&quot; resource, use the &#x60;?expand&#x3D;test&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;AlertSuppressionWindowDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindowWithHttpInfo(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    updateAlertSuppressionWindowValidateRequest(windowId, alertSuppressionWindowRequest);
+  public ApiResponse<AlertSuppressionWindowDetail> updateAlertSuppressionWindowWithHttpInfo(UpdateAlertSuppressionWindowRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateAlertSuppressionWindow");
+    }
+    updateAlertSuppressionWindowValidateRequest(request.getWindowId(), request.getAlertSuppressionWindowRequest());
 
-    var requestBuilder = updateAlertSuppressionWindowRequestBuilder(windowId, alertSuppressionWindowRequest, aid, expand);
+    var requestBuilder = updateAlertSuppressionWindowRequestBuilder(request.getWindowId(), request.getAlertSuppressionWindowRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), AlertSuppressionWindowDetail.class);
   }
@@ -325,8 +504,8 @@ public class AlertSuppressionWindowsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateAlertSuppressionWindowRequestBuilder(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateAlertSuppressionWindowRequestBuilder(String windowId, AlertSuppressionWindowRequest alertSuppressionWindowRequest, String aid, List<ExpandAlertTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/alert-suppression-windows/{windowId}"
@@ -347,4 +526,69 @@ public class AlertSuppressionWindowsApi {
     requestBuilder.requestBody(alertSuppressionWindowRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateAlertSuppressionWindowRequest {
+    private final String windowId;
+    private final AlertSuppressionWindowRequest alertSuppressionWindowRequest;
+    private final String aid;
+    private final List<ExpandAlertTestOptions> expand;
+
+    private UpdateAlertSuppressionWindowRequest(Builder builder) {
+      this.windowId = builder.windowId;
+      this.alertSuppressionWindowRequest = builder.alertSuppressionWindowRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getWindowId() {
+      return windowId;
+    }
+    public AlertSuppressionWindowRequest getAlertSuppressionWindowRequest() {
+      return alertSuppressionWindowRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandAlertTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .windowId(windowId)
+          .alertSuppressionWindowRequest(alertSuppressionWindowRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String windowId;
+      private AlertSuppressionWindowRequest alertSuppressionWindowRequest;
+      private String aid;
+      private List<ExpandAlertTestOptions> expand;
+
+      public Builder windowId(String windowId) {
+        this.windowId = windowId;
+        return this;
+      }
+      public Builder alertSuppressionWindowRequest(AlertSuppressionWindowRequest alertSuppressionWindowRequest) {
+        this.alertSuppressionWindowRequest = alertSuppressionWindowRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandAlertTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateAlertSuppressionWindowRequest build() {
+        return new UpdateAlertSuppressionWindowRequest(this);
+      }
+    }
+  }
+
 }

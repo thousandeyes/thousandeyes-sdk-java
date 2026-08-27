@@ -82,7 +82,6 @@ public class GenericConnectorsApiTest {
     public void createGenericConnectorRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "headers" : [ {
@@ -170,7 +169,11 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createGenericConnector(mappedRequest, null);
+        var request = GenericConnectorsApi.CreateGenericConnectorRequest.builder()
+                .genericConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createGenericConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -187,7 +190,6 @@ public class GenericConnectorsApiTest {
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
-
         var statusCode = 204;
 
         var path = "/connectors/generic/{id}";
@@ -197,7 +199,11 @@ public class GenericConnectorsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteGenericConnectorWithHttpInfo(id, null);
+        var request = GenericConnectorsApi.DeleteGenericConnectorRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteGenericConnectorWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -213,7 +219,6 @@ public class GenericConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -263,7 +268,11 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getGenericConnector(id, null);
+        var request = GenericConnectorsApi.GetGenericConnectorRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getGenericConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -278,7 +287,6 @@ public class GenericConnectorsApiTest {
     public void getGenericConnectorsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -371,7 +379,10 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getGenericConnectors(null);
+        var request = GenericConnectorsApi.GetGenericConnectorsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getGenericConnectors(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -387,7 +398,6 @@ public class GenericConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
 
         var responseBodyJson = """
                 {
@@ -421,7 +431,11 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.listGenericConnectorOperations(id, null);
+        var request = GenericConnectorsApi.ListGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .aid("1234")
+                .build();
+        var apiResponse = api.listGenericConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -437,7 +451,6 @@ public class GenericConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 [ "ca39314d-eb4f-496f-9435-b5d20b1bfbff", "a32cfbab-32f6-41d8-9027-7127cba965dd" ]
                                  """;
@@ -480,7 +493,12 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.setGenericConnectorOperations(id, mappedRequest, null);
+        var request = GenericConnectorsApi.SetGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.setGenericConnectorOperations(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -496,7 +514,6 @@ public class GenericConnectorsApiTest {
             throws JsonProcessingException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
-
         var requestBodyJson = """
                 {
                   "headers" : [ {
@@ -585,7 +602,12 @@ public class GenericConnectorsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateGenericConnector(id, mappedRequest, null);
+        var request = GenericConnectorsApi.UpdateGenericConnectorRequest.builder()
+                .id(id)
+                .genericConnector(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateGenericConnector(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

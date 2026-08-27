@@ -83,7 +83,6 @@ public class InternetInsightsOutagesApiTest {
     public void filterOutagesRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "startDate" : "2022-03-01T01:30:00Z",
@@ -188,7 +187,11 @@ public class InternetInsightsOutagesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.filterOutages(mappedRequest, null);
+        var request = InternetInsightsOutagesApi.FilterOutagesRequest.builder()
+                .apiOutageFilter(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.filterOutages(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -204,7 +207,6 @@ public class InternetInsightsOutagesApiTest {
             throws JsonProcessingException, ApiException
     {
         String outageId = "F73E24F17E4996923196826A208BB572508A8EB13BEE14B0";
-
 
         var responseBodyJson = """
                 {
@@ -266,7 +268,11 @@ public class InternetInsightsOutagesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAppOutage(outageId, null);
+        var request = InternetInsightsOutagesApi.GetAppOutageRequest.builder()
+                .outageId(outageId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAppOutage(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -282,7 +288,6 @@ public class InternetInsightsOutagesApiTest {
             throws JsonProcessingException, ApiException
     {
         String outageId = "694D8656960F34F76489BCE5E9BCD58EC53027462740D75F";
-
 
         var responseBodyJson = """
                 {
@@ -338,7 +343,11 @@ public class InternetInsightsOutagesApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getNetworkOutage(outageId, null);
+        var request = InternetInsightsOutagesApi.GetNetworkOutageRequest.builder()
+                .outageId(outageId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getNetworkOutage(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

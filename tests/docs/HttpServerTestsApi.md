@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createHttpServerTest
 
-> HttpServerTestResponse createHttpServerTest(httpServerTestRequest, aid, expand)
+> HttpServerTestResponse createHttpServerTest(CreateHttpServerTestRequest)
 
 Create HTTP Server test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            HttpServerTestResponse result = apiInstance.createHttpServerTest(httpServerTestRequest, aid, expand);
+            HttpServerTestsApi.CreateHttpServerTestRequest request = HttpServerTestsApi.CreateHttpServerTestRequest.builder()
+                .httpServerTestRequest(httpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            HttpServerTestResponse result = apiInstance.createHttpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerTestsApi#createHttpServerTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateHttpServerTestRequest**](HttpServerTestsApi.md#CreateHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createHttpServerTestWithHttpInfo
 
-> ApiResponse<HttpServerTestResponse> createHttpServerTest createHttpServerTestWithHttpInfo(httpServerTestRequest, aid, expand)
+> ApiResponse<HttpServerTestResponse> createHttpServerTest createHttpServerTestWithHttpInfo(CreateHttpServerTestRequest)
 
 Create HTTP Server test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<HttpServerTestResponse> response = apiInstance.createHttpServerTestWithHttpInfo(httpServerTestRequest, aid, expand);
+            HttpServerTestsApi.CreateHttpServerTestRequest request = HttpServerTestsApi.CreateHttpServerTestRequest.builder()
+                .httpServerTestRequest(httpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<HttpServerTestResponse> response = apiInstance.createHttpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateHttpServerTestRequest**](HttpServerTestsApi.md#CreateHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**HttpServerTestResponse**](HttpServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateHttpServerTestRequest"></a>
+## CreateHttpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deleteHttpServerTest
 
-> void deleteHttpServerTest(testId, aid)
+> void deleteHttpServerTest(DeleteHttpServerTestRequest)
 
 Delete HTTP Server test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteHttpServerTest(testId, aid);
+            HttpServerTestsApi.DeleteHttpServerTestRequest request = HttpServerTestsApi.DeleteHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteHttpServerTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerTestsApi#deleteHttpServerTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteHttpServerTestRequest**](HttpServerTestsApi.md#DeleteHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ null (empty response body)
 
 ## deleteHttpServerTestWithHttpInfo
 
-> ApiResponse<Void> deleteHttpServerTest deleteHttpServerTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteHttpServerTest deleteHttpServerTestWithHttpInfo(DeleteHttpServerTestRequest)
 
 Delete HTTP Server test
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -296,7 +314,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteHttpServerTestWithHttpInfo(testId, aid);
+            HttpServerTestsApi.DeleteHttpServerTestRequest request = HttpServerTestsApi.DeleteHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteHttpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -312,11 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteHttpServerTestRequest**](HttpServerTestsApi.md#DeleteHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteHttpServerTestRequest"></a>
+## DeleteHttpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getHttpServerTest
 
-> HttpServerTestResponse getHttpServerTest(testId, aid, versionId, expand)
+> HttpServerTestResponse getHttpServerTest(GetHttpServerTestRequest)
 
 Get HTTP Server test
 
@@ -361,7 +392,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -379,7 +410,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            HttpServerTestResponse result = apiInstance.getHttpServerTest(testId, aid, versionId, expand);
+            HttpServerTestsApi.GetHttpServerTestRequest request = HttpServerTestsApi.GetHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            HttpServerTestResponse result = apiInstance.getHttpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerTestsApi#getHttpServerTest");
@@ -394,13 +431,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetHttpServerTestRequest**](HttpServerTestsApi.md#GetHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -430,7 +463,7 @@ public class Example {
 
 ## getHttpServerTestWithHttpInfo
 
-> ApiResponse<HttpServerTestResponse> getHttpServerTest getHttpServerTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<HttpServerTestResponse> getHttpServerTest getHttpServerTestWithHttpInfo(GetHttpServerTestRequest)
 
 Get HTTP Server test
 
@@ -445,7 +478,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -463,7 +496,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<HttpServerTestResponse> response = apiInstance.getHttpServerTestWithHttpInfo(testId, aid, versionId, expand);
+            HttpServerTestsApi.GetHttpServerTestRequest request = HttpServerTestsApi.GetHttpServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<HttpServerTestResponse> response = apiInstance.getHttpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -480,13 +519,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetHttpServerTestRequest**](HttpServerTestsApi.md#GetHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -515,9 +550,22 @@ ApiResponse<[**HttpServerTestResponse**](HttpServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetHttpServerTestRequest"></a>
+## GetHttpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getHttpServerTests
 
-> HttpServerTests getHttpServerTests(aid)
+> HttpServerTests getHttpServerTests(GetHttpServerTestsRequest)
 
 List HTTP Server tests
 
@@ -531,7 +579,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -546,7 +594,10 @@ public class Example {
         HttpServerTestsApi apiInstance = new HttpServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            HttpServerTests result = apiInstance.getHttpServerTests(aid);
+            HttpServerTestsApi.GetHttpServerTestsRequest request = HttpServerTestsApi.GetHttpServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            HttpServerTests result = apiInstance.getHttpServerTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerTestsApi#getHttpServerTests");
@@ -561,10 +612,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetHttpServerTestsRequest**](HttpServerTestsApi.md#GetHttpServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -594,7 +644,7 @@ public class Example {
 
 ## getHttpServerTestsWithHttpInfo
 
-> ApiResponse<HttpServerTests> getHttpServerTests getHttpServerTestsWithHttpInfo(aid)
+> ApiResponse<HttpServerTests> getHttpServerTests getHttpServerTestsWithHttpInfo(GetHttpServerTestsRequest)
 
 List HTTP Server tests
 
@@ -609,7 +659,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -624,7 +674,10 @@ public class Example {
         HttpServerTestsApi apiInstance = new HttpServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<HttpServerTests> response = apiInstance.getHttpServerTestsWithHttpInfo(aid);
+            HttpServerTestsApi.GetHttpServerTestsRequest request = HttpServerTestsApi.GetHttpServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<HttpServerTests> response = apiInstance.getHttpServerTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -641,10 +694,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetHttpServerTestsRequest**](HttpServerTestsApi.md#GetHttpServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -673,9 +725,19 @@ ApiResponse<[**HttpServerTests**](HttpServerTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetHttpServerTestsRequest"></a>
+## GetHttpServerTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateHttpServerTest
 
-> HttpServerTestResponse updateHttpServerTest(testId, httpServerTestRequest, aid, expand)
+> HttpServerTestResponse updateHttpServerTest(UpdateHttpServerTestRequest)
 
 Update HTTP Server test
 
@@ -689,7 +751,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -707,7 +769,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            HttpServerTestResponse result = apiInstance.updateHttpServerTest(testId, httpServerTestRequest, aid, expand);
+            HttpServerTestsApi.UpdateHttpServerTestRequest request = HttpServerTestsApi.UpdateHttpServerTestRequest.builder()
+                .testId(testId)
+                .httpServerTestRequest(httpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            HttpServerTestResponse result = apiInstance.updateHttpServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling HttpServerTestsApi#updateHttpServerTest");
@@ -722,13 +790,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateHttpServerTestRequest**](HttpServerTestsApi.md#UpdateHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -759,7 +823,7 @@ public class Example {
 
 ## updateHttpServerTestWithHttpInfo
 
-> ApiResponse<HttpServerTestResponse> updateHttpServerTest updateHttpServerTestWithHttpInfo(testId, httpServerTestRequest, aid, expand)
+> ApiResponse<HttpServerTestResponse> updateHttpServerTest updateHttpServerTestWithHttpInfo(UpdateHttpServerTestRequest)
 
 Update HTTP Server test
 
@@ -774,7 +838,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.HttpServerTestsApi;
 
 public class Example {
@@ -792,7 +856,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<HttpServerTestResponse> response = apiInstance.updateHttpServerTestWithHttpInfo(testId, httpServerTestRequest, aid, expand);
+            HttpServerTestsApi.UpdateHttpServerTestRequest request = HttpServerTestsApi.UpdateHttpServerTestRequest.builder()
+                .testId(testId)
+                .httpServerTestRequest(httpServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<HttpServerTestResponse> response = apiInstance.updateHttpServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,13 +879,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateHttpServerTestRequest**](HttpServerTestsApi.md#UpdateHttpServerTestRequest)|-|-|
 
 ### Return type
 
@@ -843,4 +909,17 @@ ApiResponse<[**HttpServerTestResponse**](HttpServerTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateHttpServerTestRequest"></a>
+## UpdateHttpServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **httpServerTestRequest** | [**HttpServerTestRequest**](HttpServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

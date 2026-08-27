@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAgentToServerEndpointDynamicTest
 
-> DynamicTest createAgentToServerEndpointDynamicTest(dynamicTestRequest, aid)
+> DynamicTest createAgentToServerEndpointDynamicTest(CreateAgentToServerEndpointDynamicTestRequest)
 
 Create endpoint dynamic test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -49,7 +49,11 @@ public class Example {
         DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(dynamicTestRequest, aid);
+            AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest.builder()
+                .dynamicTestRequest(dynamicTestRequest)
+                .aid(aid)
+                .build();
+            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#createAgentToServerEndpointDynamicTest");
@@ -64,11 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dynamicTestRequest** | [**DynamicTestRequest**](DynamicTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#CreateAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -99,7 +101,7 @@ public class Example {
 
 ## createAgentToServerEndpointDynamicTestWithHttpInfo
 
-> ApiResponse<DynamicTest> createAgentToServerEndpointDynamicTest createAgentToServerEndpointDynamicTestWithHttpInfo(dynamicTestRequest, aid)
+> ApiResponse<DynamicTest> createAgentToServerEndpointDynamicTest createAgentToServerEndpointDynamicTestWithHttpInfo(CreateAgentToServerEndpointDynamicTestRequest)
 
 Create endpoint dynamic test
 
@@ -114,7 +116,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -130,7 +132,11 @@ public class Example {
         DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<DynamicTest> response = apiInstance.createAgentToServerEndpointDynamicTestWithHttpInfo(dynamicTestRequest, aid);
+            AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest.builder()
+                .dynamicTestRequest(dynamicTestRequest)
+                .aid(aid)
+                .build();
+            ApiResponse<DynamicTest> response = apiInstance.createAgentToServerEndpointDynamicTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -147,11 +153,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **dynamicTestRequest** | [**DynamicTestRequest**](DynamicTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#CreateAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -181,9 +185,20 @@ ApiResponse<[**DynamicTest**](DynamicTest.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateAgentToServerEndpointDynamicTestRequest"></a>
+## CreateAgentToServerEndpointDynamicTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **dynamicTestRequest** | [**DynamicTestRequest**](DynamicTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteAgentToServerEndpointDynamicTest
 
-> void deleteAgentToServerEndpointDynamicTest(testId, aid)
+> void deleteAgentToServerEndpointDynamicTest(DeleteAgentToServerEndpointDynamicTestRequest)
 
 Delete agent to server dynamic test
 
@@ -197,7 +212,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -213,7 +228,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteAgentToServerEndpointDynamicTest(testId, aid);
+            AgentToServerEndpointDynamicTestsApi.DeleteAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.DeleteAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteAgentToServerEndpointDynamicTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#deleteAgentToServerEndpointDynamicTest");
             System.err.println("Status code: " + e.getCode());
@@ -227,11 +246,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#DeleteAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -262,7 +279,7 @@ null (empty response body)
 
 ## deleteAgentToServerEndpointDynamicTestWithHttpInfo
 
-> ApiResponse<Void> deleteAgentToServerEndpointDynamicTest deleteAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteAgentToServerEndpointDynamicTest deleteAgentToServerEndpointDynamicTestWithHttpInfo(DeleteAgentToServerEndpointDynamicTestRequest)
 
 Delete agent to server dynamic test
 
@@ -277,7 +294,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -293,7 +310,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid);
+            AgentToServerEndpointDynamicTestsApi.DeleteAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.DeleteAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAgentToServerEndpointDynamicTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -309,11 +330,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#DeleteAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -343,9 +362,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteAgentToServerEndpointDynamicTestRequest"></a>
+## DeleteAgentToServerEndpointDynamicTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentToServerEndpointDynamicTest
 
-> DynamicTest getAgentToServerEndpointDynamicTest(testId, aid)
+> DynamicTest getAgentToServerEndpointDynamicTest(GetAgentToServerEndpointDynamicTestRequest)
 
 Retrieve endpoint dynamic test
 
@@ -359,7 +389,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -375,7 +405,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DynamicTest result = apiInstance.getAgentToServerEndpointDynamicTest(testId, aid);
+            AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            DynamicTest result = apiInstance.getAgentToServerEndpointDynamicTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#getAgentToServerEndpointDynamicTest");
@@ -390,11 +424,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#GetAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -424,7 +456,7 @@ public class Example {
 
 ## getAgentToServerEndpointDynamicTestWithHttpInfo
 
-> ApiResponse<DynamicTest> getAgentToServerEndpointDynamicTest getAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid)
+> ApiResponse<DynamicTest> getAgentToServerEndpointDynamicTest getAgentToServerEndpointDynamicTestWithHttpInfo(GetAgentToServerEndpointDynamicTestRequest)
 
 Retrieve endpoint dynamic test
 
@@ -439,7 +471,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -455,7 +487,11 @@ public class Example {
         String testId = "584739201"; // String | Unique ID of endpoint test.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<DynamicTest> response = apiInstance.getAgentToServerEndpointDynamicTestWithHttpInfo(testId, aid);
+            AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<DynamicTest> response = apiInstance.getAgentToServerEndpointDynamicTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -472,11 +508,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#GetAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -505,9 +539,20 @@ ApiResponse<[**DynamicTest**](DynamicTest.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToServerEndpointDynamicTestRequest"></a>
+## GetAgentToServerEndpointDynamicTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentToServerEndpointDynamicTests
 
-> DynamicTests getAgentToServerEndpointDynamicTests(aid)
+> DynamicTests getAgentToServerEndpointDynamicTests(GetAgentToServerEndpointDynamicTestsRequest)
 
 List endpoint dynamic tests
 
@@ -521,7 +566,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -536,7 +581,10 @@ public class Example {
         AgentToServerEndpointDynamicTestsApi apiInstance = new AgentToServerEndpointDynamicTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DynamicTests result = apiInstance.getAgentToServerEndpointDynamicTests(aid);
+            AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestsRequest request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestsRequest.builder()
+                .aid(aid)
+                .build();
+            DynamicTests result = apiInstance.getAgentToServerEndpointDynamicTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#getAgentToServerEndpointDynamicTests");
@@ -551,10 +599,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointDynamicTestsRequest**](AgentToServerEndpointDynamicTestsApi.md#GetAgentToServerEndpointDynamicTestsRequest)|-|-|
 
 ### Return type
 
@@ -583,7 +630,7 @@ public class Example {
 
 ## getAgentToServerEndpointDynamicTestsWithHttpInfo
 
-> ApiResponse<DynamicTests> getAgentToServerEndpointDynamicTests getAgentToServerEndpointDynamicTestsWithHttpInfo(aid)
+> ApiResponse<DynamicTests> getAgentToServerEndpointDynamicTests getAgentToServerEndpointDynamicTestsWithHttpInfo(GetAgentToServerEndpointDynamicTestsRequest)
 
 List endpoint dynamic tests
 
@@ -598,7 +645,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -613,7 +660,10 @@ public class Example {
         AgentToServerEndpointDynamicTestsApi apiInstance = new AgentToServerEndpointDynamicTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<DynamicTests> response = apiInstance.getAgentToServerEndpointDynamicTestsWithHttpInfo(aid);
+            AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestsRequest request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<DynamicTests> response = apiInstance.getAgentToServerEndpointDynamicTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -630,10 +680,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToServerEndpointDynamicTestsRequest**](AgentToServerEndpointDynamicTestsApi.md#GetAgentToServerEndpointDynamicTestsRequest)|-|-|
 
 ### Return type
 
@@ -661,9 +710,19 @@ ApiResponse<[**DynamicTests**](DynamicTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToServerEndpointDynamicTestsRequest"></a>
+## GetAgentToServerEndpointDynamicTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateAgentToServerEndpointDynamicTest
 
-> DynamicTest updateAgentToServerEndpointDynamicTest(testId, endpointDynamicTestUpdate, aid)
+> DynamicTest updateAgentToServerEndpointDynamicTest(UpdateAgentToServerEndpointDynamicTestRequest)
 
 Update agent to server dynamic test
 
@@ -677,7 +736,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -694,7 +753,12 @@ public class Example {
         EndpointDynamicTestUpdate endpointDynamicTestUpdate = new EndpointDynamicTestUpdate(); // EndpointDynamicTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            DynamicTest result = apiInstance.updateAgentToServerEndpointDynamicTest(testId, endpointDynamicTestUpdate, aid);
+            AgentToServerEndpointDynamicTestsApi.UpdateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.UpdateAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .endpointDynamicTestUpdate(endpointDynamicTestUpdate)
+                .aid(aid)
+                .build();
+            DynamicTest result = apiInstance.updateAgentToServerEndpointDynamicTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#updateAgentToServerEndpointDynamicTest");
@@ -709,12 +773,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **endpointDynamicTestUpdate** | [**EndpointDynamicTestUpdate**](EndpointDynamicTestUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#UpdateAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -745,7 +806,7 @@ public class Example {
 
 ## updateAgentToServerEndpointDynamicTestWithHttpInfo
 
-> ApiResponse<DynamicTest> updateAgentToServerEndpointDynamicTest updateAgentToServerEndpointDynamicTestWithHttpInfo(testId, endpointDynamicTestUpdate, aid)
+> ApiResponse<DynamicTest> updateAgentToServerEndpointDynamicTest updateAgentToServerEndpointDynamicTestWithHttpInfo(UpdateAgentToServerEndpointDynamicTestRequest)
 
 Update agent to server dynamic test
 
@@ -760,7 +821,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.endpoint.Configuration;
 import com.thousandeyes.sdk.endpoint.authentication.*;
-import com.thousandeyes.sdk.endpoint.models.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
 import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
 
 public class Example {
@@ -777,7 +838,12 @@ public class Example {
         EndpointDynamicTestUpdate endpointDynamicTestUpdate = new EndpointDynamicTestUpdate(); // EndpointDynamicTestUpdate | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<DynamicTest> response = apiInstance.updateAgentToServerEndpointDynamicTestWithHttpInfo(testId, endpointDynamicTestUpdate, aid);
+            AgentToServerEndpointDynamicTestsApi.UpdateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.UpdateAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .endpointDynamicTestUpdate(endpointDynamicTestUpdate)
+                .aid(aid)
+                .build();
+            ApiResponse<DynamicTest> response = apiInstance.updateAgentToServerEndpointDynamicTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -794,12 +860,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Unique ID of endpoint test. | |
-| **endpointDynamicTestUpdate** | [**EndpointDynamicTestUpdate**](EndpointDynamicTestUpdate.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateAgentToServerEndpointDynamicTestRequest**](AgentToServerEndpointDynamicTestsApi.md#UpdateAgentToServerEndpointDynamicTestRequest)|-|-|
 
 ### Return type
 
@@ -827,4 +890,16 @@ ApiResponse<[**DynamicTest**](DynamicTest.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateAgentToServerEndpointDynamicTestRequest"></a>
+## UpdateAgentToServerEndpointDynamicTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Unique ID of endpoint test. | |
+| **endpointDynamicTestUpdate** | [**EndpointDynamicTestUpdate**](EndpointDynamicTestUpdate.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## filterCatalogProviders
 
-> ApiCatalogProviderResponse filterCatalogProviders(apiCatalogProviderFilter, aid)
+> ApiCatalogProviderResponse filterCatalogProviders(FilterCatalogProvidersRequest)
 
 List catalog providers
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
-import com.thousandeyes.sdk.internet.models.*;
+import com.thousandeyes.sdk.internet.insights.model.*;
 import com.thousandeyes.sdk.internet.insights.InternetInsightsCatalogProvidersApi;
 
 public class Example {
@@ -43,7 +43,11 @@ public class Example {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(apiCatalogProviderFilter, aid);
+            InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest request = InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest.builder()
+                .apiCatalogProviderFilter(apiCatalogProviderFilter)
+                .aid(aid)
+                .build();
+            ApiCatalogProviderResponse result = apiInstance.filterCatalogProviders(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InternetInsightsCatalogProvidersApi#filterCatalogProviders");
@@ -58,11 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **apiCatalogProviderFilter** | [**ApiCatalogProviderFilter**](ApiCatalogProviderFilter.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**FilterCatalogProvidersRequest**](InternetInsightsCatalogProvidersApi.md#FilterCatalogProvidersRequest)|-|-|
 
 ### Return type
 
@@ -93,7 +95,7 @@ public class Example {
 
 ## filterCatalogProvidersWithHttpInfo
 
-> ApiResponse<ApiCatalogProviderResponse> filterCatalogProviders filterCatalogProvidersWithHttpInfo(apiCatalogProviderFilter, aid)
+> ApiResponse<ApiCatalogProviderResponse> filterCatalogProviders filterCatalogProvidersWithHttpInfo(FilterCatalogProvidersRequest)
 
 List catalog providers
 
@@ -108,7 +110,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
-import com.thousandeyes.sdk.internet.models.*;
+import com.thousandeyes.sdk.internet.insights.model.*;
 import com.thousandeyes.sdk.internet.insights.InternetInsightsCatalogProvidersApi;
 
 public class Example {
@@ -124,7 +126,11 @@ public class Example {
         ApiCatalogProviderFilter apiCatalogProviderFilter = new ApiCatalogProviderFilter(); // ApiCatalogProviderFilter | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiCatalogProviderResponse> response = apiInstance.filterCatalogProvidersWithHttpInfo(apiCatalogProviderFilter, aid);
+            InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest request = InternetInsightsCatalogProvidersApi.FilterCatalogProvidersRequest.builder()
+                .apiCatalogProviderFilter(apiCatalogProviderFilter)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiCatalogProviderResponse> response = apiInstance.filterCatalogProvidersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,11 +147,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **apiCatalogProviderFilter** | [**ApiCatalogProviderFilter**](ApiCatalogProviderFilter.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**FilterCatalogProvidersRequest**](InternetInsightsCatalogProvidersApi.md#FilterCatalogProvidersRequest)|-|-|
 
 ### Return type
 
@@ -175,9 +179,20 @@ ApiResponse<[**ApiCatalogProviderResponse**](ApiCatalogProviderResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="FilterCatalogProvidersRequest"></a>
+## FilterCatalogProvidersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **apiCatalogProviderFilter** | [**ApiCatalogProviderFilter**](ApiCatalogProviderFilter.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getCatalogProvider
 
-> ApiCatalogProviderDetails getCatalogProvider(providerId, aid)
+> ApiCatalogProviderDetails getCatalogProvider(GetCatalogProviderRequest)
 
 Retrieve a catalog provider
 
@@ -191,7 +206,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
-import com.thousandeyes.sdk.internet.models.*;
+import com.thousandeyes.sdk.internet.insights.model.*;
 import com.thousandeyes.sdk.internet.insights.InternetInsightsCatalogProvidersApi;
 
 public class Example {
@@ -207,7 +222,11 @@ public class Example {
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiCatalogProviderDetails result = apiInstance.getCatalogProvider(providerId, aid);
+            InternetInsightsCatalogProvidersApi.GetCatalogProviderRequest request = InternetInsightsCatalogProvidersApi.GetCatalogProviderRequest.builder()
+                .providerId(providerId)
+                .aid(aid)
+                .build();
+            ApiCatalogProviderDetails result = apiInstance.getCatalogProvider(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling InternetInsightsCatalogProvidersApi#getCatalogProvider");
@@ -222,11 +241,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **providerId** | **UUID**|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCatalogProviderRequest**](InternetInsightsCatalogProvidersApi.md#GetCatalogProviderRequest)|-|-|
 
 ### Return type
 
@@ -257,7 +274,7 @@ public class Example {
 
 ## getCatalogProviderWithHttpInfo
 
-> ApiResponse<ApiCatalogProviderDetails> getCatalogProvider getCatalogProviderWithHttpInfo(providerId, aid)
+> ApiResponse<ApiCatalogProviderDetails> getCatalogProvider getCatalogProviderWithHttpInfo(GetCatalogProviderRequest)
 
 Retrieve a catalog provider
 
@@ -272,7 +289,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.internet.Configuration;
 import com.thousandeyes.sdk.internet.authentication.*;
-import com.thousandeyes.sdk.internet.models.*;
+import com.thousandeyes.sdk.internet.insights.model.*;
 import com.thousandeyes.sdk.internet.insights.InternetInsightsCatalogProvidersApi;
 
 public class Example {
@@ -288,7 +305,11 @@ public class Example {
         UUID providerId = UUID.fromString("85602a0a-54a7-4e97-946e-67492ef1fa26"); // UUID | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ApiCatalogProviderDetails> response = apiInstance.getCatalogProviderWithHttpInfo(providerId, aid);
+            InternetInsightsCatalogProvidersApi.GetCatalogProviderRequest request = InternetInsightsCatalogProvidersApi.GetCatalogProviderRequest.builder()
+                .providerId(providerId)
+                .aid(aid)
+                .build();
+            ApiResponse<ApiCatalogProviderDetails> response = apiInstance.getCatalogProviderWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -305,11 +326,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **providerId** | **UUID**|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetCatalogProviderRequest**](InternetInsightsCatalogProvidersApi.md#GetCatalogProviderRequest)|-|-|
 
 ### Return type
 
@@ -337,4 +356,15 @@ ApiResponse<[**ApiCatalogProviderDetails**](ApiCatalogProviderDetails.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetCatalogProviderRequest"></a>
+## GetCatalogProviderRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **providerId** | **UUID** |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -117,7 +117,11 @@ public class EventsApiExample {
         UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique event ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            EventDetail result = apiInstance.getEvent(id, aid);
+            EventsApi.GetEventRequest request = EventsApi.GetEventRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            EventDetail result = apiInstance.getEvent(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EventsApi#getEvent");

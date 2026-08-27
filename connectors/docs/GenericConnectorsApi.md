@@ -23,7 +23,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createGenericConnector
 
-> GenericConnector createGenericConnector(genericConnector, aid)
+> GenericConnector createGenericConnector(CreateGenericConnectorRequest)
 
 Create connector
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -53,7 +53,11 @@ public class Example {
         GenericConnector genericConnector = new GenericConnector(); // GenericConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GenericConnector result = apiInstance.createGenericConnector(genericConnector, aid);
+            GenericConnectorsApi.CreateGenericConnectorRequest request = GenericConnectorsApi.CreateGenericConnectorRequest.builder()
+                .genericConnector(genericConnector)
+                .aid(aid)
+                .build();
+            GenericConnector result = apiInstance.createGenericConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#createGenericConnector");
@@ -68,11 +72,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **genericConnector** | [**GenericConnector**](GenericConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateGenericConnectorRequest**](GenericConnectorsApi.md#CreateGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -100,7 +102,7 @@ public class Example {
 
 ## createGenericConnectorWithHttpInfo
 
-> ApiResponse<GenericConnector> createGenericConnector createGenericConnectorWithHttpInfo(genericConnector, aid)
+> ApiResponse<GenericConnector> createGenericConnector createGenericConnectorWithHttpInfo(CreateGenericConnectorRequest)
 
 Create connector
 
@@ -115,7 +117,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -131,7 +133,11 @@ public class Example {
         GenericConnector genericConnector = new GenericConnector(); // GenericConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GenericConnector> response = apiInstance.createGenericConnectorWithHttpInfo(genericConnector, aid);
+            GenericConnectorsApi.CreateGenericConnectorRequest request = GenericConnectorsApi.CreateGenericConnectorRequest.builder()
+                .genericConnector(genericConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<GenericConnector> response = apiInstance.createGenericConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,11 +154,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **genericConnector** | [**GenericConnector**](GenericConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreateGenericConnectorRequest**](GenericConnectorsApi.md#CreateGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -179,9 +183,20 @@ ApiResponse<[**GenericConnector**](GenericConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreateGenericConnectorRequest"></a>
+## CreateGenericConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **genericConnector** | [**GenericConnector**](GenericConnector.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deleteGenericConnector
 
-> void deleteGenericConnector(id, aid)
+> void deleteGenericConnector(DeleteGenericConnectorRequest)
 
 Delete connector
 
@@ -195,7 +210,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -211,7 +226,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteGenericConnector(id, aid);
+            GenericConnectorsApi.DeleteGenericConnectorRequest request = GenericConnectorsApi.DeleteGenericConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deleteGenericConnector(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#deleteGenericConnector");
             System.err.println("Status code: " + e.getCode());
@@ -225,11 +244,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteGenericConnectorRequest**](GenericConnectorsApi.md#DeleteGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -257,7 +274,7 @@ null (empty response body)
 
 ## deleteGenericConnectorWithHttpInfo
 
-> ApiResponse<Void> deleteGenericConnector deleteGenericConnectorWithHttpInfo(id, aid)
+> ApiResponse<Void> deleteGenericConnector deleteGenericConnectorWithHttpInfo(DeleteGenericConnectorRequest)
 
 Delete connector
 
@@ -272,7 +289,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -288,7 +305,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteGenericConnectorWithHttpInfo(id, aid);
+            GenericConnectorsApi.DeleteGenericConnectorRequest request = GenericConnectorsApi.DeleteGenericConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteGenericConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -304,11 +325,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteGenericConnectorRequest**](GenericConnectorsApi.md#DeleteGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +354,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteGenericConnectorRequest"></a>
+## DeleteGenericConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getGenericConnector
 
-> GenericConnector getGenericConnector(id, aid)
+> GenericConnector getGenericConnector(GetGenericConnectorRequest)
 
 Retrieve connector
 
@@ -351,7 +381,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -367,7 +397,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GenericConnector result = apiInstance.getGenericConnector(id, aid);
+            GenericConnectorsApi.GetGenericConnectorRequest request = GenericConnectorsApi.GetGenericConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            GenericConnector result = apiInstance.getGenericConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#getGenericConnector");
@@ -382,11 +416,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetGenericConnectorRequest**](GenericConnectorsApi.md#GetGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -414,7 +446,7 @@ public class Example {
 
 ## getGenericConnectorWithHttpInfo
 
-> ApiResponse<GenericConnector> getGenericConnector getGenericConnectorWithHttpInfo(id, aid)
+> ApiResponse<GenericConnector> getGenericConnector getGenericConnectorWithHttpInfo(GetGenericConnectorRequest)
 
 Retrieve connector
 
@@ -429,7 +461,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -445,7 +477,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GenericConnector> response = apiInstance.getGenericConnectorWithHttpInfo(id, aid);
+            GenericConnectorsApi.GetGenericConnectorRequest request = GenericConnectorsApi.GetGenericConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<GenericConnector> response = apiInstance.getGenericConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -462,11 +498,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetGenericConnectorRequest**](GenericConnectorsApi.md#GetGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +527,20 @@ ApiResponse<[**GenericConnector**](GenericConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetGenericConnectorRequest"></a>
+## GetGenericConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getGenericConnectors
 
-> GenericConnectors getGenericConnectors(aid)
+> GenericConnectors getGenericConnectors(GetGenericConnectorsRequest)
 
 List connectors
 
@@ -509,7 +554,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -524,7 +569,10 @@ public class Example {
         GenericConnectorsApi apiInstance = new GenericConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GenericConnectors result = apiInstance.getGenericConnectors(aid);
+            GenericConnectorsApi.GetGenericConnectorsRequest request = GenericConnectorsApi.GetGenericConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            GenericConnectors result = apiInstance.getGenericConnectors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#getGenericConnectors");
@@ -539,10 +587,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetGenericConnectorsRequest**](GenericConnectorsApi.md#GetGenericConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -570,7 +617,7 @@ public class Example {
 
 ## getGenericConnectorsWithHttpInfo
 
-> ApiResponse<GenericConnectors> getGenericConnectors getGenericConnectorsWithHttpInfo(aid)
+> ApiResponse<GenericConnectors> getGenericConnectors getGenericConnectorsWithHttpInfo(GetGenericConnectorsRequest)
 
 List connectors
 
@@ -585,7 +632,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -600,7 +647,10 @@ public class Example {
         GenericConnectorsApi apiInstance = new GenericConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GenericConnectors> response = apiInstance.getGenericConnectorsWithHttpInfo(aid);
+            GenericConnectorsApi.GetGenericConnectorsRequest request = GenericConnectorsApi.GetGenericConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<GenericConnectors> response = apiInstance.getGenericConnectorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -617,10 +667,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetGenericConnectorsRequest**](GenericConnectorsApi.md#GetGenericConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -647,9 +696,19 @@ ApiResponse<[**GenericConnectors**](GenericConnectors.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetGenericConnectorsRequest"></a>
+## GetGenericConnectorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## listGenericConnectorOperations
 
-> Assignments listGenericConnectorOperations(id, aid)
+> Assignments listGenericConnectorOperations(ListGenericConnectorOperationsRequest)
 
 List operation IDs for a connector
 
@@ -663,7 +722,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -679,7 +738,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.listGenericConnectorOperations(id, aid);
+            GenericConnectorsApi.ListGenericConnectorOperationsRequest request = GenericConnectorsApi.ListGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.listGenericConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#listGenericConnectorOperations");
@@ -694,11 +757,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**ListGenericConnectorOperationsRequest**](GenericConnectorsApi.md#ListGenericConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -726,7 +787,7 @@ public class Example {
 
 ## listGenericConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> listGenericConnectorOperations listGenericConnectorOperationsWithHttpInfo(id, aid)
+> ApiResponse<Assignments> listGenericConnectorOperations listGenericConnectorOperationsWithHttpInfo(ListGenericConnectorOperationsRequest)
 
 List operation IDs for a connector
 
@@ -741,7 +802,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -757,7 +818,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.listGenericConnectorOperationsWithHttpInfo(id, aid);
+            GenericConnectorsApi.ListGenericConnectorOperationsRequest request = GenericConnectorsApi.ListGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.listGenericConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -774,11 +839,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**ListGenericConnectorOperationsRequest**](GenericConnectorsApi.md#ListGenericConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -805,9 +868,20 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="ListGenericConnectorOperationsRequest"></a>
+## ListGenericConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## setGenericConnectorOperations
 
-> Assignments setGenericConnectorOperations(id, requestBody, aid)
+> Assignments setGenericConnectorOperations(SetGenericConnectorOperationsRequest)
 
 Assign operations to a connector
 
@@ -821,7 +895,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -838,7 +912,12 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.setGenericConnectorOperations(id, requestBody, aid);
+            GenericConnectorsApi.SetGenericConnectorOperationsRequest request = GenericConnectorsApi.SetGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.setGenericConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#setGenericConnectorOperations");
@@ -853,12 +932,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetGenericConnectorOperationsRequest**](GenericConnectorsApi.md#SetGenericConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -886,7 +962,7 @@ public class Example {
 
 ## setGenericConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> setGenericConnectorOperations setGenericConnectorOperationsWithHttpInfo(id, requestBody, aid)
+> ApiResponse<Assignments> setGenericConnectorOperations setGenericConnectorOperationsWithHttpInfo(SetGenericConnectorOperationsRequest)
 
 Assign operations to a connector
 
@@ -901,7 +977,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -918,7 +994,12 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.setGenericConnectorOperationsWithHttpInfo(id, requestBody, aid);
+            GenericConnectorsApi.SetGenericConnectorOperationsRequest request = GenericConnectorsApi.SetGenericConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.setGenericConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -935,12 +1016,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetGenericConnectorOperationsRequest**](GenericConnectorsApi.md#SetGenericConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -967,9 +1045,21 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="SetGenericConnectorOperationsRequest"></a>
+## SetGenericConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **requestBody** | [**List&lt;String&gt;**](String.md) | List of operation IDs to assign to the connector. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateGenericConnector
 
-> GenericConnector updateGenericConnector(id, genericConnector, aid)
+> GenericConnector updateGenericConnector(UpdateGenericConnectorRequest)
 
 Update connector
 
@@ -983,7 +1073,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -1000,7 +1090,12 @@ public class Example {
         GenericConnector genericConnector = new GenericConnector(); // GenericConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            GenericConnector result = apiInstance.updateGenericConnector(id, genericConnector, aid);
+            GenericConnectorsApi.UpdateGenericConnectorRequest request = GenericConnectorsApi.UpdateGenericConnectorRequest.builder()
+                .id(id)
+                .genericConnector(genericConnector)
+                .aid(aid)
+                .build();
+            GenericConnector result = apiInstance.updateGenericConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GenericConnectorsApi#updateGenericConnector");
@@ -1015,12 +1110,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **genericConnector** | [**GenericConnector**](GenericConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateGenericConnectorRequest**](GenericConnectorsApi.md#UpdateGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1048,7 +1140,7 @@ public class Example {
 
 ## updateGenericConnectorWithHttpInfo
 
-> ApiResponse<GenericConnector> updateGenericConnector updateGenericConnectorWithHttpInfo(id, genericConnector, aid)
+> ApiResponse<GenericConnector> updateGenericConnector updateGenericConnectorWithHttpInfo(UpdateGenericConnectorRequest)
 
 Update connector
 
@@ -1063,7 +1155,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.GenericConnectorsApi;
 
 public class Example {
@@ -1080,7 +1172,12 @@ public class Example {
         GenericConnector genericConnector = new GenericConnector(); // GenericConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<GenericConnector> response = apiInstance.updateGenericConnectorWithHttpInfo(id, genericConnector, aid);
+            GenericConnectorsApi.UpdateGenericConnectorRequest request = GenericConnectorsApi.UpdateGenericConnectorRequest.builder()
+                .id(id)
+                .genericConnector(genericConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<GenericConnector> response = apiInstance.updateGenericConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1097,12 +1194,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **genericConnector** | [**GenericConnector**](GenericConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdateGenericConnectorRequest**](GenericConnectorsApi.md#UpdateGenericConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1127,4 +1221,16 @@ ApiResponse<[**GenericConnector**](GenericConnector.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdateGenericConnectorRequest"></a>
+## UpdateGenericConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **genericConnector** | [**GenericConnector**](GenericConnector.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

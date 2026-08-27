@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class DnssecTestsApi {
   /**
    * Create DNSSEC test
    * Creates a new DNSSEC test. This method requires Account Admin permissions. 
-   * @param dnsSecTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsSecTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsSecTestResponse createDnsSecTest(DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsSecTestResponse> response = createDnsSecTestWithHttpInfo(dnsSecTestRequest, aid, expand);
+  public DnsSecTestResponse createDnsSecTest(CreateDnsSecTestRequest request) throws ApiException {
+    ApiResponse<DnsSecTestResponse> response = createDnsSecTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create DNSSEC test
    * Creates a new DNSSEC test. This method requires Account Admin permissions. 
-   * @param dnsSecTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsSecTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsSecTestResponse> createDnsSecTestWithHttpInfo(DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createDnsSecTestValidateRequest(dnsSecTestRequest);
+  public ApiResponse<DnsSecTestResponse> createDnsSecTestWithHttpInfo(CreateDnsSecTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDnsSecTest");
+    }
+    createDnsSecTestValidateRequest(request.getDnsSecTestRequest());
 
-    var requestBuilder = createDnsSecTestRequestBuilder(dnsSecTestRequest, aid, expand);
+    var requestBuilder = createDnsSecTestRequestBuilder(request.getDnsSecTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsSecTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class DnssecTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDnsSecTestRequestBuilder(DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDnsSecTestRequestBuilder(DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/dnssec";
@@ -122,29 +118,84 @@ public class DnssecTestsApi {
     requestBuilder.requestBody(dnsSecTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete DNSSEC test
-   * Deletes the specified DNSSEC test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDnsSecTest(String testId, String aid) throws ApiException {
-    deleteDnsSecTestWithHttpInfo(testId, aid);
+
+  public static final class CreateDnsSecTestRequest {
+    private final DnsSecTestRequest dnsSecTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateDnsSecTestRequest(Builder builder) {
+      this.dnsSecTestRequest = builder.dnsSecTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public DnsSecTestRequest getDnsSecTestRequest() {
+      return dnsSecTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dnsSecTestRequest(dnsSecTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private DnsSecTestRequest dnsSecTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder dnsSecTestRequest(DnsSecTestRequest dnsSecTestRequest) {
+        this.dnsSecTestRequest = dnsSecTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateDnsSecTestRequest build() {
+        return new CreateDnsSecTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete DNSSEC test
    * Deletes the specified DNSSEC test. This method requires Account Admin permissions.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDnsSecTest(DeleteDnsSecTestRequest request) throws ApiException {
+    deleteDnsSecTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete DNSSEC test
+   * Deletes the specified DNSSEC test. This method requires Account Admin permissions.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDnsSecTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteDnsSecTestValidateRequest(testId);
+  public ApiResponse<Void> deleteDnsSecTestWithHttpInfo(DeleteDnsSecTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDnsSecTest");
+    }
+    deleteDnsSecTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteDnsSecTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteDnsSecTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class DnssecTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDnsSecTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDnsSecTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/dnssec/{testId}"
@@ -175,35 +226,75 @@ public class DnssecTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDnsSecTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteDnsSecTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDnsSecTestRequest build() {
+        return new DeleteDnsSecTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get DNSSEC test
    * Returns details for a DNSSEC test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsSecTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsSecTestResponse getDnsSecTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsSecTestResponse> response = getDnsSecTestWithHttpInfo(testId, aid, versionId, expand);
+  public DnsSecTestResponse getDnsSecTest(GetDnsSecTestRequest request) throws ApiException {
+    ApiResponse<DnsSecTestResponse> response = getDnsSecTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get DNSSEC test
    * Returns details for a DNSSEC test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsSecTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsSecTestResponse> getDnsSecTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getDnsSecTestValidateRequest(testId);
+  public ApiResponse<DnsSecTestResponse> getDnsSecTestWithHttpInfo(GetDnsSecTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsSecTest");
+    }
+    getDnsSecTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getDnsSecTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getDnsSecTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsSecTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class DnssecTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsSecTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsSecTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dnssec/{testId}"
@@ -236,29 +327,97 @@ public class DnssecTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsSecTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetDnsSecTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetDnsSecTestRequest build() {
+        return new GetDnsSecTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List DNSSEC tests
    * Returns a list of all DNSSEC tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DnsSecTests
    * @throws ApiException if fails to make API call
    */
-  public DnsSecTests getDnsSecTests(String aid) throws ApiException {
-    ApiResponse<DnsSecTests> response = getDnsSecTestsWithHttpInfo(aid);
+  public DnsSecTests getDnsSecTests(GetDnsSecTestsRequest request) throws ApiException {
+    ApiResponse<DnsSecTests> response = getDnsSecTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List DNSSEC tests
    * Returns a list of all DNSSEC tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsSecTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsSecTests> getDnsSecTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<DnsSecTests> getDnsSecTestsWithHttpInfo(GetDnsSecTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsSecTests");
+    }
     getDnsSecTestsValidateRequest();
 
-    var requestBuilder = getDnsSecTestsRequestBuilder(aid);
+    var requestBuilder = getDnsSecTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), DnsSecTests.class);
   }
@@ -266,8 +425,8 @@ public class DnssecTestsApi {
   private void getDnsSecTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsSecTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsSecTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dnssec";
@@ -284,35 +443,64 @@ public class DnssecTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsSecTestsRequest {
+    private final String aid;
+
+    private GetDnsSecTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDnsSecTestsRequest build() {
+        return new GetDnsSecTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update DNSSEC test
    * Updates a DNSSEC test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsSecTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsSecTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsSecTestResponse updateDnsSecTest(String testId, DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsSecTestResponse> response = updateDnsSecTestWithHttpInfo(testId, dnsSecTestRequest, aid, expand);
+  public DnsSecTestResponse updateDnsSecTest(UpdateDnsSecTestRequest request) throws ApiException {
+    ApiResponse<DnsSecTestResponse> response = updateDnsSecTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update DNSSEC test
    * Updates a DNSSEC test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsSecTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsSecTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsSecTestResponse> updateDnsSecTestWithHttpInfo(String testId, DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateDnsSecTestValidateRequest(testId, dnsSecTestRequest);
+  public ApiResponse<DnsSecTestResponse> updateDnsSecTestWithHttpInfo(UpdateDnsSecTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDnsSecTest");
+    }
+    updateDnsSecTestValidateRequest(request.getTestId(), request.getDnsSecTestRequest());
 
-    var requestBuilder = updateDnsSecTestRequestBuilder(testId, dnsSecTestRequest, aid, expand);
+    var requestBuilder = updateDnsSecTestRequestBuilder(request.getTestId(), request.getDnsSecTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsSecTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class DnssecTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDnsSecTestRequestBuilder(String testId, DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDnsSecTestRequestBuilder(String testId, DnsSecTestRequest dnsSecTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/dnssec/{testId}"
@@ -350,4 +538,69 @@ public class DnssecTestsApi {
     requestBuilder.requestBody(dnsSecTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDnsSecTestRequest {
+    private final String testId;
+    private final DnsSecTestRequest dnsSecTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateDnsSecTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.dnsSecTestRequest = builder.dnsSecTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public DnsSecTestRequest getDnsSecTestRequest() {
+      return dnsSecTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .dnsSecTestRequest(dnsSecTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private DnsSecTestRequest dnsSecTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder dnsSecTestRequest(DnsSecTestRequest dnsSecTestRequest) {
+        this.dnsSecTestRequest = dnsSecTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateDnsSecTestRequest build() {
+        return new UpdateDnsSecTestRequest(this);
+      }
+    }
+  }
+
 }

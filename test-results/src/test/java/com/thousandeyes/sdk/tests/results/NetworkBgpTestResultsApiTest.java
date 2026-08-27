@@ -86,7 +86,6 @@ public class NetworkBgpTestResultsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -227,7 +226,14 @@ public class NetworkBgpTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestBgpResults(testId, null, null, null, null, null);
+        var request = NetworkBgpTestResultsApi.GetTestBgpResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestBgpResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -245,7 +251,6 @@ public class NetworkBgpTestResultsApiTest {
         String testId = "202701";
         String prefixId = "3789376546";
         String roundId = "1384309800";
-
 
         var responseBodyJson = """
                 {
@@ -373,7 +378,13 @@ public class NetworkBgpTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestBgpRoutesPrefixRoundResults(testId, prefixId, roundId, null);
+        var request = NetworkBgpTestResultsApi.GetTestBgpRoutesPrefixRoundResultsRequest.builder()
+                .testId(testId)
+                .prefixId(prefixId)
+                .roundId(roundId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getTestBgpRoutesPrefixRoundResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

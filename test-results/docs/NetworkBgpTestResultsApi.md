@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getTestBgpResults
 
-> BgpTestResults getTestBgpResults(testId, aid, window, startDate, endDate, cursor)
+> BgpTestResults getTestBgpResults(GetTestBgpResultsRequest)
 
 Get BGP test results
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkBgpTestResultsApi;
 
 public class Example {
@@ -47,7 +47,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            BgpTestResults result = apiInstance.getTestBgpResults(testId, aid, window, startDate, endDate, cursor);
+            NetworkBgpTestResultsApi.GetTestBgpResultsRequest request = NetworkBgpTestResultsApi.GetTestBgpResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            BgpTestResults result = apiInstance.getTestBgpResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkBgpTestResultsApi#getTestBgpResults");
@@ -62,15 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestBgpResultsRequest**](NetworkBgpTestResultsApi.md#GetTestBgpResultsRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## getTestBgpResultsWithHttpInfo
 
-> ApiResponse<BgpTestResults> getTestBgpResults getTestBgpResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor)
+> ApiResponse<BgpTestResults> getTestBgpResults getTestBgpResultsWithHttpInfo(GetTestBgpResultsRequest)
 
 Get BGP test results
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkBgpTestResultsApi;
 
 public class Example {
@@ -136,7 +138,15 @@ public class Example {
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         try {
-            ApiResponse<BgpTestResults> response = apiInstance.getTestBgpResultsWithHttpInfo(testId, aid, window, startDate, endDate, cursor);
+            NetworkBgpTestResultsApi.GetTestBgpResultsRequest request = NetworkBgpTestResultsApi.GetTestBgpResultsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .cursor(cursor)
+                .build();
+            ApiResponse<BgpTestResults> response = apiInstance.getTestBgpResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -153,15 +163,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| request | [**GetTestBgpResultsRequest**](NetworkBgpTestResultsApi.md#GetTestBgpResultsRequest)|-|-|
 
 ### Return type
 
@@ -191,9 +195,24 @@ ApiResponse<[**BgpTestResults**](BgpTestResults.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetTestBgpResultsRequest"></a>
+## GetTestBgpResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+
+
+
 ## getTestBgpRoutesPrefixRoundResults
 
-> BgpTestRouteInformationResults getTestBgpRoutesPrefixRoundResults(testId, prefixId, roundId, aid)
+> BgpTestRouteInformationResults getTestBgpRoutesPrefixRoundResults(GetTestBgpRoutesPrefixRoundResultsRequest)
 
 Get BGP route test results by prefix
 
@@ -207,7 +226,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkBgpTestResultsApi;
 
 public class Example {
@@ -225,7 +244,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BgpTestRouteInformationResults result = apiInstance.getTestBgpRoutesPrefixRoundResults(testId, prefixId, roundId, aid);
+            NetworkBgpTestResultsApi.GetTestBgpRoutesPrefixRoundResultsRequest request = NetworkBgpTestResultsApi.GetTestBgpRoutesPrefixRoundResultsRequest.builder()
+                .testId(testId)
+                .prefixId(prefixId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            BgpTestRouteInformationResults result = apiInstance.getTestBgpRoutesPrefixRoundResults(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NetworkBgpTestResultsApi#getTestBgpRoutesPrefixRoundResults");
@@ -240,13 +265,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **prefixId** | **String**| The ID of the prefix. You can get &#x60;prefixId&#x60; from the &#x60;/test-results/{testId}/bgp&#x60; endpoint. | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestBgpRoutesPrefixRoundResultsRequest**](NetworkBgpTestResultsApi.md#GetTestBgpRoutesPrefixRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -277,7 +298,7 @@ public class Example {
 
 ## getTestBgpRoutesPrefixRoundResultsWithHttpInfo
 
-> ApiResponse<BgpTestRouteInformationResults> getTestBgpRoutesPrefixRoundResults getTestBgpRoutesPrefixRoundResultsWithHttpInfo(testId, prefixId, roundId, aid)
+> ApiResponse<BgpTestRouteInformationResults> getTestBgpRoutesPrefixRoundResults getTestBgpRoutesPrefixRoundResultsWithHttpInfo(GetTestBgpRoutesPrefixRoundResultsRequest)
 
 Get BGP route test results by prefix
 
@@ -292,7 +313,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.results.model.*;
 import com.thousandeyes.sdk.tests.results.NetworkBgpTestResultsApi;
 
 public class Example {
@@ -310,7 +331,13 @@ public class Example {
         String roundId = "1384309800"; // String | Round ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<BgpTestRouteInformationResults> response = apiInstance.getTestBgpRoutesPrefixRoundResultsWithHttpInfo(testId, prefixId, roundId, aid);
+            NetworkBgpTestResultsApi.GetTestBgpRoutesPrefixRoundResultsRequest request = NetworkBgpTestResultsApi.GetTestBgpRoutesPrefixRoundResultsRequest.builder()
+                .testId(testId)
+                .prefixId(prefixId)
+                .roundId(roundId)
+                .aid(aid)
+                .build();
+            ApiResponse<BgpTestRouteInformationResults> response = apiInstance.getTestBgpRoutesPrefixRoundResultsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -327,13 +354,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **prefixId** | **String**| The ID of the prefix. You can get &#x60;prefixId&#x60; from the &#x60;/test-results/{testId}/bgp&#x60; endpoint. | |
-| **roundId** | **String**| Round ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetTestBgpRoutesPrefixRoundResultsRequest**](NetworkBgpTestResultsApi.md#GetTestBgpRoutesPrefixRoundResultsRequest)|-|-|
 
 ### Return type
 
@@ -361,4 +384,17 @@ ApiResponse<[**BgpTestRouteInformationResults**](BgpTestRouteInformationResults.
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetTestBgpRoutesPrefixRoundResultsRequest"></a>
+## GetTestBgpRoutesPrefixRoundResultsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **prefixId** | **String** | The ID of the prefix. You can get &#x60;prefixId&#x60; from the &#x60;/test-results/{testId}/bgp&#x60; endpoint. | |
+| **roundId** | **String** | Round ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

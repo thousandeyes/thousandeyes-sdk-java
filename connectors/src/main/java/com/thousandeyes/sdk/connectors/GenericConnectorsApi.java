@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,28 +61,29 @@ public class GenericConnectorsApi {
   /**
    * Create connector
    * Creates a new connector.
-   * @param genericConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return GenericConnector
    * @throws ApiException if fails to make API call
    */
-  public GenericConnector createGenericConnector(GenericConnector genericConnector, String aid) throws ApiException {
-    ApiResponse<GenericConnector> response = createGenericConnectorWithHttpInfo(genericConnector, aid);
+  public GenericConnector createGenericConnector(CreateGenericConnectorRequest request) throws ApiException {
+    ApiResponse<GenericConnector> response = createGenericConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create connector
    * Creates a new connector.
-   * @param genericConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GenericConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GenericConnector> createGenericConnectorWithHttpInfo(GenericConnector genericConnector, String aid) throws ApiException {
-    createGenericConnectorValidateRequest(genericConnector);
+  public ApiResponse<GenericConnector> createGenericConnectorWithHttpInfo(CreateGenericConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createGenericConnector");
+    }
+    createGenericConnectorValidateRequest(request.getGenericConnector());
 
-    var requestBuilder = createGenericConnectorRequestBuilder(genericConnector, aid);
+    var requestBuilder = createGenericConnectorRequestBuilder(request.getGenericConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), GenericConnector.class);
   }
@@ -97,8 +95,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createGenericConnectorRequestBuilder(GenericConnector genericConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createGenericConnectorRequestBuilder(GenericConnector genericConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/connectors/generic";
@@ -117,29 +115,73 @@ public class GenericConnectorsApi {
     requestBuilder.requestBody(genericConnector);
     return requestBuilder;
   }
-  /**
-   * Delete connector
-   * Deletes the connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteGenericConnector(String id, String aid) throws ApiException {
-    deleteGenericConnectorWithHttpInfo(id, aid);
+
+  public static final class CreateGenericConnectorRequest {
+    private final GenericConnector genericConnector;
+    private final String aid;
+
+    private CreateGenericConnectorRequest(Builder builder) {
+      this.genericConnector = builder.genericConnector;
+      this.aid = builder.aid;
+    }
+    public GenericConnector getGenericConnector() {
+      return genericConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .genericConnector(genericConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private GenericConnector genericConnector;
+      private String aid;
+
+      public Builder genericConnector(GenericConnector genericConnector) {
+        this.genericConnector = genericConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateGenericConnectorRequest build() {
+        return new CreateGenericConnectorRequest(this);
+      }
+    }
   }
 
   /**
    * Delete connector
    * Deletes the connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteGenericConnector(DeleteGenericConnectorRequest request) throws ApiException {
+    deleteGenericConnectorWithHttpInfo(request);
+  }
+
+  /**
+   * Delete connector
+   * Deletes the connector specified by ID.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteGenericConnectorWithHttpInfo(String id, String aid) throws ApiException {
-    deleteGenericConnectorValidateRequest(id);
+  public ApiResponse<Void> deleteGenericConnectorWithHttpInfo(DeleteGenericConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteGenericConnector");
+    }
+    deleteGenericConnectorValidateRequest(request.getId());
 
-    var requestBuilder = deleteGenericConnectorRequestBuilder(id, aid);
+    var requestBuilder = deleteGenericConnectorRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -151,8 +193,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteGenericConnectorRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteGenericConnectorRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/connectors/generic/{id}"
@@ -170,31 +212,75 @@ public class GenericConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteGenericConnectorRequest {
+    private final String id;
+    private final String aid;
+
+    private DeleteGenericConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteGenericConnectorRequest build() {
+        return new DeleteGenericConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve connector
    * Retrieves details of a connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return GenericConnector
    * @throws ApiException if fails to make API call
    */
-  public GenericConnector getGenericConnector(String id, String aid) throws ApiException {
-    ApiResponse<GenericConnector> response = getGenericConnectorWithHttpInfo(id, aid);
+  public GenericConnector getGenericConnector(GetGenericConnectorRequest request) throws ApiException {
+    ApiResponse<GenericConnector> response = getGenericConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve connector
    * Retrieves details of a connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GenericConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GenericConnector> getGenericConnectorWithHttpInfo(String id, String aid) throws ApiException {
-    getGenericConnectorValidateRequest(id);
+  public ApiResponse<GenericConnector> getGenericConnectorWithHttpInfo(GetGenericConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getGenericConnector");
+    }
+    getGenericConnectorValidateRequest(request.getId());
 
-    var requestBuilder = getGenericConnectorRequestBuilder(id, aid);
+    var requestBuilder = getGenericConnectorRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), GenericConnector.class);
   }
@@ -206,8 +292,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getGenericConnectorRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getGenericConnectorRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/generic/{id}"
@@ -225,29 +311,75 @@ public class GenericConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetGenericConnectorRequest {
+    private final String id;
+    private final String aid;
+
+    private GetGenericConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetGenericConnectorRequest build() {
+        return new GetGenericConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * List connectors
    * Returns a list of connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return GenericConnectors
    * @throws ApiException if fails to make API call
    */
-  public GenericConnectors getGenericConnectors(String aid) throws ApiException {
-    ApiResponse<GenericConnectors> response = getGenericConnectorsWithHttpInfo(aid);
+  public GenericConnectors getGenericConnectors(GetGenericConnectorsRequest request) throws ApiException {
+    ApiResponse<GenericConnectors> response = getGenericConnectorsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List connectors
    * Returns a list of connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GenericConnectors&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GenericConnectors> getGenericConnectorsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<GenericConnectors> getGenericConnectorsWithHttpInfo(GetGenericConnectorsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getGenericConnectors");
+    }
     getGenericConnectorsValidateRequest();
 
-    var requestBuilder = getGenericConnectorsRequestBuilder(aid);
+    var requestBuilder = getGenericConnectorsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), GenericConnectors.class);
   }
@@ -255,8 +387,8 @@ public class GenericConnectorsApi {
   private void getGenericConnectorsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getGenericConnectorsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getGenericConnectorsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/generic";
@@ -273,31 +405,64 @@ public class GenericConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetGenericConnectorsRequest {
+    private final String aid;
+
+    private GetGenericConnectorsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetGenericConnectorsRequest build() {
+        return new GetGenericConnectorsRequest(this);
+      }
+    }
+  }
+
   /**
    * List operation IDs for a connector
    * Returns a list of operation IDs assigned to a connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments listGenericConnectorOperations(String id, String aid) throws ApiException {
-    ApiResponse<Assignments> response = listGenericConnectorOperationsWithHttpInfo(id, aid);
+  public Assignments listGenericConnectorOperations(ListGenericConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = listGenericConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List operation IDs for a connector
    * Returns a list of operation IDs assigned to a connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> listGenericConnectorOperationsWithHttpInfo(String id, String aid) throws ApiException {
-    listGenericConnectorOperationsValidateRequest(id);
+  public ApiResponse<Assignments> listGenericConnectorOperationsWithHttpInfo(ListGenericConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling listGenericConnectorOperations");
+    }
+    listGenericConnectorOperationsValidateRequest(request.getId());
 
-    var requestBuilder = listGenericConnectorOperationsRequestBuilder(id, aid);
+    var requestBuilder = listGenericConnectorOperationsRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -309,8 +474,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder listGenericConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder listGenericConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/generic/{id}/operations"
@@ -328,33 +493,75 @@ public class GenericConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class ListGenericConnectorOperationsRequest {
+    private final String id;
+    private final String aid;
+
+    private ListGenericConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public ListGenericConnectorOperationsRequest build() {
+        return new ListGenericConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Assign operations to a connector
    * Assigns operations to a connector. This replaces any existing assignments.
-   * @param id The connector ID. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments setGenericConnectorOperations(String id, List<String> requestBody, String aid) throws ApiException {
-    ApiResponse<Assignments> response = setGenericConnectorOperationsWithHttpInfo(id, requestBody, aid);
+  public Assignments setGenericConnectorOperations(SetGenericConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = setGenericConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign operations to a connector
    * Assigns operations to a connector. This replaces any existing assignments.
-   * @param id The connector ID. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> setGenericConnectorOperationsWithHttpInfo(String id, List<String> requestBody, String aid) throws ApiException {
-    setGenericConnectorOperationsValidateRequest(id, requestBody);
+  public ApiResponse<Assignments> setGenericConnectorOperationsWithHttpInfo(SetGenericConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling setGenericConnectorOperations");
+    }
+    setGenericConnectorOperationsValidateRequest(request.getId(), request.getRequestBody());
 
-    var requestBuilder = setGenericConnectorOperationsRequestBuilder(id, requestBody, aid);
+    var requestBuilder = setGenericConnectorOperationsRequestBuilder(request.getId(), request.getRequestBody(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -370,8 +577,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder setGenericConnectorOperationsRequestBuilder(String id, List<String> requestBody, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder setGenericConnectorOperationsRequestBuilder(String id, List<String> requestBody, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/generic/{id}/operations"
@@ -391,33 +598,86 @@ public class GenericConnectorsApi {
     requestBuilder.requestBody(requestBody);
     return requestBuilder;
   }
+
+  public static final class SetGenericConnectorOperationsRequest {
+    private final String id;
+    private final List<String> requestBody;
+    private final String aid;
+
+    private SetGenericConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.requestBody = builder.requestBody;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public List<String> getRequestBody() {
+      return requestBody;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .requestBody(requestBody)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private List<String> requestBody;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder requestBody(List<String> requestBody) {
+        this.requestBody = requestBody;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public SetGenericConnectorOperationsRequest build() {
+        return new SetGenericConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update connector
    * Updates the connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param genericConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return GenericConnector
    * @throws ApiException if fails to make API call
    */
-  public GenericConnector updateGenericConnector(String id, GenericConnector genericConnector, String aid) throws ApiException {
-    ApiResponse<GenericConnector> response = updateGenericConnectorWithHttpInfo(id, genericConnector, aid);
+  public GenericConnector updateGenericConnector(UpdateGenericConnectorRequest request) throws ApiException {
+    ApiResponse<GenericConnector> response = updateGenericConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update connector
    * Updates the connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param genericConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;GenericConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<GenericConnector> updateGenericConnectorWithHttpInfo(String id, GenericConnector genericConnector, String aid) throws ApiException {
-    updateGenericConnectorValidateRequest(id, genericConnector);
+  public ApiResponse<GenericConnector> updateGenericConnectorWithHttpInfo(UpdateGenericConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateGenericConnector");
+    }
+    updateGenericConnectorValidateRequest(request.getId(), request.getGenericConnector());
 
-    var requestBuilder = updateGenericConnectorRequestBuilder(id, genericConnector, aid);
+    var requestBuilder = updateGenericConnectorRequestBuilder(request.getId(), request.getGenericConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), GenericConnector.class);
   }
@@ -433,8 +693,8 @@ public class GenericConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateGenericConnectorRequestBuilder(String id, GenericConnector genericConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateGenericConnectorRequestBuilder(String id, GenericConnector genericConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/generic/{id}"
@@ -454,4 +714,58 @@ public class GenericConnectorsApi {
     requestBuilder.requestBody(genericConnector);
     return requestBuilder;
   }
+
+  public static final class UpdateGenericConnectorRequest {
+    private final String id;
+    private final GenericConnector genericConnector;
+    private final String aid;
+
+    private UpdateGenericConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.genericConnector = builder.genericConnector;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public GenericConnector getGenericConnector() {
+      return genericConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .genericConnector(genericConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private GenericConnector genericConnector;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder genericConnector(GenericConnector genericConnector) {
+        this.genericConnector = genericConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdateGenericConnectorRequest build() {
+        return new UpdateGenericConnectorRequest(this);
+      }
+    }
+  }
+
 }

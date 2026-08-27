@@ -131,7 +131,11 @@ public class StreamingApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Stream stream = new Stream(); // Stream | Stream to configure
         try {
-            CreateStreamResponse result = apiInstance.createStream(aid, stream);
+            StreamingApi.CreateStreamRequest request = StreamingApi.CreateStreamRequest.builder()
+                .aid(aid)
+                .stream(stream)
+                .build();
+            CreateStreamResponse result = apiInstance.createStream(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling StreamingApi#createStream");

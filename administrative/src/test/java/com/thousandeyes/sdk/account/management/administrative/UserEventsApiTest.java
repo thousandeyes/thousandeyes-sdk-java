@@ -84,7 +84,6 @@ public class UserEventsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "endDate" : "2022-07-18T22:00:54Z",
@@ -161,7 +160,14 @@ public class UserEventsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getUserEvents(null, null, null, null, null, null);
+        var request = UserEventsApi.GetUserEventsRequest.builder()
+                .aid("1234")
+                .useAllPermittedAids(false)
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getUserEvents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

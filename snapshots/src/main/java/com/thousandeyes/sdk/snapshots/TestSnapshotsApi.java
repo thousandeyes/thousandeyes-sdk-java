@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -36,12 +35,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -63,30 +60,29 @@ public class TestSnapshotsApi {
   /**
    * Create test snapshot
    * This operation creates a test snapshot based on the properties provided in the POST data.  * To use this endpoint, you need the &#x60;Create snapshot shares&#x60; permission. * You can create a maximum of 5 snapshots per organization within a 5-minute interval. * Snapshots generated through this operation have a 30-day expiration period. * The time range specified with the &#x60;from&#x60; and &#x60;to&#x60; parameters must adhere to one of the following intervals: 1, 2, 4, 6, 12, 24, or 48 hours. * The &#x60;endDate&#x60; field of the snapshot must be set to the present or a past date. * Certain regions may not have public snapshots enabled for compliance reasons. In that case you will get a 403 Forbidden as a response.  **Note**: This operation does not support the creation of operation Agent snapshots. 
-   * @param testId Test ID (required)
-   * @param snapshotRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return SnapshotResponse
    * @throws ApiException if fails to make API call
    */
-  public SnapshotResponse createTestSnapshot(String testId, SnapshotRequest snapshotRequest, String aid) throws ApiException {
-    ApiResponse<SnapshotResponse> response = createTestSnapshotWithHttpInfo(testId, snapshotRequest, aid);
+  public SnapshotResponse createTestSnapshot(CreateTestSnapshotRequest request) throws ApiException {
+    ApiResponse<SnapshotResponse> response = createTestSnapshotWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create test snapshot
    * This operation creates a test snapshot based on the properties provided in the POST data.  * To use this endpoint, you need the &#x60;Create snapshot shares&#x60; permission. * You can create a maximum of 5 snapshots per organization within a 5-minute interval. * Snapshots generated through this operation have a 30-day expiration period. * The time range specified with the &#x60;from&#x60; and &#x60;to&#x60; parameters must adhere to one of the following intervals: 1, 2, 4, 6, 12, 24, or 48 hours. * The &#x60;endDate&#x60; field of the snapshot must be set to the present or a past date. * Certain regions may not have public snapshots enabled for compliance reasons. In that case you will get a 403 Forbidden as a response.  **Note**: This operation does not support the creation of operation Agent snapshots. 
-   * @param testId Test ID (required)
-   * @param snapshotRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;SnapshotResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<SnapshotResponse> createTestSnapshotWithHttpInfo(String testId, SnapshotRequest snapshotRequest, String aid) throws ApiException {
-    createTestSnapshotValidateRequest(testId, snapshotRequest);
+  public ApiResponse<SnapshotResponse> createTestSnapshotWithHttpInfo(CreateTestSnapshotRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createTestSnapshot");
+    }
+    createTestSnapshotValidateRequest(request.getTestId(), request.getSnapshotRequest());
 
-    var requestBuilder = createTestSnapshotRequestBuilder(testId, snapshotRequest, aid);
+    var requestBuilder = createTestSnapshotRequestBuilder(request.getTestId(), request.getSnapshotRequest(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), SnapshotResponse.class);
   }
@@ -102,8 +98,8 @@ public class TestSnapshotsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createTestSnapshotRequestBuilder(String testId, SnapshotRequest snapshotRequest, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createTestSnapshotRequestBuilder(String testId, SnapshotRequest snapshotRequest, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/{testId}/snapshot"
@@ -123,4 +119,58 @@ public class TestSnapshotsApi {
     requestBuilder.requestBody(snapshotRequest);
     return requestBuilder;
   }
+
+  public static final class CreateTestSnapshotRequest {
+    private final String testId;
+    private final SnapshotRequest snapshotRequest;
+    private final String aid;
+
+    private CreateTestSnapshotRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.snapshotRequest = builder.snapshotRequest;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public SnapshotRequest getSnapshotRequest() {
+      return snapshotRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .snapshotRequest(snapshotRequest)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private SnapshotRequest snapshotRequest;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder snapshotRequest(SnapshotRequest snapshotRequest) {
+        this.snapshotRequest = snapshotRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreateTestSnapshotRequest build() {
+        return new CreateTestSnapshotRequest(this);
+      }
+    }
+  }
+
 }

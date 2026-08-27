@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAgentToAgentTest
 
-> AgentToAgentTestResponse createAgentToAgentTest(agentToAgentTestRequest, aid, expand)
+> AgentToAgentTestResponse createAgentToAgentTest(CreateAgentToAgentTestRequest)
 
 Create Agent to Agent test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            AgentToAgentTestResponse result = apiInstance.createAgentToAgentTest(agentToAgentTestRequest, aid, expand);
+            AgentToAgentTestsApi.CreateAgentToAgentTestRequest request = AgentToAgentTestsApi.CreateAgentToAgentTestRequest.builder()
+                .agentToAgentTestRequest(agentToAgentTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AgentToAgentTestResponse result = apiInstance.createAgentToAgentTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentTestsApi#createAgentToAgentTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateAgentToAgentTestRequest**](AgentToAgentTestsApi.md#CreateAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createAgentToAgentTestWithHttpInfo
 
-> ApiResponse<AgentToAgentTestResponse> createAgentToAgentTest createAgentToAgentTestWithHttpInfo(agentToAgentTestRequest, aid, expand)
+> ApiResponse<AgentToAgentTestResponse> createAgentToAgentTest createAgentToAgentTestWithHttpInfo(CreateAgentToAgentTestRequest)
 
 Create Agent to Agent test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<AgentToAgentTestResponse> response = apiInstance.createAgentToAgentTestWithHttpInfo(agentToAgentTestRequest, aid, expand);
+            AgentToAgentTestsApi.CreateAgentToAgentTestRequest request = AgentToAgentTestsApi.CreateAgentToAgentTestRequest.builder()
+                .agentToAgentTestRequest(agentToAgentTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AgentToAgentTestResponse> response = apiInstance.createAgentToAgentTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateAgentToAgentTestRequest**](AgentToAgentTestsApi.md#CreateAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**AgentToAgentTestResponse**](AgentToAgentTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateAgentToAgentTestRequest"></a>
+## CreateAgentToAgentTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deleteAgentToAgentTest
 
-> void deleteAgentToAgentTest(testId, aid)
+> void deleteAgentToAgentTest(DeleteAgentToAgentTestRequest)
 
 Delete Agent to Agent test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteAgentToAgentTest(testId, aid);
+            AgentToAgentTestsApi.DeleteAgentToAgentTestRequest request = AgentToAgentTestsApi.DeleteAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteAgentToAgentTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentTestsApi#deleteAgentToAgentTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToAgentTestRequest**](AgentToAgentTestsApi.md#DeleteAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ null (empty response body)
 
 ## deleteAgentToAgentTestWithHttpInfo
 
-> ApiResponse<Void> deleteAgentToAgentTest deleteAgentToAgentTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteAgentToAgentTest deleteAgentToAgentTestWithHttpInfo(DeleteAgentToAgentTestRequest)
 
 Delete Agent to Agent test
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -296,7 +314,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteAgentToAgentTestWithHttpInfo(testId, aid);
+            AgentToAgentTestsApi.DeleteAgentToAgentTestRequest request = AgentToAgentTestsApi.DeleteAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteAgentToAgentTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -312,11 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteAgentToAgentTestRequest**](AgentToAgentTestsApi.md#DeleteAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeleteAgentToAgentTestRequest"></a>
+## DeleteAgentToAgentTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentToAgentTest
 
-> AgentToAgentTestResponse getAgentToAgentTest(testId, aid, versionId, expand)
+> AgentToAgentTestResponse getAgentToAgentTest(GetAgentToAgentTestRequest)
 
 Get Agent to Agent test
 
@@ -361,7 +392,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -379,7 +410,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            AgentToAgentTestResponse result = apiInstance.getAgentToAgentTest(testId, aid, versionId, expand);
+            AgentToAgentTestsApi.GetAgentToAgentTestRequest request = AgentToAgentTestsApi.GetAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            AgentToAgentTestResponse result = apiInstance.getAgentToAgentTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentTestsApi#getAgentToAgentTest");
@@ -394,13 +431,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetAgentToAgentTestRequest**](AgentToAgentTestsApi.md#GetAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -430,7 +463,7 @@ public class Example {
 
 ## getAgentToAgentTestWithHttpInfo
 
-> ApiResponse<AgentToAgentTestResponse> getAgentToAgentTest getAgentToAgentTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<AgentToAgentTestResponse> getAgentToAgentTest getAgentToAgentTestWithHttpInfo(GetAgentToAgentTestRequest)
 
 Get Agent to Agent test
 
@@ -445,7 +478,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -463,7 +496,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<AgentToAgentTestResponse> response = apiInstance.getAgentToAgentTestWithHttpInfo(testId, aid, versionId, expand);
+            AgentToAgentTestsApi.GetAgentToAgentTestRequest request = AgentToAgentTestsApi.GetAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<AgentToAgentTestResponse> response = apiInstance.getAgentToAgentTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -480,13 +519,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetAgentToAgentTestRequest**](AgentToAgentTestsApi.md#GetAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -515,9 +550,22 @@ ApiResponse<[**AgentToAgentTestResponse**](AgentToAgentTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToAgentTestRequest"></a>
+## GetAgentToAgentTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getAgentToAgentTests
 
-> AgentToAgentTests getAgentToAgentTests(aid)
+> AgentToAgentTests getAgentToAgentTests(GetAgentToAgentTestsRequest)
 
 List Agent to Agent tests
 
@@ -531,7 +579,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -546,7 +594,10 @@ public class Example {
         AgentToAgentTestsApi apiInstance = new AgentToAgentTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentToAgentTests result = apiInstance.getAgentToAgentTests(aid);
+            AgentToAgentTestsApi.GetAgentToAgentTestsRequest request = AgentToAgentTestsApi.GetAgentToAgentTestsRequest.builder()
+                .aid(aid)
+                .build();
+            AgentToAgentTests result = apiInstance.getAgentToAgentTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentTestsApi#getAgentToAgentTests");
@@ -561,10 +612,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToAgentTestsRequest**](AgentToAgentTestsApi.md#GetAgentToAgentTestsRequest)|-|-|
 
 ### Return type
 
@@ -594,7 +644,7 @@ public class Example {
 
 ## getAgentToAgentTestsWithHttpInfo
 
-> ApiResponse<AgentToAgentTests> getAgentToAgentTests getAgentToAgentTestsWithHttpInfo(aid)
+> ApiResponse<AgentToAgentTests> getAgentToAgentTests getAgentToAgentTestsWithHttpInfo(GetAgentToAgentTestsRequest)
 
 List Agent to Agent tests
 
@@ -609,7 +659,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -624,7 +674,10 @@ public class Example {
         AgentToAgentTestsApi apiInstance = new AgentToAgentTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AgentToAgentTests> response = apiInstance.getAgentToAgentTestsWithHttpInfo(aid);
+            AgentToAgentTestsApi.GetAgentToAgentTestsRequest request = AgentToAgentTestsApi.GetAgentToAgentTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<AgentToAgentTests> response = apiInstance.getAgentToAgentTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -641,10 +694,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentToAgentTestsRequest**](AgentToAgentTestsApi.md#GetAgentToAgentTestsRequest)|-|-|
 
 ### Return type
 
@@ -673,9 +725,19 @@ ApiResponse<[**AgentToAgentTests**](AgentToAgentTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentToAgentTestsRequest"></a>
+## GetAgentToAgentTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateAgentToAgentTest
 
-> AgentToAgentTestResponse updateAgentToAgentTest(testId, agentToAgentTestRequest, aid, expand)
+> AgentToAgentTestResponse updateAgentToAgentTest(UpdateAgentToAgentTestRequest)
 
 Update Agent to Agent test
 
@@ -689,7 +751,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -707,7 +769,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            AgentToAgentTestResponse result = apiInstance.updateAgentToAgentTest(testId, agentToAgentTestRequest, aid, expand);
+            AgentToAgentTestsApi.UpdateAgentToAgentTestRequest request = AgentToAgentTestsApi.UpdateAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .agentToAgentTestRequest(agentToAgentTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AgentToAgentTestResponse result = apiInstance.updateAgentToAgentTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentTestsApi#updateAgentToAgentTest");
@@ -722,13 +790,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateAgentToAgentTestRequest**](AgentToAgentTestsApi.md#UpdateAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -759,7 +823,7 @@ public class Example {
 
 ## updateAgentToAgentTestWithHttpInfo
 
-> ApiResponse<AgentToAgentTestResponse> updateAgentToAgentTest updateAgentToAgentTestWithHttpInfo(testId, agentToAgentTestRequest, aid, expand)
+> ApiResponse<AgentToAgentTestResponse> updateAgentToAgentTest updateAgentToAgentTestWithHttpInfo(UpdateAgentToAgentTestRequest)
 
 Update Agent to Agent test
 
@@ -774,7 +838,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.AgentToAgentTestsApi;
 
 public class Example {
@@ -792,7 +856,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<AgentToAgentTestResponse> response = apiInstance.updateAgentToAgentTestWithHttpInfo(testId, agentToAgentTestRequest, aid, expand);
+            AgentToAgentTestsApi.UpdateAgentToAgentTestRequest request = AgentToAgentTestsApi.UpdateAgentToAgentTestRequest.builder()
+                .testId(testId)
+                .agentToAgentTestRequest(agentToAgentTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AgentToAgentTestResponse> response = apiInstance.updateAgentToAgentTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,13 +879,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateAgentToAgentTestRequest**](AgentToAgentTestsApi.md#UpdateAgentToAgentTestRequest)|-|-|
 
 ### Return type
 
@@ -843,4 +909,17 @@ ApiResponse<[**AgentToAgentTestResponse**](AgentToAgentTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateAgentToAgentTestRequest"></a>
+## UpdateAgentToAgentTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **agentToAgentTestRequest** | [**AgentToAgentTestRequest**](AgentToAgentTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

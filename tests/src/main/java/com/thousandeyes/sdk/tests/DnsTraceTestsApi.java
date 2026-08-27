@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -39,12 +38,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -66,30 +63,29 @@ public class DnsTraceTestsApi {
   /**
    * Create DNS Trace test
    * Creates a new DNS Trace test. This method requires Account Admin permissions. 
-   * @param dnsTraceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsTraceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsTraceTestResponse createDnsTraceTest(DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsTraceTestResponse> response = createDnsTraceTestWithHttpInfo(dnsTraceTestRequest, aid, expand);
+  public DnsTraceTestResponse createDnsTraceTest(CreateDnsTraceTestRequest request) throws ApiException {
+    ApiResponse<DnsTraceTestResponse> response = createDnsTraceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create DNS Trace test
    * Creates a new DNS Trace test. This method requires Account Admin permissions. 
-   * @param dnsTraceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsTraceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsTraceTestResponse> createDnsTraceTestWithHttpInfo(DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    createDnsTraceTestValidateRequest(dnsTraceTestRequest);
+  public ApiResponse<DnsTraceTestResponse> createDnsTraceTestWithHttpInfo(CreateDnsTraceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createDnsTraceTest");
+    }
+    createDnsTraceTestValidateRequest(request.getDnsTraceTestRequest());
 
-    var requestBuilder = createDnsTraceTestRequestBuilder(dnsTraceTestRequest, aid, expand);
+    var requestBuilder = createDnsTraceTestRequestBuilder(request.getDnsTraceTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsTraceTestResponse.class);
   }
@@ -101,8 +97,8 @@ public class DnsTraceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createDnsTraceTestRequestBuilder(DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createDnsTraceTestRequestBuilder(DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/tests/dns-trace";
@@ -122,29 +118,84 @@ public class DnsTraceTestsApi {
     requestBuilder.requestBody(dnsTraceTestRequest);
     return requestBuilder;
   }
-  /**
-   * Delete DNS Trace test
-   * Deletes the specified DNS Trace test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deleteDnsTraceTest(String testId, String aid) throws ApiException {
-    deleteDnsTraceTestWithHttpInfo(testId, aid);
+
+  public static final class CreateDnsTraceTestRequest {
+    private final DnsTraceTestRequest dnsTraceTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private CreateDnsTraceTestRequest(Builder builder) {
+      this.dnsTraceTestRequest = builder.dnsTraceTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public DnsTraceTestRequest getDnsTraceTestRequest() {
+      return dnsTraceTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .dnsTraceTestRequest(dnsTraceTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private DnsTraceTestRequest dnsTraceTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder dnsTraceTestRequest(DnsTraceTestRequest dnsTraceTestRequest) {
+        this.dnsTraceTestRequest = dnsTraceTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public CreateDnsTraceTestRequest build() {
+        return new CreateDnsTraceTestRequest(this);
+      }
+    }
   }
 
   /**
    * Delete DNS Trace test
    * Deletes the specified DNS Trace test. This method requires Account Admin permissions. 
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDnsTraceTest(DeleteDnsTraceTestRequest request) throws ApiException {
+    deleteDnsTraceTestWithHttpInfo(request);
+  }
+
+  /**
+   * Delete DNS Trace test
+   * Deletes the specified DNS Trace test. This method requires Account Admin permissions. 
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deleteDnsTraceTestWithHttpInfo(String testId, String aid) throws ApiException {
-    deleteDnsTraceTestValidateRequest(testId);
+  public ApiResponse<Void> deleteDnsTraceTestWithHttpInfo(DeleteDnsTraceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deleteDnsTraceTest");
+    }
+    deleteDnsTraceTestValidateRequest(request.getTestId());
 
-    var requestBuilder = deleteDnsTraceTestRequestBuilder(testId, aid);
+    var requestBuilder = deleteDnsTraceTestRequestBuilder(request.getTestId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -156,8 +207,8 @@ public class DnsTraceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deleteDnsTraceTestRequestBuilder(String testId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deleteDnsTraceTestRequestBuilder(String testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/tests/dns-trace/{testId}"
@@ -175,35 +226,75 @@ public class DnsTraceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeleteDnsTraceTestRequest {
+    private final String testId;
+    private final String aid;
+
+    private DeleteDnsTraceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeleteDnsTraceTestRequest build() {
+        return new DeleteDnsTraceTestRequest(this);
+      }
+    }
+  }
+
   /**
    * Get DNS Trace test
    * Returns details for a DNS Trace test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsTraceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsTraceTestResponse getDnsTraceTest(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsTraceTestResponse> response = getDnsTraceTestWithHttpInfo(testId, aid, versionId, expand);
+  public DnsTraceTestResponse getDnsTraceTest(GetDnsTraceTestRequest request) throws ApiException {
+    ApiResponse<DnsTraceTestResponse> response = getDnsTraceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Get DNS Trace test
    * Returns details for a DNS Trace test, including name, intervals, targets, alert rules and agents.
-   * @param testId Test ID (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param versionId The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsTraceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsTraceTestResponse> getDnsTraceTestWithHttpInfo(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    getDnsTraceTestValidateRequest(testId);
+  public ApiResponse<DnsTraceTestResponse> getDnsTraceTestWithHttpInfo(GetDnsTraceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsTraceTest");
+    }
+    getDnsTraceTestValidateRequest(request.getTestId());
 
-    var requestBuilder = getDnsTraceTestRequestBuilder(testId, aid, versionId, expand);
+    var requestBuilder = getDnsTraceTestRequestBuilder(request.getTestId(), request.getAid(), request.getVersionId(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsTraceTestResponse.class);
   }
@@ -215,8 +306,8 @@ public class DnsTraceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsTraceTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsTraceTestRequestBuilder(String testId, String aid, String versionId, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dns-trace/{testId}"
@@ -236,29 +327,97 @@ public class DnsTraceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsTraceTestRequest {
+    private final String testId;
+    private final String aid;
+    private final String versionId;
+    private final List<ExpandTestOptions> expand;
+
+    private GetDnsTraceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+      this.versionId = builder.versionId;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getVersionId() {
+      return versionId;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid)
+          .versionId(versionId)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private String aid;
+      private String versionId;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder versionId(String versionId) {
+        this.versionId = versionId;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public GetDnsTraceTestRequest build() {
+        return new GetDnsTraceTestRequest(this);
+      }
+    }
+  }
+
   /**
    * List DNS Trace tests
    * Returns a list of all DNS Trace tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return DnsTraceTests
    * @throws ApiException if fails to make API call
    */
-  public DnsTraceTests getDnsTraceTests(String aid) throws ApiException {
-    ApiResponse<DnsTraceTests> response = getDnsTraceTestsWithHttpInfo(aid);
+  public DnsTraceTests getDnsTraceTests(GetDnsTraceTestsRequest request) throws ApiException {
+    ApiResponse<DnsTraceTests> response = getDnsTraceTestsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List DNS Trace tests
    * Returns a list of all DNS Trace tests and saved events.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsTraceTests&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsTraceTests> getDnsTraceTestsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<DnsTraceTests> getDnsTraceTestsWithHttpInfo(GetDnsTraceTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getDnsTraceTests");
+    }
     getDnsTraceTestsValidateRequest();
 
-    var requestBuilder = getDnsTraceTestsRequestBuilder(aid);
+    var requestBuilder = getDnsTraceTestsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), DnsTraceTests.class);
   }
@@ -266,8 +425,8 @@ public class DnsTraceTestsApi {
   private void getDnsTraceTestsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getDnsTraceTestsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getDnsTraceTestsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/tests/dns-trace";
@@ -284,35 +443,64 @@ public class DnsTraceTestsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetDnsTraceTestsRequest {
+    private final String aid;
+
+    private GetDnsTraceTestsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetDnsTraceTestsRequest build() {
+        return new GetDnsTraceTestsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update DNS Trace test
    * Updates a DNS Trace test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsTraceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return DnsTraceTestResponse
    * @throws ApiException if fails to make API call
    */
-  public DnsTraceTestResponse updateDnsTraceTest(String testId, DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiResponse<DnsTraceTestResponse> response = updateDnsTraceTestWithHttpInfo(testId, dnsTraceTestRequest, aid, expand);
+  public DnsTraceTestResponse updateDnsTraceTest(UpdateDnsTraceTestRequest request) throws ApiException {
+    ApiResponse<DnsTraceTestResponse> response = updateDnsTraceTestWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update DNS Trace test
    * Updates a DNS Trace test. Shared tests have limited updating capabilities. Only account-specific configurations may be updated, namely: alert rules, alert suppression windows, labels, tags. This method requires Account Admin permissions. **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API.
-   * @param testId Test ID (required)
-   * @param dnsTraceTestRequest  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param expand Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. (optional
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;DnsTraceTestResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<DnsTraceTestResponse> updateDnsTraceTestWithHttpInfo(String testId, DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    updateDnsTraceTestValidateRequest(testId, dnsTraceTestRequest);
+  public ApiResponse<DnsTraceTestResponse> updateDnsTraceTestWithHttpInfo(UpdateDnsTraceTestRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updateDnsTraceTest");
+    }
+    updateDnsTraceTestValidateRequest(request.getTestId(), request.getDnsTraceTestRequest());
 
-    var requestBuilder = updateDnsTraceTestRequestBuilder(testId, dnsTraceTestRequest, aid, expand);
+    var requestBuilder = updateDnsTraceTestRequestBuilder(request.getTestId(), request.getDnsTraceTestRequest(), request.getAid(), request.getExpand());
 
     return apiClient.send(requestBuilder.build(), DnsTraceTestResponse.class);
   }
@@ -328,8 +516,8 @@ public class DnsTraceTestsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updateDnsTraceTestRequestBuilder(String testId, DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updateDnsTraceTestRequestBuilder(String testId, DnsTraceTestRequest dnsTraceTestRequest, String aid, List<ExpandTestOptions> expand) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/tests/dns-trace/{testId}"
@@ -350,4 +538,69 @@ public class DnsTraceTestsApi {
     requestBuilder.requestBody(dnsTraceTestRequest);
     return requestBuilder;
   }
+
+  public static final class UpdateDnsTraceTestRequest {
+    private final String testId;
+    private final DnsTraceTestRequest dnsTraceTestRequest;
+    private final String aid;
+    private final List<ExpandTestOptions> expand;
+
+    private UpdateDnsTraceTestRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.dnsTraceTestRequest = builder.dnsTraceTestRequest;
+      this.aid = builder.aid;
+      this.expand = builder.expand;
+    }
+    public String getTestId() {
+      return testId;
+    }
+    public DnsTraceTestRequest getDnsTraceTestRequest() {
+      return dnsTraceTestRequest;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public List<ExpandTestOptions> getExpand() {
+      return expand;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .dnsTraceTestRequest(dnsTraceTestRequest)
+          .aid(aid)
+          .expand(expand);
+    }
+
+    public static final class Builder {
+      private String testId;
+      private DnsTraceTestRequest dnsTraceTestRequest;
+      private String aid;
+      private List<ExpandTestOptions> expand;
+
+      public Builder testId(String testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder dnsTraceTestRequest(DnsTraceTestRequest dnsTraceTestRequest) {
+        this.dnsTraceTestRequest = dnsTraceTestRequest;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder expand(List<ExpandTestOptions> expand) {
+        this.expand = expand;
+        return this;
+      }
+      public UpdateDnsTraceTestRequest build() {
+        return new UpdateDnsTraceTestRequest(this);
+      }
+    }
+  }
+
 }

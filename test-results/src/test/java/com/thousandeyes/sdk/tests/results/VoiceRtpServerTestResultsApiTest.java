@@ -85,7 +85,6 @@ public class VoiceRtpServerTestResultsApiTest {
     {
         String testId = "202701";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -240,7 +239,14 @@ public class VoiceRtpServerTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestRtpServerResults(testId, null, null, null, null, null);
+        var request = VoiceRtpServerTestResultsApi.GetTestRtpServerResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestRtpServerResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

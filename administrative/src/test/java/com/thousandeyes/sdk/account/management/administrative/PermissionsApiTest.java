@@ -81,7 +81,6 @@ public class PermissionsApiTest {
             throws JsonProcessingException, ApiException
     {
 
-
         var responseBodyJson = """
                 {
                   "_links" : {
@@ -123,7 +122,10 @@ public class PermissionsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getPermissions(null);
+        var request = PermissionsApi.GetPermissionsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getPermissions(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

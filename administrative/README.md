@@ -118,7 +118,11 @@ public class AccountGroupsApiExample {
         AccountGroupRequest accountGroupRequest = new AccountGroupRequest(); // AccountGroupRequest | 
         List<ExpandAccountGroupOptions> expand = Arrays.asList(); // List<ExpandAccountGroupOptions> | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query.
         try {
-            CreatedAccountGroup result = apiInstance.createAccountGroup(accountGroupRequest, expand);
+            AccountGroupsApi.CreateAccountGroupRequest request = AccountGroupsApi.CreateAccountGroupRequest.builder()
+                .accountGroupRequest(accountGroupRequest)
+                .expand(expand)
+                .build();
+            CreatedAccountGroup result = apiInstance.createAccountGroup(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountGroupsApi#createAccountGroup");

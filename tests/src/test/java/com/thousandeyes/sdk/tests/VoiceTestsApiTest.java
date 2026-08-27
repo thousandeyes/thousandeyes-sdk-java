@@ -84,7 +84,6 @@ public class VoiceTestsApiTest {
     public void createVoiceTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -324,7 +323,12 @@ public class VoiceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createVoiceTest(mappedRequest, null, null);
+        var request = VoiceTestsApi.CreateVoiceTestRequest.builder()
+                .voiceTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createVoiceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -341,7 +345,6 @@ public class VoiceTestsApiTest {
     {
         String testId = "202701";
 
-
         var statusCode = 204;
 
         var path = "/tests/voice/{testId}";
@@ -351,7 +354,11 @@ public class VoiceTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteVoiceTestWithHttpInfo(testId, null);
+        var request = VoiceTestsApi.DeleteVoiceTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteVoiceTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -367,7 +374,6 @@ public class VoiceTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -544,7 +550,13 @@ public class VoiceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getVoiceTest(testId, null, null, null);
+        var request = VoiceTestsApi.GetVoiceTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .versionId("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getVoiceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -559,7 +571,6 @@ public class VoiceTestsApiTest {
     public void getVoiceTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -678,7 +689,10 @@ public class VoiceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getVoiceTests(null);
+        var request = VoiceTestsApi.GetVoiceTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getVoiceTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -694,7 +708,6 @@ public class VoiceTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
         var requestBodyJson = """
                 {
                   "_links" : {
@@ -935,7 +948,13 @@ public class VoiceTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateVoiceTest(testId, mappedRequest, null, null);
+        var request = VoiceTestsApi.UpdateVoiceTestRequest.builder()
+                .testId(testId)
+                .voiceTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateVoiceTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

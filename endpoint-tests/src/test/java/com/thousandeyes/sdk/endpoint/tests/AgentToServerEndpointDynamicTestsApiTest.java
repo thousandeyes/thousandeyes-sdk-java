@@ -84,7 +84,6 @@ public class AgentToServerEndpointDynamicTestsApiTest {
     public void createAgentToServerEndpointDynamicTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "agentSelectorType" : "all-agents",
@@ -173,7 +172,11 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToServerEndpointDynamicTest(mappedRequest, null);
+        var request = AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest.builder()
+                .dynamicTestRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createAgentToServerEndpointDynamicTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -190,7 +193,6 @@ public class AgentToServerEndpointDynamicTestsApiTest {
     {
         String testId = "584739201";
 
-
         var statusCode = 204;
 
         var path = "/endpoint/tests/dynamic-tests/agent-to-server/{testId}";
@@ -200,7 +202,11 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAgentToServerEndpointDynamicTestWithHttpInfo(testId, null);
+        var request = AgentToServerEndpointDynamicTestsApi.DeleteAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAgentToServerEndpointDynamicTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -216,7 +222,6 @@ public class AgentToServerEndpointDynamicTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
 
         var responseBodyJson = """
                 {
@@ -283,7 +288,11 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToServerEndpointDynamicTest(testId, null);
+        var request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentToServerEndpointDynamicTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -298,7 +307,6 @@ public class AgentToServerEndpointDynamicTestsApiTest {
     public void getAgentToServerEndpointDynamicTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -425,7 +433,10 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToServerEndpointDynamicTests(null);
+        var request = AgentToServerEndpointDynamicTestsApi.GetAgentToServerEndpointDynamicTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentToServerEndpointDynamicTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -441,7 +452,6 @@ public class AgentToServerEndpointDynamicTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
         var requestBodyJson = """
                 {
                   "protocol" : "icmp",
@@ -524,7 +534,12 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAgentToServerEndpointDynamicTest(testId, mappedRequest, null);
+        var request = AgentToServerEndpointDynamicTestsApi.UpdateAgentToServerEndpointDynamicTestRequest.builder()
+                .testId(testId)
+                .endpointDynamicTestUpdate(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateAgentToServerEndpointDynamicTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

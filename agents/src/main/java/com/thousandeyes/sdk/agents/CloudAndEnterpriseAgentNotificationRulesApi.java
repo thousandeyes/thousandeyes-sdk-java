@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -35,12 +34,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -62,28 +59,29 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
   /**
    * Retrieve agent notification rule
    * Returns details of an agent notification rule, including agents it is assigned to. 
-   * @param notificationRuleId Unique ID for the agent notification rule. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return NotificationRuleDetail
    * @throws ApiException if fails to make API call
    */
-  public NotificationRuleDetail getAgentsNotificationRule(String notificationRuleId, String aid) throws ApiException {
-    ApiResponse<NotificationRuleDetail> response = getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid);
+  public NotificationRuleDetail getAgentsNotificationRule(GetAgentsNotificationRuleRequest request) throws ApiException {
+    ApiResponse<NotificationRuleDetail> response = getAgentsNotificationRuleWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve agent notification rule
    * Returns details of an agent notification rule, including agents it is assigned to. 
-   * @param notificationRuleId Unique ID for the agent notification rule. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;NotificationRuleDetail&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<NotificationRuleDetail> getAgentsNotificationRuleWithHttpInfo(String notificationRuleId, String aid) throws ApiException {
-    getAgentsNotificationRuleValidateRequest(notificationRuleId);
+  public ApiResponse<NotificationRuleDetail> getAgentsNotificationRuleWithHttpInfo(GetAgentsNotificationRuleRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentsNotificationRule");
+    }
+    getAgentsNotificationRuleValidateRequest(request.getNotificationRuleId());
 
-    var requestBuilder = getAgentsNotificationRuleRequestBuilder(notificationRuleId, aid);
+    var requestBuilder = getAgentsNotificationRuleRequestBuilder(request.getNotificationRuleId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), NotificationRuleDetail.class);
   }
@@ -95,8 +93,8 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsNotificationRuleRequestBuilder(String notificationRuleId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentsNotificationRuleRequestBuilder(String notificationRuleId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/agents/notification-rules/{notificationRuleId}"
@@ -114,29 +112,75 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentsNotificationRuleRequest {
+    private final String notificationRuleId;
+    private final String aid;
+
+    private GetAgentsNotificationRuleRequest(Builder builder) {
+      this.notificationRuleId = builder.notificationRuleId;
+      this.aid = builder.aid;
+    }
+    public String getNotificationRuleId() {
+      return notificationRuleId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .notificationRuleId(notificationRuleId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String notificationRuleId;
+      private String aid;
+
+      public Builder notificationRuleId(String notificationRuleId) {
+        this.notificationRuleId = notificationRuleId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentsNotificationRuleRequest build() {
+        return new GetAgentsNotificationRuleRequest(this);
+      }
+    }
+  }
+
   /**
    * List agent notification rules
    * Returns a list of all agent notification rules configured under the account.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ListNotificationRulesResponse
    * @throws ApiException if fails to make API call
    */
-  public ListNotificationRulesResponse getAgentsNotificationRules(String aid) throws ApiException {
-    ApiResponse<ListNotificationRulesResponse> response = getAgentsNotificationRulesWithHttpInfo(aid);
+  public ListNotificationRulesResponse getAgentsNotificationRules(GetAgentsNotificationRulesRequest request) throws ApiException {
+    ApiResponse<ListNotificationRulesResponse> response = getAgentsNotificationRulesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List agent notification rules
    * Returns a list of all agent notification rules configured under the account.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ListNotificationRulesResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListNotificationRulesResponse> getAgentsNotificationRulesWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<ListNotificationRulesResponse> getAgentsNotificationRulesWithHttpInfo(GetAgentsNotificationRulesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentsNotificationRules");
+    }
     getAgentsNotificationRulesValidateRequest();
 
-    var requestBuilder = getAgentsNotificationRulesRequestBuilder(aid);
+    var requestBuilder = getAgentsNotificationRulesRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), ListNotificationRulesResponse.class);
   }
@@ -144,8 +188,8 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
   private void getAgentsNotificationRulesValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsNotificationRulesRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentsNotificationRulesRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/agents/notification-rules";
@@ -162,4 +206,36 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentsNotificationRulesRequest {
+    private final String aid;
+
+    private GetAgentsNotificationRulesRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAgentsNotificationRulesRequest build() {
+        return new GetAgentsNotificationRulesRequest(this);
+      }
+    }
+  }
+
 }

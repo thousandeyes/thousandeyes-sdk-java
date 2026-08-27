@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -37,12 +36,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -64,28 +61,29 @@ public class PanoramaConnectorsApi {
   /**
    * Create Panorama connector
    * Creates a new Panorama connector.
-   * @param panoramaConnector Panorama connector configuration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PanoramaConnector
    * @throws ApiException if fails to make API call
    */
-  public PanoramaConnector createPanoramaConnector(PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    ApiResponse<PanoramaConnector> response = createPanoramaConnectorWithHttpInfo(panoramaConnector, aid);
+  public PanoramaConnector createPanoramaConnector(CreatePanoramaConnectorRequest request) throws ApiException {
+    ApiResponse<PanoramaConnector> response = createPanoramaConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Create Panorama connector
    * Creates a new Panorama connector.
-   * @param panoramaConnector Panorama connector configuration. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PanoramaConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PanoramaConnector> createPanoramaConnectorWithHttpInfo(PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    createPanoramaConnectorValidateRequest(panoramaConnector);
+  public ApiResponse<PanoramaConnector> createPanoramaConnectorWithHttpInfo(CreatePanoramaConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling createPanoramaConnector");
+    }
+    createPanoramaConnectorValidateRequest(request.getPanoramaConnector());
 
-    var requestBuilder = createPanoramaConnectorRequestBuilder(panoramaConnector, aid);
+    var requestBuilder = createPanoramaConnectorRequestBuilder(request.getPanoramaConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PanoramaConnector.class);
   }
@@ -97,8 +95,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder createPanoramaConnectorRequestBuilder(PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder createPanoramaConnectorRequestBuilder(PanoramaConnector panoramaConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/connectors/panorama";
@@ -117,29 +115,73 @@ public class PanoramaConnectorsApi {
     requestBuilder.requestBody(panoramaConnector);
     return requestBuilder;
   }
-  /**
-   * Delete Panorama connector
-   * Deletes the Panorama connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @throws ApiException if fails to make API call
-   */
-  public void deletePanoramaConnector(String id, String aid) throws ApiException {
-    deletePanoramaConnectorWithHttpInfo(id, aid);
+
+  public static final class CreatePanoramaConnectorRequest {
+    private final PanoramaConnector panoramaConnector;
+    private final String aid;
+
+    private CreatePanoramaConnectorRequest(Builder builder) {
+      this.panoramaConnector = builder.panoramaConnector;
+      this.aid = builder.aid;
+    }
+    public PanoramaConnector getPanoramaConnector() {
+      return panoramaConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .panoramaConnector(panoramaConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private PanoramaConnector panoramaConnector;
+      private String aid;
+
+      public Builder panoramaConnector(PanoramaConnector panoramaConnector) {
+        this.panoramaConnector = panoramaConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public CreatePanoramaConnectorRequest build() {
+        return new CreatePanoramaConnectorRequest(this);
+      }
+    }
   }
 
   /**
    * Delete Panorama connector
    * Deletes the Panorama connector specified by ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deletePanoramaConnector(DeletePanoramaConnectorRequest request) throws ApiException {
+    deletePanoramaConnectorWithHttpInfo(request);
+  }
+
+  /**
+   * Delete Panorama connector
+   * Deletes the Panorama connector specified by ID.
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> deletePanoramaConnectorWithHttpInfo(String id, String aid) throws ApiException {
-    deletePanoramaConnectorValidateRequest(id);
+  public ApiResponse<Void> deletePanoramaConnectorWithHttpInfo(DeletePanoramaConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling deletePanoramaConnector");
+    }
+    deletePanoramaConnectorValidateRequest(request.getId());
 
-    var requestBuilder = deletePanoramaConnectorRequestBuilder(id, aid);
+    var requestBuilder = deletePanoramaConnectorRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Void.class);
   }
@@ -151,8 +193,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder deletePanoramaConnectorRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder deletePanoramaConnectorRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
     String path = "/connectors/panorama/{id}"
@@ -170,31 +212,75 @@ public class PanoramaConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class DeletePanoramaConnectorRequest {
+    private final String id;
+    private final String aid;
+
+    private DeletePanoramaConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public DeletePanoramaConnectorRequest build() {
+        return new DeletePanoramaConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve Panorama connector
    * Retrieves details of a Panorama connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PanoramaConnector
    * @throws ApiException if fails to make API call
    */
-  public PanoramaConnector getPanoramaConnector(String id, String aid) throws ApiException {
-    ApiResponse<PanoramaConnector> response = getPanoramaConnectorWithHttpInfo(id, aid);
+  public PanoramaConnector getPanoramaConnector(GetPanoramaConnectorRequest request) throws ApiException {
+    ApiResponse<PanoramaConnector> response = getPanoramaConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve Panorama connector
    * Retrieves details of a Panorama connector by its ID.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PanoramaConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PanoramaConnector> getPanoramaConnectorWithHttpInfo(String id, String aid) throws ApiException {
-    getPanoramaConnectorValidateRequest(id);
+  public ApiResponse<PanoramaConnector> getPanoramaConnectorWithHttpInfo(GetPanoramaConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPanoramaConnector");
+    }
+    getPanoramaConnectorValidateRequest(request.getId());
 
-    var requestBuilder = getPanoramaConnectorRequestBuilder(id, aid);
+    var requestBuilder = getPanoramaConnectorRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PanoramaConnector.class);
   }
@@ -206,8 +292,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getPanoramaConnectorRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPanoramaConnectorRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/panorama/{id}"
@@ -225,31 +311,75 @@ public class PanoramaConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPanoramaConnectorRequest {
+    private final String id;
+    private final String aid;
+
+    private GetPanoramaConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetPanoramaConnectorRequest build() {
+        return new GetPanoramaConnectorRequest(this);
+      }
+    }
+  }
+
   /**
    * List operation IDs for Panorama connector
    * Returns a list of operation IDs assigned to a Panorama connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments getPanoramaConnectorOperations(String id, String aid) throws ApiException {
-    ApiResponse<Assignments> response = getPanoramaConnectorOperationsWithHttpInfo(id, aid);
+  public Assignments getPanoramaConnectorOperations(GetPanoramaConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = getPanoramaConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List operation IDs for Panorama connector
    * Returns a list of operation IDs assigned to a Panorama connector.
-   * @param id The connector ID. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> getPanoramaConnectorOperationsWithHttpInfo(String id, String aid) throws ApiException {
-    getPanoramaConnectorOperationsValidateRequest(id);
+  public ApiResponse<Assignments> getPanoramaConnectorOperationsWithHttpInfo(GetPanoramaConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPanoramaConnectorOperations");
+    }
+    getPanoramaConnectorOperationsValidateRequest(request.getId());
 
-    var requestBuilder = getPanoramaConnectorOperationsRequestBuilder(id, aid);
+    var requestBuilder = getPanoramaConnectorOperationsRequestBuilder(request.getId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -261,8 +391,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getPanoramaConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPanoramaConnectorOperationsRequestBuilder(String id, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/panorama/{id}/operations"
@@ -280,29 +410,75 @@ public class PanoramaConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPanoramaConnectorOperationsRequest {
+    private final String id;
+    private final String aid;
+
+    private GetPanoramaConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetPanoramaConnectorOperationsRequest build() {
+        return new GetPanoramaConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * List Panorama connectors
    * Returns a list of Panorama connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PanoramaConnectors
    * @throws ApiException if fails to make API call
    */
-  public PanoramaConnectors getPanoramaConnectors(String aid) throws ApiException {
-    ApiResponse<PanoramaConnectors> response = getPanoramaConnectorsWithHttpInfo(aid);
+  public PanoramaConnectors getPanoramaConnectors(GetPanoramaConnectorsRequest request) throws ApiException {
+    ApiResponse<PanoramaConnectors> response = getPanoramaConnectorsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Panorama connectors
    * Returns a list of Panorama connectors in the specified account group. If no account group is specified, the user’s default account group is used.
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PanoramaConnectors&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PanoramaConnectors> getPanoramaConnectorsWithHttpInfo(String aid) throws ApiException {
+  public ApiResponse<PanoramaConnectors> getPanoramaConnectorsWithHttpInfo(GetPanoramaConnectorsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getPanoramaConnectors");
+    }
     getPanoramaConnectorsValidateRequest();
 
-    var requestBuilder = getPanoramaConnectorsRequestBuilder(aid);
+    var requestBuilder = getPanoramaConnectorsRequestBuilder(request.getAid());
 
     return apiClient.send(requestBuilder.build(), PanoramaConnectors.class);
   }
@@ -310,8 +486,8 @@ public class PanoramaConnectorsApi {
   private void getPanoramaConnectorsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getPanoramaConnectorsRequestBuilder(String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getPanoramaConnectorsRequestBuilder(String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/connectors/panorama";
@@ -328,33 +504,64 @@ public class PanoramaConnectorsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetPanoramaConnectorsRequest {
+    private final String aid;
+
+    private GetPanoramaConnectorsRequest(Builder builder) {
+      this.aid = builder.aid;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String aid;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetPanoramaConnectorsRequest build() {
+        return new GetPanoramaConnectorsRequest(this);
+      }
+    }
+  }
+
   /**
    * Assign operations to Panorama connector
    * Assigns operations to a Panorama connector. This replaces any existing assignments. Passing an empty array removes all operation assignments from the connector.
-   * @param id The connector ID. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return Assignments
    * @throws ApiException if fails to make API call
    */
-  public Assignments setPanoramaConnectorOperations(String id, List<String> requestBody, String aid) throws ApiException {
-    ApiResponse<Assignments> response = setPanoramaConnectorOperationsWithHttpInfo(id, requestBody, aid);
+  public Assignments setPanoramaConnectorOperations(SetPanoramaConnectorOperationsRequest request) throws ApiException {
+    ApiResponse<Assignments> response = setPanoramaConnectorOperationsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Assign operations to Panorama connector
    * Assigns operations to a Panorama connector. This replaces any existing assignments. Passing an empty array removes all operation assignments from the connector.
-   * @param id The connector ID. (required)
-   * @param requestBody List of operation IDs to assign to the connector. (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;Assignments&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Assignments> setPanoramaConnectorOperationsWithHttpInfo(String id, List<String> requestBody, String aid) throws ApiException {
-    setPanoramaConnectorOperationsValidateRequest(id, requestBody);
+  public ApiResponse<Assignments> setPanoramaConnectorOperationsWithHttpInfo(SetPanoramaConnectorOperationsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling setPanoramaConnectorOperations");
+    }
+    setPanoramaConnectorOperationsValidateRequest(request.getId(), request.getRequestBody());
 
-    var requestBuilder = setPanoramaConnectorOperationsRequestBuilder(id, requestBody, aid);
+    var requestBuilder = setPanoramaConnectorOperationsRequestBuilder(request.getId(), request.getRequestBody(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), Assignments.class);
   }
@@ -370,8 +577,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder setPanoramaConnectorOperationsRequestBuilder(String id, List<String> requestBody, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder setPanoramaConnectorOperationsRequestBuilder(String id, List<String> requestBody, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/panorama/{id}/operations"
@@ -391,33 +598,86 @@ public class PanoramaConnectorsApi {
     requestBuilder.requestBody(requestBody);
     return requestBuilder;
   }
+
+  public static final class SetPanoramaConnectorOperationsRequest {
+    private final String id;
+    private final List<String> requestBody;
+    private final String aid;
+
+    private SetPanoramaConnectorOperationsRequest(Builder builder) {
+      this.id = builder.id;
+      this.requestBody = builder.requestBody;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public List<String> getRequestBody() {
+      return requestBody;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .requestBody(requestBody)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private List<String> requestBody;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder requestBody(List<String> requestBody) {
+        this.requestBody = requestBody;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public SetPanoramaConnectorOperationsRequest build() {
+        return new SetPanoramaConnectorOperationsRequest(this);
+      }
+    }
+  }
+
   /**
    * Update Panorama connector
    * Replaces the Panorama connector specified by ID. The request must include the complete connector configuration, including authentication credentials; existing credentials are not retained when authentication is omitted.
-   * @param id The connector ID. (required)
-   * @param panoramaConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return PanoramaConnector
    * @throws ApiException if fails to make API call
    */
-  public PanoramaConnector updatePanoramaConnector(String id, PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    ApiResponse<PanoramaConnector> response = updatePanoramaConnectorWithHttpInfo(id, panoramaConnector, aid);
+  public PanoramaConnector updatePanoramaConnector(UpdatePanoramaConnectorRequest request) throws ApiException {
+    ApiResponse<PanoramaConnector> response = updatePanoramaConnectorWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Update Panorama connector
    * Replaces the Panorama connector specified by ID. The request must include the complete connector configuration, including authentication credentials; existing credentials are not retained when authentication is omitted.
-   * @param id The connector ID. (required)
-   * @param panoramaConnector  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;PanoramaConnector&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PanoramaConnector> updatePanoramaConnectorWithHttpInfo(String id, PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    updatePanoramaConnectorValidateRequest(id, panoramaConnector);
+  public ApiResponse<PanoramaConnector> updatePanoramaConnectorWithHttpInfo(UpdatePanoramaConnectorRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling updatePanoramaConnector");
+    }
+    updatePanoramaConnectorValidateRequest(request.getId(), request.getPanoramaConnector());
 
-    var requestBuilder = updatePanoramaConnectorRequestBuilder(id, panoramaConnector, aid);
+    var requestBuilder = updatePanoramaConnectorRequestBuilder(request.getId(), request.getPanoramaConnector(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), PanoramaConnector.class);
   }
@@ -433,8 +693,8 @@ public class PanoramaConnectorsApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder updatePanoramaConnectorRequestBuilder(String id, PanoramaConnector panoramaConnector, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder updatePanoramaConnectorRequestBuilder(String id, PanoramaConnector panoramaConnector, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
     String path = "/connectors/panorama/{id}"
@@ -454,4 +714,58 @@ public class PanoramaConnectorsApi {
     requestBuilder.requestBody(panoramaConnector);
     return requestBuilder;
   }
+
+  public static final class UpdatePanoramaConnectorRequest {
+    private final String id;
+    private final PanoramaConnector panoramaConnector;
+    private final String aid;
+
+    private UpdatePanoramaConnectorRequest(Builder builder) {
+      this.id = builder.id;
+      this.panoramaConnector = builder.panoramaConnector;
+      this.aid = builder.aid;
+    }
+    public String getId() {
+      return id;
+    }
+    public PanoramaConnector getPanoramaConnector() {
+      return panoramaConnector;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .id(id)
+          .panoramaConnector(panoramaConnector)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String id;
+      private PanoramaConnector panoramaConnector;
+      private String aid;
+
+      public Builder id(String id) {
+        this.id = id;
+        return this;
+      }
+      public Builder panoramaConnector(PanoramaConnector panoramaConnector) {
+        this.panoramaConnector = panoramaConnector;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public UpdatePanoramaConnectorRequest build() {
+        return new UpdatePanoramaConnectorRequest(this);
+      }
+    }
+  }
+
 }

@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## assignAgentToCluster
 
-> AgentDetails assignAgentToCluster(agentId, agentClusterAssignRequest, aid, expand)
+> AgentDetails assignAgentToCluster(AssignAgentToClusterRequest)
 
 Add member to Enterprise Agent cluster
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 
 public class Example {
@@ -45,7 +45,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            AgentDetails result = apiInstance.assignAgentToCluster(agentId, agentClusterAssignRequest, aid, expand);
+            EnterpriseAgentClusterApi.AssignAgentToClusterRequest request = EnterpriseAgentClusterApi.AssignAgentToClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterAssignRequest(agentClusterAssignRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AgentDetails result = apiInstance.assignAgentToCluster(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EnterpriseAgentClusterApi#assignAgentToCluster");
@@ -60,13 +66,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentClusterAssignRequest** | [**AgentClusterAssignRequest**](AgentClusterAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+| request | [**AssignAgentToClusterRequest**](EnterpriseAgentClusterApi.md#AssignAgentToClusterRequest)|-|-|
 
 ### Return type
 
@@ -97,7 +99,7 @@ public class Example {
 
 ## assignAgentToClusterWithHttpInfo
 
-> ApiResponse<AgentDetails> assignAgentToCluster assignAgentToClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand)
+> ApiResponse<AgentDetails> assignAgentToCluster assignAgentToClusterWithHttpInfo(AssignAgentToClusterRequest)
 
 Add member to Enterprise Agent cluster
 
@@ -112,7 +114,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 
 public class Example {
@@ -130,7 +132,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<AgentDetails> response = apiInstance.assignAgentToClusterWithHttpInfo(agentId, agentClusterAssignRequest, aid, expand);
+            EnterpriseAgentClusterApi.AssignAgentToClusterRequest request = EnterpriseAgentClusterApi.AssignAgentToClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterAssignRequest(agentClusterAssignRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AgentDetails> response = apiInstance.assignAgentToClusterWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -147,13 +155,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to add new agents to. | |
-| **agentClusterAssignRequest** | [**AgentClusterAssignRequest**](AgentClusterAssignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+| request | [**AssignAgentToClusterRequest**](EnterpriseAgentClusterApi.md#AssignAgentToClusterRequest)|-|-|
 
 ### Return type
 
@@ -183,9 +187,22 @@ ApiResponse<[**AgentDetails**](AgentDetails.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="AssignAgentToClusterRequest"></a>
+## AssignAgentToClusterRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **String** | Unique ID for the Enterprise Agent cluster to add new agents to. | |
+| **agentClusterAssignRequest** | [**AgentClusterAssignRequest**](AgentClusterAssignRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md) | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+
+
+
 ## unassignAgentFromCluster
 
-> CloudEnterpriseAgents unassignAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand)
+> CloudEnterpriseAgents unassignAgentFromCluster(UnassignAgentFromClusterRequest)
 
 Remove member from Enterprise Agent cluster
 
@@ -199,7 +216,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 
 public class Example {
@@ -217,7 +234,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            CloudEnterpriseAgents result = apiInstance.unassignAgentFromCluster(agentId, agentClusterUnassignRequest, aid, expand);
+            EnterpriseAgentClusterApi.UnassignAgentFromClusterRequest request = EnterpriseAgentClusterApi.UnassignAgentFromClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterUnassignRequest(agentClusterUnassignRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            CloudEnterpriseAgents result = apiInstance.unassignAgentFromCluster(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EnterpriseAgentClusterApi#unassignAgentFromCluster");
@@ -232,13 +255,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to remove agents from. | |
-| **agentClusterUnassignRequest** | [**AgentClusterUnassignRequest**](AgentClusterUnassignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+| request | [**UnassignAgentFromClusterRequest**](EnterpriseAgentClusterApi.md#UnassignAgentFromClusterRequest)|-|-|
 
 ### Return type
 
@@ -269,7 +288,7 @@ public class Example {
 
 ## unassignAgentFromClusterWithHttpInfo
 
-> ApiResponse<CloudEnterpriseAgents> unassignAgentFromCluster unassignAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand)
+> ApiResponse<CloudEnterpriseAgents> unassignAgentFromCluster unassignAgentFromClusterWithHttpInfo(UnassignAgentFromClusterRequest)
 
 Remove member from Enterprise Agent cluster
 
@@ -284,7 +303,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.EnterpriseAgentClusterApi;
 
 public class Example {
@@ -302,7 +321,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<AgentDetailsExpand> expand = Arrays.asList(); // List<AgentDetailsExpand> | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the `clusterMembers` sub-resource, pass the `?expand=cluster-member` query.
         try {
-            ApiResponse<CloudEnterpriseAgents> response = apiInstance.unassignAgentFromClusterWithHttpInfo(agentId, agentClusterUnassignRequest, aid, expand);
+            EnterpriseAgentClusterApi.UnassignAgentFromClusterRequest request = EnterpriseAgentClusterApi.UnassignAgentFromClusterRequest.builder()
+                .agentId(agentId)
+                .agentClusterUnassignRequest(agentClusterUnassignRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<CloudEnterpriseAgents> response = apiInstance.unassignAgentFromClusterWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -319,13 +344,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentId** | **String**| Unique ID for the Enterprise Agent cluster to remove agents from. | |
-| **agentClusterUnassignRequest** | [**AgentClusterUnassignRequest**](AgentClusterUnassignRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md)| Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+| request | [**UnassignAgentFromClusterRequest**](EnterpriseAgentClusterApi.md#UnassignAgentFromClusterRequest)|-|-|
 
 ### Return type
 
@@ -353,4 +374,17 @@ ApiResponse<[**CloudEnterpriseAgents**](CloudEnterpriseAgents.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UnassignAgentFromClusterRequest"></a>
+## UnassignAgentFromClusterRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentId** | **String** | Unique ID for the Enterprise Agent cluster to remove agents from. | |
+| **agentClusterUnassignRequest** | [**AgentClusterUnassignRequest**](AgentClusterUnassignRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;AgentDetailsExpand&gt;**](AgentDetailsExpand.md) | Optional parameter, off by default. Indicates which agent sub-resource to expand. For example, if you wish to expand the &#x60;clusterMembers&#x60; sub-resource, pass the &#x60;?expand&#x3D;cluster-member&#x60; query. | [optional] |
+
 

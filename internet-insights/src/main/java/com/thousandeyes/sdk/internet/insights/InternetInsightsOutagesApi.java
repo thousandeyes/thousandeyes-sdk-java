@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -38,12 +37,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -65,28 +62,29 @@ public class InternetInsightsOutagesApi {
   /**
    * List network and application outages
    * Returns a list of network and application outages using a filter object. Advanced Filter persistance is not currently supported.  &lt;b&gt;Note:&lt;/b&gt; Support for pagination will be added in the future.   ## Samples Queries with Different Filter Permutations   ### Window  &#x60;&#x60;&#x60;  curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token --header &#39;Accept-Encoding: application/gzip&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;window\&quot; : \&quot;1d\&quot;   }&#39; &#x60;&#x60;&#x60;  ### Date Range &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;   }&#39; &#x60;&#x60;&#x60;  ### Date Range with Scope &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,     \&quot;outageScope\&quot;: \&quot;with-affected-test\&quot;   }&#39; &#x60;&#x60;&#x60; ### Date Range with Network &#x60;&#x60;&#x60;   curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39;   --header &#39;Authorization: Bearer $token&#39;   --header &#39;Content-Type: application/json&#39;   --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;interfaceNetwork\&quot;:  [\&quot;Telianet\&quot;]     }&#39; &#x60;&#x60;&#x60;  ### Date Range with Application &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39;   --header &#39;Authorization: Bearer $token&#39;   --header &#39;Content-Type: application/json&#39;   --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;applicationName\&quot;: [\&quot;Google\&quot;]   }&#39; &#x60;&#x60;&#x60; ### Date Range with Provider &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;providerName\&quot;: [\&quot;Century Link\&quot;, \&quot;Microsoft\&quot;]   }&#39;  &#x60;&#x60;&#x60; ### Date Range with Application and Scope &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,     \&quot;outageScope\&quot;: \&quot;all\&quot;,     \&quot;applicationName\&quot;: [\&quot;Google\&quot;] }&#39; &#x60;&#x60;&#x60; 
-   * @param apiOutageFilter  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiOutagesResponse
    * @throws ApiException if fails to make API call
    */
-  public ApiOutagesResponse filterOutages(ApiOutageFilter apiOutageFilter, String aid) throws ApiException {
-    ApiResponse<ApiOutagesResponse> response = filterOutagesWithHttpInfo(apiOutageFilter, aid);
+  public ApiOutagesResponse filterOutages(FilterOutagesRequest request) throws ApiException {
+    ApiResponse<ApiOutagesResponse> response = filterOutagesWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List network and application outages
    * Returns a list of network and application outages using a filter object. Advanced Filter persistance is not currently supported.  &lt;b&gt;Note:&lt;/b&gt; Support for pagination will be added in the future.   ## Samples Queries with Different Filter Permutations   ### Window  &#x60;&#x60;&#x60;  curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token --header &#39;Accept-Encoding: application/gzip&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;window\&quot; : \&quot;1d\&quot;   }&#39; &#x60;&#x60;&#x60;  ### Date Range &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;   }&#39; &#x60;&#x60;&#x60;  ### Date Range with Scope &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,     \&quot;outageScope\&quot;: \&quot;with-affected-test\&quot;   }&#39; &#x60;&#x60;&#x60; ### Date Range with Network &#x60;&#x60;&#x60;   curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39;   --header &#39;Authorization: Bearer $token&#39;   --header &#39;Content-Type: application/json&#39;   --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;interfaceNetwork\&quot;:  [\&quot;Telianet\&quot;]     }&#39; &#x60;&#x60;&#x60;  ### Date Range with Application &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39;   --header &#39;Authorization: Bearer $token&#39;   --header &#39;Content-Type: application/json&#39;   --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;applicationName\&quot;: [\&quot;Google\&quot;]   }&#39; &#x60;&#x60;&#x60; ### Date Range with Provider &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{       \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,       \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,       \&quot;providerName\&quot;: [\&quot;Century Link\&quot;, \&quot;Microsoft\&quot;]   }&#39;  &#x60;&#x60;&#x60; ### Date Range with Application and Scope &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/internet-insights/outages/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{     \&quot;startDate\&quot;: \&quot;2022-03-01T01:30:00Z\&quot;,     \&quot;endDate\&quot;  : \&quot;2022-03-01T23:30:15Z\&quot;,     \&quot;outageScope\&quot;: \&quot;all\&quot;,     \&quot;applicationName\&quot;: [\&quot;Google\&quot;] }&#39; &#x60;&#x60;&#x60; 
-   * @param apiOutageFilter  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiOutagesResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiOutagesResponse> filterOutagesWithHttpInfo(ApiOutageFilter apiOutageFilter, String aid) throws ApiException {
-    filterOutagesValidateRequest(apiOutageFilter);
+  public ApiResponse<ApiOutagesResponse> filterOutagesWithHttpInfo(FilterOutagesRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling filterOutages");
+    }
+    filterOutagesValidateRequest(request.getApiOutageFilter());
 
-    var requestBuilder = filterOutagesRequestBuilder(apiOutageFilter, aid);
+    var requestBuilder = filterOutagesRequestBuilder(request.getApiOutageFilter(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiOutagesResponse.class);
   }
@@ -98,8 +96,8 @@ public class InternetInsightsOutagesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder filterOutagesRequestBuilder(ApiOutageFilter apiOutageFilter, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder filterOutagesRequestBuilder(ApiOutageFilter apiOutageFilter, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
     String path = "/internet-insights/outages/filter";
@@ -118,31 +116,75 @@ public class InternetInsightsOutagesApi {
     requestBuilder.requestBody(apiOutageFilter);
     return requestBuilder;
   }
+
+  public static final class FilterOutagesRequest {
+    private final ApiOutageFilter apiOutageFilter;
+    private final String aid;
+
+    private FilterOutagesRequest(Builder builder) {
+      this.apiOutageFilter = builder.apiOutageFilter;
+      this.aid = builder.aid;
+    }
+    public ApiOutageFilter getApiOutageFilter() {
+      return apiOutageFilter;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .apiOutageFilter(apiOutageFilter)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private ApiOutageFilter apiOutageFilter;
+      private String aid;
+
+      public Builder apiOutageFilter(ApiOutageFilter apiOutageFilter) {
+        this.apiOutageFilter = apiOutageFilter;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public FilterOutagesRequest build() {
+        return new FilterOutagesRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve application outage
    * Returns the details of an application outage. 
-   * @param outageId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiApplicationOutageDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiApplicationOutageDetails getAppOutage(String outageId, String aid) throws ApiException {
-    ApiResponse<ApiApplicationOutageDetails> response = getAppOutageWithHttpInfo(outageId, aid);
+  public ApiApplicationOutageDetails getAppOutage(GetAppOutageRequest request) throws ApiException {
+    ApiResponse<ApiApplicationOutageDetails> response = getAppOutageWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve application outage
    * Returns the details of an application outage. 
-   * @param outageId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiApplicationOutageDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiApplicationOutageDetails> getAppOutageWithHttpInfo(String outageId, String aid) throws ApiException {
-    getAppOutageValidateRequest(outageId);
+  public ApiResponse<ApiApplicationOutageDetails> getAppOutageWithHttpInfo(GetAppOutageRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAppOutage");
+    }
+    getAppOutageValidateRequest(request.getOutageId());
 
-    var requestBuilder = getAppOutageRequestBuilder(outageId, aid);
+    var requestBuilder = getAppOutageRequestBuilder(request.getOutageId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiApplicationOutageDetails.class);
   }
@@ -154,8 +196,8 @@ public class InternetInsightsOutagesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getAppOutageRequestBuilder(String outageId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAppOutageRequestBuilder(String outageId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/internet-insights/outages/app/{outageId}"
@@ -173,31 +215,75 @@ public class InternetInsightsOutagesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAppOutageRequest {
+    private final String outageId;
+    private final String aid;
+
+    private GetAppOutageRequest(Builder builder) {
+      this.outageId = builder.outageId;
+      this.aid = builder.aid;
+    }
+    public String getOutageId() {
+      return outageId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .outageId(outageId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String outageId;
+      private String aid;
+
+      public Builder outageId(String outageId) {
+        this.outageId = outageId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetAppOutageRequest build() {
+        return new GetAppOutageRequest(this);
+      }
+    }
+  }
+
   /**
    * Retrieve network outage
    * Returns the details of a network outage. 
-   * @param outageId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiNetworkOutageDetails
    * @throws ApiException if fails to make API call
    */
-  public ApiNetworkOutageDetails getNetworkOutage(String outageId, String aid) throws ApiException {
-    ApiResponse<ApiNetworkOutageDetails> response = getNetworkOutageWithHttpInfo(outageId, aid);
+  public ApiNetworkOutageDetails getNetworkOutage(GetNetworkOutageRequest request) throws ApiException {
+    ApiResponse<ApiNetworkOutageDetails> response = getNetworkOutageWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * Retrieve network outage
    * Returns the details of a network outage. 
-   * @param outageId  (required)
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;ApiNetworkOutageDetails&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ApiNetworkOutageDetails> getNetworkOutageWithHttpInfo(String outageId, String aid) throws ApiException {
-    getNetworkOutageValidateRequest(outageId);
+  public ApiResponse<ApiNetworkOutageDetails> getNetworkOutageWithHttpInfo(GetNetworkOutageRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getNetworkOutage");
+    }
+    getNetworkOutageValidateRequest(request.getOutageId());
 
-    var requestBuilder = getNetworkOutageRequestBuilder(outageId, aid);
+    var requestBuilder = getNetworkOutageRequestBuilder(request.getOutageId(), request.getAid());
 
     return apiClient.send(requestBuilder.build(), ApiNetworkOutageDetails.class);
   }
@@ -209,8 +295,8 @@ public class InternetInsightsOutagesApi {
       }
   }
 
-  private ApiRequest.ApiRequestBuilder getNetworkOutageRequestBuilder(String outageId, String aid) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getNetworkOutageRequestBuilder(String outageId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/internet-insights/outages/net/{outageId}"
@@ -228,4 +314,47 @@ public class InternetInsightsOutagesApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetNetworkOutageRequest {
+    private final String outageId;
+    private final String aid;
+
+    private GetNetworkOutageRequest(Builder builder) {
+      this.outageId = builder.outageId;
+      this.aid = builder.aid;
+    }
+    public String getOutageId() {
+      return outageId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .outageId(outageId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private String outageId;
+      private String aid;
+
+      public Builder outageId(String outageId) {
+        this.outageId = outageId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public GetNetworkOutageRequest build() {
+        return new GetNetworkOutageRequest(this);
+      }
+    }
+  }
+
 }

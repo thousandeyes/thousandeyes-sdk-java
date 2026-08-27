@@ -17,7 +17,6 @@ import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
 import com.thousandeyes.sdk.client.ApiResponse;
-import com.thousandeyes.sdk.client.ApiRequest;
 import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
@@ -36,12 +35,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.http.HttpRequest;
 import java.nio.channels.Channels;
 import java.nio.channels.Pipe;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
@@ -63,32 +60,29 @@ public class LocalProblemsApi {
   /**
    * List Cloud agents with local problems
    * Returns local problem intervals for Cloud Agents available to your account in ThousandEyes. FedRAMP Cloud Agents are not included. Local problems indicate agent-side impairment detected by ThousandEyes and do not indicate that a monitored target or service was down.  If no time range is specified, this operation returns active local problems. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return LocalProblemAgentResults
    * @throws ApiException if fails to make API call
    */
-  public LocalProblemAgentResults getAgentsLocalProblems(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiResponse<LocalProblemAgentResults> response = getAgentsLocalProblemsWithHttpInfo(aid, window, startDate, endDate);
+  public LocalProblemAgentResults getAgentsLocalProblems(GetAgentsLocalProblemsRequest request) throws ApiException {
+    ApiResponse<LocalProblemAgentResults> response = getAgentsLocalProblemsWithHttpInfo(request);
     return response.getData();
   }
 
   /**
    * List Cloud agents with local problems
    * Returns local problem intervals for Cloud Agents available to your account in ThousandEyes. FedRAMP Cloud Agents are not included. Local problems indicate agent-side impairment detected by ThousandEyes and do not indicate that a monitored target or service was down.  If no time range is specified, this operation returns active local problems. 
-   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
-   * @param window A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. (optional)
-   * @param startDate Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
-   * @param endDate Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. (optional)
+   * @param request operation parameters (required)
    * @return ApiResponse&lt;LocalProblemAgentResults&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LocalProblemAgentResults> getAgentsLocalProblemsWithHttpInfo(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+  public ApiResponse<LocalProblemAgentResults> getAgentsLocalProblemsWithHttpInfo(GetAgentsLocalProblemsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling getAgentsLocalProblems");
+    }
     getAgentsLocalProblemsValidateRequest();
 
-    var requestBuilder = getAgentsLocalProblemsRequestBuilder(aid, window, startDate, endDate);
+    var requestBuilder = getAgentsLocalProblemsRequestBuilder(request.getAid(), request.getWindow(), request.getStartDate(), request.getEndDate());
 
     return apiClient.send(requestBuilder.build(), LocalProblemAgentResults.class);
   }
@@ -96,8 +90,8 @@ public class LocalProblemsApi {
   private void getAgentsLocalProblemsValidateRequest() throws ApiException {
   }
 
-  private ApiRequest.ApiRequestBuilder getAgentsLocalProblemsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
-    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAgentsLocalProblemsRequestBuilder(String aid, String window, OffsetDateTime startDate, OffsetDateTime endDate) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
     String path = "/agents/local-problems";
@@ -117,4 +111,69 @@ public class LocalProblemsApi {
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     return requestBuilder;
   }
+
+  public static final class GetAgentsLocalProblemsRequest {
+    private final String aid;
+    private final String window;
+    private final OffsetDateTime startDate;
+    private final OffsetDateTime endDate;
+
+    private GetAgentsLocalProblemsRequest(Builder builder) {
+      this.aid = builder.aid;
+      this.window = builder.window;
+      this.startDate = builder.startDate;
+      this.endDate = builder.endDate;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public String getWindow() {
+      return window;
+    }
+    public OffsetDateTime getStartDate() {
+      return startDate;
+    }
+    public OffsetDateTime getEndDate() {
+      return endDate;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .aid(aid)
+          .window(window)
+          .startDate(startDate)
+          .endDate(endDate);
+    }
+
+    public static final class Builder {
+      private String aid;
+      private String window;
+      private OffsetDateTime startDate;
+      private OffsetDateTime endDate;
+
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public Builder window(String window) {
+        this.window = window;
+        return this;
+      }
+      public Builder startDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
+        return this;
+      }
+      public Builder endDate(OffsetDateTime endDate) {
+        this.endDate = endDate;
+        return this;
+      }
+      public GetAgentsLocalProblemsRequest build() {
+        return new GetAgentsLocalProblemsRequest(this);
+      }
+    }
+  }
+
 }

@@ -87,7 +87,6 @@ public class CloudAndEnterpriseAgentsApiTest {
     {
         String agentId = "281474976710706";
 
-
         var statusCode = 204;
 
         var path = "/agents/{agentId}";
@@ -97,7 +96,11 @@ public class CloudAndEnterpriseAgentsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAgentWithHttpInfo(agentId, null);
+        var request = CloudAndEnterpriseAgentsApi.DeleteAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAgentWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -113,7 +116,6 @@ public class CloudAndEnterpriseAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
 
         var responseBodyJson = """
                 {
@@ -245,7 +247,12 @@ public class CloudAndEnterpriseAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgent(agentId, null, null);
+        var request = CloudAndEnterpriseAgentsApi.GetAgentRequest.builder()
+                .agentId(agentId)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.getAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -260,7 +267,6 @@ public class CloudAndEnterpriseAgentsApiTest {
     public void getAgentsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -335,7 +341,13 @@ public class CloudAndEnterpriseAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgents(null, null, null, null, null);
+        var request = CloudAndEnterpriseAgentsApi.GetAgentsRequest.builder()
+                .aid("1234")
+                .expand(Arrays.asList())
+                .agentTypes(Arrays.asList())
+                .labels(Arrays.asList())
+                .build();
+        var apiResponse = api.getAgents(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -351,7 +363,6 @@ public class CloudAndEnterpriseAgentsApiTest {
             throws JsonProcessingException, ApiException
     {
         String agentId = "281474976710706";
-
         var requestBodyJson = """
                 {
                   "localResolutionPrefixes" : [ "10.2.3.3/24", "10.2.3.3/25" ],
@@ -501,7 +512,13 @@ public class CloudAndEnterpriseAgentsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAgent(agentId, mappedRequest, null, null);
+        var request = CloudAndEnterpriseAgentsApi.UpdateAgentRequest.builder()
+                .agentId(agentId)
+                .agentRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.updateAgent(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

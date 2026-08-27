@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createPageLoadTest
 
-> PageLoadTestResponse createPageLoadTest(pageLoadTestRequest, aid, expand)
+> PageLoadTestResponse createPageLoadTest(CreatePageLoadTestRequest)
 
 Create Page Load test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            PageLoadTestResponse result = apiInstance.createPageLoadTest(pageLoadTestRequest, aid, expand);
+            PageLoadTestsApi.CreatePageLoadTestRequest request = PageLoadTestsApi.CreatePageLoadTestRequest.builder()
+                .pageLoadTestRequest(pageLoadTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            PageLoadTestResponse result = apiInstance.createPageLoadTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadTestsApi#createPageLoadTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreatePageLoadTestRequest**](PageLoadTestsApi.md#CreatePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createPageLoadTestWithHttpInfo
 
-> ApiResponse<PageLoadTestResponse> createPageLoadTest createPageLoadTestWithHttpInfo(pageLoadTestRequest, aid, expand)
+> ApiResponse<PageLoadTestResponse> createPageLoadTest createPageLoadTestWithHttpInfo(CreatePageLoadTestRequest)
 
 Create Page Load test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<PageLoadTestResponse> response = apiInstance.createPageLoadTestWithHttpInfo(pageLoadTestRequest, aid, expand);
+            PageLoadTestsApi.CreatePageLoadTestRequest request = PageLoadTestsApi.CreatePageLoadTestRequest.builder()
+                .pageLoadTestRequest(pageLoadTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<PageLoadTestResponse> response = apiInstance.createPageLoadTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreatePageLoadTestRequest**](PageLoadTestsApi.md#CreatePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**PageLoadTestResponse**](PageLoadTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreatePageLoadTestRequest"></a>
+## CreatePageLoadTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deletePageLoadTest
 
-> void deletePageLoadTest(testId, aid)
+> void deletePageLoadTest(DeletePageLoadTestRequest)
 
 Delete Page Load test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deletePageLoadTest(testId, aid);
+            PageLoadTestsApi.DeletePageLoadTestRequest request = PageLoadTestsApi.DeletePageLoadTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deletePageLoadTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadTestsApi#deletePageLoadTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeletePageLoadTestRequest**](PageLoadTestsApi.md#DeletePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -265,7 +283,7 @@ null (empty response body)
 
 ## deletePageLoadTestWithHttpInfo
 
-> ApiResponse<Void> deletePageLoadTest deletePageLoadTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deletePageLoadTest deletePageLoadTestWithHttpInfo(DeletePageLoadTestRequest)
 
 Delete Page Load test
 
@@ -280,7 +298,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -296,7 +314,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deletePageLoadTestWithHttpInfo(testId, aid);
+            PageLoadTestsApi.DeletePageLoadTestRequest request = PageLoadTestsApi.DeletePageLoadTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deletePageLoadTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -312,11 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeletePageLoadTestRequest**](PageLoadTestsApi.md#DeletePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -345,9 +365,20 @@ ApiResponse<Void>
 | **0** | An error occurred |  -  |
 
 
+<a id="DeletePageLoadTestRequest"></a>
+## DeletePageLoadTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getPageLoadTest
 
-> PageLoadTestResponse getPageLoadTest(testId, aid, versionId, expand)
+> PageLoadTestResponse getPageLoadTest(GetPageLoadTestRequest)
 
 Get Page Load test
 
@@ -361,7 +392,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -379,7 +410,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            PageLoadTestResponse result = apiInstance.getPageLoadTest(testId, aid, versionId, expand);
+            PageLoadTestsApi.GetPageLoadTestRequest request = PageLoadTestsApi.GetPageLoadTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            PageLoadTestResponse result = apiInstance.getPageLoadTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadTestsApi#getPageLoadTest");
@@ -394,13 +431,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetPageLoadTestRequest**](PageLoadTestsApi.md#GetPageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -430,7 +463,7 @@ public class Example {
 
 ## getPageLoadTestWithHttpInfo
 
-> ApiResponse<PageLoadTestResponse> getPageLoadTest getPageLoadTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<PageLoadTestResponse> getPageLoadTest getPageLoadTestWithHttpInfo(GetPageLoadTestRequest)
 
 Get Page Load test
 
@@ -445,7 +478,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -463,7 +496,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<PageLoadTestResponse> response = apiInstance.getPageLoadTestWithHttpInfo(testId, aid, versionId, expand);
+            PageLoadTestsApi.GetPageLoadTestRequest request = PageLoadTestsApi.GetPageLoadTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<PageLoadTestResponse> response = apiInstance.getPageLoadTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -480,13 +519,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetPageLoadTestRequest**](PageLoadTestsApi.md#GetPageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -515,9 +550,22 @@ ApiResponse<[**PageLoadTestResponse**](PageLoadTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetPageLoadTestRequest"></a>
+## GetPageLoadTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getPageLoadTests
 
-> PageLoadTests getPageLoadTests(aid)
+> PageLoadTests getPageLoadTests(GetPageLoadTestsRequest)
 
 List Page Load tests
 
@@ -531,7 +579,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -546,7 +594,10 @@ public class Example {
         PageLoadTestsApi apiInstance = new PageLoadTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PageLoadTests result = apiInstance.getPageLoadTests(aid);
+            PageLoadTestsApi.GetPageLoadTestsRequest request = PageLoadTestsApi.GetPageLoadTestsRequest.builder()
+                .aid(aid)
+                .build();
+            PageLoadTests result = apiInstance.getPageLoadTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadTestsApi#getPageLoadTests");
@@ -561,10 +612,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPageLoadTestsRequest**](PageLoadTestsApi.md#GetPageLoadTestsRequest)|-|-|
 
 ### Return type
 
@@ -594,7 +644,7 @@ public class Example {
 
 ## getPageLoadTestsWithHttpInfo
 
-> ApiResponse<PageLoadTests> getPageLoadTests getPageLoadTestsWithHttpInfo(aid)
+> ApiResponse<PageLoadTests> getPageLoadTests getPageLoadTestsWithHttpInfo(GetPageLoadTestsRequest)
 
 List Page Load tests
 
@@ -609,7 +659,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -624,7 +674,10 @@ public class Example {
         PageLoadTestsApi apiInstance = new PageLoadTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PageLoadTests> response = apiInstance.getPageLoadTestsWithHttpInfo(aid);
+            PageLoadTestsApi.GetPageLoadTestsRequest request = PageLoadTestsApi.GetPageLoadTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<PageLoadTests> response = apiInstance.getPageLoadTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -641,10 +694,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPageLoadTestsRequest**](PageLoadTestsApi.md#GetPageLoadTestsRequest)|-|-|
 
 ### Return type
 
@@ -673,9 +725,19 @@ ApiResponse<[**PageLoadTests**](PageLoadTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetPageLoadTestsRequest"></a>
+## GetPageLoadTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updatePageLoadTest
 
-> PageLoadTestResponse updatePageLoadTest(testId, pageLoadTestRequest, aid, expand)
+> PageLoadTestResponse updatePageLoadTest(UpdatePageLoadTestRequest)
 
 Update Page Load test
 
@@ -689,7 +751,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -707,7 +769,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            PageLoadTestResponse result = apiInstance.updatePageLoadTest(testId, pageLoadTestRequest, aid, expand);
+            PageLoadTestsApi.UpdatePageLoadTestRequest request = PageLoadTestsApi.UpdatePageLoadTestRequest.builder()
+                .testId(testId)
+                .pageLoadTestRequest(pageLoadTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            PageLoadTestResponse result = apiInstance.updatePageLoadTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PageLoadTestsApi#updatePageLoadTest");
@@ -722,13 +790,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdatePageLoadTestRequest**](PageLoadTestsApi.md#UpdatePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -759,7 +823,7 @@ public class Example {
 
 ## updatePageLoadTestWithHttpInfo
 
-> ApiResponse<PageLoadTestResponse> updatePageLoadTest updatePageLoadTestWithHttpInfo(testId, pageLoadTestRequest, aid, expand)
+> ApiResponse<PageLoadTestResponse> updatePageLoadTest updatePageLoadTestWithHttpInfo(UpdatePageLoadTestRequest)
 
 Update Page Load test
 
@@ -774,7 +838,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.PageLoadTestsApi;
 
 public class Example {
@@ -792,7 +856,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<PageLoadTestResponse> response = apiInstance.updatePageLoadTestWithHttpInfo(testId, pageLoadTestRequest, aid, expand);
+            PageLoadTestsApi.UpdatePageLoadTestRequest request = PageLoadTestsApi.UpdatePageLoadTestRequest.builder()
+                .testId(testId)
+                .pageLoadTestRequest(pageLoadTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<PageLoadTestResponse> response = apiInstance.updatePageLoadTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -809,13 +879,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdatePageLoadTestRequest**](PageLoadTestsApi.md#UpdatePageLoadTestRequest)|-|-|
 
 ### Return type
 
@@ -843,4 +909,17 @@ ApiResponse<[**PageLoadTestResponse**](PageLoadTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdatePageLoadTestRequest"></a>
+## UpdatePageLoadTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **pageLoadTestRequest** | [**PageLoadTestRequest**](PageLoadTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

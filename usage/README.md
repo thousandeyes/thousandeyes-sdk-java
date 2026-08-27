@@ -122,7 +122,10 @@ public class QuotasApiExample {
         QuotasApi apiInstance = new QuotasApi(defaultClient);
         OrganizationsQuotasAssign organizationsQuotasAssign = new OrganizationsQuotasAssign(); // OrganizationsQuotasAssign | 
         try {
-            OrganizationsQuotasAssign result = apiInstance.assignOrganizationsAccountGroupsQuotas(organizationsQuotasAssign);
+            QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest request = QuotasApi.AssignOrganizationsAccountGroupsQuotasRequest.builder()
+                .organizationsQuotasAssign(organizationsQuotasAssign)
+                .build();
+            OrganizationsQuotasAssign result = apiInstance.assignOrganizationsAccountGroupsQuotas(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QuotasApi#assignOrganizationsAccountGroupsQuotas");

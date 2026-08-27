@@ -11,7 +11,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createAgentToAgentInstantTest
 
-> AgentToAgentInstantTestResponse createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand)
+> AgentToAgentInstantTestResponse createAgentToAgentInstantTest(CreateAgentToAgentInstantTestRequest)
 
 Create agent-to-agent instant test
 
@@ -25,7 +25,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.AgentToAgentInstantTestsApi;
 
 public class Example {
@@ -42,7 +42,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandInstantTestOptions> expand = Arrays.asList(); // List<ExpandInstantTestOptions> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            AgentToAgentInstantTestResponse result = apiInstance.createAgentToAgentInstantTest(agentToAgentInstantTestRequest, aid, expand);
+            AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest request = AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest.builder()
+                .agentToAgentInstantTestRequest(agentToAgentInstantTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            AgentToAgentInstantTestResponse result = apiInstance.createAgentToAgentInstantTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AgentToAgentInstantTestsApi#createAgentToAgentInstantTest");
@@ -57,12 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentToAgentInstantTestRequest** | [**AgentToAgentInstantTestRequest**](AgentToAgentInstantTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md)| (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+| request | [**CreateAgentToAgentInstantTestRequest**](AgentToAgentInstantTestsApi.md#CreateAgentToAgentInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -93,7 +95,7 @@ public class Example {
 
 ## createAgentToAgentInstantTestWithHttpInfo
 
-> ApiResponse<AgentToAgentInstantTestResponse> createAgentToAgentInstantTest createAgentToAgentInstantTestWithHttpInfo(agentToAgentInstantTestRequest, aid, expand)
+> ApiResponse<AgentToAgentInstantTestResponse> createAgentToAgentInstantTest createAgentToAgentInstantTestWithHttpInfo(CreateAgentToAgentInstantTestRequest)
 
 Create agent-to-agent instant test
 
@@ -108,7 +110,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.tests.Configuration;
 import com.thousandeyes.sdk.tests.authentication.*;
-import com.thousandeyes.sdk.tests.models.*;
+import com.thousandeyes.sdk.tests.instant.model.*;
 import com.thousandeyes.sdk.tests.instant.AgentToAgentInstantTestsApi;
 
 public class Example {
@@ -125,7 +127,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandInstantTestOptions> expand = Arrays.asList(); // List<ExpandInstantTestOptions> | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the `agents` sub-resource, use the query `?expand=agent`.
         try {
-            ApiResponse<AgentToAgentInstantTestResponse> response = apiInstance.createAgentToAgentInstantTestWithHttpInfo(agentToAgentInstantTestRequest, aid, expand);
+            AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest request = AgentToAgentInstantTestsApi.CreateAgentToAgentInstantTestRequest.builder()
+                .agentToAgentInstantTestRequest(agentToAgentInstantTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<AgentToAgentInstantTestResponse> response = apiInstance.createAgentToAgentInstantTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -142,12 +149,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **agentToAgentInstantTestRequest** | [**AgentToAgentInstantTestRequest**](AgentToAgentInstantTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md)| (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+| request | [**CreateAgentToAgentInstantTestRequest**](AgentToAgentInstantTestsApi.md#CreateAgentToAgentInstantTestRequest)|-|-|
 
 ### Return type
 
@@ -175,4 +179,16 @@ ApiResponse<[**AgentToAgentInstantTestResponse**](AgentToAgentInstantTestRespons
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="CreateAgentToAgentInstantTestRequest"></a>
+## CreateAgentToAgentInstantTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **agentToAgentInstantTestRequest** | [**AgentToAgentInstantTestRequest**](AgentToAgentInstantTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandInstantTestOptions&gt;**](ExpandInstantTestOptions.md) | (Optional) Indicates if the test sub-resources should be expanded. Defaults to no expansion. To expand the &#x60;agents&#x60; sub-resource, use the query &#x60;?expand&#x3D;agent&#x60;. | [optional] |
+
 

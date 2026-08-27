@@ -84,7 +84,6 @@ public class AgentToServerEndpointScheduledTestsApiTest {
     public void createAgentToServerEndpointScheduledTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "server" : "www.example.com",
@@ -174,7 +173,11 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createAgentToServerEndpointScheduledTest(mappedRequest, null);
+        var request = AgentToServerEndpointScheduledTestsApi.CreateAgentToServerEndpointScheduledTestRequest.builder()
+                .endpointAgentToServerTestRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createAgentToServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -191,7 +194,6 @@ public class AgentToServerEndpointScheduledTestsApiTest {
     {
         String testId = "584739201";
 
-
         var statusCode = 204;
 
         var path = "/endpoint/tests/scheduled-tests/agent-to-server/{testId}";
@@ -201,7 +203,11 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteAgentToServerEndpointScheduledTestWithHttpInfo(testId, null);
+        var request = AgentToServerEndpointScheduledTestsApi.DeleteAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteAgentToServerEndpointScheduledTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -217,7 +223,6 @@ public class AgentToServerEndpointScheduledTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
 
         var responseBodyJson = """
                 {
@@ -285,7 +290,11 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToServerEndpointScheduledTest(testId, null);
+        var request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentToServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -300,7 +309,6 @@ public class AgentToServerEndpointScheduledTestsApiTest {
     public void getAgentToServerEndpointScheduledTestsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 {
@@ -429,7 +437,10 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getAgentToServerEndpointScheduledTests(null);
+        var request = AgentToServerEndpointScheduledTestsApi.GetAgentToServerEndpointScheduledTestsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getAgentToServerEndpointScheduledTests(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -445,7 +456,6 @@ public class AgentToServerEndpointScheduledTestsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "584739201";
-
         var requestBodyJson = """
                 {
                   "server" : "www.example.com",
@@ -530,7 +540,12 @@ public class AgentToServerEndpointScheduledTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateAgentToServerEndpointScheduledTest(testId, mappedRequest, null);
+        var request = AgentToServerEndpointScheduledTestsApi.UpdateAgentToServerEndpointScheduledTestRequest.builder()
+                .testId(testId)
+                .endpointNetworkTestUpdate(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateAgentToServerEndpointScheduledTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

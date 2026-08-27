@@ -17,7 +17,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## assignTag
 
-> BulkTagAssignment assignTag(id, tagAssignment, aid)
+> BulkTagAssignment assignTag(AssignTagRequest)
 
 Assign tag to multiple objects
 
@@ -31,7 +31,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -48,7 +48,12 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BulkTagAssignment result = apiInstance.assignTag(id, tagAssignment, aid);
+            TagAssignmentApi.AssignTagRequest request = TagAssignmentApi.AssignTagRequest.builder()
+                .id(id)
+                .tagAssignment(tagAssignment)
+                .aid(aid)
+                .build();
+            BulkTagAssignment result = apiInstance.assignTag(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTag");
@@ -63,12 +68,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Tag ID | |
-| **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTagRequest**](TagAssignmentApi.md#AssignTagRequest)|-|-|
 
 ### Return type
 
@@ -96,7 +98,7 @@ public class Example {
 
 ## assignTagWithHttpInfo
 
-> ApiResponse<BulkTagAssignment> assignTag assignTagWithHttpInfo(id, tagAssignment, aid)
+> ApiResponse<BulkTagAssignment> assignTag assignTagWithHttpInfo(AssignTagRequest)
 
 Assign tag to multiple objects
 
@@ -111,7 +113,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -128,7 +130,12 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<BulkTagAssignment> response = apiInstance.assignTagWithHttpInfo(id, tagAssignment, aid);
+            TagAssignmentApi.AssignTagRequest request = TagAssignmentApi.AssignTagRequest.builder()
+                .id(id)
+                .tagAssignment(tagAssignment)
+                .aid(aid)
+                .build();
+            ApiResponse<BulkTagAssignment> response = apiInstance.assignTagWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -145,12 +152,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Tag ID | |
-| **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTagRequest**](TagAssignmentApi.md#AssignTagRequest)|-|-|
 
 ### Return type
 
@@ -177,9 +181,21 @@ ApiResponse<[**BulkTagAssignment**](BulkTagAssignment.md)>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="AssignTagRequest"></a>
+## AssignTagRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Tag ID | |
+| **tagAssignment** | [**TagAssignment**](TagAssignment.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## assignTags
 
-> BulkTagAssignments assignTags(bulkTagAssignments, aid)
+> BulkTagAssignments assignTags(AssignTagsRequest)
 
 Assign multiple tags to multiple objects
 
@@ -193,7 +209,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -209,7 +225,11 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BulkTagAssignments result = apiInstance.assignTags(bulkTagAssignments, aid);
+            TagAssignmentApi.AssignTagsRequest request = TagAssignmentApi.AssignTagsRequest.builder()
+                .bulkTagAssignments(bulkTagAssignments)
+                .aid(aid)
+                .build();
+            BulkTagAssignments result = apiInstance.assignTags(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#assignTags");
@@ -224,11 +244,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTagsRequest**](TagAssignmentApi.md#AssignTagsRequest)|-|-|
 
 ### Return type
 
@@ -256,7 +274,7 @@ public class Example {
 
 ## assignTagsWithHttpInfo
 
-> ApiResponse<BulkTagAssignments> assignTags assignTagsWithHttpInfo(bulkTagAssignments, aid)
+> ApiResponse<BulkTagAssignments> assignTags assignTagsWithHttpInfo(AssignTagsRequest)
 
 Assign multiple tags to multiple objects
 
@@ -271,7 +289,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -287,7 +305,11 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<BulkTagAssignments> response = apiInstance.assignTagsWithHttpInfo(bulkTagAssignments, aid);
+            TagAssignmentApi.AssignTagsRequest request = TagAssignmentApi.AssignTagsRequest.builder()
+                .bulkTagAssignments(bulkTagAssignments)
+                .aid(aid)
+                .build();
+            ApiResponse<BulkTagAssignments> response = apiInstance.assignTagsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -304,11 +326,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**AssignTagsRequest**](TagAssignmentApi.md#AssignTagsRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +355,20 @@ ApiResponse<[**BulkTagAssignments**](BulkTagAssignments.md)>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="AssignTagsRequest"></a>
+## AssignTagsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## unassignTag
 
-> void unassignTag(id, tagAssignment, aid)
+> void unassignTag(UnassignTagRequest)
 
 Remove tag from multiple objects
 
@@ -351,7 +382,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -368,7 +399,12 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.unassignTag(id, tagAssignment, aid);
+            TagAssignmentApi.UnassignTagRequest request = TagAssignmentApi.UnassignTagRequest.builder()
+                .id(id)
+                .tagAssignment(tagAssignment)
+                .aid(aid)
+                .build();
+            apiInstance.unassignTag(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#unassignTag");
             System.err.println("Status code: " + e.getCode());
@@ -382,12 +418,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Tag ID | |
-| **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTagRequest**](TagAssignmentApi.md#UnassignTagRequest)|-|-|
 
 ### Return type
 
@@ -415,7 +448,7 @@ null (empty response body)
 
 ## unassignTagWithHttpInfo
 
-> ApiResponse<Void> unassignTag unassignTagWithHttpInfo(id, tagAssignment, aid)
+> ApiResponse<Void> unassignTag unassignTagWithHttpInfo(UnassignTagRequest)
 
 Remove tag from multiple objects
 
@@ -430,7 +463,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -447,7 +480,12 @@ public class Example {
         TagAssignment tagAssignment = new TagAssignment(); // TagAssignment | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.unassignTagWithHttpInfo(id, tagAssignment, aid);
+            TagAssignmentApi.UnassignTagRequest request = TagAssignmentApi.UnassignTagRequest.builder()
+                .id(id)
+                .tagAssignment(tagAssignment)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.unassignTagWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -463,12 +501,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Tag ID | |
-| **tagAssignment** | [**TagAssignment**](TagAssignment.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTagRequest**](TagAssignmentApi.md#UnassignTagRequest)|-|-|
 
 ### Return type
 
@@ -495,9 +530,21 @@ ApiResponse<Void>
 | **500** | Internal Server Error |  -  |
 
 
+<a id="UnassignTagRequest"></a>
+## UnassignTagRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | Tag ID | |
+| **tagAssignment** | [**TagAssignment**](TagAssignment.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## unassignTags
 
-> BulkTagAssignments unassignTags(bulkTagAssignments, aid)
+> BulkTagAssignments unassignTags(UnassignTagsRequest)
 
 Remove multiple tags from multiple objects
 
@@ -511,7 +558,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -527,7 +574,11 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            BulkTagAssignments result = apiInstance.unassignTags(bulkTagAssignments, aid);
+            TagAssignmentApi.UnassignTagsRequest request = TagAssignmentApi.UnassignTagsRequest.builder()
+                .bulkTagAssignments(bulkTagAssignments)
+                .aid(aid)
+                .build();
+            BulkTagAssignments result = apiInstance.unassignTags(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TagAssignmentApi#unassignTags");
@@ -542,11 +593,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTagsRequest**](TagAssignmentApi.md#UnassignTagsRequest)|-|-|
 
 ### Return type
 
@@ -574,7 +623,7 @@ public class Example {
 
 ## unassignTagsWithHttpInfo
 
-> ApiResponse<BulkTagAssignments> unassignTags unassignTagsWithHttpInfo(bulkTagAssignments, aid)
+> ApiResponse<BulkTagAssignments> unassignTags unassignTagsWithHttpInfo(UnassignTagsRequest)
 
 Remove multiple tags from multiple objects
 
@@ -589,7 +638,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tags.model.*;
 import com.thousandeyes.sdk.tags.TagAssignmentApi;
 
 public class Example {
@@ -605,7 +654,11 @@ public class Example {
         BulkTagAssignments bulkTagAssignments = new BulkTagAssignments(); // BulkTagAssignments | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<BulkTagAssignments> response = apiInstance.unassignTagsWithHttpInfo(bulkTagAssignments, aid);
+            TagAssignmentApi.UnassignTagsRequest request = TagAssignmentApi.UnassignTagsRequest.builder()
+                .bulkTagAssignments(bulkTagAssignments)
+                .aid(aid)
+                .build();
+            ApiResponse<BulkTagAssignments> response = apiInstance.unassignTagsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -622,11 +675,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UnassignTagsRequest**](TagAssignmentApi.md#UnassignTagsRequest)|-|-|
 
 ### Return type
 
@@ -651,4 +702,15 @@ ApiResponse<[**BulkTagAssignments**](BulkTagAssignments.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal Server Error |  -  |
+
+
+<a id="UnassignTagsRequest"></a>
+## UnassignTagsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **bulkTagAssignments** | [**BulkTagAssignments**](BulkTagAssignments.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

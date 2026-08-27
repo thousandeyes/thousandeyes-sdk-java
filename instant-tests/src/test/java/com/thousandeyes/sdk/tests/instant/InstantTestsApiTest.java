@@ -80,7 +80,6 @@ public class InstantTestsApiTest {
     {
         String testId = "105";
 
-
         var statusCode = 204;
 
         var path = "/tests/{testId}/run";
@@ -90,7 +89,11 @@ public class InstantTestsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.runInstantTestWithHttpInfo(testId, null);
+        var request = InstantTestsApi.RunInstantTestRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.runInstantTestWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     

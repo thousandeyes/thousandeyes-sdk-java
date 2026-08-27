@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getAgentsNotificationRule
 
-> NotificationRuleDetail getAgentsNotificationRule(notificationRuleId, aid)
+> NotificationRuleDetail getAgentsNotificationRule(GetAgentsNotificationRuleRequest)
 
 Retrieve agent notification rule
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 
 public class Example {
@@ -43,7 +43,11 @@ public class Example {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(notificationRuleId, aid);
+            CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRuleRequest request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRuleRequest.builder()
+                .notificationRuleId(notificationRuleId)
+                .aid(aid)
+                .build();
+            NotificationRuleDetail result = apiInstance.getAgentsNotificationRule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRule");
@@ -58,11 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **notificationRuleId** | **String**| Unique ID for the agent notification rule. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsNotificationRuleRequest**](CloudAndEnterpriseAgentNotificationRulesApi.md#GetAgentsNotificationRuleRequest)|-|-|
 
 ### Return type
 
@@ -92,7 +94,7 @@ public class Example {
 
 ## getAgentsNotificationRuleWithHttpInfo
 
-> ApiResponse<NotificationRuleDetail> getAgentsNotificationRule getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid)
+> ApiResponse<NotificationRuleDetail> getAgentsNotificationRule getAgentsNotificationRuleWithHttpInfo(GetAgentsNotificationRuleRequest)
 
 Retrieve agent notification rule
 
@@ -107,7 +109,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 
 public class Example {
@@ -123,7 +125,11 @@ public class Example {
         String notificationRuleId = "281474976710706"; // String | Unique ID for the agent notification rule.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<NotificationRuleDetail> response = apiInstance.getAgentsNotificationRuleWithHttpInfo(notificationRuleId, aid);
+            CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRuleRequest request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRuleRequest.builder()
+                .notificationRuleId(notificationRuleId)
+                .aid(aid)
+                .build();
+            ApiResponse<NotificationRuleDetail> response = apiInstance.getAgentsNotificationRuleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -140,11 +146,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **notificationRuleId** | **String**| Unique ID for the agent notification rule. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsNotificationRuleRequest**](CloudAndEnterpriseAgentNotificationRulesApi.md#GetAgentsNotificationRuleRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +177,20 @@ ApiResponse<[**NotificationRuleDetail**](NotificationRuleDetail.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetAgentsNotificationRuleRequest"></a>
+## GetAgentsNotificationRuleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **notificationRuleId** | **String** | Unique ID for the agent notification rule. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAgentsNotificationRules
 
-> ListNotificationRulesResponse getAgentsNotificationRules(aid)
+> ListNotificationRulesResponse getAgentsNotificationRules(GetAgentsNotificationRulesRequest)
 
 List agent notification rules
 
@@ -189,7 +204,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 
 public class Example {
@@ -204,7 +219,10 @@ public class Example {
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ListNotificationRulesResponse result = apiInstance.getAgentsNotificationRules(aid);
+            CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRulesRequest request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRulesRequest.builder()
+                .aid(aid)
+                .build();
+            ListNotificationRulesResponse result = apiInstance.getAgentsNotificationRules(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CloudAndEnterpriseAgentNotificationRulesApi#getAgentsNotificationRules");
@@ -219,10 +237,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsNotificationRulesRequest**](CloudAndEnterpriseAgentNotificationRulesApi.md#GetAgentsNotificationRulesRequest)|-|-|
 
 ### Return type
 
@@ -252,7 +269,7 @@ public class Example {
 
 ## getAgentsNotificationRulesWithHttpInfo
 
-> ApiResponse<ListNotificationRulesResponse> getAgentsNotificationRules getAgentsNotificationRulesWithHttpInfo(aid)
+> ApiResponse<ListNotificationRulesResponse> getAgentsNotificationRules getAgentsNotificationRulesWithHttpInfo(GetAgentsNotificationRulesRequest)
 
 List agent notification rules
 
@@ -267,7 +284,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.agents.model.*;
 import com.thousandeyes.sdk.agents.CloudAndEnterpriseAgentNotificationRulesApi;
 
 public class Example {
@@ -282,7 +299,10 @@ public class Example {
         CloudAndEnterpriseAgentNotificationRulesApi apiInstance = new CloudAndEnterpriseAgentNotificationRulesApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<ListNotificationRulesResponse> response = apiInstance.getAgentsNotificationRulesWithHttpInfo(aid);
+            CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRulesRequest request = CloudAndEnterpriseAgentNotificationRulesApi.GetAgentsNotificationRulesRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<ListNotificationRulesResponse> response = apiInstance.getAgentsNotificationRulesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -299,10 +319,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAgentsNotificationRulesRequest**](CloudAndEnterpriseAgentNotificationRulesApi.md#GetAgentsNotificationRulesRequest)|-|-|
 
 ### Return type
 
@@ -329,4 +348,14 @@ ApiResponse<[**ListNotificationRulesResponse**](ListNotificationRulesResponse.md
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="GetAgentsNotificationRulesRequest"></a>
+## GetAgentsNotificationRulesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

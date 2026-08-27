@@ -88,7 +88,6 @@ public class ApiTestResultsApiTest {
         String agentId = "11";
         String roundId = "1384309800";
 
-
         var responseBodyJson = """
                 {
                   "test" : {
@@ -327,7 +326,13 @@ public class ApiTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestApiAgentRoundResults(testId, agentId, roundId, null);
+        var request = ApiTestResultsApi.GetTestApiAgentRoundResultsRequest.builder()
+                .testId(testId)
+                .agentId(agentId)
+                .roundId(roundId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getTestApiAgentRoundResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -343,7 +348,6 @@ public class ApiTestResultsApiTest {
             throws JsonProcessingException, ApiException
     {
         String testId = "202701";
-
 
         var responseBodyJson = """
                 {
@@ -485,7 +489,14 @@ public class ApiTestResultsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getTestApiResults(testId, null, null, null, null, null);
+        var request = ApiTestResultsApi.GetTestApiResultsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getTestApiResults(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

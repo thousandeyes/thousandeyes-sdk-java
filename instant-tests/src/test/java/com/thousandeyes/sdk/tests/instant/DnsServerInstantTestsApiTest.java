@@ -83,7 +83,6 @@ public class DnsServerInstantTestsApiTest {
     public void createDnsServerInstantTestRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "mtuMeasurements" : false,
@@ -283,7 +282,12 @@ public class DnsServerInstantTestsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDnsServerInstantTest(mappedRequest, null, null);
+        var request = DnsServerInstantTestsApi.CreateDnsServerInstantTestRequest.builder()
+                .dnsServerInstantTestRequest(mappedRequest)
+                .aid("1234")
+                .expand(Arrays.asList())
+                .build();
+        var apiResponse = api.createDnsServerInstantTest(request);
         assertEquals(mappedResponse, apiResponse);
     }
     

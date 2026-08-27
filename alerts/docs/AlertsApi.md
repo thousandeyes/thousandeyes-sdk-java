@@ -13,7 +13,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## getAlert
 
-> AlertDetail getAlert(alertId, aid)
+> AlertDetail getAlert(GetAlertRequest)
 
 Retrieve alert details
 
@@ -27,7 +27,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertsApi;
 
 public class Example {
@@ -43,7 +43,11 @@ public class Example {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique alert ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AlertDetail result = apiInstance.getAlert(alertId, aid);
+            AlertsApi.GetAlertRequest request = AlertsApi.GetAlertRequest.builder()
+                .alertId(alertId)
+                .aid(aid)
+                .build();
+            AlertDetail result = apiInstance.getAlert(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertsApi#getAlert");
@@ -58,11 +62,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **alertId** | **UUID**| Unique alert ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertRequest**](AlertsApi.md#GetAlertRequest)|-|-|
 
 ### Return type
 
@@ -90,7 +92,7 @@ public class Example {
 
 ## getAlertWithHttpInfo
 
-> ApiResponse<AlertDetail> getAlert getAlertWithHttpInfo(alertId, aid)
+> ApiResponse<AlertDetail> getAlert getAlertWithHttpInfo(GetAlertRequest)
 
 Retrieve alert details
 
@@ -105,7 +107,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertsApi;
 
 public class Example {
@@ -121,7 +123,11 @@ public class Example {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569"); // UUID | Unique alert ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<AlertDetail> response = apiInstance.getAlertWithHttpInfo(alertId, aid);
+            AlertsApi.GetAlertRequest request = AlertsApi.GetAlertRequest.builder()
+                .alertId(alertId)
+                .aid(aid)
+                .build();
+            ApiResponse<AlertDetail> response = apiInstance.getAlertWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -138,11 +144,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **alertId** | **UUID**| Unique alert ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetAlertRequest**](AlertsApi.md#GetAlertRequest)|-|-|
 
 ### Return type
 
@@ -169,9 +173,20 @@ ApiResponse<[**AlertDetail**](AlertDetail.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetAlertRequest"></a>
+## GetAlertRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **alertId** | **UUID** | Unique alert ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getAlerts
 
-> Alerts getAlerts(aid, window, startDate, endDate, max, cursor, state)
+> Alerts getAlerts(GetAlertsRequest)
 
 List alerts
 
@@ -185,7 +200,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertsApi;
 
 public class Example {
@@ -206,7 +221,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            Alerts result = apiInstance.getAlerts(aid, window, startDate, endDate, max, cursor, state);
+            AlertsApi.GetAlertsRequest request = AlertsApi.GetAlertsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .state(state)
+                .build();
+            Alerts result = apiInstance.getAlerts(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AlertsApi#getAlerts");
@@ -221,16 +245,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **state** | [**State**](.md)| Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. | [optional] |
+| request | [**GetAlertsRequest**](AlertsApi.md#GetAlertsRequest)|-|-|
 
 ### Return type
 
@@ -258,7 +275,7 @@ public class Example {
 
 ## getAlertsWithHttpInfo
 
-> ApiResponse<Alerts> getAlerts getAlertsWithHttpInfo(aid, window, startDate, endDate, max, cursor, state)
+> ApiResponse<Alerts> getAlerts getAlertsWithHttpInfo(GetAlertsRequest)
 
 List alerts
 
@@ -273,7 +290,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.alerts.model.*;
 import com.thousandeyes.sdk.alerts.AlertsApi;
 
 public class Example {
@@ -294,7 +311,16 @@ public class Example {
         String cursor = "cursor_example"; // String | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter.
         State state = new State(); // State | Optional parameter to match a specific alert state. If not specified, it defaults to `trigger`.
         try {
-            ApiResponse<Alerts> response = apiInstance.getAlertsWithHttpInfo(aid, window, startDate, endDate, max, cursor, state);
+            AlertsApi.GetAlertsRequest request = AlertsApi.GetAlertsRequest.builder()
+                .aid(aid)
+                .window(window)
+                .startDate(startDate)
+                .endDate(endDate)
+                .max(max)
+                .cursor(cursor)
+                .state(state)
+                .build();
+            ApiResponse<Alerts> response = apiInstance.getAlertsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -311,16 +337,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **window** | **String**| A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
-| **startDate** | **OffsetDateTime**| Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **endDate** | **OffsetDateTime**| Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
-| **max** | **Integer**| (Optional) Maximum number of objects to return. | [optional] |
-| **cursor** | **String**| (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
-| **state** | [**State**](.md)| Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. | [optional] |
+| request | [**GetAlertsRequest**](AlertsApi.md#GetAlertsRequest)|-|-|
 
 ### Return type
 
@@ -345,4 +364,20 @@ ApiResponse<[**Alerts**](Alerts.md)>
 | **404** | Not found |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="GetAlertsRequest"></a>
+## GetAlertsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **window** | **String** | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: &#x60;s&#x60; for seconds (default if no type is specified), &#x60;m&#x60; for minutes, &#x60;h&#x60; for hours, &#x60;d&#x60; for days, and &#x60;w&#x60; for weeks. For a precise date range, use &#x60;startDate&#x60; and &#x60;endDate&#x60;. | [optional] |
+| **startDate** | **OffsetDateTime** | Use with the &#x60;endDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **endDate** | **OffsetDateTime** | Defaults to current time the request is made. Use with the &#x60;startDate&#x60; parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can&#39;t be used with &#x60;window&#x60;. | [optional] |
+| **max** | **Integer** | (Optional) Maximum number of objects to return. | [optional] |
+| **cursor** | **String** | (Optional) Opaque cursor used for pagination. Clients should use &#x60;next&#x60; value from &#x60;_links&#x60; instead of this parameter. | [optional] |
+| **state** | [**State**](.md) | Optional parameter to match a specific alert state. If not specified, it defaults to &#x60;trigger&#x60;. | [optional] |
+
 

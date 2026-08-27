@@ -19,7 +19,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createSipServerTest
 
-> SipServerTestResponse createSipServerTest(sipServerTestRequest, aid, expand)
+> SipServerTestResponse createSipServerTest(CreateSipServerTestRequest)
 
 Create SIP Server test
 
@@ -33,7 +33,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -50,7 +50,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            SipServerTestResponse result = apiInstance.createSipServerTest(sipServerTestRequest, aid, expand);
+            SipServerTestsApi.CreateSipServerTestRequest request = SipServerTestsApi.CreateSipServerTestRequest.builder()
+                .sipServerTestRequest(sipServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            SipServerTestResponse result = apiInstance.createSipServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerTestsApi#createSipServerTest");
@@ -65,12 +70,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateSipServerTestRequest**](SipServerTestsApi.md#CreateSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -101,7 +103,7 @@ public class Example {
 
 ## createSipServerTestWithHttpInfo
 
-> ApiResponse<SipServerTestResponse> createSipServerTest createSipServerTestWithHttpInfo(sipServerTestRequest, aid, expand)
+> ApiResponse<SipServerTestResponse> createSipServerTest createSipServerTestWithHttpInfo(CreateSipServerTestRequest)
 
 Create SIP Server test
 
@@ -116,7 +118,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -133,7 +135,12 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<SipServerTestResponse> response = apiInstance.createSipServerTestWithHttpInfo(sipServerTestRequest, aid, expand);
+            SipServerTestsApi.CreateSipServerTestRequest request = SipServerTestsApi.CreateSipServerTestRequest.builder()
+                .sipServerTestRequest(sipServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<SipServerTestResponse> response = apiInstance.createSipServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -150,12 +157,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**CreateSipServerTestRequest**](SipServerTestsApi.md#CreateSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -185,9 +189,21 @@ ApiResponse<[**SipServerTestResponse**](SipServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="CreateSipServerTestRequest"></a>
+## CreateSipServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## deleteSipServerTest
 
-> void deleteSipServerTest(testId, aid)
+> void deleteSipServerTest(DeleteSipServerTestRequest)
 
 Delete SIP Server test
 
@@ -201,7 +217,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -217,7 +233,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deleteSipServerTest(testId, aid);
+            SipServerTestsApi.DeleteSipServerTestRequest request = SipServerTestsApi.DeleteSipServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            apiInstance.deleteSipServerTest(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerTestsApi#deleteSipServerTest");
             System.err.println("Status code: " + e.getCode());
@@ -231,11 +251,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteSipServerTestRequest**](SipServerTestsApi.md#DeleteSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -263,7 +281,7 @@ null (empty response body)
 
 ## deleteSipServerTestWithHttpInfo
 
-> ApiResponse<Void> deleteSipServerTest deleteSipServerTestWithHttpInfo(testId, aid)
+> ApiResponse<Void> deleteSipServerTest deleteSipServerTestWithHttpInfo(DeleteSipServerTestRequest)
 
 Delete SIP Server test
 
@@ -278,7 +296,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -294,7 +312,11 @@ public class Example {
         String testId = "202701"; // String | Test ID
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deleteSipServerTestWithHttpInfo(testId, aid);
+            SipServerTestsApi.DeleteSipServerTestRequest request = SipServerTestsApi.DeleteSipServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deleteSipServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -310,11 +332,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeleteSipServerTestRequest**](SipServerTestsApi.md#DeleteSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -341,9 +361,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeleteSipServerTestRequest"></a>
+## DeleteSipServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getSipServerTest
 
-> SipServerTestResponse getSipServerTest(testId, aid, versionId, expand)
+> SipServerTestResponse getSipServerTest(GetSipServerTestRequest)
 
 Get SIP Server test
 
@@ -357,7 +388,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -375,7 +406,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            SipServerTestResponse result = apiInstance.getSipServerTest(testId, aid, versionId, expand);
+            SipServerTestsApi.GetSipServerTestRequest request = SipServerTestsApi.GetSipServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            SipServerTestResponse result = apiInstance.getSipServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerTestsApi#getSipServerTest");
@@ -390,13 +427,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetSipServerTestRequest**](SipServerTestsApi.md#GetSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -426,7 +459,7 @@ public class Example {
 
 ## getSipServerTestWithHttpInfo
 
-> ApiResponse<SipServerTestResponse> getSipServerTest getSipServerTestWithHttpInfo(testId, aid, versionId, expand)
+> ApiResponse<SipServerTestResponse> getSipServerTest getSipServerTestWithHttpInfo(GetSipServerTestRequest)
 
 Get SIP Server test
 
@@ -441,7 +474,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -459,7 +492,13 @@ public class Example {
         String versionId = "1234"; // String | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the `/tests/{testId}/history` endpoint. If not specified, the current version of the test settings is returned.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<SipServerTestResponse> response = apiInstance.getSipServerTestWithHttpInfo(testId, aid, versionId, expand);
+            SipServerTestsApi.GetSipServerTestRequest request = SipServerTestsApi.GetSipServerTestRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .versionId(versionId)
+                .expand(expand)
+                .build();
+            ApiResponse<SipServerTestResponse> response = apiInstance.getSipServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -476,13 +515,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **versionId** | **String**| The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**GetSipServerTestRequest**](SipServerTestsApi.md#GetSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -511,9 +546,22 @@ ApiResponse<[**SipServerTestResponse**](SipServerTestResponse.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetSipServerTestRequest"></a>
+## GetSipServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **versionId** | **String** | The unique identifier for a specific version of the test settings. If provided, returns the test configuration as it existed at that version. To retrieve available version IDs, use the &#x60;/tests/{testId}/history&#x60; endpoint. If not specified, the current version of the test settings is returned. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
+
+
 ## getSipServerTests
 
-> SipServerTests getSipServerTests(aid)
+> SipServerTests getSipServerTests(GetSipServerTestsRequest)
 
 List SIP Server tests
 
@@ -527,7 +575,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -542,7 +590,10 @@ public class Example {
         SipServerTestsApi apiInstance = new SipServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            SipServerTests result = apiInstance.getSipServerTests(aid);
+            SipServerTestsApi.GetSipServerTestsRequest request = SipServerTestsApi.GetSipServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            SipServerTests result = apiInstance.getSipServerTests(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerTestsApi#getSipServerTests");
@@ -557,10 +608,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetSipServerTestsRequest**](SipServerTestsApi.md#GetSipServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -590,7 +640,7 @@ public class Example {
 
 ## getSipServerTestsWithHttpInfo
 
-> ApiResponse<SipServerTests> getSipServerTests getSipServerTestsWithHttpInfo(aid)
+> ApiResponse<SipServerTests> getSipServerTests getSipServerTestsWithHttpInfo(GetSipServerTestsRequest)
 
 List SIP Server tests
 
@@ -605,7 +655,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -620,7 +670,10 @@ public class Example {
         SipServerTestsApi apiInstance = new SipServerTestsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<SipServerTests> response = apiInstance.getSipServerTestsWithHttpInfo(aid);
+            SipServerTestsApi.GetSipServerTestsRequest request = SipServerTestsApi.GetSipServerTestsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<SipServerTests> response = apiInstance.getSipServerTestsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -637,10 +690,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetSipServerTestsRequest**](SipServerTestsApi.md#GetSipServerTestsRequest)|-|-|
 
 ### Return type
 
@@ -669,9 +721,19 @@ ApiResponse<[**SipServerTests**](SipServerTests.md)>
 | **0** | An error occurred |  -  |
 
 
+<a id="GetSipServerTestsRequest"></a>
+## GetSipServerTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updateSipServerTest
 
-> SipServerTestResponse updateSipServerTest(testId, sipServerTestRequest, aid, expand)
+> SipServerTestResponse updateSipServerTest(UpdateSipServerTestRequest)
 
 Update SIP Server test
 
@@ -685,7 +747,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -703,7 +765,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            SipServerTestResponse result = apiInstance.updateSipServerTest(testId, sipServerTestRequest, aid, expand);
+            SipServerTestsApi.UpdateSipServerTestRequest request = SipServerTestsApi.UpdateSipServerTestRequest.builder()
+                .testId(testId)
+                .sipServerTestRequest(sipServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            SipServerTestResponse result = apiInstance.updateSipServerTest(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SipServerTestsApi#updateSipServerTest");
@@ -718,13 +786,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateSipServerTestRequest**](SipServerTestsApi.md#UpdateSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -755,7 +819,7 @@ public class Example {
 
 ## updateSipServerTestWithHttpInfo
 
-> ApiResponse<SipServerTestResponse> updateSipServerTest updateSipServerTestWithHttpInfo(testId, sipServerTestRequest, aid, expand)
+> ApiResponse<SipServerTestResponse> updateSipServerTest updateSipServerTestWithHttpInfo(UpdateSipServerTestRequest)
 
 Update SIP Server test
 
@@ -770,7 +834,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.tests.model.*;
 import com.thousandeyes.sdk.tests.SipServerTestsApi;
 
 public class Example {
@@ -788,7 +852,13 @@ public class Example {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         List<ExpandTestOptions> expand = Arrays.asList(); // List<ExpandTestOptions> | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the `agents` sub-resource, they need to pass the `?expand=agent` query.
         try {
-            ApiResponse<SipServerTestResponse> response = apiInstance.updateSipServerTestWithHttpInfo(testId, sipServerTestRequest, aid, expand);
+            SipServerTestsApi.UpdateSipServerTestRequest request = SipServerTestsApi.UpdateSipServerTestRequest.builder()
+                .testId(testId)
+                .sipServerTestRequest(sipServerTestRequest)
+                .aid(aid)
+                .expand(expand)
+                .build();
+            ApiResponse<SipServerTestResponse> response = apiInstance.updateSipServerTestWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -805,13 +875,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **testId** | **String**| Test ID | |
-| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
-| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md)| Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+| request | [**UpdateSipServerTestRequest**](SipServerTestsApi.md#UpdateSipServerTestRequest)|-|-|
 
 ### Return type
 
@@ -839,4 +905,17 @@ ApiResponse<[**SipServerTestResponse**](SipServerTestResponse.md)>
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
 | **0** | An error occurred |  -  |
+
+
+<a id="UpdateSipServerTestRequest"></a>
+## UpdateSipServerTestRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | **String** | Test ID | |
+| **sipServerTestRequest** | [**SipServerTestRequest**](SipServerTestRequest.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **expand** | [**List&lt;ExpandTestOptions&gt;**](ExpandTestOptions.md) | Optional parameter on whether or not to expand the test sub-resources. By default no expansion is going to take place if the query parameter is not present. If the user wishes to expand the &#x60;agents&#x60; sub-resource, they need to pass the &#x60;?expand&#x3D;agent&#x60; query. | [optional] |
+
 

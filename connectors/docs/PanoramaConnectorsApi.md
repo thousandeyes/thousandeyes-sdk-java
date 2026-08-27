@@ -23,7 +23,7 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 ## createPanoramaConnector
 
-> PanoramaConnector createPanoramaConnector(panoramaConnector, aid)
+> PanoramaConnector createPanoramaConnector(CreatePanoramaConnectorRequest)
 
 Create Panorama connector
 
@@ -37,7 +37,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -53,7 +53,11 @@ public class Example {
         PanoramaConnector panoramaConnector = new PanoramaConnector(); // PanoramaConnector | Panorama connector configuration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PanoramaConnector result = apiInstance.createPanoramaConnector(panoramaConnector, aid);
+            PanoramaConnectorsApi.CreatePanoramaConnectorRequest request = PanoramaConnectorsApi.CreatePanoramaConnectorRequest.builder()
+                .panoramaConnector(panoramaConnector)
+                .aid(aid)
+                .build();
+            PanoramaConnector result = apiInstance.createPanoramaConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#createPanoramaConnector");
@@ -68,11 +72,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md)| Panorama connector configuration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreatePanoramaConnectorRequest**](PanoramaConnectorsApi.md#CreatePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -100,7 +102,7 @@ public class Example {
 
 ## createPanoramaConnectorWithHttpInfo
 
-> ApiResponse<PanoramaConnector> createPanoramaConnector createPanoramaConnectorWithHttpInfo(panoramaConnector, aid)
+> ApiResponse<PanoramaConnector> createPanoramaConnector createPanoramaConnectorWithHttpInfo(CreatePanoramaConnectorRequest)
 
 Create Panorama connector
 
@@ -115,7 +117,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -131,7 +133,11 @@ public class Example {
         PanoramaConnector panoramaConnector = new PanoramaConnector(); // PanoramaConnector | Panorama connector configuration.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PanoramaConnector> response = apiInstance.createPanoramaConnectorWithHttpInfo(panoramaConnector, aid);
+            PanoramaConnectorsApi.CreatePanoramaConnectorRequest request = PanoramaConnectorsApi.CreatePanoramaConnectorRequest.builder()
+                .panoramaConnector(panoramaConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<PanoramaConnector> response = apiInstance.createPanoramaConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -148,11 +154,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md)| Panorama connector configuration. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**CreatePanoramaConnectorRequest**](PanoramaConnectorsApi.md#CreatePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -179,9 +183,20 @@ ApiResponse<[**PanoramaConnector**](PanoramaConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="CreatePanoramaConnectorRequest"></a>
+## CreatePanoramaConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md) | Panorama connector configuration. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## deletePanoramaConnector
 
-> void deletePanoramaConnector(id, aid)
+> void deletePanoramaConnector(DeletePanoramaConnectorRequest)
 
 Delete Panorama connector
 
@@ -195,7 +210,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -211,7 +226,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            apiInstance.deletePanoramaConnector(id, aid);
+            PanoramaConnectorsApi.DeletePanoramaConnectorRequest request = PanoramaConnectorsApi.DeletePanoramaConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            apiInstance.deletePanoramaConnector(request);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#deletePanoramaConnector");
             System.err.println("Status code: " + e.getCode());
@@ -225,11 +244,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeletePanoramaConnectorRequest**](PanoramaConnectorsApi.md#DeletePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -257,7 +274,7 @@ null (empty response body)
 
 ## deletePanoramaConnectorWithHttpInfo
 
-> ApiResponse<Void> deletePanoramaConnector deletePanoramaConnectorWithHttpInfo(id, aid)
+> ApiResponse<Void> deletePanoramaConnector deletePanoramaConnectorWithHttpInfo(DeletePanoramaConnectorRequest)
 
 Delete Panorama connector
 
@@ -272,7 +289,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -288,7 +305,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Void> response = apiInstance.deletePanoramaConnectorWithHttpInfo(id, aid);
+            PanoramaConnectorsApi.DeletePanoramaConnectorRequest request = PanoramaConnectorsApi.DeletePanoramaConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Void> response = apiInstance.deletePanoramaConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
         } catch (ApiException e) {
@@ -304,11 +325,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**DeletePanoramaConnectorRequest**](PanoramaConnectorsApi.md#DeletePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -335,9 +354,20 @@ ApiResponse<Void>
 | **500** | Internal server error |  -  |
 
 
+<a id="DeletePanoramaConnectorRequest"></a>
+## DeletePanoramaConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getPanoramaConnector
 
-> PanoramaConnector getPanoramaConnector(id, aid)
+> PanoramaConnector getPanoramaConnector(GetPanoramaConnectorRequest)
 
 Retrieve Panorama connector
 
@@ -351,7 +381,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -367,7 +397,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PanoramaConnector result = apiInstance.getPanoramaConnector(id, aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorRequest request = PanoramaConnectorsApi.GetPanoramaConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            PanoramaConnector result = apiInstance.getPanoramaConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#getPanoramaConnector");
@@ -382,11 +416,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -414,7 +446,7 @@ public class Example {
 
 ## getPanoramaConnectorWithHttpInfo
 
-> ApiResponse<PanoramaConnector> getPanoramaConnector getPanoramaConnectorWithHttpInfo(id, aid)
+> ApiResponse<PanoramaConnector> getPanoramaConnector getPanoramaConnectorWithHttpInfo(GetPanoramaConnectorRequest)
 
 Retrieve Panorama connector
 
@@ -429,7 +461,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -445,7 +477,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PanoramaConnector> response = apiInstance.getPanoramaConnectorWithHttpInfo(id, aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorRequest request = PanoramaConnectorsApi.GetPanoramaConnectorRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<PanoramaConnector> response = apiInstance.getPanoramaConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -462,11 +498,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -493,9 +527,20 @@ ApiResponse<[**PanoramaConnector**](PanoramaConnector.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetPanoramaConnectorRequest"></a>
+## GetPanoramaConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getPanoramaConnectorOperations
 
-> Assignments getPanoramaConnectorOperations(id, aid)
+> Assignments getPanoramaConnectorOperations(GetPanoramaConnectorOperationsRequest)
 
 List operation IDs for Panorama connector
 
@@ -509,7 +554,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -525,7 +570,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.getPanoramaConnectorOperations(id, aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorOperationsRequest request = PanoramaConnectorsApi.GetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.getPanoramaConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#getPanoramaConnectorOperations");
@@ -540,11 +589,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorOperationsRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -572,7 +619,7 @@ public class Example {
 
 ## getPanoramaConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> getPanoramaConnectorOperations getPanoramaConnectorOperationsWithHttpInfo(id, aid)
+> ApiResponse<Assignments> getPanoramaConnectorOperations getPanoramaConnectorOperationsWithHttpInfo(GetPanoramaConnectorOperationsRequest)
 
 List operation IDs for Panorama connector
 
@@ -587,7 +634,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -603,7 +650,11 @@ public class Example {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf"; // String | The connector ID.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.getPanoramaConnectorOperationsWithHttpInfo(id, aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorOperationsRequest request = PanoramaConnectorsApi.GetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.getPanoramaConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -620,11 +671,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorOperationsRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -651,9 +700,20 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetPanoramaConnectorOperationsRequest"></a>
+## GetPanoramaConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## getPanoramaConnectors
 
-> PanoramaConnectors getPanoramaConnectors(aid)
+> PanoramaConnectors getPanoramaConnectors(GetPanoramaConnectorsRequest)
 
 List Panorama connectors
 
@@ -667,7 +727,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -682,7 +742,10 @@ public class Example {
         PanoramaConnectorsApi apiInstance = new PanoramaConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PanoramaConnectors result = apiInstance.getPanoramaConnectors(aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorsRequest request = PanoramaConnectorsApi.GetPanoramaConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            PanoramaConnectors result = apiInstance.getPanoramaConnectors(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#getPanoramaConnectors");
@@ -697,10 +760,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorsRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -728,7 +790,7 @@ public class Example {
 
 ## getPanoramaConnectorsWithHttpInfo
 
-> ApiResponse<PanoramaConnectors> getPanoramaConnectors getPanoramaConnectorsWithHttpInfo(aid)
+> ApiResponse<PanoramaConnectors> getPanoramaConnectors getPanoramaConnectorsWithHttpInfo(GetPanoramaConnectorsRequest)
 
 List Panorama connectors
 
@@ -743,7 +805,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -758,7 +820,10 @@ public class Example {
         PanoramaConnectorsApi apiInstance = new PanoramaConnectorsApi(defaultClient);
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PanoramaConnectors> response = apiInstance.getPanoramaConnectorsWithHttpInfo(aid);
+            PanoramaConnectorsApi.GetPanoramaConnectorsRequest request = PanoramaConnectorsApi.GetPanoramaConnectorsRequest.builder()
+                .aid(aid)
+                .build();
+            ApiResponse<PanoramaConnectors> response = apiInstance.getPanoramaConnectorsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -775,10 +840,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**GetPanoramaConnectorsRequest**](PanoramaConnectorsApi.md#GetPanoramaConnectorsRequest)|-|-|
 
 ### Return type
 
@@ -805,9 +869,19 @@ ApiResponse<[**PanoramaConnectors**](PanoramaConnectors.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="GetPanoramaConnectorsRequest"></a>
+## GetPanoramaConnectorsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## setPanoramaConnectorOperations
 
-> Assignments setPanoramaConnectorOperations(id, requestBody, aid)
+> Assignments setPanoramaConnectorOperations(SetPanoramaConnectorOperationsRequest)
 
 Assign operations to Panorama connector
 
@@ -821,7 +895,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -838,7 +912,12 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            Assignments result = apiInstance.setPanoramaConnectorOperations(id, requestBody, aid);
+            PanoramaConnectorsApi.SetPanoramaConnectorOperationsRequest request = PanoramaConnectorsApi.SetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            Assignments result = apiInstance.setPanoramaConnectorOperations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#setPanoramaConnectorOperations");
@@ -853,12 +932,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetPanoramaConnectorOperationsRequest**](PanoramaConnectorsApi.md#SetPanoramaConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -886,7 +962,7 @@ public class Example {
 
 ## setPanoramaConnectorOperationsWithHttpInfo
 
-> ApiResponse<Assignments> setPanoramaConnectorOperations setPanoramaConnectorOperationsWithHttpInfo(id, requestBody, aid)
+> ApiResponse<Assignments> setPanoramaConnectorOperations setPanoramaConnectorOperationsWithHttpInfo(SetPanoramaConnectorOperationsRequest)
 
 Assign operations to Panorama connector
 
@@ -901,7 +977,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -918,7 +994,12 @@ public class Example {
         List<String> requestBody = ["ca39314d-eb4f-496f-9435-b5d20b1bfbff","a32cfbab-32f6-41d8-9027-7127cba965dd"]; // List<String> | List of operation IDs to assign to the connector.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<Assignments> response = apiInstance.setPanoramaConnectorOperationsWithHttpInfo(id, requestBody, aid);
+            PanoramaConnectorsApi.SetPanoramaConnectorOperationsRequest request = PanoramaConnectorsApi.SetPanoramaConnectorOperationsRequest.builder()
+                .id(id)
+                .requestBody(requestBody)
+                .aid(aid)
+                .build();
+            ApiResponse<Assignments> response = apiInstance.setPanoramaConnectorOperationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -935,12 +1016,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| List of operation IDs to assign to the connector. | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**SetPanoramaConnectorOperationsRequest**](PanoramaConnectorsApi.md#SetPanoramaConnectorOperationsRequest)|-|-|
 
 ### Return type
 
@@ -967,9 +1045,21 @@ ApiResponse<[**Assignments**](Assignments.md)>
 | **500** | Internal server error |  -  |
 
 
+<a id="SetPanoramaConnectorOperationsRequest"></a>
+## SetPanoramaConnectorOperationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **requestBody** | [**List&lt;String&gt;**](String.md) | List of operation IDs to assign to the connector. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+
+
 ## updatePanoramaConnector
 
-> PanoramaConnector updatePanoramaConnector(id, panoramaConnector, aid)
+> PanoramaConnector updatePanoramaConnector(UpdatePanoramaConnectorRequest)
 
 Update Panorama connector
 
@@ -983,7 +1073,7 @@ import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -1000,7 +1090,12 @@ public class Example {
         PanoramaConnector panoramaConnector = new PanoramaConnector(); // PanoramaConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            PanoramaConnector result = apiInstance.updatePanoramaConnector(id, panoramaConnector, aid);
+            PanoramaConnectorsApi.UpdatePanoramaConnectorRequest request = PanoramaConnectorsApi.UpdatePanoramaConnectorRequest.builder()
+                .id(id)
+                .panoramaConnector(panoramaConnector)
+                .aid(aid)
+                .build();
+            PanoramaConnector result = apiInstance.updatePanoramaConnector(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PanoramaConnectorsApi#updatePanoramaConnector");
@@ -1015,12 +1110,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdatePanoramaConnectorRequest**](PanoramaConnectorsApi.md#UpdatePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1048,7 +1140,7 @@ public class Example {
 
 ## updatePanoramaConnectorWithHttpInfo
 
-> ApiResponse<PanoramaConnector> updatePanoramaConnector updatePanoramaConnectorWithHttpInfo(id, panoramaConnector, aid)
+> ApiResponse<PanoramaConnector> updatePanoramaConnector updatePanoramaConnectorWithHttpInfo(UpdatePanoramaConnectorRequest)
 
 Update Panorama connector
 
@@ -1063,7 +1155,7 @@ import com.thousandeyes.sdk.common.ApiException;
 import com.thousandeyes.sdk.common.ApiResponse;
 import com.thousandeyes.sdk.Configuration;
 import com.thousandeyes.sdk.authentication.*;
-import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.connectors.model.*;
 import com.thousandeyes.sdk.connectors.PanoramaConnectorsApi;
 
 public class Example {
@@ -1080,7 +1172,12 @@ public class Example {
         PanoramaConnector panoramaConnector = new PanoramaConnector(); // PanoramaConnector | 
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            ApiResponse<PanoramaConnector> response = apiInstance.updatePanoramaConnectorWithHttpInfo(id, panoramaConnector, aid);
+            PanoramaConnectorsApi.UpdatePanoramaConnectorRequest request = PanoramaConnectorsApi.UpdatePanoramaConnectorRequest.builder()
+                .id(id)
+                .panoramaConnector(panoramaConnector)
+                .aid(aid)
+                .build();
+            ApiResponse<PanoramaConnector> response = apiInstance.updatePanoramaConnectorWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1097,12 +1194,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| The connector ID. | |
-| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md)|  | |
-| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| request | [**UpdatePanoramaConnectorRequest**](PanoramaConnectorsApi.md#UpdatePanoramaConnectorRequest)|-|-|
 
 ### Return type
 
@@ -1127,4 +1221,16 @@ ApiResponse<[**PanoramaConnector**](PanoramaConnector.md)>
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
 | **500** | Internal server error |  -  |
+
+
+<a id="UpdatePanoramaConnectorRequest"></a>
+## UpdatePanoramaConnectorRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **id** | **String** | The connector ID. | |
+| **panoramaConnector** | [**PanoramaConnector**](PanoramaConnector.md) |  | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
 

@@ -91,7 +91,6 @@ public class DashboardsApiTest {
             throws JsonProcessingException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
-
         var requestBodyJson = """
                 {
                   "isSharedWithAllAccountGroups" : false,
@@ -312,7 +311,12 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.cloneDashboard(dashboardId, null, mappedRequest);
+        var request = DashboardsApi.CloneDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid("1234")
+                .cloneDashboardRequest(mappedRequest)
+                .build();
+        var apiResponse = api.cloneDashboard(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -327,7 +331,6 @@ public class DashboardsApiTest {
     public void createDashboardRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
         var requestBodyJson = """
                 {
                   "isMigratedReport" : false,
@@ -673,7 +676,11 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.createDashboard(mappedRequest, null);
+        var request = DashboardsApi.CreateDashboardRequest.builder()
+                .dashboard(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.createDashboard(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -690,7 +697,6 @@ public class DashboardsApiTest {
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
 
-
         var statusCode = 204;
 
         var path = "/dashboards/{dashboardId}";
@@ -700,7 +706,11 @@ public class DashboardsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDashboardWithHttpInfo(dashboardId, null);
+        var request = DashboardsApi.DeleteDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDashboardWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -717,7 +727,6 @@ public class DashboardsApiTest {
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
 
-
         var statusCode = 204;
 
         var path = "/dashboards/{dashboardId}/actions/schedule";
@@ -727,7 +736,11 @@ public class DashboardsApiTest {
                         .willReturn(aResponse()
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.deleteDashboardScheduleWithHttpInfo(dashboardId, null);
+        var request = DashboardsApi.DeleteDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.deleteDashboardScheduleWithHttpInfo(request);
         assertEquals(statusCode, apiResponse.getStatusCode());
     }
     
@@ -743,7 +756,6 @@ public class DashboardsApiTest {
             throws JsonProcessingException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
-
 
         var responseBodyJson = """
                 {
@@ -933,7 +945,11 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboard(dashboardId, null);
+        var request = DashboardsApi.GetDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboard(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -950,7 +966,6 @@ public class DashboardsApiTest {
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
-
 
         var responseBodyJson = """
                 {
@@ -1421,7 +1436,15 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboardWidgetData(dashboardId, widgetId, null, null, null, null, null, null, null, null);
+        var request = DashboardsApi.GetDashboardWidgetDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getDashboardWidgetData(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1436,7 +1459,6 @@ public class DashboardsApiTest {
     public void getDashboardsRequestAndResponseDeserializationTest()
             throws JsonProcessingException, ApiException
     {
-
 
         var responseBodyJson = """
                 [ {
@@ -1795,7 +1817,10 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getDashboards(null);
+        var request = DashboardsApi.GetDashboardsRequest.builder()
+                .aid("1234")
+                .build();
+        var apiResponse = api.getDashboards(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1813,7 +1838,6 @@ public class DashboardsApiTest {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
         String cardId = "rvwgs";
-
 
         var responseBodyJson = """
                 {
@@ -1877,7 +1901,16 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getIndividualCardData(dashboardId, widgetId, cardId, null, null, null, null);
+        var request = DashboardsApi.GetIndividualCardDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .cardId(cardId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getIndividualCardData(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1895,7 +1928,6 @@ public class DashboardsApiTest {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
         String columnId = "col123";
-
 
         var responseBodyJson = """
                 {
@@ -1975,7 +2007,16 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.getIndividualColumnData(dashboardId, widgetId, columnId, null, null, null, null);
+        var request = DashboardsApi.GetIndividualColumnDataRequest.builder()
+                .dashboardId(dashboardId)
+                .widgetId(widgetId)
+                .columnId(columnId)
+                .aid("1234")
+                .window("12h")
+                .startDate(OffsetDateTime.parse("2022-07-17T22:00:54Z"))
+                .endDate(OffsetDateTime.parse("2022-07-18T22:00:54Z"))
+                .build();
+        var apiResponse = api.getIndividualColumnData(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -1991,7 +2032,6 @@ public class DashboardsApiTest {
             throws JsonProcessingException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
-
         var requestBodyJson = """
                 {
                   "isMigratedReport" : false,
@@ -2338,7 +2378,12 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDashboard(dashboardId, mappedRequest, null);
+        var request = DashboardsApi.UpdateDashboardRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboard(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateDashboard(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
@@ -2354,7 +2399,6 @@ public class DashboardsApiTest {
             throws JsonProcessingException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
-
         var requestBodyJson = """
                 {
                   "expiresAfter" : 157680000,
@@ -2576,7 +2620,12 @@ public class DashboardsApiTest {
                                             .withBody(responseBodyJson)
                                             .withStatus(statusCode)));
 
-        var apiResponse = api.updateDashboardSchedule(dashboardId, mappedRequest, null);
+        var request = DashboardsApi.UpdateDashboardScheduleRequest.builder()
+                .dashboardId(dashboardId)
+                .dashboardScheduleRequest(mappedRequest)
+                .aid("1234")
+                .build();
+        var apiResponse = api.updateDashboardSchedule(request);
         assertEquals(mappedResponse, apiResponse);
     }
     
