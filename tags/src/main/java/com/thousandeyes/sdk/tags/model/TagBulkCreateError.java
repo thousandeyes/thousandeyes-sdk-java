@@ -87,7 +87,7 @@ public class TagBulkCreateError {
   }
 
    /**
-   * HTTP response code
+   * HTTP response code.
    * @return responseCode
   **/
   @jakarta.annotation.Nullable
@@ -112,7 +112,7 @@ public class TagBulkCreateError {
   }
 
    /**
-   * Status / error message
+   * Status or error message.
    * @return message
   **/
   @jakarta.annotation.Nullable

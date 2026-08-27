@@ -26,8 +26,10 @@ import com.thousandeyes.sdk.dashboards.model.ApiMultiMetricColumnData;
 import com.thousandeyes.sdk.dashboards.model.ApiNumbersCardData;
 import com.thousandeyes.sdk.dashboards.model.ApiWidgetDataResponse;
 import java.math.BigDecimal;
+import com.thousandeyes.sdk.dashboards.model.CloneDashboardRequest;
 import com.thousandeyes.sdk.dashboards.model.Dashboard;
 import com.thousandeyes.sdk.dashboards.model.DashboardOrder;
+import com.thousandeyes.sdk.dashboards.model.DashboardScheduleRequest;
 import com.thousandeyes.sdk.dashboards.model.Error;
 import java.time.OffsetDateTime;
 import java.net.URI;
@@ -67,6 +69,65 @@ public class DashboardsApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Clone dashboard
+   * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param cloneDashboardRequest Optional overrides for the cloned dashboard. (optional)
+   * @return Dashboard
+   * @throws ApiException if fails to make API call
+   */
+  public Dashboard cloneDashboard(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
+    ApiResponse<Dashboard> response = cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest);
+    return response.getData();
+  }
+
+  /**
+   * Clone dashboard
+   * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @param cloneDashboardRequest Optional overrides for the cloned dashboard. (optional)
+   * @return ApiResponse&lt;Dashboard&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Dashboard> cloneDashboardWithHttpInfo(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
+    cloneDashboardValidateRequest(dashboardId);
+
+    var requestBuilder = cloneDashboardRequestBuilder(dashboardId, aid, cloneDashboardRequest);
+
+    return apiClient.send(requestBuilder.build(), Dashboard.class);
+  }
+
+  private void cloneDashboardValidateRequest(String dashboardId) throws ApiException {
+      // verify the required parameter 'dashboardId' is set
+      if (dashboardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardId' when calling cloneDashboard");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder cloneDashboardRequestBuilder(String dashboardId, String aid, CloneDashboardRequest cloneDashboardRequest) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("POST");
+
+    String path = "/dashboards/{dashboardId}/clone"
+        .replace("{dashboardId}", urlEncode(dashboardId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Content-Type", List.of("application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    requestBuilder.requestBody(cloneDashboardRequest);
+    return requestBuilder;
+  }
   /**
    * Create dashboard
    * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
@@ -162,6 +223,59 @@ public class DashboardsApi {
             .method("DELETE");
 
     String path = "/dashboards/{dashboardId}"
+        .replace("{dashboardId}", urlEncode(dashboardId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+  /**
+   * Delete dashboard snapshot schedule
+   * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteDashboardSchedule(String dashboardId, String aid) throws ApiException {
+    deleteDashboardScheduleWithHttpInfo(dashboardId, aid);
+  }
+
+  /**
+   * Delete dashboard snapshot schedule
+   * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteDashboardScheduleWithHttpInfo(String dashboardId, String aid) throws ApiException {
+    deleteDashboardScheduleValidateRequest(dashboardId);
+
+    var requestBuilder = deleteDashboardScheduleRequestBuilder(dashboardId, aid);
+
+    return apiClient.send(requestBuilder.build(), Void.class);
+  }
+
+  private void deleteDashboardScheduleValidateRequest(String dashboardId) throws ApiException {
+      // verify the required parameter 'dashboardId' is set
+      if (dashboardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardId' when calling deleteDashboardSchedule");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder deleteDashboardScheduleRequestBuilder(String dashboardId, String aid) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("DELETE");
+
+    String path = "/dashboards/{dashboardId}/actions/schedule"
         .replace("{dashboardId}", urlEncode(dashboardId.toString()));
     requestBuilder.path(path);
 
@@ -579,6 +693,69 @@ public class DashboardsApi {
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
     requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
     requestBuilder.requestBody(dashboard);
+    return requestBuilder;
+  }
+  /**
+   * Create or update dashboard snapshot schedule
+   * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param dashboardScheduleRequest Snapshot schedule configuration. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ApiDashboard
+   * @throws ApiException if fails to make API call
+   */
+  public ApiDashboard updateDashboardSchedule(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
+    ApiResponse<ApiDashboard> response = updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid);
+    return response.getData();
+  }
+
+  /**
+   * Create or update dashboard snapshot schedule
+   * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
+   * @param dashboardId A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. (required)
+   * @param dashboardScheduleRequest Snapshot schedule configuration. (required)
+   * @param aid A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
+   * @return ApiResponse&lt;ApiDashboard&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ApiDashboard> updateDashboardScheduleWithHttpInfo(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
+    updateDashboardScheduleValidateRequest(dashboardId, dashboardScheduleRequest);
+
+    var requestBuilder = updateDashboardScheduleRequestBuilder(dashboardId, dashboardScheduleRequest, aid);
+
+    return apiClient.send(requestBuilder.build(), ApiDashboard.class);
+  }
+
+  private void updateDashboardScheduleValidateRequest(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest) throws ApiException {
+      // verify the required parameter 'dashboardId' is set
+      if (dashboardId == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardId' when calling updateDashboardSchedule");
+      }
+      // verify the required parameter 'dashboardScheduleRequest' is set
+      if (dashboardScheduleRequest == null) {
+        throw new ApiException(400, "Missing the required parameter 'dashboardScheduleRequest' when calling updateDashboardSchedule");
+      }
+  }
+
+  private ApiRequest.ApiRequestBuilder updateDashboardScheduleRequestBuilder(String dashboardId, DashboardScheduleRequest dashboardScheduleRequest, String aid) throws ApiException {
+    ApiRequest.ApiRequestBuilder requestBuilder = ApiRequest.builder()
+            .method("PUT");
+
+    String path = "/dashboards/{dashboardId}/actions/schedule"
+        .replace("{dashboardId}", urlEncode(dashboardId.toString()));
+    requestBuilder.path(path);
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Content-Type", List.of("application/json"));
+    requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    requestBuilder.requestBody(dashboardScheduleRequest);
     return requestBuilder;
   }
 }
