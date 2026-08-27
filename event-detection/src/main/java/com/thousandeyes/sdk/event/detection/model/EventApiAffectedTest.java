@@ -42,12 +42,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EventApiAffectedTest {
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_TYPE = "testType";
   private TestType testType;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_AFFECTED_TARGET_IDS = "affectedTargetIds";
@@ -60,16 +62,6 @@ public class EventApiAffectedTest {
   private EventTestLinks links;
 
   public EventApiAffectedTest() { 
-  }
-
-  @JsonCreator
-  public EventApiAffectedTest(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
-  ) {
-  this();
-    this.testId = testId;
-    this.name = name;
   }
 
    /**
@@ -267,5 +259,84 @@ public class EventApiAffectedTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EventApiAffectedTest instance;
+
+    public ModelBuilder() {
+      this(new EventApiAffectedTest());
+    }
+
+    protected ModelBuilder(EventApiAffectedTest instance) {
+      this.instance = instance;
+    }
+
+    public EventApiAffectedTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public EventApiAffectedTest.ModelBuilder testType(TestType testType) {
+      this.instance.setTestType(testType);
+      return this;
+    }
+    public EventApiAffectedTest.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public EventApiAffectedTest.ModelBuilder affectedTargetIds(List<String> affectedTargetIds) {
+      this.instance.setAffectedTargetIds(affectedTargetIds);
+      return this;
+    }
+    public EventApiAffectedTest.ModelBuilder affectedAgentIds(List<String> affectedAgentIds) {
+      this.instance.setAffectedAgentIds(affectedAgentIds);
+      return this;
+    }
+    public EventApiAffectedTest.ModelBuilder links(EventTestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EventApiAffectedTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EventApiAffectedTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EventApiAffectedTest.ModelBuilder builder() {
+    return new EventApiAffectedTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EventApiAffectedTest.ModelBuilder toBuilder() {
+    EventApiAffectedTest.ModelBuilder builder = new EventApiAffectedTest.ModelBuilder()
+      .testId(getTestId())
+      .testType(getTestType())
+      .name(getName())
+      .affectedTargetIds(getAffectedTargetIds())
+      .affectedAgentIds(getAffectedAgentIds())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

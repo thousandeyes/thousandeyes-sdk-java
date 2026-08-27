@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Coordinates {
   public static final String JSON_PROPERTY_LATITUDE = "latitude";
+  @JsonProperty(JSON_PROPERTY_LATITUDE)
   private Double latitude;
 
   public static final String JSON_PROPERTY_LONGITUDE = "longitude";
+  @JsonProperty(JSON_PROPERTY_LONGITUDE)
   private Double longitude;
 
   public Coordinates() { 
-  }
-
-  @JsonCreator
-  public Coordinates(
-    @JsonProperty(JSON_PROPERTY_LATITUDE) Double latitude, 
-    @JsonProperty(JSON_PROPERTY_LONGITUDE) Double longitude
-  ) {
-  this();
-    this.latitude = latitude;
-    this.longitude = longitude;
   }
 
    /**
@@ -122,5 +114,64 @@ public class Coordinates {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Coordinates instance;
+
+    public ModelBuilder() {
+      this(new Coordinates());
+    }
+
+    protected ModelBuilder(Coordinates instance) {
+      this.instance = instance;
+    }
+
+    public Coordinates.ModelBuilder latitude(Double latitude) {
+      this.instance.latitude = latitude;
+      return this;
+    }
+    public Coordinates.ModelBuilder longitude(Double longitude) {
+      this.instance.longitude = longitude;
+      return this;
+    }
+
+    /**
+     * Returns a built Coordinates instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Coordinates build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Coordinates.ModelBuilder builder() {
+    return new Coordinates.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Coordinates.ModelBuilder toBuilder() {
+    Coordinates.ModelBuilder builder = new Coordinates.ModelBuilder()
+      .latitude(getLatitude())
+      .longitude(getLongitude());
+    return builder;
+  }
+
 }
 

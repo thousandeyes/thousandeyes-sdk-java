@@ -132,5 +132,64 @@ public class EndpointUserProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointUserProfile instance;
+
+    public ModelBuilder() {
+      this(new EndpointUserProfile());
+    }
+
+    protected ModelBuilder(EndpointUserProfile instance) {
+      this.instance = instance;
+    }
+
+    public EndpointUserProfile.ModelBuilder userName(String userName) {
+      this.instance.setUserName(userName);
+      return this;
+    }
+    public EndpointUserProfile.ModelBuilder userPrincipalName(String userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointUserProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointUserProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointUserProfile.ModelBuilder builder() {
+    return new EndpointUserProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointUserProfile.ModelBuilder toBuilder() {
+    EndpointUserProfile.ModelBuilder builder = new EndpointUserProfile.ModelBuilder()
+      .userName(getUserName())
+      .userPrincipalName(getUserPrincipalName());
+    return builder;
+  }
+
 }
 

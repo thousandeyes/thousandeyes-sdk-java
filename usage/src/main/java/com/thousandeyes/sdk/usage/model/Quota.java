@@ -145,5 +145,64 @@ public class Quota {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Quota instance;
+
+    public ModelBuilder() {
+      this(new Quota());
+    }
+
+    protected ModelBuilder(Quota instance) {
+      this.instance = instance;
+    }
+
+    public Quota.ModelBuilder organizationQuota(OrganizationQuota organizationQuota) {
+      this.instance.setOrganizationQuota(organizationQuota);
+      return this;
+    }
+    public Quota.ModelBuilder accountGroupQuotas(List<AccountGroupQuota> accountGroupQuotas) {
+      this.instance.setAccountGroupQuotas(accountGroupQuotas);
+      return this;
+    }
+
+    /**
+     * Returns a built Quota instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Quota build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Quota.ModelBuilder builder() {
+    return new Quota.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Quota.ModelBuilder toBuilder() {
+    Quota.ModelBuilder builder = new Quota.ModelBuilder()
+      .organizationQuota(getOrganizationQuota())
+      .accountGroupQuotas(getAccountGroupQuotas());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class DynamicTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicTests instance;
+
+    public ModelBuilder() {
+      this(new DynamicTests());
+    }
+
+    protected ModelBuilder(DynamicTests instance) {
+      this.instance = instance;
+    }
+
+    public DynamicTests.ModelBuilder tests(List<DynamicTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public DynamicTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicTests.ModelBuilder builder() {
+    return new DynamicTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicTests.ModelBuilder toBuilder() {
+    DynamicTests.ModelBuilder builder = new DynamicTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

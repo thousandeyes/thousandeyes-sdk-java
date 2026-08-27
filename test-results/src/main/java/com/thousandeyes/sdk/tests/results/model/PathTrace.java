@@ -37,42 +37,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PathTrace {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_MSS = "mss";
+  @JsonProperty(JSON_PROPERTY_MSS)
   private Integer mss;
 
   public static final String JSON_PROPERTY_NUMBER_OF_HOPS = "numberOfHops";
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_HOPS)
   private Integer numberOfHops;
 
   public static final String JSON_PROPERTY_PATH_ID = "pathId";
+  @JsonProperty(JSON_PROPERTY_PATH_ID)
   private String pathId;
 
   public static final String JSON_PROPERTY_PATH_MTU = "pathMtu";
+  @JsonProperty(JSON_PROPERTY_PATH_MTU)
   private Integer pathMtu;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public PathTrace() { 
-  }
-
-  @JsonCreator
-  public PathTrace(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_MSS) Integer mss, 
-    @JsonProperty(JSON_PROPERTY_NUMBER_OF_HOPS) Integer numberOfHops, 
-    @JsonProperty(JSON_PROPERTY_PATH_ID) String pathId, 
-    @JsonProperty(JSON_PROPERTY_PATH_MTU) Integer pathMtu, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime
-  ) {
-  this();
-    this.ipAddress = ipAddress;
-    this.mss = mss;
-    this.numberOfHops = numberOfHops;
-    this.pathId = pathId;
-    this.pathMtu = pathMtu;
-    this.responseTime = responseTime;
   }
 
    /**
@@ -214,5 +202,84 @@ public class PathTrace {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathTrace instance;
+
+    public ModelBuilder() {
+      this(new PathTrace());
+    }
+
+    protected ModelBuilder(PathTrace instance) {
+      this.instance = instance;
+    }
+
+    public PathTrace.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public PathTrace.ModelBuilder mss(Integer mss) {
+      this.instance.mss = mss;
+      return this;
+    }
+    public PathTrace.ModelBuilder numberOfHops(Integer numberOfHops) {
+      this.instance.numberOfHops = numberOfHops;
+      return this;
+    }
+    public PathTrace.ModelBuilder pathId(String pathId) {
+      this.instance.pathId = pathId;
+      return this;
+    }
+    public PathTrace.ModelBuilder pathMtu(Integer pathMtu) {
+      this.instance.pathMtu = pathMtu;
+      return this;
+    }
+    public PathTrace.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+
+    /**
+     * Returns a built PathTrace instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathTrace build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathTrace.ModelBuilder builder() {
+    return new PathTrace.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathTrace.ModelBuilder toBuilder() {
+    PathTrace.ModelBuilder builder = new PathTrace.ModelBuilder()
+      .ipAddress(getIpAddress())
+      .mss(getMss())
+      .numberOfHops(getNumberOfHops())
+      .pathId(getPathId())
+      .pathMtu(getPathMtu())
+      .responseTime(getResponseTime());
+    return builder;
+  }
+
 }
 

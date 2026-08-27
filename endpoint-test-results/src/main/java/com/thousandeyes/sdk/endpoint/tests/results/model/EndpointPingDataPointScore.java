@@ -133,5 +133,64 @@ public class EndpointPingDataPointScore {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointPingDataPointScore instance;
+
+    public ModelBuilder() {
+      this(new EndpointPingDataPointScore());
+    }
+
+    protected ModelBuilder(EndpointPingDataPointScore instance) {
+      this.instance = instance;
+    }
+
+    public EndpointPingDataPointScore.ModelBuilder applicationScore(Double applicationScore) {
+      this.instance.setApplicationScore(applicationScore);
+      return this;
+    }
+    public EndpointPingDataPointScore.ModelBuilder quality(ApplicationScoreQuality quality) {
+      this.instance.setQuality(quality);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointPingDataPointScore instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointPingDataPointScore build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointPingDataPointScore.ModelBuilder builder() {
+    return new EndpointPingDataPointScore.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointPingDataPointScore.ModelBuilder toBuilder() {
+    EndpointPingDataPointScore.ModelBuilder builder = new EndpointPingDataPointScore.ModelBuilder()
+      .applicationScore(getApplicationScore())
+      .quality(getQuality());
+    return builder;
+  }
+
 }
 

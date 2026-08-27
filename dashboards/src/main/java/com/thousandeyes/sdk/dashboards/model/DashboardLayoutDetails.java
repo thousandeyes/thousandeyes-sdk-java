@@ -113,5 +113,59 @@ public class DashboardLayoutDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardLayoutDetails instance;
+
+    public ModelBuilder() {
+      this(new DashboardLayoutDetails());
+    }
+
+    protected ModelBuilder(DashboardLayoutDetails instance) {
+      this.instance = instance;
+    }
+
+    public DashboardLayoutDetails.ModelBuilder widgetPositioning(List<WidgetPosition> widgetPositioning) {
+      this.instance.setWidgetPositioning(widgetPositioning);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardLayoutDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardLayoutDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardLayoutDetails.ModelBuilder builder() {
+    return new DashboardLayoutDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardLayoutDetails.ModelBuilder toBuilder() {
+    DashboardLayoutDetails.ModelBuilder builder = new DashboardLayoutDetails.ModelBuilder()
+      .widgetPositioning(getWidgetPositioning());
+    return builder;
+  }
+
 }
 

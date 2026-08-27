@@ -141,45 +141,56 @@ public class WebTransactionTest {
   private List<AlertRule> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private String createdBy;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
   public static final String JSON_PROPERTY_LIVE_SHARE = "liveShare";
+  @JsonProperty(JSON_PROPERTY_LIVE_SHARE)
   private Boolean liveShare;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_SAVED_EVENT = "savedEvent";
+  @JsonProperty(JSON_PROPERTY_SAVED_EVENT)
   private Boolean savedEvent;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestLinks links;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<TestTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHARED_WITH_ACCOUNTS = "sharedWithAccounts";
+  @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS)
   private List<SharedWithAccount> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
@@ -249,6 +260,7 @@ public class WebTransactionTest {
   private TestProtocol protocol = TestProtocol.TCP;
 
   public static final String JSON_PROPERTY_SSL_VERSION = "sslVersion";
+  @JsonProperty(JSON_PROPERTY_SSL_VERSION)
   private String sslVersion;
 
   public static final String JSON_PROPERTY_SSL_VERSION_ID = "sslVersionId";
@@ -348,44 +360,13 @@ public class WebTransactionTest {
   private Boolean usePublicBgp = true;
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
+  @JsonProperty(JSON_PROPERTY_MONITORS)
   private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SUBINTERVAL = "subinterval";
   private TestSubInterval subinterval;
 
   public WebTransactionTest() { 
-  }
-
-  @JsonCreator
-  public WebTransactionTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) String createdBy, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_LIVE_SHARE) Boolean liveShare, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) String modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_SAVED_EVENT) Boolean savedEvent, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<TestTag> tags, 
-    @JsonProperty(JSON_PROPERTY_SHARED_WITH_ACCOUNTS) List<SharedWithAccount> sharedWithAccounts, 
-    @JsonProperty(JSON_PROPERTY_SSL_VERSION) String sslVersion, 
-    @JsonProperty(JSON_PROPERTY_MONITORS) List<Monitor> monitors
-  ) {
-  this();
-    this.createdBy = createdBy;
-    this.createdDate = createdDate;
-    this.liveShare = liveShare;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.savedEvent = savedEvent;
-    this.testId = testId;
-    this.type = type;
-    this.labels = labels;
-    this.tags = tags;
-    this.sharedWithAccounts = sharedWithAccounts;
-    this.sslVersion = sslVersion;
-    this.monitors = monitors;
   }
 
   public WebTransactionTest interval(TestInterval interval) {
@@ -2358,5 +2339,429 @@ public class WebTransactionTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebTransactionTest instance;
+
+    public ModelBuilder() {
+      this(new WebTransactionTest());
+    }
+
+    protected ModelBuilder(WebTransactionTest instance) {
+      this.instance = instance;
+    }
+
+    public WebTransactionTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder alertsEnabled(Boolean alertsEnabled) {
+      this.instance.setAlertsEnabled(alertsEnabled);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder alertRules(List<AlertRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder createdBy(String createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder liveShare(Boolean liveShare) {
+      this.instance.liveShare = liveShare;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder modifiedBy(String modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder savedEvent(Boolean savedEvent) {
+      this.instance.savedEvent = savedEvent;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder links(TestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder tags(List<TestTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder sharedWithAccounts(List<SharedWithAccount> sharedWithAccounts) {
+      this.instance.sharedWithAccounts = sharedWithAccounts;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder authType(TestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
+      this.instance.setAgentInterfaces(agentInterfaces);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder contentRegex(String contentRegex) {
+      this.instance.setContentRegex(contentRegex);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder customHeaders(TestCustomHeaders customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder desiredStatusCode(String desiredStatusCode) {
+      this.instance.setDesiredStatusCode(desiredStatusCode);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder downloadLimit(Integer downloadLimit) {
+      this.instance.setDownloadLimit(downloadLimit);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder dnsOverride(String dnsOverride) {
+      this.instance.setDnsOverride(dnsOverride);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder httpTargetTime(Integer httpTargetTime) {
+      this.instance.setHttpTargetTime(httpTargetTime);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder httpVersion(Integer httpVersion) {
+      this.instance.setHttpVersion(httpVersion);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder includeHeaders(Boolean includeHeaders) {
+      this.instance.setIncludeHeaders(includeHeaders);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder oAuth(OAuth oAuth) {
+      this.instance.setoAuth(oAuth);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder sslVersion(String sslVersion) {
+      this.instance.sslVersion = sslVersion;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder useNtlm(Boolean useNtlm) {
+      this.instance.setUseNtlm(useNtlm);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder userAgent(String userAgent) {
+      this.instance.setUserAgent(userAgent);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder allowUnsafeLegacyRenegotiation(Boolean allowUnsafeLegacyRenegotiation) {
+      this.instance.setAllowUnsafeLegacyRenegotiation(allowUnsafeLegacyRenegotiation);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder vaultCredentials(List<TestVaultCredential> vaultCredentials) {
+      this.instance.setVaultCredentials(vaultCredentials);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder emulatedDeviceId(String emulatedDeviceId) {
+      this.instance.setEmulatedDeviceId(emulatedDeviceId);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder targetTime(Integer targetTime) {
+      this.instance.setTargetTime(targetTime);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder timeLimit(Integer timeLimit) {
+      this.instance.setTimeLimit(timeLimit);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder transactionScript(String transactionScript) {
+      this.instance.setTransactionScript(transactionScript);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder flagCollectConsoleLogs(Boolean flagCollectConsoleLogs) {
+      this.instance.setFlagCollectConsoleLogs(flagCollectConsoleLogs);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder blockDomains(String blockDomains) {
+      this.instance.setBlockDomains(blockDomains);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder disableScreenshot(Boolean disableScreenshot) {
+      this.instance.setDisableScreenshot(disableScreenshot);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder allowMicAndCamera(Boolean allowMicAndCamera) {
+      this.instance.setAllowMicAndCamera(allowMicAndCamera);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder allowGeolocation(Boolean allowGeolocation) {
+      this.instance.setAllowGeolocation(allowGeolocation);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder browserLanguage(String browserLanguage) {
+      this.instance.setBrowserLanguage(browserLanguage);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder chromeOptions(String chromeOptions) {
+      this.instance.setChromeOptions(chromeOptions);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder chromePolicies(String chromePolicies) {
+      this.instance.setChromePolicies(chromePolicies);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder chromiumTrack(TestChromiumTrack chromiumTrack) {
+      this.instance.setChromiumTrack(chromiumTrack);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder pageLoadingStrategy(TestPageLoadingStrategy pageLoadingStrategy) {
+      this.instance.setPageLoadingStrategy(pageLoadingStrategy);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder identifyAgentTrafficWithUserAgent(Boolean identifyAgentTrafficWithUserAgent) {
+      this.instance.setIdentifyAgentTrafficWithUserAgent(identifyAgentTrafficWithUserAgent);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder credentials(List<String> credentials) {
+      this.instance.setCredentials(credentials);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder bgpMeasurements(Boolean bgpMeasurements) {
+      this.instance.setBgpMeasurements(bgpMeasurements);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder usePublicBgp(Boolean usePublicBgp) {
+      this.instance.setUsePublicBgp(usePublicBgp);
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder monitors(List<Monitor> monitors) {
+      this.instance.monitors = monitors;
+      return this;
+    }
+    public WebTransactionTest.ModelBuilder subinterval(TestSubInterval subinterval) {
+      this.instance.setSubinterval(subinterval);
+      return this;
+    }
+
+    /**
+     * Returns a built WebTransactionTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebTransactionTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebTransactionTest.ModelBuilder builder() {
+    return new WebTransactionTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebTransactionTest.ModelBuilder toBuilder() {
+    WebTransactionTest.ModelBuilder builder = new WebTransactionTest.ModelBuilder()
+      .interval(getInterval())
+      .alertsEnabled(getAlertsEnabled())
+      .enabled(getEnabled())
+      .alertRules(getAlertRules())
+      .createdBy(getCreatedBy())
+      .createdDate(getCreatedDate())
+      .description(getDescription())
+      .liveShare(getLiveShare())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .savedEvent(getSavedEvent())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .links(getLinks())
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .authType(getAuthType())
+      .agentInterfaces(getAgentInterfaces())
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .clientCertificate(getClientCertificate())
+      .contentRegex(getContentRegex())
+      .customHeaders(getCustomHeaders())
+      .desiredStatusCode(getDesiredStatusCode())
+      .distributedTracing(getDistributedTracing())
+      .downloadLimit(getDownloadLimit())
+      .dnsOverride(getDnsOverride())
+      .httpTargetTime(getHttpTargetTime())
+      .httpTimeLimit(getHttpTimeLimit())
+      .httpVersion(getHttpVersion())
+      .includeHeaders(getIncludeHeaders())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .oAuth(getoAuth())
+      .password(getPassword())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .sslVersion(getSslVersion())
+      .sslVersionId(getSslVersionId())
+      .url(getUrl())
+      .useNtlm(getUseNtlm())
+      .userAgent(getUserAgent())
+      .username(getUsername())
+      .verifyCertificate(getVerifyCertificate())
+      .allowUnsafeLegacyRenegotiation(getAllowUnsafeLegacyRenegotiation())
+      .followRedirects(getFollowRedirects())
+      .fixedPacketRate(getFixedPacketRate())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .vaultCredentials(getVaultCredentials())
+      .emulatedDeviceId(getEmulatedDeviceId())
+      .targetTime(getTargetTime())
+      .timeLimit(getTimeLimit())
+      .transactionScript(getTransactionScript())
+      .flagCollectConsoleLogs(getFlagCollectConsoleLogs())
+      .blockDomains(getBlockDomains())
+      .disableScreenshot(getDisableScreenshot())
+      .allowMicAndCamera(getAllowMicAndCamera())
+      .allowGeolocation(getAllowGeolocation())
+      .browserLanguage(getBrowserLanguage())
+      .chromeOptions(getChromeOptions())
+      .chromePolicies(getChromePolicies())
+      .chromiumTrack(getChromiumTrack())
+      .pageLoadingStrategy(getPageLoadingStrategy())
+      .randomizedStartTime(getRandomizedStartTime())
+      .identifyAgentTrafficWithUserAgent(getIdentifyAgentTrafficWithUserAgent())
+      .credentials(getCredentials())
+      .bgpMeasurements(getBgpMeasurements())
+      .usePublicBgp(getUsePublicBgp())
+      .monitors(getMonitors())
+      .subinterval(getSubinterval());
+    return builder;
+  }
+
 }
 

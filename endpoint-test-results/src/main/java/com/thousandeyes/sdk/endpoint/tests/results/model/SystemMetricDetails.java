@@ -37,22 +37,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SystemMetricDetails {
   public static final String JSON_PROPERTY_TOP_CPU_APPLICATIONS = "topCpuApplications";
+  @JsonProperty(JSON_PROPERTY_TOP_CPU_APPLICATIONS)
   private List<ApplicationMetrics> topCpuApplications = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOP_MEMORY_APPLICATIONS = "topMemoryApplications";
+  @JsonProperty(JSON_PROPERTY_TOP_MEMORY_APPLICATIONS)
   private List<ApplicationMetrics> topMemoryApplications = new ArrayList<>();
 
   public SystemMetricDetails() { 
-  }
-
-  @JsonCreator
-  public SystemMetricDetails(
-    @JsonProperty(JSON_PROPERTY_TOP_CPU_APPLICATIONS) List<ApplicationMetrics> topCpuApplications, 
-    @JsonProperty(JSON_PROPERTY_TOP_MEMORY_APPLICATIONS) List<ApplicationMetrics> topMemoryApplications
-  ) {
-  this();
-    this.topCpuApplications = topCpuApplications;
-    this.topMemoryApplications = topMemoryApplications;
   }
 
    /**
@@ -126,5 +118,64 @@ public class SystemMetricDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SystemMetricDetails instance;
+
+    public ModelBuilder() {
+      this(new SystemMetricDetails());
+    }
+
+    protected ModelBuilder(SystemMetricDetails instance) {
+      this.instance = instance;
+    }
+
+    public SystemMetricDetails.ModelBuilder topCpuApplications(List<ApplicationMetrics> topCpuApplications) {
+      this.instance.topCpuApplications = topCpuApplications;
+      return this;
+    }
+    public SystemMetricDetails.ModelBuilder topMemoryApplications(List<ApplicationMetrics> topMemoryApplications) {
+      this.instance.topMemoryApplications = topMemoryApplications;
+      return this;
+    }
+
+    /**
+     * Returns a built SystemMetricDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SystemMetricDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SystemMetricDetails.ModelBuilder builder() {
+    return new SystemMetricDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SystemMetricDetails.ModelBuilder toBuilder() {
+    SystemMetricDetails.ModelBuilder builder = new SystemMetricDetails.ModelBuilder()
+      .topCpuApplications(getTopCpuApplications())
+      .topMemoryApplications(getTopMemoryApplications());
+    return builder;
+  }
+
 }
 

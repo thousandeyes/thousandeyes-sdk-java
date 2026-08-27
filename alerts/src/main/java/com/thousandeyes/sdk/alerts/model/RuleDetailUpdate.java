@@ -63,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RuleDetailUpdate {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
@@ -129,14 +130,6 @@ public class RuleDetailUpdate {
   private List<String> testIds = new ArrayList<>();
 
   public RuleDetailUpdate() { 
-  }
-
-  @JsonCreator
-  public RuleDetailUpdate(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId
-  ) {
-  this();
-    this.ruleId = ruleId;
   }
 
    /**
@@ -792,5 +785,164 @@ public class RuleDetailUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RuleDetailUpdate instance;
+
+    public ModelBuilder() {
+      this(new RuleDetailUpdate());
+    }
+
+    protected ModelBuilder(RuleDetailUpdate instance) {
+      this.instance = instance;
+    }
+
+    public RuleDetailUpdate.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder ruleName(String ruleName) {
+      this.instance.setRuleName(ruleName);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder expression(String expression) {
+      this.instance.setExpression(expression);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder direction(AlertDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder notifyOnClear(Boolean notifyOnClear) {
+      this.instance.setNotifyOnClear(notifyOnClear);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.setIsDefault(isDefault);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder alertGroupType(AlertGroupType alertGroupType) {
+      this.instance.setAlertGroupType(alertGroupType);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder minimumSources(Integer minimumSources) {
+      this.instance.setMinimumSources(minimumSources);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder minimumSourcesPct(Integer minimumSourcesPct) {
+      this.instance.setMinimumSourcesPct(minimumSourcesPct);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder roundsViolatingMode(AlertRoundsViolationMode roundsViolatingMode) {
+      this.instance.setRoundsViolatingMode(roundsViolatingMode);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder roundsViolatingOutOf(Integer roundsViolatingOutOf) {
+      this.instance.setRoundsViolatingOutOf(roundsViolatingOutOf);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder roundsViolatingRequired(Integer roundsViolatingRequired) {
+      this.instance.setRoundsViolatingRequired(roundsViolatingRequired);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
+      this.instance.setIncludeCoveredPrefixes(includeCoveredPrefixes);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder sensitivityLevel(SensitivityLevel sensitivityLevel) {
+      this.instance.setSensitivityLevel(sensitivityLevel);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder endpointAgentIds(List<String> endpointAgentIds) {
+      this.instance.setEndpointAgentIds(endpointAgentIds);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder endpointLabelIds(List<String> endpointLabelIds) {
+      this.instance.setEndpointLabelIds(endpointLabelIds);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder visitedSitesFilter(List<String> visitedSitesFilter) {
+      this.instance.setVisitedSitesFilter(visitedSitesFilter);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder notifications(AlertNotification notifications) {
+      this.instance.setNotifications(notifications);
+      return this;
+    }
+    public RuleDetailUpdate.ModelBuilder testIds(List<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+
+    /**
+     * Returns a built RuleDetailUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RuleDetailUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RuleDetailUpdate.ModelBuilder builder() {
+    return new RuleDetailUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RuleDetailUpdate.ModelBuilder toBuilder() {
+    RuleDetailUpdate.ModelBuilder builder = new RuleDetailUpdate.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .description(getDescription())
+      .direction(getDirection())
+      .notifyOnClear(getNotifyOnClear())
+      .isDefault(getIsDefault())
+      .alertType(getAlertType())
+      .alertGroupType(getAlertGroupType())
+      .minimumSources(getMinimumSources())
+      .minimumSourcesPct(getMinimumSourcesPct())
+      .roundsViolatingMode(getRoundsViolatingMode())
+      .roundsViolatingOutOf(getRoundsViolatingOutOf())
+      .roundsViolatingRequired(getRoundsViolatingRequired())
+      .includeCoveredPrefixes(getIncludeCoveredPrefixes())
+      .sensitivityLevel(getSensitivityLevel())
+      .severity(getSeverity())
+      .endpointAgentIds(getEndpointAgentIds())
+      .endpointLabelIds(getEndpointLabelIds())
+      .visitedSitesFilter(getVisitedSitesFilter())
+      .notifications(getNotifications())
+      .testIds(getTestIds());
+    return builder;
+  }
+
 }
 

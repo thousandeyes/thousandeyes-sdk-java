@@ -113,5 +113,59 @@ public class ApiContextFiltersResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiContextFiltersResponse instance;
+
+    public ModelBuilder() {
+      this(new ApiContextFiltersResponse());
+    }
+
+    protected ModelBuilder(ApiContextFiltersResponse instance) {
+      this.instance = instance;
+    }
+
+    public ApiContextFiltersResponse.ModelBuilder dashboardFilters(List<ApiContextFilterResponse> dashboardFilters) {
+      this.instance.setDashboardFilters(dashboardFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiContextFiltersResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiContextFiltersResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiContextFiltersResponse.ModelBuilder builder() {
+    return new ApiContextFiltersResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiContextFiltersResponse.ModelBuilder toBuilder() {
+    ApiContextFiltersResponse.ModelBuilder builder = new ApiContextFiltersResponse.ModelBuilder()
+      .dashboardFilters(getDashboardFilters());
+    return builder;
+  }
+
 }
 

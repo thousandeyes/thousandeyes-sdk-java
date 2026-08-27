@@ -177,5 +177,69 @@ public class PathVisDetailTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisDetailTestResults instance;
+
+    public ModelBuilder() {
+      this(new PathVisDetailTestResults());
+    }
+
+    protected ModelBuilder(PathVisDetailTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PathVisDetailTestResults.ModelBuilder results(List<PathVisDetailTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PathVisDetailTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PathVisDetailTestResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisDetailTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisDetailTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisDetailTestResults.ModelBuilder builder() {
+    return new PathVisDetailTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisDetailTestResults.ModelBuilder toBuilder() {
+    PathVisDetailTestResults.ModelBuilder builder = new PathVisDetailTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

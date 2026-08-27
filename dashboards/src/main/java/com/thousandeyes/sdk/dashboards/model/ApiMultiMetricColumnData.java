@@ -278,5 +278,84 @@ public class ApiMultiMetricColumnData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiMultiMetricColumnData instance;
+
+    public ModelBuilder() {
+      this(new ApiMultiMetricColumnData());
+    }
+
+    protected ModelBuilder(ApiMultiMetricColumnData instance) {
+      this.instance = instance;
+    }
+
+    public ApiMultiMetricColumnData.ModelBuilder columnId(String columnId) {
+      this.instance.setColumnId(columnId);
+      return this;
+    }
+    public ApiMultiMetricColumnData.ModelBuilder binSize(Long binSize) {
+      this.instance.setBinSize(binSize);
+      return this;
+    }
+    public ApiMultiMetricColumnData.ModelBuilder points(List<ApiWidgetDataPoint> points) {
+      this.instance.setPoints(points);
+      return this;
+    }
+    public ApiMultiMetricColumnData.ModelBuilder status(String status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public ApiMultiMetricColumnData.ModelBuilder alertSuppressionWindows(List<ApiDashboardAsw> alertSuppressionWindows) {
+      this.instance.setAlertSuppressionWindows(alertSuppressionWindows);
+      return this;
+    }
+    public ApiMultiMetricColumnData.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiMultiMetricColumnData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiMultiMetricColumnData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiMultiMetricColumnData.ModelBuilder builder() {
+    return new ApiMultiMetricColumnData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiMultiMetricColumnData.ModelBuilder toBuilder() {
+    ApiMultiMetricColumnData.ModelBuilder builder = new ApiMultiMetricColumnData.ModelBuilder()
+      .columnId(getColumnId())
+      .binSize(getBinSize())
+      .points(getPoints())
+      .status(getStatus())
+      .alertSuppressionWindows(getAlertSuppressionWindows())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -318,5 +318,94 @@ public class DynamicTestSelfLink {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicTestSelfLink instance;
+
+    public ModelBuilder() {
+      this(new DynamicTestSelfLink());
+    }
+
+    protected ModelBuilder(DynamicTestSelfLink instance) {
+      this.instance = instance;
+    }
+
+    public DynamicTestSelfLink.ModelBuilder href(String href) {
+      this.instance.setHref(href);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder templated(Boolean templated) {
+      this.instance.setTemplated(templated);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder deprecation(String deprecation) {
+      this.instance.setDeprecation(deprecation);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder profile(String profile) {
+      this.instance.setProfile(profile);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public DynamicTestSelfLink.ModelBuilder hreflang(String hreflang) {
+      this.instance.setHreflang(hreflang);
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicTestSelfLink instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicTestSelfLink build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicTestSelfLink.ModelBuilder builder() {
+    return new DynamicTestSelfLink.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicTestSelfLink.ModelBuilder toBuilder() {
+    DynamicTestSelfLink.ModelBuilder builder = new DynamicTestSelfLink.ModelBuilder()
+      .href(getHref())
+      .templated(getTemplated())
+      .type(getType())
+      .deprecation(getDeprecation())
+      .name(getName())
+      .profile(getProfile())
+      .title(getTitle())
+      .hreflang(getHreflang());
+    return builder;
+  }
+
 }
 

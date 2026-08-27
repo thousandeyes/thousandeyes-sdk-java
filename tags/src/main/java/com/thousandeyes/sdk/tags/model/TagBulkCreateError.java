@@ -174,5 +174,69 @@ public class TagBulkCreateError {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TagBulkCreateError instance;
+
+    public ModelBuilder() {
+      this(new TagBulkCreateError());
+    }
+
+    protected ModelBuilder(TagBulkCreateError instance) {
+      this.instance = instance;
+    }
+
+    public TagBulkCreateError.ModelBuilder tag(Map<String, TagInfo> tag) {
+      this.instance.setTag(tag);
+      return this;
+    }
+    public TagBulkCreateError.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.setResponseCode(responseCode);
+      return this;
+    }
+    public TagBulkCreateError.ModelBuilder message(String message) {
+      this.instance.setMessage(message);
+      return this;
+    }
+
+    /**
+     * Returns a built TagBulkCreateError instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TagBulkCreateError build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TagBulkCreateError.ModelBuilder builder() {
+    return new TagBulkCreateError.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TagBulkCreateError.ModelBuilder toBuilder() {
+    TagBulkCreateError.ModelBuilder builder = new TagBulkCreateError.ModelBuilder()
+      .tag(getTag())
+      .responseCode(getResponseCode())
+      .message(getMessage());
+    return builder;
+  }
+
 }
 

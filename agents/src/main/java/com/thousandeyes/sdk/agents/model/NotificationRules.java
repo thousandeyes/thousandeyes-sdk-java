@@ -113,5 +113,59 @@ public class NotificationRules {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationRules instance;
+
+    public ModelBuilder() {
+      this(new NotificationRules());
+    }
+
+    protected ModelBuilder(NotificationRules instance) {
+      this.instance = instance;
+    }
+
+    public NotificationRules.ModelBuilder agentAlertRules(List<NotificationRule> agentAlertRules) {
+      this.instance.setAgentAlertRules(agentAlertRules);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationRules instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationRules build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationRules.ModelBuilder builder() {
+    return new NotificationRules.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationRules.ModelBuilder toBuilder() {
+    NotificationRules.ModelBuilder builder = new NotificationRules.ModelBuilder()
+      .agentAlertRules(getAgentAlertRules());
+    return builder;
+  }
+
 }
 

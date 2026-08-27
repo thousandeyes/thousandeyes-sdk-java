@@ -44,25 +44,17 @@ public class RealUserEndpointTestResults {
   private List<RealUserEndpointTest> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextLink links;
 
   public RealUserEndpointTestResults() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public RealUserEndpointTestResults results(List<RealUserEndpointTest> results) {
@@ -198,5 +190,74 @@ public class RealUserEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestResults());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestResults.ModelBuilder results(List<RealUserEndpointTest> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public RealUserEndpointTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public RealUserEndpointTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public RealUserEndpointTestResults.ModelBuilder links(PaginationNextLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestResults.ModelBuilder builder() {
+    return new RealUserEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestResults.ModelBuilder toBuilder() {
+    RealUserEndpointTestResults.ModelBuilder builder = new RealUserEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

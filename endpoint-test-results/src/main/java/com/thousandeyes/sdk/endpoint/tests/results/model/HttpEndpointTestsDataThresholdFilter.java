@@ -165,5 +165,69 @@ public class HttpEndpointTestsDataThresholdFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpEndpointTestsDataThresholdFilter instance;
+
+    public ModelBuilder() {
+      this(new HttpEndpointTestsDataThresholdFilter());
+    }
+
+    protected ModelBuilder(HttpEndpointTestsDataThresholdFilter instance) {
+      this.instance = instance;
+    }
+
+    public HttpEndpointTestsDataThresholdFilter.ModelBuilder name(HttpThresholdFilterName name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public HttpEndpointTestsDataThresholdFilter.ModelBuilder value(Double value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public HttpEndpointTestsDataThresholdFilter.ModelBuilder operator(ThresholdFilterOperator operator) {
+      this.instance.setOperator(operator);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpEndpointTestsDataThresholdFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpEndpointTestsDataThresholdFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpEndpointTestsDataThresholdFilter.ModelBuilder builder() {
+    return new HttpEndpointTestsDataThresholdFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpEndpointTestsDataThresholdFilter.ModelBuilder toBuilder() {
+    HttpEndpointTestsDataThresholdFilter.ModelBuilder builder = new HttpEndpointTestsDataThresholdFilter.ModelBuilder()
+      .name(getName())
+      .value(getValue())
+      .operator(getOperator());
+    return builder;
+  }
+
 }
 

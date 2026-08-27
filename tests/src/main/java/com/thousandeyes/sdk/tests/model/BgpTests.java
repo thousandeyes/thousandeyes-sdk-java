@@ -145,5 +145,64 @@ public class BgpTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BgpTests instance;
+
+    public ModelBuilder() {
+      this(new BgpTests());
+    }
+
+    protected ModelBuilder(BgpTests instance) {
+      this.instance = instance;
+    }
+
+    public BgpTests.ModelBuilder tests(List<UnexpandedBgpTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public BgpTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built BgpTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BgpTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BgpTests.ModelBuilder builder() {
+    return new BgpTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BgpTests.ModelBuilder toBuilder() {
+    BgpTests.ModelBuilder builder = new BgpTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

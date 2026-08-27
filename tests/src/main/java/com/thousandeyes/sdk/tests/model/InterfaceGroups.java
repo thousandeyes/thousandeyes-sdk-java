@@ -145,5 +145,64 @@ public class InterfaceGroups {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InterfaceGroups instance;
+
+    public ModelBuilder() {
+      this(new InterfaceGroups());
+    }
+
+    protected ModelBuilder(InterfaceGroups instance) {
+      this.instance = instance;
+    }
+
+    public InterfaceGroups.ModelBuilder pathVisInterfaceGroups(List<InterfaceGroup> pathVisInterfaceGroups) {
+      this.instance.setPathVisInterfaceGroups(pathVisInterfaceGroups);
+      return this;
+    }
+    public InterfaceGroups.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built InterfaceGroups instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InterfaceGroups build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InterfaceGroups.ModelBuilder builder() {
+    return new InterfaceGroups.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InterfaceGroups.ModelBuilder toBuilder() {
+    InterfaceGroups.ModelBuilder builder = new InterfaceGroups.ModelBuilder()
+      .pathVisInterfaceGroups(getPathVisInterfaceGroups())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

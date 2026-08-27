@@ -176,5 +176,69 @@ public class ApiContextFilterRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiContextFilterRequest instance;
+
+    public ModelBuilder() {
+      this(new ApiContextFilterRequest());
+    }
+
+    protected ModelBuilder(ApiContextFilterRequest instance) {
+      this.instance = instance;
+    }
+
+    public ApiContextFilterRequest.ModelBuilder context(Set<ApiDataSourceFilters> context) {
+      this.instance.setContext(context);
+      return this;
+    }
+    public ApiContextFilterRequest.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiContextFilterRequest.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiContextFilterRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiContextFilterRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiContextFilterRequest.ModelBuilder builder() {
+    return new ApiContextFilterRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiContextFilterRequest.ModelBuilder toBuilder() {
+    ApiContextFilterRequest.ModelBuilder builder = new ApiContextFilterRequest.ModelBuilder()
+      .context(getContext())
+      .name(getName())
+      .description(getDescription());
+    return builder;
+  }
+
 }
 

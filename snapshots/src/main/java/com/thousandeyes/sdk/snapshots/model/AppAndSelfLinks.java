@@ -133,5 +133,64 @@ public class AppAndSelfLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AppAndSelfLinks instance;
+
+    public ModelBuilder() {
+      this(new AppAndSelfLinks());
+    }
+
+    protected ModelBuilder(AppAndSelfLinks instance) {
+      this.instance = instance;
+    }
+
+    public AppAndSelfLinks.ModelBuilder appLink(Link appLink) {
+      this.instance.setAppLink(appLink);
+      return this;
+    }
+    public AppAndSelfLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built AppAndSelfLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AppAndSelfLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AppAndSelfLinks.ModelBuilder builder() {
+    return new AppAndSelfLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AppAndSelfLinks.ModelBuilder toBuilder() {
+    AppAndSelfLinks.ModelBuilder builder = new AppAndSelfLinks.ModelBuilder()
+      .appLink(getAppLink())
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

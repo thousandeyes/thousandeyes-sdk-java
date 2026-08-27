@@ -168,5 +168,69 @@ public class BatteryMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BatteryMetrics instance;
+
+    public ModelBuilder() {
+      this(new BatteryMetrics());
+    }
+
+    protected ModelBuilder(BatteryMetrics instance) {
+      this.instance = instance;
+    }
+
+    public BatteryMetrics.ModelBuilder batteryHealthNormalizedPercent(Double batteryHealthNormalizedPercent) {
+      this.instance.setBatteryHealthNormalizedPercent(batteryHealthNormalizedPercent);
+      return this;
+    }
+    public BatteryMetrics.ModelBuilder batteryLevel(BatteryLevel batteryLevel) {
+      this.instance.setBatteryLevel(batteryLevel);
+      return this;
+    }
+    public BatteryMetrics.ModelBuilder batteryLevelNormalizedPercent(Double batteryLevelNormalizedPercent) {
+      this.instance.setBatteryLevelNormalizedPercent(batteryLevelNormalizedPercent);
+      return this;
+    }
+
+    /**
+     * Returns a built BatteryMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BatteryMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BatteryMetrics.ModelBuilder builder() {
+    return new BatteryMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BatteryMetrics.ModelBuilder toBuilder() {
+    BatteryMetrics.ModelBuilder builder = new BatteryMetrics.ModelBuilder()
+      .batteryHealthNormalizedPercent(getBatteryHealthNormalizedPercent())
+      .batteryLevel(getBatteryLevel())
+      .batteryLevelNormalizedPercent(getBatteryLevelNormalizedPercent());
+    return builder;
+  }
+
 }
 

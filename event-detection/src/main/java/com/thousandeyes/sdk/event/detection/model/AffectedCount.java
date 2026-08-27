@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AffectedCount {
   public static final String JSON_PROPERTY_TOTAL = "total";
+  @JsonProperty(JSON_PROPERTY_TOTAL)
   private Integer total;
 
   public static final String JSON_PROPERTY_IN_ACCOUNT_GROUP = "inAccountGroup";
+  @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP)
   private Integer inAccountGroup;
 
   public AffectedCount() { 
-  }
-
-  @JsonCreator
-  public AffectedCount(
-    @JsonProperty(JSON_PROPERTY_TOTAL) Integer total, 
-    @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP) Integer inAccountGroup
-  ) {
-  this();
-    this.total = total;
-    this.inAccountGroup = inAccountGroup;
   }
 
    /**
@@ -122,5 +114,64 @@ public class AffectedCount {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AffectedCount instance;
+
+    public ModelBuilder() {
+      this(new AffectedCount());
+    }
+
+    protected ModelBuilder(AffectedCount instance) {
+      this.instance = instance;
+    }
+
+    public AffectedCount.ModelBuilder total(Integer total) {
+      this.instance.total = total;
+      return this;
+    }
+    public AffectedCount.ModelBuilder inAccountGroup(Integer inAccountGroup) {
+      this.instance.inAccountGroup = inAccountGroup;
+      return this;
+    }
+
+    /**
+     * Returns a built AffectedCount instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AffectedCount build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AffectedCount.ModelBuilder builder() {
+    return new AffectedCount.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AffectedCount.ModelBuilder toBuilder() {
+    AffectedCount.ModelBuilder builder = new AffectedCount.ModelBuilder()
+      .total(getTotal())
+      .inAccountGroup(getInAccountGroup());
+    return builder;
+  }
+
 }
 

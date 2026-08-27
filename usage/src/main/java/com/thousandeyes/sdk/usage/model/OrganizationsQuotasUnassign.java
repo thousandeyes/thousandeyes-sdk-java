@@ -113,5 +113,59 @@ public class OrganizationsQuotasUnassign {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OrganizationsQuotasUnassign instance;
+
+    public ModelBuilder() {
+      this(new OrganizationsQuotasUnassign());
+    }
+
+    protected ModelBuilder(OrganizationsQuotasUnassign instance) {
+      this.instance = instance;
+    }
+
+    public OrganizationsQuotasUnassign.ModelBuilder organizations(List<OrganizationQuotaUnassignment> organizations) {
+      this.instance.setOrganizations(organizations);
+      return this;
+    }
+
+    /**
+     * Returns a built OrganizationsQuotasUnassign instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OrganizationsQuotasUnassign build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OrganizationsQuotasUnassign.ModelBuilder builder() {
+    return new OrganizationsQuotasUnassign.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OrganizationsQuotasUnassign.ModelBuilder toBuilder() {
+    OrganizationsQuotasUnassign.ModelBuilder builder = new OrganizationsQuotasUnassign.ModelBuilder()
+      .organizations(getOrganizations());
+    return builder;
+  }
+
 }
 

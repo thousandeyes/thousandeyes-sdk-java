@@ -37,17 +37,10 @@ public class ErrorDetail {
   private ErrorDetailCode code;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   private String description;
 
   public ErrorDetail() { 
-  }
-
-  @JsonCreator
-  public ErrorDetail(
-    @JsonProperty(JSON_PROPERTY_DESCRIPTION) String description
-  ) {
-  this();
-    this.description = description;
   }
 
   public ErrorDetail code(ErrorDetailCode code) {
@@ -131,5 +124,64 @@ public class ErrorDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ErrorDetail instance;
+
+    public ModelBuilder() {
+      this(new ErrorDetail());
+    }
+
+    protected ModelBuilder(ErrorDetail instance) {
+      this.instance = instance;
+    }
+
+    public ErrorDetail.ModelBuilder code(ErrorDetailCode code) {
+      this.instance.setCode(code);
+      return this;
+    }
+    public ErrorDetail.ModelBuilder description(String description) {
+      this.instance.description = description;
+      return this;
+    }
+
+    /**
+     * Returns a built ErrorDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ErrorDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ErrorDetail.ModelBuilder builder() {
+    return new ErrorDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ErrorDetail.ModelBuilder toBuilder() {
+    ErrorDetail.ModelBuilder builder = new ErrorDetail.ModelBuilder()
+      .code(getCode())
+      .description(getDescription());
+    return builder;
+  }
+
 }
 

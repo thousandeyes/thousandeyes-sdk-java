@@ -145,5 +145,64 @@ public class RealUserEndpointTestDetailResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestDetailResults instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestDetailResults());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestDetailResults instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestDetailResults.ModelBuilder results(List<RealUserEndpointTestDetail> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public RealUserEndpointTestDetailResults.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestDetailResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestDetailResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestDetailResults.ModelBuilder builder() {
+    return new RealUserEndpointTestDetailResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestDetailResults.ModelBuilder toBuilder() {
+    RealUserEndpointTestDetailResults.ModelBuilder builder = new RealUserEndpointTestDetailResults.ModelBuilder()
+      .results(getResults())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

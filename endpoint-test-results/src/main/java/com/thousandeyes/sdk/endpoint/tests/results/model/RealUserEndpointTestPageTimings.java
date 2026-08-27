@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestPageTimings {
   public static final String JSON_PROPERTY_ON_CONTENT_LOAD = "onContentLoad";
+  @JsonProperty(JSON_PROPERTY_ON_CONTENT_LOAD)
   private Integer onContentLoad;
 
   public static final String JSON_PROPERTY_ON_LOAD = "onLoad";
+  @JsonProperty(JSON_PROPERTY_ON_LOAD)
   private Integer onLoad;
 
   public RealUserEndpointTestPageTimings() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestPageTimings(
-    @JsonProperty(JSON_PROPERTY_ON_CONTENT_LOAD) Integer onContentLoad, 
-    @JsonProperty(JSON_PROPERTY_ON_LOAD) Integer onLoad
-  ) {
-  this();
-    this.onContentLoad = onContentLoad;
-    this.onLoad = onLoad;
   }
 
    /**
@@ -122,5 +114,64 @@ public class RealUserEndpointTestPageTimings {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestPageTimings instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestPageTimings());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestPageTimings instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestPageTimings.ModelBuilder onContentLoad(Integer onContentLoad) {
+      this.instance.onContentLoad = onContentLoad;
+      return this;
+    }
+    public RealUserEndpointTestPageTimings.ModelBuilder onLoad(Integer onLoad) {
+      this.instance.onLoad = onLoad;
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestPageTimings instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestPageTimings build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestPageTimings.ModelBuilder builder() {
+    return new RealUserEndpointTestPageTimings.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestPageTimings.ModelBuilder toBuilder() {
+    RealUserEndpointTestPageTimings.ModelBuilder builder = new RealUserEndpointTestPageTimings.ModelBuilder()
+      .onContentLoad(getOnContentLoad())
+      .onLoad(getOnLoad());
+    return builder;
+  }
+
 }
 

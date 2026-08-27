@@ -166,5 +166,69 @@ public class ApiReportSnapshotTimeSpan {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiReportSnapshotTimeSpan instance;
+
+    public ModelBuilder() {
+      this(new ApiReportSnapshotTimeSpan());
+    }
+
+    protected ModelBuilder(ApiReportSnapshotTimeSpan instance) {
+      this.instance = instance;
+    }
+
+    public ApiReportSnapshotTimeSpan.ModelBuilder startDate(String startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public ApiReportSnapshotTimeSpan.ModelBuilder start(OffsetDateTime start) {
+      this.instance.setStart(start);
+      return this;
+    }
+    public ApiReportSnapshotTimeSpan.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiReportSnapshotTimeSpan instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiReportSnapshotTimeSpan build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiReportSnapshotTimeSpan.ModelBuilder builder() {
+    return new ApiReportSnapshotTimeSpan.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiReportSnapshotTimeSpan.ModelBuilder toBuilder() {
+    ApiReportSnapshotTimeSpan.ModelBuilder builder = new ApiReportSnapshotTimeSpan.ModelBuilder()
+      .startDate(getStartDate())
+      .start(getStart())
+      .duration(getDuration());
+    return builder;
+  }
+
 }
 

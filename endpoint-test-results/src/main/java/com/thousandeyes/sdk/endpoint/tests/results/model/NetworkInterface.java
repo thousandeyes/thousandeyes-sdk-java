@@ -43,50 +43,37 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkInterface {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_SUBNET_MASK = "subnetMask";
+  @JsonProperty(JSON_PROPERTY_SUBNET_MASK)
   private String subnetMask;
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESS = "publicIpAddress";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESS)
   private String publicIpAddress;
 
   public static final String JSON_PROPERTY_LOCAL_PREFIX = "localPrefix";
+  @JsonProperty(JSON_PROPERTY_LOCAL_PREFIX)
   private String localPrefix;
 
   public static final String JSON_PROPERTY_PUBLIC_IP_RANGE = "publicIpRange";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_RANGE)
   private String publicIpRange;
 
   public static final String JSON_PROPERTY_DNS_SERVERS = "dnsServers";
+  @JsonProperty(JSON_PROPERTY_DNS_SERVERS)
   private List<String> dnsServers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HARDWARE_TYPE = "hardwareType";
   private InterfaceHardwareType hardwareType;
 
   public static final String JSON_PROPERTY_INTERFACE_NAME = "interfaceName";
+  @JsonProperty(JSON_PROPERTY_INTERFACE_NAME)
   private String interfaceName;
 
   public NetworkInterface() { 
-  }
-
-  @JsonCreator
-  public NetworkInterface(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_SUBNET_MASK) String subnetMask, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESS) String publicIpAddress, 
-    @JsonProperty(JSON_PROPERTY_LOCAL_PREFIX) String localPrefix, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_RANGE) String publicIpRange, 
-    @JsonProperty(JSON_PROPERTY_DNS_SERVERS) List<String> dnsServers, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_NAME) String interfaceName
-  ) {
-  this();
-    this.ipAddress = ipAddress;
-    this.subnetMask = subnetMask;
-    this.publicIpAddress = publicIpAddress;
-    this.localPrefix = localPrefix;
-    this.publicIpRange = publicIpRange;
-    this.dnsServers = dnsServers;
-    this.interfaceName = interfaceName;
   }
 
    /**
@@ -272,5 +259,94 @@ public class NetworkInterface {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkInterface instance;
+
+    public ModelBuilder() {
+      this(new NetworkInterface());
+    }
+
+    protected ModelBuilder(NetworkInterface instance) {
+      this.instance = instance;
+    }
+
+    public NetworkInterface.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder subnetMask(String subnetMask) {
+      this.instance.subnetMask = subnetMask;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder publicIpAddress(String publicIpAddress) {
+      this.instance.publicIpAddress = publicIpAddress;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder localPrefix(String localPrefix) {
+      this.instance.localPrefix = localPrefix;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder publicIpRange(String publicIpRange) {
+      this.instance.publicIpRange = publicIpRange;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder dnsServers(List<String> dnsServers) {
+      this.instance.dnsServers = dnsServers;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder hardwareType(InterfaceHardwareType hardwareType) {
+      this.instance.setHardwareType(hardwareType);
+      return this;
+    }
+    public NetworkInterface.ModelBuilder interfaceName(String interfaceName) {
+      this.instance.interfaceName = interfaceName;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkInterface instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkInterface build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkInterface.ModelBuilder builder() {
+    return new NetworkInterface.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkInterface.ModelBuilder toBuilder() {
+    NetworkInterface.ModelBuilder builder = new NetworkInterface.ModelBuilder()
+      .ipAddress(getIpAddress())
+      .subnetMask(getSubnetMask())
+      .publicIpAddress(getPublicIpAddress())
+      .localPrefix(getLocalPrefix())
+      .publicIpRange(getPublicIpRange())
+      .dnsServers(getDnsServers())
+      .hardwareType(getHardwareType())
+      .interfaceName(getInterfaceName());
+    return builder;
+  }
+
 }
 

@@ -45,17 +45,10 @@ public class DnsSecProperties {
   private Boolean randomizedStartTime = false;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public DnsSecProperties() { 
-  }
-
-  @JsonCreator
-  public DnsSecProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public DnsSecProperties domain(String domain) {
@@ -193,5 +186,74 @@ public class DnsSecProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsSecProperties instance;
+
+    public ModelBuilder() {
+      this(new DnsSecProperties());
+    }
+
+    protected ModelBuilder(DnsSecProperties instance) {
+      this.instance = instance;
+    }
+
+    public DnsSecProperties.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public DnsSecProperties.ModelBuilder dnsQueryClass(DnsQueryClass dnsQueryClass) {
+      this.instance.setDnsQueryClass(dnsQueryClass);
+      return this;
+    }
+    public DnsSecProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public DnsSecProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsSecProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsSecProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsSecProperties.ModelBuilder builder() {
+    return new DnsSecProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsSecProperties.ModelBuilder toBuilder() {
+    DnsSecProperties.ModelBuilder builder = new DnsSecProperties.ModelBuilder()
+      .domain(getDomain())
+      .dnsQueryClass(getDnsQueryClass())
+      .randomizedStartTime(getRandomizedStartTime())
+      .type(getType());
+    return builder;
+  }
+
 }
 

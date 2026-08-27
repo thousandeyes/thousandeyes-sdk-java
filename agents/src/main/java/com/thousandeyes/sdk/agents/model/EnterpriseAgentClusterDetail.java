@@ -81,24 +81,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentClusterDetail {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES)
   private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private String agentName;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
@@ -111,21 +117,26 @@ public class EnterpriseAgentClusterDetail {
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
+  @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES)
   private Boolean verifySslCertificates;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   private List<Long> testIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
+  @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS)
   private List<ClusterMember> clusterMembers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
+  @JsonProperty(JSON_PROPERTY_UTILIZATION)
   private Integer utilization;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
@@ -135,12 +146,15 @@ public class EnterpriseAgentClusterDetail {
   private EnterpriseAgentIpv6Policy ipv6Policy;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOSTNAME = "hostname";
+  @JsonProperty(JSON_PROPERTY_HOSTNAME)
   private String hostname;
 
   public static final String JSON_PROPERTY_LAST_SEEN = "lastSeen";
+  @JsonProperty(JSON_PROPERTY_LAST_SEEN)
   private OffsetDateTime lastSeen;
 
   public static final String JSON_PROPERTY_AGENT_STATE = "agentState";
@@ -150,27 +164,32 @@ public class EnterpriseAgentClusterDetail {
   private Boolean keepBrowserCache;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_TARGET_FOR_TESTS = "targetForTests";
   private String targetForTests;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
   private String serialNumber;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_IP_MAPPING = "interfaceIpMapping";
+  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING)
   private List<InterfaceIpMapping> interfaceIpMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATION_RULES = "notificationRules";
   private List<NotificationRules> notificationRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<AgentLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<AgentTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
@@ -180,50 +199,6 @@ public class EnterpriseAgentClusterDetail {
   private SelfLinks links;
 
   public EnterpriseAgentClusterDetail() { 
-  }
-
-  @JsonCreator
-  public EnterpriseAgentClusterDetail(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES) List<String> publicIpAddresses, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
-    @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
-    @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
-    @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
-    @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
-  ) {
-  this();
-    this.ipAddresses = ipAddresses;
-    this.publicIpAddresses = publicIpAddresses;
-    this.network = network;
-    this.agentId = agentId;
-    this.location = location;
-    this.countryId = countryId;
-    this.verifySslCertificates = verifySslCertificates;
-    this.prefix = prefix;
-    this.testIds = testIds;
-    this.clusterMembers = clusterMembers;
-    this.utilization = utilization;
-    this.errorDetails = errorDetails;
-    this.hostname = hostname;
-    this.lastSeen = lastSeen;
-    this.createdDate = createdDate;
-    this.serialNumber = serialNumber;
-    this.interfaceIpMapping = interfaceIpMapping;
-    this.labels = labels;
-    this.tags = tags;
   }
 
    /**
@@ -996,5 +971,219 @@ public class EnterpriseAgentClusterDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentClusterDetail instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentClusterDetail());
+    }
+
+    protected ModelBuilder(EnterpriseAgentClusterDetail instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentClusterDetail.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder publicIpAddresses(List<String> publicIpAddresses) {
+      this.instance.publicIpAddresses = publicIpAddresses;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder coordinates(Coordinates coordinates) {
+      this.instance.setCoordinates(coordinates);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+      this.instance.setNetworkProviderInfo(networkProviderInfo);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder verifySslCertificates(Boolean verifySslCertificates) {
+      this.instance.verifySslCertificates = verifySslCertificates;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder testIds(List<Long> testIds) {
+      this.instance.testIds = testIds;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder clusterMembers(List<ClusterMember> clusterMembers) {
+      this.instance.clusterMembers = clusterMembers;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder utilization(Integer utilization) {
+      this.instance.utilization = utilization;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder accountGroups(List<AccountGroup> accountGroups) {
+      this.instance.setAccountGroups(accountGroups);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder ipv6Policy(EnterpriseAgentIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder errorDetails(List<ErrorDetail> errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder hostname(String hostname) {
+      this.instance.hostname = hostname;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder lastSeen(OffsetDateTime lastSeen) {
+      this.instance.lastSeen = lastSeen;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder agentState(EnterpriseAgentState agentState) {
+      this.instance.setAgentState(agentState);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder keepBrowserCache(Boolean keepBrowserCache) {
+      this.instance.setKeepBrowserCache(keepBrowserCache);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder targetForTests(String targetForTests) {
+      this.instance.setTargetForTests(targetForTests);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder serialNumber(String serialNumber) {
+      this.instance.serialNumber = serialNumber;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder localResolutionPrefixes(List<String> localResolutionPrefixes) {
+      this.instance.setLocalResolutionPrefixes(localResolutionPrefixes);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder interfaceIpMapping(List<InterfaceIpMapping> interfaceIpMapping) {
+      this.instance.interfaceIpMapping = interfaceIpMapping;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder notificationRules(List<NotificationRules> notificationRules) {
+      this.instance.setNotificationRules(notificationRules);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder labels(List<AgentLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder tags(List<AgentTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder agentType(String agentType) {
+      this.instance.setAgentType(agentType);
+      return this;
+    }
+    public EnterpriseAgentClusterDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentClusterDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentClusterDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentClusterDetail.ModelBuilder builder() {
+    return new EnterpriseAgentClusterDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentClusterDetail.ModelBuilder toBuilder() {
+    EnterpriseAgentClusterDetail.ModelBuilder builder = new EnterpriseAgentClusterDetail.ModelBuilder()
+      .ipAddresses(getIpAddresses())
+      .publicIpAddresses(getPublicIpAddresses())
+      .network(getNetwork())
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .location(getLocation())
+      .countryId(getCountryId())
+      .coordinates(getCoordinates())
+      .networkProviderInfo(getNetworkProviderInfo())
+      .enabled(getEnabled())
+      .verifySslCertificates(getVerifySslCertificates())
+      .prefix(getPrefix())
+      .testIds(getTestIds())
+      .tests(getTests())
+      .clusterMembers(getClusterMembers())
+      .utilization(getUtilization())
+      .accountGroups(getAccountGroups())
+      .ipv6Policy(getIpv6Policy())
+      .errorDetails(getErrorDetails())
+      .hostname(getHostname())
+      .lastSeen(getLastSeen())
+      .agentState(getAgentState())
+      .keepBrowserCache(getKeepBrowserCache())
+      .createdDate(getCreatedDate())
+      .targetForTests(getTargetForTests())
+      .serialNumber(getSerialNumber())
+      .localResolutionPrefixes(getLocalResolutionPrefixes())
+      .interfaceIpMapping(getInterfaceIpMapping())
+      .notificationRules(getNotificationRules())
+      .labels(getLabels())
+      .tags(getTags())
+      .agentType(getAgentType())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

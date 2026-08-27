@@ -112,5 +112,59 @@ public class QuotasUnassign {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private QuotasUnassign instance;
+
+    public ModelBuilder() {
+      this(new QuotasUnassign());
+    }
+
+    protected ModelBuilder(QuotasUnassign instance) {
+      this.instance = instance;
+    }
+
+    public QuotasUnassign.ModelBuilder organizations(List<String> organizations) {
+      this.instance.setOrganizations(organizations);
+      return this;
+    }
+
+    /**
+     * Returns a built QuotasUnassign instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public QuotasUnassign build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static QuotasUnassign.ModelBuilder builder() {
+    return new QuotasUnassign.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public QuotasUnassign.ModelBuilder toBuilder() {
+    QuotasUnassign.ModelBuilder builder = new QuotasUnassign.ModelBuilder()
+      .organizations(getOrganizations());
+    return builder;
+  }
+
 }
 

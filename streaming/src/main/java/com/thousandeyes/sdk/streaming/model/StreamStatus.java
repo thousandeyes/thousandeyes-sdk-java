@@ -164,5 +164,69 @@ public class StreamStatus {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private StreamStatus instance;
+
+    public ModelBuilder() {
+      this(new StreamStatus());
+    }
+
+    protected ModelBuilder(StreamStatus instance) {
+      this.instance = instance;
+    }
+
+    public StreamStatus.ModelBuilder lastSuccess(Long lastSuccess) {
+      this.instance.setLastSuccess(lastSuccess);
+      return this;
+    }
+    public StreamStatus.ModelBuilder lastFailure(Long lastFailure) {
+      this.instance.setLastFailure(lastFailure);
+      return this;
+    }
+    public StreamStatus.ModelBuilder status(StreamStatusType status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+
+    /**
+     * Returns a built StreamStatus instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public StreamStatus build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static StreamStatus.ModelBuilder builder() {
+    return new StreamStatus.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public StreamStatus.ModelBuilder toBuilder() {
+    StreamStatus.ModelBuilder builder = new StreamStatus.ModelBuilder()
+      .lastSuccess(getLastSuccess())
+      .lastFailure(getLastFailure())
+      .status(getStatus());
+    return builder;
+  }
+
 }
 

@@ -230,5 +230,74 @@ public class PanoramaKeyGenAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PanoramaKeyGenAuthentication instance;
+
+    public ModelBuilder() {
+      this(new PanoramaKeyGenAuthentication());
+    }
+
+    protected ModelBuilder(PanoramaKeyGenAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public PanoramaKeyGenAuthentication.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public PanoramaKeyGenAuthentication.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public PanoramaKeyGenAuthentication.ModelBuilder keyTtl(Long keyTtl) {
+      this.instance.setKeyTtl(keyTtl);
+      return this;
+    }
+    public PanoramaKeyGenAuthentication.ModelBuilder type(TypeEnum type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built PanoramaKeyGenAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PanoramaKeyGenAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PanoramaKeyGenAuthentication.ModelBuilder builder() {
+    return new PanoramaKeyGenAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PanoramaKeyGenAuthentication.ModelBuilder toBuilder() {
+    PanoramaKeyGenAuthentication.ModelBuilder builder = new PanoramaKeyGenAuthentication.ModelBuilder()
+      .username(getUsername())
+      .password(getPassword())
+      .keyTtl(getKeyTtl())
+      .type(getType());
+    return builder;
+  }
+
 }
 

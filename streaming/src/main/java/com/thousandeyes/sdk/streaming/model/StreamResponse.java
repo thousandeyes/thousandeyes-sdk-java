@@ -35,25 +35,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class StreamResponse {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
+  @JsonProperty(JSON_PROPERTY_ENABLED)
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private StreamLinks links;
 
   public StreamResponse() { 
-  }
-
-  @JsonCreator
-  public StreamResponse(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_ENABLED) Boolean enabled
-  ) {
-  this();
-    this.id = id;
-    this.enabled = enabled;
   }
 
    /**
@@ -154,5 +146,69 @@ public class StreamResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private StreamResponse instance;
+
+    public ModelBuilder() {
+      this(new StreamResponse());
+    }
+
+    protected ModelBuilder(StreamResponse instance) {
+      this.instance = instance;
+    }
+
+    public StreamResponse.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public StreamResponse.ModelBuilder enabled(Boolean enabled) {
+      this.instance.enabled = enabled;
+      return this;
+    }
+    public StreamResponse.ModelBuilder links(StreamLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built StreamResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public StreamResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static StreamResponse.ModelBuilder builder() {
+    return new StreamResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public StreamResponse.ModelBuilder toBuilder() {
+    StreamResponse.ModelBuilder builder = new StreamResponse.ModelBuilder()
+      .id(getId())
+      .enabled(getEnabled())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

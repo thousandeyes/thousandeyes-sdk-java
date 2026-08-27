@@ -48,25 +48,17 @@ public class MultiTestIdNetworkEndpointTestResults {
   private Integer totalHits;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextLink links;
 
   public MultiTestIdNetworkEndpointTestResults() { 
-  }
-
-  @JsonCreator
-  public MultiTestIdNetworkEndpointTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public MultiTestIdNetworkEndpointTestResults results(List<NetworkEndpointTestResult> results) {
@@ -229,5 +221,79 @@ public class MultiTestIdNetworkEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private MultiTestIdNetworkEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new MultiTestIdNetworkEndpointTestResults());
+    }
+
+    protected ModelBuilder(MultiTestIdNetworkEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public MultiTestIdNetworkEndpointTestResults.ModelBuilder results(List<NetworkEndpointTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public MultiTestIdNetworkEndpointTestResults.ModelBuilder totalHits(Integer totalHits) {
+      this.instance.setTotalHits(totalHits);
+      return this;
+    }
+    public MultiTestIdNetworkEndpointTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public MultiTestIdNetworkEndpointTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public MultiTestIdNetworkEndpointTestResults.ModelBuilder links(PaginationNextLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built MultiTestIdNetworkEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public MultiTestIdNetworkEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static MultiTestIdNetworkEndpointTestResults.ModelBuilder builder() {
+    return new MultiTestIdNetworkEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public MultiTestIdNetworkEndpointTestResults.ModelBuilder toBuilder() {
+    MultiTestIdNetworkEndpointTestResults.ModelBuilder builder = new MultiTestIdNetworkEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .totalHits(getTotalHits())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class Quotas {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Quotas instance;
+
+    public ModelBuilder() {
+      this(new Quotas());
+    }
+
+    protected ModelBuilder(Quotas instance) {
+      this.instance = instance;
+    }
+
+    public Quotas.ModelBuilder quotas(List<Quota> quotas) {
+      this.instance.setQuotas(quotas);
+      return this;
+    }
+    public Quotas.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Quotas instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Quotas build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Quotas.ModelBuilder builder() {
+    return new Quotas.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Quotas.ModelBuilder toBuilder() {
+    Quotas.ModelBuilder builder = new Quotas.ModelBuilder()
+      .quotas(getQuotas())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

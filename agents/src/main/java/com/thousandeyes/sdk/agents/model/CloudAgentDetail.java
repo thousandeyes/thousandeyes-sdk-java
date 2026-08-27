@@ -57,24 +57,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class CloudAgentDetail {
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESSES = "publicIpAddresses";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES)
   private List<String> publicIpAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NETWORK = "network";
+  @JsonProperty(JSON_PROPERTY_NETWORK)
   private String network;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
   private String agentName;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_COORDINATES = "coordinates";
@@ -87,9 +93,11 @@ public class CloudAgentDetail {
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_VERIFY_SSL_CERTIFICATES = "verifySslCertificates";
+  @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES)
   private Boolean verifySslCertificates;
 
   public static final String JSON_PROPERTY_PREFIX = "prefix";
+  @JsonProperty(JSON_PROPERTY_PREFIX)
   private String prefix;
 
   public static final String JSON_PROPERTY_AGENT_TYPE = "agentType";
@@ -99,41 +107,17 @@ public class CloudAgentDetail {
   private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<AgentLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TAGS = "tags";
+  @JsonProperty(JSON_PROPERTY_TAGS)
   private List<AgentTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
   public CloudAgentDetail() { 
-  }
-
-  @JsonCreator
-  public CloudAgentDetail(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESSES) List<String> publicIpAddresses, 
-    @JsonProperty(JSON_PROPERTY_NETWORK) String network, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_VERIFY_SSL_CERTIFICATES) Boolean verifySslCertificates, 
-    @JsonProperty(JSON_PROPERTY_PREFIX) String prefix, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<AgentLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_TAGS) List<AgentTag> tags
-  ) {
-  this();
-    this.ipAddresses = ipAddresses;
-    this.publicIpAddresses = publicIpAddresses;
-    this.network = network;
-    this.agentId = agentId;
-    this.location = location;
-    this.countryId = countryId;
-    this.verifySslCertificates = verifySslCertificates;
-    this.prefix = prefix;
-    this.labels = labels;
-    this.tags = tags;
   }
 
    /**
@@ -540,5 +524,139 @@ public class CloudAgentDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CloudAgentDetail instance;
+
+    public ModelBuilder() {
+      this(new CloudAgentDetail());
+    }
+
+    protected ModelBuilder(CloudAgentDetail instance) {
+      this.instance = instance;
+    }
+
+    public CloudAgentDetail.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder publicIpAddresses(List<String> publicIpAddresses) {
+      this.instance.publicIpAddresses = publicIpAddresses;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder network(String network) {
+      this.instance.network = network;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder coordinates(Coordinates coordinates) {
+      this.instance.setCoordinates(coordinates);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder networkProviderInfo(SimpleAgentAllOfNetworkProviderInfo networkProviderInfo) {
+      this.instance.setNetworkProviderInfo(networkProviderInfo);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder verifySslCertificates(Boolean verifySslCertificates) {
+      this.instance.verifySslCertificates = verifySslCertificates;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder prefix(String prefix) {
+      this.instance.prefix = prefix;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder agentType(String agentType) {
+      this.instance.setAgentType(agentType);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder labels(List<AgentLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder tags(List<AgentTag> tags) {
+      this.instance.tags = tags;
+      return this;
+    }
+    public CloudAgentDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CloudAgentDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CloudAgentDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CloudAgentDetail.ModelBuilder builder() {
+    return new CloudAgentDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CloudAgentDetail.ModelBuilder toBuilder() {
+    CloudAgentDetail.ModelBuilder builder = new CloudAgentDetail.ModelBuilder()
+      .ipAddresses(getIpAddresses())
+      .publicIpAddresses(getPublicIpAddresses())
+      .network(getNetwork())
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .location(getLocation())
+      .countryId(getCountryId())
+      .coordinates(getCoordinates())
+      .networkProviderInfo(getNetworkProviderInfo())
+      .enabled(getEnabled())
+      .verifySslCertificates(getVerifySslCertificates())
+      .prefix(getPrefix())
+      .agentType(getAgentType())
+      .tests(getTests())
+      .labels(getLabels())
+      .tags(getTags())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

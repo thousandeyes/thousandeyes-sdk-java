@@ -49,25 +49,17 @@ public class PageLoadTestResults {
   private SimpleTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public PageLoadTestResults() { 
-  }
-
-  @JsonCreator
-  public PageLoadTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public PageLoadTestResults results(List<PageLoadTestResult> results) {
@@ -230,5 +222,79 @@ public class PageLoadTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PageLoadTestResults instance;
+
+    public ModelBuilder() {
+      this(new PageLoadTestResults());
+    }
+
+    protected ModelBuilder(PageLoadTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PageLoadTestResults.ModelBuilder results(List<PageLoadTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PageLoadTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PageLoadTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public PageLoadTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public PageLoadTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PageLoadTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PageLoadTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PageLoadTestResults.ModelBuilder builder() {
+    return new PageLoadTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PageLoadTestResults.ModelBuilder toBuilder() {
+    PageLoadTestResults.ModelBuilder builder = new PageLoadTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

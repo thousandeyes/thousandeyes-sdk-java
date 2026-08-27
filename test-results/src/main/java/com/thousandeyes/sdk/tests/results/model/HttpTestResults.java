@@ -49,25 +49,17 @@ public class HttpTestResults {
   private SimpleTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public HttpTestResults() { 
-  }
-
-  @JsonCreator
-  public HttpTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public HttpTestResults results(List<HttpTestResult> results) {
@@ -230,5 +222,79 @@ public class HttpTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpTestResults instance;
+
+    public ModelBuilder() {
+      this(new HttpTestResults());
+    }
+
+    protected ModelBuilder(HttpTestResults instance) {
+      this.instance = instance;
+    }
+
+    public HttpTestResults.ModelBuilder results(List<HttpTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public HttpTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public HttpTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public HttpTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public HttpTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpTestResults.ModelBuilder builder() {
+    return new HttpTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpTestResults.ModelBuilder toBuilder() {
+    HttpTestResults.ModelBuilder builder = new HttpTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

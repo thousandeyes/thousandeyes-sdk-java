@@ -133,5 +133,64 @@ public class EndpointProbeConnectionScore {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProbeConnectionScore instance;
+
+    public ModelBuilder() {
+      this(new EndpointProbeConnectionScore());
+    }
+
+    protected ModelBuilder(EndpointProbeConnectionScore instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProbeConnectionScore.ModelBuilder score(Double score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public EndpointProbeConnectionScore.ModelBuilder quality(ApplicationScoreQuality quality) {
+      this.instance.setQuality(quality);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProbeConnectionScore instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProbeConnectionScore build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProbeConnectionScore.ModelBuilder builder() {
+    return new EndpointProbeConnectionScore.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProbeConnectionScore.ModelBuilder toBuilder() {
+    EndpointProbeConnectionScore.ModelBuilder builder = new EndpointProbeConnectionScore.ModelBuilder()
+      .score(getScore())
+      .quality(getQuality());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class EndpointAsnDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAsnDetails instance;
+
+    public ModelBuilder() {
+      this(new EndpointAsnDetails());
+    }
+
+    protected ModelBuilder(EndpointAsnDetails instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAsnDetails.ModelBuilder asNumber(Long asNumber) {
+      this.instance.setAsNumber(asNumber);
+      return this;
+    }
+    public EndpointAsnDetails.ModelBuilder asName(String asName) {
+      this.instance.setAsName(asName);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAsnDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAsnDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAsnDetails.ModelBuilder builder() {
+    return new EndpointAsnDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAsnDetails.ModelBuilder toBuilder() {
+    EndpointAsnDetails.ModelBuilder builder = new EndpointAsnDetails.ModelBuilder()
+      .asNumber(getAsNumber())
+      .asName(getAsName());
+    return builder;
+  }
+
 }
 

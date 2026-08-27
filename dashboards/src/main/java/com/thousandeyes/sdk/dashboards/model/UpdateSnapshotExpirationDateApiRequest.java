@@ -135,5 +135,64 @@ public class UpdateSnapshotExpirationDateApiRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UpdateSnapshotExpirationDateApiRequest instance;
+
+    public ModelBuilder() {
+      this(new UpdateSnapshotExpirationDateApiRequest());
+    }
+
+    protected ModelBuilder(UpdateSnapshotExpirationDateApiRequest instance) {
+      this.instance = instance;
+    }
+
+    public UpdateSnapshotExpirationDateApiRequest.ModelBuilder snapshotExpirationDate(OffsetDateTime snapshotExpirationDate) {
+      this.instance.setSnapshotExpirationDate(snapshotExpirationDate);
+      return this;
+    }
+    public UpdateSnapshotExpirationDateApiRequest.ModelBuilder expirationDate(String expirationDate) {
+      this.instance.setExpirationDate(expirationDate);
+      return this;
+    }
+
+    /**
+     * Returns a built UpdateSnapshotExpirationDateApiRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UpdateSnapshotExpirationDateApiRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UpdateSnapshotExpirationDateApiRequest.ModelBuilder builder() {
+    return new UpdateSnapshotExpirationDateApiRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UpdateSnapshotExpirationDateApiRequest.ModelBuilder toBuilder() {
+    UpdateSnapshotExpirationDateApiRequest.ModelBuilder builder = new UpdateSnapshotExpirationDateApiRequest.ModelBuilder()
+      .snapshotExpirationDate(getSnapshotExpirationDate())
+      .expirationDate(getExpirationDate());
+    return builder;
+  }
+
 }
 

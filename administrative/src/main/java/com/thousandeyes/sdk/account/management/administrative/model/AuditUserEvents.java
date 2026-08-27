@@ -44,25 +44,17 @@ public class AuditUserEvents {
   private List<UserEvent> auditEvents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public AuditUserEvents() { 
-  }
-
-  @JsonCreator
-  public AuditUserEvents(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public AuditUserEvents auditEvents(List<UserEvent> auditEvents) {
@@ -198,5 +190,74 @@ public class AuditUserEvents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AuditUserEvents instance;
+
+    public ModelBuilder() {
+      this(new AuditUserEvents());
+    }
+
+    protected ModelBuilder(AuditUserEvents instance) {
+      this.instance = instance;
+    }
+
+    public AuditUserEvents.ModelBuilder auditEvents(List<UserEvent> auditEvents) {
+      this.instance.setAuditEvents(auditEvents);
+      return this;
+    }
+    public AuditUserEvents.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public AuditUserEvents.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public AuditUserEvents.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built AuditUserEvents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AuditUserEvents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AuditUserEvents.ModelBuilder builder() {
+    return new AuditUserEvents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AuditUserEvents.ModelBuilder toBuilder() {
+    AuditUserEvents.ModelBuilder builder = new AuditUserEvents.ModelBuilder()
+      .auditEvents(getAuditEvents())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -269,5 +269,84 @@ public class UserAccountGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserAccountGroup instance;
+
+    public ModelBuilder() {
+      this(new UserAccountGroup());
+    }
+
+    protected ModelBuilder(UserAccountGroup instance) {
+      this.instance = instance;
+    }
+
+    public UserAccountGroup.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public UserAccountGroup.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public UserAccountGroup.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public UserAccountGroup.ModelBuilder lastLogin(OffsetDateTime lastLogin) {
+      this.instance.setLastLogin(lastLogin);
+      return this;
+    }
+    public UserAccountGroup.ModelBuilder dateRegistered(OffsetDateTime dateRegistered) {
+      this.instance.setDateRegistered(dateRegistered);
+      return this;
+    }
+    public UserAccountGroup.ModelBuilder roles(List<Role> roles) {
+      this.instance.setRoles(roles);
+      return this;
+    }
+
+    /**
+     * Returns a built UserAccountGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserAccountGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserAccountGroup.ModelBuilder builder() {
+    return new UserAccountGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserAccountGroup.ModelBuilder toBuilder() {
+    UserAccountGroup.ModelBuilder builder = new UserAccountGroup.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .uid(getUid())
+      .lastLogin(getLastLogin())
+      .dateRegistered(getDateRegistered())
+      .roles(getRoles());
+    return builder;
+  }
+
 }
 

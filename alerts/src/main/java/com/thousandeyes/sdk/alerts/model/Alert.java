@@ -62,15 +62,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Alert {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
   private AlertType alertType;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_VIOLATION_COUNT = "violationCount";
@@ -89,15 +92,19 @@ public class Alert {
   private AlertLinks links;
 
   public static final String JSON_PROPERTY_ALERT_ID = "alertId";
+  @JsonProperty(JSON_PROPERTY_ALERT_ID)
   private UUID alertId;
 
   public static final String JSON_PROPERTY_DATE_START = "dateStart";
+  @JsonProperty(JSON_PROPERTY_DATE_START)
   private String dateStart;
 
   public static final String JSON_PROPERTY_DATE_END = "dateEnd";
+  @JsonProperty(JSON_PROPERTY_DATE_END)
   private String dateEnd;
 
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private Long ruleId;
 
   /**
@@ -138,6 +145,7 @@ public class Alert {
   }
 
   public static final String JSON_PROPERTY_STATE = "state";
+  @JsonProperty(JSON_PROPERTY_STATE)
   private StateEnum state;
 
   /**
@@ -191,6 +199,7 @@ public class Alert {
   private List<Map<String, Object>> apiLinks = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALERT_RULE_ID = "alertRuleId";
+  @JsonProperty(JSON_PROPERTY_ALERT_RULE_ID)
   private String alertRuleId;
 
   public static final String JSON_PROPERTY_ALERT_STATE = "alertState";
@@ -200,30 +209,6 @@ public class Alert {
   private Severity alertSeverity;
 
   public Alert() { 
-  }
-
-  @JsonCreator
-  public Alert(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate, 
-    @JsonProperty(JSON_PROPERTY_ALERT_ID) UUID alertId, 
-    @JsonProperty(JSON_PROPERTY_DATE_START) String dateStart, 
-    @JsonProperty(JSON_PROPERTY_DATE_END) String dateEnd, 
-    @JsonProperty(JSON_PROPERTY_RULE_ID) Long ruleId, 
-    @JsonProperty(JSON_PROPERTY_STATE) StateEnum state, 
-    @JsonProperty(JSON_PROPERTY_ALERT_RULE_ID) String alertRuleId
-  ) {
-  this();
-    this.id = id;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.alertId = alertId;
-    this.dateStart = dateStart;
-    this.dateEnd = dateEnd;
-    this.ruleId = ruleId;
-    this.state = state;
-    this.alertRuleId = alertRuleId;
   }
 
    /**
@@ -737,5 +722,154 @@ public class Alert {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Alert instance;
+
+    public ModelBuilder() {
+      this(new Alert());
+    }
+
+    protected ModelBuilder(Alert instance) {
+      this.instance = instance;
+    }
+
+    public Alert.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public Alert.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public Alert.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public Alert.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public Alert.ModelBuilder violationCount(Integer violationCount) {
+      this.instance.setViolationCount(violationCount);
+      return this;
+    }
+    public Alert.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public Alert.ModelBuilder suppressed(Boolean suppressed) {
+      this.instance.setSuppressed(suppressed);
+      return this;
+    }
+    public Alert.ModelBuilder meta(AlertMeta meta) {
+      this.instance.setMeta(meta);
+      return this;
+    }
+    public Alert.ModelBuilder links(AlertLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public Alert.ModelBuilder alertId(UUID alertId) {
+      this.instance.alertId = alertId;
+      return this;
+    }
+    public Alert.ModelBuilder dateStart(String dateStart) {
+      this.instance.dateStart = dateStart;
+      return this;
+    }
+    public Alert.ModelBuilder dateEnd(String dateEnd) {
+      this.instance.dateEnd = dateEnd;
+      return this;
+    }
+    public Alert.ModelBuilder ruleId(Long ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public Alert.ModelBuilder state(StateEnum state) {
+      this.instance.state = state;
+      return this;
+    }
+    public Alert.ModelBuilder severity(SeverityEnum severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public Alert.ModelBuilder permalink(String permalink) {
+      this.instance.setPermalink(permalink);
+      return this;
+    }
+    public Alert.ModelBuilder apiLinks(List<Map<String, Object>> apiLinks) {
+      this.instance.setApiLinks(apiLinks);
+      return this;
+    }
+    public Alert.ModelBuilder alertRuleId(String alertRuleId) {
+      this.instance.alertRuleId = alertRuleId;
+      return this;
+    }
+    public Alert.ModelBuilder alertState(State alertState) {
+      this.instance.setAlertState(alertState);
+      return this;
+    }
+    public Alert.ModelBuilder alertSeverity(Severity alertSeverity) {
+      this.instance.setAlertSeverity(alertSeverity);
+      return this;
+    }
+
+    /**
+     * Returns a built Alert instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Alert build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Alert.ModelBuilder builder() {
+    return new Alert.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Alert.ModelBuilder toBuilder() {
+    Alert.ModelBuilder builder = new Alert.ModelBuilder()
+      .id(getId())
+      .alertType(getAlertType())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .violationCount(getViolationCount())
+      .duration(getDuration())
+      .suppressed(getSuppressed())
+      .meta(getMeta())
+      .links(getLinks())
+      .alertId(getAlertId())
+      .dateStart(getDateStart())
+      .dateEnd(getDateEnd())
+      .ruleId(getRuleId())
+      .state(getState())
+      .severity(getSeverity())
+      .permalink(getPermalink())
+      .apiLinks(getApiLinks())
+      .alertRuleId(getAlertRuleId())
+      .alertState(getAlertState())
+      .alertSeverity(getAlertSeverity());
+    return builder;
+  }
+
 }
 

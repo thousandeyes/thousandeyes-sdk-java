@@ -380,5 +380,104 @@ public class UnitsByTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UnitsByTests instance;
+
+    public ModelBuilder() {
+      this(new UnitsByTests());
+    }
+
+    protected ModelBuilder(UnitsByTests instance) {
+      this.instance = instance;
+    }
+
+    public UnitsByTests.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder enterpriseUnitsUsed(Integer enterpriseUnitsUsed) {
+      this.instance.setEnterpriseUnitsUsed(enterpriseUnitsUsed);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder enterpriseUnitsProjected(Integer enterpriseUnitsProjected) {
+      this.instance.setEnterpriseUnitsProjected(enterpriseUnitsProjected);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder cloudUnitsUsed(Integer cloudUnitsUsed) {
+      this.instance.setCloudUnitsUsed(cloudUnitsUsed);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder cloudUnitsProjected(Integer cloudUnitsProjected) {
+      this.instance.setCloudUnitsProjected(cloudUnitsProjected);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder testType(String testType) {
+      this.instance.setTestType(testType);
+      return this;
+    }
+    public UnitsByTests.ModelBuilder isInstantTest(Boolean isInstantTest) {
+      this.instance.setIsInstantTest(isInstantTest);
+      return this;
+    }
+
+    /**
+     * Returns a built UnitsByTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UnitsByTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UnitsByTests.ModelBuilder builder() {
+    return new UnitsByTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UnitsByTests.ModelBuilder toBuilder() {
+    UnitsByTests.ModelBuilder builder = new UnitsByTests.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .enterpriseUnitsUsed(getEnterpriseUnitsUsed())
+      .enterpriseUnitsProjected(getEnterpriseUnitsProjected())
+      .cloudUnitsUsed(getCloudUnitsUsed())
+      .cloudUnitsProjected(getCloudUnitsProjected())
+      .testId(getTestId())
+      .testName(getTestName())
+      .testType(getTestType())
+      .isInstantTest(getIsInstantTest());
+    return builder;
+  }
+
 }
 

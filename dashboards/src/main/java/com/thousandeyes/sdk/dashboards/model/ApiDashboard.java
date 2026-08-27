@@ -72,54 +72,67 @@ public class ApiDashboard {
   private String globalFilterId;
 
   public static final String JSON_PROPERTY_ACCOUNT_ID = "accountId";
+  @JsonProperty(JSON_PROPERTY_ACCOUNT_ID)
   private Long accountId;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
   private Long createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   private Long modifiedBy;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private String modifiedDate;
 
   public static final String JSON_PROPERTY_GLOBAL_OVERRIDE = "globalOverride";
   private Boolean globalOverride;
 
   public static final String JSON_PROPERTY_MIGRATED_REPORT = "migratedReport";
+  @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT)
   private Boolean migratedReport;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
   private List<Map<String, Object>> apiLink = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
+  @JsonProperty(JSON_PROPERTY_DASHBOARD_ID)
   private String dashboardId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
   private String title;
 
   public static final String JSON_PROPERTY_IS_BUILT_IN = "isBuiltIn";
+  @JsonProperty(JSON_PROPERTY_IS_BUILT_IN)
   private Boolean isBuiltIn;
 
   public static final String JSON_PROPERTY_AID = "aid";
+  @JsonProperty(JSON_PROPERTY_AID)
   private String aid;
 
   public static final String JSON_PROPERTY_DASHBOARD_CREATED_BY = "dashboardCreatedBy";
+  @JsonProperty(JSON_PROPERTY_DASHBOARD_CREATED_BY)
   private String dashboardCreatedBy;
 
   public static final String JSON_PROPERTY_DASHBOARD_MODIFIED_BY = "dashboardModifiedBy";
+  @JsonProperty(JSON_PROPERTY_DASHBOARD_MODIFIED_BY)
   private String dashboardModifiedBy;
 
   public static final String JSON_PROPERTY_DASHBOARD_MODIFIED_DATE = "dashboardModifiedDate";
+  @JsonProperty(JSON_PROPERTY_DASHBOARD_MODIFIED_DATE)
   private OffsetDateTime dashboardModifiedDate;
 
   public static final String JSON_PROPERTY_IS_PRIVATE = "isPrivate";
   private Boolean isPrivate;
 
   public static final String JSON_PROPERTY_IS_DEFAULT_FOR_USER = "isDefaultForUser";
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER)
   private Boolean isDefaultForUser;
 
   public static final String JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT = "isDefaultForAccount";
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT)
   private Boolean isDefaultForAccount;
 
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
@@ -135,12 +148,14 @@ public class ApiDashboard {
   private Boolean isGlobalOverride;
 
   public static final String JSON_PROPERTY_IS_MIGRATED_REPORT = "isMigratedReport";
+  @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT)
   private Boolean isMigratedReport;
 
   public static final String JSON_PROPERTY_LAYOUT = "layout";
   private DashboardLayout layout;
 
   public static final String JSON_PROPERTY_SCHEDULE = "schedule";
+  @JsonProperty(JSON_PROPERTY_SCHEDULE)
   private DashboardSchedule schedule;
 
   public static final String JSON_PROPERTY_REFRESH_RATE = "refreshRate";
@@ -150,42 +165,6 @@ public class ApiDashboard {
   private DashboardLinks links;
 
   public ApiDashboard() { 
-  }
-
-  @JsonCreator
-  public ApiDashboard(
-    @JsonProperty(JSON_PROPERTY_ACCOUNT_ID) Long accountId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_BY) Long createdBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_BY) Long modifiedBy, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) String modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_MIGRATED_REPORT) Boolean migratedReport, 
-    @JsonProperty(JSON_PROPERTY_DASHBOARD_ID) String dashboardId, 
-    @JsonProperty(JSON_PROPERTY_IS_BUILT_IN) Boolean isBuiltIn, 
-    @JsonProperty(JSON_PROPERTY_AID) String aid, 
-    @JsonProperty(JSON_PROPERTY_DASHBOARD_CREATED_BY) String dashboardCreatedBy, 
-    @JsonProperty(JSON_PROPERTY_DASHBOARD_MODIFIED_BY) String dashboardModifiedBy, 
-    @JsonProperty(JSON_PROPERTY_DASHBOARD_MODIFIED_DATE) OffsetDateTime dashboardModifiedDate, 
-    @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_USER) Boolean isDefaultForUser, 
-    @JsonProperty(JSON_PROPERTY_IS_DEFAULT_FOR_ACCOUNT) Boolean isDefaultForAccount, 
-    @JsonProperty(JSON_PROPERTY_IS_MIGRATED_REPORT) Boolean isMigratedReport, 
-    @JsonProperty(JSON_PROPERTY_SCHEDULE) DashboardSchedule schedule
-  ) {
-  this();
-    this.accountId = accountId;
-    this.createdBy = createdBy;
-    this.modifiedBy = modifiedBy;
-    this.modifiedDate = modifiedDate;
-    this.migratedReport = migratedReport;
-    this.dashboardId = dashboardId;
-    this.isBuiltIn = isBuiltIn;
-    this.aid = aid;
-    this.dashboardCreatedBy = dashboardCreatedBy;
-    this.dashboardModifiedBy = dashboardModifiedBy;
-    this.dashboardModifiedDate = dashboardModifiedDate;
-    this.isDefaultForUser = isDefaultForUser;
-    this.isDefaultForAccount = isDefaultForAccount;
-    this.isMigratedReport = isMigratedReport;
-    this.schedule = schedule;
   }
 
   public ApiDashboard globalFilterId(String globalFilterId) {
@@ -834,5 +813,189 @@ public class ApiDashboard {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDashboard instance;
+
+    public ModelBuilder() {
+      this(new ApiDashboard());
+    }
+
+    protected ModelBuilder(ApiDashboard instance) {
+      this.instance = instance;
+    }
+
+    public ApiDashboard.ModelBuilder globalFilterId(String globalFilterId) {
+      this.instance.setGlobalFilterId(globalFilterId);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder accountId(Long accountId) {
+      this.instance.accountId = accountId;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder createdBy(Long createdBy) {
+      this.instance.createdBy = createdBy;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder modifiedBy(Long modifiedBy) {
+      this.instance.modifiedBy = modifiedBy;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder modifiedDate(String modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder globalOverride(Boolean globalOverride) {
+      this.instance.setGlobalOverride(globalOverride);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder migratedReport(Boolean migratedReport) {
+      this.instance.migratedReport = migratedReport;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder apiLink(List<Map<String, Object>> apiLink) {
+      this.instance.setApiLink(apiLink);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder dashboardId(String dashboardId) {
+      this.instance.dashboardId = dashboardId;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isBuiltIn(Boolean isBuiltIn) {
+      this.instance.isBuiltIn = isBuiltIn;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder aid(String aid) {
+      this.instance.aid = aid;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder dashboardCreatedBy(String dashboardCreatedBy) {
+      this.instance.dashboardCreatedBy = dashboardCreatedBy;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder dashboardModifiedBy(String dashboardModifiedBy) {
+      this.instance.dashboardModifiedBy = dashboardModifiedBy;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder dashboardModifiedDate(OffsetDateTime dashboardModifiedDate) {
+      this.instance.dashboardModifiedDate = dashboardModifiedDate;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isPrivate(Boolean isPrivate) {
+      this.instance.setIsPrivate(isPrivate);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isDefaultForUser(Boolean isDefaultForUser) {
+      this.instance.isDefaultForUser = isDefaultForUser;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isDefaultForAccount(Boolean isDefaultForAccount) {
+      this.instance.isDefaultForAccount = isDefaultForAccount;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder widgets(List<ApiWidget> widgets) {
+      this.instance.setWidgets(widgets);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder defaultTimespan(DefaultTimespan defaultTimespan) {
+      this.instance.setDefaultTimespan(defaultTimespan);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isGlobalOverride(Boolean isGlobalOverride) {
+      this.instance.setIsGlobalOverride(isGlobalOverride);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder isMigratedReport(Boolean isMigratedReport) {
+      this.instance.isMigratedReport = isMigratedReport;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder layout(DashboardLayout layout) {
+      this.instance.setLayout(layout);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder schedule(DashboardSchedule schedule) {
+      this.instance.schedule = schedule;
+      return this;
+    }
+    public ApiDashboard.ModelBuilder refreshRate(RefreshRate refreshRate) {
+      this.instance.setRefreshRate(refreshRate);
+      return this;
+    }
+    public ApiDashboard.ModelBuilder links(DashboardLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDashboard instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDashboard build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDashboard.ModelBuilder builder() {
+    return new ApiDashboard.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDashboard.ModelBuilder toBuilder() {
+    ApiDashboard.ModelBuilder builder = new ApiDashboard.ModelBuilder()
+      .globalFilterId(getGlobalFilterId())
+      .accountId(getAccountId())
+      .createdBy(getCreatedBy())
+      .modifiedBy(getModifiedBy())
+      .modifiedDate(getModifiedDate())
+      .globalOverride(getGlobalOverride())
+      .migratedReport(getMigratedReport())
+      .apiLink(getApiLink())
+      .dashboardId(getDashboardId())
+      .title(getTitle())
+      .isBuiltIn(getIsBuiltIn())
+      .aid(getAid())
+      .dashboardCreatedBy(getDashboardCreatedBy())
+      .dashboardModifiedBy(getDashboardModifiedBy())
+      .dashboardModifiedDate(getDashboardModifiedDate())
+      .isPrivate(getIsPrivate())
+      .isDefaultForUser(getIsDefaultForUser())
+      .isDefaultForAccount(getIsDefaultForAccount())
+      .widgets(getWidgets())
+      .description(getDescription())
+      .defaultTimespan(getDefaultTimespan())
+      .isGlobalOverride(getIsGlobalOverride())
+      .isMigratedReport(getIsMigratedReport())
+      .layout(getLayout())
+      .schedule(getSchedule())
+      .refreshRate(getRefreshRate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

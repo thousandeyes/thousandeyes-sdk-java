@@ -824,5 +824,169 @@ public class EndpointHttpServerTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointHttpServerTestRequest instance;
+
+    public ModelBuilder() {
+      this(new EndpointHttpServerTestRequest());
+    }
+
+    protected ModelBuilder(EndpointHttpServerTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointHttpServerTestRequest.ModelBuilder agentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder ipVersion(EndpointIpVersionIn ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder authType(EndpointTestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder hasPing(Boolean hasPing) {
+      this.instance.setHasPing(hasPing);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder hasTraceroute(Boolean hasTraceroute) {
+      this.instance.setHasTraceroute(hasTraceroute);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder targetResponseTime(Integer targetResponseTime) {
+      this.instance.setTargetResponseTime(targetResponseTime);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder isPrioritized(Boolean isPrioritized) {
+      this.instance.setIsPrioritized(isPrioritized);
+      return this;
+    }
+    public EndpointHttpServerTestRequest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointHttpServerTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointHttpServerTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointHttpServerTestRequest.ModelBuilder builder() {
+    return new EndpointHttpServerTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointHttpServerTestRequest.ModelBuilder toBuilder() {
+    EndpointHttpServerTestRequest.ModelBuilder builder = new EndpointHttpServerTestRequest.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .agents(getAgents())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds())
+      .maxMachines(getMaxMachines())
+      .testName(getTestName())
+      .ipVersion(getIpVersion())
+      .authType(getAuthType())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .httpTimeLimit(getHttpTimeLimit())
+      .protocol(getProtocol())
+      .username(getUsername())
+      .sslVersionId(getSslVersionId())
+      .tcpProbeMode(getTcpProbeMode())
+      .verifyCertificate(getVerifyCertificate())
+      .url(getUrl())
+      .hasPing(getHasPing())
+      .hasTraceroute(getHasTraceroute())
+      .networkMeasurements(getNetworkMeasurements())
+      .targetResponseTime(getTargetResponseTime())
+      .password(getPassword())
+      .isPrioritized(getIsPrioritized())
+      .interval(getInterval());
+    return builder;
+  }
+
 }
 

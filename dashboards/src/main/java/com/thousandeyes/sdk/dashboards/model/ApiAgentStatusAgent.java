@@ -228,5 +228,79 @@ public class ApiAgentStatusAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAgentStatusAgent instance;
+
+    public ModelBuilder() {
+      this(new ApiAgentStatusAgent());
+    }
+
+    protected ModelBuilder(ApiAgentStatusAgent instance) {
+      this.instance = instance;
+    }
+
+    public ApiAgentStatusAgent.ModelBuilder agentId(String agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public ApiAgentStatusAgent.ModelBuilder status(EnterpriseAgentState status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public ApiAgentStatusAgent.ModelBuilder ipInfo(ApiAgentStatusIpInfo ipInfo) {
+      this.instance.setIpInfo(ipInfo);
+      return this;
+    }
+    public ApiAgentStatusAgent.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public ApiAgentStatusAgent.ModelBuilder location(ApiAgentLocation location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAgentStatusAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAgentStatusAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAgentStatusAgent.ModelBuilder builder() {
+    return new ApiAgentStatusAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAgentStatusAgent.ModelBuilder toBuilder() {
+    ApiAgentStatusAgent.ModelBuilder builder = new ApiAgentStatusAgent.ModelBuilder()
+      .agentId(getAgentId())
+      .status(getStatus())
+      .ipInfo(getIpInfo())
+      .agentName(getAgentName())
+      .location(getLocation());
+    return builder;
+  }
+
 }
 

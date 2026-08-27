@@ -554,5 +554,129 @@ public class ApiNumbersCard {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiNumbersCard instance;
+
+    public ModelBuilder() {
+      this(new ApiNumbersCard());
+    }
+
+    protected ModelBuilder(ApiNumbersCard instance) {
+      this.instance = instance;
+    }
+
+    public ApiNumbersCard.ModelBuilder minScale(Float minScale) {
+      this.instance.setMinScale(minScale);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder maxScale(Float maxScale) {
+      this.instance.setMaxScale(maxScale);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder unit(ApiWidgetFixedYScalePrefix unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder compareToPreviousValue(Boolean compareToPreviousValue) {
+      this.instance.setCompareToPreviousValue(compareToPreviousValue);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder dataSource(NumbersCardDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiNumbersCard.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiNumbersCard instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiNumbersCard build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiNumbersCard.ModelBuilder builder() {
+    return new ApiNumbersCard.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiNumbersCard.ModelBuilder toBuilder() {
+    ApiNumbersCard.ModelBuilder builder = new ApiNumbersCard.ModelBuilder()
+      .minScale(getMinScale())
+      .maxScale(getMaxScale())
+      .unit(getUnit())
+      .id(getId())
+      .description(getDescription())
+      .measure(getMeasure())
+      .compareToPreviousValue(getCompareToPreviousValue())
+      .fixedTimespan(getFixedTimespan())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .dataSource(getDataSource())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

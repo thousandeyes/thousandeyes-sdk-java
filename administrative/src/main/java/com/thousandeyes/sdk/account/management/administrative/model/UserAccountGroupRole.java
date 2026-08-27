@@ -143,5 +143,64 @@ public class UserAccountGroupRole {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserAccountGroupRole instance;
+
+    public ModelBuilder() {
+      this(new UserAccountGroupRole());
+    }
+
+    protected ModelBuilder(UserAccountGroupRole instance) {
+      this.instance = instance;
+    }
+
+    public UserAccountGroupRole.ModelBuilder accountGroupId(String accountGroupId) {
+      this.instance.setAccountGroupId(accountGroupId);
+      return this;
+    }
+    public UserAccountGroupRole.ModelBuilder roleIds(List<String> roleIds) {
+      this.instance.setRoleIds(roleIds);
+      return this;
+    }
+
+    /**
+     * Returns a built UserAccountGroupRole instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserAccountGroupRole build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserAccountGroupRole.ModelBuilder builder() {
+    return new UserAccountGroupRole.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserAccountGroupRole.ModelBuilder toBuilder() {
+    UserAccountGroupRole.ModelBuilder builder = new UserAccountGroupRole.ModelBuilder()
+      .accountGroupId(getAccountGroupId())
+      .roleIds(getRoleIds());
+    return builder;
+  }
+
 }
 

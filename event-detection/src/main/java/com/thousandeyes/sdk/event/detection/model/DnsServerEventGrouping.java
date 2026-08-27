@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsServerEventGrouping {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public DnsServerEventGrouping() { 
-  }
-
-  @JsonCreator
-  public DnsServerEventGrouping(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress
-  ) {
-  this();
-    this.ipAddress = ipAddress;
   }
 
    /**
@@ -99,5 +92,59 @@ public class DnsServerEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new DnsServerEventGrouping());
+    }
+
+    protected ModelBuilder(DnsServerEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerEventGrouping.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerEventGrouping.ModelBuilder builder() {
+    return new DnsServerEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerEventGrouping.ModelBuilder toBuilder() {
+    DnsServerEventGrouping.ModelBuilder builder = new DnsServerEventGrouping.ModelBuilder()
+      .ipAddress(getIpAddress());
+    return builder;
+  }
+
 }
 

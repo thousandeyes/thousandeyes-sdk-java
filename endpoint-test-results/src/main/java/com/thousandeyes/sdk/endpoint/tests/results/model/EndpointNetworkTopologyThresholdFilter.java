@@ -145,5 +145,64 @@ public class EndpointNetworkTopologyThresholdFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointNetworkTopologyThresholdFilter instance;
+
+    public ModelBuilder() {
+      this(new EndpointNetworkTopologyThresholdFilter());
+    }
+
+    protected ModelBuilder(EndpointNetworkTopologyThresholdFilter instance) {
+      this.instance = instance;
+    }
+
+    public EndpointNetworkTopologyThresholdFilter.ModelBuilder filters(List<LocalNetworksThresholdFilter> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public EndpointNetworkTopologyThresholdFilter.ModelBuilder conditionalOperator(ConditionalOperator conditionalOperator) {
+      this.instance.setConditionalOperator(conditionalOperator);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointNetworkTopologyThresholdFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointNetworkTopologyThresholdFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointNetworkTopologyThresholdFilter.ModelBuilder builder() {
+    return new EndpointNetworkTopologyThresholdFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointNetworkTopologyThresholdFilter.ModelBuilder toBuilder() {
+    EndpointNetworkTopologyThresholdFilter.ModelBuilder builder = new EndpointNetworkTopologyThresholdFilter.ModelBuilder()
+      .filters(getFilters())
+      .conditionalOperator(getConditionalOperator());
+    return builder;
+  }
+
 }
 

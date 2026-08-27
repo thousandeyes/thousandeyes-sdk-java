@@ -134,5 +134,64 @@ public class DashboardScheduleTimespan {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleTimespan instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleTimespan());
+    }
+
+    protected ModelBuilder(DashboardScheduleTimespan instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleTimespan.ModelBuilder n(Integer n) {
+      this.instance.setN(n);
+      return this;
+    }
+    public DashboardScheduleTimespan.ModelBuilder period(DashboardScheduleTimespanPeriod period) {
+      this.instance.setPeriod(period);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleTimespan instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleTimespan build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleTimespan.ModelBuilder builder() {
+    return new DashboardScheduleTimespan.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleTimespan.ModelBuilder toBuilder() {
+    DashboardScheduleTimespan.ModelBuilder builder = new DashboardScheduleTimespan.ModelBuilder()
+      .n(getN())
+      .period(getPeriod());
+    return builder;
+  }
+
 }
 

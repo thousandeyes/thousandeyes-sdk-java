@@ -132,5 +132,64 @@ public class ApiRequestDetailAssertion {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequestDetailAssertion instance;
+
+    public ModelBuilder() {
+      this(new ApiRequestDetailAssertion());
+    }
+
+    protected ModelBuilder(ApiRequestDetailAssertion instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequestDetailAssertion.ModelBuilder step(Integer step) {
+      this.instance.setStep(step);
+      return this;
+    }
+    public ApiRequestDetailAssertion.ModelBuilder hasFailed(Boolean hasFailed) {
+      this.instance.setHasFailed(hasFailed);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequestDetailAssertion instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequestDetailAssertion build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequestDetailAssertion.ModelBuilder builder() {
+    return new ApiRequestDetailAssertion.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequestDetailAssertion.ModelBuilder toBuilder() {
+    ApiRequestDetailAssertion.ModelBuilder builder = new ApiRequestDetailAssertion.ModelBuilder()
+      .step(getStep())
+      .hasFailed(getHasFailed());
+    return builder;
+  }
+
 }
 

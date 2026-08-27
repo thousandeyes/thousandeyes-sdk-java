@@ -133,5 +133,64 @@ public class DashboardScheduleDateEndCondition {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleDateEndCondition instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleDateEndCondition());
+    }
+
+    protected ModelBuilder(DashboardScheduleDateEndCondition instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleDateEndCondition.ModelBuilder endConditionType(String endConditionType) {
+      this.instance.setEndConditionType(endConditionType);
+      return this;
+    }
+    public DashboardScheduleDateEndCondition.ModelBuilder value(Long value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleDateEndCondition instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleDateEndCondition build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleDateEndCondition.ModelBuilder builder() {
+    return new DashboardScheduleDateEndCondition.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleDateEndCondition.ModelBuilder toBuilder() {
+    DashboardScheduleDateEndCondition.ModelBuilder builder = new DashboardScheduleDateEndCondition.ModelBuilder()
+      .endConditionType(getEndConditionType())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

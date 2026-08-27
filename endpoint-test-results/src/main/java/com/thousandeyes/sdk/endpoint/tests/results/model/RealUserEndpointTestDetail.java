@@ -56,39 +56,51 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestDetail {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_COMMITTED = "committed";
+  @JsonProperty(JSON_PROPERTY_COMMITTED)
   private OffsetDateTime committed;
 
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_EXPERIENCE_SCORE = "experienceScore";
+  @JsonProperty(JSON_PROPERTY_EXPERIENCE_SCORE)
   private Double experienceScore;
 
   public static final String JSON_PROPERTY_NUMBER_OF_PAGES = "numberOfPages";
+  @JsonProperty(JSON_PROPERTY_NUMBER_OF_PAGES)
   private Integer numberOfPages;
 
   public static final String JSON_PROPERTY_ORGANIZATION_NAME = "organizationName";
+  @JsonProperty(JSON_PROPERTY_ORGANIZATION_NAME)
   private String organizationName;
 
   public static final String JSON_PROPERTY_PORT = "port";
+  @JsonProperty(JSON_PROPERTY_PORT)
   private Integer port;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
+  @JsonProperty(JSON_PROPERTY_PROTOCOL)
   private String protocol;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SOURCE_ADDRESS = "sourceAddress";
+  @JsonProperty(JSON_PROPERTY_SOURCE_ADDRESS)
   private String sourceAddress;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_VISITED_SITE = "visitedSite";
+  @JsonProperty(JSON_PROPERTY_VISITED_SITE)
   private String visitedSite;
 
   public static final String JSON_PROPERTY_BROWSER = "browser";
@@ -104,36 +116,6 @@ public class RealUserEndpointTestDetail {
   private RealUserEndpointTestNetwork network;
 
   public RealUserEndpointTestDetail() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestDetail(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_COMMITTED) OffsetDateTime committed, 
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_EXPERIENCE_SCORE) Double experienceScore, 
-    @JsonProperty(JSON_PROPERTY_NUMBER_OF_PAGES) Integer numberOfPages, 
-    @JsonProperty(JSON_PROPERTY_ORGANIZATION_NAME) String organizationName, 
-    @JsonProperty(JSON_PROPERTY_PORT) Integer port, 
-    @JsonProperty(JSON_PROPERTY_PROTOCOL) String protocol, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_ADDRESS) String sourceAddress, 
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_VISITED_SITE) String visitedSite
-  ) {
-  this();
-    this.agentId = agentId;
-    this.committed = committed;
-    this.date = date;
-    this.experienceScore = experienceScore;
-    this.numberOfPages = numberOfPages;
-    this.organizationName = organizationName;
-    this.port = port;
-    this.protocol = protocol;
-    this.roundId = roundId;
-    this.sourceAddress = sourceAddress;
-    this.id = id;
-    this.visitedSite = visitedSite;
   }
 
    /**
@@ -495,5 +477,134 @@ public class RealUserEndpointTestDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestDetail instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestDetail());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestDetail instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestDetail.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder committed(OffsetDateTime committed) {
+      this.instance.committed = committed;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder experienceScore(Double experienceScore) {
+      this.instance.experienceScore = experienceScore;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder numberOfPages(Integer numberOfPages) {
+      this.instance.numberOfPages = numberOfPages;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder organizationName(String organizationName) {
+      this.instance.organizationName = organizationName;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder port(Integer port) {
+      this.instance.port = port;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder protocol(String protocol) {
+      this.instance.protocol = protocol;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder sourceAddress(String sourceAddress) {
+      this.instance.sourceAddress = sourceAddress;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder visitedSite(String visitedSite) {
+      this.instance.visitedSite = visitedSite;
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder browser(EndpointBrowser browser) {
+      this.instance.setBrowser(browser);
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder coordinates(RealUserEndpointTestCoordinates coordinates) {
+      this.instance.setCoordinates(coordinates);
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder pages(List<RealUserEndpointTestPage> pages) {
+      this.instance.setPages(pages);
+      return this;
+    }
+    public RealUserEndpointTestDetail.ModelBuilder network(RealUserEndpointTestNetwork network) {
+      this.instance.setNetwork(network);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestDetail.ModelBuilder builder() {
+    return new RealUserEndpointTestDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestDetail.ModelBuilder toBuilder() {
+    RealUserEndpointTestDetail.ModelBuilder builder = new RealUserEndpointTestDetail.ModelBuilder()
+      .agentId(getAgentId())
+      .committed(getCommitted())
+      .date(getDate())
+      .experienceScore(getExperienceScore())
+      .numberOfPages(getNumberOfPages())
+      .organizationName(getOrganizationName())
+      .port(getPort())
+      .protocol(getProtocol())
+      .roundId(getRoundId())
+      .sourceAddress(getSourceAddress())
+      .id(getId())
+      .visitedSite(getVisitedSite())
+      .browser(getBrowser())
+      .coordinates(getCoordinates())
+      .pages(getPages())
+      .network(getNetwork());
+    return builder;
+  }
+
 }
 

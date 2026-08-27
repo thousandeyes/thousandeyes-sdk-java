@@ -118,20 +118,13 @@ public class ApiProperties {
   private Integer timeLimit = 30;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_URL = "url";
   private String url;
 
   public ApiProperties() { 
-  }
-
-  @JsonCreator
-  public ApiProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public ApiProperties clientCertificate(String clientCertificate) {
@@ -750,5 +743,159 @@ public class ApiProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiProperties instance;
+
+    public ModelBuilder() {
+      this(new ApiProperties());
+    }
+
+    protected ModelBuilder(ApiProperties instance) {
+      this.instance = instance;
+    }
+
+    public ApiProperties.ModelBuilder clientCertificate(String clientCertificate) {
+      this.instance.setClientCertificate(clientCertificate);
+      return this;
+    }
+    public ApiProperties.ModelBuilder clientCertDomainsAllowList(String clientCertDomainsAllowList) {
+      this.instance.setClientCertDomainsAllowList(clientCertDomainsAllowList);
+      return this;
+    }
+    public ApiProperties.ModelBuilder collectProxyNetworkData(Boolean collectProxyNetworkData) {
+      this.instance.setCollectProxyNetworkData(collectProxyNetworkData);
+      return this;
+    }
+    public ApiProperties.ModelBuilder distributedTracing(Boolean distributedTracing) {
+      this.instance.setDistributedTracing(distributedTracing);
+      return this;
+    }
+    public ApiProperties.ModelBuilder followRedirects(Boolean followRedirects) {
+      this.instance.setFollowRedirects(followRedirects);
+      return this;
+    }
+    public ApiProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public ApiProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public ApiProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public ApiProperties.ModelBuilder overrideAgentProxy(Boolean overrideAgentProxy) {
+      this.instance.setOverrideAgentProxy(overrideAgentProxy);
+      return this;
+    }
+    public ApiProperties.ModelBuilder overrideProxyId(String overrideProxyId) {
+      this.instance.setOverrideProxyId(overrideProxyId);
+      return this;
+    }
+    public ApiProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public ApiProperties.ModelBuilder predefinedVariables(List<ApiPredefinedVariable> predefinedVariables) {
+      this.instance.setPredefinedVariables(predefinedVariables);
+      return this;
+    }
+    public ApiProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public ApiProperties.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public ApiProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public ApiProperties.ModelBuilder requests(List<ApiRequest> requests) {
+      this.instance.setRequests(requests);
+      return this;
+    }
+    public ApiProperties.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public ApiProperties.ModelBuilder targetTime(Integer targetTime) {
+      this.instance.setTargetTime(targetTime);
+      return this;
+    }
+    public ApiProperties.ModelBuilder timeLimit(Integer timeLimit) {
+      this.instance.setTimeLimit(timeLimit);
+      return this;
+    }
+    public ApiProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public ApiProperties.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiProperties.ModelBuilder builder() {
+    return new ApiProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiProperties.ModelBuilder toBuilder() {
+    ApiProperties.ModelBuilder builder = new ApiProperties.ModelBuilder()
+      .clientCertificate(getClientCertificate())
+      .clientCertDomainsAllowList(getClientCertDomainsAllowList())
+      .collectProxyNetworkData(getCollectProxyNetworkData())
+      .distributedTracing(getDistributedTracing())
+      .followRedirects(getFollowRedirects())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .overrideAgentProxy(getOverrideAgentProxy())
+      .overrideProxyId(getOverrideProxyId())
+      .pathTraceMode(getPathTraceMode())
+      .predefinedVariables(getPredefinedVariables())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requests(getRequests())
+      .sslVersionId(getSslVersionId())
+      .targetTime(getTargetTime())
+      .timeLimit(getTimeLimit())
+      .type(getType())
+      .url(getUrl());
+    return builder;
+  }
+
 }
 

@@ -40,35 +40,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Traceroute {
   public static final String JSON_PROPERTY_DESTINATION = "destination";
+  @JsonProperty(JSON_PROPERTY_DESTINATION)
   private String destination;
 
   public static final String JSON_PROPERTY_ERROR = "error";
+  @JsonProperty(JSON_PROPERTY_ERROR)
   private String error;
 
   public static final String JSON_PROPERTY_INFO_FLAGS = "infoFlags";
+  @JsonProperty(JSON_PROPERTY_INFO_FLAGS)
   private List<String> infoFlags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERNAL_ERRORS = "internalErrors";
+  @JsonProperty(JSON_PROPERTY_INTERNAL_ERRORS)
   private List<String> internalErrors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOPS = "hops";
   private List<TracerouteHop> hops = new ArrayList<>();
 
   public Traceroute() { 
-  }
-
-  @JsonCreator
-  public Traceroute(
-    @JsonProperty(JSON_PROPERTY_DESTINATION) String destination, 
-    @JsonProperty(JSON_PROPERTY_ERROR) String error, 
-    @JsonProperty(JSON_PROPERTY_INFO_FLAGS) List<String> infoFlags, 
-    @JsonProperty(JSON_PROPERTY_INTERNAL_ERRORS) List<String> internalErrors
-  ) {
-  this();
-    this.destination = destination;
-    this.error = error;
-    this.infoFlags = infoFlags;
-    this.internalErrors = internalErrors;
   }
 
    /**
@@ -211,5 +201,79 @@ public class Traceroute {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Traceroute instance;
+
+    public ModelBuilder() {
+      this(new Traceroute());
+    }
+
+    protected ModelBuilder(Traceroute instance) {
+      this.instance = instance;
+    }
+
+    public Traceroute.ModelBuilder destination(String destination) {
+      this.instance.destination = destination;
+      return this;
+    }
+    public Traceroute.ModelBuilder error(String error) {
+      this.instance.error = error;
+      return this;
+    }
+    public Traceroute.ModelBuilder infoFlags(List<String> infoFlags) {
+      this.instance.infoFlags = infoFlags;
+      return this;
+    }
+    public Traceroute.ModelBuilder internalErrors(List<String> internalErrors) {
+      this.instance.internalErrors = internalErrors;
+      return this;
+    }
+    public Traceroute.ModelBuilder hops(List<TracerouteHop> hops) {
+      this.instance.setHops(hops);
+      return this;
+    }
+
+    /**
+     * Returns a built Traceroute instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Traceroute build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Traceroute.ModelBuilder builder() {
+    return new Traceroute.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Traceroute.ModelBuilder toBuilder() {
+    Traceroute.ModelBuilder builder = new Traceroute.ModelBuilder()
+      .destination(getDestination())
+      .error(getError())
+      .infoFlags(getInfoFlags())
+      .internalErrors(getInternalErrors())
+      .hops(getHops());
+    return builder;
+  }
+
 }
 

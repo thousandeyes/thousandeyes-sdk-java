@@ -145,5 +145,64 @@ public class AgentThresholdFilters {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentThresholdFilters instance;
+
+    public ModelBuilder() {
+      this(new AgentThresholdFilters());
+    }
+
+    protected ModelBuilder(AgentThresholdFilters instance) {
+      this.instance = instance;
+    }
+
+    public AgentThresholdFilters.ModelBuilder filters(List<AgentThresholdFilter> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public AgentThresholdFilters.ModelBuilder conditionalOperator(ConditionalOperator conditionalOperator) {
+      this.instance.setConditionalOperator(conditionalOperator);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentThresholdFilters instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentThresholdFilters build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentThresholdFilters.ModelBuilder builder() {
+    return new AgentThresholdFilters.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentThresholdFilters.ModelBuilder toBuilder() {
+    AgentThresholdFilters.ModelBuilder builder = new AgentThresholdFilters.ModelBuilder()
+      .filters(getFilters())
+      .conditionalOperator(getConditionalOperator());
+    return builder;
+  }
+
 }
 

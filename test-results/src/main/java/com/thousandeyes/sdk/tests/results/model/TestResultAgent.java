@@ -35,32 +35,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TestResultAgent {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public static final String JSON_PROPERTY_AGENT_NAME = "agentName";
+  @JsonProperty(JSON_PROPERTY_AGENT_NAME)
   private String agentName;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @JsonProperty(JSON_PROPERTY_LOCATION)
   private String location;
 
   public TestResultAgent() { 
-  }
-
-  @JsonCreator
-  public TestResultAgent(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_NAME) String agentName, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId, 
-    @JsonProperty(JSON_PROPERTY_LOCATION) String location
-  ) {
-  this();
-    this.agentId = agentId;
-    this.agentName = agentName;
-    this.countryId = countryId;
-    this.location = location;
   }
 
    /**
@@ -168,5 +158,74 @@ public class TestResultAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestResultAgent instance;
+
+    public ModelBuilder() {
+      this(new TestResultAgent());
+    }
+
+    protected ModelBuilder(TestResultAgent instance) {
+      this.instance = instance;
+    }
+
+    public TestResultAgent.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public TestResultAgent.ModelBuilder agentName(String agentName) {
+      this.instance.agentName = agentName;
+      return this;
+    }
+    public TestResultAgent.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+    public TestResultAgent.ModelBuilder location(String location) {
+      this.instance.location = location;
+      return this;
+    }
+
+    /**
+     * Returns a built TestResultAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestResultAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestResultAgent.ModelBuilder builder() {
+    return new TestResultAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestResultAgent.ModelBuilder toBuilder() {
+    TestResultAgent.ModelBuilder builder = new TestResultAgent.ModelBuilder()
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .countryId(getCountryId())
+      .location(getLocation());
+    return builder;
+  }
+
 }
 

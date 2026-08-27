@@ -145,5 +145,64 @@ public class Permissions {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Permissions instance;
+
+    public ModelBuilder() {
+      this(new Permissions());
+    }
+
+    protected ModelBuilder(Permissions instance) {
+      this.instance = instance;
+    }
+
+    public Permissions.ModelBuilder permissions(List<Permission> permissions) {
+      this.instance.setPermissions(permissions);
+      return this;
+    }
+    public Permissions.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Permissions instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Permissions build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Permissions.ModelBuilder builder() {
+    return new Permissions.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Permissions.ModelBuilder toBuilder() {
+    Permissions.ModelBuilder builder = new Permissions.ModelBuilder()
+      .permissions(getPermissions())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

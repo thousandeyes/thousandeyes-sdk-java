@@ -144,5 +144,64 @@ public class EndpointAgents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgents instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgents());
+    }
+
+    protected ModelBuilder(EndpointAgents instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgents.ModelBuilder totalAgents(Integer totalAgents) {
+      this.instance.setTotalAgents(totalAgents);
+      return this;
+    }
+    public EndpointAgents.ModelBuilder agents(List<EndpointAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgents.ModelBuilder builder() {
+    return new EndpointAgents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgents.ModelBuilder toBuilder() {
+    EndpointAgents.ModelBuilder builder = new EndpointAgents.ModelBuilder()
+      .totalAgents(getTotalAgents())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

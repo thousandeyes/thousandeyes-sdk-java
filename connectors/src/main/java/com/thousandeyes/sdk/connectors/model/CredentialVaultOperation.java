@@ -44,6 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class CredentialVaultOperation {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -62,14 +63,6 @@ public class CredentialVaultOperation {
   private SelfLinks links;
 
   public CredentialVaultOperation() { 
-  }
-
-  @JsonCreator
-  public CredentialVaultOperation(
-    @JsonProperty(JSON_PROPERTY_ID) String id
-  ) {
-  this();
-    this.id = id;
   }
 
    /**
@@ -269,5 +262,84 @@ public class CredentialVaultOperation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CredentialVaultOperation instance;
+
+    public ModelBuilder() {
+      this(new CredentialVaultOperation());
+    }
+
+    protected ModelBuilder(CredentialVaultOperation instance) {
+      this.instance = instance;
+    }
+
+    public CredentialVaultOperation.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public CredentialVaultOperation.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public CredentialVaultOperation.ModelBuilder secrets(List<CredentialVaultSecret> secrets) {
+      this.instance.setSecrets(secrets);
+      return this;
+    }
+    public CredentialVaultOperation.ModelBuilder type(OperationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public CredentialVaultOperation.ModelBuilder status(OperationStatus status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public CredentialVaultOperation.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CredentialVaultOperation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CredentialVaultOperation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CredentialVaultOperation.ModelBuilder builder() {
+    return new CredentialVaultOperation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CredentialVaultOperation.ModelBuilder toBuilder() {
+    CredentialVaultOperation.ModelBuilder builder = new CredentialVaultOperation.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .secrets(getSecrets())
+      .type(getType())
+      .status(getStatus())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

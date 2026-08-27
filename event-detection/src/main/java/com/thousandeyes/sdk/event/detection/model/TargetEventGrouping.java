@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TargetEventGrouping {
   public static final String JSON_PROPERTY_TARGET = "target";
+  @JsonProperty(JSON_PROPERTY_TARGET)
   private String target;
 
   public TargetEventGrouping() { 
-  }
-
-  @JsonCreator
-  public TargetEventGrouping(
-    @JsonProperty(JSON_PROPERTY_TARGET) String target
-  ) {
-  this();
-    this.target = target;
   }
 
    /**
@@ -99,5 +92,59 @@ public class TargetEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TargetEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new TargetEventGrouping());
+    }
+
+    protected ModelBuilder(TargetEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public TargetEventGrouping.ModelBuilder target(String target) {
+      this.instance.target = target;
+      return this;
+    }
+
+    /**
+     * Returns a built TargetEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TargetEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TargetEventGrouping.ModelBuilder builder() {
+    return new TargetEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TargetEventGrouping.ModelBuilder toBuilder() {
+    TargetEventGrouping.ModelBuilder builder = new TargetEventGrouping.ModelBuilder()
+      .target(getTarget());
+    return builder;
+  }
+
 }
 

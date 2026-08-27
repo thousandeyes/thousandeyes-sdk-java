@@ -102,5 +102,59 @@ public class EndpointStateChangesLogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointStateChangesLogItem instance;
+
+    public ModelBuilder() {
+      this(new EndpointStateChangesLogItem());
+    }
+
+    protected ModelBuilder(EndpointStateChangesLogItem instance) {
+      this.instance = instance;
+    }
+
+    public EndpointStateChangesLogItem.ModelBuilder logItemType(EndpointStateChangesLogItemType logItemType) {
+      this.instance.setLogItemType(logItemType);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointStateChangesLogItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointStateChangesLogItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointStateChangesLogItem.ModelBuilder builder() {
+    return new EndpointStateChangesLogItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointStateChangesLogItem.ModelBuilder toBuilder() {
+    EndpointStateChangesLogItem.ModelBuilder builder = new EndpointStateChangesLogItem.ModelBuilder()
+      .logItemType(getLogItemType());
+    return builder;
+  }
+
 }
 

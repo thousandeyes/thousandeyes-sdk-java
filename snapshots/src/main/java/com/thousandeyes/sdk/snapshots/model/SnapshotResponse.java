@@ -49,12 +49,15 @@ public class SnapshotResponse {
   private String id;
 
   public static final String JSON_PROPERTY_START_ROUND_ID = "startRoundId";
+  @JsonProperty(JSON_PROPERTY_START_ROUND_ID)
   private Integer startRoundId;
 
   public static final String JSON_PROPERTY_END_ROUND_ID = "endRoundId";
+  @JsonProperty(JSON_PROPERTY_END_ROUND_ID)
   private Integer endRoundId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SHARE_DATE = "shareDate";
@@ -82,18 +85,6 @@ public class SnapshotResponse {
   private SnapshotLinks links;
 
   public SnapshotResponse() { 
-  }
-
-  @JsonCreator
-  public SnapshotResponse(
-    @JsonProperty(JSON_PROPERTY_START_ROUND_ID) Integer startRoundId, 
-    @JsonProperty(JSON_PROPERTY_END_ROUND_ID) Integer endRoundId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId
-  ) {
-  this();
-    this.startRoundId = startRoundId;
-    this.endRoundId = endRoundId;
-    this.roundId = roundId;
   }
 
   public SnapshotResponse id(String id) {
@@ -427,5 +418,114 @@ public class SnapshotResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SnapshotResponse instance;
+
+    public ModelBuilder() {
+      this(new SnapshotResponse());
+    }
+
+    protected ModelBuilder(SnapshotResponse instance) {
+      this.instance = instance;
+    }
+
+    public SnapshotResponse.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder startRoundId(Integer startRoundId) {
+      this.instance.startRoundId = startRoundId;
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder endRoundId(Integer endRoundId) {
+      this.instance.endRoundId = endRoundId;
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder shareDate(OffsetDateTime shareDate) {
+      this.instance.setShareDate(shareDate);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder sourceTestId(String sourceTestId) {
+      this.instance.setSourceTestId(sourceTestId);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder displayName(String displayName) {
+      this.instance.setDisplayName(displayName);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder extraParams(String extraParams) {
+      this.instance.setExtraParams(extraParams);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder test(SnapshotTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public SnapshotResponse.ModelBuilder links(SnapshotLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built SnapshotResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SnapshotResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SnapshotResponse.ModelBuilder builder() {
+    return new SnapshotResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SnapshotResponse.ModelBuilder toBuilder() {
+    SnapshotResponse.ModelBuilder builder = new SnapshotResponse.ModelBuilder()
+      .id(getId())
+      .startRoundId(getStartRoundId())
+      .endRoundId(getEndRoundId())
+      .roundId(getRoundId())
+      .shareDate(getShareDate())
+      .sourceTestId(getSourceTestId())
+      .testId(getTestId())
+      .uid(getUid())
+      .displayName(getDisplayName())
+      .extraParams(getExtraParams())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

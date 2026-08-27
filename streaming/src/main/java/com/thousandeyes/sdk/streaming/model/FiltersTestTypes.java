@@ -113,5 +113,59 @@ public class FiltersTestTypes {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FiltersTestTypes instance;
+
+    public ModelBuilder() {
+      this(new FiltersTestTypes());
+    }
+
+    protected ModelBuilder(FiltersTestTypes instance) {
+      this.instance = instance;
+    }
+
+    public FiltersTestTypes.ModelBuilder values(List<TestType> values) {
+      this.instance.setValues(values);
+      return this;
+    }
+
+    /**
+     * Returns a built FiltersTestTypes instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FiltersTestTypes build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FiltersTestTypes.ModelBuilder builder() {
+    return new FiltersTestTypes.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FiltersTestTypes.ModelBuilder toBuilder() {
+    FiltersTestTypes.ModelBuilder builder = new FiltersTestTypes.ModelBuilder()
+      .values(getValues());
+    return builder;
+  }
+
 }
 

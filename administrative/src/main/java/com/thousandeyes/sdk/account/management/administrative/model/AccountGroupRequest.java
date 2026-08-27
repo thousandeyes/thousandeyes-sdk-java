@@ -143,5 +143,64 @@ public class AccountGroupRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroupRequest instance;
+
+    public ModelBuilder() {
+      this(new AccountGroupRequest());
+    }
+
+    protected ModelBuilder(AccountGroupRequest instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroupRequest.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public AccountGroupRequest.ModelBuilder agents(List<String> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroupRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroupRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroupRequest.ModelBuilder builder() {
+    return new AccountGroupRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroupRequest.ModelBuilder toBuilder() {
+    AccountGroupRequest.ModelBuilder builder = new AccountGroupRequest.ModelBuilder()
+      .accountGroupName(getAccountGroupName())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

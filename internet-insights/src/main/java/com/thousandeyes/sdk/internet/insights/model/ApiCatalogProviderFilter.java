@@ -256,5 +256,84 @@ public class ApiCatalogProviderFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiCatalogProviderFilter instance;
+
+    public ModelBuilder() {
+      this(new ApiCatalogProviderFilter());
+    }
+
+    protected ModelBuilder(ApiCatalogProviderFilter instance) {
+      this.instance = instance;
+    }
+
+    public ApiCatalogProviderFilter.ModelBuilder providerName(String providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiCatalogProviderFilter.ModelBuilder providerType(String providerType) {
+      this.instance.setProviderType(providerType);
+      return this;
+    }
+    public ApiCatalogProviderFilter.ModelBuilder region(String region) {
+      this.instance.setRegion(region);
+      return this;
+    }
+    public ApiCatalogProviderFilter.ModelBuilder location(String location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public ApiCatalogProviderFilter.ModelBuilder asn(String asn) {
+      this.instance.setAsn(asn);
+      return this;
+    }
+    public ApiCatalogProviderFilter.ModelBuilder included(Boolean included) {
+      this.instance.setIncluded(included);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiCatalogProviderFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiCatalogProviderFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiCatalogProviderFilter.ModelBuilder builder() {
+    return new ApiCatalogProviderFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiCatalogProviderFilter.ModelBuilder toBuilder() {
+    ApiCatalogProviderFilter.ModelBuilder builder = new ApiCatalogProviderFilter.ModelBuilder()
+      .providerName(getProviderName())
+      .providerType(getProviderType())
+      .region(getRegion())
+      .location(getLocation())
+      .asn(getAsn())
+      .included(getIncluded());
+    return builder;
+  }
+
 }
 

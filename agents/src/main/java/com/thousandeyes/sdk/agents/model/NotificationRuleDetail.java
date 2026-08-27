@@ -45,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NotificationRuleDetail {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
@@ -69,14 +70,6 @@ public class NotificationRuleDetail {
   private SelfLinks links;
 
   public NotificationRuleDetail() { 
-  }
-
-  @JsonCreator
-  public NotificationRuleDetail(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId
-  ) {
-  this();
-    this.ruleId = ruleId;
   }
 
    /**
@@ -330,5 +323,94 @@ public class NotificationRuleDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationRuleDetail instance;
+
+    public ModelBuilder() {
+      this(new NotificationRuleDetail());
+    }
+
+    protected ModelBuilder(NotificationRuleDetail instance) {
+      this.instance = instance;
+    }
+
+    public NotificationRuleDetail.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder ruleName(String ruleName) {
+      this.instance.setRuleName(ruleName);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder expression(String expression) {
+      this.instance.setExpression(expression);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder notifyOnClear(Boolean notifyOnClear) {
+      this.instance.setNotifyOnClear(notifyOnClear);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.setIsDefault(isDefault);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder notifications(AgentNotification notifications) {
+      this.instance.setNotifications(notifications);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder agents(List<AgentResponse> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public NotificationRuleDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationRuleDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationRuleDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationRuleDetail.ModelBuilder builder() {
+    return new NotificationRuleDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationRuleDetail.ModelBuilder toBuilder() {
+    NotificationRuleDetail.ModelBuilder builder = new NotificationRuleDetail.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .notifyOnClear(getNotifyOnClear())
+      .isDefault(getIsDefault())
+      .notifications(getNotifications())
+      .agents(getAgents())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

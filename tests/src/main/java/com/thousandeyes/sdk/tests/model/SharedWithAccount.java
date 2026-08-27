@@ -132,5 +132,64 @@ public class SharedWithAccount {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SharedWithAccount instance;
+
+    public ModelBuilder() {
+      this(new SharedWithAccount());
+    }
+
+    protected ModelBuilder(SharedWithAccount instance) {
+      this.instance = instance;
+    }
+
+    public SharedWithAccount.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public SharedWithAccount.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+
+    /**
+     * Returns a built SharedWithAccount instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SharedWithAccount build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SharedWithAccount.ModelBuilder builder() {
+    return new SharedWithAccount.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SharedWithAccount.ModelBuilder toBuilder() {
+    SharedWithAccount.ModelBuilder builder = new SharedWithAccount.ModelBuilder()
+      .aid(getAid())
+      .name(getName());
+    return builder;
+  }
+
 }
 

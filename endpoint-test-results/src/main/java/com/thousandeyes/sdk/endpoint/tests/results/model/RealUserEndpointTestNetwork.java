@@ -66,12 +66,15 @@ public class RealUserEndpointTestNetwork {
   private TargetTraceroute traceroute;
 
   public static final String JSON_PROPERTY_CONNECT_RTT = "connectRtt";
+  @JsonProperty(JSON_PROPERTY_CONNECT_RTT)
   private Double connectRtt;
 
   public static final String JSON_PROPERTY_IS_ICMP_BLOCKED = "isIcmpBlocked";
+  @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED)
   private Boolean isIcmpBlocked;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
+  @JsonProperty(JSON_PROPERTY_ERRORS)
   private List<String> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VPN_PING = "vpnPing";
@@ -81,18 +84,6 @@ public class RealUserEndpointTestNetwork {
   private VpnTraceroute vpnTraceroute;
 
   public RealUserEndpointTestNetwork() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestNetwork(
-    @JsonProperty(JSON_PROPERTY_CONNECT_RTT) Double connectRtt, 
-    @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED) Boolean isIcmpBlocked, 
-    @JsonProperty(JSON_PROPERTY_ERRORS) List<String> errors
-  ) {
-  this();
-    this.connectRtt = connectRtt;
-    this.isIcmpBlocked = isIcmpBlocked;
-    this.errors = errors;
   }
 
   public RealUserEndpointTestNetwork networkProfile(NetworkProfile networkProfile) {
@@ -372,5 +363,104 @@ public class RealUserEndpointTestNetwork {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestNetwork instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestNetwork());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestNetwork instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestNetwork.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder gatewayPing(GatewayNetworkPing gatewayPing) {
+      this.instance.setGatewayPing(gatewayPing);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder ping(TargetNetworkPing ping) {
+      this.instance.setPing(ping);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder traceroute(TargetTraceroute traceroute) {
+      this.instance.setTraceroute(traceroute);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder connectRtt(Double connectRtt) {
+      this.instance.connectRtt = connectRtt;
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder isIcmpBlocked(Boolean isIcmpBlocked) {
+      this.instance.isIcmpBlocked = isIcmpBlocked;
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder errors(List<String> errors) {
+      this.instance.errors = errors;
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder vpnPing(VpnNetworkPing vpnPing) {
+      this.instance.setVpnPing(vpnPing);
+      return this;
+    }
+    public RealUserEndpointTestNetwork.ModelBuilder vpnTraceroute(VpnTraceroute vpnTraceroute) {
+      this.instance.setVpnTraceroute(vpnTraceroute);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestNetwork instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestNetwork build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestNetwork.ModelBuilder builder() {
+    return new RealUserEndpointTestNetwork.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestNetwork.ModelBuilder toBuilder() {
+    RealUserEndpointTestNetwork.ModelBuilder builder = new RealUserEndpointTestNetwork.ModelBuilder()
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .gatewayPing(getGatewayPing())
+      .ping(getPing())
+      .traceroute(getTraceroute())
+      .connectRtt(getConnectRtt())
+      .isIcmpBlocked(getIsIcmpBlocked())
+      .errors(getErrors())
+      .vpnPing(getVpnPing())
+      .vpnTraceroute(getVpnTraceroute());
+    return builder;
+  }
+
 }
 

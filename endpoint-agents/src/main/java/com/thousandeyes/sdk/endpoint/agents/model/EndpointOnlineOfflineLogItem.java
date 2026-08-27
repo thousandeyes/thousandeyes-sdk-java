@@ -102,5 +102,59 @@ public class EndpointOnlineOfflineLogItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointOnlineOfflineLogItem instance;
+
+    public ModelBuilder() {
+      this(new EndpointOnlineOfflineLogItem());
+    }
+
+    protected ModelBuilder(EndpointOnlineOfflineLogItem instance) {
+      this.instance = instance;
+    }
+
+    public EndpointOnlineOfflineLogItem.ModelBuilder logItemType(EndpointOnlineOfflineLogItemType logItemType) {
+      this.instance.setLogItemType(logItemType);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointOnlineOfflineLogItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointOnlineOfflineLogItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointOnlineOfflineLogItem.ModelBuilder builder() {
+    return new EndpointOnlineOfflineLogItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointOnlineOfflineLogItem.ModelBuilder toBuilder() {
+    EndpointOnlineOfflineLogItem.ModelBuilder builder = new EndpointOnlineOfflineLogItem.ModelBuilder()
+      .logItemType(getLogItemType());
+    return builder;
+  }
+
 }
 

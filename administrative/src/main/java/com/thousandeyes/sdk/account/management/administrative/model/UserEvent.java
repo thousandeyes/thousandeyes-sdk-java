@@ -331,5 +331,94 @@ public class UserEvent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserEvent instance;
+
+    public ModelBuilder() {
+      this(new UserEvent());
+    }
+
+    protected ModelBuilder(UserEvent instance) {
+      this.instance = instance;
+    }
+
+    public UserEvent.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public UserEvent.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public UserEvent.ModelBuilder date(OffsetDateTime date) {
+      this.instance.setDate(date);
+      return this;
+    }
+    public UserEvent.ModelBuilder event(String event) {
+      this.instance.setEvent(event);
+      return this;
+    }
+    public UserEvent.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.setIpAddress(ipAddress);
+      return this;
+    }
+    public UserEvent.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public UserEvent.ModelBuilder user(String user) {
+      this.instance.setUser(user);
+      return this;
+    }
+    public UserEvent.ModelBuilder resources(List<Resource> resources) {
+      this.instance.setResources(resources);
+      return this;
+    }
+
+    /**
+     * Returns a built UserEvent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserEvent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserEvent.ModelBuilder builder() {
+    return new UserEvent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserEvent.ModelBuilder toBuilder() {
+    UserEvent.ModelBuilder builder = new UserEvent.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .date(getDate())
+      .event(getEvent())
+      .ipAddress(getIpAddress())
+      .uid(getUid())
+      .user(getUser())
+      .resources(getResources());
+    return builder;
+  }
+
 }
 

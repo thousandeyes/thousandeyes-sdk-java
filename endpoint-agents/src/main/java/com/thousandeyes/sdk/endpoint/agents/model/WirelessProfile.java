@@ -225,5 +225,79 @@ public class WirelessProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WirelessProfile instance;
+
+    public ModelBuilder() {
+      this(new WirelessProfile());
+    }
+
+    protected ModelBuilder(WirelessProfile instance) {
+      this.instance = instance;
+    }
+
+    public WirelessProfile.ModelBuilder bssid(String bssid) {
+      this.instance.setBssid(bssid);
+      return this;
+    }
+    public WirelessProfile.ModelBuilder ssid(String ssid) {
+      this.instance.setSsid(ssid);
+      return this;
+    }
+    public WirelessProfile.ModelBuilder rssi(Integer rssi) {
+      this.instance.setRssi(rssi);
+      return this;
+    }
+    public WirelessProfile.ModelBuilder channel(Integer channel) {
+      this.instance.setChannel(channel);
+      return this;
+    }
+    public WirelessProfile.ModelBuilder phyMode(String phyMode) {
+      this.instance.setPhyMode(phyMode);
+      return this;
+    }
+
+    /**
+     * Returns a built WirelessProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WirelessProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WirelessProfile.ModelBuilder builder() {
+    return new WirelessProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WirelessProfile.ModelBuilder toBuilder() {
+    WirelessProfile.ModelBuilder builder = new WirelessProfile.ModelBuilder()
+      .bssid(getBssid())
+      .ssid(getSsid())
+      .rssi(getRssi())
+      .channel(getChannel())
+      .phyMode(getPhyMode());
+    return builder;
+  }
+
 }
 

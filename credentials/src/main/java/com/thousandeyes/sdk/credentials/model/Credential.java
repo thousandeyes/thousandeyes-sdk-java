@@ -195,5 +195,74 @@ public class Credential {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Credential instance;
+
+    public ModelBuilder() {
+      this(new Credential());
+    }
+
+    protected ModelBuilder(Credential instance) {
+      this.instance = instance;
+    }
+
+    public Credential.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public Credential.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public Credential.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public Credential.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built Credential instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Credential build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Credential.ModelBuilder builder() {
+    return new Credential.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Credential.ModelBuilder toBuilder() {
+    Credential.ModelBuilder builder = new Credential.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .links(getLinks())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

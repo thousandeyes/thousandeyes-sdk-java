@@ -132,5 +132,64 @@ public class TagMatch {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TagMatch instance;
+
+    public ModelBuilder() {
+      this(new TagMatch());
+    }
+
+    protected ModelBuilder(TagMatch instance) {
+      this.instance = instance;
+    }
+
+    public TagMatch.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public TagMatch.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built TagMatch instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TagMatch build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TagMatch.ModelBuilder builder() {
+    return new TagMatch.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TagMatch.ModelBuilder toBuilder() {
+    TagMatch.ModelBuilder builder = new TagMatch.ModelBuilder()
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

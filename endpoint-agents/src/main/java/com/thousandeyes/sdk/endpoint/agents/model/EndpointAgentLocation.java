@@ -34,27 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointAgentLocation {
   public static final String JSON_PROPERTY_LATITUDE = "latitude";
+  @JsonProperty(JSON_PROPERTY_LATITUDE)
   private Double latitude;
 
   public static final String JSON_PROPERTY_LONGITUDE = "longitude";
+  @JsonProperty(JSON_PROPERTY_LONGITUDE)
   private Double longitude;
 
   public static final String JSON_PROPERTY_LOCATION_NAME = "locationName";
+  @JsonProperty(JSON_PROPERTY_LOCATION_NAME)
   private String locationName;
 
   public EndpointAgentLocation() { 
-  }
-
-  @JsonCreator
-  public EndpointAgentLocation(
-    @JsonProperty(JSON_PROPERTY_LATITUDE) Double latitude, 
-    @JsonProperty(JSON_PROPERTY_LONGITUDE) Double longitude, 
-    @JsonProperty(JSON_PROPERTY_LOCATION_NAME) String locationName
-  ) {
-  this();
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.locationName = locationName;
   }
 
    /**
@@ -145,5 +136,69 @@ public class EndpointAgentLocation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentLocation instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentLocation());
+    }
+
+    protected ModelBuilder(EndpointAgentLocation instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentLocation.ModelBuilder latitude(Double latitude) {
+      this.instance.latitude = latitude;
+      return this;
+    }
+    public EndpointAgentLocation.ModelBuilder longitude(Double longitude) {
+      this.instance.longitude = longitude;
+      return this;
+    }
+    public EndpointAgentLocation.ModelBuilder locationName(String locationName) {
+      this.instance.locationName = locationName;
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentLocation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentLocation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentLocation.ModelBuilder builder() {
+    return new EndpointAgentLocation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentLocation.ModelBuilder toBuilder() {
+    EndpointAgentLocation.ModelBuilder builder = new EndpointAgentLocation.ModelBuilder()
+      .latitude(getLatitude())
+      .longitude(getLongitude())
+      .locationName(getLocationName());
+    return builder;
+  }
+
 }
 

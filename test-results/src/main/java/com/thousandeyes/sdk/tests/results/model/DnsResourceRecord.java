@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsResourceRecord {
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -47,24 +48,14 @@ public class DnsResourceRecord {
   private DnsResourceRecordClass propertyClass;
 
   public static final String JSON_PROPERTY_TTL = "ttl";
+  @JsonProperty(JSON_PROPERTY_TTL)
   private Integer ttl;
 
   public static final String JSON_PROPERTY_DATA = "data";
+  @JsonProperty(JSON_PROPERTY_DATA)
   private String data;
 
   public DnsResourceRecord() { 
-  }
-
-  @JsonCreator
-  public DnsResourceRecord(
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_TTL) Integer ttl, 
-    @JsonProperty(JSON_PROPERTY_DATA) String data
-  ) {
-  this();
-    this.name = name;
-    this.ttl = ttl;
-    this.data = data;
   }
 
    /**
@@ -209,5 +200,79 @@ public class DnsResourceRecord {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsResourceRecord instance;
+
+    public ModelBuilder() {
+      this(new DnsResourceRecord());
+    }
+
+    protected ModelBuilder(DnsResourceRecord instance) {
+      this.instance = instance;
+    }
+
+    public DnsResourceRecord.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public DnsResourceRecord.ModelBuilder type(DnsResourceRecordType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public DnsResourceRecord.ModelBuilder propertyClass(DnsResourceRecordClass propertyClass) {
+      this.instance.setPropertyClass(propertyClass);
+      return this;
+    }
+    public DnsResourceRecord.ModelBuilder ttl(Integer ttl) {
+      this.instance.ttl = ttl;
+      return this;
+    }
+    public DnsResourceRecord.ModelBuilder data(String data) {
+      this.instance.data = data;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsResourceRecord instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsResourceRecord build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsResourceRecord.ModelBuilder builder() {
+    return new DnsResourceRecord.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsResourceRecord.ModelBuilder toBuilder() {
+    DnsResourceRecord.ModelBuilder builder = new DnsResourceRecord.ModelBuilder()
+      .name(getName())
+      .type(getType())
+      .propertyClass(getPropertyClass())
+      .ttl(getTtl())
+      .data(getData());
+    return builder;
+  }
+
 }
 

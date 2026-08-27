@@ -132,5 +132,64 @@ public class UnauthorizedError {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UnauthorizedError instance;
+
+    public ModelBuilder() {
+      this(new UnauthorizedError());
+    }
+
+    protected ModelBuilder(UnauthorizedError instance) {
+      this.instance = instance;
+    }
+
+    public UnauthorizedError.ModelBuilder error(String error) {
+      this.instance.setError(error);
+      return this;
+    }
+    public UnauthorizedError.ModelBuilder errorDescription(String errorDescription) {
+      this.instance.setErrorDescription(errorDescription);
+      return this;
+    }
+
+    /**
+     * Returns a built UnauthorizedError instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UnauthorizedError build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UnauthorizedError.ModelBuilder builder() {
+    return new UnauthorizedError.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UnauthorizedError.ModelBuilder toBuilder() {
+    UnauthorizedError.ModelBuilder builder = new UnauthorizedError.ModelBuilder()
+      .error(getError())
+      .errorDescription(getErrorDescription());
+    return builder;
+  }
+
 }
 

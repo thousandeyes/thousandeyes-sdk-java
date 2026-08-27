@@ -39,40 +39,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RealUserEndpointTestPage {
   public static final String JSON_PROPERTY_PAGE_ID = "pageId";
+  @JsonProperty(JSON_PROPERTY_PAGE_ID)
   private String pageId;
 
   public static final String JSON_PROPERTY_PAGE_TITLE = "pageTitle";
+  @JsonProperty(JSON_PROPERTY_PAGE_TITLE)
   private String pageTitle;
 
   public static final String JSON_PROPERTY_PAGE_URL = "pageUrl";
+  @JsonProperty(JSON_PROPERTY_PAGE_URL)
   private String pageUrl;
 
   public static final String JSON_PROPERTY_LOAD_DATE = "loadDate";
+  @JsonProperty(JSON_PROPERTY_LOAD_DATE)
   private OffsetDateTime loadDate;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   private Integer responseCode;
 
   public static final String JSON_PROPERTY_PAGE_TIMINGS = "pageTimings";
   private RealUserEndpointTestPageTimings pageTimings;
 
   public RealUserEndpointTestPage() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestPage(
-    @JsonProperty(JSON_PROPERTY_PAGE_ID) String pageId, 
-    @JsonProperty(JSON_PROPERTY_PAGE_TITLE) String pageTitle, 
-    @JsonProperty(JSON_PROPERTY_PAGE_URL) String pageUrl, 
-    @JsonProperty(JSON_PROPERTY_LOAD_DATE) OffsetDateTime loadDate, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE) Integer responseCode
-  ) {
-  this();
-    this.pageId = pageId;
-    this.pageTitle = pageTitle;
-    this.pageUrl = pageUrl;
-    this.loadDate = loadDate;
-    this.responseCode = responseCode;
   }
 
    /**
@@ -224,5 +213,84 @@ public class RealUserEndpointTestPage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestPage instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestPage());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestPage instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestPage.ModelBuilder pageId(String pageId) {
+      this.instance.pageId = pageId;
+      return this;
+    }
+    public RealUserEndpointTestPage.ModelBuilder pageTitle(String pageTitle) {
+      this.instance.pageTitle = pageTitle;
+      return this;
+    }
+    public RealUserEndpointTestPage.ModelBuilder pageUrl(String pageUrl) {
+      this.instance.pageUrl = pageUrl;
+      return this;
+    }
+    public RealUserEndpointTestPage.ModelBuilder loadDate(OffsetDateTime loadDate) {
+      this.instance.loadDate = loadDate;
+      return this;
+    }
+    public RealUserEndpointTestPage.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.responseCode = responseCode;
+      return this;
+    }
+    public RealUserEndpointTestPage.ModelBuilder pageTimings(RealUserEndpointTestPageTimings pageTimings) {
+      this.instance.setPageTimings(pageTimings);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestPage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestPage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestPage.ModelBuilder builder() {
+    return new RealUserEndpointTestPage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestPage.ModelBuilder toBuilder() {
+    RealUserEndpointTestPage.ModelBuilder builder = new RealUserEndpointTestPage.ModelBuilder()
+      .pageId(getPageId())
+      .pageTitle(getPageTitle())
+      .pageUrl(getPageUrl())
+      .loadDate(getLoadDate())
+      .responseCode(getResponseCode())
+      .pageTimings(getPageTimings());
+    return builder;
+  }
+
 }
 

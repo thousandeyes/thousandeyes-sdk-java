@@ -67,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiTableWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -76,6 +77,7 @@ public class ApiTableWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -100,6 +102,7 @@ public class ApiTableWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -133,18 +136,6 @@ public class ApiTableWidget {
   private TableDatasource dataSource;
 
   public ApiTableWidget() { 
-  }
-
-  @JsonCreator
-  public ApiTableWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -762,5 +753,164 @@ public class ApiTableWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTableWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiTableWidget());
+    }
+
+    protected ModelBuilder(ApiTableWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiTableWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder compareToPreviousValue(Boolean compareToPreviousValue) {
+      this.instance.setCompareToPreviousValue(compareToPreviousValue);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder rowGroupBy(ApiAggregateProperty rowGroupBy) {
+      this.instance.setRowGroupBy(rowGroupBy);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder columnGroupBy(ApiAggregateProperty columnGroupBy) {
+      this.instance.setColumnGroupBy(columnGroupBy);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder sortBy(LegacyWidgetSortProperty sortBy) {
+      this.instance.setSortBy(sortBy);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder sortDirection(LegacyWidgetSortDirection sortDirection) {
+      this.instance.setSortDirection(sortDirection);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder limit(Integer limit) {
+      this.instance.setLimit(limit);
+      return this;
+    }
+    public ApiTableWidget.ModelBuilder dataSource(TableDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTableWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTableWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTableWidget.ModelBuilder builder() {
+    return new ApiTableWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTableWidget.ModelBuilder toBuilder() {
+    ApiTableWidget.ModelBuilder builder = new ApiTableWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .compareToPreviousValue(getCompareToPreviousValue())
+      .rowGroupBy(getRowGroupBy())
+      .columnGroupBy(getColumnGroupBy())
+      .sortBy(getSortBy())
+      .sortDirection(getSortDirection())
+      .limit(getLimit())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

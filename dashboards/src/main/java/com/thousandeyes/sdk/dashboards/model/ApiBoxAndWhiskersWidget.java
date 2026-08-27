@@ -64,6 +64,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiBoxAndWhiskersWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -73,6 +74,7 @@ public class ApiBoxAndWhiskersWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -97,6 +99,7 @@ public class ApiBoxAndWhiskersWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -124,18 +127,6 @@ public class ApiBoxAndWhiskersWidget {
   private BoxAndWhiskersDatasource dataSource;
 
   public ApiBoxAndWhiskersWidget() { 
-  }
-
-  @JsonCreator
-  public ApiBoxAndWhiskersWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -695,5 +686,154 @@ public class ApiBoxAndWhiskersWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiBoxAndWhiskersWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiBoxAndWhiskersWidget());
+    }
+
+    protected ModelBuilder(ApiBoxAndWhiskersWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiBoxAndWhiskersWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder minScale(Float minScale) {
+      this.instance.setMinScale(minScale);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder maxScale(Float maxScale) {
+      this.instance.setMaxScale(maxScale);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder unit(ApiWidgetFixedYScalePrefix unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiBoxAndWhiskersWidget.ModelBuilder dataSource(BoxAndWhiskersDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiBoxAndWhiskersWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiBoxAndWhiskersWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiBoxAndWhiskersWidget.ModelBuilder builder() {
+    return new ApiBoxAndWhiskersWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiBoxAndWhiskersWidget.ModelBuilder toBuilder() {
+    ApiBoxAndWhiskersWidget.ModelBuilder builder = new ApiBoxAndWhiskersWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .minScale(getMinScale())
+      .maxScale(getMaxScale())
+      .unit(getUnit())
+      .type(getType())
+      .groupBy(getGroupBy())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

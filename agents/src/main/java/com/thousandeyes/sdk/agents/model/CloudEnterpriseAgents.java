@@ -145,5 +145,64 @@ public class CloudEnterpriseAgents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CloudEnterpriseAgents instance;
+
+    public ModelBuilder() {
+      this(new CloudEnterpriseAgents());
+    }
+
+    protected ModelBuilder(CloudEnterpriseAgents instance) {
+      this.instance = instance;
+    }
+
+    public CloudEnterpriseAgents.ModelBuilder agents(List<CloudEnterpriseAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public CloudEnterpriseAgents.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CloudEnterpriseAgents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CloudEnterpriseAgents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CloudEnterpriseAgents.ModelBuilder builder() {
+    return new CloudEnterpriseAgents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CloudEnterpriseAgents.ModelBuilder toBuilder() {
+    CloudEnterpriseAgents.ModelBuilder builder = new CloudEnterpriseAgents.ModelBuilder()
+      .agents(getAgents())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

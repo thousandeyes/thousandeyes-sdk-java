@@ -346,5 +346,94 @@ public class AgentRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentRequest instance;
+
+    public ModelBuilder() {
+      this(new AgentRequest());
+    }
+
+    protected ModelBuilder(AgentRequest instance) {
+      this.instance = instance;
+    }
+
+    public AgentRequest.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public AgentRequest.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public AgentRequest.ModelBuilder accountGroups(List<String> accountGroups) {
+      this.instance.setAccountGroups(accountGroups);
+      return this;
+    }
+    public AgentRequest.ModelBuilder ipv6Policy(AgentIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public AgentRequest.ModelBuilder keepBrowserCache(Boolean keepBrowserCache) {
+      this.instance.setKeepBrowserCache(keepBrowserCache);
+      return this;
+    }
+    public AgentRequest.ModelBuilder targetForTests(String targetForTests) {
+      this.instance.setTargetForTests(targetForTests);
+      return this;
+    }
+    public AgentRequest.ModelBuilder localResolutionPrefixes(List<String> localResolutionPrefixes) {
+      this.instance.setLocalResolutionPrefixes(localResolutionPrefixes);
+      return this;
+    }
+    public AgentRequest.ModelBuilder tests(List<String> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentRequest.ModelBuilder builder() {
+    return new AgentRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentRequest.ModelBuilder toBuilder() {
+    AgentRequest.ModelBuilder builder = new AgentRequest.ModelBuilder()
+      .agentName(getAgentName())
+      .enabled(getEnabled())
+      .accountGroups(getAccountGroups())
+      .ipv6Policy(getIpv6Policy())
+      .keepBrowserCache(getKeepBrowserCache())
+      .targetForTests(getTargetForTests())
+      .localResolutionPrefixes(getLocalResolutionPrefixes())
+      .tests(getTests());
+    return builder;
+  }
+
 }
 

@@ -230,5 +230,74 @@ public class MultiTestIdEndpointTestsDataSearchFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private MultiTestIdEndpointTestsDataSearchFilter instance;
+
+    public ModelBuilder() {
+      this(new MultiTestIdEndpointTestsDataSearchFilter());
+    }
+
+    protected ModelBuilder(MultiTestIdEndpointTestsDataSearchFilter instance) {
+      this.instance = instance;
+    }
+
+    public MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder testId(List<String> testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built MultiTestIdEndpointTestsDataSearchFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public MultiTestIdEndpointTestsDataSearchFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder builder() {
+    return new MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder toBuilder() {
+    MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder builder = new MultiTestIdEndpointTestsDataSearchFilter.ModelBuilder()
+      .agentId(getAgentId())
+      .testId(getTestId())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion());
+    return builder;
+  }
+
 }
 

@@ -544,5 +544,114 @@ public class EndpointResultRequestFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointResultRequestFilter instance;
+
+    public ModelBuilder() {
+      this(new EndpointResultRequestFilter());
+    }
+
+    protected ModelBuilder(EndpointResultRequestFilter instance) {
+      this.instance = instance;
+    }
+
+    public EndpointResultRequestFilter.ModelBuilder location(List<String> location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder connection(List<InterfaceHardwareType> connection) {
+      this.instance.setConnection(connection);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder platform(List<Platform> platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder gateway(List<String> gateway) {
+      this.instance.setGateway(gateway);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder proxyTarget(List<String> proxyTarget) {
+      this.instance.setProxyTarget(proxyTarget);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder vpnTarget(List<String> vpnTarget) {
+      this.instance.setVpnTarget(vpnTarget);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder networkId(List<String> networkId) {
+      this.instance.setNetworkId(networkId);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder ssid(List<String> ssid) {
+      this.instance.setSsid(ssid);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder bssid(List<String> bssid) {
+      this.instance.setBssid(bssid);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public EndpointResultRequestFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointResultRequestFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointResultRequestFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointResultRequestFilter.ModelBuilder builder() {
+    return new EndpointResultRequestFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointResultRequestFilter.ModelBuilder toBuilder() {
+    EndpointResultRequestFilter.ModelBuilder builder = new EndpointResultRequestFilter.ModelBuilder()
+      .location(getLocation())
+      .connection(getConnection())
+      .platform(getPlatform())
+      .gateway(getGateway())
+      .proxyTarget(getProxyTarget())
+      .vpnTarget(getVpnTarget())
+      .agentId(getAgentId())
+      .networkId(getNetworkId())
+      .ssid(getSsid())
+      .bssid(getBssid())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion());
+    return builder;
+  }
+
 }
 

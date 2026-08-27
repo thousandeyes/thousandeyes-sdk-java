@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class HttpEndpointTestResultHeaders {
   public static final String JSON_PROPERTY_REQUEST_HEADERS = "requestHeaders";
+  @JsonProperty(JSON_PROPERTY_REQUEST_HEADERS)
   private String requestHeaders;
 
   public static final String JSON_PROPERTY_RESPONSE_HEADERS = "responseHeaders";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_HEADERS)
   private String responseHeaders;
 
   public HttpEndpointTestResultHeaders() { 
-  }
-
-  @JsonCreator
-  public HttpEndpointTestResultHeaders(
-    @JsonProperty(JSON_PROPERTY_REQUEST_HEADERS) String requestHeaders, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_HEADERS) String responseHeaders
-  ) {
-  this();
-    this.requestHeaders = requestHeaders;
-    this.responseHeaders = responseHeaders;
   }
 
    /**
@@ -122,5 +114,64 @@ public class HttpEndpointTestResultHeaders {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpEndpointTestResultHeaders instance;
+
+    public ModelBuilder() {
+      this(new HttpEndpointTestResultHeaders());
+    }
+
+    protected ModelBuilder(HttpEndpointTestResultHeaders instance) {
+      this.instance = instance;
+    }
+
+    public HttpEndpointTestResultHeaders.ModelBuilder requestHeaders(String requestHeaders) {
+      this.instance.requestHeaders = requestHeaders;
+      return this;
+    }
+    public HttpEndpointTestResultHeaders.ModelBuilder responseHeaders(String responseHeaders) {
+      this.instance.responseHeaders = responseHeaders;
+      return this;
+    }
+
+    /**
+     * Returns a built HttpEndpointTestResultHeaders instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpEndpointTestResultHeaders build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpEndpointTestResultHeaders.ModelBuilder builder() {
+    return new HttpEndpointTestResultHeaders.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpEndpointTestResultHeaders.ModelBuilder toBuilder() {
+    HttpEndpointTestResultHeaders.ModelBuilder builder = new HttpEndpointTestResultHeaders.ModelBuilder()
+      .requestHeaders(getRequestHeaders())
+      .responseHeaders(getResponseHeaders());
+    return builder;
+  }
+
 }
 

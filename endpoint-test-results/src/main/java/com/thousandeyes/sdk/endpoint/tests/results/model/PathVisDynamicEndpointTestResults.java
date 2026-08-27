@@ -50,9 +50,11 @@ public class PathVisDynamicEndpointTestResults {
   private DynamicTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_TOTAL_HITS = "totalHits";
@@ -62,16 +64,6 @@ public class PathVisDynamicEndpointTestResults {
   private PaginationNextAndSelfLink links;
 
   public PathVisDynamicEndpointTestResults() { 
-  }
-
-  @JsonCreator
-  public PathVisDynamicEndpointTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public PathVisDynamicEndpointTestResults results(List<PathVisDynamicEndpointTestResult> results) {
@@ -261,5 +253,84 @@ public class PathVisDynamicEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisDynamicEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new PathVisDynamicEndpointTestResults());
+    }
+
+    protected ModelBuilder(PathVisDynamicEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PathVisDynamicEndpointTestResults.ModelBuilder results(List<PathVisDynamicEndpointTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResults.ModelBuilder test(DynamicTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public PathVisDynamicEndpointTestResults.ModelBuilder totalHits(Integer totalHits) {
+      this.instance.setTotalHits(totalHits);
+      return this;
+    }
+    public PathVisDynamicEndpointTestResults.ModelBuilder links(PaginationNextAndSelfLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisDynamicEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisDynamicEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisDynamicEndpointTestResults.ModelBuilder builder() {
+    return new PathVisDynamicEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisDynamicEndpointTestResults.ModelBuilder toBuilder() {
+    PathVisDynamicEndpointTestResults.ModelBuilder builder = new PathVisDynamicEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .totalHits(getTotalHits())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

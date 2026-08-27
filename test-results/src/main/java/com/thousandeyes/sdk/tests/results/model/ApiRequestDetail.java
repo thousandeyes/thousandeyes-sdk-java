@@ -610,5 +610,139 @@ public class ApiRequestDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequestDetail instance;
+
+    public ModelBuilder() {
+      this(new ApiRequestDetail());
+    }
+
+    protected ModelBuilder(ApiRequestDetail instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequestDetail.ModelBuilder apiCallTime(Float apiCallTime) {
+      this.instance.setApiCallTime(apiCallTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder assertErrorCount(Integer assertErrorCount) {
+      this.instance.setAssertErrorCount(assertErrorCount);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder blockedTime(Float blockedTime) {
+      this.instance.setBlockedTime(blockedTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder connectTime(Float connectTime) {
+      this.instance.setConnectTime(connectTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder completion(Float completion) {
+      this.instance.setCompletion(completion);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder dnsTime(Float dnsTime) {
+      this.instance.setDnsTime(dnsTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder processingTime(Float processingTime) {
+      this.instance.setProcessingTime(processingTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder receiveTime(Float receiveTime) {
+      this.instance.setReceiveTime(receiveTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder responseTime(Float responseTime) {
+      this.instance.setResponseTime(responseTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder sendTime(Float sendTime) {
+      this.instance.setSendTime(sendTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder stepNumber(Integer stepNumber) {
+      this.instance.setStepNumber(stepNumber);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder stepTime(Float stepTime) {
+      this.instance.setStepTime(stepTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder stepType(ApiRequestStepType stepType) {
+      this.instance.setStepType(stepType);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder waitTime(Float waitTime) {
+      this.instance.setWaitTime(waitTime);
+      return this;
+    }
+    public ApiRequestDetail.ModelBuilder assertions(List<ApiRequestDetailAssertion> assertions) {
+      this.instance.setAssertions(assertions);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequestDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequestDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequestDetail.ModelBuilder builder() {
+    return new ApiRequestDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequestDetail.ModelBuilder toBuilder() {
+    ApiRequestDetail.ModelBuilder builder = new ApiRequestDetail.ModelBuilder()
+      .apiCallTime(getApiCallTime())
+      .assertErrorCount(getAssertErrorCount())
+      .blockedTime(getBlockedTime())
+      .connectTime(getConnectTime())
+      .completion(getCompletion())
+      .dnsTime(getDnsTime())
+      .name(getName())
+      .processingTime(getProcessingTime())
+      .receiveTime(getReceiveTime())
+      .responseTime(getResponseTime())
+      .sendTime(getSendTime())
+      .stepNumber(getStepNumber())
+      .stepTime(getStepTime())
+      .stepType(getStepType())
+      .url(getUrl())
+      .waitTime(getWaitTime())
+      .assertions(getAssertions());
+    return builder;
+  }
+
 }
 

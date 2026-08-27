@@ -177,5 +177,69 @@ public class WebTransactionDetailTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private WebTransactionDetailTestResults instance;
+
+    public ModelBuilder() {
+      this(new WebTransactionDetailTestResults());
+    }
+
+    protected ModelBuilder(WebTransactionDetailTestResults instance) {
+      this.instance = instance;
+    }
+
+    public WebTransactionDetailTestResults.ModelBuilder results(List<WebTransactionDetailTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public WebTransactionDetailTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public WebTransactionDetailTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built WebTransactionDetailTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public WebTransactionDetailTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static WebTransactionDetailTestResults.ModelBuilder builder() {
+    return new WebTransactionDetailTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public WebTransactionDetailTestResults.ModelBuilder toBuilder() {
+    WebTransactionDetailTestResults.ModelBuilder builder = new WebTransactionDetailTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

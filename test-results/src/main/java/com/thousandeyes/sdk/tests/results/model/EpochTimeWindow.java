@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EpochTimeWindow {
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public EpochTimeWindow() { 
-  }
-
-  @JsonCreator
-  public EpochTimeWindow(
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime
-  ) {
-  this();
-    this.startTime = startTime;
-    this.endTime = endTime;
   }
 
    /**
@@ -122,5 +114,64 @@ public class EpochTimeWindow {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EpochTimeWindow instance;
+
+    public ModelBuilder() {
+      this(new EpochTimeWindow());
+    }
+
+    protected ModelBuilder(EpochTimeWindow instance) {
+      this.instance = instance;
+    }
+
+    public EpochTimeWindow.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public EpochTimeWindow.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+
+    /**
+     * Returns a built EpochTimeWindow instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EpochTimeWindow build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EpochTimeWindow.ModelBuilder builder() {
+    return new EpochTimeWindow.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EpochTimeWindow.ModelBuilder toBuilder() {
+    EpochTimeWindow.ModelBuilder builder = new EpochTimeWindow.ModelBuilder()
+      .startTime(getStartTime())
+      .endTime(getEndTime());
+    return builder;
+  }
+
 }
 

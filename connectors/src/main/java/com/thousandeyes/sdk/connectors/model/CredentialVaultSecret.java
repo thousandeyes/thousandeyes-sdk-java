@@ -163,5 +163,69 @@ public class CredentialVaultSecret {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CredentialVaultSecret instance;
+
+    public ModelBuilder() {
+      this(new CredentialVaultSecret());
+    }
+
+    protected ModelBuilder(CredentialVaultSecret instance) {
+      this.instance = instance;
+    }
+
+    public CredentialVaultSecret.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public CredentialVaultSecret.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public CredentialVaultSecret.ModelBuilder secretKey(String secretKey) {
+      this.instance.setSecretKey(secretKey);
+      return this;
+    }
+
+    /**
+     * Returns a built CredentialVaultSecret instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CredentialVaultSecret build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CredentialVaultSecret.ModelBuilder builder() {
+    return new CredentialVaultSecret.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CredentialVaultSecret.ModelBuilder toBuilder() {
+    CredentialVaultSecret.ModelBuilder builder = new CredentialVaultSecret.ModelBuilder()
+      .id(getId())
+      .name(getName())
+      .secretKey(getSecretKey());
+    return builder;
+  }
+
 }
 

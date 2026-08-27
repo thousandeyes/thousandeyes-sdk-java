@@ -177,5 +177,69 @@ public class PageLoadDetailTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PageLoadDetailTestResults instance;
+
+    public ModelBuilder() {
+      this(new PageLoadDetailTestResults());
+    }
+
+    protected ModelBuilder(PageLoadDetailTestResults instance) {
+      this.instance = instance;
+    }
+
+    public PageLoadDetailTestResults.ModelBuilder results(List<PageLoadDetailTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public PageLoadDetailTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public PageLoadDetailTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PageLoadDetailTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PageLoadDetailTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PageLoadDetailTestResults.ModelBuilder builder() {
+    return new PageLoadDetailTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PageLoadDetailTestResults.ModelBuilder toBuilder() {
+    PageLoadDetailTestResults.ModelBuilder builder = new PageLoadDetailTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -136,5 +136,64 @@ public class LegacyAlertDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LegacyAlertDetail instance;
+
+    public ModelBuilder() {
+      this(new LegacyAlertDetail());
+    }
+
+    protected ModelBuilder(LegacyAlertDetail instance) {
+      this.instance = instance;
+    }
+
+    public LegacyAlertDetail.ModelBuilder state(State state) {
+      this.instance.setState(state);
+      return this;
+    }
+    public LegacyAlertDetail.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+
+    /**
+     * Returns a built LegacyAlertDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LegacyAlertDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LegacyAlertDetail.ModelBuilder builder() {
+    return new LegacyAlertDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LegacyAlertDetail.ModelBuilder toBuilder() {
+    LegacyAlertDetail.ModelBuilder builder = new LegacyAlertDetail.ModelBuilder()
+      .state(getState())
+      .severity(getSeverity());
+    return builder;
+  }
+
 }
 

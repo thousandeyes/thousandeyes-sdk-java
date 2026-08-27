@@ -143,5 +143,64 @@ public class OrganizationQuotaUnassignment {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OrganizationQuotaUnassignment instance;
+
+    public ModelBuilder() {
+      this(new OrganizationQuotaUnassignment());
+    }
+
+    protected ModelBuilder(OrganizationQuotaUnassignment instance) {
+      this.instance = instance;
+    }
+
+    public OrganizationQuotaUnassignment.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+    public OrganizationQuotaUnassignment.ModelBuilder accountGroups(List<String> accountGroups) {
+      this.instance.setAccountGroups(accountGroups);
+      return this;
+    }
+
+    /**
+     * Returns a built OrganizationQuotaUnassignment instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OrganizationQuotaUnassignment build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OrganizationQuotaUnassignment.ModelBuilder builder() {
+    return new OrganizationQuotaUnassignment.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OrganizationQuotaUnassignment.ModelBuilder toBuilder() {
+    OrganizationQuotaUnassignment.ModelBuilder builder = new OrganizationQuotaUnassignment.ModelBuilder()
+      .orgId(getOrgId())
+      .accountGroups(getAccountGroups());
+    return builder;
+  }
+
 }
 

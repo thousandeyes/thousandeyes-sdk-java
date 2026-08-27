@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TestAgentResponseProperties {
   public static final String JSON_PROPERTY_SOURCE_IP_ADDRESS = "sourceIpAddress";
+  @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS)
   private String sourceIpAddress;
 
   public TestAgentResponseProperties() { 
-  }
-
-  @JsonCreator
-  public TestAgentResponseProperties(
-    @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS) String sourceIpAddress
-  ) {
-  this();
-    this.sourceIpAddress = sourceIpAddress;
   }
 
    /**
@@ -99,5 +92,59 @@ public class TestAgentResponseProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestAgentResponseProperties instance;
+
+    public ModelBuilder() {
+      this(new TestAgentResponseProperties());
+    }
+
+    protected ModelBuilder(TestAgentResponseProperties instance) {
+      this.instance = instance;
+    }
+
+    public TestAgentResponseProperties.ModelBuilder sourceIpAddress(String sourceIpAddress) {
+      this.instance.sourceIpAddress = sourceIpAddress;
+      return this;
+    }
+
+    /**
+     * Returns a built TestAgentResponseProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestAgentResponseProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestAgentResponseProperties.ModelBuilder builder() {
+    return new TestAgentResponseProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestAgentResponseProperties.ModelBuilder toBuilder() {
+    TestAgentResponseProperties.ModelBuilder builder = new TestAgentResponseProperties.ModelBuilder()
+      .sourceIpAddress(getSourceIpAddress());
+    return builder;
+  }
+
 }
 

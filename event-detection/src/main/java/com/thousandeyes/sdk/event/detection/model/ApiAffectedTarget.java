@@ -39,12 +39,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiAffectedTarget {
   public static final String JSON_PROPERTY_SERVER_ID = "serverId";
+  @JsonProperty(JSON_PROPERTY_SERVER_ID)
   private String serverId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_IP = "ip";
+  @JsonProperty(JSON_PROPERTY_IP)
   private String ip;
 
   public static final String JSON_PROPERTY_AFFECTED_TEST_IDS = "affectedTestIds";
@@ -54,18 +57,6 @@ public class ApiAffectedTarget {
   private List<String> affectedAgentIds = new ArrayList<>();
 
   public ApiAffectedTarget() { 
-  }
-
-  @JsonCreator
-  public ApiAffectedTarget(
-    @JsonProperty(JSON_PROPERTY_SERVER_ID) String serverId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_IP) String ip
-  ) {
-  this();
-    this.serverId = serverId;
-    this.name = name;
-    this.ip = ip;
   }
 
    /**
@@ -226,5 +217,79 @@ public class ApiAffectedTarget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAffectedTarget instance;
+
+    public ModelBuilder() {
+      this(new ApiAffectedTarget());
+    }
+
+    protected ModelBuilder(ApiAffectedTarget instance) {
+      this.instance = instance;
+    }
+
+    public ApiAffectedTarget.ModelBuilder serverId(String serverId) {
+      this.instance.serverId = serverId;
+      return this;
+    }
+    public ApiAffectedTarget.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public ApiAffectedTarget.ModelBuilder ip(String ip) {
+      this.instance.ip = ip;
+      return this;
+    }
+    public ApiAffectedTarget.ModelBuilder affectedTestIds(List<String> affectedTestIds) {
+      this.instance.setAffectedTestIds(affectedTestIds);
+      return this;
+    }
+    public ApiAffectedTarget.ModelBuilder affectedAgentIds(List<String> affectedAgentIds) {
+      this.instance.setAffectedAgentIds(affectedAgentIds);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAffectedTarget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAffectedTarget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAffectedTarget.ModelBuilder builder() {
+    return new ApiAffectedTarget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAffectedTarget.ModelBuilder toBuilder() {
+    ApiAffectedTarget.ModelBuilder builder = new ApiAffectedTarget.ModelBuilder()
+      .serverId(getServerId())
+      .name(getName())
+      .ip(getIp())
+      .affectedTestIds(getAffectedTestIds())
+      .affectedAgentIds(getAffectedAgentIds());
+    return builder;
+  }
+
 }
 

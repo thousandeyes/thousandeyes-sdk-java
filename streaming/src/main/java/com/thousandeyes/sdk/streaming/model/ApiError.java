@@ -194,5 +194,74 @@ public class ApiError {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiError instance;
+
+    public ModelBuilder() {
+      this(new ApiError());
+    }
+
+    protected ModelBuilder(ApiError instance) {
+      this.instance = instance;
+    }
+
+    public ApiError.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public ApiError.ModelBuilder status(Integer status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public ApiError.ModelBuilder errors(String errors) {
+      this.instance.setErrors(errors);
+      return this;
+    }
+    public ApiError.ModelBuilder path(String path) {
+      this.instance.setPath(path);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiError instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiError build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiError.ModelBuilder builder() {
+    return new ApiError.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiError.ModelBuilder toBuilder() {
+    ApiError.ModelBuilder builder = new ApiError.ModelBuilder()
+      .timestamp(getTimestamp())
+      .status(getStatus())
+      .errors(getErrors())
+      .path(getPath());
+    return builder;
+  }
+
 }
 

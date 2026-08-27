@@ -75,15 +75,19 @@ public class HttpEndpointTestResult {
   private String aid;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_NETWORK_PROFILE = "networkProfile";
@@ -114,91 +118,64 @@ public class HttpEndpointTestResult {
   private EndpointHttpDataPointScore score;
 
   public static final String JSON_PROPERTY_CONNECT_TIME = "connectTime";
+  @JsonProperty(JSON_PROPERTY_CONNECT_TIME)
   private Integer connectTime;
 
   public static final String JSON_PROPERTY_DNS_TIME = "dnsTime";
+  @JsonProperty(JSON_PROPERTY_DNS_TIME)
   private Integer dnsTime;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
   private HttpErrorType errorType = HttpErrorType.CONNECT;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_HEADERS = "headers";
   private HttpEndpointTestResultHeaders headers;
 
   public static final String JSON_PROPERTY_NUM_REDIRECTS = "numRedirects";
+  @JsonProperty(JSON_PROPERTY_NUM_REDIRECTS)
   private Integer numRedirects;
 
   public static final String JSON_PROPERTY_RECEIVE_TIME = "receiveTime";
+  @JsonProperty(JSON_PROPERTY_RECEIVE_TIME)
   private Integer receiveTime;
 
   public static final String JSON_PROPERTY_REDIRECT_TIME = "redirectTime";
+  @JsonProperty(JSON_PROPERTY_REDIRECT_TIME)
   private Integer redirectTime;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   private Integer responseCode;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Integer responseTime;
 
   public static final String JSON_PROPERTY_SSL_TIME = "sslTime";
+  @JsonProperty(JSON_PROPERTY_SSL_TIME)
   private Integer sslTime;
 
   public static final String JSON_PROPERTY_TOTAL_TIME = "totalTime";
+  @JsonProperty(JSON_PROPERTY_TOTAL_TIME)
   private Integer totalTime;
 
   public static final String JSON_PROPERTY_WAIT_TIME = "waitTime";
+  @JsonProperty(JSON_PROPERTY_WAIT_TIME)
   private Integer waitTime;
 
   public static final String JSON_PROPERTY_WIRE_SIZE = "wireSize";
+  @JsonProperty(JSON_PROPERTY_WIRE_SIZE)
   private Integer wireSize;
 
   public static final String JSON_PROPERTY_THROUGHPUT = "throughput";
+  @JsonProperty(JSON_PROPERTY_THROUGHPUT)
   private Integer throughput;
 
   public HttpEndpointTestResult() { 
-  }
-
-  @JsonCreator
-  public HttpEndpointTestResult(
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_CONNECT_TIME) Integer connectTime, 
-    @JsonProperty(JSON_PROPERTY_DNS_TIME) Integer dnsTime, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails, 
-    @JsonProperty(JSON_PROPERTY_NUM_REDIRECTS) Integer numRedirects, 
-    @JsonProperty(JSON_PROPERTY_RECEIVE_TIME) Integer receiveTime, 
-    @JsonProperty(JSON_PROPERTY_REDIRECT_TIME) Integer redirectTime, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE) Integer responseCode, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Integer responseTime, 
-    @JsonProperty(JSON_PROPERTY_SSL_TIME) Integer sslTime, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_TIME) Integer totalTime, 
-    @JsonProperty(JSON_PROPERTY_WAIT_TIME) Integer waitTime, 
-    @JsonProperty(JSON_PROPERTY_WIRE_SIZE) Integer wireSize, 
-    @JsonProperty(JSON_PROPERTY_THROUGHPUT) Integer throughput
-  ) {
-  this();
-    this.testId = testId;
-    this.agentId = agentId;
-    this.roundId = roundId;
-    this.serverIp = serverIp;
-    this.connectTime = connectTime;
-    this.dnsTime = dnsTime;
-    this.errorDetails = errorDetails;
-    this.numRedirects = numRedirects;
-    this.receiveTime = receiveTime;
-    this.redirectTime = redirectTime;
-    this.responseCode = responseCode;
-    this.responseTime = responseTime;
-    this.sslTime = sslTime;
-    this.totalTime = totalTime;
-    this.waitTime = waitTime;
-    this.wireSize = wireSize;
-    this.throughput = throughput;
   }
 
   public HttpEndpointTestResult aid(String aid) {
@@ -851,5 +828,199 @@ public class HttpEndpointTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpEndpointTestResult instance;
+
+    public ModelBuilder() {
+      this(new HttpEndpointTestResult());
+    }
+
+    protected ModelBuilder(HttpEndpointTestResult instance) {
+      this.instance = instance;
+    }
+
+    public HttpEndpointTestResult.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder networkProfile(NetworkProfile networkProfile) {
+      this.instance.setNetworkProfile(networkProfile);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder originalTargetProfile(TargetProfile originalTargetProfile) {
+      this.instance.setOriginalTargetProfile(originalTargetProfile);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder userProfile(UserProfile userProfile) {
+      this.instance.setUserProfile(userProfile);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder vpnProfile(VpnProfile vpnProfile) {
+      this.instance.setVpnProfile(vpnProfile);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder score(EndpointHttpDataPointScore score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder connectTime(Integer connectTime) {
+      this.instance.connectTime = connectTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder dnsTime(Integer dnsTime) {
+      this.instance.dnsTime = dnsTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder errorType(HttpErrorType errorType) {
+      this.instance.setErrorType(errorType);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder headers(HttpEndpointTestResultHeaders headers) {
+      this.instance.setHeaders(headers);
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder numRedirects(Integer numRedirects) {
+      this.instance.numRedirects = numRedirects;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder receiveTime(Integer receiveTime) {
+      this.instance.receiveTime = receiveTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder redirectTime(Integer redirectTime) {
+      this.instance.redirectTime = redirectTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.responseCode = responseCode;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder responseTime(Integer responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder sslTime(Integer sslTime) {
+      this.instance.sslTime = sslTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder totalTime(Integer totalTime) {
+      this.instance.totalTime = totalTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder waitTime(Integer waitTime) {
+      this.instance.waitTime = waitTime;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder wireSize(Integer wireSize) {
+      this.instance.wireSize = wireSize;
+      return this;
+    }
+    public HttpEndpointTestResult.ModelBuilder throughput(Integer throughput) {
+      this.instance.throughput = throughput;
+      return this;
+    }
+
+    /**
+     * Returns a built HttpEndpointTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpEndpointTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpEndpointTestResult.ModelBuilder builder() {
+    return new HttpEndpointTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpEndpointTestResult.ModelBuilder toBuilder() {
+    HttpEndpointTestResult.ModelBuilder builder = new HttpEndpointTestResult.ModelBuilder()
+      .aid(getAid())
+      .testId(getTestId())
+      .agentId(getAgentId())
+      .roundId(getRoundId())
+      .serverIp(getServerIp())
+      .networkProfile(getNetworkProfile())
+      .systemMetrics(getSystemMetrics())
+      .originalTargetProfile(getOriginalTargetProfile())
+      .userProfile(getUserProfile())
+      .vpnProfile(getVpnProfile())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform())
+      .score(getScore())
+      .connectTime(getConnectTime())
+      .dnsTime(getDnsTime())
+      .errorType(getErrorType())
+      .errorDetails(getErrorDetails())
+      .headers(getHeaders())
+      .numRedirects(getNumRedirects())
+      .receiveTime(getReceiveTime())
+      .redirectTime(getRedirectTime())
+      .responseCode(getResponseCode())
+      .responseTime(getResponseTime())
+      .sslTime(getSslTime())
+      .totalTime(getTotalTime())
+      .waitTime(getWaitTime())
+      .wireSize(getWireSize())
+      .throughput(getThroughput());
+    return builder;
+  }
+
 }
 

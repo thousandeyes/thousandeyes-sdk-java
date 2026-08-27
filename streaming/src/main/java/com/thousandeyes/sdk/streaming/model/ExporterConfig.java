@@ -134,5 +134,64 @@ public class ExporterConfig {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ExporterConfig instance;
+
+    public ModelBuilder() {
+      this(new ExporterConfig());
+    }
+
+    protected ModelBuilder(ExporterConfig instance) {
+      this.instance = instance;
+    }
+
+    public ExporterConfig.ModelBuilder splunkHec(ExporterConfigSplunkHec splunkHec) {
+      this.instance.setSplunkHec(splunkHec);
+      return this;
+    }
+    public ExporterConfig.ModelBuilder authorization(ExporterConfigAuthorization authorization) {
+      this.instance.setAuthorization(authorization);
+      return this;
+    }
+
+    /**
+     * Returns a built ExporterConfig instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ExporterConfig build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ExporterConfig.ModelBuilder builder() {
+    return new ExporterConfig.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ExporterConfig.ModelBuilder toBuilder() {
+    ExporterConfig.ModelBuilder builder = new ExporterConfig.ModelBuilder()
+      .splunkHec(getSplunkHec())
+      .authorization(getAuthorization());
+    return builder;
+  }
+
 }
 

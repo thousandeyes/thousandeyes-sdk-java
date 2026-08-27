@@ -249,5 +249,79 @@ public class LegacyDashboardSnapshot {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LegacyDashboardSnapshot instance;
+
+    public ModelBuilder() {
+      this(new LegacyDashboardSnapshot());
+    }
+
+    protected ModelBuilder(LegacyDashboardSnapshot instance) {
+      this.instance = instance;
+    }
+
+    public LegacyDashboardSnapshot.ModelBuilder accountId(Long accountId) {
+      this.instance.setAccountId(accountId);
+      return this;
+    }
+    public LegacyDashboardSnapshot.ModelBuilder createdDate(String createdDate) {
+      this.instance.setCreatedDate(createdDate);
+      return this;
+    }
+    public LegacyDashboardSnapshot.ModelBuilder expirationDate(String expirationDate) {
+      this.instance.setExpirationDate(expirationDate);
+      return this;
+    }
+    public LegacyDashboardSnapshot.ModelBuilder permalink(String permalink) {
+      this.instance.setPermalink(permalink);
+      return this;
+    }
+    public LegacyDashboardSnapshot.ModelBuilder apiLinks(List<Map<String, Object>> apiLinks) {
+      this.instance.setApiLinks(apiLinks);
+      return this;
+    }
+
+    /**
+     * Returns a built LegacyDashboardSnapshot instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LegacyDashboardSnapshot build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LegacyDashboardSnapshot.ModelBuilder builder() {
+    return new LegacyDashboardSnapshot.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LegacyDashboardSnapshot.ModelBuilder toBuilder() {
+    LegacyDashboardSnapshot.ModelBuilder builder = new LegacyDashboardSnapshot.ModelBuilder()
+      .accountId(getAccountId())
+      .createdDate(getCreatedDate())
+      .expirationDate(getExpirationDate())
+      .permalink(getPermalink())
+      .apiLinks(getApiLinks());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class Rules {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Rules instance;
+
+    public ModelBuilder() {
+      this(new Rules());
+    }
+
+    protected ModelBuilder(Rules instance) {
+      this.instance = instance;
+    }
+
+    public Rules.ModelBuilder alertRules(List<BaseRule> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+    public Rules.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Rules instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Rules build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Rules.ModelBuilder builder() {
+    return new Rules.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Rules.ModelBuilder toBuilder() {
+    Rules.ModelBuilder builder = new Rules.ModelBuilder()
+      .alertRules(getAlertRules())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class ApiDataPointGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDataPointGroup instance;
+
+    public ModelBuilder() {
+      this(new ApiDataPointGroup());
+    }
+
+    protected ModelBuilder(ApiDataPointGroup instance) {
+      this.instance = instance;
+    }
+
+    public ApiDataPointGroup.ModelBuilder groupProperty(String groupProperty) {
+      this.instance.setGroupProperty(groupProperty);
+      return this;
+    }
+    public ApiDataPointGroup.ModelBuilder groupValue(String groupValue) {
+      this.instance.setGroupValue(groupValue);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDataPointGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDataPointGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDataPointGroup.ModelBuilder builder() {
+    return new ApiDataPointGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDataPointGroup.ModelBuilder toBuilder() {
+    ApiDataPointGroup.ModelBuilder builder = new ApiDataPointGroup.ModelBuilder()
+      .groupProperty(getGroupProperty())
+      .groupValue(getGroupValue());
+    return builder;
+  }
+
 }
 

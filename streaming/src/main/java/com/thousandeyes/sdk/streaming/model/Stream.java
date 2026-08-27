@@ -591,5 +591,129 @@ public class Stream {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Stream instance;
+
+    public ModelBuilder() {
+      this(new Stream());
+    }
+
+    protected ModelBuilder(Stream instance) {
+      this.instance = instance;
+    }
+
+    public Stream.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public Stream.ModelBuilder customHeaders(Map<String, String> customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public Stream.ModelBuilder streamEndpointUrl(String streamEndpointUrl) {
+      this.instance.setStreamEndpointUrl(streamEndpointUrl);
+      return this;
+    }
+    public Stream.ModelBuilder tagMatch(List<TagMatch> tagMatch) {
+      this.instance.setTagMatch(tagMatch);
+      return this;
+    }
+    public Stream.ModelBuilder testMatch(List<TestMatch> testMatch) {
+      this.instance.setTestMatch(testMatch);
+      return this;
+    }
+    public Stream.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public Stream.ModelBuilder filters(Filters filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public Stream.ModelBuilder inputConfig(InputConfig inputConfig) {
+      this.instance.setInputConfig(inputConfig);
+      return this;
+    }
+    public Stream.ModelBuilder exporterConfig(ExporterConfig exporterConfig) {
+      this.instance.setExporterConfig(exporterConfig);
+      return this;
+    }
+    public Stream.ModelBuilder endpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+      this.instance.setEndpointAgentLabel(endpointAgentLabel);
+      return this;
+    }
+    public Stream.ModelBuilder endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+      this.instance.setEndpointAgentTag(endpointAgentTag);
+      return this;
+    }
+    public Stream.ModelBuilder type(StreamType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public Stream.ModelBuilder signal(Signal signal) {
+      this.instance.setSignal(signal);
+      return this;
+    }
+    public Stream.ModelBuilder endpointType(EndpointType endpointType) {
+      this.instance.setEndpointType(endpointType);
+      return this;
+    }
+    public Stream.ModelBuilder dataModelVersion(DataModelVersion dataModelVersion) {
+      this.instance.setDataModelVersion(dataModelVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built Stream instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Stream build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Stream.ModelBuilder builder() {
+    return new Stream.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Stream.ModelBuilder toBuilder() {
+    Stream.ModelBuilder builder = new Stream.ModelBuilder()
+      .name(getName())
+      .customHeaders(getCustomHeaders())
+      .streamEndpointUrl(getStreamEndpointUrl())
+      .tagMatch(getTagMatch())
+      .testMatch(getTestMatch())
+      .enabled(getEnabled())
+      .filters(getFilters())
+      .inputConfig(getInputConfig())
+      .exporterConfig(getExporterConfig())
+      .endpointAgentLabel(getEndpointAgentLabel())
+      .endpointAgentTag(getEndpointAgentTag())
+      .type(getType())
+      .signal(getSignal())
+      .endpointType(getEndpointType())
+      .dataModelVersion(getDataModelVersion());
+    return builder;
+  }
+
 }
 

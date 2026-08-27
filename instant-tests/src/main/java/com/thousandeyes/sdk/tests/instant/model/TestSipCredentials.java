@@ -259,5 +259,84 @@ public class TestSipCredentials {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestSipCredentials instance;
+
+    public ModelBuilder() {
+      this(new TestSipCredentials());
+    }
+
+    protected ModelBuilder(TestSipCredentials instance) {
+      this.instance = instance;
+    }
+
+    public TestSipCredentials.ModelBuilder authUser(String authUser) {
+      this.instance.setAuthUser(authUser);
+      return this;
+    }
+    public TestSipCredentials.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public TestSipCredentials.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+    public TestSipCredentials.ModelBuilder protocol(SipTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public TestSipCredentials.ModelBuilder sipRegistrar(String sipRegistrar) {
+      this.instance.setSipRegistrar(sipRegistrar);
+      return this;
+    }
+    public TestSipCredentials.ModelBuilder user(String user) {
+      this.instance.setUser(user);
+      return this;
+    }
+
+    /**
+     * Returns a built TestSipCredentials instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestSipCredentials build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestSipCredentials.ModelBuilder builder() {
+    return new TestSipCredentials.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestSipCredentials.ModelBuilder toBuilder() {
+    TestSipCredentials.ModelBuilder builder = new TestSipCredentials.ModelBuilder()
+      .authUser(getAuthUser())
+      .password(getPassword())
+      .port(getPort())
+      .protocol(getProtocol())
+      .sipRegistrar(getSipRegistrar())
+      .user(getUser());
+    return builder;
+  }
+
 }
 

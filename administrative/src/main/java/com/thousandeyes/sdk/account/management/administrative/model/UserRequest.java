@@ -245,5 +245,79 @@ public class UserRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserRequest instance;
+
+    public ModelBuilder() {
+      this(new UserRequest());
+    }
+
+    protected ModelBuilder(UserRequest instance) {
+      this.instance = instance;
+    }
+
+    public UserRequest.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public UserRequest.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public UserRequest.ModelBuilder loginAccountGroupId(String loginAccountGroupId) {
+      this.instance.setLoginAccountGroupId(loginAccountGroupId);
+      return this;
+    }
+    public UserRequest.ModelBuilder accountGroupRoles(List<UserAccountGroupRole> accountGroupRoles) {
+      this.instance.setAccountGroupRoles(accountGroupRoles);
+      return this;
+    }
+    public UserRequest.ModelBuilder allAccountGroupRoleIds(List<String> allAccountGroupRoleIds) {
+      this.instance.setAllAccountGroupRoleIds(allAccountGroupRoleIds);
+      return this;
+    }
+
+    /**
+     * Returns a built UserRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserRequest.ModelBuilder builder() {
+    return new UserRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserRequest.ModelBuilder toBuilder() {
+    UserRequest.ModelBuilder builder = new UserRequest.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .loginAccountGroupId(getLoginAccountGroupId())
+      .accountGroupRoles(getAccountGroupRoles())
+      .allAccountGroupRoleIds(getAllAccountGroupRoleIds());
+    return builder;
+  }
+
 }
 

@@ -230,5 +230,74 @@ public class InstantTestRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InstantTestRequest instance;
+
+    public ModelBuilder() {
+      this(new InstantTestRequest());
+    }
+
+    protected ModelBuilder(InstantTestRequest instance) {
+      this.instance = instance;
+    }
+
+    public InstantTestRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public InstantTestRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public InstantTestRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public InstantTestRequest.ModelBuilder agents(List<TestAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built InstantTestRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InstantTestRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InstantTestRequest.ModelBuilder builder() {
+    return new InstantTestRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InstantTestRequest.ModelBuilder toBuilder() {
+    InstantTestRequest.ModelBuilder builder = new InstantTestRequest.ModelBuilder()
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

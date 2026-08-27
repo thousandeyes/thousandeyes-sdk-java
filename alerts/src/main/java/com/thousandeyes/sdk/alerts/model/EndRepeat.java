@@ -165,5 +165,69 @@ public class EndRepeat {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndRepeat instance;
+
+    public ModelBuilder() {
+      this(new EndRepeat());
+    }
+
+    protected ModelBuilder(EndRepeat instance) {
+      this.instance = instance;
+    }
+
+    public EndRepeat.ModelBuilder type(EndRepeatType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public EndRepeat.ModelBuilder count(Integer count) {
+      this.instance.setCount(count);
+      return this;
+    }
+    public EndRepeat.ModelBuilder date(LocalDate date) {
+      this.instance.setDate(date);
+      return this;
+    }
+
+    /**
+     * Returns a built EndRepeat instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndRepeat build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndRepeat.ModelBuilder builder() {
+    return new EndRepeat.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndRepeat.ModelBuilder toBuilder() {
+    EndRepeat.ModelBuilder builder = new EndRepeat.ModelBuilder()
+      .type(getType())
+      .count(getCount())
+      .date(getDate());
+    return builder;
+  }
+
 }
 

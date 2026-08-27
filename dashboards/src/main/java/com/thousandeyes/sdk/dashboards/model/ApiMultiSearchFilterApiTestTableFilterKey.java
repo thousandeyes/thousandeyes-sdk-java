@@ -133,5 +133,64 @@ public class ApiMultiSearchFilterApiTestTableFilterKey {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiMultiSearchFilterApiTestTableFilterKey instance;
+
+    public ModelBuilder() {
+      this(new ApiMultiSearchFilterApiTestTableFilterKey());
+    }
+
+    protected ModelBuilder(ApiMultiSearchFilterApiTestTableFilterKey instance) {
+      this.instance = instance;
+    }
+
+    public ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder key(TestTableFilterKey key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiMultiSearchFilterApiTestTableFilterKey instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiMultiSearchFilterApiTestTableFilterKey build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder builder() {
+    return new ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder toBuilder() {
+    ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder builder = new ApiMultiSearchFilterApiTestTableFilterKey.ModelBuilder()
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

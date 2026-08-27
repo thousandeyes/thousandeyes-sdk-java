@@ -41,32 +41,22 @@ public class LocalProblem {
   private LocalProblemAgent agent;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
+  @JsonProperty(JSON_PROPERTY_DURATION)
   private Integer duration;
 
   public static final String JSON_PROPERTY_ACTIVE = "active";
+  @JsonProperty(JSON_PROPERTY_ACTIVE)
   private Boolean active;
 
   public LocalProblem() { 
-  }
-
-  @JsonCreator
-  public LocalProblem(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate, 
-    @JsonProperty(JSON_PROPERTY_DURATION) Integer duration, 
-    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.duration = duration;
-    this.active = active;
   }
 
   public LocalProblem agent(LocalProblemAgent agent) {
@@ -201,5 +191,79 @@ public class LocalProblem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalProblem instance;
+
+    public ModelBuilder() {
+      this(new LocalProblem());
+    }
+
+    protected ModelBuilder(LocalProblem instance) {
+      this.instance = instance;
+    }
+
+    public LocalProblem.ModelBuilder agent(LocalProblemAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public LocalProblem.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public LocalProblem.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public LocalProblem.ModelBuilder duration(Integer duration) {
+      this.instance.duration = duration;
+      return this;
+    }
+    public LocalProblem.ModelBuilder active(Boolean active) {
+      this.instance.active = active;
+      return this;
+    }
+
+    /**
+     * Returns a built LocalProblem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalProblem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalProblem.ModelBuilder builder() {
+    return new LocalProblem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalProblem.ModelBuilder toBuilder() {
+    LocalProblem.ModelBuilder builder = new LocalProblem.ModelBuilder()
+      .agent(getAgent())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .duration(getDuration())
+      .active(getActive());
+    return builder;
+  }
+
 }
 

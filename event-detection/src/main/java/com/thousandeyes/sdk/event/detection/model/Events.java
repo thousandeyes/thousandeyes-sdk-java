@@ -45,9 +45,11 @@ public class Events {
   private String aid;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_EVENTS = "events";
@@ -57,16 +59,6 @@ public class Events {
   private PaginationNextAndSelfLinks links;
 
   public Events() { 
-  }
-
-  @JsonCreator
-  public Events(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public Events aid(String aid) {
@@ -229,5 +221,79 @@ public class Events {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Events instance;
+
+    public ModelBuilder() {
+      this(new Events());
+    }
+
+    protected ModelBuilder(Events instance) {
+      this.instance = instance;
+    }
+
+    public Events.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public Events.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public Events.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public Events.ModelBuilder events(List<Event> events) {
+      this.instance.setEvents(events);
+      return this;
+    }
+    public Events.ModelBuilder links(PaginationNextAndSelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Events instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Events build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Events.ModelBuilder builder() {
+    return new Events.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Events.ModelBuilder toBuilder() {
+    Events.ModelBuilder builder = new Events.ModelBuilder()
+      .aid(getAid())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .events(getEvents())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -102,17 +102,10 @@ public class DnsServerProperties {
   private DnsQueryClass dnsQueryClass;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public DnsServerProperties() { 
-  }
-
-  @JsonCreator
-  public DnsServerProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public DnsServerProperties bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -586,5 +579,134 @@ public class DnsServerProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerProperties instance;
+
+    public ModelBuilder() {
+      this(new DnsServerProperties());
+    }
+
+    protected ModelBuilder(DnsServerProperties instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder dnsServers(List<TestDnsServer> dnsServers) {
+      this.instance.setDnsServers(dnsServers);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder dnsTransportProtocol(TestDnsTransportProtocol dnsTransportProtocol) {
+      this.instance.setDnsTransportProtocol(dnsTransportProtocol);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder recursiveQueries(Boolean recursiveQueries) {
+      this.instance.setRecursiveQueries(recursiveQueries);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder dnsQueryClass(DnsQueryClass dnsQueryClass) {
+      this.instance.setDnsQueryClass(dnsQueryClass);
+      return this;
+    }
+    public DnsServerProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerProperties.ModelBuilder builder() {
+    return new DnsServerProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerProperties.ModelBuilder toBuilder() {
+    DnsServerProperties.ModelBuilder builder = new DnsServerProperties.ModelBuilder()
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .dnsServers(getDnsServers())
+      .dnsTransportProtocol(getDnsTransportProtocol())
+      .domain(getDomain())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .recursiveQueries(getRecursiveQueries())
+      .ipv6Policy(getIpv6Policy())
+      .fixedPacketRate(getFixedPacketRate())
+      .dnsQueryClass(getDnsQueryClass())
+      .type(getType());
+    return builder;
+  }
+
 }
 

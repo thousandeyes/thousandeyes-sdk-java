@@ -590,5 +590,124 @@ public class ApiWidgetsDataV2 {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetsDataV2 instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetsDataV2());
+    }
+
+    protected ModelBuilder(ApiWidgetsDataV2 instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetsDataV2.ModelBuilder cards(List<ApiNumbersCardData> cards) {
+      this.instance.setCards(cards);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder columns(List<ApiMultiMetricColumnData> columns) {
+      this.instance.setColumns(columns);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder points(List<ApiWidgetDataPoint> points) {
+      this.instance.setPoints(points);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder tests(List<ApiTestTableData> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder startRound(Long startRound) {
+      this.instance.setStartRound(startRound);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder alertSuppressionWindows(List<ApiDashboardAsw> alertSuppressionWindows) {
+      this.instance.setAlertSuppressionWindows(alertSuppressionWindows);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder totalAlerts(Long totalAlerts) {
+      this.instance.setTotalAlerts(totalAlerts);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder activeAlerts(Long activeAlerts) {
+      this.instance.setActiveAlerts(activeAlerts);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder alerts(List<ApiAlertListAlert> alerts) {
+      this.instance.setAlerts(alerts);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder summary(ApiAgentStatusSummary summary) {
+      this.instance.setSummary(summary);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder agents(List<ApiAgentStatusAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder rows(List<ApiListWidgetRow> rows) {
+      this.instance.setRows(rows);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder legend(Map<String, Integer> legend) {
+      this.instance.setLegend(legend);
+      return this;
+    }
+    public ApiWidgetsDataV2.ModelBuilder status(String status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetsDataV2 instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetsDataV2 build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetsDataV2.ModelBuilder builder() {
+    return new ApiWidgetsDataV2.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetsDataV2.ModelBuilder toBuilder() {
+    ApiWidgetsDataV2.ModelBuilder builder = new ApiWidgetsDataV2.ModelBuilder()
+      .cards(getCards())
+      .columns(getColumns())
+      .points(getPoints())
+      .tests(getTests())
+      .startRound(getStartRound())
+      .alertSuppressionWindows(getAlertSuppressionWindows())
+      .totalAlerts(getTotalAlerts())
+      .activeAlerts(getActiveAlerts())
+      .alerts(getAlerts())
+      .summary(getSummary())
+      .agents(getAgents())
+      .rows(getRows())
+      .legend(getLegend())
+      .status(getStatus());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class EndpointTestLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestLinks instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestLinks());
+    }
+
+    protected ModelBuilder(EndpointTestLinks instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestLinks.ModelBuilder self(EndpointTestSelfLink self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+    public EndpointTestLinks.ModelBuilder testResults(List<Link> testResults) {
+      this.instance.setTestResults(testResults);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestLinks.ModelBuilder builder() {
+    return new EndpointTestLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestLinks.ModelBuilder toBuilder() {
+    EndpointTestLinks.ModelBuilder builder = new EndpointTestLinks.ModelBuilder()
+      .self(getSelf())
+      .testResults(getTestResults());
+    return builder;
+  }
+
 }
 

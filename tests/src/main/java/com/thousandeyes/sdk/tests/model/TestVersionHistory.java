@@ -195,5 +195,74 @@ public class TestVersionHistory {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestVersionHistory instance;
+
+    public ModelBuilder() {
+      this(new TestVersionHistory());
+    }
+
+    protected ModelBuilder(TestVersionHistory instance) {
+      this.instance = instance;
+    }
+
+    public TestVersionHistory.ModelBuilder versionTimestamp(OffsetDateTime versionTimestamp) {
+      this.instance.setVersionTimestamp(versionTimestamp);
+      return this;
+    }
+    public TestVersionHistory.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public TestVersionHistory.ModelBuilder createdBy(String createdBy) {
+      this.instance.setCreatedBy(createdBy);
+      return this;
+    }
+    public TestVersionHistory.ModelBuilder versionId(String versionId) {
+      this.instance.setVersionId(versionId);
+      return this;
+    }
+
+    /**
+     * Returns a built TestVersionHistory instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestVersionHistory build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestVersionHistory.ModelBuilder builder() {
+    return new TestVersionHistory.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestVersionHistory.ModelBuilder toBuilder() {
+    TestVersionHistory.ModelBuilder builder = new TestVersionHistory.ModelBuilder()
+      .versionTimestamp(getVersionTimestamp())
+      .testId(getTestId())
+      .createdBy(getCreatedBy())
+      .versionId(getVersionId());
+    return builder;
+  }
+
 }
 

@@ -133,5 +133,64 @@ public class OtherTokenAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OtherTokenAuthentication instance;
+
+    public ModelBuilder() {
+      this(new OtherTokenAuthentication());
+    }
+
+    protected ModelBuilder(OtherTokenAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public OtherTokenAuthentication.ModelBuilder token(String token) {
+      this.instance.setToken(token);
+      return this;
+    }
+    public OtherTokenAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built OtherTokenAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OtherTokenAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OtherTokenAuthentication.ModelBuilder builder() {
+    return new OtherTokenAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OtherTokenAuthentication.ModelBuilder toBuilder() {
+    OtherTokenAuthentication.ModelBuilder builder = new OtherTokenAuthentication.ModelBuilder()
+      .token(getToken())
+      .type(getType());
+    return builder;
+  }
+
 }
 

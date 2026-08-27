@@ -256,5 +256,84 @@ public class EnterpriseAgentUnitsByTestOwnerAccountGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentUnitsByTestOwnerAccountGroup instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentUnitsByTestOwnerAccountGroup());
+    }
+
+    protected ModelBuilder(EnterpriseAgentUnitsByTestOwnerAccountGroup instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder agentId(String agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder agentName(String agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder enterpriseUnitsUsed(Long enterpriseUnitsUsed) {
+      this.instance.setEnterpriseUnitsUsed(enterpriseUnitsUsed);
+      return this;
+    }
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder enterpriseUnitsProjected(Long enterpriseUnitsProjected) {
+      this.instance.setEnterpriseUnitsProjected(enterpriseUnitsProjected);
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentUnitsByTestOwnerAccountGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentUnitsByTestOwnerAccountGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder builder() {
+    return new EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder toBuilder() {
+    EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder builder = new EnterpriseAgentUnitsByTestOwnerAccountGroup.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .agentId(getAgentId())
+      .agentName(getAgentName())
+      .enterpriseUnitsUsed(getEnterpriseUnitsUsed())
+      .enterpriseUnitsProjected(getEnterpriseUnitsProjected());
+    return builder;
+  }
+
 }
 

@@ -164,5 +164,69 @@ public class ApiDefaultTimespan {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDefaultTimespan instance;
+
+    public ModelBuilder() {
+      this(new ApiDefaultTimespan());
+    }
+
+    protected ModelBuilder(ApiDefaultTimespan instance) {
+      this.instance = instance;
+    }
+
+    public ApiDefaultTimespan.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public ApiDefaultTimespan.ModelBuilder start(OffsetDateTime start) {
+      this.instance.setStart(start);
+      return this;
+    }
+    public ApiDefaultTimespan.ModelBuilder end(OffsetDateTime end) {
+      this.instance.setEnd(end);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDefaultTimespan instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDefaultTimespan build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDefaultTimespan.ModelBuilder builder() {
+    return new ApiDefaultTimespan.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDefaultTimespan.ModelBuilder toBuilder() {
+    ApiDefaultTimespan.ModelBuilder builder = new ApiDefaultTimespan.ModelBuilder()
+      .duration(getDuration())
+      .start(getStart())
+      .end(getEnd());
+    return builder;
+  }
+
 }
 

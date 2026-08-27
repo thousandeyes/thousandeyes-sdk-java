@@ -132,5 +132,64 @@ public class OrganizationQuota {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OrganizationQuota instance;
+
+    public ModelBuilder() {
+      this(new OrganizationQuota());
+    }
+
+    protected ModelBuilder(OrganizationQuota instance) {
+      this.instance = instance;
+    }
+
+    public OrganizationQuota.ModelBuilder value(Long value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public OrganizationQuota.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+
+    /**
+     * Returns a built OrganizationQuota instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OrganizationQuota build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OrganizationQuota.ModelBuilder builder() {
+    return new OrganizationQuota.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OrganizationQuota.ModelBuilder toBuilder() {
+    OrganizationQuota.ModelBuilder builder = new OrganizationQuota.ModelBuilder()
+      .value(getValue())
+      .orgId(getOrgId());
+    return builder;
+  }
+
 }
 

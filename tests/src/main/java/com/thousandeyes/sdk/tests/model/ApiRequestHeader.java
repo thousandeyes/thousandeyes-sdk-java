@@ -132,5 +132,64 @@ public class ApiRequestHeader {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiRequestHeader instance;
+
+    public ModelBuilder() {
+      this(new ApiRequestHeader());
+    }
+
+    protected ModelBuilder(ApiRequestHeader instance) {
+      this.instance = instance;
+    }
+
+    public ApiRequestHeader.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public ApiRequestHeader.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiRequestHeader instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiRequestHeader build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiRequestHeader.ModelBuilder builder() {
+    return new ApiRequestHeader.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiRequestHeader.ModelBuilder toBuilder() {
+    ApiRequestHeader.ModelBuilder builder = new ApiRequestHeader.ModelBuilder()
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

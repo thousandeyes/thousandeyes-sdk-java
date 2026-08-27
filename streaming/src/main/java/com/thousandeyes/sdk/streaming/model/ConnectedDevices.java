@@ -101,5 +101,59 @@ public class ConnectedDevices {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConnectedDevices instance;
+
+    public ModelBuilder() {
+      this(new ConnectedDevices());
+    }
+
+    protected ModelBuilder(ConnectedDevices instance) {
+      this.instance = instance;
+    }
+
+    public ConnectedDevices.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+
+    /**
+     * Returns a built ConnectedDevices instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConnectedDevices build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConnectedDevices.ModelBuilder builder() {
+    return new ConnectedDevices.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConnectedDevices.ModelBuilder toBuilder() {
+    ConnectedDevices.ModelBuilder builder = new ConnectedDevices.ModelBuilder()
+      .enabled(getEnabled());
+    return builder;
+  }
+
 }
 

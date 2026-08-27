@@ -175,5 +175,69 @@ public class ApiTestTableGraphletsData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTestTableGraphletsData instance;
+
+    public ModelBuilder() {
+      this(new ApiTestTableGraphletsData());
+    }
+
+    protected ModelBuilder(ApiTestTableGraphletsData instance) {
+      this.instance = instance;
+    }
+
+    public ApiTestTableGraphletsData.ModelBuilder metric(String metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiTestTableGraphletsData.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public ApiTestTableGraphletsData.ModelBuilder points(List<ApiGraphletPoint> points) {
+      this.instance.setPoints(points);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTestTableGraphletsData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTestTableGraphletsData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTestTableGraphletsData.ModelBuilder builder() {
+    return new ApiTestTableGraphletsData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTestTableGraphletsData.ModelBuilder toBuilder() {
+    ApiTestTableGraphletsData.ModelBuilder builder = new ApiTestTableGraphletsData.ModelBuilder()
+      .metric(getMetric())
+      .testId(getTestId())
+      .points(getPoints());
+    return builder;
+  }
+
 }
 

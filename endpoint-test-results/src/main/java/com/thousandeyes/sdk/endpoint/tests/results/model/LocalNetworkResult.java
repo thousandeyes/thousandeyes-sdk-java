@@ -35,32 +35,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalNetworkResult {
   public static final String JSON_PROPERTY_NETWORK_ID = "networkId";
+  @JsonProperty(JSON_PROPERTY_NETWORK_ID)
   private String networkId;
 
   public static final String JSON_PROPERTY_NETWORK_NAME = "networkName";
+  @JsonProperty(JSON_PROPERTY_NETWORK_NAME)
   private String networkName;
 
   public static final String JSON_PROPERTY_LOCAL_PREFIX = "localPrefix";
+  @JsonProperty(JSON_PROPERTY_LOCAL_PREFIX)
   private String localPrefix;
 
   public static final String JSON_PROPERTY_PUBLIC_IP_RANGE = "publicIpRange";
+  @JsonProperty(JSON_PROPERTY_PUBLIC_IP_RANGE)
   private String publicIpRange;
 
   public LocalNetworkResult() { 
-  }
-
-  @JsonCreator
-  public LocalNetworkResult(
-    @JsonProperty(JSON_PROPERTY_NETWORK_ID) String networkId, 
-    @JsonProperty(JSON_PROPERTY_NETWORK_NAME) String networkName, 
-    @JsonProperty(JSON_PROPERTY_LOCAL_PREFIX) String localPrefix, 
-    @JsonProperty(JSON_PROPERTY_PUBLIC_IP_RANGE) String publicIpRange
-  ) {
-  this();
-    this.networkId = networkId;
-    this.networkName = networkName;
-    this.localPrefix = localPrefix;
-    this.publicIpRange = publicIpRange;
   }
 
    /**
@@ -168,5 +158,74 @@ public class LocalNetworkResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkResult instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkResult());
+    }
+
+    protected ModelBuilder(LocalNetworkResult instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkResult.ModelBuilder networkId(String networkId) {
+      this.instance.networkId = networkId;
+      return this;
+    }
+    public LocalNetworkResult.ModelBuilder networkName(String networkName) {
+      this.instance.networkName = networkName;
+      return this;
+    }
+    public LocalNetworkResult.ModelBuilder localPrefix(String localPrefix) {
+      this.instance.localPrefix = localPrefix;
+      return this;
+    }
+    public LocalNetworkResult.ModelBuilder publicIpRange(String publicIpRange) {
+      this.instance.publicIpRange = publicIpRange;
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkResult.ModelBuilder builder() {
+    return new LocalNetworkResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkResult.ModelBuilder toBuilder() {
+    LocalNetworkResult.ModelBuilder builder = new LocalNetworkResult.ModelBuilder()
+      .networkId(getNetworkId())
+      .networkName(getNetworkName())
+      .localPrefix(getLocalPrefix())
+      .publicIpRange(getPublicIpRange());
+    return builder;
+  }
+
 }
 

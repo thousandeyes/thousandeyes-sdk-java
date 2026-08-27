@@ -413,5 +413,109 @@ public class ApiCatalogProvider {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiCatalogProvider instance;
+
+    public ModelBuilder() {
+      this(new ApiCatalogProvider());
+    }
+
+    protected ModelBuilder(ApiCatalogProvider instance) {
+      this.instance = instance;
+    }
+
+    public ApiCatalogProvider.ModelBuilder id(UUID id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder providerName(String providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder providerType(String providerType) {
+      this.instance.setProviderType(providerType);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder region(String region) {
+      this.instance.setRegion(region);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder dataType(String dataType) {
+      this.instance.setDataType(dataType);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder asnsCount(Integer asnsCount) {
+      this.instance.setAsnsCount(asnsCount);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder countriesCount(Integer countriesCount) {
+      this.instance.setCountriesCount(countriesCount);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder locationsCount(Integer locationsCount) {
+      this.instance.setLocationsCount(locationsCount);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder interfacesCount(Integer interfacesCount) {
+      this.instance.setInterfacesCount(interfacesCount);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder included(Boolean included) {
+      this.instance.setIncluded(included);
+      return this;
+    }
+    public ApiCatalogProvider.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiCatalogProvider instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiCatalogProvider build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiCatalogProvider.ModelBuilder builder() {
+    return new ApiCatalogProvider.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiCatalogProvider.ModelBuilder toBuilder() {
+    ApiCatalogProvider.ModelBuilder builder = new ApiCatalogProvider.ModelBuilder()
+      .id(getId())
+      .providerName(getProviderName())
+      .providerType(getProviderType())
+      .region(getRegion())
+      .dataType(getDataType())
+      .asnsCount(getAsnsCount())
+      .countriesCount(getCountriesCount())
+      .locationsCount(getLocationsCount())
+      .interfacesCount(getInterfacesCount())
+      .included(getIncluded())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

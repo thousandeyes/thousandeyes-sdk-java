@@ -102,5 +102,59 @@ public class DashboardScheduleCustomRepeatNot {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleCustomRepeatNot instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleCustomRepeatNot());
+    }
+
+    protected ModelBuilder(DashboardScheduleCustomRepeatNot instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleCustomRepeatNot.ModelBuilder repeatUnit(DashboardScheduleNonWeeklyCustomRepeatUnit repeatUnit) {
+      this.instance.setRepeatUnit(repeatUnit);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleCustomRepeatNot instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleCustomRepeatNot build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleCustomRepeatNot.ModelBuilder builder() {
+    return new DashboardScheduleCustomRepeatNot.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleCustomRepeatNot.ModelBuilder toBuilder() {
+    DashboardScheduleCustomRepeatNot.ModelBuilder builder = new DashboardScheduleCustomRepeatNot.ModelBuilder()
+      .repeatUnit(getRepeatUnit());
+    return builder;
+  }
+
 }
 

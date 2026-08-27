@@ -164,5 +164,69 @@ public class BasicAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BasicAuthentication instance;
+
+    public ModelBuilder() {
+      this(new BasicAuthentication());
+    }
+
+    protected ModelBuilder(BasicAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public BasicAuthentication.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public BasicAuthentication.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public BasicAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built BasicAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BasicAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BasicAuthentication.ModelBuilder builder() {
+    return new BasicAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BasicAuthentication.ModelBuilder toBuilder() {
+    BasicAuthentication.ModelBuilder builder = new BasicAuthentication.ModelBuilder()
+      .username(getUsername())
+      .password(getPassword())
+      .type(getType());
+    return builder;
+  }
+
 }
 

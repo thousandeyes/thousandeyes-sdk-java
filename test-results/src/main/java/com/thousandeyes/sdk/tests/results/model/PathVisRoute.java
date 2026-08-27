@@ -37,20 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PathVisRoute {
   public static final String JSON_PROPERTY_PATH_ID = "pathId";
+  @JsonProperty(JSON_PROPERTY_PATH_ID)
   private String pathId;
 
   public static final String JSON_PROPERTY_HOPS = "hops";
   private List<PathVisHop> hops = new ArrayList<>();
 
   public PathVisRoute() { 
-  }
-
-  @JsonCreator
-  public PathVisRoute(
-    @JsonProperty(JSON_PROPERTY_PATH_ID) String pathId
-  ) {
-  this();
-    this.pathId = pathId;
   }
 
    /**
@@ -142,5 +135,64 @@ public class PathVisRoute {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PathVisRoute instance;
+
+    public ModelBuilder() {
+      this(new PathVisRoute());
+    }
+
+    protected ModelBuilder(PathVisRoute instance) {
+      this.instance = instance;
+    }
+
+    public PathVisRoute.ModelBuilder pathId(String pathId) {
+      this.instance.pathId = pathId;
+      return this;
+    }
+    public PathVisRoute.ModelBuilder hops(List<PathVisHop> hops) {
+      this.instance.setHops(hops);
+      return this;
+    }
+
+    /**
+     * Returns a built PathVisRoute instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PathVisRoute build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PathVisRoute.ModelBuilder builder() {
+    return new PathVisRoute.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PathVisRoute.ModelBuilder toBuilder() {
+    PathVisRoute.ModelBuilder builder = new PathVisRoute.ModelBuilder()
+      .pathId(getPathId())
+      .hops(getHops());
+    return builder;
+  }
+
 }
 

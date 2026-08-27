@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsNameEventGrouping {
   public static final String JSON_PROPERTY_DOMAIN_NAME_SUFFIX = "domainNameSuffix";
+  @JsonProperty(JSON_PROPERTY_DOMAIN_NAME_SUFFIX)
   private String domainNameSuffix;
 
   public DnsNameEventGrouping() { 
-  }
-
-  @JsonCreator
-  public DnsNameEventGrouping(
-    @JsonProperty(JSON_PROPERTY_DOMAIN_NAME_SUFFIX) String domainNameSuffix
-  ) {
-  this();
-    this.domainNameSuffix = domainNameSuffix;
   }
 
    /**
@@ -99,5 +92,59 @@ public class DnsNameEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsNameEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new DnsNameEventGrouping());
+    }
+
+    protected ModelBuilder(DnsNameEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public DnsNameEventGrouping.ModelBuilder domainNameSuffix(String domainNameSuffix) {
+      this.instance.domainNameSuffix = domainNameSuffix;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsNameEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsNameEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsNameEventGrouping.ModelBuilder builder() {
+    return new DnsNameEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsNameEventGrouping.ModelBuilder toBuilder() {
+    DnsNameEventGrouping.ModelBuilder builder = new DnsNameEventGrouping.ModelBuilder()
+      .domainNameSuffix(getDomainNameSuffix());
+    return builder;
+  }
+
 }
 

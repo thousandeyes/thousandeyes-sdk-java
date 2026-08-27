@@ -258,5 +258,84 @@ public class ApiTimeseriesWidgetProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTimeseriesWidgetProperties instance;
+
+    public ModelBuilder() {
+      this(new ApiTimeseriesWidgetProperties());
+    }
+
+    protected ModelBuilder(ApiTimeseriesWidgetProperties instance) {
+      this.instance = instance;
+    }
+
+    public ApiTimeseriesWidgetProperties.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiTimeseriesWidgetProperties.ModelBuilder showTimeseriesOverallBaseline(Boolean showTimeseriesOverallBaseline) {
+      this.instance.setShowTimeseriesOverallBaseline(showTimeseriesOverallBaseline);
+      return this;
+    }
+    public ApiTimeseriesWidgetProperties.ModelBuilder groupBy(ApiAggregateProperty groupBy) {
+      this.instance.setGroupBy(groupBy);
+      return this;
+    }
+    public ApiTimeseriesWidgetProperties.ModelBuilder isTimeseriesOneChartPerLine(Boolean isTimeseriesOneChartPerLine) {
+      this.instance.setIsTimeseriesOneChartPerLine(isTimeseriesOneChartPerLine);
+      return this;
+    }
+    public ApiTimeseriesWidgetProperties.ModelBuilder showZoomSlider(Boolean showZoomSlider) {
+      this.instance.setShowZoomSlider(showZoomSlider);
+      return this;
+    }
+    public ApiTimeseriesWidgetProperties.ModelBuilder dataSource(TimeseriesDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTimeseriesWidgetProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTimeseriesWidgetProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTimeseriesWidgetProperties.ModelBuilder builder() {
+    return new ApiTimeseriesWidgetProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTimeseriesWidgetProperties.ModelBuilder toBuilder() {
+    ApiTimeseriesWidgetProperties.ModelBuilder builder = new ApiTimeseriesWidgetProperties.ModelBuilder()
+      .type(getType())
+      .showTimeseriesOverallBaseline(getShowTimeseriesOverallBaseline())
+      .groupBy(getGroupBy())
+      .isTimeseriesOneChartPerLine(getIsTimeseriesOneChartPerLine())
+      .showZoomSlider(getShowZoomSlider())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

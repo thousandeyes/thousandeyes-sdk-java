@@ -71,6 +71,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiMultiMetricTableWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -80,6 +81,7 @@ public class ApiMultiMetricTableWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -104,6 +106,7 @@ public class ApiMultiMetricTableWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -137,18 +140,6 @@ public class ApiMultiMetricTableWidget {
   private MultiMetricsTableDatasource dataSource;
 
   public ApiMultiMetricTableWidget() { 
-  }
-
-  @JsonCreator
-  public ApiMultiMetricTableWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -774,5 +765,164 @@ public class ApiMultiMetricTableWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiMultiMetricTableWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiMultiMetricTableWidget());
+    }
+
+    protected ModelBuilder(ApiMultiMetricTableWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiMultiMetricTableWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder compareToPreviousValue(Boolean compareToPreviousValue) {
+      this.instance.setCompareToPreviousValue(compareToPreviousValue);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder rowGroupBy(ApiAggregateProperty rowGroupBy) {
+      this.instance.setRowGroupBy(rowGroupBy);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder sortBy(LegacyWidgetSortProperty sortBy) {
+      this.instance.setSortBy(sortBy);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder sortDirection(LegacyWidgetSortDirection sortDirection) {
+      this.instance.setSortDirection(sortDirection);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder limit(Integer limit) {
+      this.instance.setLimit(limit);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder multiMetricColumns(List<ApiMultiMetricColumn> multiMetricColumns) {
+      this.instance.setMultiMetricColumns(multiMetricColumns);
+      return this;
+    }
+    public ApiMultiMetricTableWidget.ModelBuilder dataSource(MultiMetricsTableDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiMultiMetricTableWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiMultiMetricTableWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiMultiMetricTableWidget.ModelBuilder builder() {
+    return new ApiMultiMetricTableWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiMultiMetricTableWidget.ModelBuilder toBuilder() {
+    ApiMultiMetricTableWidget.ModelBuilder builder = new ApiMultiMetricTableWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .compareToPreviousValue(getCompareToPreviousValue())
+      .rowGroupBy(getRowGroupBy())
+      .sortBy(getSortBy())
+      .sortDirection(getSortDirection())
+      .limit(getLimit())
+      .multiMetricColumns(getMultiMetricColumns())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

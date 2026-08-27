@@ -163,5 +163,69 @@ public class UserAgent {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UserAgent instance;
+
+    public ModelBuilder() {
+      this(new UserAgent());
+    }
+
+    protected ModelBuilder(UserAgent instance) {
+      this.instance = instance;
+    }
+
+    public UserAgent.ModelBuilder browser(String browser) {
+      this.instance.setBrowser(browser);
+      return this;
+    }
+    public UserAgent.ModelBuilder os(String os) {
+      this.instance.setOs(os);
+      return this;
+    }
+    public UserAgent.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built UserAgent instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UserAgent build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UserAgent.ModelBuilder builder() {
+    return new UserAgent.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UserAgent.ModelBuilder toBuilder() {
+    UserAgent.ModelBuilder builder = new UserAgent.ModelBuilder()
+      .browser(getBrowser())
+      .os(getOs())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

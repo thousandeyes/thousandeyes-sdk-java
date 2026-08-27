@@ -396,5 +396,104 @@ public class ApiContextFilterResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiContextFilterResponse instance;
+
+    public ModelBuilder() {
+      this(new ApiContextFilterResponse());
+    }
+
+    protected ModelBuilder(ApiContextFilterResponse instance) {
+      this.instance = instance;
+    }
+
+    public ApiContextFilterResponse.ModelBuilder context(Set<ApiDataSourceFilters> context) {
+      this.instance.setContext(context);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder createdBy(ApiDashboardFilterUserDetails createdBy) {
+      this.instance.setCreatedBy(createdBy);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.setModifiedDate(modifiedDate);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.setCreatedDate(createdDate);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder modifiedBy(ApiDashboardFilterUserDetails modifiedBy) {
+      this.instance.setModifiedBy(modifiedBy);
+      return this;
+    }
+    public ApiContextFilterResponse.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiContextFilterResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiContextFilterResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiContextFilterResponse.ModelBuilder builder() {
+    return new ApiContextFilterResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiContextFilterResponse.ModelBuilder toBuilder() {
+    ApiContextFilterResponse.ModelBuilder builder = new ApiContextFilterResponse.ModelBuilder()
+      .context(getContext())
+      .aid(getAid())
+      .id(getId())
+      .name(getName())
+      .description(getDescription())
+      .createdBy(getCreatedBy())
+      .modifiedDate(getModifiedDate())
+      .createdDate(getCreatedDate())
+      .modifiedBy(getModifiedBy())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

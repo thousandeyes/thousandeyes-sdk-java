@@ -164,5 +164,69 @@ public class PaginationLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PaginationLinks instance;
+
+    public ModelBuilder() {
+      this(new PaginationLinks());
+    }
+
+    protected ModelBuilder(PaginationLinks instance) {
+      this.instance = instance;
+    }
+
+    public PaginationLinks.ModelBuilder previous(Link previous) {
+      this.instance.setPrevious(previous);
+      return this;
+    }
+    public PaginationLinks.ModelBuilder next(Link next) {
+      this.instance.setNext(next);
+      return this;
+    }
+    public PaginationLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built PaginationLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PaginationLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PaginationLinks.ModelBuilder builder() {
+    return new PaginationLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PaginationLinks.ModelBuilder toBuilder() {
+    PaginationLinks.ModelBuilder builder = new PaginationLinks.ModelBuilder()
+      .previous(getPrevious())
+      .next(getNext())
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

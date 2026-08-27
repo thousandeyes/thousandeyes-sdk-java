@@ -34,27 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkEventGrouping {
   public static final String JSON_PROPERTY_SOURCE_ASN = "sourceAsn";
+  @JsonProperty(JSON_PROPERTY_SOURCE_ASN)
   private Integer sourceAsn;
 
   public static final String JSON_PROPERTY_DEST_ASN = "destAsn";
+  @JsonProperty(JSON_PROPERTY_DEST_ASN)
   private Integer destAsn;
 
   public static final String JSON_PROPERTY_SOURCE_COUNTRY_CODE = "sourceCountryCode";
+  @JsonProperty(JSON_PROPERTY_SOURCE_COUNTRY_CODE)
   private String sourceCountryCode;
 
   public NetworkEventGrouping() { 
-  }
-
-  @JsonCreator
-  public NetworkEventGrouping(
-    @JsonProperty(JSON_PROPERTY_SOURCE_ASN) Integer sourceAsn, 
-    @JsonProperty(JSON_PROPERTY_DEST_ASN) Integer destAsn, 
-    @JsonProperty(JSON_PROPERTY_SOURCE_COUNTRY_CODE) String sourceCountryCode
-  ) {
-  this();
-    this.sourceAsn = sourceAsn;
-    this.destAsn = destAsn;
-    this.sourceCountryCode = sourceCountryCode;
   }
 
    /**
@@ -145,5 +136,69 @@ public class NetworkEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new NetworkEventGrouping());
+    }
+
+    protected ModelBuilder(NetworkEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public NetworkEventGrouping.ModelBuilder sourceAsn(Integer sourceAsn) {
+      this.instance.sourceAsn = sourceAsn;
+      return this;
+    }
+    public NetworkEventGrouping.ModelBuilder destAsn(Integer destAsn) {
+      this.instance.destAsn = destAsn;
+      return this;
+    }
+    public NetworkEventGrouping.ModelBuilder sourceCountryCode(String sourceCountryCode) {
+      this.instance.sourceCountryCode = sourceCountryCode;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkEventGrouping.ModelBuilder builder() {
+    return new NetworkEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkEventGrouping.ModelBuilder toBuilder() {
+    NetworkEventGrouping.ModelBuilder builder = new NetworkEventGrouping.ModelBuilder()
+      .sourceAsn(getSourceAsn())
+      .destAsn(getDestAsn())
+      .sourceCountryCode(getSourceCountryCode());
+    return builder;
+  }
+
 }
 

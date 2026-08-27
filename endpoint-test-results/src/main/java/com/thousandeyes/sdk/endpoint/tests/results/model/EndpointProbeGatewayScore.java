@@ -133,5 +133,64 @@ public class EndpointProbeGatewayScore {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProbeGatewayScore instance;
+
+    public ModelBuilder() {
+      this(new EndpointProbeGatewayScore());
+    }
+
+    protected ModelBuilder(EndpointProbeGatewayScore instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProbeGatewayScore.ModelBuilder score(Double score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public EndpointProbeGatewayScore.ModelBuilder quality(ApplicationScoreQuality quality) {
+      this.instance.setQuality(quality);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProbeGatewayScore instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProbeGatewayScore build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProbeGatewayScore.ModelBuilder builder() {
+    return new EndpointProbeGatewayScore.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProbeGatewayScore.ModelBuilder toBuilder() {
+    EndpointProbeGatewayScore.ModelBuilder builder = new EndpointProbeGatewayScore.ModelBuilder()
+      .score(getScore())
+      .quality(getQuality());
+    return builder;
+  }
+
 }
 

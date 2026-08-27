@@ -287,5 +287,89 @@ public class TestUsage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestUsage instance;
+
+    public ModelBuilder() {
+      this(new TestUsage());
+    }
+
+    protected ModelBuilder(TestUsage instance) {
+      this.instance = instance;
+    }
+
+    public TestUsage.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public TestUsage.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public TestUsage.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public TestUsage.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public TestUsage.ModelBuilder testType(String testType) {
+      this.instance.setTestType(testType);
+      return this;
+    }
+    public TestUsage.ModelBuilder cloudUnitsUsed(Long cloudUnitsUsed) {
+      this.instance.setCloudUnitsUsed(cloudUnitsUsed);
+      return this;
+    }
+    public TestUsage.ModelBuilder cloudUnitsProjected(Long cloudUnitsProjected) {
+      this.instance.setCloudUnitsProjected(cloudUnitsProjected);
+      return this;
+    }
+
+    /**
+     * Returns a built TestUsage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestUsage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestUsage.ModelBuilder builder() {
+    return new TestUsage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestUsage.ModelBuilder toBuilder() {
+    TestUsage.ModelBuilder builder = new TestUsage.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .testId(getTestId())
+      .testName(getTestName())
+      .testType(getTestType())
+      .cloudUnitsUsed(getCloudUnitsUsed())
+      .cloudUnitsProjected(getCloudUnitsProjected());
+    return builder;
+  }
+
 }
 

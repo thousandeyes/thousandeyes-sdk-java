@@ -145,5 +145,64 @@ public class Users {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Users instance;
+
+    public ModelBuilder() {
+      this(new Users());
+    }
+
+    protected ModelBuilder(Users instance) {
+      this.instance = instance;
+    }
+
+    public Users.ModelBuilder users(List<ExtendedUser> users) {
+      this.instance.setUsers(users);
+      return this;
+    }
+    public Users.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Users instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Users build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Users.ModelBuilder builder() {
+    return new Users.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Users.ModelBuilder toBuilder() {
+    Users.ModelBuilder builder = new Users.ModelBuilder()
+      .users(getUsers())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

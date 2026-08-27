@@ -145,5 +145,64 @@ public class AgentProxies {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentProxies instance;
+
+    public ModelBuilder() {
+      this(new AgentProxies());
+    }
+
+    protected ModelBuilder(AgentProxies instance) {
+      this.instance = instance;
+    }
+
+    public AgentProxies.ModelBuilder agentProxies(List<AgentProxy> agentProxies) {
+      this.instance.setAgentProxies(agentProxies);
+      return this;
+    }
+    public AgentProxies.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentProxies instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentProxies build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentProxies.ModelBuilder builder() {
+    return new AgentProxies.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentProxies.ModelBuilder toBuilder() {
+    AgentProxies.ModelBuilder builder = new AgentProxies.ModelBuilder()
+      .agentProxies(getAgentProxies())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

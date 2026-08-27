@@ -257,5 +257,84 @@ public class OauthClientCredentialsAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OauthClientCredentialsAuthentication instance;
+
+    public ModelBuilder() {
+      this(new OauthClientCredentialsAuthentication());
+    }
+
+    protected ModelBuilder(OauthClientCredentialsAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public OauthClientCredentialsAuthentication.ModelBuilder token(String token) {
+      this.instance.setToken(token);
+      return this;
+    }
+    public OauthClientCredentialsAuthentication.ModelBuilder oauthClientId(String oauthClientId) {
+      this.instance.setOauthClientId(oauthClientId);
+      return this;
+    }
+    public OauthClientCredentialsAuthentication.ModelBuilder oauthTokenUrl(String oauthTokenUrl) {
+      this.instance.setOauthTokenUrl(oauthTokenUrl);
+      return this;
+    }
+    public OauthClientCredentialsAuthentication.ModelBuilder oauthClientSecret(String oauthClientSecret) {
+      this.instance.setOauthClientSecret(oauthClientSecret);
+      return this;
+    }
+    public OauthClientCredentialsAuthentication.ModelBuilder scope(String scope) {
+      this.instance.setScope(scope);
+      return this;
+    }
+    public OauthClientCredentialsAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built OauthClientCredentialsAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OauthClientCredentialsAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OauthClientCredentialsAuthentication.ModelBuilder builder() {
+    return new OauthClientCredentialsAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OauthClientCredentialsAuthentication.ModelBuilder toBuilder() {
+    OauthClientCredentialsAuthentication.ModelBuilder builder = new OauthClientCredentialsAuthentication.ModelBuilder()
+      .token(getToken())
+      .oauthClientId(getOauthClientId())
+      .oauthTokenUrl(getOauthTokenUrl())
+      .oauthClientSecret(getOauthClientSecret())
+      .scope(getScope())
+      .type(getType());
+    return builder;
+  }
+
 }
 

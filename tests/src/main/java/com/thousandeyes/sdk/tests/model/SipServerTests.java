@@ -145,5 +145,64 @@ public class SipServerTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SipServerTests instance;
+
+    public ModelBuilder() {
+      this(new SipServerTests());
+    }
+
+    protected ModelBuilder(SipServerTests instance) {
+      this.instance = instance;
+    }
+
+    public SipServerTests.ModelBuilder tests(List<UnexpandedSipServerTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public SipServerTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built SipServerTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SipServerTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SipServerTests.ModelBuilder builder() {
+    return new SipServerTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SipServerTests.ModelBuilder toBuilder() {
+    SipServerTests.ModelBuilder builder = new SipServerTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

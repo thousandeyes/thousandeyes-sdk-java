@@ -67,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class RuleDetail {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
@@ -130,27 +131,17 @@ public class RuleDetail {
   private AlertNotification notifications;
 
   public static final String JSON_PROPERTY_TESTS = "tests";
+  @JsonProperty(JSON_PROPERTY_TESTS)
   private List<AlertSimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   private List<String> testIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
 
   public RuleDetail() { 
-  }
-
-  @JsonCreator
-  public RuleDetail(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId, 
-    @JsonProperty(JSON_PROPERTY_TESTS) List<AlertSimpleTest> tests, 
-    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<String> testIds
-  ) {
-  this();
-    this.ruleId = ruleId;
-    this.tests = tests;
-    this.testIds = testIds;
   }
 
    /**
@@ -832,5 +823,174 @@ public class RuleDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RuleDetail instance;
+
+    public ModelBuilder() {
+      this(new RuleDetail());
+    }
+
+    protected ModelBuilder(RuleDetail instance) {
+      this.instance = instance;
+    }
+
+    public RuleDetail.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public RuleDetail.ModelBuilder ruleName(String ruleName) {
+      this.instance.setRuleName(ruleName);
+      return this;
+    }
+    public RuleDetail.ModelBuilder expression(String expression) {
+      this.instance.setExpression(expression);
+      return this;
+    }
+    public RuleDetail.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public RuleDetail.ModelBuilder direction(AlertDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public RuleDetail.ModelBuilder notifyOnClear(Boolean notifyOnClear) {
+      this.instance.setNotifyOnClear(notifyOnClear);
+      return this;
+    }
+    public RuleDetail.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.setIsDefault(isDefault);
+      return this;
+    }
+    public RuleDetail.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public RuleDetail.ModelBuilder alertGroupType(AlertGroupType alertGroupType) {
+      this.instance.setAlertGroupType(alertGroupType);
+      return this;
+    }
+    public RuleDetail.ModelBuilder minimumSources(Integer minimumSources) {
+      this.instance.setMinimumSources(minimumSources);
+      return this;
+    }
+    public RuleDetail.ModelBuilder minimumSourcesPct(Integer minimumSourcesPct) {
+      this.instance.setMinimumSourcesPct(minimumSourcesPct);
+      return this;
+    }
+    public RuleDetail.ModelBuilder roundsViolatingMode(AlertRoundsViolationMode roundsViolatingMode) {
+      this.instance.setRoundsViolatingMode(roundsViolatingMode);
+      return this;
+    }
+    public RuleDetail.ModelBuilder roundsViolatingOutOf(Integer roundsViolatingOutOf) {
+      this.instance.setRoundsViolatingOutOf(roundsViolatingOutOf);
+      return this;
+    }
+    public RuleDetail.ModelBuilder roundsViolatingRequired(Integer roundsViolatingRequired) {
+      this.instance.setRoundsViolatingRequired(roundsViolatingRequired);
+      return this;
+    }
+    public RuleDetail.ModelBuilder includeCoveredPrefixes(Boolean includeCoveredPrefixes) {
+      this.instance.setIncludeCoveredPrefixes(includeCoveredPrefixes);
+      return this;
+    }
+    public RuleDetail.ModelBuilder sensitivityLevel(SensitivityLevel sensitivityLevel) {
+      this.instance.setSensitivityLevel(sensitivityLevel);
+      return this;
+    }
+    public RuleDetail.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+    public RuleDetail.ModelBuilder endpointAgentIds(List<String> endpointAgentIds) {
+      this.instance.setEndpointAgentIds(endpointAgentIds);
+      return this;
+    }
+    public RuleDetail.ModelBuilder endpointLabelIds(List<String> endpointLabelIds) {
+      this.instance.setEndpointLabelIds(endpointLabelIds);
+      return this;
+    }
+    public RuleDetail.ModelBuilder visitedSitesFilter(List<String> visitedSitesFilter) {
+      this.instance.setVisitedSitesFilter(visitedSitesFilter);
+      return this;
+    }
+    public RuleDetail.ModelBuilder notifications(AlertNotification notifications) {
+      this.instance.setNotifications(notifications);
+      return this;
+    }
+    public RuleDetail.ModelBuilder tests(List<AlertSimpleTest> tests) {
+      this.instance.tests = tests;
+      return this;
+    }
+    public RuleDetail.ModelBuilder testIds(List<String> testIds) {
+      this.instance.testIds = testIds;
+      return this;
+    }
+    public RuleDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RuleDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RuleDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RuleDetail.ModelBuilder builder() {
+    return new RuleDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RuleDetail.ModelBuilder toBuilder() {
+    RuleDetail.ModelBuilder builder = new RuleDetail.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .description(getDescription())
+      .direction(getDirection())
+      .notifyOnClear(getNotifyOnClear())
+      .isDefault(getIsDefault())
+      .alertType(getAlertType())
+      .alertGroupType(getAlertGroupType())
+      .minimumSources(getMinimumSources())
+      .minimumSourcesPct(getMinimumSourcesPct())
+      .roundsViolatingMode(getRoundsViolatingMode())
+      .roundsViolatingOutOf(getRoundsViolatingOutOf())
+      .roundsViolatingRequired(getRoundsViolatingRequired())
+      .includeCoveredPrefixes(getIncludeCoveredPrefixes())
+      .sensitivityLevel(getSensitivityLevel())
+      .severity(getSeverity())
+      .endpointAgentIds(getEndpointAgentIds())
+      .endpointLabelIds(getEndpointLabelIds())
+      .visitedSitesFilter(getVisitedSitesFilter())
+      .notifications(getNotifications())
+      .tests(getTests())
+      .testIds(getTestIds())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

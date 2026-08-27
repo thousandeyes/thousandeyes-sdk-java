@@ -112,5 +112,59 @@ public class AgentClusterAssignRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentClusterAssignRequest instance;
+
+    public ModelBuilder() {
+      this(new AgentClusterAssignRequest());
+    }
+
+    protected ModelBuilder(AgentClusterAssignRequest instance) {
+      this.instance = instance;
+    }
+
+    public AgentClusterAssignRequest.ModelBuilder agents(List<String> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentClusterAssignRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentClusterAssignRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentClusterAssignRequest.ModelBuilder builder() {
+    return new AgentClusterAssignRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentClusterAssignRequest.ModelBuilder toBuilder() {
+    AgentClusterAssignRequest.ModelBuilder builder = new AgentClusterAssignRequest.ModelBuilder()
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

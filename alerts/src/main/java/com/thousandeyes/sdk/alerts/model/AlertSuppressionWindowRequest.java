@@ -47,6 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertSuppressionWindowRequest {
   public static final String JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID = "alertSuppressionWindowId";
+  @JsonProperty(JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID)
   private String alertSuppressionWindowId;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -74,14 +75,6 @@ public class AlertSuppressionWindowRequest {
   private List<String> testIds = new ArrayList<>();
 
   public AlertSuppressionWindowRequest() { 
-  }
-
-  @JsonCreator
-  public AlertSuppressionWindowRequest(
-    @JsonProperty(JSON_PROPERTY_ALERT_SUPPRESSION_WINDOW_ID) String alertSuppressionWindowId
-  ) {
-  this();
-    this.alertSuppressionWindowId = alertSuppressionWindowId;
   }
 
    /**
@@ -362,5 +355,99 @@ public class AlertSuppressionWindowRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertSuppressionWindowRequest instance;
+
+    public ModelBuilder() {
+      this(new AlertSuppressionWindowRequest());
+    }
+
+    protected ModelBuilder(AlertSuppressionWindowRequest instance) {
+      this.instance = instance;
+    }
+
+    public AlertSuppressionWindowRequest.ModelBuilder alertSuppressionWindowId(String alertSuppressionWindowId) {
+      this.instance.alertSuppressionWindowId = alertSuppressionWindowId;
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder status(AlertSuppressionWindowState status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder duration(Integer duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder repeat(Repeat repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder endRepeat(EndRepeat endRepeat) {
+      this.instance.setEndRepeat(endRepeat);
+      return this;
+    }
+    public AlertSuppressionWindowRequest.ModelBuilder testIds(List<String> testIds) {
+      this.instance.setTestIds(testIds);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertSuppressionWindowRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertSuppressionWindowRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertSuppressionWindowRequest.ModelBuilder builder() {
+    return new AlertSuppressionWindowRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertSuppressionWindowRequest.ModelBuilder toBuilder() {
+    AlertSuppressionWindowRequest.ModelBuilder builder = new AlertSuppressionWindowRequest.ModelBuilder()
+      .alertSuppressionWindowId(getAlertSuppressionWindowId())
+      .name(getName())
+      .isEnabled(getIsEnabled())
+      .status(getStatus())
+      .startDate(getStartDate())
+      .duration(getDuration())
+      .repeat(getRepeat())
+      .endRepeat(getEndRepeat())
+      .testIds(getTestIds());
+    return builder;
+  }
+
 }
 

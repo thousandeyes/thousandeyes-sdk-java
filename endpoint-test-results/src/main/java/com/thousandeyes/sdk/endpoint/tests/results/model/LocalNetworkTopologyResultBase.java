@@ -70,24 +70,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalNetworkTopologyResultBase {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private UUID agentId;
 
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_NETWORK_TOPOLOGY_ID = "networkTopologyId";
+  @JsonProperty(JSON_PROPERTY_NETWORK_TOPOLOGY_ID)
   private String networkTopologyId;
 
   public static final String JSON_PROPERTY_DNS_SERVER_TEST = "dnsServerTest";
   private LocalNetworkTopologyDnsServerTest dnsServerTest;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_TARGET = "target";
+  @JsonProperty(JSON_PROPERTY_TARGET)
   private String target;
 
   public static final String JSON_PROPERTY_TARGET_PORT = "targetPort";
+  @JsonProperty(JSON_PROPERTY_TARGET_PORT)
   private Integer targetPort;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -97,6 +103,7 @@ public class LocalNetworkTopologyResultBase {
   private NetworkPing icmpPing;
 
   public static final String JSON_PROPERTY_IS_ICMP_BLOCKED = "isIcmpBlocked";
+  @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED)
   private Boolean isIcmpBlocked;
 
   public static final String JSON_PROPERTY_TCP_CONNECT = "tcpConnect";
@@ -136,26 +143,6 @@ public class LocalNetworkTopologyResultBase {
   private Platform platform;
 
   public LocalNetworkTopologyResultBase() { 
-  }
-
-  @JsonCreator
-  public LocalNetworkTopologyResultBase(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) UUID agentId, 
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_NETWORK_TOPOLOGY_ID) String networkTopologyId, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_TARGET) String target, 
-    @JsonProperty(JSON_PROPERTY_TARGET_PORT) Integer targetPort, 
-    @JsonProperty(JSON_PROPERTY_IS_ICMP_BLOCKED) Boolean isIcmpBlocked
-  ) {
-  this();
-    this.agentId = agentId;
-    this.date = date;
-    this.networkTopologyId = networkTopologyId;
-    this.roundId = roundId;
-    this.target = target;
-    this.targetPort = targetPort;
-    this.isIcmpBlocked = isIcmpBlocked;
   }
 
    /**
@@ -719,5 +706,164 @@ public class LocalNetworkTopologyResultBase {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkTopologyResultBase instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkTopologyResultBase());
+    }
+
+    protected ModelBuilder(LocalNetworkTopologyResultBase instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkTopologyResultBase.ModelBuilder agentId(UUID agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder networkTopologyId(String networkTopologyId) {
+      this.instance.networkTopologyId = networkTopologyId;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder dnsServerTest(LocalNetworkTopologyDnsServerTest dnsServerTest) {
+      this.instance.setDnsServerTest(dnsServerTest);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder target(String target) {
+      this.instance.target = target;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder targetPort(Integer targetPort) {
+      this.instance.targetPort = targetPort;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder type(NetworkTopologyType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder icmpPing(NetworkPing icmpPing) {
+      this.instance.setIcmpPing(icmpPing);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder isIcmpBlocked(Boolean isIcmpBlocked) {
+      this.instance.isIcmpBlocked = isIcmpBlocked;
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder tcpConnect(TcpConnect tcpConnect) {
+      this.instance.setTcpConnect(tcpConnect);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder systemMetrics(SystemMetrics systemMetrics) {
+      this.instance.setSystemMetrics(systemMetrics);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder systemMetricDetails(SystemMetricDetails systemMetricDetails) {
+      this.instance.setSystemMetricDetails(systemMetricDetails);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder vpnScore(EndpointProbeVpnScore vpnScore) {
+      this.instance.setVpnScore(vpnScore);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder gatewayScore(EndpointProbeGatewayScore gatewayScore) {
+      this.instance.setGatewayScore(gatewayScore);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder proxyScore(EndpointProbeProxyScore proxyScore) {
+      this.instance.setProxyScore(proxyScore);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder connectionScore(EndpointProbeConnectionScore connectionScore) {
+      this.instance.setConnectionScore(connectionScore);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder wirelessOnboarding(WirelessOnboarding wirelessOnboarding) {
+      this.instance.setWirelessOnboarding(wirelessOnboarding);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder agentScore(EndpointProbeAgentScore agentScore) {
+      this.instance.setAgentScore(agentScore);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder batteryMetrics(BatteryMetrics batteryMetrics) {
+      this.instance.setBatteryMetrics(batteryMetrics);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder cellularProfile(CellularProfile cellularProfile) {
+      this.instance.setCellularProfile(cellularProfile);
+      return this;
+    }
+    public LocalNetworkTopologyResultBase.ModelBuilder platform(Platform platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkTopologyResultBase instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkTopologyResultBase build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkTopologyResultBase.ModelBuilder builder() {
+    return new LocalNetworkTopologyResultBase.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkTopologyResultBase.ModelBuilder toBuilder() {
+    LocalNetworkTopologyResultBase.ModelBuilder builder = new LocalNetworkTopologyResultBase.ModelBuilder()
+      .agentId(getAgentId())
+      .date(getDate())
+      .networkTopologyId(getNetworkTopologyId())
+      .dnsServerTest(getDnsServerTest())
+      .roundId(getRoundId())
+      .target(getTarget())
+      .targetPort(getTargetPort())
+      .type(getType())
+      .icmpPing(getIcmpPing())
+      .isIcmpBlocked(getIsIcmpBlocked())
+      .tcpConnect(getTcpConnect())
+      .systemMetrics(getSystemMetrics())
+      .systemMetricDetails(getSystemMetricDetails())
+      .vpnScore(getVpnScore())
+      .gatewayScore(getGatewayScore())
+      .proxyScore(getProxyScore())
+      .connectionScore(getConnectionScore())
+      .wirelessOnboarding(getWirelessOnboarding())
+      .agentScore(getAgentScore())
+      .batteryMetrics(getBatteryMetrics())
+      .cellularProfile(getCellularProfile())
+      .platform(getPlatform());
+    return builder;
+  }
+
 }
 

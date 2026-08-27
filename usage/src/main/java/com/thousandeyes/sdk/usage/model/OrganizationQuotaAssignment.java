@@ -144,5 +144,64 @@ public class OrganizationQuotaAssignment {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OrganizationQuotaAssignment instance;
+
+    public ModelBuilder() {
+      this(new OrganizationQuotaAssignment());
+    }
+
+    protected ModelBuilder(OrganizationQuotaAssignment instance) {
+      this.instance = instance;
+    }
+
+    public OrganizationQuotaAssignment.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+    public OrganizationQuotaAssignment.ModelBuilder accountGroups(List<AccountGroupQuota> accountGroups) {
+      this.instance.setAccountGroups(accountGroups);
+      return this;
+    }
+
+    /**
+     * Returns a built OrganizationQuotaAssignment instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OrganizationQuotaAssignment build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OrganizationQuotaAssignment.ModelBuilder builder() {
+    return new OrganizationQuotaAssignment.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OrganizationQuotaAssignment.ModelBuilder toBuilder() {
+    OrganizationQuotaAssignment.ModelBuilder builder = new OrganizationQuotaAssignment.ModelBuilder()
+      .orgId(getOrgId())
+      .accountGroups(getAccountGroups());
+    return builder;
+  }
+
 }
 

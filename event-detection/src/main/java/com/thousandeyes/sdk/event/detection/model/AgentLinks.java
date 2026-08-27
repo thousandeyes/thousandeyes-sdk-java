@@ -102,5 +102,59 @@ public class AgentLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentLinks instance;
+
+    public ModelBuilder() {
+      this(new AgentLinks());
+    }
+
+    protected ModelBuilder(AgentLinks instance) {
+      this.instance = instance;
+    }
+
+    public AgentLinks.ModelBuilder agent(Link agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentLinks.ModelBuilder builder() {
+    return new AgentLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentLinks.ModelBuilder toBuilder() {
+    AgentLinks.ModelBuilder builder = new AgentLinks.ModelBuilder()
+      .agent(getAgent());
+    return builder;
+  }
+
 }
 

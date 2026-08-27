@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BgpHop {
   public static final String JSON_PROPERTY_ASN = "asn";
+  @JsonProperty(JSON_PROPERTY_ASN)
   private Integer asn;
 
   public static final String JSON_PROPERTY_AS_NAME = "asName";
+  @JsonProperty(JSON_PROPERTY_AS_NAME)
   private String asName;
 
   public BgpHop() { 
-  }
-
-  @JsonCreator
-  public BgpHop(
-    @JsonProperty(JSON_PROPERTY_ASN) Integer asn, 
-    @JsonProperty(JSON_PROPERTY_AS_NAME) String asName
-  ) {
-  this();
-    this.asn = asn;
-    this.asName = asName;
   }
 
    /**
@@ -122,5 +114,64 @@ public class BgpHop {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BgpHop instance;
+
+    public ModelBuilder() {
+      this(new BgpHop());
+    }
+
+    protected ModelBuilder(BgpHop instance) {
+      this.instance = instance;
+    }
+
+    public BgpHop.ModelBuilder asn(Integer asn) {
+      this.instance.asn = asn;
+      return this;
+    }
+    public BgpHop.ModelBuilder asName(String asName) {
+      this.instance.asName = asName;
+      return this;
+    }
+
+    /**
+     * Returns a built BgpHop instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BgpHop build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BgpHop.ModelBuilder builder() {
+    return new BgpHop.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BgpHop.ModelBuilder toBuilder() {
+    BgpHop.ModelBuilder builder = new BgpHop.ModelBuilder()
+      .asn(getAsn())
+      .asName(getAsName());
+    return builder;
+  }
+
 }
 

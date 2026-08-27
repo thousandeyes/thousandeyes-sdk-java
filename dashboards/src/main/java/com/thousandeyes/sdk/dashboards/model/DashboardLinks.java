@@ -133,5 +133,64 @@ public class DashboardLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardLinks instance;
+
+    public ModelBuilder() {
+      this(new DashboardLinks());
+    }
+
+    protected ModelBuilder(DashboardLinks instance) {
+      this.instance = instance;
+    }
+
+    public DashboardLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+    public DashboardLinks.ModelBuilder snapshots(Link snapshots) {
+      this.instance.setSnapshots(snapshots);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardLinks.ModelBuilder builder() {
+    return new DashboardLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardLinks.ModelBuilder toBuilder() {
+    DashboardLinks.ModelBuilder builder = new DashboardLinks.ModelBuilder()
+      .self(getSelf())
+      .snapshots(getSnapshots());
+    return builder;
+  }
+
 }
 

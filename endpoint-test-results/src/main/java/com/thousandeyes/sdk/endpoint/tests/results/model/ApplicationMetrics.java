@@ -237,5 +237,79 @@ public class ApplicationMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApplicationMetrics instance;
+
+    public ModelBuilder() {
+      this(new ApplicationMetrics());
+    }
+
+    protected ModelBuilder(ApplicationMetrics instance) {
+      this.instance = instance;
+    }
+
+    public ApplicationMetrics.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public ApplicationMetrics.ModelBuilder totalCpu(Double totalCpu) {
+      this.instance.setTotalCpu(totalCpu);
+      return this;
+    }
+    public ApplicationMetrics.ModelBuilder totalMemoryPercentage(Double totalMemoryPercentage) {
+      this.instance.setTotalMemoryPercentage(totalMemoryPercentage);
+      return this;
+    }
+    public ApplicationMetrics.ModelBuilder totalMemoryBytes(Long totalMemoryBytes) {
+      this.instance.setTotalMemoryBytes(totalMemoryBytes);
+      return this;
+    }
+    public ApplicationMetrics.ModelBuilder processes(List<ProcessMetrics> processes) {
+      this.instance.setProcesses(processes);
+      return this;
+    }
+
+    /**
+     * Returns a built ApplicationMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApplicationMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApplicationMetrics.ModelBuilder builder() {
+    return new ApplicationMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApplicationMetrics.ModelBuilder toBuilder() {
+    ApplicationMetrics.ModelBuilder builder = new ApplicationMetrics.ModelBuilder()
+      .name(getName())
+      .totalCpu(getTotalCpu())
+      .totalMemoryPercentage(getTotalMemoryPercentage())
+      .totalMemoryBytes(getTotalMemoryBytes())
+      .processes(getProcesses());
+    return builder;
+  }
+
 }
 

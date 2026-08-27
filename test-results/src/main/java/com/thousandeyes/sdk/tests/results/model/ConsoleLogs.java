@@ -163,5 +163,69 @@ public class ConsoleLogs {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConsoleLogs instance;
+
+    public ModelBuilder() {
+      this(new ConsoleLogs());
+    }
+
+    protected ModelBuilder(ConsoleLogs instance) {
+      this.instance = instance;
+    }
+
+    public ConsoleLogs.ModelBuilder level(String level) {
+      this.instance.setLevel(level);
+      return this;
+    }
+    public ConsoleLogs.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public ConsoleLogs.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ConsoleLogs instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConsoleLogs build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConsoleLogs.ModelBuilder builder() {
+    return new ConsoleLogs.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConsoleLogs.ModelBuilder toBuilder() {
+    ConsoleLogs.ModelBuilder builder = new ConsoleLogs.ModelBuilder()
+      .level(getLevel())
+      .timestamp(getTimestamp())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

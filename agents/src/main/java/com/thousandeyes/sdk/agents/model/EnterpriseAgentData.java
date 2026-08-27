@@ -58,15 +58,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EnterpriseAgentData {
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
+  @JsonProperty(JSON_PROPERTY_TEST_IDS)
   private List<Long> testIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TESTS = "tests";
   private List<SimpleTest> tests = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLUSTER_MEMBERS = "clusterMembers";
+  @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS)
   private List<ClusterMember> clusterMembers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_UTILIZATION = "utilization";
+  @JsonProperty(JSON_PROPERTY_UTILIZATION)
   private Integer utilization;
 
   public static final String JSON_PROPERTY_ACCOUNT_GROUPS = "accountGroups";
@@ -76,12 +79,15 @@ public class EnterpriseAgentData {
   private EnterpriseAgentIpv6Policy ipv6Policy;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private List<ErrorDetail> errorDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HOSTNAME = "hostname";
+  @JsonProperty(JSON_PROPERTY_HOSTNAME)
   private String hostname;
 
   public static final String JSON_PROPERTY_LAST_SEEN = "lastSeen";
+  @JsonProperty(JSON_PROPERTY_LAST_SEEN)
   private OffsetDateTime lastSeen;
 
   public static final String JSON_PROPERTY_AGENT_STATE = "agentState";
@@ -91,45 +97,24 @@ public class EnterpriseAgentData {
   private Boolean keepBrowserCache;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_TARGET_FOR_TESTS = "targetForTests";
   private String targetForTests;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
+  @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER)
   private String serialNumber;
 
   public static final String JSON_PROPERTY_LOCAL_RESOLUTION_PREFIXES = "localResolutionPrefixes";
   private List<String> localResolutionPrefixes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERFACE_IP_MAPPING = "interfaceIpMapping";
+  @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING)
   private List<InterfaceIpMapping> interfaceIpMapping = new ArrayList<>();
 
   public EnterpriseAgentData() { 
-  }
-
-  @JsonCreator
-  public EnterpriseAgentData(
-    @JsonProperty(JSON_PROPERTY_TEST_IDS) List<Long> testIds, 
-    @JsonProperty(JSON_PROPERTY_CLUSTER_MEMBERS) List<ClusterMember> clusterMembers, 
-    @JsonProperty(JSON_PROPERTY_UTILIZATION) Integer utilization, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) List<ErrorDetail> errorDetails, 
-    @JsonProperty(JSON_PROPERTY_HOSTNAME) String hostname, 
-    @JsonProperty(JSON_PROPERTY_LAST_SEEN) OffsetDateTime lastSeen, 
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_SERIAL_NUMBER) String serialNumber, 
-    @JsonProperty(JSON_PROPERTY_INTERFACE_IP_MAPPING) List<InterfaceIpMapping> interfaceIpMapping
-  ) {
-  this();
-    this.testIds = testIds;
-    this.clusterMembers = clusterMembers;
-    this.utilization = utilization;
-    this.errorDetails = errorDetails;
-    this.hostname = hostname;
-    this.lastSeen = lastSeen;
-    this.createdDate = createdDate;
-    this.serialNumber = serialNumber;
-    this.interfaceIpMapping = interfaceIpMapping;
   }
 
    /**
@@ -535,5 +520,134 @@ public class EnterpriseAgentData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgentData instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgentData());
+    }
+
+    protected ModelBuilder(EnterpriseAgentData instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgentData.ModelBuilder testIds(List<Long> testIds) {
+      this.instance.testIds = testIds;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder tests(List<SimpleTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder clusterMembers(List<ClusterMember> clusterMembers) {
+      this.instance.clusterMembers = clusterMembers;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder utilization(Integer utilization) {
+      this.instance.utilization = utilization;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder accountGroups(List<AccountGroup> accountGroups) {
+      this.instance.setAccountGroups(accountGroups);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder ipv6Policy(EnterpriseAgentIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder errorDetails(List<ErrorDetail> errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder hostname(String hostname) {
+      this.instance.hostname = hostname;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder lastSeen(OffsetDateTime lastSeen) {
+      this.instance.lastSeen = lastSeen;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder agentState(EnterpriseAgentState agentState) {
+      this.instance.setAgentState(agentState);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder keepBrowserCache(Boolean keepBrowserCache) {
+      this.instance.setKeepBrowserCache(keepBrowserCache);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder targetForTests(String targetForTests) {
+      this.instance.setTargetForTests(targetForTests);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder serialNumber(String serialNumber) {
+      this.instance.serialNumber = serialNumber;
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder localResolutionPrefixes(List<String> localResolutionPrefixes) {
+      this.instance.setLocalResolutionPrefixes(localResolutionPrefixes);
+      return this;
+    }
+    public EnterpriseAgentData.ModelBuilder interfaceIpMapping(List<InterfaceIpMapping> interfaceIpMapping) {
+      this.instance.interfaceIpMapping = interfaceIpMapping;
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgentData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgentData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgentData.ModelBuilder builder() {
+    return new EnterpriseAgentData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgentData.ModelBuilder toBuilder() {
+    EnterpriseAgentData.ModelBuilder builder = new EnterpriseAgentData.ModelBuilder()
+      .testIds(getTestIds())
+      .tests(getTests())
+      .clusterMembers(getClusterMembers())
+      .utilization(getUtilization())
+      .accountGroups(getAccountGroups())
+      .ipv6Policy(getIpv6Policy())
+      .errorDetails(getErrorDetails())
+      .hostname(getHostname())
+      .lastSeen(getLastSeen())
+      .agentState(getAgentState())
+      .keepBrowserCache(getKeepBrowserCache())
+      .createdDate(getCreatedDate())
+      .targetForTests(getTargetForTests())
+      .serialNumber(getSerialNumber())
+      .localResolutionPrefixes(getLocalResolutionPrefixes())
+      .interfaceIpMapping(getInterfaceIpMapping());
+    return builder;
+  }
+
 }
 

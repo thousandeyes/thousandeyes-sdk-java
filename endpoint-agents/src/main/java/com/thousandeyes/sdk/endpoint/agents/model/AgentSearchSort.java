@@ -134,5 +134,64 @@ public class AgentSearchSort {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentSearchSort instance;
+
+    public ModelBuilder() {
+      this(new AgentSearchSort());
+    }
+
+    protected ModelBuilder(AgentSearchSort instance) {
+      this.instance = instance;
+    }
+
+    public AgentSearchSort.ModelBuilder sort(AgentSearchSortKey sort) {
+      this.instance.setSort(sort);
+      return this;
+    }
+    public AgentSearchSort.ModelBuilder order(SortOrder order) {
+      this.instance.setOrder(order);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentSearchSort instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentSearchSort build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentSearchSort.ModelBuilder builder() {
+    return new AgentSearchSort.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentSearchSort.ModelBuilder toBuilder() {
+    AgentSearchSort.ModelBuilder builder = new AgentSearchSort.ModelBuilder()
+      .sort(getSort())
+      .order(getOrder());
+    return builder;
+  }
+
 }
 

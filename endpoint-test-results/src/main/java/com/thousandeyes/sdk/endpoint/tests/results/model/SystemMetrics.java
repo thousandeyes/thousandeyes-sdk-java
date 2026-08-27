@@ -38,9 +38,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class SystemMetrics {
   public static final String JSON_PROPERTY_START_TIME_MS = "startTimeMs";
+  @JsonProperty(JSON_PROPERTY_START_TIME_MS)
   private Long startTimeMs;
 
   public static final String JSON_PROPERTY_END_TIME_MS = "endTimeMs";
+  @JsonProperty(JSON_PROPERTY_END_TIME_MS)
   private Long endTimeMs;
 
   public static final String JSON_PROPERTY_CPU_UTILIZATION = "cpuUtilization";
@@ -50,21 +52,10 @@ public class SystemMetrics {
   private PhysicalMemoryUsedBytes physicalMemoryUsedBytes;
 
   public static final String JSON_PROPERTY_PHYSICAL_MEMORY_TOTAL_BYTES = "physicalMemoryTotalBytes";
+  @JsonProperty(JSON_PROPERTY_PHYSICAL_MEMORY_TOTAL_BYTES)
   private Long physicalMemoryTotalBytes;
 
   public SystemMetrics() { 
-  }
-
-  @JsonCreator
-  public SystemMetrics(
-    @JsonProperty(JSON_PROPERTY_START_TIME_MS) Long startTimeMs, 
-    @JsonProperty(JSON_PROPERTY_END_TIME_MS) Long endTimeMs, 
-    @JsonProperty(JSON_PROPERTY_PHYSICAL_MEMORY_TOTAL_BYTES) Long physicalMemoryTotalBytes
-  ) {
-  this();
-    this.startTimeMs = startTimeMs;
-    this.endTimeMs = endTimeMs;
-    this.physicalMemoryTotalBytes = physicalMemoryTotalBytes;
   }
 
    /**
@@ -209,5 +200,79 @@ public class SystemMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SystemMetrics instance;
+
+    public ModelBuilder() {
+      this(new SystemMetrics());
+    }
+
+    protected ModelBuilder(SystemMetrics instance) {
+      this.instance = instance;
+    }
+
+    public SystemMetrics.ModelBuilder startTimeMs(Long startTimeMs) {
+      this.instance.startTimeMs = startTimeMs;
+      return this;
+    }
+    public SystemMetrics.ModelBuilder endTimeMs(Long endTimeMs) {
+      this.instance.endTimeMs = endTimeMs;
+      return this;
+    }
+    public SystemMetrics.ModelBuilder cpuUtilization(CpuUtilization cpuUtilization) {
+      this.instance.setCpuUtilization(cpuUtilization);
+      return this;
+    }
+    public SystemMetrics.ModelBuilder physicalMemoryUsedBytes(PhysicalMemoryUsedBytes physicalMemoryUsedBytes) {
+      this.instance.setPhysicalMemoryUsedBytes(physicalMemoryUsedBytes);
+      return this;
+    }
+    public SystemMetrics.ModelBuilder physicalMemoryTotalBytes(Long physicalMemoryTotalBytes) {
+      this.instance.physicalMemoryTotalBytes = physicalMemoryTotalBytes;
+      return this;
+    }
+
+    /**
+     * Returns a built SystemMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SystemMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SystemMetrics.ModelBuilder builder() {
+    return new SystemMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SystemMetrics.ModelBuilder toBuilder() {
+    SystemMetrics.ModelBuilder builder = new SystemMetrics.ModelBuilder()
+      .startTimeMs(getStartTimeMs())
+      .endTimeMs(getEndTimeMs())
+      .cpuUtilization(getCpuUtilization())
+      .physicalMemoryUsedBytes(getPhysicalMemoryUsedBytes())
+      .physicalMemoryTotalBytes(getPhysicalMemoryTotalBytes());
+    return builder;
+  }
+
 }
 

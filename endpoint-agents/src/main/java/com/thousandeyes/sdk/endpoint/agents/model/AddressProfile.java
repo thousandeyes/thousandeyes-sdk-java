@@ -226,5 +226,79 @@ public class AddressProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AddressProfile instance;
+
+    public ModelBuilder() {
+      this(new AddressProfile());
+    }
+
+    protected ModelBuilder(AddressProfile instance) {
+      this.instance = instance;
+    }
+
+    public AddressProfile.ModelBuilder addressType(AddressType addressType) {
+      this.instance.setAddressType(addressType);
+      return this;
+    }
+    public AddressProfile.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.setIpAddress(ipAddress);
+      return this;
+    }
+    public AddressProfile.ModelBuilder prefixLength(Integer prefixLength) {
+      this.instance.setPrefixLength(prefixLength);
+      return this;
+    }
+    public AddressProfile.ModelBuilder gateway(String gateway) {
+      this.instance.setGateway(gateway);
+      return this;
+    }
+    public AddressProfile.ModelBuilder routerHardwareAddress(String routerHardwareAddress) {
+      this.instance.setRouterHardwareAddress(routerHardwareAddress);
+      return this;
+    }
+
+    /**
+     * Returns a built AddressProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AddressProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AddressProfile.ModelBuilder builder() {
+    return new AddressProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AddressProfile.ModelBuilder toBuilder() {
+    AddressProfile.ModelBuilder builder = new AddressProfile.ModelBuilder()
+      .addressType(getAddressType())
+      .ipAddress(getIpAddress())
+      .prefixLength(getPrefixLength())
+      .gateway(getGateway())
+      .routerHardwareAddress(getRouterHardwareAddress());
+    return builder;
+  }
+
 }
 

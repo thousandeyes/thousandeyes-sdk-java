@@ -229,5 +229,74 @@ public class BaseRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BaseRequest instance;
+
+    public ModelBuilder() {
+      this(new BaseRequest());
+    }
+
+    protected ModelBuilder(BaseRequest instance) {
+      this.instance = instance;
+    }
+
+    public BaseRequest.ModelBuilder labels(List<String> labels) {
+      this.instance.setLabels(labels);
+      return this;
+    }
+    public BaseRequest.ModelBuilder tags(List<String> tags) {
+      this.instance.setTags(tags);
+      return this;
+    }
+    public BaseRequest.ModelBuilder sharedWithAccounts(List<String> sharedWithAccounts) {
+      this.instance.setSharedWithAccounts(sharedWithAccounts);
+      return this;
+    }
+    public BaseRequest.ModelBuilder alertRules(List<String> alertRules) {
+      this.instance.setAlertRules(alertRules);
+      return this;
+    }
+
+    /**
+     * Returns a built BaseRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BaseRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BaseRequest.ModelBuilder builder() {
+    return new BaseRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BaseRequest.ModelBuilder toBuilder() {
+    BaseRequest.ModelBuilder builder = new BaseRequest.ModelBuilder()
+      .labels(getLabels())
+      .tags(getTags())
+      .sharedWithAccounts(getSharedWithAccounts())
+      .alertRules(getAlertRules());
+    return builder;
+  }
+
 }
 

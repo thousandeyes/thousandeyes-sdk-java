@@ -299,5 +299,89 @@ public class ApiTestTableData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTestTableData instance;
+
+    public ModelBuilder() {
+      this(new ApiTestTableData());
+    }
+
+    protected ModelBuilder(ApiTestTableData instance) {
+      this.instance = instance;
+    }
+
+    public ApiTestTableData.ModelBuilder testId(String testId) {
+      this.instance.setTestId(testId);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder testType(String testType) {
+      this.instance.setTestType(testType);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder alertCount(Long alertCount) {
+      this.instance.setAlertCount(alertCount);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder isShared(Boolean isShared) {
+      this.instance.setIsShared(isShared);
+      return this;
+    }
+    public ApiTestTableData.ModelBuilder graphlets(List<ApiTestTableGraphletsData> graphlets) {
+      this.instance.setGraphlets(graphlets);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTestTableData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTestTableData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTestTableData.ModelBuilder builder() {
+    return new ApiTestTableData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTestTableData.ModelBuilder toBuilder() {
+    ApiTestTableData.ModelBuilder builder = new ApiTestTableData.ModelBuilder()
+      .testId(getTestId())
+      .testName(getTestName())
+      .target(getTarget())
+      .testType(getTestType())
+      .alertCount(getAlertCount())
+      .isShared(getIsShared())
+      .graphlets(getGraphlets());
+    return builder;
+  }
+
 }
 

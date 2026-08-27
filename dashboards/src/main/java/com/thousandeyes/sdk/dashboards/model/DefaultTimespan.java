@@ -263,5 +263,84 @@ public class DefaultTimespan {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DefaultTimespan instance;
+
+    public ModelBuilder() {
+      this(new DefaultTimespan());
+    }
+
+    protected ModelBuilder(DefaultTimespan instance) {
+      this.instance = instance;
+    }
+
+    public DefaultTimespan.ModelBuilder timespanDuration(Long timespanDuration) {
+      this.instance.setTimespanDuration(timespanDuration);
+      return this;
+    }
+    public DefaultTimespan.ModelBuilder timespanStart(String timespanStart) {
+      this.instance.setTimespanStart(timespanStart);
+      return this;
+    }
+    public DefaultTimespan.ModelBuilder timespanEnd(String timespanEnd) {
+      this.instance.setTimespanEnd(timespanEnd);
+      return this;
+    }
+    public DefaultTimespan.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public DefaultTimespan.ModelBuilder start(OffsetDateTime start) {
+      this.instance.setStart(start);
+      return this;
+    }
+    public DefaultTimespan.ModelBuilder end(OffsetDateTime end) {
+      this.instance.setEnd(end);
+      return this;
+    }
+
+    /**
+     * Returns a built DefaultTimespan instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DefaultTimespan build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DefaultTimespan.ModelBuilder builder() {
+    return new DefaultTimespan.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DefaultTimespan.ModelBuilder toBuilder() {
+    DefaultTimespan.ModelBuilder builder = new DefaultTimespan.ModelBuilder()
+      .timespanDuration(getTimespanDuration())
+      .timespanStart(getTimespanStart())
+      .timespanEnd(getTimespanEnd())
+      .duration(getDuration())
+      .start(getStart())
+      .end(getEnd());
+    return builder;
+  }
+
 }
 

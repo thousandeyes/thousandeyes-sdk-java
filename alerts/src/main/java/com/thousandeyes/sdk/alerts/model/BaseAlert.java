@@ -45,15 +45,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BaseAlert {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
   private AlertType alertType;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_VIOLATION_COUNT = "violationCount";
@@ -72,18 +75,6 @@ public class BaseAlert {
   private AlertLinks links;
 
   public BaseAlert() { 
-  }
-
-  @JsonCreator
-  public BaseAlert(
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.id = id;
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
    /**
@@ -336,5 +327,99 @@ public class BaseAlert {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BaseAlert instance;
+
+    public ModelBuilder() {
+      this(new BaseAlert());
+    }
+
+    protected ModelBuilder(BaseAlert instance) {
+      this.instance = instance;
+    }
+
+    public BaseAlert.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public BaseAlert.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public BaseAlert.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public BaseAlert.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public BaseAlert.ModelBuilder violationCount(Integer violationCount) {
+      this.instance.setViolationCount(violationCount);
+      return this;
+    }
+    public BaseAlert.ModelBuilder duration(Long duration) {
+      this.instance.setDuration(duration);
+      return this;
+    }
+    public BaseAlert.ModelBuilder suppressed(Boolean suppressed) {
+      this.instance.setSuppressed(suppressed);
+      return this;
+    }
+    public BaseAlert.ModelBuilder meta(AlertMeta meta) {
+      this.instance.setMeta(meta);
+      return this;
+    }
+    public BaseAlert.ModelBuilder links(AlertLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built BaseAlert instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BaseAlert build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BaseAlert.ModelBuilder builder() {
+    return new BaseAlert.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BaseAlert.ModelBuilder toBuilder() {
+    BaseAlert.ModelBuilder builder = new BaseAlert.ModelBuilder()
+      .id(getId())
+      .alertType(getAlertType())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .violationCount(getViolationCount())
+      .duration(getDuration())
+      .suppressed(getSuppressed())
+      .meta(getMeta())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

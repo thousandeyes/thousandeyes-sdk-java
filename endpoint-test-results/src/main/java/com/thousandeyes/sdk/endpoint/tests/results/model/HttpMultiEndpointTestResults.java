@@ -48,25 +48,17 @@ public class HttpMultiEndpointTestResults {
   private Integer totalHits;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextAndSelfLink links;
 
   public HttpMultiEndpointTestResults() { 
-  }
-
-  @JsonCreator
-  public HttpMultiEndpointTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public HttpMultiEndpointTestResults results(List<HttpEndpointTestResult> results) {
@@ -229,5 +221,79 @@ public class HttpMultiEndpointTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private HttpMultiEndpointTestResults instance;
+
+    public ModelBuilder() {
+      this(new HttpMultiEndpointTestResults());
+    }
+
+    protected ModelBuilder(HttpMultiEndpointTestResults instance) {
+      this.instance = instance;
+    }
+
+    public HttpMultiEndpointTestResults.ModelBuilder results(List<HttpEndpointTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public HttpMultiEndpointTestResults.ModelBuilder totalHits(Integer totalHits) {
+      this.instance.setTotalHits(totalHits);
+      return this;
+    }
+    public HttpMultiEndpointTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public HttpMultiEndpointTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public HttpMultiEndpointTestResults.ModelBuilder links(PaginationNextAndSelfLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built HttpMultiEndpointTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public HttpMultiEndpointTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static HttpMultiEndpointTestResults.ModelBuilder builder() {
+    return new HttpMultiEndpointTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public HttpMultiEndpointTestResults.ModelBuilder toBuilder() {
+    HttpMultiEndpointTestResults.ModelBuilder builder = new HttpMultiEndpointTestResults.ModelBuilder()
+      .results(getResults())
+      .totalHits(getTotalHits())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

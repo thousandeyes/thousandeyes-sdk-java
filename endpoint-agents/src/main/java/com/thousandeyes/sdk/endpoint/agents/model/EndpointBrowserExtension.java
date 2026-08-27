@@ -257,5 +257,84 @@ public class EndpointBrowserExtension {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointBrowserExtension instance;
+
+    public ModelBuilder() {
+      this(new EndpointBrowserExtension());
+    }
+
+    protected ModelBuilder(EndpointBrowserExtension instance) {
+      this.instance = instance;
+    }
+
+    public EndpointBrowserExtension.ModelBuilder browser(BrowserType browser) {
+      this.instance.setBrowser(browser);
+      return this;
+    }
+    public EndpointBrowserExtension.ModelBuilder profile(String profile) {
+      this.instance.setProfile(profile);
+      return this;
+    }
+    public EndpointBrowserExtension.ModelBuilder version(String version) {
+      this.instance.setVersion(version);
+      return this;
+    }
+    public EndpointBrowserExtension.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public EndpointBrowserExtension.ModelBuilder active(Boolean active) {
+      this.instance.setActive(active);
+      return this;
+    }
+    public EndpointBrowserExtension.ModelBuilder error(String error) {
+      this.instance.setError(error);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointBrowserExtension instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointBrowserExtension build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointBrowserExtension.ModelBuilder builder() {
+    return new EndpointBrowserExtension.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointBrowserExtension.ModelBuilder toBuilder() {
+    EndpointBrowserExtension.ModelBuilder builder = new EndpointBrowserExtension.ModelBuilder()
+      .browser(getBrowser())
+      .profile(getProfile())
+      .version(getVersion())
+      .enabled(getEnabled())
+      .active(getActive())
+      .error(getError());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class PanoramaConnectors {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PanoramaConnectors instance;
+
+    public ModelBuilder() {
+      this(new PanoramaConnectors());
+    }
+
+    protected ModelBuilder(PanoramaConnectors instance) {
+      this.instance = instance;
+    }
+
+    public PanoramaConnectors.ModelBuilder items(List<PanoramaConnector> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public PanoramaConnectors.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PanoramaConnectors instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PanoramaConnectors build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PanoramaConnectors.ModelBuilder builder() {
+    return new PanoramaConnectors.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PanoramaConnectors.ModelBuilder toBuilder() {
+    PanoramaConnectors.ModelBuilder builder = new PanoramaConnectors.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

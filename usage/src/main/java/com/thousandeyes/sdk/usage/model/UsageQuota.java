@@ -319,5 +319,94 @@ public class UsageQuota {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UsageQuota instance;
+
+    public ModelBuilder() {
+      this(new UsageQuota());
+    }
+
+    protected ModelBuilder(UsageQuota instance) {
+      this.instance = instance;
+    }
+
+    public UsageQuota.ModelBuilder monthStart(OffsetDateTime monthStart) {
+      this.instance.setMonthStart(monthStart);
+      return this;
+    }
+    public UsageQuota.ModelBuilder monthEnd(OffsetDateTime monthEnd) {
+      this.instance.setMonthEnd(monthEnd);
+      return this;
+    }
+    public UsageQuota.ModelBuilder cloudUnitsIncluded(Long cloudUnitsIncluded) {
+      this.instance.setCloudUnitsIncluded(cloudUnitsIncluded);
+      return this;
+    }
+    public UsageQuota.ModelBuilder deviceAgentsIncluded(Long deviceAgentsIncluded) {
+      this.instance.setDeviceAgentsIncluded(deviceAgentsIncluded);
+      return this;
+    }
+    public UsageQuota.ModelBuilder endpointAgentsIncluded(Long endpointAgentsIncluded) {
+      this.instance.setEndpointAgentsIncluded(endpointAgentsIncluded);
+      return this;
+    }
+    public UsageQuota.ModelBuilder endpointAgentsEssentialsIncluded(Long endpointAgentsEssentialsIncluded) {
+      this.instance.setEndpointAgentsEssentialsIncluded(endpointAgentsEssentialsIncluded);
+      return this;
+    }
+    public UsageQuota.ModelBuilder endpointAgentsEmbeddedIncluded(Long endpointAgentsEmbeddedIncluded) {
+      this.instance.setEndpointAgentsEmbeddedIncluded(endpointAgentsEmbeddedIncluded);
+      return this;
+    }
+    public UsageQuota.ModelBuilder enterpriseAgentsIncluded(Long enterpriseAgentsIncluded) {
+      this.instance.setEnterpriseAgentsIncluded(enterpriseAgentsIncluded);
+      return this;
+    }
+
+    /**
+     * Returns a built UsageQuota instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UsageQuota build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UsageQuota.ModelBuilder builder() {
+    return new UsageQuota.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UsageQuota.ModelBuilder toBuilder() {
+    UsageQuota.ModelBuilder builder = new UsageQuota.ModelBuilder()
+      .monthStart(getMonthStart())
+      .monthEnd(getMonthEnd())
+      .cloudUnitsIncluded(getCloudUnitsIncluded())
+      .deviceAgentsIncluded(getDeviceAgentsIncluded())
+      .endpointAgentsIncluded(getEndpointAgentsIncluded())
+      .endpointAgentsEssentialsIncluded(getEndpointAgentsEssentialsIncluded())
+      .endpointAgentsEmbeddedIncluded(getEndpointAgentsEmbeddedIncluded())
+      .enterpriseAgentsIncluded(getEnterpriseAgentsIncluded());
+    return builder;
+  }
+
 }
 

@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class GatewayEventGrouping {
   public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
   private String ipAddress;
 
   public static final String JSON_PROPERTY_MAC_ADDRESS = "macAddress";
+  @JsonProperty(JSON_PROPERTY_MAC_ADDRESS)
   private String macAddress;
 
   public GatewayEventGrouping() { 
-  }
-
-  @JsonCreator
-  public GatewayEventGrouping(
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESS) String ipAddress, 
-    @JsonProperty(JSON_PROPERTY_MAC_ADDRESS) String macAddress
-  ) {
-  this();
-    this.ipAddress = ipAddress;
-    this.macAddress = macAddress;
   }
 
    /**
@@ -122,5 +114,64 @@ public class GatewayEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private GatewayEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new GatewayEventGrouping());
+    }
+
+    protected ModelBuilder(GatewayEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public GatewayEventGrouping.ModelBuilder ipAddress(String ipAddress) {
+      this.instance.ipAddress = ipAddress;
+      return this;
+    }
+    public GatewayEventGrouping.ModelBuilder macAddress(String macAddress) {
+      this.instance.macAddress = macAddress;
+      return this;
+    }
+
+    /**
+     * Returns a built GatewayEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public GatewayEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static GatewayEventGrouping.ModelBuilder builder() {
+    return new GatewayEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public GatewayEventGrouping.ModelBuilder toBuilder() {
+    GatewayEventGrouping.ModelBuilder builder = new GatewayEventGrouping.ModelBuilder()
+      .ipAddress(getIpAddress())
+      .macAddress(getMacAddress());
+    return builder;
+  }
+
 }
 

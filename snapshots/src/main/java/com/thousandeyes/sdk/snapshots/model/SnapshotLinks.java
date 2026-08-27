@@ -133,5 +133,64 @@ public class SnapshotLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private SnapshotLinks instance;
+
+    public ModelBuilder() {
+      this(new SnapshotLinks());
+    }
+
+    protected ModelBuilder(SnapshotLinks instance) {
+      this.instance = instance;
+    }
+
+    public SnapshotLinks.ModelBuilder appLink(Link appLink) {
+      this.instance.setAppLink(appLink);
+      return this;
+    }
+    public SnapshotLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built SnapshotLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public SnapshotLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static SnapshotLinks.ModelBuilder builder() {
+    return new SnapshotLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public SnapshotLinks.ModelBuilder toBuilder() {
+    SnapshotLinks.ModelBuilder builder = new SnapshotLinks.ModelBuilder()
+      .appLink(getAppLink())
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

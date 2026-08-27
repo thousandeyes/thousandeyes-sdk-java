@@ -227,5 +227,79 @@ public class User {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private User instance;
+
+    public ModelBuilder() {
+      this(new User());
+    }
+
+    protected ModelBuilder(User instance) {
+      this.instance = instance;
+    }
+
+    public User.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public User.ModelBuilder email(String email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public User.ModelBuilder uid(String uid) {
+      this.instance.setUid(uid);
+      return this;
+    }
+    public User.ModelBuilder dateRegistered(OffsetDateTime dateRegistered) {
+      this.instance.setDateRegistered(dateRegistered);
+      return this;
+    }
+    public User.ModelBuilder loginAccountGroup(AccountGroup loginAccountGroup) {
+      this.instance.setLoginAccountGroup(loginAccountGroup);
+      return this;
+    }
+
+    /**
+     * Returns a built User instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public User build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static User.ModelBuilder builder() {
+    return new User.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public User.ModelBuilder toBuilder() {
+    User.ModelBuilder builder = new User.ModelBuilder()
+      .name(getName())
+      .email(getEmail())
+      .uid(getUid())
+      .dateRegistered(getDateRegistered())
+      .loginAccountGroup(getLoginAccountGroup());
+    return builder;
+  }
+
 }
 

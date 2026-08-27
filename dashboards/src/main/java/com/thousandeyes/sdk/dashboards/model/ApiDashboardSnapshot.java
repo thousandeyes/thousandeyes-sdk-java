@@ -602,5 +602,134 @@ public class ApiDashboardSnapshot {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiDashboardSnapshot instance;
+
+    public ModelBuilder() {
+      this(new ApiDashboardSnapshot());
+    }
+
+    protected ModelBuilder(ApiDashboardSnapshot instance) {
+      this.instance = instance;
+    }
+
+    public ApiDashboardSnapshot.ModelBuilder accountId(Long accountId) {
+      this.instance.setAccountId(accountId);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder createdDate(String createdDate) {
+      this.instance.setCreatedDate(createdDate);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder expirationDate(String expirationDate) {
+      this.instance.setExpirationDate(expirationDate);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder permalink(String permalink) {
+      this.instance.setPermalink(permalink);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder apiLinks(List<Map<String, Object>> apiLinks) {
+      this.instance.setApiLinks(apiLinks);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder snapshotId(UUID snapshotId) {
+      this.instance.setSnapshotId(snapshotId);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder snapshotName(String snapshotName) {
+      this.instance.setSnapshotName(snapshotName);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder isShared(Boolean isShared) {
+      this.instance.setIsShared(isShared);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder snapshotCreatedDate(OffsetDateTime snapshotCreatedDate) {
+      this.instance.setSnapshotCreatedDate(snapshotCreatedDate);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder dashboard(ApiDashboard dashboard) {
+      this.instance.setDashboard(dashboard);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder widgets(List<ApiWidget> widgets) {
+      this.instance.setWidgets(widgets);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder isScheduled(Boolean isScheduled) {
+      this.instance.setIsScheduled(isScheduled);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder timeSpan(ApiReportSnapshotTimeSpan timeSpan) {
+      this.instance.setTimeSpan(timeSpan);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder snapshotExpirationDate(OffsetDateTime snapshotExpirationDate) {
+      this.instance.setSnapshotExpirationDate(snapshotExpirationDate);
+      return this;
+    }
+    public ApiDashboardSnapshot.ModelBuilder links(AppAndSelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiDashboardSnapshot instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiDashboardSnapshot build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiDashboardSnapshot.ModelBuilder builder() {
+    return new ApiDashboardSnapshot.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiDashboardSnapshot.ModelBuilder toBuilder() {
+    ApiDashboardSnapshot.ModelBuilder builder = new ApiDashboardSnapshot.ModelBuilder()
+      .accountId(getAccountId())
+      .createdDate(getCreatedDate())
+      .expirationDate(getExpirationDate())
+      .permalink(getPermalink())
+      .apiLinks(getApiLinks())
+      .snapshotId(getSnapshotId())
+      .snapshotName(getSnapshotName())
+      .aid(getAid())
+      .isShared(getIsShared())
+      .snapshotCreatedDate(getSnapshotCreatedDate())
+      .dashboard(getDashboard())
+      .widgets(getWidgets())
+      .isScheduled(getIsScheduled())
+      .timeSpan(getTimeSpan())
+      .snapshotExpirationDate(getSnapshotExpirationDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

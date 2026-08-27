@@ -163,5 +163,69 @@ public class BaseRole {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BaseRole instance;
+
+    public ModelBuilder() {
+      this(new BaseRole());
+    }
+
+    protected ModelBuilder(BaseRole instance) {
+      this.instance = instance;
+    }
+
+    public BaseRole.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public BaseRole.ModelBuilder roleId(String roleId) {
+      this.instance.setRoleId(roleId);
+      return this;
+    }
+    public BaseRole.ModelBuilder isBuiltin(Boolean isBuiltin) {
+      this.instance.setIsBuiltin(isBuiltin);
+      return this;
+    }
+
+    /**
+     * Returns a built BaseRole instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BaseRole build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BaseRole.ModelBuilder builder() {
+    return new BaseRole.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BaseRole.ModelBuilder toBuilder() {
+    BaseRole.ModelBuilder builder = new BaseRole.ModelBuilder()
+      .name(getName())
+      .roleId(getRoleId())
+      .isBuiltin(getIsBuiltin());
+    return builder;
+  }
+
 }
 

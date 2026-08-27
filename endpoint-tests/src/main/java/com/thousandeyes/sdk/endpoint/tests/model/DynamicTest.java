@@ -72,6 +72,7 @@ public class DynamicTest {
   private String application;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
@@ -93,6 +94,7 @@ public class DynamicTest {
   private Boolean hasTraceroute = true;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
@@ -108,29 +110,17 @@ public class DynamicTest {
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public DynamicTest() { 
-  }
-
-  @JsonCreator
-  public DynamicTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels
-  ) {
-  this();
-    this.createdDate = createdDate;
-    this.modifiedDate = modifiedDate;
-    this.testId = testId;
-    this.labels = labels;
   }
 
   public DynamicTest aid(String aid) {
@@ -643,5 +633,149 @@ public class DynamicTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicTest instance;
+
+    public ModelBuilder() {
+      this(new DynamicTest());
+    }
+
+    protected ModelBuilder(DynamicTest instance) {
+      this.instance = instance;
+    }
+
+    public DynamicTest.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public DynamicTest.ModelBuilder links(DynamicTestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public DynamicTest.ModelBuilder agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
+      this.instance.setAgentSelectorConfig(agentSelectorConfig);
+      return this;
+    }
+    public DynamicTest.ModelBuilder application(String application) {
+      this.instance.setApplication(application);
+      return this;
+    }
+    public DynamicTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public DynamicTest.ModelBuilder isPrioritized(Boolean isPrioritized) {
+      this.instance.setIsPrioritized(isPrioritized);
+      return this;
+    }
+    public DynamicTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public DynamicTest.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public DynamicTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public DynamicTest.ModelBuilder hasPing(Boolean hasPing) {
+      this.instance.setHasPing(hasPing);
+      return this;
+    }
+    public DynamicTest.ModelBuilder hasTraceroute(Boolean hasTraceroute) {
+      this.instance.setHasTraceroute(hasTraceroute);
+      return this;
+    }
+    public DynamicTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public DynamicTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public DynamicTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public DynamicTest.ModelBuilder ipVersion(String ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+    public DynamicTest.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public DynamicTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public DynamicTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public DynamicTest.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicTest.ModelBuilder builder() {
+    return new DynamicTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicTest.ModelBuilder toBuilder() {
+    DynamicTest.ModelBuilder builder = new DynamicTest.ModelBuilder()
+      .aid(getAid())
+      .links(getLinks())
+      .agentSelectorConfig(getAgentSelectorConfig())
+      .application(getApplication())
+      .createdDate(getCreatedDate())
+      .isPrioritized(getIsPrioritized())
+      .interval(getInterval())
+      .isEnabled(getIsEnabled())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .hasPing(getHasPing())
+      .hasTraceroute(getHasTraceroute())
+      .modifiedDate(getModifiedDate())
+      .networkMeasurements(getNetworkMeasurements())
+      .protocol(getProtocol())
+      .ipVersion(getIpVersion())
+      .tcpProbeMode(getTcpProbeMode())
+      .testId(getTestId())
+      .testName(getTestName())
+      .labels(getLabels());
+    return builder;
+  }
+
 }
 

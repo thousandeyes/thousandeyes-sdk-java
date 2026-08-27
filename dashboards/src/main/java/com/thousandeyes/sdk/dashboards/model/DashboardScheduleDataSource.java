@@ -101,5 +101,59 @@ public class DashboardScheduleDataSource {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleDataSource instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleDataSource());
+    }
+
+    protected ModelBuilder(DashboardScheduleDataSource instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleDataSource.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleDataSource instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleDataSource build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleDataSource.ModelBuilder builder() {
+    return new DashboardScheduleDataSource.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleDataSource.ModelBuilder toBuilder() {
+    DashboardScheduleDataSource.ModelBuilder builder = new DashboardScheduleDataSource.ModelBuilder()
+      .name(getName());
+    return builder;
+  }
+
 }
 

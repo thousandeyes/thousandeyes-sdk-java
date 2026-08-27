@@ -133,5 +133,64 @@ public class EndpointProbeVpnScore {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointProbeVpnScore instance;
+
+    public ModelBuilder() {
+      this(new EndpointProbeVpnScore());
+    }
+
+    protected ModelBuilder(EndpointProbeVpnScore instance) {
+      this.instance = instance;
+    }
+
+    public EndpointProbeVpnScore.ModelBuilder score(Double score) {
+      this.instance.setScore(score);
+      return this;
+    }
+    public EndpointProbeVpnScore.ModelBuilder quality(ApplicationScoreQuality quality) {
+      this.instance.setQuality(quality);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointProbeVpnScore instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointProbeVpnScore build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointProbeVpnScore.ModelBuilder builder() {
+    return new EndpointProbeVpnScore.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointProbeVpnScore.ModelBuilder toBuilder() {
+    EndpointProbeVpnScore.ModelBuilder builder = new EndpointProbeVpnScore.ModelBuilder()
+      .score(getScore())
+      .quality(getQuality());
+    return builder;
+  }
+
 }
 

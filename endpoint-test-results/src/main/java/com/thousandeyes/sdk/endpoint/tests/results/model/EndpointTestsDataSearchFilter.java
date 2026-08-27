@@ -230,5 +230,74 @@ public class EndpointTestsDataSearchFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointTestsDataSearchFilter instance;
+
+    public ModelBuilder() {
+      this(new EndpointTestsDataSearchFilter());
+    }
+
+    protected ModelBuilder(EndpointTestsDataSearchFilter instance) {
+      this.instance = instance;
+    }
+
+    public EndpointTestsDataSearchFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public EndpointTestsDataSearchFilter.ModelBuilder userPrincipalName(List<String> userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+    public EndpointTestsDataSearchFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public EndpointTestsDataSearchFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointTestsDataSearchFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointTestsDataSearchFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointTestsDataSearchFilter.ModelBuilder builder() {
+    return new EndpointTestsDataSearchFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointTestsDataSearchFilter.ModelBuilder toBuilder() {
+    EndpointTestsDataSearchFilter.ModelBuilder builder = new EndpointTestsDataSearchFilter.ModelBuilder()
+      .agentId(getAgentId())
+      .userPrincipalName(getUserPrincipalName())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion());
+    return builder;
+  }
+
 }
 

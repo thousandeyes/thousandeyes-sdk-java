@@ -35,32 +35,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkMetrics {
   public static final String JSON_PROPERTY_JITTER = "jitter";
+  @JsonProperty(JSON_PROPERTY_JITTER)
   private Integer jitter;
 
   public static final String JSON_PROPERTY_LATENCY = "latency";
+  @JsonProperty(JSON_PROPERTY_LATENCY)
   private Integer latency;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Double loss;
 
   public static final String JSON_PROPERTY_TARGET = "target";
+  @JsonProperty(JSON_PROPERTY_TARGET)
   private String target;
 
   public NetworkMetrics() { 
-  }
-
-  @JsonCreator
-  public NetworkMetrics(
-    @JsonProperty(JSON_PROPERTY_JITTER) Integer jitter, 
-    @JsonProperty(JSON_PROPERTY_LATENCY) Integer latency, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
-    @JsonProperty(JSON_PROPERTY_TARGET) String target
-  ) {
-  this();
-    this.jitter = jitter;
-    this.latency = latency;
-    this.loss = loss;
-    this.target = target;
   }
 
    /**
@@ -168,5 +158,74 @@ public class NetworkMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkMetrics instance;
+
+    public ModelBuilder() {
+      this(new NetworkMetrics());
+    }
+
+    protected ModelBuilder(NetworkMetrics instance) {
+      this.instance = instance;
+    }
+
+    public NetworkMetrics.ModelBuilder jitter(Integer jitter) {
+      this.instance.jitter = jitter;
+      return this;
+    }
+    public NetworkMetrics.ModelBuilder latency(Integer latency) {
+      this.instance.latency = latency;
+      return this;
+    }
+    public NetworkMetrics.ModelBuilder loss(Double loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public NetworkMetrics.ModelBuilder target(String target) {
+      this.instance.target = target;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkMetrics.ModelBuilder builder() {
+    return new NetworkMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkMetrics.ModelBuilder toBuilder() {
+    NetworkMetrics.ModelBuilder builder = new NetworkMetrics.ModelBuilder()
+      .jitter(getJitter())
+      .latency(getLatency())
+      .loss(getLoss())
+      .target(getTarget());
+    return builder;
+  }
+
 }
 

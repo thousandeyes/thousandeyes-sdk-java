@@ -45,9 +45,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class BgpTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
@@ -63,9 +65,11 @@ public class BgpTestResult {
   private String prefix;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_UPDATES = "updates";
@@ -78,20 +82,6 @@ public class BgpTestResult {
   private Double reachability;
 
   public BgpTestResult() { 
-  }
-
-  @JsonCreator
-  public BgpTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
   }
 
    /**
@@ -388,5 +378,109 @@ public class BgpTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BgpTestResult instance;
+
+    public ModelBuilder() {
+      this(new BgpTestResult());
+    }
+
+    protected ModelBuilder(BgpTestResult instance) {
+      this.instance = instance;
+    }
+
+    public BgpTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public BgpTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public BgpTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder monitor(TestResultMonitor monitor) {
+      this.instance.setMonitor(monitor);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder prefixId(String prefixId) {
+      this.instance.setPrefixId(prefixId);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder prefix(String prefix) {
+      this.instance.setPrefix(prefix);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public BgpTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public BgpTestResult.ModelBuilder updates(Double updates) {
+      this.instance.setUpdates(updates);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder pathChanges(Double pathChanges) {
+      this.instance.setPathChanges(pathChanges);
+      return this;
+    }
+    public BgpTestResult.ModelBuilder reachability(Double reachability) {
+      this.instance.setReachability(reachability);
+      return this;
+    }
+
+    /**
+     * Returns a built BgpTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BgpTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BgpTestResult.ModelBuilder builder() {
+    return new BgpTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BgpTestResult.ModelBuilder toBuilder() {
+    BgpTestResult.ModelBuilder builder = new BgpTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .monitor(getMonitor())
+      .prefixId(getPrefixId())
+      .prefix(getPrefix())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .updates(getUpdates())
+      .pathChanges(getPathChanges())
+      .reachability(getReachability());
+    return builder;
+  }
+
 }
 

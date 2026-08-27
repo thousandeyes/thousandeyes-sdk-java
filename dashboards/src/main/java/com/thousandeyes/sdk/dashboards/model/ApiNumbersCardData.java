@@ -456,5 +456,114 @@ public class ApiNumbersCardData {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiNumbersCardData instance;
+
+    public ModelBuilder() {
+      this(new ApiNumbersCardData());
+    }
+
+    protected ModelBuilder(ApiNumbersCardData instance) {
+      this.instance = instance;
+    }
+
+    public ApiNumbersCardData.ModelBuilder cardId(String cardId) {
+      this.instance.setCardId(cardId);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder cardName(String cardName) {
+      this.instance.setCardName(cardName);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder previousValue(Double previousValue) {
+      this.instance.setPreviousValue(previousValue);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder binSize(Long binSize) {
+      this.instance.setBinSize(binSize);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder timestamp(Long timestamp) {
+      this.instance.setTimestamp(timestamp);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder numberOfDataPoints(Long numberOfDataPoints) {
+      this.instance.setNumberOfDataPoints(numberOfDataPoints);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder value(Double value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder status(String status) {
+      this.instance.setStatus(status);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder alertSuppressionWindows(List<ApiDashboardAsw> alertSuppressionWindows) {
+      this.instance.setAlertSuppressionWindows(alertSuppressionWindows);
+      return this;
+    }
+    public ApiNumbersCardData.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiNumbersCardData instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiNumbersCardData build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiNumbersCardData.ModelBuilder builder() {
+    return new ApiNumbersCardData.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiNumbersCardData.ModelBuilder toBuilder() {
+    ApiNumbersCardData.ModelBuilder builder = new ApiNumbersCardData.ModelBuilder()
+      .cardId(getCardId())
+      .cardName(getCardName())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .previousValue(getPreviousValue())
+      .binSize(getBinSize())
+      .timestamp(getTimestamp())
+      .numberOfDataPoints(getNumberOfDataPoints())
+      .value(getValue())
+      .status(getStatus())
+      .alertSuppressionWindows(getAlertSuppressionWindows())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

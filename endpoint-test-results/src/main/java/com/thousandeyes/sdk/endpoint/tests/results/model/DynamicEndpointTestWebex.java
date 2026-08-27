@@ -37,37 +37,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DynamicEndpointTestWebex {
   public static final String JSON_PROPERTY_CONFERENCE_ID = "conferenceId";
+  @JsonProperty(JSON_PROPERTY_CONFERENCE_ID)
   private String conferenceId;
 
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   private UUID correlationId;
 
   public static final String JSON_PROPERTY_LOCAL_SIP_SESSION_ID = "localSipSessionId";
+  @JsonProperty(JSON_PROPERTY_LOCAL_SIP_SESSION_ID)
   private String localSipSessionId;
 
   public static final String JSON_PROPERTY_MEETING_APP = "meetingApp";
+  @JsonProperty(JSON_PROPERTY_MEETING_APP)
   private String meetingApp;
 
   public static final String JSON_PROPERTY_REMOTE_SIP_SESSION_ID = "remoteSipSessionId";
+  @JsonProperty(JSON_PROPERTY_REMOTE_SIP_SESSION_ID)
   private String remoteSipSessionId;
 
   public DynamicEndpointTestWebex() { 
-  }
-
-  @JsonCreator
-  public DynamicEndpointTestWebex(
-    @JsonProperty(JSON_PROPERTY_CONFERENCE_ID) String conferenceId, 
-    @JsonProperty(JSON_PROPERTY_CORRELATION_ID) UUID correlationId, 
-    @JsonProperty(JSON_PROPERTY_LOCAL_SIP_SESSION_ID) String localSipSessionId, 
-    @JsonProperty(JSON_PROPERTY_MEETING_APP) String meetingApp, 
-    @JsonProperty(JSON_PROPERTY_REMOTE_SIP_SESSION_ID) String remoteSipSessionId
-  ) {
-  this();
-    this.conferenceId = conferenceId;
-    this.correlationId = correlationId;
-    this.localSipSessionId = localSipSessionId;
-    this.meetingApp = meetingApp;
-    this.remoteSipSessionId = remoteSipSessionId;
   }
 
    /**
@@ -192,5 +181,79 @@ public class DynamicEndpointTestWebex {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DynamicEndpointTestWebex instance;
+
+    public ModelBuilder() {
+      this(new DynamicEndpointTestWebex());
+    }
+
+    protected ModelBuilder(DynamicEndpointTestWebex instance) {
+      this.instance = instance;
+    }
+
+    public DynamicEndpointTestWebex.ModelBuilder conferenceId(String conferenceId) {
+      this.instance.conferenceId = conferenceId;
+      return this;
+    }
+    public DynamicEndpointTestWebex.ModelBuilder correlationId(UUID correlationId) {
+      this.instance.correlationId = correlationId;
+      return this;
+    }
+    public DynamicEndpointTestWebex.ModelBuilder localSipSessionId(String localSipSessionId) {
+      this.instance.localSipSessionId = localSipSessionId;
+      return this;
+    }
+    public DynamicEndpointTestWebex.ModelBuilder meetingApp(String meetingApp) {
+      this.instance.meetingApp = meetingApp;
+      return this;
+    }
+    public DynamicEndpointTestWebex.ModelBuilder remoteSipSessionId(String remoteSipSessionId) {
+      this.instance.remoteSipSessionId = remoteSipSessionId;
+      return this;
+    }
+
+    /**
+     * Returns a built DynamicEndpointTestWebex instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DynamicEndpointTestWebex build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DynamicEndpointTestWebex.ModelBuilder builder() {
+    return new DynamicEndpointTestWebex.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DynamicEndpointTestWebex.ModelBuilder toBuilder() {
+    DynamicEndpointTestWebex.ModelBuilder builder = new DynamicEndpointTestWebex.ModelBuilder()
+      .conferenceId(getConferenceId())
+      .correlationId(getCorrelationId())
+      .localSipSessionId(getLocalSipSessionId())
+      .meetingApp(getMeetingApp())
+      .remoteSipSessionId(getRemoteSipSessionId());
+    return builder;
+  }
+
 }
 

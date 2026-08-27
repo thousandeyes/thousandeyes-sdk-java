@@ -145,5 +145,64 @@ public class CredentialVaultOperations {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private CredentialVaultOperations instance;
+
+    public ModelBuilder() {
+      this(new CredentialVaultOperations());
+    }
+
+    protected ModelBuilder(CredentialVaultOperations instance) {
+      this.instance = instance;
+    }
+
+    public CredentialVaultOperations.ModelBuilder items(List<CredentialVaultOperation> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public CredentialVaultOperations.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built CredentialVaultOperations instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public CredentialVaultOperations build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static CredentialVaultOperations.ModelBuilder builder() {
+    return new CredentialVaultOperations.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public CredentialVaultOperations.ModelBuilder toBuilder() {
+    CredentialVaultOperations.ModelBuilder builder = new CredentialVaultOperations.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

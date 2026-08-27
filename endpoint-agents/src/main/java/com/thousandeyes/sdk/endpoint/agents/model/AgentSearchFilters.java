@@ -661,5 +661,129 @@ public class AgentSearchFilters {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentSearchFilters instance;
+
+    public ModelBuilder() {
+      this(new AgentSearchFilters());
+    }
+
+    protected ModelBuilder(AgentSearchFilters instance) {
+      this.instance = instance;
+    }
+
+    public AgentSearchFilters.ModelBuilder id(List<UUID> id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder agentName(List<String> agentName) {
+      this.instance.setAgentName(agentName);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder computerName(List<String> computerName) {
+      this.instance.setComputerName(computerName);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder username(List<String> username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder userPrincipalName(List<String> userPrincipalName) {
+      this.instance.setUserPrincipalName(userPrincipalName);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder platform(List<Platform> platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder osVersion(List<String> osVersion) {
+      this.instance.setOsVersion(osVersion);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder serialNumber(List<String> serialNumber) {
+      this.instance.setSerialNumber(serialNumber);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder locationCountryISO(List<String> locationCountryISO) {
+      this.instance.setLocationCountryISO(locationCountryISO);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder locationSubdivision1Code(List<String> locationSubdivision1Code) {
+      this.instance.setLocationSubdivision1Code(locationSubdivision1Code);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder locationCity(List<String> locationCity) {
+      this.instance.setLocationCity(locationCity);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder licenseType(List<AgentLicenseType> licenseType) {
+      this.instance.setLicenseType(licenseType);
+      return this;
+    }
+    public AgentSearchFilters.ModelBuilder anyConnectDeviceId(List<String> anyConnectDeviceId) {
+      this.instance.setAnyConnectDeviceId(anyConnectDeviceId);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentSearchFilters instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentSearchFilters build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentSearchFilters.ModelBuilder builder() {
+    return new AgentSearchFilters.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentSearchFilters.ModelBuilder toBuilder() {
+    AgentSearchFilters.ModelBuilder builder = new AgentSearchFilters.ModelBuilder()
+      .id(getId())
+      .agentName(getAgentName())
+      .computerName(getComputerName())
+      .username(getUsername())
+      .userPrincipalName(getUserPrincipalName())
+      .platform(getPlatform())
+      .osVersion(getOsVersion())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion())
+      .serialNumber(getSerialNumber())
+      .locationCountryISO(getLocationCountryISO())
+      .locationSubdivision1Code(getLocationSubdivision1Code())
+      .locationCity(getLocationCity())
+      .licenseType(getLicenseType())
+      .anyConnectDeviceId(getAnyConnectDeviceId());
+    return builder;
+  }
+
 }
 

@@ -228,5 +228,79 @@ public class TestUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestUpdate instance;
+
+    public ModelBuilder() {
+      this(new TestUpdate());
+    }
+
+    protected ModelBuilder(TestUpdate instance) {
+      this.instance = instance;
+    }
+
+    public TestUpdate.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public TestUpdate.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public TestUpdate.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public TestUpdate.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public TestUpdate.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+
+    /**
+     * Returns a built TestUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestUpdate.ModelBuilder builder() {
+    return new TestUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestUpdate.ModelBuilder toBuilder() {
+    TestUpdate.ModelBuilder builder = new TestUpdate.ModelBuilder()
+      .interval(getInterval())
+      .testName(getTestName())
+      .protocol(getProtocol())
+      .isEnabled(getIsEnabled())
+      .tcpProbeMode(getTcpProbeMode());
+    return builder;
+  }
+
 }
 

@@ -113,5 +113,59 @@ public class EndpointRealUserTestsResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointRealUserTestsResponse instance;
+
+    public ModelBuilder() {
+      this(new EndpointRealUserTestsResponse());
+    }
+
+    protected ModelBuilder(EndpointRealUserTestsResponse instance) {
+      this.instance = instance;
+    }
+
+    public EndpointRealUserTestsResponse.ModelBuilder realUserTests(List<EndpointRealUserTest> realUserTests) {
+      this.instance.setRealUserTests(realUserTests);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointRealUserTestsResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointRealUserTestsResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointRealUserTestsResponse.ModelBuilder builder() {
+    return new EndpointRealUserTestsResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointRealUserTestsResponse.ModelBuilder toBuilder() {
+    EndpointRealUserTestsResponse.ModelBuilder builder = new EndpointRealUserTestsResponse.ModelBuilder()
+      .realUserTests(getRealUserTests());
+    return builder;
+  }
+
 }
 

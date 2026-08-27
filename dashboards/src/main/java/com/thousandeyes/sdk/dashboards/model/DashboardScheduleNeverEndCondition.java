@@ -101,5 +101,59 @@ public class DashboardScheduleNeverEndCondition {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleNeverEndCondition instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleNeverEndCondition());
+    }
+
+    protected ModelBuilder(DashboardScheduleNeverEndCondition instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleNeverEndCondition.ModelBuilder endConditionType(String endConditionType) {
+      this.instance.setEndConditionType(endConditionType);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleNeverEndCondition instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleNeverEndCondition build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleNeverEndCondition.ModelBuilder builder() {
+    return new DashboardScheduleNeverEndCondition.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleNeverEndCondition.ModelBuilder toBuilder() {
+    DashboardScheduleNeverEndCondition.ModelBuilder builder = new DashboardScheduleNeverEndCondition.ModelBuilder()
+      .endConditionType(getEndConditionType());
+    return builder;
+  }
+
 }
 

@@ -56,6 +56,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsServerResponse {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private Integer id;
 
   public static final String JSON_PROPERTY_QR = "qr";
@@ -65,24 +66,31 @@ public class DnsServerResponse {
   private DnsOpcode opcode;
 
   public static final String JSON_PROPERTY_AUTHORITATIVE_ANSWER = "authoritativeAnswer";
+  @JsonProperty(JSON_PROPERTY_AUTHORITATIVE_ANSWER)
   private Boolean authoritativeAnswer;
 
   public static final String JSON_PROPERTY_TRUNCATION = "truncation";
+  @JsonProperty(JSON_PROPERTY_TRUNCATION)
   private Boolean truncation;
 
   public static final String JSON_PROPERTY_RECURSION_DESIRED = "recursionDesired";
+  @JsonProperty(JSON_PROPERTY_RECURSION_DESIRED)
   private Boolean recursionDesired;
 
   public static final String JSON_PROPERTY_RECURSION_AVAILABLE = "recursionAvailable";
+  @JsonProperty(JSON_PROPERTY_RECURSION_AVAILABLE)
   private Boolean recursionAvailable;
 
   public static final String JSON_PROPERTY_ZERO = "zero";
+  @JsonProperty(JSON_PROPERTY_ZERO)
   private Boolean zero;
 
   public static final String JSON_PROPERTY_AUTHENTIC_DATA = "authenticData";
+  @JsonProperty(JSON_PROPERTY_AUTHENTIC_DATA)
   private Boolean authenticData;
 
   public static final String JSON_PROPERTY_CHECKING_DISABLED = "checkingDisabled";
+  @JsonProperty(JSON_PROPERTY_CHECKING_DISABLED)
   private Boolean checkingDisabled;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
@@ -95,6 +103,7 @@ public class DnsServerResponse {
   private List<DnsResourceRecord> answer = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DNS_RESOLVER = "dnsResolver";
+  @JsonProperty(JSON_PROPERTY_DNS_RESOLVER)
   private String dnsResolver;
 
   public static final String JSON_PROPERTY_TIMING = "timing";
@@ -104,30 +113,6 @@ public class DnsServerResponse {
   private DnsMeasurementProtocol protocol;
 
   public DnsServerResponse() { 
-  }
-
-  @JsonCreator
-  public DnsServerResponse(
-    @JsonProperty(JSON_PROPERTY_ID) Integer id, 
-    @JsonProperty(JSON_PROPERTY_AUTHORITATIVE_ANSWER) Boolean authoritativeAnswer, 
-    @JsonProperty(JSON_PROPERTY_TRUNCATION) Boolean truncation, 
-    @JsonProperty(JSON_PROPERTY_RECURSION_DESIRED) Boolean recursionDesired, 
-    @JsonProperty(JSON_PROPERTY_RECURSION_AVAILABLE) Boolean recursionAvailable, 
-    @JsonProperty(JSON_PROPERTY_ZERO) Boolean zero, 
-    @JsonProperty(JSON_PROPERTY_AUTHENTIC_DATA) Boolean authenticData, 
-    @JsonProperty(JSON_PROPERTY_CHECKING_DISABLED) Boolean checkingDisabled, 
-    @JsonProperty(JSON_PROPERTY_DNS_RESOLVER) String dnsResolver
-  ) {
-  this();
-    this.id = id;
-    this.authoritativeAnswer = authoritativeAnswer;
-    this.truncation = truncation;
-    this.recursionDesired = recursionDesired;
-    this.recursionAvailable = recursionAvailable;
-    this.zero = zero;
-    this.authenticData = authenticData;
-    this.checkingDisabled = checkingDisabled;
-    this.dnsResolver = dnsResolver;
   }
 
    /**
@@ -525,5 +510,134 @@ public class DnsServerResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsServerResponse instance;
+
+    public ModelBuilder() {
+      this(new DnsServerResponse());
+    }
+
+    protected ModelBuilder(DnsServerResponse instance) {
+      this.instance = instance;
+    }
+
+    public DnsServerResponse.ModelBuilder id(Integer id) {
+      this.instance.id = id;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder qr(DnsQr qr) {
+      this.instance.setQr(qr);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder opcode(DnsOpcode opcode) {
+      this.instance.setOpcode(opcode);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder authoritativeAnswer(Boolean authoritativeAnswer) {
+      this.instance.authoritativeAnswer = authoritativeAnswer;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder truncation(Boolean truncation) {
+      this.instance.truncation = truncation;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder recursionDesired(Boolean recursionDesired) {
+      this.instance.recursionDesired = recursionDesired;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder recursionAvailable(Boolean recursionAvailable) {
+      this.instance.recursionAvailable = recursionAvailable;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder zero(Boolean zero) {
+      this.instance.zero = zero;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder authenticData(Boolean authenticData) {
+      this.instance.authenticData = authenticData;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder checkingDisabled(Boolean checkingDisabled) {
+      this.instance.checkingDisabled = checkingDisabled;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder responseCode(DnsResponseCode responseCode) {
+      this.instance.setResponseCode(responseCode);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder question(List<DnsResourceRecord> question) {
+      this.instance.setQuestion(question);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder answer(List<DnsResourceRecord> answer) {
+      this.instance.setAnswer(answer);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder dnsResolver(String dnsResolver) {
+      this.instance.dnsResolver = dnsResolver;
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder timing(DnsTiming timing) {
+      this.instance.setTiming(timing);
+      return this;
+    }
+    public DnsServerResponse.ModelBuilder protocol(DnsMeasurementProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsServerResponse instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsServerResponse build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsServerResponse.ModelBuilder builder() {
+    return new DnsServerResponse.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsServerResponse.ModelBuilder toBuilder() {
+    DnsServerResponse.ModelBuilder builder = new DnsServerResponse.ModelBuilder()
+      .id(getId())
+      .qr(getQr())
+      .opcode(getOpcode())
+      .authoritativeAnswer(getAuthoritativeAnswer())
+      .truncation(getTruncation())
+      .recursionDesired(getRecursionDesired())
+      .recursionAvailable(getRecursionAvailable())
+      .zero(getZero())
+      .authenticData(getAuthenticData())
+      .checkingDisabled(getCheckingDisabled())
+      .responseCode(getResponseCode())
+      .question(getQuestion())
+      .answer(getAnswer())
+      .dnsResolver(getDnsResolver())
+      .timing(getTiming())
+      .protocol(getProtocol());
+    return builder;
+  }
+
 }
 

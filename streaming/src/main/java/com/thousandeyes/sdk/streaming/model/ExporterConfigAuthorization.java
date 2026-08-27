@@ -102,5 +102,59 @@ public class ExporterConfigAuthorization {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ExporterConfigAuthorization instance;
+
+    public ModelBuilder() {
+      this(new ExporterConfigAuthorization());
+    }
+
+    protected ModelBuilder(ExporterConfigAuthorization instance) {
+      this.instance = instance;
+    }
+
+    public ExporterConfigAuthorization.ModelBuilder oAuth2(ExporterConfigOAuth2 oAuth2) {
+      this.instance.setoAuth2(oAuth2);
+      return this;
+    }
+
+    /**
+     * Returns a built ExporterConfigAuthorization instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ExporterConfigAuthorization build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ExporterConfigAuthorization.ModelBuilder builder() {
+    return new ExporterConfigAuthorization.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ExporterConfigAuthorization.ModelBuilder toBuilder() {
+    ExporterConfigAuthorization.ModelBuilder builder = new ExporterConfigAuthorization.ModelBuilder()
+      .oAuth2(getoAuth2());
+    return builder;
+  }
+
 }
 

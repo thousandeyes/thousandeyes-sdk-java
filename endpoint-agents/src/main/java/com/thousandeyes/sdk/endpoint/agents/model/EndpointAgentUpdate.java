@@ -133,5 +133,64 @@ public class EndpointAgentUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentUpdate instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentUpdate());
+    }
+
+    protected ModelBuilder(EndpointAgentUpdate instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentUpdate.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public EndpointAgentUpdate.ModelBuilder licenseType(AgentLicenseType licenseType) {
+      this.instance.setLicenseType(licenseType);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentUpdate.ModelBuilder builder() {
+    return new EndpointAgentUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentUpdate.ModelBuilder toBuilder() {
+    EndpointAgentUpdate.ModelBuilder builder = new EndpointAgentUpdate.ModelBuilder()
+      .name(getName())
+      .licenseType(getLicenseType());
+    return builder;
+  }
+
 }
 

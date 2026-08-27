@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentEventGrouping {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public AgentEventGrouping() { 
-  }
-
-  @JsonCreator
-  public AgentEventGrouping(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId
-  ) {
-  this();
-    this.agentId = agentId;
   }
 
    /**
@@ -99,5 +92,59 @@ public class AgentEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new AgentEventGrouping());
+    }
+
+    protected ModelBuilder(AgentEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public AgentEventGrouping.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentEventGrouping.ModelBuilder builder() {
+    return new AgentEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentEventGrouping.ModelBuilder toBuilder() {
+    AgentEventGrouping.ModelBuilder builder = new AgentEventGrouping.ModelBuilder()
+      .agentId(getAgentId());
+    return builder;
+  }
+
 }
 

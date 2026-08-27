@@ -350,5 +350,99 @@ public class OauthCodeAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private OauthCodeAuthentication instance;
+
+    public ModelBuilder() {
+      this(new OauthCodeAuthentication());
+    }
+
+    protected ModelBuilder(OauthCodeAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public OauthCodeAuthentication.ModelBuilder token(String token) {
+      this.instance.setToken(token);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder refreshToken(String refreshToken) {
+      this.instance.setRefreshToken(refreshToken);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder oauthClientId(String oauthClientId) {
+      this.instance.setOauthClientId(oauthClientId);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder oauthAuthUrl(String oauthAuthUrl) {
+      this.instance.setOauthAuthUrl(oauthAuthUrl);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder oauthTokenUrl(String oauthTokenUrl) {
+      this.instance.setOauthTokenUrl(oauthTokenUrl);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder oauthClientSecret(String oauthClientSecret) {
+      this.instance.setOauthClientSecret(oauthClientSecret);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder code(String code) {
+      this.instance.setCode(code);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder redirectUri(String redirectUri) {
+      this.instance.setRedirectUri(redirectUri);
+      return this;
+    }
+    public OauthCodeAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built OauthCodeAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public OauthCodeAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static OauthCodeAuthentication.ModelBuilder builder() {
+    return new OauthCodeAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public OauthCodeAuthentication.ModelBuilder toBuilder() {
+    OauthCodeAuthentication.ModelBuilder builder = new OauthCodeAuthentication.ModelBuilder()
+      .token(getToken())
+      .refreshToken(getRefreshToken())
+      .oauthClientId(getOauthClientId())
+      .oauthAuthUrl(getOauthAuthUrl())
+      .oauthTokenUrl(getOauthTokenUrl())
+      .oauthClientSecret(getOauthClientSecret())
+      .code(getCode())
+      .redirectUri(getRedirectUri())
+      .type(getType());
+    return builder;
+  }
+
 }
 

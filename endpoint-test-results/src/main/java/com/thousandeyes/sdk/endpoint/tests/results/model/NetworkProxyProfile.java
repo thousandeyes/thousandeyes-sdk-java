@@ -37,20 +37,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkProxyProfile {
   public static final String JSON_PROPERTY_METHOD = "method";
+  @JsonProperty(JSON_PROPERTY_METHOD)
   private String method;
 
   public static final String JSON_PROPERTY_PROXIES = "proxies";
   private List<NetworkProxy> proxies = new ArrayList<>();
 
   public NetworkProxyProfile() { 
-  }
-
-  @JsonCreator
-  public NetworkProxyProfile(
-    @JsonProperty(JSON_PROPERTY_METHOD) String method
-  ) {
-  this();
-    this.method = method;
   }
 
    /**
@@ -142,5 +135,64 @@ public class NetworkProxyProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkProxyProfile instance;
+
+    public ModelBuilder() {
+      this(new NetworkProxyProfile());
+    }
+
+    protected ModelBuilder(NetworkProxyProfile instance) {
+      this.instance = instance;
+    }
+
+    public NetworkProxyProfile.ModelBuilder method(String method) {
+      this.instance.method = method;
+      return this;
+    }
+    public NetworkProxyProfile.ModelBuilder proxies(List<NetworkProxy> proxies) {
+      this.instance.setProxies(proxies);
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkProxyProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkProxyProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkProxyProfile.ModelBuilder builder() {
+    return new NetworkProxyProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkProxyProfile.ModelBuilder toBuilder() {
+    NetworkProxyProfile.ModelBuilder builder = new NetworkProxyProfile.ModelBuilder()
+      .method(getMethod())
+      .proxies(getProxies());
+    return builder;
+  }
+
 }
 

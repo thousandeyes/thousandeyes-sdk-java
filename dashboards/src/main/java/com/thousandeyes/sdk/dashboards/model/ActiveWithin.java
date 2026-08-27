@@ -135,5 +135,64 @@ public class ActiveWithin {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ActiveWithin instance;
+
+    public ModelBuilder() {
+      this(new ActiveWithin());
+    }
+
+    protected ModelBuilder(ActiveWithin instance) {
+      this.instance = instance;
+    }
+
+    public ActiveWithin.ModelBuilder value(Integer value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public ActiveWithin.ModelBuilder unit(LegacyDurationUnit unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+
+    /**
+     * Returns a built ActiveWithin instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ActiveWithin build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ActiveWithin.ModelBuilder builder() {
+    return new ActiveWithin.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ActiveWithin.ModelBuilder toBuilder() {
+    ActiveWithin.ModelBuilder builder = new ActiveWithin.ModelBuilder()
+      .value(getValue())
+      .unit(getUnit());
+    return builder;
+  }
+
 }
 

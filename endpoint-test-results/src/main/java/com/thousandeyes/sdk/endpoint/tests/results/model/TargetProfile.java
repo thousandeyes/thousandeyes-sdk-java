@@ -35,25 +35,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TargetProfile {
   public static final String JSON_PROPERTY_REMOTE_PORT = "remotePort";
+  @JsonProperty(JSON_PROPERTY_REMOTE_PORT)
   private Integer remotePort;
 
   public static final String JSON_PROPERTY_REMOTE_IP_ADDRESS = "remoteIpAddress";
+  @JsonProperty(JSON_PROPERTY_REMOTE_IP_ADDRESS)
   private String remoteIpAddress;
 
   public static final String JSON_PROPERTY_PROTOCOL = "protocol";
   private TestProtocol protocol = TestProtocol.TCP;
 
   public TargetProfile() { 
-  }
-
-  @JsonCreator
-  public TargetProfile(
-    @JsonProperty(JSON_PROPERTY_REMOTE_PORT) Integer remotePort, 
-    @JsonProperty(JSON_PROPERTY_REMOTE_IP_ADDRESS) String remoteIpAddress
-  ) {
-  this();
-    this.remotePort = remotePort;
-    this.remoteIpAddress = remoteIpAddress;
   }
 
    /**
@@ -154,5 +146,69 @@ public class TargetProfile {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TargetProfile instance;
+
+    public ModelBuilder() {
+      this(new TargetProfile());
+    }
+
+    protected ModelBuilder(TargetProfile instance) {
+      this.instance = instance;
+    }
+
+    public TargetProfile.ModelBuilder remotePort(Integer remotePort) {
+      this.instance.remotePort = remotePort;
+      return this;
+    }
+    public TargetProfile.ModelBuilder remoteIpAddress(String remoteIpAddress) {
+      this.instance.remoteIpAddress = remoteIpAddress;
+      return this;
+    }
+    public TargetProfile.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+
+    /**
+     * Returns a built TargetProfile instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TargetProfile build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TargetProfile.ModelBuilder builder() {
+    return new TargetProfile.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TargetProfile.ModelBuilder toBuilder() {
+    TargetProfile.ModelBuilder builder = new TargetProfile.ModelBuilder()
+      .remotePort(getRemotePort())
+      .remoteIpAddress(getRemoteIpAddress())
+      .protocol(getProtocol());
+    return builder;
+  }
+
 }
 

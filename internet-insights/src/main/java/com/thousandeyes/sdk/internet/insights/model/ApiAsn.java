@@ -132,5 +132,64 @@ public class ApiAsn {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAsn instance;
+
+    public ModelBuilder() {
+      this(new ApiAsn());
+    }
+
+    protected ModelBuilder(ApiAsn instance) {
+      this.instance = instance;
+    }
+
+    public ApiAsn.ModelBuilder id(Integer id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public ApiAsn.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAsn instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAsn build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAsn.ModelBuilder builder() {
+    return new ApiAsn.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAsn.ModelBuilder toBuilder() {
+    ApiAsn.ModelBuilder builder = new ApiAsn.ModelBuilder()
+      .id(getId())
+      .name(getName());
+    return builder;
+  }
+
 }
 

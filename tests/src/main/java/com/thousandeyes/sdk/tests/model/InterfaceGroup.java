@@ -39,9 +39,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class InterfaceGroup {
   public static final String JSON_PROPERTY_AID = "aid";
+  @JsonProperty(JSON_PROPERTY_AID)
   private String aid;
 
   public static final String JSON_PROPERTY_GROUP_ID = "groupId";
+  @JsonProperty(JSON_PROPERTY_GROUP_ID)
   private String groupId;
 
   public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
@@ -51,21 +53,10 @@ public class InterfaceGroup {
   private List<String> ipAddresses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RDNS_REGEXES = "rdnsRegexes";
+  @JsonProperty(JSON_PROPERTY_RDNS_REGEXES)
   private List<String> rdnsRegexes = new ArrayList<>();
 
   public InterfaceGroup() { 
-  }
-
-  @JsonCreator
-  public InterfaceGroup(
-    @JsonProperty(JSON_PROPERTY_AID) String aid, 
-    @JsonProperty(JSON_PROPERTY_GROUP_ID) String groupId, 
-    @JsonProperty(JSON_PROPERTY_RDNS_REGEXES) List<String> rdnsRegexes
-  ) {
-  this();
-    this.aid = aid;
-    this.groupId = groupId;
-    this.rdnsRegexes = rdnsRegexes;
   }
 
    /**
@@ -218,5 +209,79 @@ public class InterfaceGroup {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InterfaceGroup instance;
+
+    public ModelBuilder() {
+      this(new InterfaceGroup());
+    }
+
+    protected ModelBuilder(InterfaceGroup instance) {
+      this.instance = instance;
+    }
+
+    public InterfaceGroup.ModelBuilder aid(String aid) {
+      this.instance.aid = aid;
+      return this;
+    }
+    public InterfaceGroup.ModelBuilder groupId(String groupId) {
+      this.instance.groupId = groupId;
+      return this;
+    }
+    public InterfaceGroup.ModelBuilder groupName(String groupName) {
+      this.instance.setGroupName(groupName);
+      return this;
+    }
+    public InterfaceGroup.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.setIpAddresses(ipAddresses);
+      return this;
+    }
+    public InterfaceGroup.ModelBuilder rdnsRegexes(List<String> rdnsRegexes) {
+      this.instance.rdnsRegexes = rdnsRegexes;
+      return this;
+    }
+
+    /**
+     * Returns a built InterfaceGroup instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InterfaceGroup build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InterfaceGroup.ModelBuilder builder() {
+    return new InterfaceGroup.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InterfaceGroup.ModelBuilder toBuilder() {
+    InterfaceGroup.ModelBuilder builder = new InterfaceGroup.ModelBuilder()
+      .aid(getAid())
+      .groupId(getGroupId())
+      .groupName(getGroupName())
+      .ipAddresses(getIpAddresses())
+      .rdnsRegexes(getRdnsRegexes());
+    return builder;
+  }
+
 }
 

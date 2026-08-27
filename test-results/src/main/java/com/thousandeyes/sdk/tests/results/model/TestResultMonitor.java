@@ -34,27 +34,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TestResultMonitor {
   public static final String JSON_PROPERTY_MONITOR_ID = "monitorId";
+  @JsonProperty(JSON_PROPERTY_MONITOR_ID)
   private String monitorId;
 
   public static final String JSON_PROPERTY_MONITOR_NAME = "monitorName";
+  @JsonProperty(JSON_PROPERTY_MONITOR_NAME)
   private String monitorName;
 
   public static final String JSON_PROPERTY_COUNTRY_ID = "countryId";
+  @JsonProperty(JSON_PROPERTY_COUNTRY_ID)
   private String countryId;
 
   public TestResultMonitor() { 
-  }
-
-  @JsonCreator
-  public TestResultMonitor(
-    @JsonProperty(JSON_PROPERTY_MONITOR_ID) String monitorId, 
-    @JsonProperty(JSON_PROPERTY_MONITOR_NAME) String monitorName, 
-    @JsonProperty(JSON_PROPERTY_COUNTRY_ID) String countryId
-  ) {
-  this();
-    this.monitorId = monitorId;
-    this.monitorName = monitorName;
-    this.countryId = countryId;
   }
 
    /**
@@ -145,5 +136,69 @@ public class TestResultMonitor {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestResultMonitor instance;
+
+    public ModelBuilder() {
+      this(new TestResultMonitor());
+    }
+
+    protected ModelBuilder(TestResultMonitor instance) {
+      this.instance = instance;
+    }
+
+    public TestResultMonitor.ModelBuilder monitorId(String monitorId) {
+      this.instance.monitorId = monitorId;
+      return this;
+    }
+    public TestResultMonitor.ModelBuilder monitorName(String monitorName) {
+      this.instance.monitorName = monitorName;
+      return this;
+    }
+    public TestResultMonitor.ModelBuilder countryId(String countryId) {
+      this.instance.countryId = countryId;
+      return this;
+    }
+
+    /**
+     * Returns a built TestResultMonitor instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestResultMonitor build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestResultMonitor.ModelBuilder builder() {
+    return new TestResultMonitor.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestResultMonitor.ModelBuilder toBuilder() {
+    TestResultMonitor.ModelBuilder builder = new TestResultMonitor.ModelBuilder()
+      .monitorId(getMonitorId())
+      .monitorName(getMonitorName())
+      .countryId(getCountryId());
+    return builder;
+  }
+
 }
 

@@ -197,5 +197,74 @@ public class DashboardScheduleCronSpecBase {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardScheduleCronSpecBase instance;
+
+    public ModelBuilder() {
+      this(new DashboardScheduleCronSpecBase());
+    }
+
+    protected ModelBuilder(DashboardScheduleCronSpecBase instance) {
+      this.instance = instance;
+    }
+
+    public DashboardScheduleCronSpecBase.ModelBuilder startTime(Long startTime) {
+      this.instance.setStartTime(startTime);
+      return this;
+    }
+    public DashboardScheduleCronSpecBase.ModelBuilder zoneCode(String zoneCode) {
+      this.instance.setZoneCode(zoneCode);
+      return this;
+    }
+    public DashboardScheduleCronSpecBase.ModelBuilder repeat(DashboardScheduleRepeat repeat) {
+      this.instance.setRepeat(repeat);
+      return this;
+    }
+    public DashboardScheduleCronSpecBase.ModelBuilder endRepeat(DashboardScheduleEndCondition endRepeat) {
+      this.instance.setEndRepeat(endRepeat);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardScheduleCronSpecBase instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardScheduleCronSpecBase build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardScheduleCronSpecBase.ModelBuilder builder() {
+    return new DashboardScheduleCronSpecBase.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardScheduleCronSpecBase.ModelBuilder toBuilder() {
+    DashboardScheduleCronSpecBase.ModelBuilder builder = new DashboardScheduleCronSpecBase.ModelBuilder()
+      .startTime(getStartTime())
+      .zoneCode(getZoneCode())
+      .repeat(getRepeat())
+      .endRepeat(getEndRepeat());
+    return builder;
+  }
+
 }
 

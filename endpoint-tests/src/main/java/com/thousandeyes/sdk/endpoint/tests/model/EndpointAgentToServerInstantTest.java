@@ -414,5 +414,104 @@ public class EndpointAgentToServerInstantTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentToServerInstantTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentToServerInstantTest());
+    }
+
+    protected ModelBuilder(EndpointAgentToServerInstantTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentToServerInstantTest.ModelBuilder agentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder ipVersion(EndpointIpVersionIn ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder serverName(String serverName) {
+      this.instance.setServerName(serverName);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder server(String server) {
+      this.instance.setServer(server);
+      return this;
+    }
+    public EndpointAgentToServerInstantTest.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentToServerInstantTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentToServerInstantTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentToServerInstantTest.ModelBuilder builder() {
+    return new EndpointAgentToServerInstantTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentToServerInstantTest.ModelBuilder toBuilder() {
+    EndpointAgentToServerInstantTest.ModelBuilder builder = new EndpointAgentToServerInstantTest.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .agents(getAgents())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds())
+      .maxMachines(getMaxMachines())
+      .testName(getTestName())
+      .ipVersion(getIpVersion())
+      .serverName(getServerName())
+      .server(getServer())
+      .port(getPort());
+    return builder;
+  }
+
 }
 

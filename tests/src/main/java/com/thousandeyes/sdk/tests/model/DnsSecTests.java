@@ -145,5 +145,64 @@ public class DnsSecTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsSecTests instance;
+
+    public ModelBuilder() {
+      this(new DnsSecTests());
+    }
+
+    protected ModelBuilder(DnsSecTests instance) {
+      this.instance = instance;
+    }
+
+    public DnsSecTests.ModelBuilder tests(List<UnexpandedDnsSecTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public DnsSecTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built DnsSecTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsSecTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsSecTests.ModelBuilder builder() {
+    return new DnsSecTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsSecTests.ModelBuilder toBuilder() {
+    DnsSecTests.ModelBuilder builder = new DnsSecTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

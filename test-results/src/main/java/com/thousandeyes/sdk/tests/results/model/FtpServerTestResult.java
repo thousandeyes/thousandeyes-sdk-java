@@ -53,103 +53,80 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class FtpServerTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   private Integer responseCode;
 
   public static final String JSON_PROPERTY_DNS_TIME = "dnsTime";
+  @JsonProperty(JSON_PROPERTY_DNS_TIME)
   private Float dnsTime;
 
   public static final String JSON_PROPERTY_CONNECT_TIME = "connectTime";
+  @JsonProperty(JSON_PROPERTY_CONNECT_TIME)
   private Float connectTime;
 
   public static final String JSON_PROPERTY_NEGOTIATION_TIME = "negotiationTime";
+  @JsonProperty(JSON_PROPERTY_NEGOTIATION_TIME)
   private Float negotiationTime;
 
   public static final String JSON_PROPERTY_WAIT_TIME = "waitTime";
+  @JsonProperty(JSON_PROPERTY_WAIT_TIME)
   private Float waitTime;
 
   public static final String JSON_PROPERTY_RESPONSE_TIME = "responseTime";
+  @JsonProperty(JSON_PROPERTY_RESPONSE_TIME)
   private Float responseTime;
 
   public static final String JSON_PROPERTY_TRANSFER_TIME = "transferTime";
+  @JsonProperty(JSON_PROPERTY_TRANSFER_TIME)
   private Float transferTime;
 
   public static final String JSON_PROPERTY_WIRE_SIZE = "wireSize";
+  @JsonProperty(JSON_PROPERTY_WIRE_SIZE)
   private Integer wireSize;
 
   public static final String JSON_PROPERTY_TOTAL_TIME = "totalTime";
+  @JsonProperty(JSON_PROPERTY_TOTAL_TIME)
   private Float totalTime;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
+  @JsonProperty(JSON_PROPERTY_ERROR_TYPE)
   private String errorType;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public static final String JSON_PROPERTY_THROUGHPUT = "throughput";
+  @JsonProperty(JSON_PROPERTY_THROUGHPUT)
   private Integer throughput;
 
   public FtpServerTestResult() { 
-  }
-
-  @JsonCreator
-  public FtpServerTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_CODE) Integer responseCode, 
-    @JsonProperty(JSON_PROPERTY_DNS_TIME) Float dnsTime, 
-    @JsonProperty(JSON_PROPERTY_CONNECT_TIME) Float connectTime, 
-    @JsonProperty(JSON_PROPERTY_NEGOTIATION_TIME) Float negotiationTime, 
-    @JsonProperty(JSON_PROPERTY_WAIT_TIME) Float waitTime, 
-    @JsonProperty(JSON_PROPERTY_RESPONSE_TIME) Float responseTime, 
-    @JsonProperty(JSON_PROPERTY_TRANSFER_TIME) Float transferTime, 
-    @JsonProperty(JSON_PROPERTY_WIRE_SIZE) Integer wireSize, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_TIME) Float totalTime, 
-    @JsonProperty(JSON_PROPERTY_ERROR_TYPE) String errorType, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails, 
-    @JsonProperty(JSON_PROPERTY_THROUGHPUT) Integer throughput
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.serverIp = serverIp;
-    this.responseCode = responseCode;
-    this.dnsTime = dnsTime;
-    this.connectTime = connectTime;
-    this.negotiationTime = negotiationTime;
-    this.waitTime = waitTime;
-    this.responseTime = responseTime;
-    this.transferTime = transferTime;
-    this.wireSize = wireSize;
-    this.totalTime = totalTime;
-    this.errorType = errorType;
-    this.errorDetails = errorDetails;
-    this.throughput = throughput;
   }
 
    /**
@@ -532,5 +509,149 @@ public class FtpServerTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FtpServerTestResult instance;
+
+    public ModelBuilder() {
+      this(new FtpServerTestResult());
+    }
+
+    protected ModelBuilder(FtpServerTestResult instance) {
+      this.instance = instance;
+    }
+
+    public FtpServerTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder responseCode(Integer responseCode) {
+      this.instance.responseCode = responseCode;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder dnsTime(Float dnsTime) {
+      this.instance.dnsTime = dnsTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder connectTime(Float connectTime) {
+      this.instance.connectTime = connectTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder negotiationTime(Float negotiationTime) {
+      this.instance.negotiationTime = negotiationTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder waitTime(Float waitTime) {
+      this.instance.waitTime = waitTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder responseTime(Float responseTime) {
+      this.instance.responseTime = responseTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder transferTime(Float transferTime) {
+      this.instance.transferTime = transferTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder wireSize(Integer wireSize) {
+      this.instance.wireSize = wireSize;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder totalTime(Float totalTime) {
+      this.instance.totalTime = totalTime;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder errorType(String errorType) {
+      this.instance.errorType = errorType;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+    public FtpServerTestResult.ModelBuilder throughput(Integer throughput) {
+      this.instance.throughput = throughput;
+      return this;
+    }
+
+    /**
+     * Returns a built FtpServerTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FtpServerTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FtpServerTestResult.ModelBuilder builder() {
+    return new FtpServerTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FtpServerTestResult.ModelBuilder toBuilder() {
+    FtpServerTestResult.ModelBuilder builder = new FtpServerTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .serverIp(getServerIp())
+      .responseCode(getResponseCode())
+      .dnsTime(getDnsTime())
+      .connectTime(getConnectTime())
+      .negotiationTime(getNegotiationTime())
+      .waitTime(getWaitTime())
+      .responseTime(getResponseTime())
+      .transferTime(getTransferTime())
+      .wireSize(getWireSize())
+      .totalTime(getTotalTime())
+      .errorType(getErrorType())
+      .errorDetails(getErrorDetails())
+      .throughput(getThroughput());
+    return builder;
+  }
+
 }
 

@@ -49,25 +49,17 @@ public class FtpServerTestResults {
   private SimpleTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationLinks links;
 
   public FtpServerTestResults() { 
-  }
-
-  @JsonCreator
-  public FtpServerTestResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public FtpServerTestResults results(List<FtpServerTestResult> results) {
@@ -230,5 +222,79 @@ public class FtpServerTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FtpServerTestResults instance;
+
+    public ModelBuilder() {
+      this(new FtpServerTestResults());
+    }
+
+    protected ModelBuilder(FtpServerTestResults instance) {
+      this.instance = instance;
+    }
+
+    public FtpServerTestResults.ModelBuilder results(List<FtpServerTestResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public FtpServerTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public FtpServerTestResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public FtpServerTestResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public FtpServerTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built FtpServerTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FtpServerTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FtpServerTestResults.ModelBuilder builder() {
+    return new FtpServerTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FtpServerTestResults.ModelBuilder toBuilder() {
+    FtpServerTestResults.ModelBuilder builder = new FtpServerTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

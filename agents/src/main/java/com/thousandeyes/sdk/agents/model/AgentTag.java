@@ -164,5 +164,69 @@ public class AgentTag {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentTag instance;
+
+    public ModelBuilder() {
+      this(new AgentTag());
+    }
+
+    protected ModelBuilder(AgentTag instance) {
+      this.instance = instance;
+    }
+
+    public AgentTag.ModelBuilder id(UUID id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public AgentTag.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public AgentTag.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentTag instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentTag build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentTag.ModelBuilder builder() {
+    return new AgentTag.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentTag.ModelBuilder toBuilder() {
+    AgentTag.ModelBuilder builder = new AgentTag.ModelBuilder()
+      .id(getId())
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

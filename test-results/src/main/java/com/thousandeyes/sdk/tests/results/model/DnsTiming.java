@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class DnsTiming {
   public static final String JSON_PROPERTY_START_TIME_US = "startTimeUs";
+  @JsonProperty(JSON_PROPERTY_START_TIME_US)
   private String startTimeUs;
 
   public static final String JSON_PROPERTY_TOTAL_TIME_US = "totalTimeUs";
+  @JsonProperty(JSON_PROPERTY_TOTAL_TIME_US)
   private Integer totalTimeUs;
 
   public DnsTiming() { 
-  }
-
-  @JsonCreator
-  public DnsTiming(
-    @JsonProperty(JSON_PROPERTY_START_TIME_US) String startTimeUs, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_TIME_US) Integer totalTimeUs
-  ) {
-  this();
-    this.startTimeUs = startTimeUs;
-    this.totalTimeUs = totalTimeUs;
   }
 
    /**
@@ -122,5 +114,64 @@ public class DnsTiming {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DnsTiming instance;
+
+    public ModelBuilder() {
+      this(new DnsTiming());
+    }
+
+    protected ModelBuilder(DnsTiming instance) {
+      this.instance = instance;
+    }
+
+    public DnsTiming.ModelBuilder startTimeUs(String startTimeUs) {
+      this.instance.startTimeUs = startTimeUs;
+      return this;
+    }
+    public DnsTiming.ModelBuilder totalTimeUs(Integer totalTimeUs) {
+      this.instance.totalTimeUs = totalTimeUs;
+      return this;
+    }
+
+    /**
+     * Returns a built DnsTiming instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DnsTiming build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DnsTiming.ModelBuilder builder() {
+    return new DnsTiming.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DnsTiming.ModelBuilder toBuilder() {
+    DnsTiming.ModelBuilder builder = new DnsTiming.ModelBuilder()
+      .startTimeUs(getStartTimeUs())
+      .totalTimeUs(getTotalTimeUs());
+    return builder;
+  }
+
 }
 

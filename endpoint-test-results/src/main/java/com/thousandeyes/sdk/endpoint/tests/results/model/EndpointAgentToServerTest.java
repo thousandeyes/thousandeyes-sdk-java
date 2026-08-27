@@ -70,6 +70,7 @@ public class EndpointAgentToServerTest {
   private EndpointAgentSelectorConfig agentSelectorConfig;
 
   public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
+  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
   private OffsetDateTime createdDate;
 
   public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
@@ -82,15 +83,18 @@ public class EndpointAgentToServerTest {
   private Boolean isEnabled = true;
 
   public static final String JSON_PROPERTY_IS_SAVED_EVENT = "isSavedEvent";
+  @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT)
   private Boolean isSavedEvent;
 
   public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
   private Boolean hasPathTraceInSession;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
+  @JsonProperty(JSON_PROPERTY_LABELS)
   private List<TestLabel> labels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
@@ -106,12 +110,14 @@ public class EndpointAgentToServerTest {
   private String server;
 
   public static final String JSON_PROPERTY_TEST_ID = "testId";
+  @JsonProperty(JSON_PROPERTY_TEST_ID)
   private String testId;
 
   public static final String JSON_PROPERTY_TEST_NAME = "testName";
   private String testName;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
@@ -121,24 +127,6 @@ public class EndpointAgentToServerTest {
   private Integer port = 443;
 
   public EndpointAgentToServerTest() { 
-  }
-
-  @JsonCreator
-  public EndpointAgentToServerTest(
-    @JsonProperty(JSON_PROPERTY_CREATED_DATE) OffsetDateTime createdDate, 
-    @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT) Boolean isSavedEvent, 
-    @JsonProperty(JSON_PROPERTY_LABELS) List<TestLabel> labels, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate, 
-    @JsonProperty(JSON_PROPERTY_TEST_ID) String testId, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.createdDate = createdDate;
-    this.isSavedEvent = isSavedEvent;
-    this.labels = labels;
-    this.modifiedDate = modifiedDate;
-    this.testId = testId;
-    this.type = type;
   }
 
   public EndpointAgentToServerTest aid(String aid) {
@@ -658,5 +646,154 @@ public class EndpointAgentToServerTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentToServerTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentToServerTest());
+    }
+
+    protected ModelBuilder(EndpointAgentToServerTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentToServerTest.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder links(EndpointTestLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
+      this.instance.setAgentSelectorConfig(agentSelectorConfig);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+      this.instance.createdDate = createdDate;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder isPrioritized(Boolean isPrioritized) {
+      this.instance.setIsPrioritized(isPrioritized);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder isSavedEvent(Boolean isSavedEvent) {
+      this.instance.isSavedEvent = isSavedEvent;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder labels(List<TestLabel> labels) {
+      this.instance.labels = labels;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder ipVersion(String ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder server(String server) {
+      this.instance.setServer(server);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder testId(String testId) {
+      this.instance.testId = testId;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointAgentToServerTest.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentToServerTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentToServerTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentToServerTest.ModelBuilder builder() {
+    return new EndpointAgentToServerTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentToServerTest.ModelBuilder toBuilder() {
+    EndpointAgentToServerTest.ModelBuilder builder = new EndpointAgentToServerTest.ModelBuilder()
+      .aid(getAid())
+      .links(getLinks())
+      .agentSelectorConfig(getAgentSelectorConfig())
+      .createdDate(getCreatedDate())
+      .isPrioritized(getIsPrioritized())
+      .interval(getInterval())
+      .isEnabled(getIsEnabled())
+      .isSavedEvent(getIsSavedEvent())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .labels(getLabels())
+      .modifiedDate(getModifiedDate())
+      .networkMeasurements(getNetworkMeasurements())
+      .protocol(getProtocol())
+      .ipVersion(getIpVersion())
+      .server(getServer())
+      .testId(getTestId())
+      .testName(getTestName())
+      .type(getType())
+      .tcpProbeMode(getTcpProbeMode())
+      .port(getPort());
+    return builder;
+  }
+
 }
 

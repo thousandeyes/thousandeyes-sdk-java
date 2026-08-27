@@ -37,42 +37,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class PhysicalMemoryUsedBytes {
   public static final String JSON_PROPERTY_MIN = "min";
+  @JsonProperty(JSON_PROPERTY_MIN)
   private Double min;
 
   public static final String JSON_PROPERTY_MAX = "max";
+  @JsonProperty(JSON_PROPERTY_MAX)
   private Double max;
 
   public static final String JSON_PROPERTY_MEAN = "mean";
+  @JsonProperty(JSON_PROPERTY_MEAN)
   private Double mean;
 
   public static final String JSON_PROPERTY_MEDIAN = "median";
+  @JsonProperty(JSON_PROPERTY_MEDIAN)
   private Double median;
 
   public static final String JSON_PROPERTY_STD_DEV = "stdDev";
+  @JsonProperty(JSON_PROPERTY_STD_DEV)
   private Double stdDev;
 
   public static final String JSON_PROPERTY_COUNT = "count";
+  @JsonProperty(JSON_PROPERTY_COUNT)
   private Integer count;
 
   public PhysicalMemoryUsedBytes() { 
-  }
-
-  @JsonCreator
-  public PhysicalMemoryUsedBytes(
-    @JsonProperty(JSON_PROPERTY_MIN) Double min, 
-    @JsonProperty(JSON_PROPERTY_MAX) Double max, 
-    @JsonProperty(JSON_PROPERTY_MEAN) Double mean, 
-    @JsonProperty(JSON_PROPERTY_MEDIAN) Double median, 
-    @JsonProperty(JSON_PROPERTY_STD_DEV) Double stdDev, 
-    @JsonProperty(JSON_PROPERTY_COUNT) Integer count
-  ) {
-  this();
-    this.min = min;
-    this.max = max;
-    this.mean = mean;
-    this.median = median;
-    this.stdDev = stdDev;
-    this.count = count;
   }
 
    /**
@@ -214,5 +202,84 @@ public class PhysicalMemoryUsedBytes {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PhysicalMemoryUsedBytes instance;
+
+    public ModelBuilder() {
+      this(new PhysicalMemoryUsedBytes());
+    }
+
+    protected ModelBuilder(PhysicalMemoryUsedBytes instance) {
+      this.instance = instance;
+    }
+
+    public PhysicalMemoryUsedBytes.ModelBuilder min(Double min) {
+      this.instance.min = min;
+      return this;
+    }
+    public PhysicalMemoryUsedBytes.ModelBuilder max(Double max) {
+      this.instance.max = max;
+      return this;
+    }
+    public PhysicalMemoryUsedBytes.ModelBuilder mean(Double mean) {
+      this.instance.mean = mean;
+      return this;
+    }
+    public PhysicalMemoryUsedBytes.ModelBuilder median(Double median) {
+      this.instance.median = median;
+      return this;
+    }
+    public PhysicalMemoryUsedBytes.ModelBuilder stdDev(Double stdDev) {
+      this.instance.stdDev = stdDev;
+      return this;
+    }
+    public PhysicalMemoryUsedBytes.ModelBuilder count(Integer count) {
+      this.instance.count = count;
+      return this;
+    }
+
+    /**
+     * Returns a built PhysicalMemoryUsedBytes instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PhysicalMemoryUsedBytes build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PhysicalMemoryUsedBytes.ModelBuilder builder() {
+    return new PhysicalMemoryUsedBytes.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PhysicalMemoryUsedBytes.ModelBuilder toBuilder() {
+    PhysicalMemoryUsedBytes.ModelBuilder builder = new PhysicalMemoryUsedBytes.ModelBuilder()
+      .min(getMin())
+      .max(getMax())
+      .mean(getMean())
+      .median(getMedian())
+      .stdDev(getStdDev())
+      .count(getCount());
+    return builder;
+  }
+
 }
 

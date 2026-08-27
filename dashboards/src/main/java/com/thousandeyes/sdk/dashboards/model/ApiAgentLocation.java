@@ -163,5 +163,69 @@ public class ApiAgentLocation {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiAgentLocation instance;
+
+    public ModelBuilder() {
+      this(new ApiAgentLocation());
+    }
+
+    protected ModelBuilder(ApiAgentLocation instance) {
+      this.instance = instance;
+    }
+
+    public ApiAgentLocation.ModelBuilder latitude(Double latitude) {
+      this.instance.setLatitude(latitude);
+      return this;
+    }
+    public ApiAgentLocation.ModelBuilder longitude(Double longitude) {
+      this.instance.setLongitude(longitude);
+      return this;
+    }
+    public ApiAgentLocation.ModelBuilder locationName(String locationName) {
+      this.instance.setLocationName(locationName);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiAgentLocation instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiAgentLocation build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiAgentLocation.ModelBuilder builder() {
+    return new ApiAgentLocation.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiAgentLocation.ModelBuilder toBuilder() {
+    ApiAgentLocation.ModelBuilder builder = new ApiAgentLocation.ModelBuilder()
+      .latitude(getLatitude())
+      .longitude(getLongitude())
+      .locationName(getLocationName());
+    return builder;
+  }
+
 }
 

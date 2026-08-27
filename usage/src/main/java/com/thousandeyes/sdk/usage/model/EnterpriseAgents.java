@@ -163,5 +163,69 @@ public class EnterpriseAgents {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EnterpriseAgents instance;
+
+    public ModelBuilder() {
+      this(new EnterpriseAgents());
+    }
+
+    protected ModelBuilder(EnterpriseAgents instance) {
+      this.instance = instance;
+    }
+
+    public EnterpriseAgents.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EnterpriseAgents.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public EnterpriseAgents.ModelBuilder enterpriseAgentsUsed(Long enterpriseAgentsUsed) {
+      this.instance.setEnterpriseAgentsUsed(enterpriseAgentsUsed);
+      return this;
+    }
+
+    /**
+     * Returns a built EnterpriseAgents instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EnterpriseAgents build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EnterpriseAgents.ModelBuilder builder() {
+    return new EnterpriseAgents.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EnterpriseAgents.ModelBuilder toBuilder() {
+    EnterpriseAgents.ModelBuilder builder = new EnterpriseAgents.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .enterpriseAgentsUsed(getEnterpriseAgentsUsed());
+    return builder;
+  }
+
 }
 

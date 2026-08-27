@@ -82,6 +82,7 @@ public class AgentToServerProperties {
   private String server;
 
   public static final String JSON_PROPERTY_DSCP = "dscp";
+  @JsonProperty(JSON_PROPERTY_DSCP)
   private String dscp;
 
   public static final String JSON_PROPERTY_DSCP_ID = "dscpId";
@@ -97,19 +98,10 @@ public class AgentToServerProperties {
   private Boolean networkMeasurements = false;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public AgentToServerProperties() { 
-  }
-
-  @JsonCreator
-  public AgentToServerProperties(
-    @JsonProperty(JSON_PROPERTY_DSCP) String dscp, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.dscp = dscp;
-    this.type = type;
   }
 
   public AgentToServerProperties bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -567,5 +559,134 @@ public class AgentToServerProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentToServerProperties instance;
+
+    public ModelBuilder() {
+      this(new AgentToServerProperties());
+    }
+
+    protected ModelBuilder(AgentToServerProperties instance) {
+      this.instance = instance;
+    }
+
+    public AgentToServerProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder continuousMode(Boolean continuousMode) {
+      this.instance.setContinuousMode(continuousMode);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder server(String server) {
+      this.instance.setServer(server);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder dscp(String dscp) {
+      this.instance.dscp = dscp;
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder dscpId(TestDscpId dscpId) {
+      this.instance.setDscpId(dscpId);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder pingPayloadSize(Integer pingPayloadSize) {
+      this.instance.setPingPayloadSize(pingPayloadSize);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public AgentToServerProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentToServerProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentToServerProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentToServerProperties.ModelBuilder builder() {
+    return new AgentToServerProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentToServerProperties.ModelBuilder toBuilder() {
+    AgentToServerProperties.ModelBuilder builder = new AgentToServerProperties.ModelBuilder()
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .continuousMode(getContinuousMode())
+      .fixedPacketRate(getFixedPacketRate())
+      .mtuMeasurements(getMtuMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .server(getServer())
+      .dscp(getDscp())
+      .dscpId(getDscpId())
+      .ipv6Policy(getIpv6Policy())
+      .pingPayloadSize(getPingPayloadSize())
+      .networkMeasurements(getNetworkMeasurements())
+      .type(getType());
+    return builder;
+  }
+
 }
 

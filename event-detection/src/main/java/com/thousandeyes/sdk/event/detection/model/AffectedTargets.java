@@ -38,25 +38,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AffectedTargets {
   public static final String JSON_PROPERTY_TOTAL = "total";
+  @JsonProperty(JSON_PROPERTY_TOTAL)
   private Integer total;
 
   public static final String JSON_PROPERTY_IN_ACCOUNT_GROUP = "inAccountGroup";
+  @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP)
   private Integer inAccountGroup;
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
   private Set<ApiAffectedTarget> targets = new LinkedHashSet<>();
 
   public AffectedTargets() { 
-  }
-
-  @JsonCreator
-  public AffectedTargets(
-    @JsonProperty(JSON_PROPERTY_TOTAL) Integer total, 
-    @JsonProperty(JSON_PROPERTY_IN_ACCOUNT_GROUP) Integer inAccountGroup
-  ) {
-  this();
-    this.total = total;
-    this.inAccountGroup = inAccountGroup;
   }
 
    /**
@@ -166,5 +158,69 @@ public class AffectedTargets {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AffectedTargets instance;
+
+    public ModelBuilder() {
+      this(new AffectedTargets());
+    }
+
+    protected ModelBuilder(AffectedTargets instance) {
+      this.instance = instance;
+    }
+
+    public AffectedTargets.ModelBuilder total(Integer total) {
+      this.instance.total = total;
+      return this;
+    }
+    public AffectedTargets.ModelBuilder inAccountGroup(Integer inAccountGroup) {
+      this.instance.inAccountGroup = inAccountGroup;
+      return this;
+    }
+    public AffectedTargets.ModelBuilder targets(Set<ApiAffectedTarget> targets) {
+      this.instance.setTargets(targets);
+      return this;
+    }
+
+    /**
+     * Returns a built AffectedTargets instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AffectedTargets build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AffectedTargets.ModelBuilder builder() {
+    return new AffectedTargets.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AffectedTargets.ModelBuilder toBuilder() {
+    AffectedTargets.ModelBuilder builder = new AffectedTargets.ModelBuilder()
+      .total(getTotal())
+      .inAccountGroup(getInAccountGroup())
+      .targets(getTargets());
+    return builder;
+  }
+
 }
 

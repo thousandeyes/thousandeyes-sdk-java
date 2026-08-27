@@ -101,5 +101,59 @@ public class EndpointAgentTag {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointAgentTag instance;
+
+    public ModelBuilder() {
+      this(new EndpointAgentTag());
+    }
+
+    protected ModelBuilder(EndpointAgentTag instance) {
+      this.instance = instance;
+    }
+
+    public EndpointAgentTag.ModelBuilder id(String id) {
+      this.instance.setId(id);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointAgentTag instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointAgentTag build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointAgentTag.ModelBuilder builder() {
+    return new EndpointAgentTag.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointAgentTag.ModelBuilder toBuilder() {
+    EndpointAgentTag.ModelBuilder builder = new EndpointAgentTag.ModelBuilder()
+      .id(getId());
+    return builder;
+  }
+
 }
 

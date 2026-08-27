@@ -44,58 +44,44 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_API_TRANSACTION_TIME = "apiTransactionTime";
+  @JsonProperty(JSON_PROPERTY_API_TRANSACTION_TIME)
   private Float apiTransactionTime;
 
   public static final String JSON_PROPERTY_COMPLETION = "completion";
+  @JsonProperty(JSON_PROPERTY_COMPLETION)
   private Float completion;
 
   public static final String JSON_PROPERTY_ERROR_TYPE = "errorType";
+  @JsonProperty(JSON_PROPERTY_ERROR_TYPE)
   private String errorType;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public ApiTestResult() { 
-  }
-
-  @JsonCreator
-  public ApiTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_API_TRANSACTION_TIME) Float apiTransactionTime, 
-    @JsonProperty(JSON_PROPERTY_COMPLETION) Float completion, 
-    @JsonProperty(JSON_PROPERTY_ERROR_TYPE) String errorType, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.apiTransactionTime = apiTransactionTime;
-    this.completion = completion;
-    this.errorType = errorType;
-    this.errorDetails = errorDetails;
   }
 
    /**
@@ -325,5 +311,104 @@ public class ApiTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiTestResult instance;
+
+    public ModelBuilder() {
+      this(new ApiTestResult());
+    }
+
+    protected ModelBuilder(ApiTestResult instance) {
+      this.instance = instance;
+    }
+
+    public ApiTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public ApiTestResult.ModelBuilder apiTransactionTime(Float apiTransactionTime) {
+      this.instance.apiTransactionTime = apiTransactionTime;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder completion(Float completion) {
+      this.instance.completion = completion;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder errorType(String errorType) {
+      this.instance.errorType = errorType;
+      return this;
+    }
+    public ApiTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+
+    /**
+     * Returns a built ApiTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiTestResult.ModelBuilder builder() {
+    return new ApiTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiTestResult.ModelBuilder toBuilder() {
+    ApiTestResult.ModelBuilder builder = new ApiTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .agent(getAgent())
+      .apiTransactionTime(getApiTransactionTime())
+      .completion(getCompletion())
+      .errorType(getErrorType())
+      .errorDetails(getErrorDetails());
+    return builder;
+  }
+
 }
 

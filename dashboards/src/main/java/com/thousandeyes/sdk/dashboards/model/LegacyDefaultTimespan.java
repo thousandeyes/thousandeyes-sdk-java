@@ -171,5 +171,69 @@ public class LegacyDefaultTimespan {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LegacyDefaultTimespan instance;
+
+    public ModelBuilder() {
+      this(new LegacyDefaultTimespan());
+    }
+
+    protected ModelBuilder(LegacyDefaultTimespan instance) {
+      this.instance = instance;
+    }
+
+    public LegacyDefaultTimespan.ModelBuilder timespanDuration(Long timespanDuration) {
+      this.instance.setTimespanDuration(timespanDuration);
+      return this;
+    }
+    public LegacyDefaultTimespan.ModelBuilder timespanStart(String timespanStart) {
+      this.instance.setTimespanStart(timespanStart);
+      return this;
+    }
+    public LegacyDefaultTimespan.ModelBuilder timespanEnd(String timespanEnd) {
+      this.instance.setTimespanEnd(timespanEnd);
+      return this;
+    }
+
+    /**
+     * Returns a built LegacyDefaultTimespan instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LegacyDefaultTimespan build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LegacyDefaultTimespan.ModelBuilder builder() {
+    return new LegacyDefaultTimespan.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LegacyDefaultTimespan.ModelBuilder toBuilder() {
+    LegacyDefaultTimespan.ModelBuilder builder = new LegacyDefaultTimespan.ModelBuilder()
+      .timespanDuration(getTimespanDuration())
+      .timespanStart(getTimespanStart())
+      .timespanEnd(getTimespanEnd());
+    return builder;
+  }
+
 }
 

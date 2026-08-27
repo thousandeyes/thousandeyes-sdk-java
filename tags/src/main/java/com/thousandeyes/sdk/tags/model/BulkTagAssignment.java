@@ -177,5 +177,69 @@ public class BulkTagAssignment {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private BulkTagAssignment instance;
+
+    public ModelBuilder() {
+      this(new BulkTagAssignment());
+    }
+
+    protected ModelBuilder(BulkTagAssignment instance) {
+      this.instance = instance;
+    }
+
+    public BulkTagAssignment.ModelBuilder assignments(List<Assignment> assignments) {
+      this.instance.setAssignments(assignments);
+      return this;
+    }
+    public BulkTagAssignment.ModelBuilder tagId(UUID tagId) {
+      this.instance.setTagId(tagId);
+      return this;
+    }
+    public BulkTagAssignment.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built BulkTagAssignment instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public BulkTagAssignment build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static BulkTagAssignment.ModelBuilder builder() {
+    return new BulkTagAssignment.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public BulkTagAssignment.ModelBuilder toBuilder() {
+    BulkTagAssignment.ModelBuilder builder = new BulkTagAssignment.ModelBuilder()
+      .assignments(getAssignments())
+      .tagId(getTagId())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

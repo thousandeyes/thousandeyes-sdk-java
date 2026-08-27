@@ -164,5 +164,69 @@ public class TestTag {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestTag instance;
+
+    public ModelBuilder() {
+      this(new TestTag());
+    }
+
+    protected ModelBuilder(TestTag instance) {
+      this.instance = instance;
+    }
+
+    public TestTag.ModelBuilder id(UUID id) {
+      this.instance.setId(id);
+      return this;
+    }
+    public TestTag.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public TestTag.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built TestTag instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestTag build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestTag.ModelBuilder builder() {
+    return new TestTag.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestTag.ModelBuilder toBuilder() {
+    TestTag.ModelBuilder builder = new TestTag.ModelBuilder()
+      .id(getId())
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

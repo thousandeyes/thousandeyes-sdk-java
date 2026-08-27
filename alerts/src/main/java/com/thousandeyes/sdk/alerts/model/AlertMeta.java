@@ -101,5 +101,59 @@ public class AlertMeta {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertMeta instance;
+
+    public ModelBuilder() {
+      this(new AlertMeta());
+    }
+
+    protected ModelBuilder(AlertMeta instance) {
+      this.instance = instance;
+    }
+
+    public AlertMeta.ModelBuilder version(Integer version) {
+      this.instance.setVersion(version);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertMeta instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertMeta build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertMeta.ModelBuilder builder() {
+    return new AlertMeta.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertMeta.ModelBuilder toBuilder() {
+    AlertMeta.ModelBuilder builder = new AlertMeta.ModelBuilder()
+      .version(getVersion());
+    return builder;
+  }
+
 }
 

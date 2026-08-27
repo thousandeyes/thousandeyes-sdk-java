@@ -143,5 +143,64 @@ public class RoleRequestBody {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RoleRequestBody instance;
+
+    public ModelBuilder() {
+      this(new RoleRequestBody());
+    }
+
+    protected ModelBuilder(RoleRequestBody instance) {
+      this.instance = instance;
+    }
+
+    public RoleRequestBody.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public RoleRequestBody.ModelBuilder permissions(List<String> permissions) {
+      this.instance.setPermissions(permissions);
+      return this;
+    }
+
+    /**
+     * Returns a built RoleRequestBody instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RoleRequestBody build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RoleRequestBody.ModelBuilder builder() {
+    return new RoleRequestBody.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RoleRequestBody.ModelBuilder toBuilder() {
+    RoleRequestBody.ModelBuilder builder = new RoleRequestBody.ModelBuilder()
+      .name(getName())
+      .permissions(getPermissions());
+    return builder;
+  }
+
 }
 

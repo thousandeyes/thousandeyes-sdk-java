@@ -133,5 +133,64 @@ public class ApiWidgetMeasure {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiWidgetMeasure instance;
+
+    public ModelBuilder() {
+      this(new ApiWidgetMeasure());
+    }
+
+    protected ModelBuilder(ApiWidgetMeasure instance) {
+      this.instance = instance;
+    }
+
+    public ApiWidgetMeasure.ModelBuilder type(WidgetMeasureType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiWidgetMeasure.ModelBuilder percentileValue(Float percentileValue) {
+      this.instance.setPercentileValue(percentileValue);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiWidgetMeasure instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiWidgetMeasure build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiWidgetMeasure.ModelBuilder builder() {
+    return new ApiWidgetMeasure.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiWidgetMeasure.ModelBuilder toBuilder() {
+    ApiWidgetMeasure.ModelBuilder builder = new ApiWidgetMeasure.ModelBuilder()
+      .type(getType())
+      .percentileValue(getPercentileValue());
+    return builder;
+  }
+
 }
 

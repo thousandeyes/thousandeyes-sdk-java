@@ -113,17 +113,10 @@ public class FtpServerProperties {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @JsonProperty(JSON_PROPERTY_TYPE)
   private String type;
 
   public FtpServerProperties() { 
-  }
-
-  @JsonCreator
-  public FtpServerProperties(
-    @JsonProperty(JSON_PROPERTY_TYPE) String type
-  ) {
-  this();
-    this.type = type;
   }
 
   public FtpServerProperties bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -701,5 +694,154 @@ public class FtpServerProperties {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private FtpServerProperties instance;
+
+    public ModelBuilder() {
+      this(new FtpServerProperties());
+    }
+
+    protected ModelBuilder(FtpServerProperties instance) {
+      this.instance = instance;
+    }
+
+    public FtpServerProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
+      this.instance.setBandwidthMeasurements(bandwidthMeasurements);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder downloadLimit(Integer downloadLimit) {
+      this.instance.setDownloadLimit(downloadLimit);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder ftpTargetTime(Integer ftpTargetTime) {
+      this.instance.setFtpTargetTime(ftpTargetTime);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder ftpTimeLimit(Integer ftpTimeLimit) {
+      this.instance.setFtpTimeLimit(ftpTimeLimit);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder mtuMeasurements(Boolean mtuMeasurements) {
+      this.instance.setMtuMeasurements(mtuMeasurements);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder numPathTraces(Integer numPathTraces) {
+      this.instance.setNumPathTraces(numPathTraces);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder pathTraceMode(TestPathTraceMode pathTraceMode) {
+      this.instance.setPathTraceMode(pathTraceMode);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder probeMode(TestProbeMode probeMode) {
+      this.instance.setProbeMode(probeMode);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder protocol(TestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder randomizedStartTime(Boolean randomizedStartTime) {
+      this.instance.setRandomizedStartTime(randomizedStartTime);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder requestType(FtpServerRequestType requestType) {
+      this.instance.setRequestType(requestType);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder useActiveFtp(Boolean useActiveFtp) {
+      this.instance.setUseActiveFtp(useActiveFtp);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder useExplicitFtps(Boolean useExplicitFtps) {
+      this.instance.setUseExplicitFtps(useExplicitFtps);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder fixedPacketRate(Integer fixedPacketRate) {
+      this.instance.setFixedPacketRate(fixedPacketRate);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder ipv6Policy(TestIpv6Policy ipv6Policy) {
+      this.instance.setIpv6Policy(ipv6Policy);
+      return this;
+    }
+    public FtpServerProperties.ModelBuilder type(String type) {
+      this.instance.type = type;
+      return this;
+    }
+
+    /**
+     * Returns a built FtpServerProperties instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public FtpServerProperties build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static FtpServerProperties.ModelBuilder builder() {
+    return new FtpServerProperties.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public FtpServerProperties.ModelBuilder toBuilder() {
+    FtpServerProperties.ModelBuilder builder = new FtpServerProperties.ModelBuilder()
+      .bandwidthMeasurements(getBandwidthMeasurements())
+      .downloadLimit(getDownloadLimit())
+      .ftpTargetTime(getFtpTargetTime())
+      .ftpTimeLimit(getFtpTimeLimit())
+      .mtuMeasurements(getMtuMeasurements())
+      .networkMeasurements(getNetworkMeasurements())
+      .numPathTraces(getNumPathTraces())
+      .password(getPassword())
+      .pathTraceMode(getPathTraceMode())
+      .probeMode(getProbeMode())
+      .protocol(getProtocol())
+      .randomizedStartTime(getRandomizedStartTime())
+      .requestType(getRequestType())
+      .url(getUrl())
+      .useActiveFtp(getUseActiveFtp())
+      .useExplicitFtps(getUseExplicitFtps())
+      .username(getUsername())
+      .fixedPacketRate(getFixedPacketRate())
+      .ipv6Policy(getIpv6Policy())
+      .type(getType());
+    return builder;
+  }
+
 }
 

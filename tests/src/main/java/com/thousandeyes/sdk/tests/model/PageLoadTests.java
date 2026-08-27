@@ -145,5 +145,64 @@ public class PageLoadTests {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PageLoadTests instance;
+
+    public ModelBuilder() {
+      this(new PageLoadTests());
+    }
+
+    protected ModelBuilder(PageLoadTests instance) {
+      this.instance = instance;
+    }
+
+    public PageLoadTests.ModelBuilder tests(List<UnexpandedPageLoadTest> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public PageLoadTests.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built PageLoadTests instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PageLoadTests build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PageLoadTests.ModelBuilder builder() {
+    return new PageLoadTests.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PageLoadTests.ModelBuilder toBuilder() {
+    PageLoadTests.ModelBuilder builder = new PageLoadTests.ModelBuilder()
+      .tests(getTests())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class Header {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Header instance;
+
+    public ModelBuilder() {
+      this(new Header());
+    }
+
+    protected ModelBuilder(Header instance) {
+      this.instance = instance;
+    }
+
+    public Header.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public Header.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built Header instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Header build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Header.ModelBuilder builder() {
+    return new Header.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Header.ModelBuilder toBuilder() {
+    Header.ModelBuilder builder = new Header.ModelBuilder()
+      .name(getName())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

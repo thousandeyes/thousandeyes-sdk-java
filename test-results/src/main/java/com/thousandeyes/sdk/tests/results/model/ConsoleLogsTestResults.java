@@ -177,5 +177,69 @@ public class ConsoleLogsTestResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConsoleLogsTestResults instance;
+
+    public ModelBuilder() {
+      this(new ConsoleLogsTestResults());
+    }
+
+    protected ModelBuilder(ConsoleLogsTestResults instance) {
+      this.instance = instance;
+    }
+
+    public ConsoleLogsTestResults.ModelBuilder results(List<ConsoleLogsResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public ConsoleLogsTestResults.ModelBuilder test(SimpleTest test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public ConsoleLogsTestResults.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ConsoleLogsTestResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConsoleLogsTestResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConsoleLogsTestResults.ModelBuilder builder() {
+    return new ConsoleLogsTestResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConsoleLogsTestResults.ModelBuilder toBuilder() {
+    ConsoleLogsTestResults.ModelBuilder builder = new ConsoleLogsTestResults.ModelBuilder()
+      .results(getResults())
+      .test(getTest())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

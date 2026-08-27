@@ -165,5 +165,69 @@ public class DashboardLayout {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private DashboardLayout instance;
+
+    public ModelBuilder() {
+      this(new DashboardLayout());
+    }
+
+    protected ModelBuilder(DashboardLayout instance) {
+      this.instance = instance;
+    }
+
+    public DashboardLayout.ModelBuilder layoutId(String layoutId) {
+      this.instance.setLayoutId(layoutId);
+      return this;
+    }
+    public DashboardLayout.ModelBuilder type(DashboardLayoutType type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public DashboardLayout.ModelBuilder details(DashboardLayoutDetails details) {
+      this.instance.setDetails(details);
+      return this;
+    }
+
+    /**
+     * Returns a built DashboardLayout instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public DashboardLayout build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static DashboardLayout.ModelBuilder builder() {
+    return new DashboardLayout.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public DashboardLayout.ModelBuilder toBuilder() {
+    DashboardLayout.ModelBuilder builder = new DashboardLayout.ModelBuilder()
+      .layoutId(getLayoutId())
+      .type(getType())
+      .details(getDetails());
+    return builder;
+  }
+
 }
 

@@ -195,5 +195,74 @@ public class NotificationWebhook {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NotificationWebhook instance;
+
+    public ModelBuilder() {
+      this(new NotificationWebhook());
+    }
+
+    protected ModelBuilder(NotificationWebhook instance) {
+      this.instance = instance;
+    }
+
+    public NotificationWebhook.ModelBuilder integrationId(String integrationId) {
+      this.instance.setIntegrationId(integrationId);
+      return this;
+    }
+    public NotificationWebhook.ModelBuilder integrationType(WebhookIntegrationType integrationType) {
+      this.instance.setIntegrationType(integrationType);
+      return this;
+    }
+    public NotificationWebhook.ModelBuilder integrationName(String integrationName) {
+      this.instance.setIntegrationName(integrationName);
+      return this;
+    }
+    public NotificationWebhook.ModelBuilder target(String target) {
+      this.instance.setTarget(target);
+      return this;
+    }
+
+    /**
+     * Returns a built NotificationWebhook instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NotificationWebhook build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NotificationWebhook.ModelBuilder builder() {
+    return new NotificationWebhook.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NotificationWebhook.ModelBuilder toBuilder() {
+    NotificationWebhook.ModelBuilder builder = new NotificationWebhook.ModelBuilder()
+      .integrationId(getIntegrationId())
+      .integrationType(getIntegrationType())
+      .integrationName(getIntegrationName())
+      .target(getTarget());
+    return builder;
+  }
+
 }
 

@@ -132,5 +132,64 @@ public class ApiApplicationOutageAffectedServer {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiApplicationOutageAffectedServer instance;
+
+    public ModelBuilder() {
+      this(new ApiApplicationOutageAffectedServer());
+    }
+
+    protected ModelBuilder(ApiApplicationOutageAffectedServer instance) {
+      this.instance = instance;
+    }
+
+    public ApiApplicationOutageAffectedServer.ModelBuilder domain(String domain) {
+      this.instance.setDomain(domain);
+      return this;
+    }
+    public ApiApplicationOutageAffectedServer.ModelBuilder prefix(String prefix) {
+      this.instance.setPrefix(prefix);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiApplicationOutageAffectedServer instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiApplicationOutageAffectedServer build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiApplicationOutageAffectedServer.ModelBuilder builder() {
+    return new ApiApplicationOutageAffectedServer.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiApplicationOutageAffectedServer.ModelBuilder toBuilder() {
+    ApiApplicationOutageAffectedServer.ModelBuilder builder = new ApiApplicationOutageAffectedServer.ModelBuilder()
+      .domain(getDomain())
+      .prefix(getPrefix());
+    return builder;
+  }
+
 }
 

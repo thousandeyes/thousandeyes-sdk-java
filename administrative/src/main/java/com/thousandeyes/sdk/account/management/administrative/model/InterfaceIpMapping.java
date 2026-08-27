@@ -36,22 +36,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class InterfaceIpMapping {
   public static final String JSON_PROPERTY_INTERFACE_NAME = "interfaceName";
+  @JsonProperty(JSON_PROPERTY_INTERFACE_NAME)
   private String interfaceName;
 
   public static final String JSON_PROPERTY_IP_ADDRESSES = "ipAddresses";
+  @JsonProperty(JSON_PROPERTY_IP_ADDRESSES)
   private List<String> ipAddresses = new ArrayList<>();
 
   public InterfaceIpMapping() { 
-  }
-
-  @JsonCreator
-  public InterfaceIpMapping(
-    @JsonProperty(JSON_PROPERTY_INTERFACE_NAME) String interfaceName, 
-    @JsonProperty(JSON_PROPERTY_IP_ADDRESSES) List<String> ipAddresses
-  ) {
-  this();
-    this.interfaceName = interfaceName;
-    this.ipAddresses = ipAddresses;
   }
 
    /**
@@ -125,5 +117,64 @@ public class InterfaceIpMapping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private InterfaceIpMapping instance;
+
+    public ModelBuilder() {
+      this(new InterfaceIpMapping());
+    }
+
+    protected ModelBuilder(InterfaceIpMapping instance) {
+      this.instance = instance;
+    }
+
+    public InterfaceIpMapping.ModelBuilder interfaceName(String interfaceName) {
+      this.instance.interfaceName = interfaceName;
+      return this;
+    }
+    public InterfaceIpMapping.ModelBuilder ipAddresses(List<String> ipAddresses) {
+      this.instance.ipAddresses = ipAddresses;
+      return this;
+    }
+
+    /**
+     * Returns a built InterfaceIpMapping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public InterfaceIpMapping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static InterfaceIpMapping.ModelBuilder builder() {
+    return new InterfaceIpMapping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public InterfaceIpMapping.ModelBuilder toBuilder() {
+    InterfaceIpMapping.ModelBuilder builder = new InterfaceIpMapping.ModelBuilder()
+      .interfaceName(getInterfaceName())
+      .ipAddresses(getIpAddresses());
+    return builder;
+  }
+
 }
 

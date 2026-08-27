@@ -402,5 +402,104 @@ public class AccountGroupDetail {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AccountGroupDetail instance;
+
+    public ModelBuilder() {
+      this(new AccountGroupDetail());
+    }
+
+    protected ModelBuilder(AccountGroupDetail instance) {
+      this.instance = instance;
+    }
+
+    public AccountGroupDetail.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder accountGroupName(String accountGroupName) {
+      this.instance.setAccountGroupName(accountGroupName);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder isCurrentAccountGroup(Boolean isCurrentAccountGroup) {
+      this.instance.setIsCurrentAccountGroup(isCurrentAccountGroup);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder isDefaultAccountGroup(Boolean isDefaultAccountGroup) {
+      this.instance.setIsDefaultAccountGroup(isDefaultAccountGroup);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder organizationName(String organizationName) {
+      this.instance.setOrganizationName(organizationName);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder orgId(String orgId) {
+      this.instance.setOrgId(orgId);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder users(List<UserAccountGroup> users) {
+      this.instance.setUsers(users);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder agents(List<EnterpriseAgent> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public AccountGroupDetail.ModelBuilder accountToken(String accountToken) {
+      this.instance.setAccountToken(accountToken);
+      return this;
+    }
+
+    /**
+     * Returns a built AccountGroupDetail instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AccountGroupDetail build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AccountGroupDetail.ModelBuilder builder() {
+    return new AccountGroupDetail.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AccountGroupDetail.ModelBuilder toBuilder() {
+    AccountGroupDetail.ModelBuilder builder = new AccountGroupDetail.ModelBuilder()
+      .aid(getAid())
+      .accountGroupName(getAccountGroupName())
+      .isCurrentAccountGroup(getIsCurrentAccountGroup())
+      .isDefaultAccountGroup(getIsDefaultAccountGroup())
+      .organizationName(getOrganizationName())
+      .orgId(getOrgId())
+      .users(getUsers())
+      .links(getLinks())
+      .agents(getAgents())
+      .accountToken(getAccountToken());
+    return builder;
+  }
+
 }
 

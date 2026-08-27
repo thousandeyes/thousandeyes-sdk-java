@@ -761,5 +761,159 @@ public class EndpointHttpServerInstantTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointHttpServerInstantTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointHttpServerInstantTest());
+    }
+
+    protected ModelBuilder(EndpointHttpServerInstantTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointHttpServerInstantTest.ModelBuilder agentSelectorType(EndpointTestAgentSelectorType agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder endpointAgentLabels(List<String> endpointAgentLabels) {
+      this.instance.setEndpointAgentLabels(endpointAgentLabels);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder tagIds(List<UUID> tagIds) {
+      this.instance.setTagIds(tagIds);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder ipVersion(EndpointIpVersionIn ipVersion) {
+      this.instance.setIpVersion(ipVersion);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder authType(EndpointTestAuthType authType) {
+      this.instance.setAuthType(authType);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder httpTimeLimit(Integer httpTimeLimit) {
+      this.instance.setHttpTimeLimit(httpTimeLimit);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder username(String username) {
+      this.instance.setUsername(username);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder sslVersionId(TestSslVersionId sslVersionId) {
+      this.instance.setSslVersionId(sslVersionId);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder verifyCertificate(Boolean verifyCertificate) {
+      this.instance.setVerifyCertificate(verifyCertificate);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder hasPing(Boolean hasPing) {
+      this.instance.setHasPing(hasPing);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder hasTraceroute(Boolean hasTraceroute) {
+      this.instance.setHasTraceroute(hasTraceroute);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+      this.instance.setNetworkMeasurements(networkMeasurements);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder targetResponseTime(Integer targetResponseTime) {
+      this.instance.setTargetResponseTime(targetResponseTime);
+      return this;
+    }
+    public EndpointHttpServerInstantTest.ModelBuilder password(String password) {
+      this.instance.setPassword(password);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointHttpServerInstantTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointHttpServerInstantTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointHttpServerInstantTest.ModelBuilder builder() {
+    return new EndpointHttpServerInstantTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointHttpServerInstantTest.ModelBuilder toBuilder() {
+    EndpointHttpServerInstantTest.ModelBuilder builder = new EndpointHttpServerInstantTest.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .agents(getAgents())
+      .endpointAgentLabels(getEndpointAgentLabels())
+      .tagIds(getTagIds())
+      .maxMachines(getMaxMachines())
+      .testName(getTestName())
+      .ipVersion(getIpVersion())
+      .authType(getAuthType())
+      .hasPathTraceInSession(getHasPathTraceInSession())
+      .httpTimeLimit(getHttpTimeLimit())
+      .protocol(getProtocol())
+      .username(getUsername())
+      .sslVersionId(getSslVersionId())
+      .tcpProbeMode(getTcpProbeMode())
+      .verifyCertificate(getVerifyCertificate())
+      .url(getUrl())
+      .hasPing(getHasPing())
+      .hasTraceroute(getHasTraceroute())
+      .networkMeasurements(getNetworkMeasurements())
+      .targetResponseTime(getTargetResponseTime())
+      .password(getPassword());
+    return builder;
+  }
+
 }
 

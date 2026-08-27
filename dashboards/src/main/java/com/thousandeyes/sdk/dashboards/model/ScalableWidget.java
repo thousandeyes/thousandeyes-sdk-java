@@ -164,5 +164,69 @@ public class ScalableWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ScalableWidget instance;
+
+    public ModelBuilder() {
+      this(new ScalableWidget());
+    }
+
+    protected ModelBuilder(ScalableWidget instance) {
+      this.instance = instance;
+    }
+
+    public ScalableWidget.ModelBuilder minScale(Float minScale) {
+      this.instance.setMinScale(minScale);
+      return this;
+    }
+    public ScalableWidget.ModelBuilder maxScale(Float maxScale) {
+      this.instance.setMaxScale(maxScale);
+      return this;
+    }
+    public ScalableWidget.ModelBuilder unit(ApiWidgetFixedYScalePrefix unit) {
+      this.instance.setUnit(unit);
+      return this;
+    }
+
+    /**
+     * Returns a built ScalableWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ScalableWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ScalableWidget.ModelBuilder builder() {
+    return new ScalableWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ScalableWidget.ModelBuilder toBuilder() {
+    ScalableWidget.ModelBuilder builder = new ScalableWidget.ModelBuilder()
+      .minScale(getMinScale())
+      .maxScale(getMaxScale())
+      .unit(getUnit());
+    return builder;
+  }
+
 }
 

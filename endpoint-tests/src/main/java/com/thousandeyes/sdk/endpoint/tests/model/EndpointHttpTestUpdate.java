@@ -259,5 +259,84 @@ public class EndpointHttpTestUpdate {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointHttpTestUpdate instance;
+
+    public ModelBuilder() {
+      this(new EndpointHttpTestUpdate());
+    }
+
+    protected ModelBuilder(EndpointHttpTestUpdate instance) {
+      this.instance = instance;
+    }
+
+    public EndpointHttpTestUpdate.ModelBuilder interval(TestInterval interval) {
+      this.instance.setInterval(interval);
+      return this;
+    }
+    public EndpointHttpTestUpdate.ModelBuilder testName(String testName) {
+      this.instance.setTestName(testName);
+      return this;
+    }
+    public EndpointHttpTestUpdate.ModelBuilder protocol(EndpointTestProtocol protocol) {
+      this.instance.setProtocol(protocol);
+      return this;
+    }
+    public EndpointHttpTestUpdate.ModelBuilder isEnabled(Boolean isEnabled) {
+      this.instance.setIsEnabled(isEnabled);
+      return this;
+    }
+    public EndpointHttpTestUpdate.ModelBuilder tcpProbeMode(TestProbeMode tcpProbeMode) {
+      this.instance.setTcpProbeMode(tcpProbeMode);
+      return this;
+    }
+    public EndpointHttpTestUpdate.ModelBuilder url(String url) {
+      this.instance.setUrl(url);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointHttpTestUpdate instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointHttpTestUpdate build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointHttpTestUpdate.ModelBuilder builder() {
+    return new EndpointHttpTestUpdate.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointHttpTestUpdate.ModelBuilder toBuilder() {
+    EndpointHttpTestUpdate.ModelBuilder builder = new EndpointHttpTestUpdate.ModelBuilder()
+      .interval(getInterval())
+      .testName(getTestName())
+      .protocol(getProtocol())
+      .isEnabled(getIsEnabled())
+      .tcpProbeMode(getTcpProbeMode())
+      .url(getUrl());
+    return builder;
+  }
+
 }
 

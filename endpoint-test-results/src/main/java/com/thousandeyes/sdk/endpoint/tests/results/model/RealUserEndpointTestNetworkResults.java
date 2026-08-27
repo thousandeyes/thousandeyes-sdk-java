@@ -44,25 +44,17 @@ public class RealUserEndpointTestNetworkResults {
   private List<RealUserEndpointTestNetworkResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
+  @JsonProperty(JSON_PROPERTY_START_DATE)
   private OffsetDateTime startDate;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
+  @JsonProperty(JSON_PROPERTY_END_DATE)
   private OffsetDateTime endDate;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private PaginationNextLink links;
 
   public RealUserEndpointTestNetworkResults() { 
-  }
-
-  @JsonCreator
-  public RealUserEndpointTestNetworkResults(
-    @JsonProperty(JSON_PROPERTY_START_DATE) OffsetDateTime startDate, 
-    @JsonProperty(JSON_PROPERTY_END_DATE) OffsetDateTime endDate
-  ) {
-  this();
-    this.startDate = startDate;
-    this.endDate = endDate;
   }
 
   public RealUserEndpointTestNetworkResults results(List<RealUserEndpointTestNetworkResult> results) {
@@ -198,5 +190,74 @@ public class RealUserEndpointTestNetworkResults {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private RealUserEndpointTestNetworkResults instance;
+
+    public ModelBuilder() {
+      this(new RealUserEndpointTestNetworkResults());
+    }
+
+    protected ModelBuilder(RealUserEndpointTestNetworkResults instance) {
+      this.instance = instance;
+    }
+
+    public RealUserEndpointTestNetworkResults.ModelBuilder results(List<RealUserEndpointTestNetworkResult> results) {
+      this.instance.setResults(results);
+      return this;
+    }
+    public RealUserEndpointTestNetworkResults.ModelBuilder startDate(OffsetDateTime startDate) {
+      this.instance.startDate = startDate;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResults.ModelBuilder endDate(OffsetDateTime endDate) {
+      this.instance.endDate = endDate;
+      return this;
+    }
+    public RealUserEndpointTestNetworkResults.ModelBuilder links(PaginationNextLink links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built RealUserEndpointTestNetworkResults instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public RealUserEndpointTestNetworkResults build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static RealUserEndpointTestNetworkResults.ModelBuilder builder() {
+    return new RealUserEndpointTestNetworkResults.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public RealUserEndpointTestNetworkResults.ModelBuilder toBuilder() {
+    RealUserEndpointTestNetworkResults.ModelBuilder builder = new RealUserEndpointTestNetworkResults.ModelBuilder()
+      .results(getResults())
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

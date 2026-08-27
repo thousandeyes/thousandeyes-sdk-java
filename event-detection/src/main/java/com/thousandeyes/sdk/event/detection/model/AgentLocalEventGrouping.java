@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentLocalEventGrouping {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
+  @JsonProperty(JSON_PROPERTY_AGENT_ID)
   private String agentId;
 
   public AgentLocalEventGrouping() { 
-  }
-
-  @JsonCreator
-  public AgentLocalEventGrouping(
-    @JsonProperty(JSON_PROPERTY_AGENT_ID) String agentId
-  ) {
-  this();
-    this.agentId = agentId;
   }
 
    /**
@@ -99,5 +92,59 @@ public class AgentLocalEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentLocalEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new AgentLocalEventGrouping());
+    }
+
+    protected ModelBuilder(AgentLocalEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public AgentLocalEventGrouping.ModelBuilder agentId(String agentId) {
+      this.instance.agentId = agentId;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentLocalEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentLocalEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentLocalEventGrouping.ModelBuilder builder() {
+    return new AgentLocalEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentLocalEventGrouping.ModelBuilder toBuilder() {
+    AgentLocalEventGrouping.ModelBuilder builder = new AgentLocalEventGrouping.ModelBuilder()
+      .agentId(getAgentId());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class TestsUsage {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TestsUsage instance;
+
+    public ModelBuilder() {
+      this(new TestsUsage());
+    }
+
+    protected ModelBuilder(TestsUsage instance) {
+      this.instance = instance;
+    }
+
+    public TestsUsage.ModelBuilder breakdowns(List<UnitsByTests> breakdowns) {
+      this.instance.setBreakdowns(breakdowns);
+      return this;
+    }
+    public TestsUsage.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built TestsUsage instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TestsUsage build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TestsUsage.ModelBuilder builder() {
+    return new TestsUsage.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TestsUsage.ModelBuilder toBuilder() {
+    TestsUsage.ModelBuilder builder = new TestsUsage.ModelBuilder()
+      .breakdowns(getBreakdowns())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

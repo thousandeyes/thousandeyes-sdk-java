@@ -67,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class ApiStackedBarchartWidget {
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -76,6 +77,7 @@ public class ApiStackedBarchartWidget {
   private VisualMode visualMode = VisualMode.FULL;
 
   public static final String JSON_PROPERTY_EMBED_URL = "embedUrl";
+  @JsonProperty(JSON_PROPERTY_EMBED_URL)
   private String embedUrl;
 
   public static final String JSON_PROPERTY_IS_EMBEDDED = "isEmbedded";
@@ -100,6 +102,7 @@ public class ApiStackedBarchartWidget {
   private ApiDuration fixedTimespan;
 
   public static final String JSON_PROPERTY_API_LINK = "apiLink";
+  @JsonProperty(JSON_PROPERTY_API_LINK)
   private String apiLink;
 
   public static final String JSON_PROPERTY_SHOULD_EXCLUDE_ALERT_SUPPRESSION_WINDOWS = "shouldExcludeAlertSuppressionWindows";
@@ -133,18 +136,6 @@ public class ApiStackedBarchartWidget {
   private StackedBarChartDatasource dataSource;
 
   public ApiStackedBarchartWidget() { 
-  }
-
-  @JsonCreator
-  public ApiStackedBarchartWidget(
-    @JsonProperty(JSON_PROPERTY_ID) String id, 
-    @JsonProperty(JSON_PROPERTY_EMBED_URL) String embedUrl, 
-    @JsonProperty(JSON_PROPERTY_API_LINK) String apiLink
-  ) {
-  this();
-    this.id = id;
-    this.embedUrl = embedUrl;
-    this.apiLink = apiLink;
   }
 
    /**
@@ -762,5 +753,164 @@ public class ApiStackedBarchartWidget {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiStackedBarchartWidget instance;
+
+    public ModelBuilder() {
+      this(new ApiStackedBarchartWidget());
+    }
+
+    protected ModelBuilder(ApiStackedBarchartWidget instance) {
+      this.instance = instance;
+    }
+
+    public ApiStackedBarchartWidget.ModelBuilder id(String id) {
+      this.instance.id = id;
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder title(String title) {
+      this.instance.setTitle(title);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder visualMode(VisualMode visualMode) {
+      this.instance.setVisualMode(visualMode);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder embedUrl(String embedUrl) {
+      this.instance.embedUrl = embedUrl;
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder isEmbedded(Boolean isEmbedded) {
+      this.instance.setIsEmbedded(isEmbedded);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder metricGroup(MetricGroup metricGroup) {
+      this.instance.setMetricGroup(metricGroup);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder direction(DashboardMetricDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder metric(DashboardMetric metric) {
+      this.instance.setMetric(metric);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder filters(Map<String, Set<Object>> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder measure(ApiWidgetMeasure measure) {
+      this.instance.setMeasure(measure);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder fixedTimespan(ApiDuration fixedTimespan) {
+      this.instance.setFixedTimespan(fixedTimespan);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder apiLink(String apiLink) {
+      this.instance.apiLink = apiLink;
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder shouldExcludeAlertSuppressionWindows(Boolean shouldExcludeAlertSuppressionWindows) {
+      this.instance.setShouldExcludeAlertSuppressionWindows(shouldExcludeAlertSuppressionWindows);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder type(String type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder axisGroupBy(ApiAggregateProperty axisGroupBy) {
+      this.instance.setAxisGroupBy(axisGroupBy);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder sortBy(LegacyWidgetSortProperty sortBy) {
+      this.instance.setSortBy(sortBy);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder sortDirection(LegacyWidgetSortDirection sortDirection) {
+      this.instance.setSortDirection(sortDirection);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder limit(Integer limit) {
+      this.instance.setLimit(limit);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder showLabels(Boolean showLabels) {
+      this.instance.setShowLabels(showLabels);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder isHorizontalBarChart(Boolean isHorizontalBarChart) {
+      this.instance.setIsHorizontalBarChart(isHorizontalBarChart);
+      return this;
+    }
+    public ApiStackedBarchartWidget.ModelBuilder dataSource(StackedBarChartDatasource dataSource) {
+      this.instance.setDataSource(dataSource);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiStackedBarchartWidget instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiStackedBarchartWidget build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiStackedBarchartWidget.ModelBuilder builder() {
+    return new ApiStackedBarchartWidget.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiStackedBarchartWidget.ModelBuilder toBuilder() {
+    ApiStackedBarchartWidget.ModelBuilder builder = new ApiStackedBarchartWidget.ModelBuilder()
+      .id(getId())
+      .title(getTitle())
+      .visualMode(getVisualMode())
+      .embedUrl(getEmbedUrl())
+      .isEmbedded(getIsEmbedded())
+      .metricGroup(getMetricGroup())
+      .direction(getDirection())
+      .metric(getMetric())
+      .filters(getFilters())
+      .measure(getMeasure())
+      .fixedTimespan(getFixedTimespan())
+      .apiLink(getApiLink())
+      .shouldExcludeAlertSuppressionWindows(getShouldExcludeAlertSuppressionWindows())
+      .links(getLinks())
+      .type(getType())
+      .axisGroupBy(getAxisGroupBy())
+      .sortBy(getSortBy())
+      .sortDirection(getSortDirection())
+      .limit(getLimit())
+      .showLabels(getShowLabels())
+      .isHorizontalBarChart(getIsHorizontalBarChart())
+      .dataSource(getDataSource());
+    return builder;
+  }
+
 }
 

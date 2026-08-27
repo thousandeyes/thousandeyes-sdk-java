@@ -463,5 +463,109 @@ public class PutStream {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private PutStream instance;
+
+    public ModelBuilder() {
+      this(new PutStream());
+    }
+
+    protected ModelBuilder(PutStream instance) {
+      this.instance = instance;
+    }
+
+    public PutStream.ModelBuilder name(String name) {
+      this.instance.setName(name);
+      return this;
+    }
+    public PutStream.ModelBuilder customHeaders(Map<String, String> customHeaders) {
+      this.instance.setCustomHeaders(customHeaders);
+      return this;
+    }
+    public PutStream.ModelBuilder streamEndpointUrl(String streamEndpointUrl) {
+      this.instance.setStreamEndpointUrl(streamEndpointUrl);
+      return this;
+    }
+    public PutStream.ModelBuilder tagMatch(List<TagMatch> tagMatch) {
+      this.instance.setTagMatch(tagMatch);
+      return this;
+    }
+    public PutStream.ModelBuilder testMatch(List<TestMatch> testMatch) {
+      this.instance.setTestMatch(testMatch);
+      return this;
+    }
+    public PutStream.ModelBuilder enabled(Boolean enabled) {
+      this.instance.setEnabled(enabled);
+      return this;
+    }
+    public PutStream.ModelBuilder filters(Filters filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public PutStream.ModelBuilder inputConfig(InputConfig inputConfig) {
+      this.instance.setInputConfig(inputConfig);
+      return this;
+    }
+    public PutStream.ModelBuilder exporterConfig(ExporterConfig exporterConfig) {
+      this.instance.setExporterConfig(exporterConfig);
+      return this;
+    }
+    public PutStream.ModelBuilder endpointAgentLabel(List<EndpointAgentLabel> endpointAgentLabel) {
+      this.instance.setEndpointAgentLabel(endpointAgentLabel);
+      return this;
+    }
+    public PutStream.ModelBuilder endpointAgentTag(List<EndpointAgentTag> endpointAgentTag) {
+      this.instance.setEndpointAgentTag(endpointAgentTag);
+      return this;
+    }
+
+    /**
+     * Returns a built PutStream instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public PutStream build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static PutStream.ModelBuilder builder() {
+    return new PutStream.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public PutStream.ModelBuilder toBuilder() {
+    PutStream.ModelBuilder builder = new PutStream.ModelBuilder()
+      .name(getName())
+      .customHeaders(getCustomHeaders())
+      .streamEndpointUrl(getStreamEndpointUrl())
+      .tagMatch(getTagMatch())
+      .testMatch(getTestMatch())
+      .enabled(getEnabled())
+      .filters(getFilters())
+      .inputConfig(getInputConfig())
+      .exporterConfig(getExporterConfig())
+      .endpointAgentLabel(getEndpointAgentLabel())
+      .endpointAgentTag(getEndpointAgentTag());
+    return builder;
+  }
+
 }
 

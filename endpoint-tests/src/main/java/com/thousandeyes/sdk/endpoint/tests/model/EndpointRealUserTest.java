@@ -41,12 +41,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class EndpointRealUserTest {
   public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
   private String profileId;
 
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
   private String name;
 
   public static final String JSON_PROPERTY_INCLUDED_DOMAINS = "includedDomains";
@@ -59,16 +61,6 @@ public class EndpointRealUserTest {
   private EndpointMonitoringSettings monitoringSettings;
 
   public EndpointRealUserTest() { 
-  }
-
-  @JsonCreator
-  public EndpointRealUserTest(
-    @JsonProperty(JSON_PROPERTY_PROFILE_ID) String profileId, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
-  ) {
-  this();
-    this.profileId = profileId;
-    this.name = name;
   }
 
    /**
@@ -266,5 +258,84 @@ public class EndpointRealUserTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointRealUserTest instance;
+
+    public ModelBuilder() {
+      this(new EndpointRealUserTest());
+    }
+
+    protected ModelBuilder(EndpointRealUserTest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointRealUserTest.ModelBuilder profileId(String profileId) {
+      this.instance.profileId = profileId;
+      return this;
+    }
+    public EndpointRealUserTest.ModelBuilder aid(String aid) {
+      this.instance.setAid(aid);
+      return this;
+    }
+    public EndpointRealUserTest.ModelBuilder name(String name) {
+      this.instance.name = name;
+      return this;
+    }
+    public EndpointRealUserTest.ModelBuilder includedDomains(List<String> includedDomains) {
+      this.instance.setIncludedDomains(includedDomains);
+      return this;
+    }
+    public EndpointRealUserTest.ModelBuilder excludedDomains(List<String> excludedDomains) {
+      this.instance.setExcludedDomains(excludedDomains);
+      return this;
+    }
+    public EndpointRealUserTest.ModelBuilder monitoringSettings(EndpointMonitoringSettings monitoringSettings) {
+      this.instance.setMonitoringSettings(monitoringSettings);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointRealUserTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointRealUserTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointRealUserTest.ModelBuilder builder() {
+    return new EndpointRealUserTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointRealUserTest.ModelBuilder toBuilder() {
+    EndpointRealUserTest.ModelBuilder builder = new EndpointRealUserTest.ModelBuilder()
+      .profileId(getProfileId())
+      .aid(getAid())
+      .name(getName())
+      .includedDomains(getIncludedDomains())
+      .excludedDomains(getExcludedDomains())
+      .monitoringSettings(getMonitoringSettings());
+    return builder;
+  }
+
 }
 

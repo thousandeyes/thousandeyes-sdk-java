@@ -132,5 +132,64 @@ public class ExternalMetadataItem {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ExternalMetadataItem instance;
+
+    public ModelBuilder() {
+      this(new ExternalMetadataItem());
+    }
+
+    protected ModelBuilder(ExternalMetadataItem instance) {
+      this.instance = instance;
+    }
+
+    public ExternalMetadataItem.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public ExternalMetadataItem.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+
+    /**
+     * Returns a built ExternalMetadataItem instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ExternalMetadataItem build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ExternalMetadataItem.ModelBuilder builder() {
+    return new ExternalMetadataItem.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ExternalMetadataItem.ModelBuilder toBuilder() {
+    ExternalMetadataItem.ModelBuilder builder = new ExternalMetadataItem.ModelBuilder()
+      .key(getKey())
+      .value(getValue());
+    return builder;
+  }
+
 }
 

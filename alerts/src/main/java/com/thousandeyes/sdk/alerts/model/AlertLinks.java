@@ -195,5 +195,74 @@ public class AlertLinks {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertLinks instance;
+
+    public ModelBuilder() {
+      this(new AlertLinks());
+    }
+
+    protected ModelBuilder(AlertLinks instance) {
+      this.instance = instance;
+    }
+
+    public AlertLinks.ModelBuilder test(Link test) {
+      this.instance.setTest(test);
+      return this;
+    }
+    public AlertLinks.ModelBuilder rule(Link rule) {
+      this.instance.setRule(rule);
+      return this;
+    }
+    public AlertLinks.ModelBuilder appLink(Link appLink) {
+      this.instance.setAppLink(appLink);
+      return this;
+    }
+    public AlertLinks.ModelBuilder self(Link self) {
+      this.instance.setSelf(self);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertLinks instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertLinks build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertLinks.ModelBuilder builder() {
+    return new AlertLinks.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertLinks.ModelBuilder toBuilder() {
+    AlertLinks.ModelBuilder builder = new AlertLinks.ModelBuilder()
+      .test(getTest())
+      .rule(getRule())
+      .appLink(getAppLink())
+      .self(getSelf());
+    return builder;
+  }
+
 }
 

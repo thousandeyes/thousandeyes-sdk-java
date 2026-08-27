@@ -33,22 +33,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AgentBranchEventGrouping {
   public static final String JSON_PROPERTY_ASN = "asn";
+  @JsonProperty(JSON_PROPERTY_ASN)
   private Integer asn;
 
   public static final String JSON_PROPERTY_ASN_CITY = "asnCity";
+  @JsonProperty(JSON_PROPERTY_ASN_CITY)
   private String asnCity;
 
   public AgentBranchEventGrouping() { 
-  }
-
-  @JsonCreator
-  public AgentBranchEventGrouping(
-    @JsonProperty(JSON_PROPERTY_ASN) Integer asn, 
-    @JsonProperty(JSON_PROPERTY_ASN_CITY) String asnCity
-  ) {
-  this();
-    this.asn = asn;
-    this.asnCity = asnCity;
   }
 
    /**
@@ -122,5 +114,64 @@ public class AgentBranchEventGrouping {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentBranchEventGrouping instance;
+
+    public ModelBuilder() {
+      this(new AgentBranchEventGrouping());
+    }
+
+    protected ModelBuilder(AgentBranchEventGrouping instance) {
+      this.instance = instance;
+    }
+
+    public AgentBranchEventGrouping.ModelBuilder asn(Integer asn) {
+      this.instance.asn = asn;
+      return this;
+    }
+    public AgentBranchEventGrouping.ModelBuilder asnCity(String asnCity) {
+      this.instance.asnCity = asnCity;
+      return this;
+    }
+
+    /**
+     * Returns a built AgentBranchEventGrouping instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentBranchEventGrouping build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentBranchEventGrouping.ModelBuilder builder() {
+    return new AgentBranchEventGrouping.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentBranchEventGrouping.ModelBuilder toBuilder() {
+    AgentBranchEventGrouping.ModelBuilder builder = new AgentBranchEventGrouping.ModelBuilder()
+      .asn(getAsn())
+      .asnCity(getAsnCity());
+    return builder;
+  }
+
 }
 

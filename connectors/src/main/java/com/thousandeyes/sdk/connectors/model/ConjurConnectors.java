@@ -145,5 +145,64 @@ public class ConjurConnectors {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConjurConnectors instance;
+
+    public ModelBuilder() {
+      this(new ConjurConnectors());
+    }
+
+    protected ModelBuilder(ConjurConnectors instance) {
+      this.instance = instance;
+    }
+
+    public ConjurConnectors.ModelBuilder items(List<ConjurConnector> items) {
+      this.instance.setItems(items);
+      return this;
+    }
+    public ConjurConnectors.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built ConjurConnectors instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConjurConnectors build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConjurConnectors.ModelBuilder builder() {
+    return new ConjurConnectors.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConjurConnectors.ModelBuilder toBuilder() {
+    ConjurConnectors.ModelBuilder builder = new ConjurConnectors.ModelBuilder()
+      .items(getItems())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

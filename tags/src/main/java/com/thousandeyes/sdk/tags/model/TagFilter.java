@@ -207,5 +207,74 @@ public class TagFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private TagFilter instance;
+
+    public ModelBuilder() {
+      this(new TagFilter());
+    }
+
+    protected ModelBuilder(TagFilter instance) {
+      this.instance = instance;
+    }
+
+    public TagFilter.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public TagFilter.ModelBuilder values(List<String> values) {
+      this.instance.setValues(values);
+      return this;
+    }
+    public TagFilter.ModelBuilder mode(TagFilterMode mode) {
+      this.instance.setMode(mode);
+      return this;
+    }
+    public TagFilter.ModelBuilder scope(TagFilterScope scope) {
+      this.instance.setScope(scope);
+      return this;
+    }
+
+    /**
+     * Returns a built TagFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public TagFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static TagFilter.ModelBuilder builder() {
+    return new TagFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public TagFilter.ModelBuilder toBuilder() {
+    TagFilter.ModelBuilder builder = new TagFilter.ModelBuilder()
+      .key(getKey())
+      .values(getValues())
+      .mode(getMode())
+      .scope(getScope());
+    return builder;
+  }
+
 }
 

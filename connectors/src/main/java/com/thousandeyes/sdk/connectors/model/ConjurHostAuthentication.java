@@ -164,5 +164,69 @@ public class ConjurHostAuthentication {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ConjurHostAuthentication instance;
+
+    public ModelBuilder() {
+      this(new ConjurHostAuthentication());
+    }
+
+    protected ModelBuilder(ConjurHostAuthentication instance) {
+      this.instance = instance;
+    }
+
+    public ConjurHostAuthentication.ModelBuilder hostId(String hostId) {
+      this.instance.setHostId(hostId);
+      return this;
+    }
+    public ConjurHostAuthentication.ModelBuilder apiKey(String apiKey) {
+      this.instance.setApiKey(apiKey);
+      return this;
+    }
+    public ConjurHostAuthentication.ModelBuilder type(AuthenticationType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built ConjurHostAuthentication instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ConjurHostAuthentication build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ConjurHostAuthentication.ModelBuilder builder() {
+    return new ConjurHostAuthentication.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ConjurHostAuthentication.ModelBuilder toBuilder() {
+    ConjurHostAuthentication.ModelBuilder builder = new ConjurHostAuthentication.ModelBuilder()
+      .hostId(getHostId())
+      .apiKey(getApiKey())
+      .type(getType());
+    return builder;
+  }
+
 }
 

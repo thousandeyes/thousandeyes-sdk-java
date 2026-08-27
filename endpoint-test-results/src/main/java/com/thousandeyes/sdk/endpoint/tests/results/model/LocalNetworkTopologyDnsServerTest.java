@@ -32,17 +32,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class LocalNetworkTopologyDnsServerTest {
   public static final String JSON_PROPERTY_RESOLUTION_TIME = "resolutionTime";
+  @JsonProperty(JSON_PROPERTY_RESOLUTION_TIME)
   private Integer resolutionTime;
 
   public LocalNetworkTopologyDnsServerTest() { 
-  }
-
-  @JsonCreator
-  public LocalNetworkTopologyDnsServerTest(
-    @JsonProperty(JSON_PROPERTY_RESOLUTION_TIME) Integer resolutionTime
-  ) {
-  this();
-    this.resolutionTime = resolutionTime;
   }
 
    /**
@@ -99,5 +92,59 @@ public class LocalNetworkTopologyDnsServerTest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private LocalNetworkTopologyDnsServerTest instance;
+
+    public ModelBuilder() {
+      this(new LocalNetworkTopologyDnsServerTest());
+    }
+
+    protected ModelBuilder(LocalNetworkTopologyDnsServerTest instance) {
+      this.instance = instance;
+    }
+
+    public LocalNetworkTopologyDnsServerTest.ModelBuilder resolutionTime(Integer resolutionTime) {
+      this.instance.resolutionTime = resolutionTime;
+      return this;
+    }
+
+    /**
+     * Returns a built LocalNetworkTopologyDnsServerTest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public LocalNetworkTopologyDnsServerTest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static LocalNetworkTopologyDnsServerTest.ModelBuilder builder() {
+    return new LocalNetworkTopologyDnsServerTest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public LocalNetworkTopologyDnsServerTest.ModelBuilder toBuilder() {
+    LocalNetworkTopologyDnsServerTest.ModelBuilder builder = new LocalNetworkTopologyDnsServerTest.ModelBuilder()
+      .resolutionTime(getResolutionTime());
+    return builder;
+  }
+
 }
 

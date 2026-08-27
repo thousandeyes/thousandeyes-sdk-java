@@ -780,5 +780,159 @@ public class UsageDetails {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private UsageDetails instance;
+
+    public ModelBuilder() {
+      this(new UsageDetails());
+    }
+
+    protected ModelBuilder(UsageDetails instance) {
+      this.instance = instance;
+    }
+
+    public UsageDetails.ModelBuilder quota(UsageQuota quota) {
+      this.instance.setQuota(quota);
+      return this;
+    }
+    public UsageDetails.ModelBuilder cloudUnitsUsed(Long cloudUnitsUsed) {
+      this.instance.setCloudUnitsUsed(cloudUnitsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder cloudUnitsProjected(Long cloudUnitsProjected) {
+      this.instance.setCloudUnitsProjected(cloudUnitsProjected);
+      return this;
+    }
+    public UsageDetails.ModelBuilder cloudUnitsNextBillingPeriod(Long cloudUnitsNextBillingPeriod) {
+      this.instance.setCloudUnitsNextBillingPeriod(cloudUnitsNextBillingPeriod);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseUnitsUsed(Long enterpriseUnitsUsed) {
+      this.instance.setEnterpriseUnitsUsed(enterpriseUnitsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseUnitsProjected(Long enterpriseUnitsProjected) {
+      this.instance.setEnterpriseUnitsProjected(enterpriseUnitsProjected);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseUnitsNextBillingPeriod(Long enterpriseUnitsNextBillingPeriod) {
+      this.instance.setEnterpriseUnitsNextBillingPeriod(enterpriseUnitsNextBillingPeriod);
+      return this;
+    }
+    public UsageDetails.ModelBuilder connectedDevicesUnitsUsed(Long connectedDevicesUnitsUsed) {
+      this.instance.setConnectedDevicesUnitsUsed(connectedDevicesUnitsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder connectedDevicesUnitsProjected(Long connectedDevicesUnitsProjected) {
+      this.instance.setConnectedDevicesUnitsProjected(connectedDevicesUnitsProjected);
+      return this;
+    }
+    public UsageDetails.ModelBuilder connectedDevicesUnitsNextBillingPeriod(Long connectedDevicesUnitsNextBillingPeriod) {
+      this.instance.setConnectedDevicesUnitsNextBillingPeriod(connectedDevicesUnitsNextBillingPeriod);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgentsUsed(Long endpointAgentsUsed) {
+      this.instance.setEndpointAgentsUsed(endpointAgentsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgentsEssentialsUsed(Long endpointAgentsEssentialsUsed) {
+      this.instance.setEndpointAgentsEssentialsUsed(endpointAgentsEssentialsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgentsEmbeddedUsed(Long endpointAgentsEmbeddedUsed) {
+      this.instance.setEndpointAgentsEmbeddedUsed(endpointAgentsEmbeddedUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseAgentsUsed(Long enterpriseAgentsUsed) {
+      this.instance.setEnterpriseAgentsUsed(enterpriseAgentsUsed);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseAgentUnits(List<EnterpriseAgentUnits> enterpriseAgentUnits) {
+      this.instance.setEnterpriseAgentUnits(enterpriseAgentUnits);
+      return this;
+    }
+    public UsageDetails.ModelBuilder tests(List<TestUsage> tests) {
+      this.instance.setTests(tests);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgents(List<EndpointAgentsUsage> endpointAgents) {
+      this.instance.setEndpointAgents(endpointAgents);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgentsEssentials(List<EndpointAgentsEssentials> endpointAgentsEssentials) {
+      this.instance.setEndpointAgentsEssentials(endpointAgentsEssentials);
+      return this;
+    }
+    public UsageDetails.ModelBuilder endpointAgentsEmbedded(List<EndpointAgentsEmbedded> endpointAgentsEmbedded) {
+      this.instance.setEndpointAgentsEmbedded(endpointAgentsEmbedded);
+      return this;
+    }
+    public UsageDetails.ModelBuilder enterpriseAgents(List<EnterpriseAgents> enterpriseAgents) {
+      this.instance.setEnterpriseAgents(enterpriseAgents);
+      return this;
+    }
+    public UsageDetails.ModelBuilder allocations(UnitAllocationSummary allocations) {
+      this.instance.setAllocations(allocations);
+      return this;
+    }
+
+    /**
+     * Returns a built UsageDetails instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public UsageDetails build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static UsageDetails.ModelBuilder builder() {
+    return new UsageDetails.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public UsageDetails.ModelBuilder toBuilder() {
+    UsageDetails.ModelBuilder builder = new UsageDetails.ModelBuilder()
+      .quota(getQuota())
+      .cloudUnitsUsed(getCloudUnitsUsed())
+      .cloudUnitsProjected(getCloudUnitsProjected())
+      .cloudUnitsNextBillingPeriod(getCloudUnitsNextBillingPeriod())
+      .enterpriseUnitsUsed(getEnterpriseUnitsUsed())
+      .enterpriseUnitsProjected(getEnterpriseUnitsProjected())
+      .enterpriseUnitsNextBillingPeriod(getEnterpriseUnitsNextBillingPeriod())
+      .connectedDevicesUnitsUsed(getConnectedDevicesUnitsUsed())
+      .connectedDevicesUnitsProjected(getConnectedDevicesUnitsProjected())
+      .connectedDevicesUnitsNextBillingPeriod(getConnectedDevicesUnitsNextBillingPeriod())
+      .endpointAgentsUsed(getEndpointAgentsUsed())
+      .endpointAgentsEssentialsUsed(getEndpointAgentsEssentialsUsed())
+      .endpointAgentsEmbeddedUsed(getEndpointAgentsEmbeddedUsed())
+      .enterpriseAgentsUsed(getEnterpriseAgentsUsed())
+      .enterpriseAgentUnits(getEnterpriseAgentUnits())
+      .tests(getTests())
+      .endpointAgents(getEndpointAgents())
+      .endpointAgentsEssentials(getEndpointAgentsEssentials())
+      .endpointAgentsEmbedded(getEndpointAgentsEmbedded())
+      .enterpriseAgents(getEnterpriseAgents())
+      .allocations(getAllocations());
+    return builder;
+  }
+
 }
 

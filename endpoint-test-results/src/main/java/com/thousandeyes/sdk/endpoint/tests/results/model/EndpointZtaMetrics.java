@@ -226,5 +226,79 @@ public class EndpointZtaMetrics {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointZtaMetrics instance;
+
+    public ModelBuilder() {
+      this(new EndpointZtaMetrics());
+    }
+
+    protected ModelBuilder(EndpointZtaMetrics instance) {
+      this.instance = instance;
+    }
+
+    public EndpointZtaMetrics.ModelBuilder loss(Double loss) {
+      this.instance.setLoss(loss);
+      return this;
+    }
+    public EndpointZtaMetrics.ModelBuilder avgLatency(Long avgLatency) {
+      this.instance.setAvgLatency(avgLatency);
+      return this;
+    }
+    public EndpointZtaMetrics.ModelBuilder jitter(Long jitter) {
+      this.instance.setJitter(jitter);
+      return this;
+    }
+    public EndpointZtaMetrics.ModelBuilder errorMessage(String errorMessage) {
+      this.instance.setErrorMessage(errorMessage);
+      return this;
+    }
+    public EndpointZtaMetrics.ModelBuilder type(EndpointZtaSegmentType type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointZtaMetrics instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointZtaMetrics build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointZtaMetrics.ModelBuilder builder() {
+    return new EndpointZtaMetrics.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointZtaMetrics.ModelBuilder toBuilder() {
+    EndpointZtaMetrics.ModelBuilder builder = new EndpointZtaMetrics.ModelBuilder()
+      .loss(getLoss())
+      .avgLatency(getAvgLatency())
+      .jitter(getJitter())
+      .errorMessage(getErrorMessage())
+      .type(getType());
+    return builder;
+  }
+
 }
 

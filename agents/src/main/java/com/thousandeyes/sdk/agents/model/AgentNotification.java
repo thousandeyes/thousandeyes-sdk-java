@@ -184,5 +184,69 @@ public class AgentNotification {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AgentNotification instance;
+
+    public ModelBuilder() {
+      this(new AgentNotification());
+    }
+
+    protected ModelBuilder(AgentNotification instance) {
+      this.instance = instance;
+    }
+
+    public AgentNotification.ModelBuilder email(AlertEmail email) {
+      this.instance.setEmail(email);
+      return this;
+    }
+    public AgentNotification.ModelBuilder thirdParty(List<AlertIntegrationBase> thirdParty) {
+      this.instance.setThirdParty(thirdParty);
+      return this;
+    }
+    public AgentNotification.ModelBuilder webhook(List<AlertIntegrationBase> webhook) {
+      this.instance.setWebhook(webhook);
+      return this;
+    }
+
+    /**
+     * Returns a built AgentNotification instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AgentNotification build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AgentNotification.ModelBuilder builder() {
+    return new AgentNotification.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AgentNotification.ModelBuilder toBuilder() {
+    AgentNotification.ModelBuilder builder = new AgentNotification.ModelBuilder()
+      .email(getEmail())
+      .thirdParty(getThirdParty())
+      .webhook(getWebhook());
+    return builder;
+  }
+
 }
 

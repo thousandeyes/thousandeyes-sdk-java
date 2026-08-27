@@ -62,21 +62,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Tag {
   public static final String JSON_PROPERTY_ASSIGNMENTS = "assignments";
+  @JsonProperty(JSON_PROPERTY_ASSIGNMENTS)
   private List<Assignment> assignments = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ACCESS_TYPE = "accessType";
   private AccessType accessType;
 
   public static final String JSON_PROPERTY_AID = "aid";
+  @JsonProperty(JSON_PROPERTY_AID)
   private Long aid;
 
   public static final String JSON_PROPERTY_BUILT_IN = "builtIn";
+  @JsonProperty(JSON_PROPERTY_BUILT_IN)
   private Boolean builtIn;
 
   public static final String JSON_PROPERTY_COLOR = "color";
   private String color;
 
   public static final String JSON_PROPERTY_CREATE_DATE = "createDate";
+  @JsonProperty(JSON_PROPERTY_CREATE_DATE)
   private String createDate;
 
   public static final String JSON_PROPERTY_ICON = "icon";
@@ -86,15 +90,18 @@ public class Tag {
   private String description;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @JsonProperty(JSON_PROPERTY_ID)
   private UUID id;
 
   public static final String JSON_PROPERTY_KEY = "key";
   private String key;
 
   public static final String JSON_PROPERTY_LEGACY_ID = "legacyId";
+  @JsonProperty(JSON_PROPERTY_LEGACY_ID)
   private BigDecimal legacyId;
 
   public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
+  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
   private OffsetDateTime modifiedDate;
 
   public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
@@ -116,26 +123,6 @@ public class Tag {
   private SelfLinks links;
 
   public Tag() { 
-  }
-
-  @JsonCreator
-  public Tag(
-    @JsonProperty(JSON_PROPERTY_ASSIGNMENTS) List<Assignment> assignments, 
-    @JsonProperty(JSON_PROPERTY_AID) Long aid, 
-    @JsonProperty(JSON_PROPERTY_BUILT_IN) Boolean builtIn, 
-    @JsonProperty(JSON_PROPERTY_CREATE_DATE) String createDate, 
-    @JsonProperty(JSON_PROPERTY_ID) UUID id, 
-    @JsonProperty(JSON_PROPERTY_LEGACY_ID) BigDecimal legacyId, 
-    @JsonProperty(JSON_PROPERTY_MODIFIED_DATE) OffsetDateTime modifiedDate
-  ) {
-  this();
-    this.assignments = assignments;
-    this.aid = aid;
-    this.builtIn = builtIn;
-    this.createDate = createDate;
-    this.id = id;
-    this.legacyId = legacyId;
-    this.modifiedDate = modifiedDate;
   }
 
    /**
@@ -599,5 +586,144 @@ public class Tag {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Tag instance;
+
+    public ModelBuilder() {
+      this(new Tag());
+    }
+
+    protected ModelBuilder(Tag instance) {
+      this.instance = instance;
+    }
+
+    public Tag.ModelBuilder assignments(List<Assignment> assignments) {
+      this.instance.assignments = assignments;
+      return this;
+    }
+    public Tag.ModelBuilder accessType(AccessType accessType) {
+      this.instance.setAccessType(accessType);
+      return this;
+    }
+    public Tag.ModelBuilder aid(Long aid) {
+      this.instance.aid = aid;
+      return this;
+    }
+    public Tag.ModelBuilder builtIn(Boolean builtIn) {
+      this.instance.builtIn = builtIn;
+      return this;
+    }
+    public Tag.ModelBuilder color(String color) {
+      this.instance.setColor(color);
+      return this;
+    }
+    public Tag.ModelBuilder createDate(String createDate) {
+      this.instance.createDate = createDate;
+      return this;
+    }
+    public Tag.ModelBuilder icon(String icon) {
+      this.instance.setIcon(icon);
+      return this;
+    }
+    public Tag.ModelBuilder description(String description) {
+      this.instance.setDescription(description);
+      return this;
+    }
+    public Tag.ModelBuilder id(UUID id) {
+      this.instance.id = id;
+      return this;
+    }
+    public Tag.ModelBuilder key(String key) {
+      this.instance.setKey(key);
+      return this;
+    }
+    public Tag.ModelBuilder legacyId(BigDecimal legacyId) {
+      this.instance.legacyId = legacyId;
+      return this;
+    }
+    public Tag.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+      this.instance.modifiedDate = modifiedDate;
+      return this;
+    }
+    public Tag.ModelBuilder objectType(ObjectType objectType) {
+      this.instance.setObjectType(objectType);
+      return this;
+    }
+    public Tag.ModelBuilder type(Type type) {
+      this.instance.setType(type);
+      return this;
+    }
+    public Tag.ModelBuilder value(String value) {
+      this.instance.setValue(value);
+      return this;
+    }
+    public Tag.ModelBuilder matchType(TagMatchType matchType) {
+      this.instance.setMatchType(matchType);
+      return this;
+    }
+    public Tag.ModelBuilder filters(List<TagFilter> filters) {
+      this.instance.setFilters(filters);
+      return this;
+    }
+    public Tag.ModelBuilder links(SelfLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Tag instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Tag build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Tag.ModelBuilder builder() {
+    return new Tag.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Tag.ModelBuilder toBuilder() {
+    Tag.ModelBuilder builder = new Tag.ModelBuilder()
+      .assignments(getAssignments())
+      .accessType(getAccessType())
+      .aid(getAid())
+      .builtIn(getBuiltIn())
+      .color(getColor())
+      .createDate(getCreateDate())
+      .icon(getIcon())
+      .description(getDescription())
+      .id(getId())
+      .key(getKey())
+      .legacyId(getLegacyId())
+      .modifiedDate(getModifiedDate())
+      .objectType(getObjectType())
+      .type(getType())
+      .value(getValue())
+      .matchType(getMatchType())
+      .filters(getFilters())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 

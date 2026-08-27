@@ -64,69 +64,89 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class NetworkTestResult {
   public static final String JSON_PROPERTY_DATE = "date";
+  @JsonProperty(JSON_PROPERTY_DATE)
   private OffsetDateTime date;
 
   public static final String JSON_PROPERTY_ROUND_ID = "roundId";
+  @JsonProperty(JSON_PROPERTY_ROUND_ID)
   private Integer roundId;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private TestResultAppLinks links;
 
   public static final String JSON_PROPERTY_START_TIME = "startTime";
+  @JsonProperty(JSON_PROPERTY_START_TIME)
   private Integer startTime;
 
   public static final String JSON_PROPERTY_END_TIME = "endTime";
+  @JsonProperty(JSON_PROPERTY_END_TIME)
   private Integer endTime;
 
   public static final String JSON_PROPERTY_AVAILABLE_BANDWIDTH = "availableBandwidth";
+  @JsonProperty(JSON_PROPERTY_AVAILABLE_BANDWIDTH)
   private Double availableBandwidth;
 
   public static final String JSON_PROPERTY_AVG_LATENCY = "avgLatency";
+  @JsonProperty(JSON_PROPERTY_AVG_LATENCY)
   private Double avgLatency;
 
   public static final String JSON_PROPERTY_BANDWIDTH = "bandwidth";
+  @JsonProperty(JSON_PROPERTY_BANDWIDTH)
   private Double bandwidth;
 
   public static final String JSON_PROPERTY_CAPACITY = "capacity";
+  @JsonProperty(JSON_PROPERTY_CAPACITY)
   private Double capacity;
 
   public static final String JSON_PROPERTY_JITTER = "jitter";
+  @JsonProperty(JSON_PROPERTY_JITTER)
   private Double jitter;
 
   public static final String JSON_PROPERTY_LOSS = "loss";
+  @JsonProperty(JSON_PROPERTY_LOSS)
   private Double loss;
 
   public static final String JSON_PROPERTY_MAX_LATENCY = "maxLatency";
+  @JsonProperty(JSON_PROPERTY_MAX_LATENCY)
   private Double maxLatency;
 
   public static final String JSON_PROPERTY_MIN_LATENCY = "minLatency";
+  @JsonProperty(JSON_PROPERTY_MIN_LATENCY)
   private Double minLatency;
 
   public static final String JSON_PROPERTY_PROXY_LOSS = "proxyLoss";
+  @JsonProperty(JSON_PROPERTY_PROXY_LOSS)
   private Float proxyLoss;
 
   public static final String JSON_PROPERTY_PROXY_AVERAGE_LATENCY = "proxyAverageLatency";
+  @JsonProperty(JSON_PROPERTY_PROXY_AVERAGE_LATENCY)
   private Float proxyAverageLatency;
 
   public static final String JSON_PROPERTY_PROXY_MIN_LATENCY = "proxyMinLatency";
+  @JsonProperty(JSON_PROPERTY_PROXY_MIN_LATENCY)
   private Float proxyMinLatency;
 
   public static final String JSON_PROPERTY_PROXY_MAX_LATENCY = "proxyMaxLatency";
+  @JsonProperty(JSON_PROPERTY_PROXY_MAX_LATENCY)
   private Float proxyMaxLatency;
 
   public static final String JSON_PROPERTY_PROXY_JITTER = "proxyJitter";
+  @JsonProperty(JSON_PROPERTY_PROXY_JITTER)
   private Float proxyJitter;
 
   public static final String JSON_PROPERTY_PACKETS_BY_SECOND = "packetsBySecond";
+  @JsonProperty(JSON_PROPERTY_PACKETS_BY_SECOND)
   private List<List<Integer>> packetsBySecond = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENT = "agent";
   private TestResultAgent agent;
 
   public static final String JSON_PROPERTY_SERVER_IP = "serverIp";
+  @JsonProperty(JSON_PROPERTY_SERVER_IP)
   private String serverIp;
 
   public static final String JSON_PROPERTY_SERVER = "server";
+  @JsonProperty(JSON_PROPERTY_SERVER)
   private String server;
 
   public static final String JSON_PROPERTY_HEALTH_SCORE = "healthScore";
@@ -136,57 +156,10 @@ public class NetworkTestResult {
   private TestDirection direction = TestDirection.TO_TARGET;
 
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
+  @JsonProperty(JSON_PROPERTY_ERROR_DETAILS)
   private String errorDetails;
 
   public NetworkTestResult() { 
-  }
-
-  @JsonCreator
-  public NetworkTestResult(
-    @JsonProperty(JSON_PROPERTY_DATE) OffsetDateTime date, 
-    @JsonProperty(JSON_PROPERTY_ROUND_ID) Integer roundId, 
-    @JsonProperty(JSON_PROPERTY_START_TIME) Integer startTime, 
-    @JsonProperty(JSON_PROPERTY_END_TIME) Integer endTime, 
-    @JsonProperty(JSON_PROPERTY_AVAILABLE_BANDWIDTH) Double availableBandwidth, 
-    @JsonProperty(JSON_PROPERTY_AVG_LATENCY) Double avgLatency, 
-    @JsonProperty(JSON_PROPERTY_BANDWIDTH) Double bandwidth, 
-    @JsonProperty(JSON_PROPERTY_CAPACITY) Double capacity, 
-    @JsonProperty(JSON_PROPERTY_JITTER) Double jitter, 
-    @JsonProperty(JSON_PROPERTY_LOSS) Double loss, 
-    @JsonProperty(JSON_PROPERTY_MAX_LATENCY) Double maxLatency, 
-    @JsonProperty(JSON_PROPERTY_MIN_LATENCY) Double minLatency, 
-    @JsonProperty(JSON_PROPERTY_PROXY_LOSS) Float proxyLoss, 
-    @JsonProperty(JSON_PROPERTY_PROXY_AVERAGE_LATENCY) Float proxyAverageLatency, 
-    @JsonProperty(JSON_PROPERTY_PROXY_MIN_LATENCY) Float proxyMinLatency, 
-    @JsonProperty(JSON_PROPERTY_PROXY_MAX_LATENCY) Float proxyMaxLatency, 
-    @JsonProperty(JSON_PROPERTY_PROXY_JITTER) Float proxyJitter, 
-    @JsonProperty(JSON_PROPERTY_PACKETS_BY_SECOND) List<List<Integer>> packetsBySecond, 
-    @JsonProperty(JSON_PROPERTY_SERVER_IP) String serverIp, 
-    @JsonProperty(JSON_PROPERTY_SERVER) String server, 
-    @JsonProperty(JSON_PROPERTY_ERROR_DETAILS) String errorDetails
-  ) {
-  this();
-    this.date = date;
-    this.roundId = roundId;
-    this.startTime = startTime;
-    this.endTime = endTime;
-    this.availableBandwidth = availableBandwidth;
-    this.avgLatency = avgLatency;
-    this.bandwidth = bandwidth;
-    this.capacity = capacity;
-    this.jitter = jitter;
-    this.loss = loss;
-    this.maxLatency = maxLatency;
-    this.minLatency = minLatency;
-    this.proxyLoss = proxyLoss;
-    this.proxyAverageLatency = proxyAverageLatency;
-    this.proxyMinLatency = proxyMinLatency;
-    this.proxyMaxLatency = proxyMaxLatency;
-    this.proxyJitter = proxyJitter;
-    this.packetsBySecond = packetsBySecond;
-    this.serverIp = serverIp;
-    this.server = server;
-    this.errorDetails = errorDetails;
   }
 
    /**
@@ -691,5 +664,179 @@ public class NetworkTestResult {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private NetworkTestResult instance;
+
+    public ModelBuilder() {
+      this(new NetworkTestResult());
+    }
+
+    protected ModelBuilder(NetworkTestResult instance) {
+      this.instance = instance;
+    }
+
+    public NetworkTestResult.ModelBuilder date(OffsetDateTime date) {
+      this.instance.date = date;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder roundId(Integer roundId) {
+      this.instance.roundId = roundId;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder links(TestResultAppLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder startTime(Integer startTime) {
+      this.instance.startTime = startTime;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder endTime(Integer endTime) {
+      this.instance.endTime = endTime;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder availableBandwidth(Double availableBandwidth) {
+      this.instance.availableBandwidth = availableBandwidth;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder avgLatency(Double avgLatency) {
+      this.instance.avgLatency = avgLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder bandwidth(Double bandwidth) {
+      this.instance.bandwidth = bandwidth;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder capacity(Double capacity) {
+      this.instance.capacity = capacity;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder jitter(Double jitter) {
+      this.instance.jitter = jitter;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder loss(Double loss) {
+      this.instance.loss = loss;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder maxLatency(Double maxLatency) {
+      this.instance.maxLatency = maxLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder minLatency(Double minLatency) {
+      this.instance.minLatency = minLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder proxyLoss(Float proxyLoss) {
+      this.instance.proxyLoss = proxyLoss;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder proxyAverageLatency(Float proxyAverageLatency) {
+      this.instance.proxyAverageLatency = proxyAverageLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder proxyMinLatency(Float proxyMinLatency) {
+      this.instance.proxyMinLatency = proxyMinLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder proxyMaxLatency(Float proxyMaxLatency) {
+      this.instance.proxyMaxLatency = proxyMaxLatency;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder proxyJitter(Float proxyJitter) {
+      this.instance.proxyJitter = proxyJitter;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder packetsBySecond(List<List<Integer>> packetsBySecond) {
+      this.instance.packetsBySecond = packetsBySecond;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder agent(TestResultAgent agent) {
+      this.instance.setAgent(agent);
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder serverIp(String serverIp) {
+      this.instance.serverIp = serverIp;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder server(String server) {
+      this.instance.server = server;
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder healthScore(BigDecimal healthScore) {
+      this.instance.setHealthScore(healthScore);
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder direction(TestDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public NetworkTestResult.ModelBuilder errorDetails(String errorDetails) {
+      this.instance.errorDetails = errorDetails;
+      return this;
+    }
+
+    /**
+     * Returns a built NetworkTestResult instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public NetworkTestResult build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static NetworkTestResult.ModelBuilder builder() {
+    return new NetworkTestResult.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public NetworkTestResult.ModelBuilder toBuilder() {
+    NetworkTestResult.ModelBuilder builder = new NetworkTestResult.ModelBuilder()
+      .date(getDate())
+      .roundId(getRoundId())
+      .links(getLinks())
+      .startTime(getStartTime())
+      .endTime(getEndTime())
+      .availableBandwidth(getAvailableBandwidth())
+      .avgLatency(getAvgLatency())
+      .bandwidth(getBandwidth())
+      .capacity(getCapacity())
+      .jitter(getJitter())
+      .loss(getLoss())
+      .maxLatency(getMaxLatency())
+      .minLatency(getMinLatency())
+      .proxyLoss(getProxyLoss())
+      .proxyAverageLatency(getProxyAverageLatency())
+      .proxyMinLatency(getProxyMinLatency())
+      .proxyMaxLatency(getProxyMaxLatency())
+      .proxyJitter(getProxyJitter())
+      .packetsBySecond(getPacketsBySecond())
+      .agent(getAgent())
+      .serverIp(getServerIp())
+      .server(getServer())
+      .healthScore(getHealthScore())
+      .direction(getDirection())
+      .errorDetails(getErrorDetails());
+    return builder;
+  }
+
 }
 

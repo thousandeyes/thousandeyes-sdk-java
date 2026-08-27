@@ -315,5 +315,89 @@ public class ApiOutageFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private ApiOutageFilter instance;
+
+    public ModelBuilder() {
+      this(new ApiOutageFilter());
+    }
+
+    protected ModelBuilder(ApiOutageFilter instance) {
+      this.instance = instance;
+    }
+
+    public ApiOutageFilter.ModelBuilder startDate(String startDate) {
+      this.instance.setStartDate(startDate);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder endDate(String endDate) {
+      this.instance.setEndDate(endDate);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder window(String window) {
+      this.instance.setWindow(window);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder outageScope(OutageScope outageScope) {
+      this.instance.setOutageScope(outageScope);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder providerName(List<String> providerName) {
+      this.instance.setProviderName(providerName);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder applicationName(List<String> applicationName) {
+      this.instance.setApplicationName(applicationName);
+      return this;
+    }
+    public ApiOutageFilter.ModelBuilder interfaceNetwork(List<String> interfaceNetwork) {
+      this.instance.setInterfaceNetwork(interfaceNetwork);
+      return this;
+    }
+
+    /**
+     * Returns a built ApiOutageFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public ApiOutageFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static ApiOutageFilter.ModelBuilder builder() {
+    return new ApiOutageFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public ApiOutageFilter.ModelBuilder toBuilder() {
+    ApiOutageFilter.ModelBuilder builder = new ApiOutageFilter.ModelBuilder()
+      .startDate(getStartDate())
+      .endDate(getEndDate())
+      .window(getWindow())
+      .outageScope(getOutageScope())
+      .providerName(getProviderName())
+      .applicationName(getApplicationName())
+      .interfaceNetwork(getInterfaceNetwork());
+    return builder;
+  }
+
 }
 

@@ -112,5 +112,59 @@ public class MonitorsRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private MonitorsRequest instance;
+
+    public ModelBuilder() {
+      this(new MonitorsRequest());
+    }
+
+    protected ModelBuilder(MonitorsRequest instance) {
+      this.instance = instance;
+    }
+
+    public MonitorsRequest.ModelBuilder monitors(List<String> monitors) {
+      this.instance.setMonitors(monitors);
+      return this;
+    }
+
+    /**
+     * Returns a built MonitorsRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public MonitorsRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static MonitorsRequest.ModelBuilder builder() {
+    return new MonitorsRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public MonitorsRequest.ModelBuilder toBuilder() {
+    MonitorsRequest.ModelBuilder builder = new MonitorsRequest.ModelBuilder()
+      .monitors(getMonitors());
+    return builder;
+  }
+
 }
 

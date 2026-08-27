@@ -49,36 +49,44 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class AlertRule {
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
+  @JsonProperty(JSON_PROPERTY_RULE_ID)
   private String ruleId;
 
   public static final String JSON_PROPERTY_RULE_NAME = "ruleName";
+  @JsonProperty(JSON_PROPERTY_RULE_NAME)
   private String ruleName;
 
   public static final String JSON_PROPERTY_EXPRESSION = "expression";
+  @JsonProperty(JSON_PROPERTY_EXPRESSION)
   private String expression;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   private AlertDirection direction;
 
   public static final String JSON_PROPERTY_IS_DEFAULT = "isDefault";
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT)
   private Boolean isDefault;
 
   public static final String JSON_PROPERTY_ALERT_TYPE = "alertType";
   private AlertType alertType;
 
   public static final String JSON_PROPERTY_MINIMUM_SOURCES = "minimumSources";
+  @JsonProperty(JSON_PROPERTY_MINIMUM_SOURCES)
   private Integer minimumSources;
 
   public static final String JSON_PROPERTY_MINIMUM_SOURCES_PCT = "minimumSourcesPct";
+  @JsonProperty(JSON_PROPERTY_MINIMUM_SOURCES_PCT)
   private Integer minimumSourcesPct;
 
   public static final String JSON_PROPERTY_ROUNDS_VIOLATING_MODE = "roundsViolatingMode";
   private AlertRoundsViolationMode roundsViolatingMode;
 
   public static final String JSON_PROPERTY_ROUNDS_VIOLATING_OUT_OF = "roundsViolatingOutOf";
+  @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_OUT_OF)
   private Integer roundsViolatingOutOf;
 
   public static final String JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED = "roundsViolatingRequired";
+  @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED)
   private Integer roundsViolatingRequired;
 
   public static final String JSON_PROPERTY_SENSITIVITY_LEVEL = "sensitivityLevel";
@@ -88,28 +96,6 @@ public class AlertRule {
   private Severity severity;
 
   public AlertRule() { 
-  }
-
-  @JsonCreator
-  public AlertRule(
-    @JsonProperty(JSON_PROPERTY_RULE_ID) String ruleId, 
-    @JsonProperty(JSON_PROPERTY_RULE_NAME) String ruleName, 
-    @JsonProperty(JSON_PROPERTY_EXPRESSION) String expression, 
-    @JsonProperty(JSON_PROPERTY_IS_DEFAULT) Boolean isDefault, 
-    @JsonProperty(JSON_PROPERTY_MINIMUM_SOURCES) Integer minimumSources, 
-    @JsonProperty(JSON_PROPERTY_MINIMUM_SOURCES_PCT) Integer minimumSourcesPct, 
-    @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_OUT_OF) Integer roundsViolatingOutOf, 
-    @JsonProperty(JSON_PROPERTY_ROUNDS_VIOLATING_REQUIRED) Integer roundsViolatingRequired
-  ) {
-  this();
-    this.ruleId = ruleId;
-    this.ruleName = ruleName;
-    this.expression = expression;
-    this.isDefault = isDefault;
-    this.minimumSources = minimumSources;
-    this.minimumSourcesPct = minimumSourcesPct;
-    this.roundsViolatingOutOf = roundsViolatingOutOf;
-    this.roundsViolatingRequired = roundsViolatingRequired;
   }
 
    /**
@@ -420,5 +406,119 @@ public class AlertRule {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private AlertRule instance;
+
+    public ModelBuilder() {
+      this(new AlertRule());
+    }
+
+    protected ModelBuilder(AlertRule instance) {
+      this.instance = instance;
+    }
+
+    public AlertRule.ModelBuilder ruleId(String ruleId) {
+      this.instance.ruleId = ruleId;
+      return this;
+    }
+    public AlertRule.ModelBuilder ruleName(String ruleName) {
+      this.instance.ruleName = ruleName;
+      return this;
+    }
+    public AlertRule.ModelBuilder expression(String expression) {
+      this.instance.expression = expression;
+      return this;
+    }
+    public AlertRule.ModelBuilder direction(AlertDirection direction) {
+      this.instance.setDirection(direction);
+      return this;
+    }
+    public AlertRule.ModelBuilder isDefault(Boolean isDefault) {
+      this.instance.isDefault = isDefault;
+      return this;
+    }
+    public AlertRule.ModelBuilder alertType(AlertType alertType) {
+      this.instance.setAlertType(alertType);
+      return this;
+    }
+    public AlertRule.ModelBuilder minimumSources(Integer minimumSources) {
+      this.instance.minimumSources = minimumSources;
+      return this;
+    }
+    public AlertRule.ModelBuilder minimumSourcesPct(Integer minimumSourcesPct) {
+      this.instance.minimumSourcesPct = minimumSourcesPct;
+      return this;
+    }
+    public AlertRule.ModelBuilder roundsViolatingMode(AlertRoundsViolationMode roundsViolatingMode) {
+      this.instance.setRoundsViolatingMode(roundsViolatingMode);
+      return this;
+    }
+    public AlertRule.ModelBuilder roundsViolatingOutOf(Integer roundsViolatingOutOf) {
+      this.instance.roundsViolatingOutOf = roundsViolatingOutOf;
+      return this;
+    }
+    public AlertRule.ModelBuilder roundsViolatingRequired(Integer roundsViolatingRequired) {
+      this.instance.roundsViolatingRequired = roundsViolatingRequired;
+      return this;
+    }
+    public AlertRule.ModelBuilder sensitivityLevel(SensitivityLevel sensitivityLevel) {
+      this.instance.setSensitivityLevel(sensitivityLevel);
+      return this;
+    }
+    public AlertRule.ModelBuilder severity(Severity severity) {
+      this.instance.setSeverity(severity);
+      return this;
+    }
+
+    /**
+     * Returns a built AlertRule instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public AlertRule build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static AlertRule.ModelBuilder builder() {
+    return new AlertRule.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public AlertRule.ModelBuilder toBuilder() {
+    AlertRule.ModelBuilder builder = new AlertRule.ModelBuilder()
+      .ruleId(getRuleId())
+      .ruleName(getRuleName())
+      .expression(getExpression())
+      .direction(getDirection())
+      .isDefault(getIsDefault())
+      .alertType(getAlertType())
+      .minimumSources(getMinimumSources())
+      .minimumSourcesPct(getMinimumSourcesPct())
+      .roundsViolatingMode(getRoundsViolatingMode())
+      .roundsViolatingOutOf(getRoundsViolatingOutOf())
+      .roundsViolatingRequired(getRoundsViolatingRequired())
+      .sensitivityLevel(getSensitivityLevel())
+      .severity(getSeverity());
+    return builder;
+  }
+
 }
 

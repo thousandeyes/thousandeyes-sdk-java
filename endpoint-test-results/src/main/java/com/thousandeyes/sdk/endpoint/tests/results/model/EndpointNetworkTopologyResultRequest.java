@@ -134,5 +134,64 @@ public class EndpointNetworkTopologyResultRequest {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointNetworkTopologyResultRequest instance;
+
+    public ModelBuilder() {
+      this(new EndpointNetworkTopologyResultRequest());
+    }
+
+    protected ModelBuilder(EndpointNetworkTopologyResultRequest instance) {
+      this.instance = instance;
+    }
+
+    public EndpointNetworkTopologyResultRequest.ModelBuilder thresholdFilter(EndpointNetworkTopologyThresholdFilter thresholdFilter) {
+      this.instance.setThresholdFilter(thresholdFilter);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequest.ModelBuilder searchFilters(EndpointNetworkTopologyResultRequestFilter searchFilters) {
+      this.instance.setSearchFilters(searchFilters);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointNetworkTopologyResultRequest instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointNetworkTopologyResultRequest build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointNetworkTopologyResultRequest.ModelBuilder builder() {
+    return new EndpointNetworkTopologyResultRequest.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointNetworkTopologyResultRequest.ModelBuilder toBuilder() {
+    EndpointNetworkTopologyResultRequest.ModelBuilder builder = new EndpointNetworkTopologyResultRequest.ModelBuilder()
+      .thresholdFilter(getThresholdFilter())
+      .searchFilters(getSearchFilters());
+    return builder;
+  }
+
 }
 

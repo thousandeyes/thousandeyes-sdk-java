@@ -175,5 +175,69 @@ public class EndpointSpecificAgentsSelectorConfig {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointSpecificAgentsSelectorConfig instance;
+
+    public ModelBuilder() {
+      this(new EndpointSpecificAgentsSelectorConfig());
+    }
+
+    protected ModelBuilder(EndpointSpecificAgentsSelectorConfig instance) {
+      this.instance = instance;
+    }
+
+    public EndpointSpecificAgentsSelectorConfig.ModelBuilder agentSelectorType(String agentSelectorType) {
+      this.instance.setAgentSelectorType(agentSelectorType);
+      return this;
+    }
+    public EndpointSpecificAgentsSelectorConfig.ModelBuilder maxMachines(Integer maxMachines) {
+      this.instance.setMaxMachines(maxMachines);
+      return this;
+    }
+    public EndpointSpecificAgentsSelectorConfig.ModelBuilder agents(List<UUID> agents) {
+      this.instance.setAgents(agents);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointSpecificAgentsSelectorConfig instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointSpecificAgentsSelectorConfig build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointSpecificAgentsSelectorConfig.ModelBuilder builder() {
+    return new EndpointSpecificAgentsSelectorConfig.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointSpecificAgentsSelectorConfig.ModelBuilder toBuilder() {
+    EndpointSpecificAgentsSelectorConfig.ModelBuilder builder = new EndpointSpecificAgentsSelectorConfig.ModelBuilder()
+      .agentSelectorType(getAgentSelectorType())
+      .maxMachines(getMaxMachines())
+      .agents(getAgents());
+    return builder;
+  }
+
 }
 

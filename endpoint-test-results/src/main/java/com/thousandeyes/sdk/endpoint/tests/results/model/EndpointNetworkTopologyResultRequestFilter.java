@@ -584,5 +584,119 @@ public class EndpointNetworkTopologyResultRequestFilter {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private EndpointNetworkTopologyResultRequestFilter instance;
+
+    public ModelBuilder() {
+      this(new EndpointNetworkTopologyResultRequestFilter());
+    }
+
+    protected ModelBuilder(EndpointNetworkTopologyResultRequestFilter instance) {
+      this.instance = instance;
+    }
+
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder location(List<String> location) {
+      this.instance.setLocation(location);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder connection(List<InterfaceHardwareType> connection) {
+      this.instance.setConnection(connection);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder platform(List<Platform> platform) {
+      this.instance.setPlatform(platform);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder gateway(List<String> gateway) {
+      this.instance.setGateway(gateway);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder proxyTarget(List<String> proxyTarget) {
+      this.instance.setProxyTarget(proxyTarget);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder vpnTarget(List<String> vpnTarget) {
+      this.instance.setVpnTarget(vpnTarget);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder agentId(List<UUID> agentId) {
+      this.instance.setAgentId(agentId);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder networkId(List<String> networkId) {
+      this.instance.setNetworkId(networkId);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder ssid(List<String> ssid) {
+      this.instance.setSsid(ssid);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder bssid(List<String> bssid) {
+      this.instance.setBssid(bssid);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder nicModel(List<String> nicModel) {
+      this.instance.setNicModel(nicModel);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder nicDriverVersion(List<String> nicDriverVersion) {
+      this.instance.setNicDriverVersion(nicDriverVersion);
+      return this;
+    }
+    public EndpointNetworkTopologyResultRequestFilter.ModelBuilder type(List<NetworkTopologyType> type) {
+      this.instance.setType(type);
+      return this;
+    }
+
+    /**
+     * Returns a built EndpointNetworkTopologyResultRequestFilter instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public EndpointNetworkTopologyResultRequestFilter build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static EndpointNetworkTopologyResultRequestFilter.ModelBuilder builder() {
+    return new EndpointNetworkTopologyResultRequestFilter.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public EndpointNetworkTopologyResultRequestFilter.ModelBuilder toBuilder() {
+    EndpointNetworkTopologyResultRequestFilter.ModelBuilder builder = new EndpointNetworkTopologyResultRequestFilter.ModelBuilder()
+      .location(getLocation())
+      .connection(getConnection())
+      .platform(getPlatform())
+      .gateway(getGateway())
+      .proxyTarget(getProxyTarget())
+      .vpnTarget(getVpnTarget())
+      .agentId(getAgentId())
+      .networkId(getNetworkId())
+      .ssid(getSsid())
+      .bssid(getBssid())
+      .nicModel(getNicModel())
+      .nicDriverVersion(getNicDriverVersion())
+      .type(getType());
+    return builder;
+  }
+
 }
 

@@ -145,5 +145,64 @@ public class Alerts {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
+  public static class ModelBuilder {
+
+    private Alerts instance;
+
+    public ModelBuilder() {
+      this(new Alerts());
+    }
+
+    protected ModelBuilder(Alerts instance) {
+      this.instance = instance;
+    }
+
+    public Alerts.ModelBuilder alerts(List<Alert> alerts) {
+      this.instance.setAlerts(alerts);
+      return this;
+    }
+    public Alerts.ModelBuilder links(PaginationLinks links) {
+      this.instance.setLinks(links);
+      return this;
+    }
+
+    /**
+     * Returns a built Alerts instance.
+     *
+     * <p>The builder is not reusable.</p>
+     */
+    public Alerts build() {
+      try {
+        return this.instance;
+      } finally {
+        // Ensure that this builder cannot mutate an already-built instance.
+        this.instance = null;
+      }
+    }
+
+    @Override
+    public String toString() {
+      return getClass() + "=(" + instance + ")";
+    }
+  }
+
+  /**
+   * Create a builder with no initialized fields.
+   */
+  public static Alerts.ModelBuilder builder() {
+    return new Alerts.ModelBuilder();
+  }
+
+  /**
+   * Create a builder with a shallow copy of this instance.
+   */
+  public Alerts.ModelBuilder toBuilder() {
+    Alerts.ModelBuilder builder = new Alerts.ModelBuilder()
+      .alerts(getAlerts())
+      .links(getLinks());
+    return builder;
+  }
+
 }
 
