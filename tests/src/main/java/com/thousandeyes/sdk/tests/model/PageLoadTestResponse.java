@@ -21,11 +21,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.model.AgentInterfaces;
-import com.thousandeyes.sdk.tests.model.AgentResponse;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestChromiumTrack;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
@@ -349,7 +349,7 @@ public class PageLoadTestResponse {
   private TestSubInterval subinterval;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public PageLoadTestResponse() { 
   }
@@ -2111,12 +2111,12 @@ public class PageLoadTestResponse {
   }
 
 
-  public PageLoadTestResponse agents(List<AgentResponse> agents) {
+  public PageLoadTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public PageLoadTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public PageLoadTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -2132,14 +2132,14 @@ public class PageLoadTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

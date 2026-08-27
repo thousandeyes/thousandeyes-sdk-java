@@ -32,6 +32,10 @@ public enum AgentLicenseType {
   
   EMBEDDED("embedded"),
   
+  EMBED_WIRELESS_ADVANTAGE("embed-wireless-advantage"),
+  
+  EMBED_WIRELESS_ESSENTIALS("embed-wireless-essentials"),
+  
   UNKNOWN("unknown");
 
   private String value;

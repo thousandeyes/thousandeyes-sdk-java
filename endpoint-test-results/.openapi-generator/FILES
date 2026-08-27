@@ -172,6 +172,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/VpnNetworkPing.j
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/VpnProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/VpnTraceroute.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/VpnType.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/WirelessOnboarding.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/results/HttpServerEndpointScheduledTestResultsApiTest.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/results/LocalNetworkEndpointTestResultsApiTest.java
 src/test/java/com/thousandeyes/sdk/endpoint/tests/results/NetworkDynamicEndpointTestResultsApiTest.java

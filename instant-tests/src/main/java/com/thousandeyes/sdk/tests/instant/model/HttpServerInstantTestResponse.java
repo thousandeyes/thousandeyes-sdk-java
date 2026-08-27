@@ -21,10 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
-import com.thousandeyes.sdk.tests.instant.model.AgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
 import com.thousandeyes.sdk.tests.instant.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
@@ -272,7 +272,7 @@ public class HttpServerInstantTestResponse {
   private TestIpv6Policy ipv6Policy = TestIpv6Policy.USE_AGENT_POLICY;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public HttpServerInstantTestResponse() { 
   }
@@ -1588,12 +1588,12 @@ public class HttpServerInstantTestResponse {
   }
 
 
-  public HttpServerInstantTestResponse agents(List<AgentResponse> agents) {
+  public HttpServerInstantTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public HttpServerInstantTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public HttpServerInstantTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1609,14 +1609,14 @@ public class HttpServerInstantTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

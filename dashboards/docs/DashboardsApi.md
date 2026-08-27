@@ -4,10 +4,14 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**cloneDashboard**](DashboardsApi.md#cloneDashboard) | **POST** /dashboards/{dashboardId}/clone | Clone dashboard |
+| [**cloneDashboardWithHttpInfo**](DashboardsApi.md#cloneDashboardWithHttpInfo) | **POST** /dashboards/{dashboardId}/clone | Clone dashboard |
 | [**createDashboard**](DashboardsApi.md#createDashboard) | **POST** /dashboards | Create dashboard |
 | [**createDashboardWithHttpInfo**](DashboardsApi.md#createDashboardWithHttpInfo) | **POST** /dashboards | Create dashboard |
 | [**deleteDashboard**](DashboardsApi.md#deleteDashboard) | **DELETE** /dashboards/{dashboardId} | Delete dashboard |
 | [**deleteDashboardWithHttpInfo**](DashboardsApi.md#deleteDashboardWithHttpInfo) | **DELETE** /dashboards/{dashboardId} | Delete dashboard |
+| [**deleteDashboardSchedule**](DashboardsApi.md#deleteDashboardSchedule) | **DELETE** /dashboards/{dashboardId}/actions/schedule | Delete dashboard snapshot schedule |
+| [**deleteDashboardScheduleWithHttpInfo**](DashboardsApi.md#deleteDashboardScheduleWithHttpInfo) | **DELETE** /dashboards/{dashboardId}/actions/schedule | Delete dashboard snapshot schedule |
 | [**getDashboard**](DashboardsApi.md#getDashboard) | **GET** /dashboards/{dashboardId} | Retrieve dashboard |
 | [**getDashboardWithHttpInfo**](DashboardsApi.md#getDashboardWithHttpInfo) | **GET** /dashboards/{dashboardId} | Retrieve dashboard |
 | [**getDashboardWidgetData**](DashboardsApi.md#getDashboardWidgetData) | **GET** /dashboards/{dashboardId}/widgets/{widgetId} | Retrieve dashboard widget data |
@@ -20,7 +24,173 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getIndividualColumnDataWithHttpInfo**](DashboardsApi.md#getIndividualColumnDataWithHttpInfo) | **GET** /dashboards/{dashboardId}/widgets/{widgetId}/columns/{columnId} | Retrieve individual column data from multi-metric table widget |
 | [**updateDashboard**](DashboardsApi.md#updateDashboard) | **PUT** /dashboards/{dashboardId} | Update dashboard |
 | [**updateDashboardWithHttpInfo**](DashboardsApi.md#updateDashboardWithHttpInfo) | **PUT** /dashboards/{dashboardId} | Update dashboard |
+| [**updateDashboardSchedule**](DashboardsApi.md#updateDashboardSchedule) | **PUT** /dashboards/{dashboardId}/actions/schedule | Create or update dashboard snapshot schedule |
+| [**updateDashboardScheduleWithHttpInfo**](DashboardsApi.md#updateDashboardScheduleWithHttpInfo) | **PUT** /dashboards/{dashboardId}/actions/schedule | Create or update dashboard snapshot schedule |
 
+
+
+## cloneDashboard
+
+> Dashboard cloneDashboard(dashboardId, aid, cloneDashboardRequest)
+
+Clone dashboard
+
+Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
+        try {
+            Dashboard result = apiInstance.cloneDashboard(dashboardId, aid, cloneDashboardRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#cloneDashboard");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **cloneDashboardRequest** | [**CloneDashboardRequest**](CloneDashboardRequest.md)| Optional overrides for the cloned dashboard. | [optional] |
+
+### Return type
+
+[**Dashboard**](Dashboard.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Dashboard cloned successfully. |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## cloneDashboardWithHttpInfo
+
+> ApiResponse<Dashboard> cloneDashboard cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest)
+
+Clone dashboard
+
+Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        CloneDashboardRequest cloneDashboardRequest = new CloneDashboardRequest(); // CloneDashboardRequest | Optional overrides for the cloned dashboard.
+        try {
+            ApiResponse<Dashboard> response = apiInstance.cloneDashboardWithHttpInfo(dashboardId, aid, cloneDashboardRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#cloneDashboard");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+| **cloneDashboardRequest** | [**CloneDashboardRequest**](CloneDashboardRequest.md)| Optional overrides for the cloned dashboard. | [optional] |
+
+### Return type
+
+ApiResponse<[**Dashboard**](Dashboard.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Dashboard cloned successfully. |  * Location -  <br>  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
 
 
 ## createDashboard
@@ -337,6 +507,166 @@ ApiResponse<Void>
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## deleteDashboardSchedule
+
+> void deleteDashboardSchedule(dashboardId, aid)
+
+Delete dashboard snapshot schedule
+
+Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            apiInstance.deleteDashboardSchedule(dashboardId, aid);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#deleteDashboardSchedule");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **409** | The dashboard changed while the schedule operation was being applied. |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## deleteDashboardScheduleWithHttpInfo
+
+> ApiResponse<Void> deleteDashboardSchedule deleteDashboardScheduleWithHttpInfo(dashboardId, aid)
+
+Delete dashboard snapshot schedule
+
+Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<Void> response = apiInstance.deleteDashboardScheduleWithHttpInfo(dashboardId, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#deleteDashboardSchedule");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **409** | The dashboard changed while the schedule operation was being applied. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 
@@ -1369,6 +1699,172 @@ ApiResponse<[**Dashboard**](Dashboard.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+
+## updateDashboardSchedule
+
+> ApiDashboard updateDashboardSchedule(dashboardId, dashboardScheduleRequest, aid)
+
+Create or update dashboard snapshot schedule
+
+Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        DashboardScheduleRequest dashboardScheduleRequest = new DashboardScheduleRequest(); // DashboardScheduleRequest | Snapshot schedule configuration.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiDashboard result = apiInstance.updateDashboardSchedule(dashboardId, dashboardScheduleRequest, aid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#updateDashboardSchedule");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **dashboardScheduleRequest** | [**DashboardScheduleRequest**](DashboardScheduleRequest.md)| Snapshot schedule configuration. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+[**ApiDashboard**](ApiDashboard.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **409** | The dashboard changed while the schedule operation was being applied. |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+
+## updateDashboardScheduleWithHttpInfo
+
+> ApiResponse<ApiDashboard> updateDashboardSchedule updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid)
+
+Create or update dashboard snapshot schedule
+
+Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.Configuration;
+import com.thousandeyes.sdk.authentication.*;
+import com.thousandeyes.sdk.models.*;
+import com.thousandeyes.sdk.dashboards.DashboardsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        DashboardsApi apiInstance = new DashboardsApi(defaultClient);
+        String dashboardId = "646f4d2ce3c99b0536c3821e"; // String | A Identifier for a dashboard which can be obtained from the `/dashboards` endpoint.
+        DashboardScheduleRequest dashboardScheduleRequest = new DashboardScheduleRequest(); // DashboardScheduleRequest | Snapshot schedule configuration.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            ApiResponse<ApiDashboard> response = apiInstance.updateDashboardScheduleWithHttpInfo(dashboardId, dashboardScheduleRequest, aid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DashboardsApi#updateDashboardSchedule");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **dashboardId** | **String**| A Identifier for a dashboard which can be obtained from the &#x60;/dashboards&#x60; endpoint. | |
+| **dashboardScheduleRequest** | [**DashboardScheduleRequest**](DashboardScheduleRequest.md)| Snapshot schedule configuration. | |
+| **aid** | **String**| A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
+
+### Return type
+
+ApiResponse<[**ApiDashboard**](ApiDashboard.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/hal+json, application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **404** | Not found |  -  |
+| **409** | The dashboard changed while the schedule operation was being applied. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 

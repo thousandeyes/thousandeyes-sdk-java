@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentResponse;
 import com.thousandeyes.sdk.tests.model.AgentToAgentTestProtocol;
 import com.thousandeyes.sdk.tests.model.AlertRule;
 import com.thousandeyes.sdk.tests.model.Monitor;
 import com.thousandeyes.sdk.tests.model.SharedWithAccount;
+import com.thousandeyes.sdk.tests.model.TestAgentResponse;
 import com.thousandeyes.sdk.tests.model.TestDirection;
 import com.thousandeyes.sdk.tests.model.TestDscpId;
 import com.thousandeyes.sdk.tests.model.TestInterval;
@@ -188,7 +188,7 @@ public class AgentToAgentTestResponse {
   private List<Monitor> monitors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<AgentResponse> agents = new ArrayList<>();
+  private List<TestAgentResponse> agents = new ArrayList<>();
 
   public AgentToAgentTestResponse() { 
   }
@@ -990,12 +990,12 @@ public class AgentToAgentTestResponse {
 
 
 
-  public AgentToAgentTestResponse agents(List<AgentResponse> agents) {
+  public AgentToAgentTestResponse agents(List<TestAgentResponse> agents) {
     this.agents = agents;
     return this;
   }
 
-  public AgentToAgentTestResponse addAgentsItem(AgentResponse agentsItem) {
+  public AgentToAgentTestResponse addAgentsItem(TestAgentResponse agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1011,14 +1011,14 @@ public class AgentToAgentTestResponse {
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<AgentResponse> getAgents() {
+  public List<TestAgentResponse> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<AgentResponse> agents) {
+  public void setAgents(List<TestAgentResponse> agents) {
     this.agents = agents;
   }
 

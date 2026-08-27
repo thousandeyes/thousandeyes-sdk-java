@@ -37,6 +37,7 @@ import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetricDetails;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SystemMetrics;
 import com.thousandeyes.sdk.endpoint.tests.results.model.TcpConnect;
 import com.thousandeyes.sdk.endpoint.tests.results.model.Traceroute;
+import com.thousandeyes.sdk.endpoint.tests.results.model.WirelessOnboarding;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocalNetworkTopologyResult.JSON_PROPERTY_GATEWAY_SCORE,
   LocalNetworkTopologyResult.JSON_PROPERTY_PROXY_SCORE,
   LocalNetworkTopologyResult.JSON_PROPERTY_CONNECTION_SCORE,
+  LocalNetworkTopologyResult.JSON_PROPERTY_WIRELESS_ONBOARDING,
   LocalNetworkTopologyResult.JSON_PROPERTY_AGENT_SCORE,
   LocalNetworkTopologyResult.JSON_PROPERTY_BATTERY_METRICS,
   LocalNetworkTopologyResult.JSON_PROPERTY_CELLULAR_PROFILE,
@@ -127,6 +129,9 @@ public class LocalNetworkTopologyResult {
 
   public static final String JSON_PROPERTY_CONNECTION_SCORE = "connectionScore";
   private EndpointProbeConnectionScore connectionScore;
+
+  public static final String JSON_PROPERTY_WIRELESS_ONBOARDING = "wirelessOnboarding";
+  private WirelessOnboarding wirelessOnboarding;
 
   public static final String JSON_PROPERTY_AGENT_SCORE = "agentScore";
   private EndpointProbeAgentScore agentScore;
@@ -530,6 +535,31 @@ public class LocalNetworkTopologyResult {
   }
 
 
+  public LocalNetworkTopologyResult wirelessOnboarding(WirelessOnboarding wirelessOnboarding) {
+    this.wirelessOnboarding = wirelessOnboarding;
+    return this;
+  }
+
+   /**
+   * Get wirelessOnboarding
+   * @return wirelessOnboarding
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_WIRELESS_ONBOARDING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WirelessOnboarding getWirelessOnboarding() {
+    return wirelessOnboarding;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_WIRELESS_ONBOARDING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWirelessOnboarding(WirelessOnboarding wirelessOnboarding) {
+    this.wirelessOnboarding = wirelessOnboarding;
+  }
+
+
   public LocalNetworkTopologyResult agentScore(EndpointProbeAgentScore agentScore) {
     this.agentScore = agentScore;
     return this;
@@ -767,6 +797,7 @@ public class LocalNetworkTopologyResult {
         Objects.equals(this.gatewayScore, localNetworkTopologyResult.gatewayScore) &&
         Objects.equals(this.proxyScore, localNetworkTopologyResult.proxyScore) &&
         Objects.equals(this.connectionScore, localNetworkTopologyResult.connectionScore) &&
+        Objects.equals(this.wirelessOnboarding, localNetworkTopologyResult.wirelessOnboarding) &&
         Objects.equals(this.agentScore, localNetworkTopologyResult.agentScore) &&
         Objects.equals(this.batteryMetrics, localNetworkTopologyResult.batteryMetrics) &&
         Objects.equals(this.cellularProfile, localNetworkTopologyResult.cellularProfile) &&
@@ -779,7 +810,7 @@ public class LocalNetworkTopologyResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, date, networkTopologyId, dnsServerTest, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, agentScore, batteryMetrics, cellularProfile, platform, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
+    return Objects.hash(agentId, date, networkTopologyId, dnsServerTest, roundId, target, targetPort, type, icmpPing, isIcmpBlocked, tcpConnect, systemMetrics, systemMetricDetails, vpnScore, gatewayScore, proxyScore, connectionScore, wirelessOnboarding, agentScore, batteryMetrics, cellularProfile, platform, coordinates, networkProfile, icmpTraceroute, icmpTraceroutes);
   }
 
   @Override
@@ -803,6 +834,7 @@ public class LocalNetworkTopologyResult {
     sb.append("    gatewayScore: ").append(toIndentedString(gatewayScore)).append("\n");
     sb.append("    proxyScore: ").append(toIndentedString(proxyScore)).append("\n");
     sb.append("    connectionScore: ").append(toIndentedString(connectionScore)).append("\n");
+    sb.append("    wirelessOnboarding: ").append(toIndentedString(wirelessOnboarding)).append("\n");
     sb.append("    agentScore: ").append(toIndentedString(agentScore)).append("\n");
     sb.append("    batteryMetrics: ").append(toIndentedString(batteryMetrics)).append("\n");
     sb.append("    cellularProfile: ").append(toIndentedString(cellularProfile)).append("\n");
