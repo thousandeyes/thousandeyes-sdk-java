@@ -20,10 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.RequestMethod;
-import com.thousandeyes.sdk.tests.instant.model.TestAgent;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentWithSourceIpAddress;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
@@ -56,7 +55,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerInstantTestRequest.JSON_PROPERTY_TYPE,
   HttpServerInstantTestRequest.JSON_PROPERTY_LINKS,
   HttpServerInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
-  HttpServerInstantTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   HttpServerInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   HttpServerInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   HttpServerInstantTestRequest.JSON_PROPERTY_CONTENT_REGEX,
@@ -146,9 +144,6 @@ public class HttpServerInstantTestRequest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -278,7 +273,7 @@ public class HttpServerInstantTestRequest {
   private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgent> agents = new ArrayList<>();
+  private List<TestAgentWithSourceIpAddress> agents = new ArrayList<>();
 
   public HttpServerInstantTestRequest() { 
   }
@@ -500,31 +495,6 @@ public class HttpServerInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public HttpServerInstantTestRequest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1618,12 +1588,12 @@ public class HttpServerInstantTestRequest {
   }
 
 
-  public HttpServerInstantTestRequest agents(List<TestAgent> agents) {
+  public HttpServerInstantTestRequest agents(List<TestAgentWithSourceIpAddress> agents) {
     this.agents = agents;
     return this;
   }
 
-  public HttpServerInstantTestRequest addAgentsItem(TestAgent agentsItem) {
+  public HttpServerInstantTestRequest addAgentsItem(TestAgentWithSourceIpAddress agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1632,21 +1602,21 @@ public class HttpServerInstantTestRequest {
   }
 
    /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * Agents assigned to the test. To select a source interface, set &#x60;sourceIpAddress&#x60; on the same object as its &#x60;agentId&#x60;.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<TestAgent> getAgents() {
+  public List<TestAgentWithSourceIpAddress> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgent> agents) {
+  public void setAgents(List<TestAgentWithSourceIpAddress> agents) {
     this.agents = agents;
   }
 
@@ -1675,7 +1645,6 @@ public class HttpServerInstantTestRequest {
         Objects.equals(this.type, httpServerInstantTestRequest.type) &&
         Objects.equals(this.links, httpServerInstantTestRequest.links) &&
         Objects.equals(this.authType, httpServerInstantTestRequest.authType) &&
-        Objects.equals(this.agentInterfaces, httpServerInstantTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, httpServerInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, httpServerInstantTestRequest.clientCertificate) &&
         Objects.equals(this.contentRegex, httpServerInstantTestRequest.contentRegex) &&
@@ -1723,7 +1692,7 @@ public class HttpServerInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, labels, tags, sharedWithAccounts, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -1742,7 +1711,6 @@ public class HttpServerInstantTestRequest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -1859,10 +1827,6 @@ public class HttpServerInstantTestRequest {
     }
     public HttpServerInstantTestRequest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public HttpServerInstantTestRequest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public HttpServerInstantTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2033,7 +1997,7 @@ public class HttpServerInstantTestRequest {
       this.instance.setSharedWithAccounts(sharedWithAccounts);
       return this;
     }
-    public HttpServerInstantTestRequest.ModelBuilder agents(List<TestAgent> agents) {
+    public HttpServerInstantTestRequest.ModelBuilder agents(List<TestAgentWithSourceIpAddress> agents) {
       this.instance.setAgents(agents);
       return this;
     }
@@ -2082,7 +2046,6 @@ public class HttpServerInstantTestRequest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

@@ -33,7 +33,6 @@ src/main/java/com/thousandeyes/sdk/tests/TestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/VoiceTestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/WebTransactionTestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentBase.java
-src/main/java/com/thousandeyes/sdk/tests/model/AgentInterfaces.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToAgentInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/model/AgentToAgentProperties.java
@@ -148,9 +147,11 @@ src/main/java/com/thousandeyes/sdk/tests/model/SipServerTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/SipServerTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/SipServerTests.java
 src/main/java/com/thousandeyes/sdk/tests/model/SipTestProtocol.java
+src/main/java/com/thousandeyes/sdk/tests/model/SourceInterfaceTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAgentRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAgentResponse.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAgentResponseProperties.java
+src/main/java/com/thousandeyes/sdk/tests/model/TestAgentWithSourceIpRequest.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestAuthType.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestChromiumTrack.java
 src/main/java/com/thousandeyes/sdk/tests/model/TestCustomHeaders.java

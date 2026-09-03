@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
 import com.thousandeyes.sdk.tests.instant.model.TestChromiumTrack;
@@ -42,7 +41,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   PageLoadProperties.JSON_PROPERTY_AUTH_TYPE,
-  PageLoadProperties.JSON_PROPERTY_AGENT_INTERFACES,
   PageLoadProperties.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   PageLoadProperties.JSON_PROPERTY_CLIENT_CERTIFICATE,
   PageLoadProperties.JSON_PROPERTY_CONTENT_REGEX,
@@ -97,9 +95,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class PageLoadProperties {
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -275,31 +270,6 @@ public class PageLoadProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public PageLoadProperties agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1543,7 +1513,6 @@ public class PageLoadProperties {
     }
     PageLoadProperties pageLoadProperties = (PageLoadProperties) o;
     return Objects.equals(this.authType, pageLoadProperties.authType) &&
-        Objects.equals(this.agentInterfaces, pageLoadProperties.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, pageLoadProperties.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, pageLoadProperties.clientCertificate) &&
         Objects.equals(this.contentRegex, pageLoadProperties.contentRegex) &&
@@ -1597,7 +1566,7 @@ public class PageLoadProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
+    return Objects.hash(authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
   }
 
   @Override
@@ -1605,7 +1574,6 @@ public class PageLoadProperties {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageLoadProperties {\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -1684,10 +1652,6 @@ public class PageLoadProperties {
 
     public PageLoadProperties.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public PageLoadProperties.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public PageLoadProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -1920,7 +1884,6 @@ public class PageLoadProperties {
   public PageLoadProperties.ModelBuilder toBuilder() {
     PageLoadProperties.ModelBuilder builder = new PageLoadProperties.ModelBuilder()
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

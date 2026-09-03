@@ -20,10 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.RequestMethod;
-import com.thousandeyes.sdk.tests.model.TestAgentRequest;
+import com.thousandeyes.sdk.tests.model.TestAgentWithSourceIpRequest;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestCustomHeaders;
 import com.thousandeyes.sdk.tests.model.TestInterval;
@@ -60,7 +59,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttpServerTestRequest.JSON_PROPERTY_TYPE,
   HttpServerTestRequest.JSON_PROPERTY_LINKS,
   HttpServerTestRequest.JSON_PROPERTY_AUTH_TYPE,
-  HttpServerTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   HttpServerTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   HttpServerTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   HttpServerTestRequest.JSON_PROPERTY_CONTENT_REGEX,
@@ -163,9 +161,6 @@ public class HttpServerTestRequest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -304,7 +299,7 @@ public class HttpServerTestRequest {
   private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgentRequest> agents = new ArrayList<>();
+  private List<TestAgentWithSourceIpRequest> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors = new ArrayList<>();
@@ -604,31 +599,6 @@ public class HttpServerTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public HttpServerTestRequest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1805,12 +1775,12 @@ public class HttpServerTestRequest {
   }
 
 
-  public HttpServerTestRequest agents(List<TestAgentRequest> agents) {
+  public HttpServerTestRequest agents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public HttpServerTestRequest addAgentsItem(TestAgentRequest agentsItem) {
+  public HttpServerTestRequest addAgentsItem(TestAgentWithSourceIpRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -1819,21 +1789,21 @@ public class HttpServerTestRequest {
   }
 
    /**
-   * Contains list of Agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
+   * Agents assigned to the test. To select a source interface, set &#x60;sourceIpAddress&#x60; on the same object as its &#x60;agentId&#x60;.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<TestAgentRequest> getAgents() {
+  public List<TestAgentWithSourceIpRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgentRequest> agents) {
+  public void setAgents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
   }
 
@@ -1898,7 +1868,6 @@ public class HttpServerTestRequest {
         Objects.equals(this.type, httpServerTestRequest.type) &&
         Objects.equals(this.links, httpServerTestRequest.links) &&
         Objects.equals(this.authType, httpServerTestRequest.authType) &&
-        Objects.equals(this.agentInterfaces, httpServerTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, httpServerTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, httpServerTestRequest.clientCertificate) &&
         Objects.equals(this.contentRegex, httpServerTestRequest.contentRegex) &&
@@ -1950,7 +1919,7 @@ public class HttpServerTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp, labels, tags, sharedWithAccounts, alertRules, agents, monitors);
   }
 
   @Override
@@ -1972,7 +1941,6 @@ public class HttpServerTestRequest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -2105,10 +2073,6 @@ public class HttpServerTestRequest {
     }
     public HttpServerTestRequest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public HttpServerTestRequest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public HttpServerTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2291,7 +2255,7 @@ public class HttpServerTestRequest {
       this.instance.setAlertRules(alertRules);
       return this;
     }
-    public HttpServerTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+    public HttpServerTestRequest.ModelBuilder agents(List<TestAgentWithSourceIpRequest> agents) {
       this.instance.setAgents(agents);
       return this;
     }
@@ -2347,7 +2311,6 @@ public class HttpServerTestRequest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

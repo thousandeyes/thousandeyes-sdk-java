@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.RequestMethod;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
@@ -59,7 +58,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedHttpServerTest.JSON_PROPERTY_TYPE,
   UnexpandedHttpServerTest.JSON_PROPERTY_LINKS,
   UnexpandedHttpServerTest.JSON_PROPERTY_AUTH_TYPE,
-  UnexpandedHttpServerTest.JSON_PROPERTY_AGENT_INTERFACES,
   UnexpandedHttpServerTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   UnexpandedHttpServerTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   UnexpandedHttpServerTest.JSON_PROPERTY_CONTENT_REGEX,
@@ -156,9 +154,6 @@ public class UnexpandedHttpServerTest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -579,31 +574,6 @@ public class UnexpandedHttpServerTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public UnexpandedHttpServerTest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1675,7 +1645,6 @@ public class UnexpandedHttpServerTest {
         Objects.equals(this.type, unexpandedHttpServerTest.type) &&
         Objects.equals(this.links, unexpandedHttpServerTest.links) &&
         Objects.equals(this.authType, unexpandedHttpServerTest.authType) &&
-        Objects.equals(this.agentInterfaces, unexpandedHttpServerTest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, unexpandedHttpServerTest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, unexpandedHttpServerTest.clientCertificate) &&
         Objects.equals(this.contentRegex, unexpandedHttpServerTest.contentRegex) &&
@@ -1721,7 +1690,7 @@ public class UnexpandedHttpServerTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, headers, randomizedStartTime, requestMethod, postBody, ipv6Policy, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -1743,7 +1712,6 @@ public class UnexpandedHttpServerTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -1870,10 +1838,6 @@ public class UnexpandedHttpServerTest {
     }
     public UnexpandedHttpServerTest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public UnexpandedHttpServerTest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public UnexpandedHttpServerTest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2088,7 +2052,6 @@ public class UnexpandedHttpServerTest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

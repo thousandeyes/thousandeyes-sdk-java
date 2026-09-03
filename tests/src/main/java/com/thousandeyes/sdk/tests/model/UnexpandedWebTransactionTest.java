@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestChromiumTrack;
@@ -60,7 +59,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnexpandedWebTransactionTest.JSON_PROPERTY_TYPE,
   UnexpandedWebTransactionTest.JSON_PROPERTY_LINKS,
   UnexpandedWebTransactionTest.JSON_PROPERTY_AUTH_TYPE,
-  UnexpandedWebTransactionTest.JSON_PROPERTY_AGENT_INTERFACES,
   UnexpandedWebTransactionTest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   UnexpandedWebTransactionTest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   UnexpandedWebTransactionTest.JSON_PROPERTY_CONTENT_REGEX,
@@ -169,9 +167,6 @@ public class UnexpandedWebTransactionTest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -628,31 +623,6 @@ public class UnexpandedWebTransactionTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public UnexpandedWebTransactionTest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -2020,7 +1990,6 @@ public class UnexpandedWebTransactionTest {
         Objects.equals(this.type, unexpandedWebTransactionTest.type) &&
         Objects.equals(this.links, unexpandedWebTransactionTest.links) &&
         Objects.equals(this.authType, unexpandedWebTransactionTest.authType) &&
-        Objects.equals(this.agentInterfaces, unexpandedWebTransactionTest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, unexpandedWebTransactionTest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, unexpandedWebTransactionTest.clientCertificate) &&
         Objects.equals(this.contentRegex, unexpandedWebTransactionTest.contentRegex) &&
@@ -2078,7 +2047,7 @@ public class UnexpandedWebTransactionTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, subinterval, bgpMeasurements, usePublicBgp);
+    return Objects.hash(interval, alertsEnabled, enabled, createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, subinterval, bgpMeasurements, usePublicBgp);
   }
 
   @Override
@@ -2100,7 +2069,6 @@ public class UnexpandedWebTransactionTest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -2239,10 +2207,6 @@ public class UnexpandedWebTransactionTest {
     }
     public UnexpandedWebTransactionTest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public UnexpandedWebTransactionTest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public UnexpandedWebTransactionTest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2505,7 +2469,6 @@ public class UnexpandedWebTransactionTest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

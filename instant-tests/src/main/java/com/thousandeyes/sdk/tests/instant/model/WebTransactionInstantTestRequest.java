@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.TestAgent;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
@@ -56,7 +55,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebTransactionInstantTestRequest.JSON_PROPERTY_TYPE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_LINKS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
-  WebTransactionInstantTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   WebTransactionInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   WebTransactionInstantTestRequest.JSON_PROPERTY_CONTENT_REGEX,
@@ -158,9 +156,6 @@ public class WebTransactionInstantTestRequest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -548,31 +543,6 @@ public class WebTransactionInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public WebTransactionInstantTestRequest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1951,7 +1921,7 @@ public class WebTransactionInstantTestRequest {
   }
 
    /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * Agents assigned to the test.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
@@ -2027,7 +1997,6 @@ public class WebTransactionInstantTestRequest {
         Objects.equals(this.type, webTransactionInstantTestRequest.type) &&
         Objects.equals(this.links, webTransactionInstantTestRequest.links) &&
         Objects.equals(this.authType, webTransactionInstantTestRequest.authType) &&
-        Objects.equals(this.agentInterfaces, webTransactionInstantTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, webTransactionInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, webTransactionInstantTestRequest.clientCertificate) &&
         Objects.equals(this.contentRegex, webTransactionInstantTestRequest.contentRegex) &&
@@ -2087,7 +2056,7 @@ public class WebTransactionInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents, credentials);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents, credentials);
   }
 
   @Override
@@ -2106,7 +2075,6 @@ public class WebTransactionInstantTestRequest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -2235,10 +2203,6 @@ public class WebTransactionInstantTestRequest {
     }
     public WebTransactionInstantTestRequest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public WebTransactionInstantTestRequest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public WebTransactionInstantTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2506,7 +2470,6 @@ public class WebTransactionInstantTestRequest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

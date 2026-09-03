@@ -203,7 +203,7 @@ public class TestRequest {
   }
 
    /**
-   * Contains list of Agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
+   * Agents assigned to the test.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
