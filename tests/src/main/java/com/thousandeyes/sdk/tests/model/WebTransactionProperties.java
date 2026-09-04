@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.model.OAuth;
 import com.thousandeyes.sdk.tests.model.TestAuthType;
 import com.thousandeyes.sdk.tests.model.TestChromiumTrack;
@@ -42,7 +41,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   WebTransactionProperties.JSON_PROPERTY_AUTH_TYPE,
-  WebTransactionProperties.JSON_PROPERTY_AGENT_INTERFACES,
   WebTransactionProperties.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   WebTransactionProperties.JSON_PROPERTY_CLIENT_CERTIFICATE,
   WebTransactionProperties.JSON_PROPERTY_CONTENT_REGEX,
@@ -99,9 +97,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class WebTransactionProperties {
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -283,31 +278,6 @@ public class WebTransactionProperties {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public WebTransactionProperties agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1601,7 +1571,6 @@ public class WebTransactionProperties {
     }
     WebTransactionProperties webTransactionProperties = (WebTransactionProperties) o;
     return Objects.equals(this.authType, webTransactionProperties.authType) &&
-        Objects.equals(this.agentInterfaces, webTransactionProperties.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, webTransactionProperties.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, webTransactionProperties.clientCertificate) &&
         Objects.equals(this.contentRegex, webTransactionProperties.contentRegex) &&
@@ -1657,7 +1626,7 @@ public class WebTransactionProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
+    return Objects.hash(authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, targetTime, timeLimit, transactionScript, flagCollectConsoleLogs, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, type, identifyAgentTrafficWithUserAgent);
   }
 
   @Override
@@ -1665,7 +1634,6 @@ public class WebTransactionProperties {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebTransactionProperties {\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -1746,10 +1714,6 @@ public class WebTransactionProperties {
 
     public WebTransactionProperties.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public WebTransactionProperties.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public WebTransactionProperties.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -1990,7 +1954,6 @@ public class WebTransactionProperties {
   public WebTransactionProperties.ModelBuilder toBuilder() {
     WebTransactionProperties.ModelBuilder builder = new WebTransactionProperties.ModelBuilder()
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

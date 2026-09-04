@@ -29,7 +29,6 @@ src/main/java/com/thousandeyes/sdk/tests/instant/SipServerInstantTestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/instant/VoiceInstantTestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/instant/WebTransactionInstantTestsApi.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentBase.java
-src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentInterfaces.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToAgentInstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/AgentToAgentInstantTestRequest.java
@@ -85,6 +84,7 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/HttpServerInstantTestResp
 src/main/java/com/thousandeyes/sdk/tests/instant/model/HttpServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTestRequest.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/InstantTestRequestProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/Link.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/NetworkProviderInfo.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/NetworkProviderType.java
@@ -103,9 +103,11 @@ src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerInstantTestReque
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerInstantTestResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipServerProperties.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/SipTestProtocol.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/SourceInterfaceInstantTestRequest.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgent.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgentResponse.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgentResponseProperties.java
+src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAgentWithSourceIpAddress.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestAuthType.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestChromiumTrack.java
 src/main/java/com/thousandeyes/sdk/tests/instant/model/TestCustomHeaders.java

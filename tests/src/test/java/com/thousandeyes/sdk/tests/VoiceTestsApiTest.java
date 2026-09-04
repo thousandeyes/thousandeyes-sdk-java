@@ -124,9 +124,6 @@ public class VoiceTestsApiTest {
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
-                  }, {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
                   } ],
                   "codec" : "G.711 @ 64 Kbps",
                   "codecId" : "0",
@@ -746,9 +743,6 @@ public class VoiceTestsApiTest {
                   "labels" : [ "9842", "1283" ],
                   "tags" : [ "c6b78e57-81a2-4c5f-a11a-d96c3c664d55", "ec8e64fb-6f11-485c-a5d5-488098ad626a" ],
                   "agents" : [ {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
-                  }, {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
                   } ],
