@@ -24,55 +24,30 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * AgentInterfaces
+ * TestAgentWithSourceIpAddress
  */
 @JsonPropertyOrder({
-  AgentInterfaces.JSON_PROPERTY_IP_ADDRESS,
-  AgentInterfaces.JSON_PROPERTY_AGENT_ID
+  TestAgentWithSourceIpAddress.JSON_PROPERTY_AGENT_ID,
+  TestAgentWithSourceIpAddress.JSON_PROPERTY_SOURCE_IP_ADDRESS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class AgentInterfaces {
-  public static final String JSON_PROPERTY_IP_ADDRESS = "ipAddress";
-  private String ipAddress;
-
+public class TestAgentWithSourceIpAddress {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private String agentId;
 
-  public AgentInterfaces() { 
+  public static final String JSON_PROPERTY_SOURCE_IP_ADDRESS = "sourceIpAddress";
+  private String sourceIpAddress;
+
+  public TestAgentWithSourceIpAddress() { 
   }
 
-  public AgentInterfaces ipAddress(String ipAddress) {
-    this.ipAddress = ipAddress;
-    return this;
-  }
-
-   /**
-   * IP address of the agent interface.
-   * @return ipAddress
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIpAddress() {
-    return ipAddress;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IP_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpAddress(String ipAddress) {
-    this.ipAddress = ipAddress;
-  }
-
-
-  public AgentInterfaces agentId(String agentId) {
+  public TestAgentWithSourceIpAddress agentId(String agentId) {
     this.agentId = agentId;
     return this;
   }
 
    /**
-   * The agent ID of the enterprise agent for the test.
+   * Identifier for the agent (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
    * @return agentId
   **/
   @jakarta.annotation.Nullable
@@ -91,8 +66,33 @@ public class AgentInterfaces {
   }
 
 
+  public TestAgentWithSourceIpAddress sourceIpAddress(String sourceIpAddress) {
+    this.sourceIpAddress = sourceIpAddress;
+    return this;
+  }
+
+   /**
+   * The Enterprise Agent interface IP address to use as the source for the test. The address must be listed in the agent&#39;s &#x60;ipAddresses&#x60; field, available from the &#x60;/agents&#x60; endpoint. It is not supported for Cloud Agents or Enterprise Agent clusters.
+   * @return sourceIpAddress
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSourceIpAddress() {
+    return sourceIpAddress;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSourceIpAddress(String sourceIpAddress) {
+    this.sourceIpAddress = sourceIpAddress;
+  }
+
+
   /**
-   * Return true if this AgentInterfaces object is equal to o.
+   * Return true if this TestAgentWithSourceIpAddress object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -102,22 +102,22 @@ public class AgentInterfaces {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AgentInterfaces agentInterfaces = (AgentInterfaces) o;
-    return Objects.equals(this.ipAddress, agentInterfaces.ipAddress) &&
-        Objects.equals(this.agentId, agentInterfaces.agentId);
+    TestAgentWithSourceIpAddress testAgentWithSourceIpAddress = (TestAgentWithSourceIpAddress) o;
+    return Objects.equals(this.agentId, testAgentWithSourceIpAddress.agentId) &&
+        Objects.equals(this.sourceIpAddress, testAgentWithSourceIpAddress.sourceIpAddress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddress, agentId);
+    return Objects.hash(agentId, sourceIpAddress);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AgentInterfaces {\n");
-    sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
+    sb.append("class TestAgentWithSourceIpAddress {\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
+    sb.append("    sourceIpAddress: ").append(toIndentedString(sourceIpAddress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,31 +135,31 @@ public class AgentInterfaces {
 
   public static class ModelBuilder {
 
-    private AgentInterfaces instance;
+    private TestAgentWithSourceIpAddress instance;
 
     public ModelBuilder() {
-      this(new AgentInterfaces());
+      this(new TestAgentWithSourceIpAddress());
     }
 
-    protected ModelBuilder(AgentInterfaces instance) {
+    protected ModelBuilder(TestAgentWithSourceIpAddress instance) {
       this.instance = instance;
     }
 
-    public AgentInterfaces.ModelBuilder ipAddress(String ipAddress) {
-      this.instance.setIpAddress(ipAddress);
+    public TestAgentWithSourceIpAddress.ModelBuilder agentId(String agentId) {
+      this.instance.setAgentId(agentId);
       return this;
     }
-    public AgentInterfaces.ModelBuilder agentId(String agentId) {
-      this.instance.setAgentId(agentId);
+    public TestAgentWithSourceIpAddress.ModelBuilder sourceIpAddress(String sourceIpAddress) {
+      this.instance.setSourceIpAddress(sourceIpAddress);
       return this;
     }
 
     /**
-     * Returns a built AgentInterfaces instance.
+     * Returns a built TestAgentWithSourceIpAddress instance.
      *
      * <p>The builder is not reusable.</p>
      */
-    public AgentInterfaces build() {
+    public TestAgentWithSourceIpAddress build() {
       try {
         return this.instance;
       } finally {
@@ -177,17 +177,17 @@ public class AgentInterfaces {
   /**
    * Create a builder with no initialized fields.
    */
-  public static AgentInterfaces.ModelBuilder builder() {
-    return new AgentInterfaces.ModelBuilder();
+  public static TestAgentWithSourceIpAddress.ModelBuilder builder() {
+    return new TestAgentWithSourceIpAddress.ModelBuilder();
   }
 
   /**
    * Create a builder with a shallow copy of this instance.
    */
-  public AgentInterfaces.ModelBuilder toBuilder() {
-    AgentInterfaces.ModelBuilder builder = new AgentInterfaces.ModelBuilder()
-      .ipAddress(getIpAddress())
-      .agentId(getAgentId());
+  public TestAgentWithSourceIpAddress.ModelBuilder toBuilder() {
+    TestAgentWithSourceIpAddress.ModelBuilder builder = new TestAgentWithSourceIpAddress.ModelBuilder()
+      .agentId(getAgentId())
+      .sourceIpAddress(getSourceIpAddress());
     return builder;
   }
 

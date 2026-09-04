@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.TestAgentRequest;
+import com.thousandeyes.sdk.tests.model.TestAgentWithSourceIpRequest;
 import com.thousandeyes.sdk.tests.model.TestDscpId;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestIpv6Policy;
@@ -131,7 +131,7 @@ public class UpdateAgentToServerTestRequest {
   private Boolean networkMeasurements = false;
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgentRequest> agents = new ArrayList<>();
+  private List<TestAgentWithSourceIpRequest> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   private TestInterval interval = TestInterval.NUMBER_60;
@@ -696,12 +696,12 @@ public class UpdateAgentToServerTestRequest {
   }
 
 
-  public UpdateAgentToServerTestRequest agents(List<TestAgentRequest> agents) {
+  public UpdateAgentToServerTestRequest agents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public UpdateAgentToServerTestRequest addAgentsItem(TestAgentRequest agentsItem) {
+  public UpdateAgentToServerTestRequest addAgentsItem(TestAgentWithSourceIpRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -710,21 +710,21 @@ public class UpdateAgentToServerTestRequest {
   }
 
    /**
-   * Contains list of Agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
+   * Agents assigned to the test. To select a source interface, set &#x60;sourceIpAddress&#x60; on the same object as its &#x60;agentId&#x60;.
    * @return agents
   **/
   @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<TestAgentRequest> getAgents() {
+  public List<TestAgentWithSourceIpRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgents(List<TestAgentRequest> agents) {
+  public void setAgents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
   }
 
@@ -1117,7 +1117,7 @@ public class UpdateAgentToServerTestRequest {
       this.instance.setNetworkMeasurements(networkMeasurements);
       return this;
     }
-    public UpdateAgentToServerTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+    public UpdateAgentToServerTestRequest.ModelBuilder agents(List<TestAgentWithSourceIpRequest> agents) {
       this.instance.setAgents(agents);
       return this;
     }

@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.instant.model.AgentInterfaces;
 import com.thousandeyes.sdk.tests.instant.model.OAuth;
 import com.thousandeyes.sdk.tests.instant.model.TestAgent;
 import com.thousandeyes.sdk.tests.instant.model.TestAuthType;
@@ -56,7 +55,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PageLoadInstantTestRequest.JSON_PROPERTY_TYPE,
   PageLoadInstantTestRequest.JSON_PROPERTY_LINKS,
   PageLoadInstantTestRequest.JSON_PROPERTY_AUTH_TYPE,
-  PageLoadInstantTestRequest.JSON_PROPERTY_AGENT_INTERFACES,
   PageLoadInstantTestRequest.JSON_PROPERTY_BANDWIDTH_MEASUREMENTS,
   PageLoadInstantTestRequest.JSON_PROPERTY_CLIENT_CERTIFICATE,
   PageLoadInstantTestRequest.JSON_PROPERTY_CONTENT_REGEX,
@@ -155,9 +153,6 @@ public class PageLoadInstantTestRequest {
 
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private TestAuthType authType = TestAuthType.NONE;
-
-  public static final String JSON_PROPERTY_AGENT_INTERFACES = "agentInterfaces";
-  private AgentInterfaces agentInterfaces;
 
   public static final String JSON_PROPERTY_BANDWIDTH_MEASUREMENTS = "bandwidthMeasurements";
   private Boolean bandwidthMeasurements;
@@ -536,31 +531,6 @@ public class PageLoadInstantTestRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthType(TestAuthType authType) {
     this.authType = authType;
-  }
-
-
-  public PageLoadInstantTestRequest agentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
-    return this;
-  }
-
-   /**
-   * Get agentInterfaces
-   * @return agentInterfaces
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public AgentInterfaces getAgentInterfaces() {
-    return agentInterfaces;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_INTERFACES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentInterfaces(AgentInterfaces agentInterfaces) {
-    this.agentInterfaces = agentInterfaces;
   }
 
 
@@ -1889,7 +1859,7 @@ public class PageLoadInstantTestRequest {
   }
 
    /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * Agents assigned to the test.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
@@ -1932,7 +1902,6 @@ public class PageLoadInstantTestRequest {
         Objects.equals(this.type, pageLoadInstantTestRequest.type) &&
         Objects.equals(this.links, pageLoadInstantTestRequest.links) &&
         Objects.equals(this.authType, pageLoadInstantTestRequest.authType) &&
-        Objects.equals(this.agentInterfaces, pageLoadInstantTestRequest.agentInterfaces) &&
         Objects.equals(this.bandwidthMeasurements, pageLoadInstantTestRequest.bandwidthMeasurements) &&
         Objects.equals(this.clientCertificate, pageLoadInstantTestRequest.clientCertificate) &&
         Objects.equals(this.contentRegex, pageLoadInstantTestRequest.contentRegex) &&
@@ -1989,7 +1958,7 @@ public class PageLoadInstantTestRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, agentInterfaces, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, authType, bandwidthMeasurements, clientCertificate, contentRegex, customHeaders, desiredStatusCode, distributedTracing, downloadLimit, dnsOverride, httpTargetTime, httpTimeLimit, httpVersion, includeHeaders, mtuMeasurements, networkMeasurements, numPathTraces, oAuth, password, pathTraceMode, probeMode, protocol, sslVersion, sslVersionId, url, useNtlm, userAgent, username, verifyCertificate, allowUnsafeLegacyRenegotiation, followRedirects, fixedPacketRate, overrideAgentProxy, overrideProxyId, collectProxyNetworkData, vaultCredentials, emulatedDeviceId, pageLoadTargetTime, pageLoadTimeLimit, blockDomains, disableScreenshot, allowMicAndCamera, allowGeolocation, browserLanguage, chromeOptions, chromePolicies, chromiumTrack, pageLoadingStrategy, randomizedStartTime, identifyAgentTrafficWithUserAgent, labels, tags, sharedWithAccounts, agents);
   }
 
   @Override
@@ -2008,7 +1977,6 @@ public class PageLoadInstantTestRequest {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
-    sb.append("    agentInterfaces: ").append(toIndentedString(agentInterfaces)).append("\n");
     sb.append("    bandwidthMeasurements: ").append(toIndentedString(bandwidthMeasurements)).append("\n");
     sb.append("    clientCertificate: ").append(toIndentedString(clientCertificate)).append("\n");
     sb.append("    contentRegex: ").append(toIndentedString(contentRegex)).append("\n");
@@ -2134,10 +2102,6 @@ public class PageLoadInstantTestRequest {
     }
     public PageLoadInstantTestRequest.ModelBuilder authType(TestAuthType authType) {
       this.instance.setAuthType(authType);
-      return this;
-    }
-    public PageLoadInstantTestRequest.ModelBuilder agentInterfaces(AgentInterfaces agentInterfaces) {
-      this.instance.setAgentInterfaces(agentInterfaces);
       return this;
     }
     public PageLoadInstantTestRequest.ModelBuilder bandwidthMeasurements(Boolean bandwidthMeasurements) {
@@ -2393,7 +2357,6 @@ public class PageLoadInstantTestRequest {
       .type(getType())
       .links(getLinks())
       .authType(getAuthType())
-      .agentInterfaces(getAgentInterfaces())
       .bandwidthMeasurements(getBandwidthMeasurements())
       .clientCertificate(getClientCertificate())
       .contentRegex(getContentRegex())

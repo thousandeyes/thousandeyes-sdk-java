@@ -118,9 +118,6 @@ public class VoiceInstantTestsApiTest {
                   "agents" : [ {
                     "agentId" : "125",
                     "sourceIpAddress" : "1.1.1.1"
-                  }, {
-                    "agentId" : "125",
-                    "sourceIpAddress" : "1.1.1.1"
                   } ],
                   "codec" : "G.711 @ 64 Kbps",
                   "codecId" : "0",

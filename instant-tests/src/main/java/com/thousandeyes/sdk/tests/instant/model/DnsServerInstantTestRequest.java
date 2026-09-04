@@ -868,7 +868,7 @@ public class DnsServerInstantTestRequest {
   }
 
    /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * Agents assigned to the test.
    * @return agents
   **/
   @jakarta.annotation.Nonnull

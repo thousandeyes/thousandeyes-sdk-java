@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.tests.model.TestAgentRequest;
+import com.thousandeyes.sdk.tests.model.TestAgentWithSourceIpRequest;
 import com.thousandeyes.sdk.tests.model.TestDscpId;
 import com.thousandeyes.sdk.tests.model.TestInterval;
 import com.thousandeyes.sdk.tests.model.TestLinks;
@@ -171,7 +171,7 @@ public class VoiceTestRequest {
   private List<String> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgentRequest> agents = new ArrayList<>();
+  private List<TestAgentWithSourceIpRequest> agents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MONITORS = "monitors";
   private List<String> monitors = new ArrayList<>();
@@ -869,12 +869,12 @@ public class VoiceTestRequest {
   }
 
 
-  public VoiceTestRequest agents(List<TestAgentRequest> agents) {
+  public VoiceTestRequest agents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
     return this;
   }
 
-  public VoiceTestRequest addAgentsItem(TestAgentRequest agentsItem) {
+  public VoiceTestRequest addAgentsItem(TestAgentWithSourceIpRequest agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -883,21 +883,21 @@ public class VoiceTestRequest {
   }
 
    /**
-   * Contains list of Agent IDs (get &#x60;agentId&#x60; from &#x60;/agents&#x60; endpoint).
+   * Agents assigned to the test. To select a source interface, set &#x60;sourceIpAddress&#x60; on the same object as its &#x60;agentId&#x60;.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<TestAgentRequest> getAgents() {
+  public List<TestAgentWithSourceIpRequest> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgentRequest> agents) {
+  public void setAgents(List<TestAgentWithSourceIpRequest> agents) {
     this.agents = agents;
   }
 
@@ -1169,7 +1169,7 @@ public class VoiceTestRequest {
       this.instance.setAlertRules(alertRules);
       return this;
     }
-    public VoiceTestRequest.ModelBuilder agents(List<TestAgentRequest> agents) {
+    public VoiceTestRequest.ModelBuilder agents(List<TestAgentWithSourceIpRequest> agents) {
       this.instance.setAgents(agents);
       return this;
     }

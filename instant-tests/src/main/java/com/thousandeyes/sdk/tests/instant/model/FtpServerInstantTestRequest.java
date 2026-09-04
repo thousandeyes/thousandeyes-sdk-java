@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.tests.instant.model.FtpServerRequestType;
-import com.thousandeyes.sdk.tests.instant.model.TestAgent;
+import com.thousandeyes.sdk.tests.instant.model.TestAgentWithSourceIpAddress;
 import com.thousandeyes.sdk.tests.instant.model.TestIpv6Policy;
 import com.thousandeyes.sdk.tests.instant.model.TestLinks;
 import com.thousandeyes.sdk.tests.instant.model.TestPathTraceMode;
@@ -183,7 +183,7 @@ public class FtpServerInstantTestRequest {
   private List<String> sharedWithAccounts = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AGENTS = "agents";
-  private List<TestAgent> agents = new ArrayList<>();
+  private List<TestAgentWithSourceIpAddress> agents = new ArrayList<>();
 
   public FtpServerInstantTestRequest() { 
   }
@@ -965,12 +965,12 @@ public class FtpServerInstantTestRequest {
   }
 
 
-  public FtpServerInstantTestRequest agents(List<TestAgent> agents) {
+  public FtpServerInstantTestRequest agents(List<TestAgentWithSourceIpAddress> agents) {
     this.agents = agents;
     return this;
   }
 
-  public FtpServerInstantTestRequest addAgentsItem(TestAgent agentsItem) {
+  public FtpServerInstantTestRequest addAgentsItem(TestAgentWithSourceIpAddress agentsItem) {
     if (this.agents == null) {
       this.agents = new ArrayList<>();
     }
@@ -979,21 +979,21 @@ public class FtpServerInstantTestRequest {
   }
 
    /**
-   * A list of objects with &#x60;agentId&#x60; (required) and &#x60;sourceIpAddress&#x60; (optional).
+   * Agents assigned to the test. To select a source interface, set &#x60;sourceIpAddress&#x60; on the same object as its &#x60;agentId&#x60;.
    * @return agents
   **/
   @jakarta.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<TestAgent> getAgents() {
+  public List<TestAgentWithSourceIpAddress> getAgents() {
     return agents;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AGENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAgents(List<TestAgent> agents) {
+  public void setAgents(List<TestAgentWithSourceIpAddress> agents) {
     this.agents = agents;
   }
 
@@ -1248,7 +1248,7 @@ public class FtpServerInstantTestRequest {
       this.instance.setSharedWithAccounts(sharedWithAccounts);
       return this;
     }
-    public FtpServerInstantTestRequest.ModelBuilder agents(List<TestAgent> agents) {
+    public FtpServerInstantTestRequest.ModelBuilder agents(List<TestAgentWithSourceIpAddress> agents) {
       this.instance.setAgents(agents);
       return this;
     }

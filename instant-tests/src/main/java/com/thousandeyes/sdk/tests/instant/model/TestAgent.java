@@ -27,16 +27,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * TestAgent
  */
 @JsonPropertyOrder({
-  TestAgent.JSON_PROPERTY_AGENT_ID,
-  TestAgent.JSON_PROPERTY_SOURCE_IP_ADDRESS
+  TestAgent.JSON_PROPERTY_AGENT_ID
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class TestAgent {
   public static final String JSON_PROPERTY_AGENT_ID = "agentId";
   private String agentId;
-
-  public static final String JSON_PROPERTY_SOURCE_IP_ADDRESS = "sourceIpAddress";
-  private String sourceIpAddress;
 
   public TestAgent() { 
   }
@@ -66,31 +62,6 @@ public class TestAgent {
   }
 
 
-  public TestAgent sourceIpAddress(String sourceIpAddress) {
-    this.sourceIpAddress = sourceIpAddress;
-    return this;
-  }
-
-   /**
-   * IP address from the agent&#39;s &#x60;ipAddresses&#x60; field (get &#x60;ipAddresses&#x60; from &#x60;/agents&#x60; endpoint). Used for interface selection.
-   * @return sourceIpAddress
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSourceIpAddress() {
-    return sourceIpAddress;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SOURCE_IP_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceIpAddress(String sourceIpAddress) {
-    this.sourceIpAddress = sourceIpAddress;
-  }
-
-
   /**
    * Return true if this TestAgent object is equal to o.
    */
@@ -103,13 +74,12 @@ public class TestAgent {
       return false;
     }
     TestAgent testAgent = (TestAgent) o;
-    return Objects.equals(this.agentId, testAgent.agentId) &&
-        Objects.equals(this.sourceIpAddress, testAgent.sourceIpAddress);
+    return Objects.equals(this.agentId, testAgent.agentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentId, sourceIpAddress);
+    return Objects.hash(agentId);
   }
 
   @Override
@@ -117,7 +87,6 @@ public class TestAgent {
     StringBuilder sb = new StringBuilder();
     sb.append("class TestAgent {\n");
     sb.append("    agentId: ").append(toIndentedString(agentId)).append("\n");
-    sb.append("    sourceIpAddress: ").append(toIndentedString(sourceIpAddress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,10 +116,6 @@ public class TestAgent {
 
     public TestAgent.ModelBuilder agentId(String agentId) {
       this.instance.setAgentId(agentId);
-      return this;
-    }
-    public TestAgent.ModelBuilder sourceIpAddress(String sourceIpAddress) {
-      this.instance.setSourceIpAddress(sourceIpAddress);
       return this;
     }
 
@@ -186,8 +151,7 @@ public class TestAgent {
    */
   public TestAgent.ModelBuilder toBuilder() {
     TestAgent.ModelBuilder builder = new TestAgent.ModelBuilder()
-      .agentId(getAgentId())
-      .sourceIpAddress(getSourceIpAddress());
+      .agentId(getAgentId());
     return builder;
   }
 
