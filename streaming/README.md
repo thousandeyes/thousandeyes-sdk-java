@@ -2,7 +2,7 @@
 
 ThousandEyes for OpenTelemetry API
 
-- API version: 7.0.104
+- API version: 7.0.105
 
 **Note:** The following ThousandEyes for OpenTelemetry API capabilities are not available for ThousandEyes for Government instance:
 

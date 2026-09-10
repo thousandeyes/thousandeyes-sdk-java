@@ -2,7 +2,7 @@
 
 BGP Updates API
 
-- API version: 7.0.104
+- API version: 7.0.105
 
 Retrieve BGP updates observed by BGP monitors tracking prefixes in your ThousandEyes account group.
 
