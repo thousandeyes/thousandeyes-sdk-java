@@ -12,6 +12,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/EndpointAgentsTransferApi.jav
 src/main/java/com/thousandeyes/sdk/endpoint/agents/EndpointProxiesApi.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AddressProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AddressType.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentExplainabilityFailure.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentLicenseType.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentSearchFilters.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/AgentSearchRequest.java
@@ -30,6 +31,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/agents/model/BulkAgentTransferRespon
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/CellularProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConditionalOperator.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/ConnectionString.java
+src/main/java/com/thousandeyes/sdk/endpoint/agents/model/DeploymentInfoItem.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgent.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgentEthernetProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/agents/model/EndpointAgentLocation.java
