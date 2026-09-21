@@ -20,6 +20,10 @@ src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigAuthorization.j
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigOAuth2.java
 src/main/java/com/thousandeyes/sdk/streaming/model/ExporterConfigSplunkHec.java
 src/main/java/com/thousandeyes/sdk/streaming/model/Filters.java
+src/main/java/com/thousandeyes/sdk/streaming/model/FiltersAttributes.java
+src/main/java/com/thousandeyes/sdk/streaming/model/FiltersAttributesExcludedAttributes.java
+src/main/java/com/thousandeyes/sdk/streaming/model/FiltersMetrics.java
+src/main/java/com/thousandeyes/sdk/streaming/model/FiltersMetricsExcludedMetrics.java
 src/main/java/com/thousandeyes/sdk/streaming/model/FiltersTestTypes.java
 src/main/java/com/thousandeyes/sdk/streaming/model/GetStreamResponse.java
 src/main/java/com/thousandeyes/sdk/streaming/model/InputConfig.java
@@ -38,4 +42,10 @@ src/main/java/com/thousandeyes/sdk/streaming/model/TestMatch.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestMatchDomain.java
 src/main/java/com/thousandeyes/sdk/streaming/model/TestType.java
 src/main/java/com/thousandeyes/sdk/streaming/model/UnauthorizedError.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V1MetricAttributeFilterName.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V1MetricFilterName.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V2LogAttributeFilterName.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V2MetricAttributeFilterName.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V2MetricFilterName.java
+src/main/java/com/thousandeyes/sdk/streaming/model/V2TraceAttributeFilterName.java
 src/test/java/com/thousandeyes/sdk/streaming/StreamingApiTest.java
