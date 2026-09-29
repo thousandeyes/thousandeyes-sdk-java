@@ -94,6 +94,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **409** | A test with the requested name already exists. The existing test ID is returned in the &#x60;message&#x60; property of the &#x60;errors&#x60; item whose&#x60;field&#x60; is &#x60;testId&#x60;. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
@@ -179,6 +180,7 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **409** | A test with the requested name already exists. The existing test ID is returned in the &#x60;message&#x60; property of the &#x60;errors&#x60; item whose&#x60;field&#x60; is &#x60;testId&#x60;. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
@@ -799,6 +801,7 @@ public class Example {
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **409** | A test with the requested name already exists. The existing test ID is returned in the &#x60;message&#x60; property of the &#x60;errors&#x60; item whose&#x60;field&#x60; is &#x60;testId&#x60;. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
@@ -886,6 +889,7 @@ ApiResponse<[**EndpointAgentToServerTest**](EndpointAgentToServerTest.md)>
 | **401** | Unauthorized |  -  |
 | **403** | Insufficient permissions to query endpoint |  -  |
 | **404** | Not found |  -  |
+| **409** | A test with the requested name already exists. The existing test ID is returned in the &#x60;message&#x60; property of the &#x60;errors&#x60; item whose&#x60;field&#x60; is &#x60;testId&#x60;. |  -  |
 | **429** | Exhausted rate limit for the organization |  -  |
 | **500** | Internal server error |  -  |
 | **502** | Bad Gateway |  -  |
