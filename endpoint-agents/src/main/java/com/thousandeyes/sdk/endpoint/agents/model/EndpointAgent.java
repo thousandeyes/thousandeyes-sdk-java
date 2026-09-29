@@ -20,9 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.endpoint.agents.model.AgentExplainabilityFailure;
 import com.thousandeyes.sdk.endpoint.agents.model.AgentLicenseType;
 import com.thousandeyes.sdk.endpoint.agents.model.BatteryMetrics;
 import com.thousandeyes.sdk.endpoint.agents.model.CellularProfile;
+import com.thousandeyes.sdk.endpoint.agents.model.DeploymentInfoItem;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointAgentLocation;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointAsnDetails;
 import com.thousandeyes.sdk.endpoint.agents.model.EndpointClient;
@@ -71,6 +73,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointAgent.JSON_PROPERTY_AGENT_TYPE,
   EndpointAgent.JSON_PROPERTY_VPN_PROFILES,
   EndpointAgent.JSON_PROPERTY_EXTERNAL_METADATA,
+  EndpointAgent.JSON_PROPERTY_AGENT_EXPLAINABILITY_FAILURES,
+  EndpointAgent.JSON_PROPERTY_DEPLOYMENT_INFO,
   EndpointAgent.JSON_PROPERTY_NETWORK_INTERFACE_PROFILES,
   EndpointAgent.JSON_PROPERTY_ASN_DETAILS,
   EndpointAgent.JSON_PROPERTY_LICENSE_TYPE,
@@ -183,6 +187,14 @@ public class EndpointAgent {
 
   public static final String JSON_PROPERTY_EXTERNAL_METADATA = "externalMetadata";
   private List<ExternalMetadataItem> externalMetadata = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_AGENT_EXPLAINABILITY_FAILURES = "agentExplainabilityFailures";
+  @JsonProperty(JSON_PROPERTY_AGENT_EXPLAINABILITY_FAILURES)
+  private List<AgentExplainabilityFailure> agentExplainabilityFailures = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_DEPLOYMENT_INFO = "deploymentInfo";
+  @JsonProperty(JSON_PROPERTY_DEPLOYMENT_INFO)
+  private List<DeploymentInfoItem> deploymentInfo;
 
   public static final String JSON_PROPERTY_NETWORK_INTERFACE_PROFILES = "networkInterfaceProfiles";
   @JsonProperty(JSON_PROPERTY_NETWORK_INTERFACE_PROFILES)
@@ -690,6 +702,36 @@ public class EndpointAgent {
 
 
    /**
+   * Current failures reported by the agent. An empty list means no current failures.
+   * @return agentExplainabilityFailures
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_AGENT_EXPLAINABILITY_FAILURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<AgentExplainabilityFailure> getAgentExplainabilityFailures() {
+    return agentExplainabilityFailures;
+  }
+
+
+
+
+   /**
+   * Included when the agent has reported deployment metadata.
+   * @return deploymentInfo
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DEPLOYMENT_INFO)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<DeploymentInfoItem> getDeploymentInfo() {
+    return deploymentInfo;
+  }
+
+
+
+
+   /**
    * List of network interfaces on the agent. Not populated by default. 
    * @return networkInterfaceProfiles
   **/
@@ -898,6 +940,8 @@ public class EndpointAgent {
         Objects.equals(this.agentType, endpointAgent.agentType) &&
         Objects.equals(this.vpnProfiles, endpointAgent.vpnProfiles) &&
         Objects.equals(this.externalMetadata, endpointAgent.externalMetadata) &&
+        Objects.equals(this.agentExplainabilityFailures, endpointAgent.agentExplainabilityFailures) &&
+        Objects.equals(this.deploymentInfo, endpointAgent.deploymentInfo) &&
         Objects.equals(this.networkInterfaceProfiles, endpointAgent.networkInterfaceProfiles) &&
         Objects.equals(this.asnDetails, endpointAgent.asnDetails) &&
         Objects.equals(this.licenseType, endpointAgent.licenseType) &&
@@ -910,7 +954,7 @@ public class EndpointAgent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, aid, name, computerName, freeDiskSpaceNormalized, osVersion, platform, kernelVersion, manufacturer, model, nicDriverVersion, nicModel, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, batteryMetrics, cellularProfile, links);
+    return Objects.hash(id, aid, name, computerName, freeDiskSpaceNormalized, osVersion, platform, kernelVersion, manufacturer, model, nicDriverVersion, nicModel, serialNumber, lastSeen, status, deleted, version, targetVersion, createdAt, numberOfClients, publicIP, location, clients, totalMemory, agentType, vpnProfiles, externalMetadata, agentExplainabilityFailures, deploymentInfo, networkInterfaceProfiles, asnDetails, licenseType, tcpDriverAvailable, npcapVersion, batteryMetrics, cellularProfile, links);
   }
 
   @Override
@@ -944,6 +988,8 @@ public class EndpointAgent {
     sb.append("    agentType: ").append(toIndentedString(agentType)).append("\n");
     sb.append("    vpnProfiles: ").append(toIndentedString(vpnProfiles)).append("\n");
     sb.append("    externalMetadata: ").append(toIndentedString(externalMetadata)).append("\n");
+    sb.append("    agentExplainabilityFailures: ").append(toIndentedString(agentExplainabilityFailures)).append("\n");
+    sb.append("    deploymentInfo: ").append(toIndentedString(deploymentInfo)).append("\n");
     sb.append("    networkInterfaceProfiles: ").append(toIndentedString(networkInterfaceProfiles)).append("\n");
     sb.append("    asnDetails: ").append(toIndentedString(asnDetails)).append("\n");
     sb.append("    licenseType: ").append(toIndentedString(licenseType)).append("\n");
@@ -1087,6 +1133,14 @@ public class EndpointAgent {
       this.instance.setExternalMetadata(externalMetadata);
       return this;
     }
+    public EndpointAgent.ModelBuilder agentExplainabilityFailures(List<AgentExplainabilityFailure> agentExplainabilityFailures) {
+      this.instance.agentExplainabilityFailures = agentExplainabilityFailures;
+      return this;
+    }
+    public EndpointAgent.ModelBuilder deploymentInfo(List<DeploymentInfoItem> deploymentInfo) {
+      this.instance.deploymentInfo = deploymentInfo;
+      return this;
+    }
     public EndpointAgent.ModelBuilder networkInterfaceProfiles(List<InterfaceProfile> networkInterfaceProfiles) {
       this.instance.networkInterfaceProfiles = networkInterfaceProfiles;
       return this;
@@ -1179,6 +1233,8 @@ public class EndpointAgent {
       .agentType(getAgentType())
       .vpnProfiles(getVpnProfiles())
       .externalMetadata(getExternalMetadata())
+      .agentExplainabilityFailures(getAgentExplainabilityFailures())
+      .deploymentInfo(getDeploymentInfo())
       .networkInterfaceProfiles(getNetworkInterfaceProfiles())
       .asnDetails(getAsnDetails())
       .licenseType(getLicenseType())
