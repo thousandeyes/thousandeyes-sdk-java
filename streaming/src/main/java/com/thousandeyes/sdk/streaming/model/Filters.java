@@ -20,20 +20,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.thousandeyes.sdk.streaming.model.FiltersAttributes;
+import com.thousandeyes.sdk.streaming.model.FiltersMetrics;
 import com.thousandeyes.sdk.streaming.model.FiltersTestTypes;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * Provides the ability to filter data points based on the specified test types.
+ * Controls which test data the integration exports.  &#x60;testTypes&#x60; is an inclusion filter: when specified, only data from the selected test types is included. &#x60;metricsFilter&#x60; and &#x60;attributesFilter&#x60; exclude metrics or attributes from the included data.  Filter support depends on the stream&#39;s signal and data model version:  - For &#x60;metric&#x60; streams using data model &#x60;v1&#x60; or &#x60;v2&#x60;, both   &#x60;metricsFilter&#x60; and &#x60;attributesFilter&#x60; are supported. - For &#x60;log&#x60; and &#x60;trace&#x60; streams using data model &#x60;v2&#x60;, only   &#x60;attributesFilter&#x60; is supported. &#x60;metricsFilter&#x60; is not supported.  On create, an omitted &#x60;testTypes&#x60; filter includes all test types, while omitted exclusion filters exclude nothing. On update, each omitted filter remains unchanged. Empty exclusion lists clear existing exclusions; &#x60;testTypes.values&#x60; must not be empty. 
  */
 @JsonPropertyOrder({
-  Filters.JSON_PROPERTY_TEST_TYPES
+  Filters.JSON_PROPERTY_TEST_TYPES,
+  Filters.JSON_PROPERTY_METRICS_FILTER,
+  Filters.JSON_PROPERTY_ATTRIBUTES_FILTER
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Filters {
   public static final String JSON_PROPERTY_TEST_TYPES = "testTypes";
   private FiltersTestTypes testTypes;
+
+  public static final String JSON_PROPERTY_METRICS_FILTER = "metricsFilter";
+  private FiltersMetrics metricsFilter;
+
+  public static final String JSON_PROPERTY_ATTRIBUTES_FILTER = "attributesFilter";
+  private FiltersAttributes attributesFilter;
 
   public Filters() { 
   }
@@ -63,6 +73,56 @@ public class Filters {
   }
 
 
+  public Filters metricsFilter(FiltersMetrics metricsFilter) {
+    this.metricsFilter = metricsFilter;
+    return this;
+  }
+
+   /**
+   * Get metricsFilter
+   * @return metricsFilter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METRICS_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FiltersMetrics getMetricsFilter() {
+    return metricsFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METRICS_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetricsFilter(FiltersMetrics metricsFilter) {
+    this.metricsFilter = metricsFilter;
+  }
+
+
+  public Filters attributesFilter(FiltersAttributes attributesFilter) {
+    this.attributesFilter = attributesFilter;
+    return this;
+  }
+
+   /**
+   * Get attributesFilter
+   * @return attributesFilter
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ATTRIBUTES_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public FiltersAttributes getAttributesFilter() {
+    return attributesFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ATTRIBUTES_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAttributesFilter(FiltersAttributes attributesFilter) {
+    this.attributesFilter = attributesFilter;
+  }
+
+
   /**
    * Return true if this Filters object is equal to o.
    */
@@ -75,12 +135,14 @@ public class Filters {
       return false;
     }
     Filters filters = (Filters) o;
-    return Objects.equals(this.testTypes, filters.testTypes);
+    return Objects.equals(this.testTypes, filters.testTypes) &&
+        Objects.equals(this.metricsFilter, filters.metricsFilter) &&
+        Objects.equals(this.attributesFilter, filters.attributesFilter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(testTypes);
+    return Objects.hash(testTypes, metricsFilter, attributesFilter);
   }
 
   @Override
@@ -88,6 +150,8 @@ public class Filters {
     StringBuilder sb = new StringBuilder();
     sb.append("class Filters {\n");
     sb.append("    testTypes: ").append(toIndentedString(testTypes)).append("\n");
+    sb.append("    metricsFilter: ").append(toIndentedString(metricsFilter)).append("\n");
+    sb.append("    attributesFilter: ").append(toIndentedString(attributesFilter)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -117,6 +181,14 @@ public class Filters {
 
     public Filters.ModelBuilder testTypes(FiltersTestTypes testTypes) {
       this.instance.setTestTypes(testTypes);
+      return this;
+    }
+    public Filters.ModelBuilder metricsFilter(FiltersMetrics metricsFilter) {
+      this.instance.setMetricsFilter(metricsFilter);
+      return this;
+    }
+    public Filters.ModelBuilder attributesFilter(FiltersAttributes attributesFilter) {
+      this.instance.setAttributesFilter(attributesFilter);
       return this;
     }
 
@@ -152,7 +224,9 @@ public class Filters {
    */
   public Filters.ModelBuilder toBuilder() {
     Filters.ModelBuilder builder = new Filters.ModelBuilder()
-      .testTypes(getTestTypes());
+      .testTypes(getTestTypes())
+      .metricsFilter(getMetricsFilter())
+      .attributesFilter(getAttributesFilter());
     return builder;
   }
 
