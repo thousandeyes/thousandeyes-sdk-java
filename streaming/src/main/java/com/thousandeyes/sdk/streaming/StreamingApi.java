@@ -462,7 +462,7 @@ public class StreamingApi {
 
   /**
    * Update data stream
-   * Updates a configured data stream using its ID. The fields are overwritten, not appended.
+   * Updates a configured data stream using its ID. The fields are overwritten, not appended. **Important:** When changing &#x60;streamEndpointUrl&#x60;, include replacement values for any configured &#x60;customHeaders&#x60;, Splunk HEC, or OAuth2 credentials. Omitted or redacted credential values are rejected. To remove custom headers, send &#x60;{}&#x60;. When the destination is unchanged, omitted credentials are preserved.
    * @param request operation parameters (required)
    * @return GetStreamResponse
    * @throws ApiException if fails to make API call
@@ -474,7 +474,7 @@ public class StreamingApi {
 
   /**
    * Update data stream
-   * Updates a configured data stream using its ID. The fields are overwritten, not appended.
+   * Updates a configured data stream using its ID. The fields are overwritten, not appended. **Important:** When changing &#x60;streamEndpointUrl&#x60;, include replacement values for any configured &#x60;customHeaders&#x60;, Splunk HEC, or OAuth2 credentials. Omitted or redacted credential values are rejected. To remove custom headers, send &#x60;{}&#x60;. When the destination is unchanged, omitted credentials are preserved.
    * @param request operation parameters (required)
    * @return ApiResponse&lt;GetStreamResponse&gt;
    * @throws ApiException if fails to make API call
