@@ -120,6 +120,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",
@@ -197,6 +203,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",
@@ -346,6 +358,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",
@@ -465,6 +483,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",
@@ -546,6 +570,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",
@@ -614,7 +644,7 @@ public class StreamingApiTest {
     /**
      * Update data stream
      * <p>
-     * Updates a configured data stream using its ID. The fields are overwritten, not appended.
+     * Updates a configured data stream using its ID. The fields are overwritten, not appended. **Important:** When changing &#x60;streamEndpointUrl&#x60;, include replacement values for any configured &#x60;customHeaders&#x60;, Splunk HEC, or OAuth2 credentials. Omitted or redacted credential values are rejected. To remove custom headers, send &#x60;{}&#x60;. When the destination is unchanged, omitted credentials are preserved.
      *
      * @throws JsonProcessingException if the deserialization fails
      */
@@ -677,6 +707,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "customHeaders" : {
@@ -731,6 +767,12 @@ public class StreamingApiTest {
                   "filters" : {
                     "testTypes" : {
                       "values" : [ "agent-to-server", "bgp", "http-server" ]
+                    },
+                    "attributesFilter" : {
+                      "excludedAttributes" : [ "agent.name" ]
+                    },
+                    "metricsFilter" : {
+                      "excludedMetrics" : [ "http.metrics.availability" ]
                     }
                   },
                   "type" : "opentelemetry",

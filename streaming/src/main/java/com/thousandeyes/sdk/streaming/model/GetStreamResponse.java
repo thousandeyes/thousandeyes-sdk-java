@@ -358,7 +358,7 @@ public class GetStreamResponse {
   }
 
    /**
-   * Custom headers.
+   * Custom headers. Send &#x60;{}&#x60; to clear existing headers.
    * @return customHeaders
   **/
   @jakarta.annotation.Nullable
