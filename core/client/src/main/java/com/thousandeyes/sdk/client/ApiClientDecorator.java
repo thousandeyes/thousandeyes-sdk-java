@@ -38,4 +38,9 @@ public abstract class ApiClientDecorator implements ApiClient {
 
     public abstract <T> ApiResponse<T> decorate(Callable<ApiResponse<T>> requestCallable)
             throws ApiException;
+
+    @Override
+    public final void close() {
+        apiClient.close();
+    }
 }
