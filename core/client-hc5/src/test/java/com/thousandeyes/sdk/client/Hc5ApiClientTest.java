@@ -361,14 +361,14 @@ class Hc5ApiClientTest {
 
         assertEquals(new Item("ok"), response.getData());
         assertEquals(2, attempts.get());
-        assertEquals(2, meters.find("httpcomponents.httpclient.request").timers()
+        assertEquals(2, meters.find("http.client.request").timers()
                 .stream().mapToLong(timer -> timer.count()).sum());
-        assertEquals(2, meters.find("httpcomponents.httpclient.response").counters()
+        assertEquals(2, meters.find("http.client.response").counters()
                 .stream().mapToDouble(counter -> counter.count()).sum());
-        assertEquals(0, meters.get("httpcomponents.httpclient.inflight")
+        assertEquals(0, meters.get("http.client.inflight")
                 .tag("httpclient", "sdk").tag("component", "test")
                 .tag("kind", "classic").gauge().value());
-        assertTrue(meters.get("httpcomponents.httpclient.pool.available")
+        assertTrue(meters.get("http.client.pool.available")
                 .tag("httpclient", "sdk").tag("component", "test").gauge().value() >= 0);
     }
 
