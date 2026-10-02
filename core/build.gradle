@@ -6,8 +6,9 @@ ext {
     apacheCommonsLang3 = "3.14.0"
     mockitoVersion = "3.2.4"
     jacksonDatabindNullableVersion = "0.2.6"
-    jacksonVersion = "2.16.1"
-    junitVersion = "5.10.1"
+    jacksonVersion = "2.21.4"
+    jacksonAnnotationsVersion = "2.21"
+    junitVersion = "6.0.3"
 }
 
 repositories {

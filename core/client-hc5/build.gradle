@@ -1,0 +1,26 @@
+plugins {
+    id "java-library"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(":client")
+    api project(":authentication")
+
+    api "org.apache.httpcomponents.client5:httpclient5:5.6.1"
+    api "org.apache.httpcomponents.client5:httpclient5-observation:5.6.1"
+    api "io.micrometer:micrometer-core:1.17.0"
+
+    api "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    api "com.fasterxml.jackson.core:jackson-annotations:$jacksonAnnotationsVersion"
+    api "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    api "org.apache.commons:commons-lang3:$apacheCommonsLang3"
+    api "org.openapitools:jackson-databind-nullable:$jacksonDatabindNullableVersion"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}

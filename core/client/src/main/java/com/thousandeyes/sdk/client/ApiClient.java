@@ -22,6 +22,14 @@ import java.lang.reflect.Type;
 
 
 
-public interface ApiClient {
+public interface ApiClient extends AutoCloseable {
     <T> ApiResponse<T> send(ApiRequest request, Type returnType) throws ApiException;
+
+    /**
+     * Releases resources owned by this client. Clients without owned resources may use the
+     * default no-op implementation.
+     */
+    @Override
+    default void close() {
+    }
 }

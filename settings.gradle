@@ -5,6 +5,8 @@ include 'client'
 project(':client').projectDir = file("core/client")
 include 'client-native'
 project(':client-native').projectDir = file("core/client-native")
+include 'client-hc5'
+project(':client-hc5').projectDir = file("core/client-hc5")
 include 'authentication'
 project(':authentication').projectDir = file("core/authentication")
 
