@@ -126,7 +126,6 @@ public final class Hc5ApiClientBuilder {
                                         ObservingOptions.MetricSet.CONN_POOL))
                     .build();
             var metricConfig = MetricConfig.builder()
-                    .prefix("httpcomponents.httpclient")
                     .addCommonTag("httpclient", metricsConfig.poolName())
                     .addCommonTags(metricsConfig.tags())
                     .build();

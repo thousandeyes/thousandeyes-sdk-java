@@ -37,7 +37,6 @@ import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.Header;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.ByteArrayEntity;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.io.CloseMode;
 import org.apache.hc.core5.util.Timeout;
@@ -89,15 +88,17 @@ public final class Hc5ApiClient implements ApiClient, AutoCloseable {
     @Override
     public <T> ApiResponse<T> send(ApiRequest request, Type returnType) throws ApiException {
         HttpUriRequestBase httpRequest = createRequest(request);
-        try (ClassicHttpResponse response = httpClient.executeOpen(null, httpRequest, null)) {
-            return processResponse(response, returnType);
-        }
-        catch (ApiException e) {
-            throw e;
+        ProcessedResponse<T> result;
+        try {
+            result = httpClient.execute(httpRequest, response -> processResponse(response, returnType));
         }
         catch (IOException | RuntimeException e) {
             throw new ApiException(e);
         }
+        if (result.error() != null) {
+            throw result.error();
+        }
+        return result.response();
     }
 
     private HttpUriRequestBase createRequest(ApiRequest request) throws ApiException {
@@ -140,25 +141,20 @@ public final class Hc5ApiClient implements ApiClient, AutoCloseable {
         }
     }
 
-    private <T> ApiResponse<T> processResponse(ClassicHttpResponse response, Type returnType)
-            throws IOException, ApiException {
+    private <T> ProcessedResponse<T> processResponse(ClassicHttpResponse response, Type returnType)
+            throws IOException {
         int status = response.getCode();
         Map<String, List<String>> headers = headers(response.getHeaders());
         HttpEntity entity = response.getEntity();
         if (status < 200 || status >= 300) {
-            throw new ApiException(status, headers, responseBody(entity));
+            return new ProcessedResponse<>(null, new ApiException(status, headers, responseBody(entity)));
         }
-        if (entity == null) {
-            return new ApiResponse<>(status, headers, null);
-        }
-
         JavaType responseType = mapper.constructType(returnType);
-        if (responseType.hasRawClass(Void.class)) {
-            EntityUtils.consume(entity);
-            return new ApiResponse<>(status, headers, null);
+        if (entity == null || responseType.hasRawClass(Void.class)) {
+            return new ProcessedResponse<>(new ApiResponse<>(status, headers, null), null);
         }
         T data = mapper.readValue(entity.getContent(), responseType);
-        return new ApiResponse<>(status, headers, data);
+        return new ProcessedResponse<>(new ApiResponse<>(status, headers, data), null);
     }
 
     private String responseBody(HttpEntity entity) throws IOException {
@@ -175,6 +171,9 @@ public final class Hc5ApiClient implements ApiClient, AutoCloseable {
                   .add(header.getValue());
         }
         return result;
+    }
+
+    private record ProcessedResponse<T>(ApiResponse<T> response, ApiException error) {
     }
 
     /**

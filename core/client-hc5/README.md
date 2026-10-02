@@ -55,10 +55,13 @@ ApiClient client = Hc5ApiClient.builder()
 
 The module enables only HC5's `BASIC` and `CONN_POOL` metric sets:
 
-- `httpcomponents.httpclient.request`: request latency timer
-- `httpcomponents.httpclient.response`: response counter
-- `httpcomponents.httpclient.inflight`: in-flight request gauge
-- `httpcomponents.httpclient.pool.leased`, `.pool.available`, and `.pool.pending`: connection pool gauges
+- `http.client.request`: request latency timer
+- `http.client.response`: response counter
+- `http.client.inflight`: in-flight request gauge
+- `http.client.pool.leased`, `.pool.available`, and `.pool.pending`: connection pool gauges
+
+Prometheus exposes the request timer as `http_client_request_seconds_count`,
+`http_client_request_seconds_sum`, and the related timer series.
 
 Request metrics use `method` and `status` tags. The configured pool name is published as the
 `httpclient` tag, and the configured tags are added to all HC5 meters. SDK rate-limit retries produce
