@@ -1,3 +1,4 @@
 # core
 
-This project contains core modules used by other API modules such as authentication, java clients and examples.
+This project contains the shared API client contract, authentication support, and the native Java
+and Spring RestClient implementations used by the generated API modules.

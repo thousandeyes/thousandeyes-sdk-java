@@ -5,6 +5,8 @@ include 'client'
 project(':client').projectDir = file("core/client")
 include 'client-native'
 project(':client-native').projectDir = file("core/client-native")
+include 'client-spring'
+project(':client-spring').projectDir = file("core/client-spring")
 include 'authentication'
 project(':authentication').projectDir = file("core/authentication")
 

@@ -1,0 +1,20 @@
+plugins {
+    id "java-library"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(":client")
+
+    api "org.springframework:spring-web:$springFrameworkVersion"
+    api "org.apache.httpcomponents.client5:httpclient5:$httpClient5Version"
+    api "io.micrometer:micrometer-observation:$micrometerVersion"
+    api "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    implementation "org.apache.commons:commons-lang3:$apacheCommonsLang3"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
