@@ -14,8 +14,9 @@ try (ApiClient client = Hc5ApiClient.builder()
 
 The defaults allow 100 total connections and 20 connections per route. Pool acquisition and connect
 timeouts are 5 seconds, socket and response timeouts are 30 seconds, connection lifetime is 5 minutes,
-and idle connections are evicted after 30 seconds. Apache HttpClient automatic retries are disabled.
-The SDK rate-limit retry remains enabled and can be disabled when retries are managed elsewhere:
+and idle connections are evicted after 30 seconds. Redirect handling and Apache HttpClient automatic
+retries are disabled. The SDK rate-limit retry remains enabled and can be disabled when retries are
+managed elsewhere:
 
 ```java
 ApiClient client = Hc5ApiClient.builder()
@@ -91,3 +92,8 @@ ApiClient client = Hc5ApiClient.builder()
 
 Customizers are cumulative and run after module defaults. The module attaches its owned connection
 manager and optional HC5 metrics after the HTTP client customizers.
+
+A positive `idleEviction` setting takes precedence over `expiredConnectionEvictionEnabled`: Apache
+HttpClient's idle eviction task also evicts expired connections. To disable background eviction of
+expired connections, set `expiredConnectionEvictionEnabled(false)` and use a zero or negative
+`idleEviction` duration.

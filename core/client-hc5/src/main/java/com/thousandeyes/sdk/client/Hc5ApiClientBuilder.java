@@ -44,8 +44,8 @@ import com.thousandeyes.sdk.serialization.JSON;
 
 /**
  * Builds a thread-safe {@link Hc5ApiClient} with a bounded connection pool and finite timeouts.
- * Builder instances are mutable and are not thread-safe. Customizers and interceptors are cumulative
- * and run in registration order.
+ * Redirect handling is disabled. Builder instances are mutable and are not thread-safe. Customizers
+ * and interceptors are cumulative and run in registration order.
  */
 public final class Hc5ApiClientBuilder {
     private String baseUri = "https://api.thousandeyes.com/v7";
@@ -97,7 +97,9 @@ public final class Hc5ApiClientBuilder {
         connectionManagerCustomizers.forEach(customizer -> customizer.accept(connectionManagerBuilder));
         var connectionManager = connectionManagerBuilder.build();
 
-        HttpClientBuilder httpClientBuilder = HttpClients.custom().setDefaultRequestConfig(requestConfig);
+        HttpClientBuilder httpClientBuilder = HttpClients.custom()
+                .setDefaultRequestConfig(requestConfig)
+                .disableRedirectHandling();
         if (!automaticRetries) {
             httpClientBuilder.disableAutomaticRetries();
         }

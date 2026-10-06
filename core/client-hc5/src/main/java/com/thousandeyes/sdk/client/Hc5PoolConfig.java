@@ -33,8 +33,11 @@ import org.apache.hc.core5.pool.PoolReusePolicy;
  * @param reusePolicy available connection reuse order; default LIFO
  * @param connectionTimeToLive maximum pooled connection lifetime; default 5 minutes
  * @param validateAfterInactivity inactivity before validation on reuse; default 5 seconds
- * @param idleEviction idle time before background eviction; default 30 seconds
- * @param expiredConnectionEvictionEnabled whether expired connections are evicted; default true
+ * @param idleEviction idle time before background eviction; default 30 seconds. A positive value
+ *        takes precedence over {@code expiredConnectionEvictionEnabled} because Apache HttpClient's
+ *        idle eviction task also evicts expired connections
+ * @param expiredConnectionEvictionEnabled whether expired connections are evicted in the background
+ *        when idle eviction is disabled; default true
  * @param fallbackKeepAlive keep-alive used when a response does not specify one; default 3 minutes
  */
 public record Hc5PoolConfig(
@@ -115,13 +118,21 @@ public record Hc5PoolConfig(
             return this;
         }
 
-        /** Sets the idle time after which the eviction thread closes a connection. */
+        /**
+         * Sets the idle time after which the eviction thread closes a connection. A positive value
+         * also enables expired connection eviction, regardless of
+         * {@link #expiredConnectionEvictionEnabled(boolean)}.
+         */
         public Builder idleEviction(Duration value) {
             this.idleEviction = Objects.requireNonNull(value);
             return this;
         }
 
-        /** Enables or disables eviction of connections whose time to live has expired. */
+        /**
+         * Enables or disables background eviction of connections whose time to live has expired.
+         * A positive {@link #idleEviction(Duration)} value takes precedence and also enables expired
+         * connection eviction.
+         */
         public Builder expiredConnectionEvictionEnabled(boolean value) {
             this.expiredConnectionEvictionEnabled = value;
             return this;
