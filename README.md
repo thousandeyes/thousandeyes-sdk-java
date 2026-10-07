@@ -26,7 +26,6 @@ Each of the APIs being published includes a README file with instructions on how
 * [instant-tests](/instant-tests/README.md)
 * [internet-insights](/internet-insights/README.md)
 * [snapshots](/snapshots/README.md)
-* [streaming](/streaming/README.md)
 * [tags](/tags/README.md)
 * [test-results](/test-results/README.md)
 * [tests](/tests/README.md)
