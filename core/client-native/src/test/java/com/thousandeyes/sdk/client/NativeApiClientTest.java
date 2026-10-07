@@ -33,7 +33,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 
 
@@ -45,8 +46,9 @@ class NativeApiClientTest {
     private HttpClient httpClient;
     @Mock
     private HttpClient.Builder httpClientBuilder;
-    private final ObjectMapper objectMapper = new ObjectMapper()
-            .findAndRegisterModules();
+    private final ObjectMapper objectMapper = JsonMapper.builder()
+            .findAndAddModules()
+            .build();
     private ApiClient apiClient;
 
     public static Stream<Arguments> invalidRequestProvider() {

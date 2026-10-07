@@ -14,8 +14,8 @@ ext {
     apacheCommonsLang3 = "3.14.0"
     googleJsr305Version = "3.0.2"
     mockitoVersion = "5.3.0"
-    jacksonDatabindNullableVersion = "0.2.6"
-    jacksonVersion = "2.16.1"
+    jacksonDatabindNullableVersion = "0.2.12"
+    jacksonVersion = "3.1.7"
     jacocoVersion = "0.8.8"
     junitVersion = "5.10.1"
 }
