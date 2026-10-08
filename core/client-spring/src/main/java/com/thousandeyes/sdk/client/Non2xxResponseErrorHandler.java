@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Cisco Systems, Inc. and its affiliates
+ * Copyright 2026 Cisco Systems, Inc. and its affiliates
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,25 +18,13 @@
 
 package com.thousandeyes.sdk.client;
 
-import java.lang.reflect.Type;
-import java.util.concurrent.Callable;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.web.client.DefaultResponseErrorHandler;
 
-import lombok.RequiredArgsConstructor;
-
-
-
-@RequiredArgsConstructor
-public abstract class ApiClientDecorator implements ApiClient {
-    private final ApiClient apiClient;
+final class Non2xxResponseErrorHandler extends DefaultResponseErrorHandler {
 
     @Override
-    public final <T> ApiResponse<T> send(ApiRequest request, Type returnType)
-            throws ApiException
-    {
-        return decorate(() -> apiClient.send(request, returnType));
+    protected boolean hasError(HttpStatusCode statusCode) {
+        return !statusCode.is2xxSuccessful();
     }
-
-    public abstract <T> ApiResponse<T> decorate(Callable<ApiResponse<T>> requestCallable)
-            throws ApiException;
-
 }

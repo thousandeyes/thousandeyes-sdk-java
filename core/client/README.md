@@ -2,8 +2,9 @@
 
 This project contains an interface which all created API Clients should conform with - the native
 Java
-client [client-native](https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main/core/client-native)
-shipped alongside this project is an example of such implementation.
+clients [client-native](https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main/core/client-native)
+and [client-spring](https://github.com/thousandeyes/thousandeyes-sdk-java/tree/main/core/client-spring)
+shipped alongside this project are implementations of that contract.
 
 It also contains several utility Classes, namely `RateLimitDecorator` that can be used to make sure
 the requests getting Rate Limited (HTTP response status code == 429) are automatically retried after
