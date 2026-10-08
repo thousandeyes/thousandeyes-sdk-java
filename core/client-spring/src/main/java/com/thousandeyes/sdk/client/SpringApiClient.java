@@ -26,10 +26,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -39,14 +43,12 @@ import org.springframework.web.util.UriComponentsBuilder;
  * Transport configuration and lifecycle are owned by the supplied Spring builder and its request
  * factory.
  */
+@Getter
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public final class SpringApiClient implements ApiClient {
     private final URI baseUri;
     private final RestClient restClient;
-
-    SpringApiClient(URI baseUri, RestClient restClient) {
-        this.baseUri = baseUri;
-        this.restClient = restClient;
-    }
+    private final ResponseErrorHandler responseErrorHandler;
 
     /**
      * Creates a builder backed by a new Spring {@link RestClient.Builder}.
@@ -92,7 +94,9 @@ public final class SpringApiClient implements ApiClient {
                 requestSpec.body(request.getRequestBody());
             }
             ParameterizedTypeReference<T> responseType = ParameterizedTypeReference.forType(returnType);
-            ResponseEntity<T> response = requestSpec.retrieve().toEntity(responseType);
+            ResponseEntity<T> response = requestSpec.retrieve()
+                    .onStatus(responseErrorHandler)
+                    .toEntity(responseType);
             return new ApiResponse<>(
                     response.getStatusCode().value(),
                     headers(response.getHeaders()),
@@ -128,21 +132,4 @@ public final class SpringApiClient implements ApiClient {
         return result;
     }
 
-    /**
-     * Returns the normalized base URI used for API requests.
-     *
-     * @return configured base URI
-     */
-    public URI getBaseUri() {
-        return baseUri;
-    }
-
-    /**
-     * Returns the configured Spring client.
-     *
-     * @return Spring RestClient used for requests
-     */
-    public RestClient getRestClient() {
-        return restClient;
-    }
 }

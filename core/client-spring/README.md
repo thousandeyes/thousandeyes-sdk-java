@@ -4,7 +4,8 @@
 the request factory, interceptors, observation registry, and conventions from the supplied
 `RestClient.Builder`. JSON conversion uses the SDK mapper by default so generated models have the
 same wire format as the other SDK clients, including omission of null properties. Supply a different
-mapper with `objectMapper(...)` when the application needs additional Jackson configuration.
+Jackson 3 `JsonMapper` with `objectMapper(...)` when the application needs additional Jackson
+configuration.
 
 ```gradle
 implementation "com.thousandeyes.sdk:client-spring:<version>"
@@ -137,3 +138,12 @@ belong to the configured Spring request factory and its underlying HTTP client.
 Configure default headers, non-JSON message converters, observations, and other Spring options on
 the supplied `RestClient.Builder`. The SDK installs its configured mapper for JSON conversion.
 Request factory resources supplied to `SpringApiClientBuilder` remain owned by the application.
+
+The SDK treats every non-2xx response as an API error by default. Replace that behavior with any
+Spring `ResponseErrorHandler` when an application needs different status handling:
+
+```java
+ApiClient client = SpringApiClient.builder(restClientBuilder)
+        .responseErrorHandler(responseErrorHandler)
+        .build();
+```

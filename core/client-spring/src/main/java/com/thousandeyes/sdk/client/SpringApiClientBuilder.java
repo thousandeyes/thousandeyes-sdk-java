@@ -25,9 +25,11 @@ import java.util.Objects;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestClient;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import com.thousandeyes.sdk.serialization.JSON;
 
@@ -42,7 +44,8 @@ public final class SpringApiClientBuilder {
     private String bearerToken;
     private boolean retryOnRateLimit = true;
     private ClientHttpRequestFactory requestFactory;
-    private ObjectMapper objectMapper = JSON.getDefault().getMapper();
+    private JsonMapper objectMapper = (JsonMapper) JSON.getDefault().getMapper();
+    private ResponseErrorHandler responseErrorHandler = new Non2xxResponseErrorHandler();
     private final List<ClientHttpRequestInterceptor> requestInterceptors = new ArrayList<>();
 
     SpringApiClientBuilder(RestClient.Builder restClientBuilder) {
@@ -71,7 +74,10 @@ public final class SpringApiClientBuilder {
         }
         requestInterceptors.forEach(springBuilder::requestInterceptor);
 
-        ApiClient client = new SpringApiClient(baseUri, springBuilder.build());
+        ApiClient client = new SpringApiClient(
+                baseUri,
+                springBuilder.build(),
+                responseErrorHandler);
         if (retryOnRateLimit) {
             return new RateLimitDecorator(client);
         }
@@ -79,7 +85,7 @@ public final class SpringApiClientBuilder {
     }
 
     private void configureJsonMessageConverter(RestClient.Builder springBuilder) {
-        var jsonConverter = new SdkJacksonHttpMessageConverter(objectMapper);
+        var jsonConverter = new JacksonJsonHttpMessageConverter(objectMapper);
         springBuilder.configureMessageConverters(builder -> builder.withJsonConverter(jsonConverter));
     }
 
@@ -150,11 +156,23 @@ public final class SpringApiClientBuilder {
      * default is {@code JSON.getDefault().getMapper()}, which provides the SDK's generated-model
      * serialization behavior. The mapper must be safe for concurrent use after the client is built.
      *
-     * @param value Jackson object mapper
+     * @param value Jackson JSON mapper
      * @return this builder
      */
-    public SpringApiClientBuilder objectMapper(ObjectMapper value) {
+    public SpringApiClientBuilder objectMapper(JsonMapper value) {
         this.objectMapper = Objects.requireNonNull(value);
+        return this;
+    }
+
+    /**
+     * Sets the Spring error handler applied to every response. The default treats every non-2xx
+     * response as an error.
+     *
+     * @param value Spring response error handler
+     * @return this builder
+     */
+    public SpringApiClientBuilder responseErrorHandler(ResponseErrorHandler value) {
+        this.responseErrorHandler = Objects.requireNonNull(value);
         return this;
     }
 

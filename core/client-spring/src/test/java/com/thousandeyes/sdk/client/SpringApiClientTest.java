@@ -36,7 +36,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import com.thousandeyes.sdk.serialization.JSON;
 
@@ -100,7 +100,7 @@ class SpringApiClientTest {
     @Test
     void usesInjectedObjectMapper() throws Exception {
         ApiClient client = clientBuilder()
-                .objectMapper(new ObjectMapper())
+                .objectMapper(JsonMapper.builder().build())
                 .build();
 
         client.send(jsonRequest(new PatchBody("agent", null)), Void.class);
