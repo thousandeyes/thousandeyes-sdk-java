@@ -30,10 +30,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -59,7 +59,9 @@ public class CloudInsightsIntegrationPolicySettingsApiTest {
     private static CloudInsightsIntegrationPolicySettingsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -75,11 +77,11 @@ public class CloudInsightsIntegrationPolicySettingsApiTest {
      * <p>
      * Retrieves the AWS integration policy settings for the authenticated account group. Use this endpoint to audit which AWS resource group types and AWS regions are enabled, and whether CloudTrail is enabled, for Cloud Insights inventory monitoring. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAWSIntegrationPolicySettingsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -127,11 +129,11 @@ public class CloudInsightsIntegrationPolicySettingsApiTest {
      * <p>
      * Retrieves the Azure integration policy settings for the authenticated account group. Use this endpoint to review which Azure resource group types are monitored and inspect the subscriptions policy rules that gate which subscriptions ThousandEyes inventories. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAzureIntegrationPolicySettingsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -189,11 +191,11 @@ public class CloudInsightsIntegrationPolicySettingsApiTest {
      * <p>
      * Updates the AWS integration policy settings for the authenticated account group. This endpoint lets you enable or disable specific AWS resource group types, adjust the set of AWS regions to inventory, and control whether CloudTrail is enabled for inventory monitoring. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateAWSIntegrationPolicySettingsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -267,11 +269,11 @@ public class CloudInsightsIntegrationPolicySettingsApiTest {
      * <p>
      * Updates the Azure integration policy settings for the authenticated account group. This endpoint lets you enable or disable Azure resource group types and manage the subscriptions policy (rules plus default action) that controls which Azure subscriptions are inventoried. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateAzureIntegrationPolicySettingsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {

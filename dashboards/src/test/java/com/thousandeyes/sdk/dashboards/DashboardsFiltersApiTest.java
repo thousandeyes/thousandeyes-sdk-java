@@ -32,10 +32,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -61,7 +61,9 @@ public class DashboardsFiltersApiTest {
     private static DashboardsFiltersApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -77,11 +79,11 @@ public class DashboardsFiltersApiTest {
      * <p>
      * Creates a new dashboard filter in your account group. To create a filter,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin). * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createDashboardFilterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -169,11 +171,11 @@ public class DashboardsFiltersApiTest {
      * <p>
      * Deletes a dashboard filter using the &#x60;filterId&#x60; provided in the request.    **Note**:   * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard filter.   * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboard filters they have created themselves. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteDashboardFilterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "65bc18e8f2073a4a469cd958";
 
@@ -199,11 +201,11 @@ public class DashboardsFiltersApiTest {
      * <p>
      * Returns a list of data source filters and their metadata within the dashboard filter. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDashboardFilterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "65bc18e8f2073a4a469cd958";
 
@@ -273,11 +275,11 @@ public class DashboardsFiltersApiTest {
      * <p>
      * Returns a list of dashboard filters and its context within your account group. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDashboardsFiltersRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -382,11 +384,11 @@ public class DashboardsFiltersApiTest {
      * <p>
      * Updates an existing dashboard filter in your account group.                        **Note**:    * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard filter.    * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboard filters they have created themselves. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateDashboardFilterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "65bc18e8f2073a4a469cd958";
         var requestBodyJson = """

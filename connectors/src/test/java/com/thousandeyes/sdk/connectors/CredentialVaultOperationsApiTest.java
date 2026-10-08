@@ -30,10 +30,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -59,7 +59,9 @@ public class CredentialVaultOperationsApiTest {
     private static CredentialVaultOperationsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -75,11 +77,11 @@ public class CredentialVaultOperationsApiTest {
      * <p>
      * Create a new Credential Vault operation.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createCredentialVaultOperationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -173,11 +175,11 @@ public class CredentialVaultOperationsApiTest {
      * <p>
      * Delete a single Credential Vault operation by its ID. Note: This operation may disable affected objects (such as tests).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteCredentialVaultOperationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
@@ -205,11 +207,11 @@ public class CredentialVaultOperationsApiTest {
      * <p>
      * Retrieve a single Credential Vault operation by its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getCredentialVaultOperationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -270,11 +272,11 @@ public class CredentialVaultOperationsApiTest {
      * <p>
      * Returns a list of Credential Vault operations in the specified account group. If no account group is specified, the user&#39;s default account group is used.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getCredentialVaultOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -372,11 +374,11 @@ public class CredentialVaultOperationsApiTest {
      * <p>
      * Update a single existing Credential Vault operation.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateCredentialVaultOperationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """

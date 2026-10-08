@@ -34,10 +34,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -63,7 +63,9 @@ public class EventsApiTest {
     private static EventsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -79,11 +81,11 @@ public class EventsApiTest {
      * <p>
      * Returns detailed information about an event using its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEventRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID id = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -248,11 +250,11 @@ public class EventsApiTest {
      * <p>
      * Retrieves a list of events within the specified time window. If no events are active during the specified time range, an empty response is returned.  **Note**: You must provide either a time window using the &#x60;window&#x60; parameter or specify &#x60;startDate&#x60; and &#x60;endDate&#x60;.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEventsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """

@@ -39,10 +39,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -68,7 +68,9 @@ public class DashboardsApiTest {
     private static DashboardsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -84,11 +86,11 @@ public class DashboardsApiTest {
      * <p>
      * Creates a dashboard by cloning an existing dashboard. By default, the clone inherits the source dashboard&#39;s widgets, layout, default timespan, tags, and other supported settings. Values provided in the request override the corresponding source dashboard settings. Sharing settings are not inherited. If &#x60;title&#x60; is omitted, the API generates a unique title for the clone.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can clone any dashboard they can view. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can clone dashboards they can view. The current user owns the cloned dashboard. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void cloneDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         var requestBodyJson = """
@@ -325,11 +327,11 @@ public class DashboardsApiTest {
      * <p>
      * Creates a new dashboard in your account group. To create a dashboard,  you must have one of the following permissions: * &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin).  * &#x60;Edit own dashboard templates&#x60; permission (Regular User). 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -689,11 +691,11 @@ public class DashboardsApiTest {
      * <p>
      * Deletes a dashboard using the &#x60;dashboardId&#x60; provided in the request.  **Note**: * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can delete any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only delete the dashboards they have created themselves. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
 
@@ -719,11 +721,11 @@ public class DashboardsApiTest {
      * <p>
      * Removes the snapshot schedule from a dashboard. Existing snapshots are not deleted. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteDashboardScheduleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
 
@@ -749,11 +751,11 @@ public class DashboardsApiTest {
      * <p>
      * Returns a list of widgets within a dashboard, along with the dashboard&#39;s metadata. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
 
@@ -958,11 +960,11 @@ public class DashboardsApiTest {
      * <p>
      * Returns the raw data displayed within a widget in the dashboard. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDashboardWidgetDataRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
@@ -1453,11 +1455,11 @@ public class DashboardsApiTest {
      * <p>
      * Returns a list of dashboards and their settings within your account group. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDashboardsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -1829,11 +1831,11 @@ public class DashboardsApiTest {
      * <p>
      * Returns the raw data for an individual card within a numbers widget in the dashboard. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getIndividualCardDataRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
@@ -1919,11 +1921,11 @@ public class DashboardsApiTest {
      * <p>
      * Returns the raw data for an individual column within a multi-metric table widget in the dashboard. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getIndividualColumnDataRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         String widgetId = "unpmg";
@@ -2025,11 +2027,11 @@ public class DashboardsApiTest {
      * <p>
      * Updates an existing dashboard in your account group.   **Note**:  * Users with the &#x60;Edit dashboard templates for all users in account group&#x60; permission (Account Admin) can update any dashboard. * Users with the &#x60;Edit own dashboard templates&#x60; permission (Regular User) can only update the dashboards they have created themselves. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateDashboardRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         var requestBodyJson = """
@@ -2392,11 +2394,11 @@ public class DashboardsApiTest {
      * <p>
      * Creates or replaces the snapshot schedule for a dashboard. Set &#x60;repeat&#x60; to &#x60;NONE&#x60; to generate one snapshot at &#x60;startTime&#x60;. Other &#x60;repeat&#x60; values create recurring snapshots. Schedule settings control when snapshots are generated, the data time range included in each snapshot, and email delivery options. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateDashboardScheduleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String dashboardId = "646f4d2ce3c99b0536c3821e";
         var requestBodyJson = """

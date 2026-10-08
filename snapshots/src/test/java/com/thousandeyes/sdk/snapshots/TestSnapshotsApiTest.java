@@ -30,10 +30,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -59,7 +59,9 @@ public class TestSnapshotsApiTest {
     private static TestSnapshotsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -75,11 +77,11 @@ public class TestSnapshotsApiTest {
      * <p>
      * This operation creates a test snapshot based on the properties provided in the POST data.  * To use this endpoint, you need the &#x60;Create snapshot shares&#x60; permission. * You can create a maximum of 5 snapshots per organization within a 5-minute interval. * Snapshots generated through this operation have a 30-day expiration period. * The time range specified with the &#x60;from&#x60; and &#x60;to&#x60; parameters must adhere to one of the following intervals: 1, 2, 4, 6, 12, 24, or 48 hours. * The &#x60;endDate&#x60; field of the snapshot must be set to the present or a past date. * Certain regions may not have public snapshots enabled for compliance reasons. In that case you will get a 403 Forbidden as a response.  **Note**: This operation does not support the creation of operation Agent snapshots. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createTestSnapshotRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
         var requestBodyJson = """

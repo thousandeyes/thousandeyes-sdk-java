@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.dashboards.model.ActiveWithin;
 import com.thousandeyes.sdk.dashboards.model.AlertListDatasource;
 import com.thousandeyes.sdk.dashboards.model.ApiDuration;
@@ -35,6 +34,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 

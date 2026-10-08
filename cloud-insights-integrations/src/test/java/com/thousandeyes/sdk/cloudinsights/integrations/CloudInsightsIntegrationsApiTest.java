@@ -37,10 +37,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -66,7 +66,9 @@ public class CloudInsightsIntegrationsApiTest {
     private static CloudInsightsIntegrationsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -82,11 +84,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Creates a new AWS flow logs monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createAWSFlowLogsMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -151,11 +153,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Creates a new AWS inventory monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createAWSInventoryMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -219,11 +221,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Creates a new Azure flow logs monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createAzureFlowLogsMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -291,11 +293,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Creates a new Azure inventory monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createAzureInventoryMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -362,11 +364,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Deletes a specific AWS inventory or flow logs monitoring integration using the AWS integration ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteAwsMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -392,11 +394,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Deletes a specific Azure inventory or flow logs monitoring integration using the Azure integration ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteAzureMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -422,11 +424,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Retrieves details for a specific AWS inventory or flow logs monitoring integration associated with the authenticated account group using the unique integration ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAWSMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -480,11 +482,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Retrieves all AWS inventory and flow logs monitoring integrations configured for the authenticated account group in ThousandEyes.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAllAWSMonitoringIntegrationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -568,11 +570,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Retrieves all Azure inventory and flow logs monitoring integrations configured for the authenticated account group in ThousandEyes.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAllAzureMonitoringIntegrationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -658,11 +660,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Retrieves details for a specific Azure inventory or flow logs monitoring integration associated with the authenticated account group using the unique integration ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAzureMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -717,11 +719,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Updates an existing Azure flow logs monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateAzureFlowLogsMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
         var requestBodyJson = """
@@ -792,11 +794,11 @@ public class CloudInsightsIntegrationsApiTest {
      * <p>
      * Updates an existing Azure inventory monitoring integration.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateAzureInventoryMonitoringIntegrationRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID integrationId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
         var requestBodyJson = """

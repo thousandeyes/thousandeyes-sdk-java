@@ -34,10 +34,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -63,7 +63,9 @@ public class TagsApiTest {
     private static TagsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -79,11 +81,11 @@ public class TagsApiTest {
      * <p>
      * Creates a new tag. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;.    For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -205,11 +207,11 @@ public class TagsApiTest {
      * <p>
      * Creates multiple tags. Note the response includes a &#x60;statuses&#x60; array. This array provides status information for each tag object, indexed 1:1 with the &#x60;tags&#x60; array. Creating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. A tag that fails this permission check is reported as a per-item &#x60;403&#x60; in the &#x60;errors&#x60; array, while the top-level status remains &#x60;207&#x60;. If the caller does not have permission to create tags, the request returns a top-level &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -625,11 +627,11 @@ public class TagsApiTest {
      * <p>
      * Deletes a tag.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
 
@@ -655,11 +657,11 @@ public class TagsApiTest {
      * <p>
      * Retrieves a tag using its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
 
@@ -741,11 +743,11 @@ public class TagsApiTest {
      * <p>
      * This operation returns a list of tags in the specified account group (&#x60;aid&#x60;).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -884,11 +886,11 @@ public class TagsApiTest {
      * <p>
      * Updates a tag. Updating a dynamic endpoint-agent tag (&#x60;objectType: endpoint-agent&#x60;, &#x60;type: dynamic&#x60;) requires all Endpoint Agent PII view permissions. Requests missing any of these permissions return &#x60;403&#x60;. For more information, see [Endpoint Agent permissions](https://docs.thousandeyes.com/product-documentation/global-vantage-points/endpoint-agents#endpoint-agent-permissions).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
         var requestBodyJson = """

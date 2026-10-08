@@ -38,10 +38,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -67,7 +67,9 @@ public class NetworkDynamicEndpointTestResultsApiTest {
     private static NetworkDynamicEndpointTestResultsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -83,11 +85,11 @@ public class NetworkDynamicEndpointTestResultsApiTest {
      * <p>
      * Returns network metrics (&#x60;loss&#x60;, &#x60;latency&#x60;, &#x60;jitter&#x60; and &#x60;bandwidth&#x60;) from each endpoint agent, for each &#x60;roundId&#x60; in the requested window. When Time Frame is provided the rounds specific to the time frame is returned and the order is not pre-defined unless a user specifies the sort order in filter. When no time frame is provided the latest rounds are returned. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void filterDynamicTestNetworkResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
         var requestBodyJson = """
@@ -514,11 +516,11 @@ public class NetworkDynamicEndpointTestResultsApiTest {
      * <p>
      * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDynamicTestPathVisAgentRoundResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
         String agentId = "11";
@@ -1051,11 +1053,11 @@ public class NetworkDynamicEndpointTestResultsApiTest {
      * <p>
      * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours will be returned. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getDynamicTestPathVisResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
 

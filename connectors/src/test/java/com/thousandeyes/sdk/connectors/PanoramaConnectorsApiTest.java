@@ -31,10 +31,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -60,7 +60,9 @@ public class PanoramaConnectorsApiTest {
     private static PanoramaConnectorsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -76,11 +78,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Creates a new Panorama connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createPanoramaConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -166,11 +168,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Deletes the Panorama connector specified by ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deletePanoramaConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -196,11 +198,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Retrieves details of a Panorama connector by its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getPanoramaConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -257,11 +259,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Returns a list of operation IDs assigned to a Panorama connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getPanoramaConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -310,11 +312,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Returns a list of Panorama connectors in the specified account group. If no account group is specified, the user’s default account group is used.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getPanoramaConnectorsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -404,11 +406,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Assigns operations to a Panorama connector. This replaces any existing assignments. Passing an empty array removes all operation assignments from the connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void setPanoramaConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """
@@ -467,11 +469,11 @@ public class PanoramaConnectorsApiTest {
      * <p>
      * Replaces the Panorama connector specified by ID. The request must include the complete connector configuration, including authentication credentials; existing credentials are not retained when authentication is omitted.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updatePanoramaConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """

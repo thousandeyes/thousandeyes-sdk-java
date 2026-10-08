@@ -33,10 +33,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -62,7 +62,9 @@ public class AlertRulesApiTest {
     private static AlertRulesApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -78,11 +80,11 @@ public class AlertRulesApiTest {
      * <p>
      * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createAlertRuleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -250,11 +252,11 @@ public class AlertRulesApiTest {
      * <p>
      * Deletes an alert rule from your account. Users must have both &#x60;Edit alert rules&#x60; and &#x60;Edit tests&#x60; permissions, especially if the rule is linked to any tests. Without these permissions, an error occurs. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteAlertRuleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String ruleId = "127094";
 
@@ -280,11 +282,11 @@ public class AlertRulesApiTest {
      * <p>
      * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAlertRuleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String ruleId = "127094";
 
@@ -451,11 +453,11 @@ public class AlertRulesApiTest {
      * <p>
      * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAlertsRulesRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -543,11 +545,11 @@ public class AlertRulesApiTest {
      * <p>
      * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateAlertRuleRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String ruleId = "127094";
         var requestBodyJson = """

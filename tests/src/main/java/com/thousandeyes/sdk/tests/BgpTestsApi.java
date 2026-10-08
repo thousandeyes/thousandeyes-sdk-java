@@ -30,8 +30,8 @@ import com.thousandeyes.sdk.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.tests.model.UpdateBgpTestRequest;
 import com.thousandeyes.sdk.tests.model.ValidationError;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;

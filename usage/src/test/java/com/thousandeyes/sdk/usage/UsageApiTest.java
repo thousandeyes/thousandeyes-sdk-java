@@ -37,10 +37,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -66,7 +66,9 @@ public class UsageApiTest {
     private static UsageApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -82,11 +84,11 @@ public class UsageApiTest {
      * <p>
      * This operation returns the organization&#39;s enterprise agents usage for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, a shared enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the shared agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEnterpriseAgentsUnitsUsageRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -167,11 +169,11 @@ public class UsageApiTest {
      * <p>
      * This operation returns the cloud and enterprise agents usage for all the tests for a specific time period, or the curent billing cycle if no time period is specified. In the &#x60;/v7/usage&#x60; API, an enterprise agent&#39;s usage is reported in the account group where the agent was created (i.e Primary Account Group).  However in this API, the agent&#39;s usage is distributed among all the account groups where the tests are running on the particular agent. This API is also only available to customers on usage based pricing model.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getTestsUnitsUsageRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -259,11 +261,11 @@ public class UsageApiTest {
      * <p>
      * This operation returns usage for the current period. It provides visibility across all account groups within an organization. To access this endpoint, you need the &#x60;View Billing&#x60; permission (a management permission). If you have access to view billing in multiple organizations, query the endpoint using an &#x60;aid&#x60; querystring parameter (see optional parameters, below) from each organization. **Note:** Access to billing information older than one month is not supported by this endpoint.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getUsageRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """

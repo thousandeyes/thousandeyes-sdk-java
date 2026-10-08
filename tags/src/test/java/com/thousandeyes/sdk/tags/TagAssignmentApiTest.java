@@ -31,10 +31,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -60,7 +60,9 @@ public class TagAssignmentApiTest {
     private static TagAssignmentApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -76,11 +78,11 @@ public class TagAssignmentApiTest {
      * <p>
      * Assigns a static tag to one or more objects. This operation has cumulative behavior: The tag is statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void assignTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
         var requestBodyJson = """
@@ -154,11 +156,11 @@ public class TagAssignmentApiTest {
      * <p>
      * Assigns the specified static tags to the specified objects. This operation has cumulative behavior: The tags are statically assigned to the specified objects, and the previous assignments persist. No unassignment takes place. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void assignTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -312,11 +314,11 @@ public class TagAssignmentApiTest {
      * <p>
      * Removes a static tag from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void unassignTagRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "c6b78e57-81a2-4c5f-a11a-d96c3c664d55";
         var requestBodyJson = """
@@ -360,11 +362,11 @@ public class TagAssignmentApiTest {
      * <p>
      * Removes the specified static tags from one or more objects. Note: This endpoint does not support dynamic tag assignment (for example, for &#x60;endpoint-agent&#x60; objects). See &#x60;Type&#x60; for more information about static vs. dynamic tags.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void unassignTagsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {

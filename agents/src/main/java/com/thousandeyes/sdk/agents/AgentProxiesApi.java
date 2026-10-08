@@ -24,8 +24,8 @@ import com.thousandeyes.sdk.agents.model.AgentProxies;
 import com.thousandeyes.sdk.agents.model.Error;
 import com.thousandeyes.sdk.agents.model.UnauthorizedError;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
