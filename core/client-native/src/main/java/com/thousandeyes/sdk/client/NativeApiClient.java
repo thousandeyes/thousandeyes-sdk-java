@@ -28,11 +28,11 @@ import java.net.http.HttpResponse;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectReader;
 
 
 
@@ -88,7 +88,7 @@ public class NativeApiClient implements ApiClient {
             }
             return processResponse(response, reader);
         }
-        catch (IOException e) {
+        catch (IOException | JacksonException e) {
             throw new ApiException(e);
         }
         catch (InterruptedException e) {
@@ -134,7 +134,7 @@ public class NativeApiClient implements ApiClient {
                 httpRequest.method(request.getMethod(),
                                    HttpRequest.BodyPublishers.ofByteArray(body));
             }
-            catch (IOException e) {
+            catch (JacksonException e) {
                 throw new ApiException(e);
             }
         }

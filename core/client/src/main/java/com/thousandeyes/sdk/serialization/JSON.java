@@ -24,36 +24,37 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.openapitools.jackson.nullable.JsonNullableModule;
+import org.openapitools.jackson.nullable.JsonNullableJackson3Module;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.cfg.DateTimeFeature;
+import tools.jackson.databind.cfg.EnumFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 
 
 public class JSON {
-    private ObjectMapper mapper;
+    private volatile ObjectMapper mapper;
 
     public JSON() {
         var jsonMapper = JsonMapper
                 .builder()
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
+                .changeDefaultPropertyInclusion(ignored -> JsonInclude.Value.construct(
+                        JsonInclude.Include.NON_NULL,
+                        JsonInclude.Include.NON_NULL))
                 .configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false)
                 // false so new api fields will not break the sdk
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, true)
-                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-                .enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)
-                .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING)
+                .disable(DateTimeFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .enable(EnumFeature.WRITE_ENUMS_USING_TO_STRING)
+                .enable(EnumFeature.READ_ENUMS_USING_TO_STRING)
                 .defaultDateFormat(new RFC3339DateFormat())
-                .addModule(new JavaTimeModule())
-                .addModule(new JsonNullableModule());
+                .addModule(new JsonNullableJackson3Module());
 
         mapper = jsonMapper.build();
     }
@@ -64,7 +65,7 @@ public class JSON {
      * @param dateFormat Date format
      */
     public void setDateFormat(DateFormat dateFormat) {
-        mapper.setDateFormat(dateFormat);
+        mapper = mapper.rebuild().defaultDateFormat(dateFormat).build();
     }
 
     /**
@@ -126,7 +127,7 @@ public class JSON {
                 // Get the value of the discriminator property, if present in the input payload.
                 node = node.get(discriminatorName);
                 if (node != null && node.isValueNode()) {
-                    String discrValue = node.asText();
+                    String discrValue = node.asString();
                     if (discrValue != null) {
                         return discrValue;
                     }

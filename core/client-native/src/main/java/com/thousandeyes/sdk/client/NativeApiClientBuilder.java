@@ -30,7 +30,7 @@ import java.util.function.Consumer;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
