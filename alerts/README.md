@@ -2,7 +2,7 @@
 
 Alerts API
 
-- API version: 7.0.109
+- API version: 7.0.110
 
 **Note:** API operations for the creation or retrieval of API, Page Load, or Web-Transaction alert rules are not available for ThousandEyes for Government instance.
 

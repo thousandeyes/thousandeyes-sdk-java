@@ -2,7 +2,7 @@
 
 Endpoint Agents API
 
-- API version: 7.0.109
+- API version: 7.0.110
 
 **Note:** The Endpoint Agents Transfer APIs are not available for ThousandEyes for Government instance.
 
@@ -114,7 +114,7 @@ public class EndpointAgentLogItemsApiExample {
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         Integer max = 1000; // Integer | Maximum number of log items returned per page.
         String cursor = "WyIxNzA5MjQwMDAwMDAwIl0="; // String | Opaque cursor from the `_links.next.href` URL in the previous response.
-        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by an optional type: `s` for seconds (default if no type is specified), `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
+        String window = "12h"; // String | A dynamic time interval up to the current time of the request. Specify the interval as a number followed by a type: `s` for seconds, `m` for minutes, `h` for hours, `d` for days, and `w` for weeks. For a precise date range, use `startDate` and `endDate`.
         OffsetDateTime startDate = OffsetDateTime.parse("2022-07-17T22:00:54Z"); // OffsetDateTime | Use with the `endDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         OffsetDateTime endDate = OffsetDateTime.parse("2022-07-18T22:00:54Z"); // OffsetDateTime | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`.
         try {
