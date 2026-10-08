@@ -34,10 +34,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -63,7 +63,9 @@ public class AlertsApiTest {
     private static AlertsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -79,11 +81,11 @@ public class AlertsApiTest {
      * <p>
      * Returns detailed information about an alert using its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAlertRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID alertId = UUID.fromString("e9c3bf02-a48c-4aa8-9e5f-898800d6f569");
 
@@ -205,11 +207,11 @@ public class AlertsApiTest {
      * <p>
      * Returns a list of alerts. Only active (triggered) alerts are returned by default. When no time filter is specified, only triggered alerts from the last 90 days are returned. To retrieve triggered alerts from a specific date range, specify &#x60;state&#x3D;trigger&#x60; with &#x60;startDate&#x60; and &#x60;endDate&#x60;. Only use &#x60;window&#x60; for a lookback interval ending at the current request time. To retrieve cleared alerts, specify &#x60;clear&#x60; in the optional &#x60;state&#x60; parameter. Note that the &#x60;state&#x60; parameter only accepts a single value, so to get both active and cleared alerts within a time range, two separate requests are needed. Time filters (&#x60;window&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;) are applied differently depending on state: - For &#x60;state&#x3D;trigger&#x60;: filters by when the alert started. - For &#x60;state&#x3D;clear&#x60;: filters by when the alert cleared. - When state is not specified: returns cleared alerts within the time range plus any currently active alerts that started before the end of the range.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getAlertsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """

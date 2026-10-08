@@ -40,10 +40,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -69,7 +69,9 @@ public class EndpointAgentsApiTest {
     private static EndpointAgentsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -85,11 +87,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Deletes the agent with the specified &#x60;agent_id&#x60;. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
@@ -115,11 +117,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Disables an endpoint agent. If it&#39;s already disabled, it has no effect (no operation).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void disableEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
@@ -351,11 +353,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Enables an endpoint agent. If it&#39;s already enabled, it has no effect (no operation).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void enableEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
@@ -587,11 +589,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void filterEndpointAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -1080,11 +1082,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
 
@@ -1316,11 +1318,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEndpointAgentsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -1775,11 +1777,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getEndpointAgentsConnectionStringRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -1825,11 +1827,11 @@ public class EndpointAgentsApiTest {
      * <p>
      * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  Any attempt to update fields other than those listed above, with a value different from their current value, will result in a 400 Bad Request response. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateEndpointAgentRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         UUID agentId = UUID.fromString("861b7557-cd57-4bbb-b648-00bddf88ef49");
         var requestBodyJson = """

@@ -30,10 +30,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -59,7 +59,9 @@ public class TestsAssignmentOnAgentsApiTest {
     private static TestsAssignmentOnAgentsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -75,11 +77,11 @@ public class TestsAssignmentOnAgentsApiTest {
      * <p>
      * Assign tests to a specific Agent. Existing assigned tests are not removed.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any provided test ID is invalid, the entire operation is canceled.    * Already assigned tests are ignored; other valid tests will be assigned.    * This operation does not overwrite existing assignments.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void assignTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String agentId = "281474976710706";
         var requestBodyJson = """
@@ -238,11 +240,11 @@ public class TestsAssignmentOnAgentsApiTest {
      * <p>
      * Replaces all tests assigned to a specific agent with the new set of test IDs provided.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.    * Already assigned tests that are also in the request are ignored.    * Previously assigned tests not included in the request will be removed.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void overwriteTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String agentId = "281474976710706";
         var requestBodyJson = """
@@ -401,11 +403,11 @@ public class TestsAssignmentOnAgentsApiTest {
      * <p>
      * Unassigns the specified tests from a specific agent.  **Important notes:**    * The operation fails if the specified agent does not exist.    * If any test ID is invalid, the operation is canceled and no changes are made.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void unassignTestsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String agentId = "281474976710706";
         var requestBodyJson = """

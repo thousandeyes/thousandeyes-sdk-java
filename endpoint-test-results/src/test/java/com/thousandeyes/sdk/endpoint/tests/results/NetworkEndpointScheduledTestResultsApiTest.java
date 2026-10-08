@@ -41,10 +41,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -70,7 +70,9 @@ public class NetworkEndpointScheduledTestResultsApiTest {
     private static NetworkEndpointScheduledTestResultsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -86,11 +88,11 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      * <p>
      * Returns network metrics (loss, latency, and jitter) from each endpoint agent, for each roundId within the specified time window, as determined by search filters. If a time frame is provided, the rounds relevant to that time frame are returned, and the order is not predefined unless the user specifies a sort order in the filter. When no time frame is provided, the latest rounds are returned. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void filterScheduledTestNetworkResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
         var requestBodyJson = """
@@ -493,11 +495,11 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      * <p>
      * Returns network metrics, including loss, latency, and jitter, for multiple test IDs obtained from each endpoint agent. It allows you to specify a time window using search filters to retrieve metrics for specific round IDs within that time frame. The default order of results is unspecified unless you include a sorting preference in the filter. When no time frame is provided, the API returns metrics for the most recent rounds. Access to all accounts associated with the specified test IDs is required to use this endpoint. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void filterScheduledTestsNetworkResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -850,11 +852,11 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      * <p>
      * Returns a hop-by-hop summary of the path trace data collected during path visualization. In each round, one path discovery attempt is made to reach the destination. The entire path is returned. A &#x60;roundId&#x60; must be specified. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getScheduledTestPathVisAgentRoundResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
         String agentId = "11";
@@ -1366,11 +1368,11 @@ public class NetworkEndpointScheduledTestResultsApiTest {
      * <p>
      * Returns a summary of the path visualization data collected from each endpoint agent to the destination. In each path visualization attempt, one attempt is made to reach the destination. Each set of data is summarized, based on response time, number of hops, and response time to the target. A time frame must be specified, or the most recent round within last 2 hours is returned. 
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getScheduledTestPathVisResultsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String testId = "202701";
 

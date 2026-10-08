@@ -31,10 +31,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -60,7 +60,9 @@ public class CyberArkConjurConnectorsApiTest {
     private static CyberArkConjurConnectorsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -76,11 +78,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Creates a new CyberArk Conjur connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createConjurConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -170,11 +172,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Deleted the CyberArk Conjur connector specified by ID. Note: This operation may disable affected objects (such as tests).
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteConjurConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
@@ -202,11 +204,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Retrieves details of a CyberArk Conjur connector by its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getConjurConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -265,11 +267,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Returns a list of operation IDs assigned to a CyberArk Conjur connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getConjurConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -318,11 +320,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Returns a list of CyberArk Conjur connectors in the specified account group. If no account group is specified, the user’s default account group is used.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getConjurConnectorsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -416,11 +418,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Assigns operations to a CyberArk Conjur connector. This replaces any existing assignments. Note: This operation may disable affected objects (such as tests) if operations are changed.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void setConjurConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         Boolean confirmDisabledObjects = false;
@@ -481,11 +483,11 @@ public class CyberArkConjurConnectorsApiTest {
      * <p>
      * Updates the CyberArk Conjur connector specified by ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateConjurConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """

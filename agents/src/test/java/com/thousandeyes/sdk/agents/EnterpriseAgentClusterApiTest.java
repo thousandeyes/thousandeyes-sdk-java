@@ -33,10 +33,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -62,7 +62,9 @@ public class EnterpriseAgentClusterApiTest {
     private static EnterpriseAgentClusterApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -78,11 +80,11 @@ public class EnterpriseAgentClusterApiTest {
      * <p>
      * Assigns agents to an Enterprise Agent cluster. If the agent specified by &#x60;agentId&#x60; in the URL path is not already part of a cluster, this operation creates a new cluster with that agent as the base member.  This operation requires the &#x60;Edit agents in account group&#x60; permission.  A JSON request body is required for this operation, even when creating a cluster with a single agent. To create a cluster from a single standalone agent, pass an empty &#x60;agents&#x60; array in the request body:  &#x60;&#x60;&#x60; { \&quot;agents\&quot;: [] } &#x60;&#x60;&#x60;  If no body is provided, the server returns a 400 Bad Request error.  The response is a single Enterprise Agent Cluster. The assigned agents become cluster members and can be returned using the &#x60;?expand&#x3D;cluster-member&#x60; parameter.  Upon successful cluster creation, the response includes:  * Information about the new or updated cluster.  * Each cluster member receives a unique &#x60;memberId&#x60; within the cluster.  * The &#x60;memberId&#x60; is not linked to the original &#x60;agentId&#x60; used in the request URL or POST body.  * The cluster name is based on the agent whose &#x60;agentId&#x60; is specified in the request URL.  **Example: Creating a cluster from a single agent**  &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;  **Example: Adding multiple agents to a cluster**  When adding multiple agents, the &#x60;{agentId}&#x60; specified in the URL path must not be included in the &#x60;agents&#x60; array. Only include additional agent IDs in the array.  &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/assign \\ &#39;{\&quot;agents\&quot;:[   \&quot;2277\&quot;,   \&quot;1234\&quot; ]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;&#x60;
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void assignAgentToClusterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String agentId = "281474976710706";
         var requestBodyJson = """
@@ -242,11 +244,11 @@ public class EnterpriseAgentClusterApiTest {
      * <p>
      * Converts a cluster with a single or multiple Enterprise Agent members back to a standalone Enterprise Agent(s). This operation can also be used to remove one or more members from an Enterprise Agent cluster. Removed members revert to being standalone Enterprise Agents. If all members are removed from the cluster, the Enterprise Agent Cluster is deleted.  The response is an list of agents, containing both the Enterprise Agent Cluster (if it still exists), and the removed members, now as standalone Enterprise Agents. This operation is exclusive to Enterprise Agent clusters and can be accessed only by users with the &#x60;Edit agents in account group&#x60; permission.  On successful completion, the response contains the following information:  * The updated cluster information is provided in the response body, unless all members are removed from the cluster.  * Information about each removed member, now a standalone agent.  * When a non-last member is removed from the cluster, it receives a new &#x60;agentId&#x60; value. This new &#x60;agentId&#x60; is different from the &#x60;agentId&#x60; the agent had before joining the cluster, and it is also unrelated to the &#x60;memberId&#x60; value the agent had while being a part of the cluster.  * If all members are removed from the cluster, the cluster itself is converted back to a standalone Enterprise Agent too. Such standalone agent inherits the old cluster’s &#x60;agentId&#x60; value. The last &#x60;memberId&#x60; listed in the POST body inherits the cluster’s &#x60;agentId&#x60; value.  **Example - removing a single member** &#x60;&#x60;&#x60; curl -X POST https://api.thousandeyes.com/v7/agents/64965/cluster/unassign   \\ &#39;{\&quot;members\&quot;:[\&quot;55974\&quot;]}&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;  **Example - removing multiple members** &#x60;&#x60;&#x60; curl https://api.thousandeyes.com/v7/agents/64965/cluster/unassign \\ &#39;{\&quot;members\&quot;:[     \&quot;55974\&quot;,     \&quot;12313\&quot;]  }&#39; \\ -H \&quot;content-type:application/json\&quot; \\ -H \&quot;Authorization: Bearer $Bearer_token\&quot;  &#x60;&#x60;&#x60;
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void unassignAgentFromClusterRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String agentId = "281474976710706";
         var requestBodyJson = """

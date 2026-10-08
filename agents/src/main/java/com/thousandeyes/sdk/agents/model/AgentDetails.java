@@ -45,28 +45,27 @@ import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import tools.jackson.core.type.TypeReference;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.sdk.serialization.JSON;
 import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
@@ -86,8 +85,8 @@ public class AgentDetails extends AbstractOpenApiSchema {
         }
 
         @Override
-        public void serialize(AgentDetails value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-            jgen.writeObject(value.getActualInstance());
+        public void serialize(AgentDetails value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
         }
     }
 
@@ -101,23 +100,22 @@ public class AgentDetails extends AbstractOpenApiSchema {
         }
 
         @Override
-        public AgentDetails deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            JsonNode tree = jp.readValueAsTree();
+        public AgentDetails deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
             Object deserialized = null;
             AgentDetails newAgentDetails = new AgentDetails();
-            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
-            String discriminatorValue = (String)result2.get("agentType");
+            String discriminatorValue = tree.path("agentType").asString(null);
             switch (discriminatorValue) {
                 case "cloud":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(CloudAgentDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, CloudAgentDetail.class);
                     newAgentDetails.setActualInstance(deserialized);
                     return newAgentDetails;
                 case "enterprise":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, EnterpriseAgentDetail.class);
                     newAgentDetails.setActualInstance(deserialized);
                     return newAgentDetails;
                 case "enterprise-cluster":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentClusterDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, EnterpriseAgentClusterDetail.class);
                     newAgentDetails.setActualInstance(deserialized);
                     return newAgentDetails;
                 default:
@@ -126,7 +124,7 @@ public class AgentDetails extends AbstractOpenApiSchema {
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
-            JsonToken token = tree.traverse(jp.getCodec()).nextToken();
+            JsonToken token = tree.asToken();
             // deserialize CloudAgentDetail
             try {
                 boolean attemptParsing = true;
@@ -141,7 +139,7 @@ public class AgentDetails extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(CloudAgentDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, CloudAgentDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -167,7 +165,7 @@ public class AgentDetails extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentClusterDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, EnterpriseAgentClusterDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -193,7 +191,7 @@ public class AgentDetails extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgentDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, EnterpriseAgentDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -210,15 +208,15 @@ public class AgentDetails extends AbstractOpenApiSchema {
                 ret.setActualInstance(deserialized);
                 return ret;
             }
-            throw new IOException(String.format("Failed deserialization for AgentDetails: %d classes match result, expected 1", match));
+            throw DatabindException.from(jp, String.format("Failed deserialization for AgentDetails: %d classes match result, expected 1", match));
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public AgentDetails getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "AgentDetails cannot be null");
+        public AgentDetails getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "AgentDetails cannot be null");
         }
     }
 

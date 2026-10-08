@@ -19,28 +19,27 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import tools.jackson.core.type.TypeReference;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.sdk.serialization.JSON;
 import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
@@ -60,8 +59,8 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
         }
 
         @Override
-        public void serialize(ApiListWidgetRowValue value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-            jgen.writeObject(value.getActualInstance());
+        public void serialize(ApiListWidgetRowValue value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
         }
     }
 
@@ -75,12 +74,12 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
         }
 
         @Override
-        public ApiListWidgetRowValue deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            JsonNode tree = jp.readValueAsTree();
+        public ApiListWidgetRowValue deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
             Object deserialized = null;
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
-            JsonToken token = tree.traverse(jp.getCodec()).nextToken();
+            JsonToken token = tree.asToken();
             // deserialize BigDecimal
             try {
                 boolean attemptParsing = true;
@@ -95,7 +94,7 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(BigDecimal.class);
+                    deserialized = ctxt.readTreeAsValue(tree, BigDecimal.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -121,7 +120,7 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(Boolean.class);
+                    deserialized = ctxt.readTreeAsValue(tree, Boolean.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -147,7 +146,7 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(String.class);
+                    deserialized = ctxt.readTreeAsValue(tree, String.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -164,15 +163,15 @@ public class ApiListWidgetRowValue extends AbstractOpenApiSchema {
                 ret.setActualInstance(deserialized);
                 return ret;
             }
-            throw new IOException(String.format("Failed deserialization for ApiListWidgetRowValue: %d classes match result, expected 1", match));
+            throw DatabindException.from(jp, String.format("Failed deserialization for ApiListWidgetRowValue: %d classes match result, expected 1", match));
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public ApiListWidgetRowValue getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "ApiListWidgetRowValue cannot be null");
+        public ApiListWidgetRowValue getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "ApiListWidgetRowValue cannot be null");
         }
     }
 

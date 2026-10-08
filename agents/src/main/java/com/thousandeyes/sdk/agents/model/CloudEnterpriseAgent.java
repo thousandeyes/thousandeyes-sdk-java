@@ -39,24 +39,23 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.sdk.serialization.JSON;
 import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
@@ -76,8 +75,8 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
         }
 
         @Override
-        public void serialize(CloudEnterpriseAgent value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-            jgen.writeObject(value.getActualInstance());
+        public void serialize(CloudEnterpriseAgent value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
         }
     }
 
@@ -91,13 +90,13 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
         }
 
         @Override
-        public CloudEnterpriseAgent deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            JsonNode tree = jp.readValueAsTree();
+        public CloudEnterpriseAgent deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
 
             Object deserialized = null;
             // deserialize AgentResponse
             try {
-                deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentResponse.class);
+                deserialized = ctxt.readTreeAsValue(tree, AgentResponse.class);
                 CloudEnterpriseAgent ret = new CloudEnterpriseAgent();
                 ret.setActualInstance(deserialized);
                 return ret;
@@ -108,7 +107,7 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
 
             // deserialize EnterpriseAgent
             try {
-                deserialized = tree.traverse(jp.getCodec()).readValueAs(EnterpriseAgent.class);
+                deserialized = ctxt.readTreeAsValue(tree, EnterpriseAgent.class);
                 CloudEnterpriseAgent ret = new CloudEnterpriseAgent();
                 ret.setActualInstance(deserialized);
                 return ret;
@@ -117,15 +116,15 @@ public class CloudEnterpriseAgent extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match 'CloudEnterpriseAgent'", e);
             }
 
-            throw new IOException(String.format("Failed deserialization for CloudEnterpriseAgent: no match found"));
+            throw DatabindException.from(jp, "Failed deserialization for CloudEnterpriseAgent: no match found");
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public CloudEnterpriseAgent getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "CloudEnterpriseAgent cannot be null");
+        public CloudEnterpriseAgent getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "CloudEnterpriseAgent cannot be null");
         }
     }
 

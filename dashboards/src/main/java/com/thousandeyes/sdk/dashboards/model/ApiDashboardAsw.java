@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.dashboards.model.AswRepeat;
 import com.thousandeyes.sdk.dashboards.model.AswRepeatUnit;
 import java.time.OffsetDateTime;
@@ -29,6 +28,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 

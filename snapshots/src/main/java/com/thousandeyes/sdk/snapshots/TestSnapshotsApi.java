@@ -26,8 +26,8 @@ import com.thousandeyes.sdk.snapshots.model.SnapshotResponse;
 import com.thousandeyes.sdk.snapshots.model.UnauthorizedError;
 import com.thousandeyes.sdk.snapshots.model.ValidationError;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;

@@ -24,8 +24,8 @@ import com.thousandeyes.sdk.endpoint.tests.model.EndpointTests;
 import com.thousandeyes.sdk.endpoint.tests.model.Error;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;

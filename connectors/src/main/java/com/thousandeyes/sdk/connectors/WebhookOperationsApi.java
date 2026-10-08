@@ -26,8 +26,8 @@ import com.thousandeyes.sdk.connectors.model.ValidationError;
 import com.thousandeyes.sdk.connectors.model.WebhookOperation;
 import com.thousandeyes.sdk.connectors.model.WebhookOperations;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;

@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.dashboards.model.ActiveWithin;
 import com.thousandeyes.sdk.dashboards.model.ApiAgentStatusWidget;
 import com.thousandeyes.sdk.dashboards.model.ApiAggregateProperty;
@@ -66,30 +65,30 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import tools.jackson.core.type.TypeReference;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.sdk.serialization.JSON;
 import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
@@ -109,8 +108,8 @@ public class ApiWidget extends AbstractOpenApiSchema {
         }
 
         @Override
-        public void serialize(ApiWidget value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-            jgen.writeObject(value.getActualInstance());
+        public void serialize(ApiWidget value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
         }
     }
 
@@ -124,75 +123,74 @@ public class ApiWidget extends AbstractOpenApiSchema {
         }
 
         @Override
-        public ApiWidget deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            JsonNode tree = jp.readValueAsTree();
+        public ApiWidget deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
             Object deserialized = null;
             ApiWidget newApiWidget = new ApiWidget();
-            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
-            String discriminatorValue = (String)result2.get("type");
+            String discriminatorValue = tree.path("type").asString(null);
             switch (discriminatorValue) {
                 case "Agent Status":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAgentStatusWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiAgentStatusWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Alert List":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAlertListWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiAlertListWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Bar Chart: Grouped":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGroupedBarchartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiGroupedBarchartWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Bar Chart: Stacked":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedBarchartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiStackedBarchartWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Box and Whiskers":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiBoxAndWhiskersWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiBoxAndWhiskersWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Color Grid":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiColorGridWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiColorGridWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Heatmap":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiHeatmapWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiHeatmapWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "List":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiListWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiListWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Map":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGeoMapWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiGeoMapWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Multi Metric Table":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiMultiMetricTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiMultiMetricTableWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Number":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiNumbersCardWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiNumbersCardWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Pie Chart":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiPieChartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiPieChartWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Table":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTableWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Test Table":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTestTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTestTableWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Time Series: Line":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTimeseriesWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTimeseriesWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 case "Time Series: Stacked Area":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedAreaChartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiStackedAreaChartWidget.class);
                     newApiWidget.setActualInstance(deserialized);
                     return newApiWidget;
                 default:
@@ -201,7 +199,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
-            JsonToken token = tree.traverse(jp.getCodec()).nextToken();
+            JsonToken token = tree.asToken();
             // deserialize ApiAgentStatusWidget
             try {
                 boolean attemptParsing = true;
@@ -216,7 +214,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAgentStatusWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiAgentStatusWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -242,7 +240,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiAlertListWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiAlertListWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -268,7 +266,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiBoxAndWhiskersWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiBoxAndWhiskersWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -294,7 +292,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiColorGridWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiColorGridWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -320,7 +318,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGeoMapWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiGeoMapWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -346,7 +344,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiGroupedBarchartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiGroupedBarchartWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -372,7 +370,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiHeatmapWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiHeatmapWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -398,7 +396,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiListWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiListWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -424,7 +422,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiMultiMetricTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiMultiMetricTableWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -450,7 +448,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiNumbersCardWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiNumbersCardWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -476,7 +474,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiPieChartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiPieChartWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -502,7 +500,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedAreaChartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiStackedAreaChartWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -528,7 +526,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiStackedBarchartWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiStackedBarchartWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -554,7 +552,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTableWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -580,7 +578,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTestTableWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTestTableWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -606,7 +604,7 @@ public class ApiWidget extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApiTimeseriesWidget.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApiTimeseriesWidget.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -623,15 +621,15 @@ public class ApiWidget extends AbstractOpenApiSchema {
                 ret.setActualInstance(deserialized);
                 return ret;
             }
-            throw new IOException(String.format("Failed deserialization for ApiWidget: %d classes match result, expected 1", match));
+            throw DatabindException.from(jp, String.format("Failed deserialization for ApiWidget: %d classes match result, expected 1", match));
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public ApiWidget getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "ApiWidget cannot be null");
+        public ApiWidget getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "ApiWidget cannot be null");
         }
     }
 

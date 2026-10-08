@@ -31,10 +31,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 
@@ -60,7 +60,9 @@ public class GenericConnectorsApiTest {
     private static GenericConnectorsApi api;
     private final ObjectMapper mapper = getDefault()
             .getMapper()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+            .rebuild()
+            .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            .build();
 
     @BeforeAll
     public static void setup(WireMockRuntimeInfo wireMockRuntimeInfo) {
@@ -76,11 +78,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Creates a new connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void createGenericConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         var requestBodyJson = """
                 {
@@ -182,11 +184,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Deletes the connector specified by ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void deleteGenericConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -212,11 +214,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Retrieves details of a connector by its ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getGenericConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -281,11 +283,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Returns a list of connectors in the specified account group. If no account group is specified, the user’s default account group is used.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void getGenericConnectorsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
 
         var responseBodyJson = """
@@ -391,11 +393,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Returns a list of operation IDs assigned to a connector.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void listGenericConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
 
@@ -444,11 +446,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Assigns operations to a connector. This replaces any existing assignments.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void setGenericConnectorOperationsRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """
@@ -507,11 +509,11 @@ public class GenericConnectorsApiTest {
      * <p>
      * Updates the connector specified by ID.
      *
-     * @throws JsonProcessingException if the deserialization fails
+     * @throws JacksonException if the deserialization fails
      */
     @Test
     public void updateGenericConnectorRequestAndResponseDeserializationTest()
-            throws JsonProcessingException, ApiException
+            throws JacksonException, ApiException
     {
         String id = "cb1b8033-ea2d-4e9b-a920-fe87850693cf";
         var requestBodyJson = """

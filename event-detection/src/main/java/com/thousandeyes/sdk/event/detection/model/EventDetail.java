@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thousandeyes.sdk.event.detection.model.AffectedAgents;
 import com.thousandeyes.sdk.event.detection.model.AffectedTargets;
 import com.thousandeyes.sdk.event.detection.model.AffectedTests;
@@ -53,30 +52,30 @@ import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import tools.jackson.core.type.TypeReference;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
 import com.thousandeyes.sdk.serialization.JSON;
 import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
 
@@ -96,8 +95,8 @@ public class EventDetail extends AbstractOpenApiSchema {
         }
 
         @Override
-        public void serialize(EventDetail value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-            jgen.writeObject(value.getActualInstance());
+        public void serialize(EventDetail value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
         }
     }
 
@@ -111,79 +110,78 @@ public class EventDetail extends AbstractOpenApiSchema {
         }
 
         @Override
-        public EventDetail deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-            JsonNode tree = jp.readValueAsTree();
+        public EventDetail deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
             Object deserialized = null;
             EventDetail newEventDetail = new EventDetail();
-            Map<String,Object> result2 = tree.traverse(jp.getCodec()).readValueAs(new TypeReference<Map<String, Object>>() {});
-            String discriminatorValue = (String)result2.get("type");
+            String discriminatorValue = tree.path("type").asString(null);
             switch (discriminatorValue) {
                 case "agent":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "agent-branch":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentBranchEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentBranchEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "agent-local":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentLocalEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentLocalEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "application":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApplicationEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApplicationEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "dns":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "dns-name":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsNameEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsNameEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "dns-server":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsServerEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsServerEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "domain":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DomainEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DomainEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "gateway":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(GatewayEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, GatewayEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "name-server":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NameServerEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NameServerEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "network":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NetworkEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NetworkEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "network-pop":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NetworkPopEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NetworkPopEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "proxy":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ProxyEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ProxyEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "target":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(TargetEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, TargetEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "target-network":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(TargetNetworkEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, TargetNetworkEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "vpn":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(VpnEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, VpnEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 case "wireless":
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(WirelessEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, WirelessEventDetail.class);
                     newEventDetail.setActualInstance(deserialized);
                     return newEventDetail;
                 default:
@@ -192,7 +190,7 @@ public class EventDetail extends AbstractOpenApiSchema {
 
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
             int match = 0;
-            JsonToken token = tree.traverse(jp.getCodec()).nextToken();
+            JsonToken token = tree.asToken();
             // deserialize AgentBranchEventDetail
             try {
                 boolean attemptParsing = true;
@@ -207,7 +205,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentBranchEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentBranchEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -233,7 +231,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -259,7 +257,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(AgentLocalEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, AgentLocalEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -285,7 +283,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ApplicationEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ApplicationEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -311,7 +309,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -337,7 +335,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsNameEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsNameEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -363,7 +361,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DnsServerEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DnsServerEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -389,7 +387,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(DomainEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, DomainEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -415,7 +413,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(GatewayEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, GatewayEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -441,7 +439,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NameServerEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NameServerEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -467,7 +465,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NetworkEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NetworkEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -493,7 +491,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(NetworkPopEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, NetworkPopEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -519,7 +517,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ProxyEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, ProxyEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -545,7 +543,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(TargetEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, TargetEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -571,7 +569,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(TargetNetworkEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, TargetNetworkEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -597,7 +595,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(VpnEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, VpnEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -623,7 +621,7 @@ public class EventDetail extends AbstractOpenApiSchema {
                     }
                 }
                 if (attemptParsing) {
-                    deserialized = tree.traverse(jp.getCodec()).readValueAs(WirelessEventDetail.class);
+                    deserialized = ctxt.readTreeAsValue(tree, WirelessEventDetail.class);
                     // TODO: there is no validation against JSON schema constraints
                     // (min, max, enum, pattern...), this does not perform a strict JSON
                     // validation, which means the 'match' count may be higher than it should be.
@@ -640,15 +638,15 @@ public class EventDetail extends AbstractOpenApiSchema {
                 ret.setActualInstance(deserialized);
                 return ret;
             }
-            throw new IOException(String.format("Failed deserialization for EventDetail: %d classes match result, expected 1", match));
+            throw DatabindException.from(jp, String.format("Failed deserialization for EventDetail: %d classes match result, expected 1", match));
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public EventDetail getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "EventDetail cannot be null");
+        public EventDetail getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "EventDetail cannot be null");
         }
     }
 
