@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.tests.results;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -116,8 +115,7 @@ public class LocalNetworkEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/local-networks/topologies/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/local-networks/topologies/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -272,8 +270,7 @@ public class LocalNetworkEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/test-results/local-networks";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/local-networks");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -359,9 +356,8 @@ public class LocalNetworkEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/test-results/local-networks/topologies/{networkTopologyId}"
-        .replace("{networkTopologyId}", urlEncode(networkTopologyId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/local-networks/topologies/{networkTopologyId}");
+    requestBuilder.pathVariable("networkTopologyId", networkTopologyId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

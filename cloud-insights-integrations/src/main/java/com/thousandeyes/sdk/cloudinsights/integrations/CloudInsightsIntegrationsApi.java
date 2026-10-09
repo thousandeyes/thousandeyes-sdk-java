@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.cloudinsights.integrations;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -105,8 +104,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/cloud-insights/integration/aws/flow-logs";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/flow-logs");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -205,8 +203,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/cloud-insights/integration/aws/inventory";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/inventory");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -305,8 +302,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/cloud-insights/integration/azure/flow-logs";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/flow-logs");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -405,8 +401,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/cloud-insights/integration/azure/inventory";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/inventory");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -503,9 +498,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/cloud-insights/integration/aws/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -600,9 +594,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/cloud-insights/integration/azure/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -695,8 +688,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/aws/flow-logs/policies";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/flow-logs/policies");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -778,8 +770,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/aws/inventory/policies";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/inventory/policies");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -865,9 +856,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/aws/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -960,8 +950,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/aws";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -1043,8 +1032,7 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/azure";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -1130,9 +1118,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/azure/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -1233,9 +1220,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/cloud-insights/integration/azure/flow-logs/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/flow-logs/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -1349,9 +1335,8 @@ public class CloudInsightsIntegrationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/cloud-insights/integration/azure/inventory/{integrationId}"
-        .replace("{integrationId}", urlEncode(integrationId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/inventory/{integrationId}");
+    requestBuilder.pathVariable("integrationId", integrationId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

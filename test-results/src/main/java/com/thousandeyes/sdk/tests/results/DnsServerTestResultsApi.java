@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.tests.results;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -122,10 +121,9 @@ public class DnsServerTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/dns-server/{serverId}"
-        .replace("{testId}", urlEncode(testId.toString()))
-        .replace("{serverId}", urlEncode(serverId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/dns-server/{serverId}");
+    requestBuilder.pathVariable("testId", testId.toString());
+    requestBuilder.pathVariable("serverId", serverId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -297,9 +295,8 @@ public class DnsServerTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/dns-server"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/dns-server");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

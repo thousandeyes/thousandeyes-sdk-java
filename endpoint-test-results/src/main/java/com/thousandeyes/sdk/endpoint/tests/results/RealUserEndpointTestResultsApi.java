@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.tests.results;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -122,8 +121,7 @@ public class RealUserEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/real-user-tests/networks/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/real-user-tests/networks/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -282,8 +280,7 @@ public class RealUserEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/real-user-tests/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/real-user-tests/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -442,8 +439,7 @@ public class RealUserEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/real-user-tests/pages/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/real-user-tests/pages/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -594,10 +590,9 @@ public class RealUserEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/test-results/real-user-tests/{id}/pages/{pageId}"
-        .replace("{id}", urlEncode(id.toString()))
-        .replace("{pageId}", urlEncode(pageId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/real-user-tests/{id}/pages/{pageId}");
+    requestBuilder.pathVariable("id", id.toString());
+    requestBuilder.pathVariable("pageId", pageId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -705,9 +700,8 @@ public class RealUserEndpointTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/test-results/real-user-tests/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/real-user-tests/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

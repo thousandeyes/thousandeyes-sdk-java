@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.agents;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -106,9 +105,8 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/endpoint/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -217,9 +215,8 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/agents/{agentId}/disable"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}/disable");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -316,9 +313,8 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/agents/{agentId}/enable"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}/enable");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -431,8 +427,7 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/agents/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("max", max));
@@ -579,9 +574,8 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -714,8 +708,7 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/agents";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("max", max));
@@ -881,8 +874,7 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/agents/connection-string";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/connection-string");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -968,9 +960,8 @@ public class EndpointAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/endpoint/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.tests;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -97,9 +96,8 @@ public class TestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/tests/{testId}/history"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/{testId}/history");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -204,8 +202,7 @@ public class TestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/tests";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

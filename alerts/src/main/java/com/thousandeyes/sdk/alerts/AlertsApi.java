@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.alerts;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,9 +101,8 @@ public class AlertsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/alerts/{alertId}"
-        .replace("{alertId}", urlEncode(alertId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alerts/{alertId}");
+    requestBuilder.pathVariable("alertId", alertId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -213,8 +211,7 @@ public class AlertsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/alerts";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alerts");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
