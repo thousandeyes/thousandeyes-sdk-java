@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.connectors;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -98,8 +97,7 @@ public class WebhookOperationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/operations/webhooks";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/operations/webhooks");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -196,9 +194,8 @@ public class WebhookOperationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/operations/webhooks/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/operations/webhooks/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -295,9 +292,8 @@ public class WebhookOperationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/operations/webhooks/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/operations/webhooks/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -390,8 +386,7 @@ public class WebhookOperationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/operations/webhooks";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/operations/webhooks");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -481,9 +476,8 @@ public class WebhookOperationsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/operations/webhooks/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/operations/webhooks/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

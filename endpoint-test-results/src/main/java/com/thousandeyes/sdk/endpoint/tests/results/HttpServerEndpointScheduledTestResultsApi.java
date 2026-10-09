@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.tests.results;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -123,9 +122,8 @@ public class HttpServerEndpointScheduledTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/test-results/scheduled-tests/{testId}/http-server"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/scheduled-tests/{testId}/http-server");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -294,8 +292,7 @@ public class HttpServerEndpointScheduledTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/scheduled-tests/http-server/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/scheduled-tests/http-server/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -482,9 +479,8 @@ public class HttpServerEndpointScheduledTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/test-results/scheduled-tests/{testId}/http-server/filter"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/test-results/scheduled-tests/{testId}/http-server/filter");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

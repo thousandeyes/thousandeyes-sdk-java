@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.dashboards;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -100,8 +99,7 @@ public class DashboardsFiltersApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/dashboards/filters";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboards/filters");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -198,9 +196,8 @@ public class DashboardsFiltersApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/dashboards/filters/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboards/filters/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -297,9 +294,8 @@ public class DashboardsFiltersApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/dashboards/filters/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboards/filters/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -392,8 +388,7 @@ public class DashboardsFiltersApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/dashboards/filters";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboards/filters");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("searchPattern", searchPattern));
@@ -495,9 +490,8 @@ public class DashboardsFiltersApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/dashboards/filters/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboards/filters/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

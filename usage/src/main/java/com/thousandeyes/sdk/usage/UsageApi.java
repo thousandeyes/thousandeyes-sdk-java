@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.usage;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -117,8 +116,7 @@ public class UsageApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/usage/units/enterprise-agents";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/usage/units/enterprise-agents");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("startDate", startDate));
@@ -240,8 +238,7 @@ public class UsageApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/usage/units/tests";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/usage/units/tests");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -359,8 +356,7 @@ public class UsageApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/usage";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/usage");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

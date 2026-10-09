@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.usage;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -98,8 +97,7 @@ public class QuotasApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/quotas/account-groups/assign";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/quotas/account-groups/assign");
 
 
     requestBuilder.header("Content-Type", List.of("application/json"));
@@ -177,8 +175,7 @@ public class QuotasApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/quotas/assign";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/quotas/assign");
 
 
     requestBuilder.header("Content-Type", List.of("application/json"));
@@ -251,8 +248,7 @@ public class QuotasApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/quotas";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/quotas");
 
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
@@ -294,8 +290,7 @@ public class QuotasApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/quotas/account-groups/unassign";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/quotas/account-groups/unassign");
 
 
     requestBuilder.header("Content-Type", List.of("application/json"));
@@ -371,8 +366,7 @@ public class QuotasApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/quotas/unassign";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/quotas/unassign");
 
 
     requestBuilder.header("Content-Type", List.of("application/json"));

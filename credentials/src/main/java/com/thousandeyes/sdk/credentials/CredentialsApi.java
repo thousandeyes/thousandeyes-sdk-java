@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.credentials;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -101,8 +100,7 @@ public class CredentialsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/credentials";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/credentials");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -199,9 +197,8 @@ public class CredentialsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/credentials/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/credentials/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -298,9 +295,8 @@ public class CredentialsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/credentials/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/credentials/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -393,8 +389,7 @@ public class CredentialsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/credentials";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/credentials");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -484,9 +479,8 @@ public class CredentialsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/credentials/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/credentials/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.dashboards;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -103,8 +102,7 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/dashboard-snapshots";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -201,9 +199,8 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/dashboard-snapshots/{snapshotId}"
-        .replace("{snapshotId}", urlEncode(snapshotId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots/{snapshotId}");
+    requestBuilder.pathVariable("snapshotId", snapshotId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -300,9 +297,8 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/dashboard-snapshots/{snapshotId}"
-        .replace("{snapshotId}", urlEncode(snapshotId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots/{snapshotId}");
+    requestBuilder.pathVariable("snapshotId", snapshotId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -403,10 +399,9 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/dashboard-snapshots/{snapshotId}/widgets/{widgetId}"
-        .replace("{snapshotId}", urlEncode(snapshotId.toString()))
-        .replace("{widgetId}", urlEncode(widgetId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots/{snapshotId}/widgets/{widgetId}");
+    requestBuilder.pathVariable("snapshotId", snapshotId.toString());
+    requestBuilder.pathVariable("widgetId", widgetId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -510,8 +505,7 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/dashboard-snapshots";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -623,9 +617,8 @@ public class DashboardSnapshotsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PATCH");
 
-    String path = "/dashboard-snapshots/{snapshotId}"
-        .replace("{snapshotId}", urlEncode(snapshotId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/dashboard-snapshots/{snapshotId}");
+    requestBuilder.pathVariable("snapshotId", snapshotId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.agents;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -100,9 +99,8 @@ public class CloudAndEnterpriseAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -199,9 +197,8 @@ public class CloudAndEnterpriseAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -306,8 +303,7 @@ public class CloudAndEnterpriseAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/agents";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -445,9 +441,8 @@ public class CloudAndEnterpriseAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/agents/{agentId}"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

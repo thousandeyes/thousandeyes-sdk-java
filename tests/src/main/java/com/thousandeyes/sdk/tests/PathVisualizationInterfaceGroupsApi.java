@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.tests;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -99,8 +98,7 @@ public class PathVisualizationInterfaceGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/network/path-vis/interface-groups";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/network/path-vis/interface-groups");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -197,9 +195,8 @@ public class PathVisualizationInterfaceGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
-        .replace("{interfaceGroupId}", urlEncode(interfaceGroupId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/network/path-vis/interface-groups/{interfaceGroupId}");
+    requestBuilder.pathVariable("interfaceGroupId", interfaceGroupId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -292,8 +289,7 @@ public class PathVisualizationInterfaceGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/network/path-vis/interface-groups";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/network/path-vis/interface-groups");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -383,9 +379,8 @@ public class PathVisualizationInterfaceGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/network/path-vis/interface-groups/{interfaceGroupId}"
-        .replace("{interfaceGroupId}", urlEncode(interfaceGroupId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/network/path-vis/interface-groups/{interfaceGroupId}");
+    requestBuilder.pathVariable("interfaceGroupId", interfaceGroupId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

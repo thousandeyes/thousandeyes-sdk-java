@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.tests;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -92,8 +91,7 @@ public class EndpointScheduledTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/endpoint/tests/scheduled-tests";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/tests/scheduled-tests");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

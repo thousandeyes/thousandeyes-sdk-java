@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.internet.insights;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -100,8 +99,7 @@ public class InternetInsightsOutagesApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/internet-insights/outages/filter";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/internet-insights/outages/filter");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -200,9 +198,8 @@ public class InternetInsightsOutagesApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/internet-insights/outages/app/{outageId}"
-        .replace("{outageId}", urlEncode(outageId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/internet-insights/outages/app/{outageId}");
+    requestBuilder.pathVariable("outageId", outageId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -299,9 +296,8 @@ public class InternetInsightsOutagesApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/internet-insights/outages/net/{outageId}"
-        .replace("{outageId}", urlEncode(outageId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/internet-insights/outages/net/{outageId}");
+    requestBuilder.pathVariable("outageId", outageId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

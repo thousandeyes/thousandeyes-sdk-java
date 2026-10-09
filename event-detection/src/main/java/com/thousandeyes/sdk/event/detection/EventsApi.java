@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.event.detection;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,9 +101,8 @@ public class EventsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/events/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/events/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -213,8 +211,7 @@ public class EventsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/events";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/events");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

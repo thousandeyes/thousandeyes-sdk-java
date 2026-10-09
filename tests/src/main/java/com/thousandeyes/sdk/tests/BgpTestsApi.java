@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.tests;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,8 +101,7 @@ public class BgpTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/tests/bgp";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/bgp");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -212,9 +210,8 @@ public class BgpTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/tests/bgp/{testId}"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/bgp/{testId}");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -311,9 +308,8 @@ public class BgpTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/tests/bgp/{testId}"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/bgp/{testId}");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -418,8 +414,7 @@ public class BgpTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/tests/bgp";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/bgp");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -509,9 +504,8 @@ public class BgpTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/tests/bgp/{testId}"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/tests/bgp/{testId}");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

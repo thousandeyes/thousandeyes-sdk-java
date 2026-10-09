@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.account.management.administrative;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,8 +101,7 @@ public class AccountGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/account-groups";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/account-groups");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
@@ -200,9 +198,8 @@ public class AccountGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/account-groups/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/account-groups/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
 
     requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
@@ -282,9 +279,8 @@ public class AccountGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/account-groups/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/account-groups/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));
@@ -372,8 +368,7 @@ public class AccountGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/account-groups";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/account-groups");
 
 
     requestBuilder.header("Accept", List.of("application/hal+json, application/json, application/problem+json"));
@@ -425,9 +420,8 @@ public class AccountGroupsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/account-groups/{id}"
-        .replace("{id}", urlEncode(id.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/account-groups/{id}");
+    requestBuilder.pathVariable("id", id.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("csv", "expand", expand));

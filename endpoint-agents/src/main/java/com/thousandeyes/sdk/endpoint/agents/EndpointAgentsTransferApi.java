@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.agents;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,9 +101,8 @@ public class EndpointAgentsTransferApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/agents/{agentId}/transfer"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/{agentId}/transfer");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -210,8 +208,7 @@ public class EndpointAgentsTransferApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/agents/transfer/bulk";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/agents/transfer/bulk");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

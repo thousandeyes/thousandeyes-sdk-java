@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.agents;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -102,9 +101,8 @@ public class TestsAssignmentOnAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/agents/{agentId}/tests/assign"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}/tests/assign");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -218,9 +216,8 @@ public class TestsAssignmentOnAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/agents/{agentId}/tests/override"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}/tests/override");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -334,9 +331,8 @@ public class TestsAssignmentOnAgentsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/agents/{agentId}/tests/unassign"
-        .replace("{agentId}", urlEncode(agentId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/{agentId}/tests/unassign");
+    requestBuilder.pathVariable("agentId", agentId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

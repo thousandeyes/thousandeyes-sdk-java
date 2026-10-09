@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.tests.results;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -111,11 +110,10 @@ public class WebTransactionsTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs"
-        .replace("{testId}", urlEncode(testId.toString()))
-        .replace("{agentId}", urlEncode(agentId.toString()))
-        .replace("{roundId}", urlEncode(roundId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/console-logs");
+    requestBuilder.pathVariable("testId", testId.toString());
+    requestBuilder.pathVariable("agentId", agentId.toString());
+    requestBuilder.pathVariable("roundId", roundId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -246,12 +244,11 @@ public class WebTransactionsTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}"
-        .replace("{testId}", urlEncode(testId.toString()))
-        .replace("{agentId}", urlEncode(agentId.toString()))
-        .replace("{roundId}", urlEncode(roundId.toString()))
-        .replace("{pageId}", urlEncode(pageId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}/page/{pageId}");
+    requestBuilder.pathVariable("testId", testId.toString());
+    requestBuilder.pathVariable("agentId", agentId.toString());
+    requestBuilder.pathVariable("roundId", roundId.toString());
+    requestBuilder.pathVariable("pageId", pageId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -389,11 +386,10 @@ public class WebTransactionsTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}"
-        .replace("{testId}", urlEncode(testId.toString()))
-        .replace("{agentId}", urlEncode(agentId.toString()))
-        .replace("{roundId}", urlEncode(roundId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/web-transactions/agent/{agentId}/round/{roundId}");
+    requestBuilder.pathVariable("testId", testId.toString());
+    requestBuilder.pathVariable("agentId", agentId.toString());
+    requestBuilder.pathVariable("roundId", roundId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -528,9 +524,8 @@ public class WebTransactionsTestResultsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/test-results/{testId}/web-transactions"
-        .replace("{testId}", urlEncode(testId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/test-results/{testId}/web-transactions");
+    requestBuilder.pathVariable("testId", testId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

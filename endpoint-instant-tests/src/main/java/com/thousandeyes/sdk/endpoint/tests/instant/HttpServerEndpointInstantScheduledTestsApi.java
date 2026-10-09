@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.endpoint.tests.instant;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -99,8 +98,7 @@ public class HttpServerEndpointInstantScheduledTestsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/endpoint/tests/scheduled-tests/http-server/instant";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/endpoint/tests/scheduled-tests/http-server/instant");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

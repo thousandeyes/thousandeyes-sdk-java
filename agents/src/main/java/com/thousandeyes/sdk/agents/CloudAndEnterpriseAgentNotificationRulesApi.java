@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.agents;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -97,9 +96,8 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/agents/notification-rules/{notificationRuleId}"
-        .replace("{notificationRuleId}", urlEncode(notificationRuleId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/notification-rules/{notificationRuleId}");
+    requestBuilder.pathVariable("notificationRuleId", notificationRuleId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -192,8 +190,7 @@ public class CloudAndEnterpriseAgentNotificationRulesApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/agents/notification-rules";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/agents/notification-rules");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

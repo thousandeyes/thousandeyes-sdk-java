@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.alerts;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -101,8 +100,7 @@ public class AlertSuppressionWindowsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("POST");
 
-    String path = "/alert-suppression-windows";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alert-suppression-windows");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -211,9 +209,8 @@ public class AlertSuppressionWindowsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("DELETE");
 
-    String path = "/alert-suppression-windows/{windowId}"
-        .replace("{windowId}", urlEncode(windowId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alert-suppression-windows/{windowId}");
+    requestBuilder.pathVariable("windowId", windowId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -310,9 +307,8 @@ public class AlertSuppressionWindowsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/alert-suppression-windows/{windowId}"
-        .replace("{windowId}", urlEncode(windowId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alert-suppression-windows/{windowId}");
+    requestBuilder.pathVariable("windowId", windowId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -417,8 +413,7 @@ public class AlertSuppressionWindowsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/alert-suppression-windows";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alert-suppression-windows");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -508,9 +503,8 @@ public class AlertSuppressionWindowsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/alert-suppression-windows/{windowId}"
-        .replace("{windowId}", urlEncode(windowId.toString()));
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/alert-suppression-windows/{windowId}");
+    requestBuilder.pathVariable("windowId", windowId.toString());
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));

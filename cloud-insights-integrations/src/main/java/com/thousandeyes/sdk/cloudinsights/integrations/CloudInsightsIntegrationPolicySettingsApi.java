@@ -12,7 +12,6 @@
 package com.thousandeyes.sdk.cloudinsights.integrations;
 
 import static com.thousandeyes.sdk.client.RequestUtil.parameterToPairs;
-import static com.thousandeyes.sdk.client.RequestUtil.urlEncode;
 
 import com.thousandeyes.sdk.client.ApiClient;
 import com.thousandeyes.sdk.client.ApiException;
@@ -94,8 +93,7 @@ public class CloudInsightsIntegrationPolicySettingsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/aws/policy/settings";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/policy/settings");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -177,8 +175,7 @@ public class CloudInsightsIntegrationPolicySettingsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
-    String path = "/cloud-insights/integration/azure/policy/settings";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/policy/settings");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -264,8 +261,7 @@ public class CloudInsightsIntegrationPolicySettingsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/cloud-insights/integration/aws/policy/settings";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/aws/policy/settings");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
@@ -364,8 +360,7 @@ public class CloudInsightsIntegrationPolicySettingsApi {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("PUT");
 
-    String path = "/cloud-insights/integration/azure/policy/settings";
-    requestBuilder.path(path);
+    requestBuilder.pathTemplate("/cloud-insights/integration/azure/policy/settings");
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
