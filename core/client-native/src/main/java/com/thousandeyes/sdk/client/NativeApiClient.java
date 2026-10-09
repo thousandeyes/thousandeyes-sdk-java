@@ -141,7 +141,9 @@ public class NativeApiClient implements ApiClient {
     }
 
     private void setPathAndQueryParams(HttpRequest.Builder httpRequest, ApiRequest request) {
-        var path = request.getPath();
+        var path = request.getPathTemplate() == null
+                ? request.getPath()
+                : expandPathTemplate(request);
         var queryParams = request.getQueryParams();
         if (queryParams != null && !queryParams.isEmpty()) {
             var queryJoiner = new StringJoiner("&");
@@ -151,5 +153,15 @@ public class NativeApiClient implements ApiClient {
         else {
             httpRequest.uri(URI.create(baseUri + path));
         }
+    }
+
+    private String expandPathTemplate(ApiRequest request) {
+        String path = request.getPathTemplate();
+        for (var variable : request.getPathVariables().entrySet()) {
+            path = path.replace(
+                    "{" + variable.getKey() + "}",
+                    RequestUtil.urlEncode(variable.getValue()));
+        }
+        return path;
     }
 }

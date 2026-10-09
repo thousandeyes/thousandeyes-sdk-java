@@ -75,7 +75,8 @@ class SpringApiClientTest {
         OffsetDateTime start = OffsetDateTime.parse("2026-10-07T10:15:30+01:00");
         ApiRequest request = ApiRequest.builder()
                 .method("GET")
-                .path("/items/" + RequestUtil.urlEncode("a/b"))
+                .pathTemplate("/items/{itemId}")
+                .pathVariable("itemId", "a/b")
                 .queryParams(RequestUtil.parameterToPairs("start time", start))
                 .build();
 

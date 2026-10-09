@@ -85,9 +85,14 @@ public final class SpringApiClient implements ApiClient {
     @Override
     public <T> ApiResponse<T> send(ApiRequest request, Type returnType) throws ApiException {
         try {
-            RestClient.RequestBodySpec requestSpec = restClient
-                    .method(HttpMethod.valueOf(request.getMethod()))
-                    .uri(requestUri(request));
+            var uriSpec = restClient.method(HttpMethod.valueOf(request.getMethod()));
+            RestClient.RequestBodySpec requestSpec = request.getPathTemplate() == null
+                    ? uriSpec.uri(requestUri(request))
+                    : uriSpec.uri(
+                            request.getPathTemplate(),
+                            uriBuilder -> requestUri(
+                                    request,
+                                    uriBuilder.build(request.getPathVariables())));
             request.getHeaders().forEach((name, values) ->
                     values.forEach(value -> requestSpec.header(name, value)));
             if (request.getRequestBody() != null) {
@@ -115,8 +120,15 @@ public final class SpringApiClient implements ApiClient {
     }
 
     private URI requestUri(ApiRequest request) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUri(baseUri)
-                .path(request.getPath());
+        URI uri = UriComponentsBuilder.fromUri(baseUri)
+                .path(request.getPath())
+                .build(true)
+                .toUri();
+        return requestUri(request, uri);
+    }
+
+    private URI requestUri(ApiRequest request, URI uri) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUri(uri);
         if (request.getQueryParams() != null) {
             request.getQueryParams().forEach(parameter ->
                     builder.queryParam(parameter.getKey(), parameter.getValue()));

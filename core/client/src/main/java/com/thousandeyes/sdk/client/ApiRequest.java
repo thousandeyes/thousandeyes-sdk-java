@@ -35,7 +35,14 @@ import lombok.Singular;
 @Getter
 public class ApiRequest {
     String method;
+    /**
+     * @deprecated use {@link #pathTemplate} and {@link #pathVariables}
+     */
+    @Deprecated
     String path;
+    String pathTemplate;
+    @Singular("pathVariable")
+    Map<String, String> pathVariables;
     Object requestBody;
     List<Pair<String, String>> queryParams;
     @Singular
