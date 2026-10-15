@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointScheduledTest;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PathVisDetailEndpointTestResult;
 import com.thousandeyes.sdk.endpoint.tests.results.model.SelfLinks;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class PathVisDetailEndpointTestResults {
   private List<PathVisDetailEndpointTestResult> results = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEST = "test";
-  private EndpointScheduledTest test;
+  private EndpointTest test;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -84,7 +84,7 @@ public class PathVisDetailEndpointTestResults {
   }
 
 
-  public PathVisDetailEndpointTestResults test(EndpointScheduledTest test) {
+  public PathVisDetailEndpointTestResults test(EndpointTest test) {
     this.test = test;
     return this;
   }
@@ -97,14 +97,14 @@ public class PathVisDetailEndpointTestResults {
   @JsonProperty(JSON_PROPERTY_TEST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public EndpointScheduledTest getTest() {
+  public EndpointTest getTest() {
     return test;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TEST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTest(EndpointScheduledTest test) {
+  public void setTest(EndpointTest test) {
     this.test = test;
   }
 
@@ -194,7 +194,7 @@ public class PathVisDetailEndpointTestResults {
       this.instance.setResults(results);
       return this;
     }
-    public PathVisDetailEndpointTestResults.ModelBuilder test(EndpointScheduledTest test) {
+    public PathVisDetailEndpointTestResults.ModelBuilder test(EndpointTest test) {
       this.instance.setTest(test);
       return this;
     }

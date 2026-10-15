@@ -15,795 +15,266 @@ package com.thousandeyes.sdk.endpoint.tests.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentSelectorConfig;
-import com.thousandeyes.sdk.endpoint.tests.model.EndpointScheduledTestType;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentToServerTest;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointHttpServerTest;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestAuthType;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestLinks;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
 import com.thousandeyes.sdk.endpoint.tests.model.TestInterval;
 import com.thousandeyes.sdk.endpoint.tests.model.TestLabel;
 import com.thousandeyes.sdk.endpoint.tests.model.TestProbeModeResponse;
+import com.thousandeyes.sdk.endpoint.tests.model.TestSslVersionId;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import tools.jackson.core.type.TypeReference;
 
-/**
- * EndpointTest
- */
-@JsonPropertyOrder({
-  EndpointTest.JSON_PROPERTY_AID,
-  EndpointTest.JSON_PROPERTY_LINKS,
-  EndpointTest.JSON_PROPERTY_AGENT_SELECTOR_CONFIG,
-  EndpointTest.JSON_PROPERTY_CREATED_DATE,
-  EndpointTest.JSON_PROPERTY_IS_PRIORITIZED,
-  EndpointTest.JSON_PROPERTY_INTERVAL,
-  EndpointTest.JSON_PROPERTY_IS_ENABLED,
-  EndpointTest.JSON_PROPERTY_IS_SAVED_EVENT,
-  EndpointTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
-  EndpointTest.JSON_PROPERTY_LABELS,
-  EndpointTest.JSON_PROPERTY_MODIFIED_DATE,
-  EndpointTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  EndpointTest.JSON_PROPERTY_PROTOCOL,
-  EndpointTest.JSON_PROPERTY_IP_VERSION,
-  EndpointTest.JSON_PROPERTY_SERVER,
-  EndpointTest.JSON_PROPERTY_TEST_ID,
-  EndpointTest.JSON_PROPERTY_TEST_NAME,
-  EndpointTest.JSON_PROPERTY_TYPE,
-  EndpointTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointTest.JSON_PROPERTY_PORT
-})
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
+import com.thousandeyes.sdk.serialization.JSON;
+import com.thousandeyes.sdk.serialization.AbstractOpenApiSchema;
+
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class EndpointTest {
-  public static final String JSON_PROPERTY_AID = "aid";
-  private String aid;
-
-  public static final String JSON_PROPERTY_LINKS = "_links";
-  private EndpointTestLinks links;
-
-  public static final String JSON_PROPERTY_AGENT_SELECTOR_CONFIG = "agentSelectorConfig";
-  private EndpointAgentSelectorConfig agentSelectorConfig;
-
-  public static final String JSON_PROPERTY_CREATED_DATE = "createdDate";
-  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
-  private OffsetDateTime createdDate;
-
-  public static final String JSON_PROPERTY_IS_PRIORITIZED = "isPrioritized";
-  private Boolean isPrioritized = false;
-
-  public static final String JSON_PROPERTY_INTERVAL = "interval";
-  private TestInterval interval = TestInterval.NUMBER_60;
-
-  public static final String JSON_PROPERTY_IS_ENABLED = "isEnabled";
-  private Boolean isEnabled = true;
-
-  public static final String JSON_PROPERTY_IS_SAVED_EVENT = "isSavedEvent";
-  @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT)
-  private Boolean isSavedEvent;
-
-  public static final String JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION = "hasPathTraceInSession";
-  private Boolean hasPathTraceInSession;
-
-  public static final String JSON_PROPERTY_LABELS = "labels";
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  private List<TestLabel> labels = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_MODIFIED_DATE = "modifiedDate";
-  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
-  private OffsetDateTime modifiedDate;
-
-  public static final String JSON_PROPERTY_NETWORK_MEASUREMENTS = "networkMeasurements";
-  private Boolean networkMeasurements = true;
-
-  public static final String JSON_PROPERTY_PROTOCOL = "protocol";
-  private EndpointTestProtocol protocol = EndpointTestProtocol.ICMP;
-
-  public static final String JSON_PROPERTY_IP_VERSION = "ipVersion";
-  private String ipVersion;
-
-  public static final String JSON_PROPERTY_SERVER = "server";
-  private String server;
-
-  public static final String JSON_PROPERTY_TEST_ID = "testId";
-  @JsonProperty(JSON_PROPERTY_TEST_ID)
-  private String testId;
-
-  public static final String JSON_PROPERTY_TEST_NAME = "testName";
-  private String testName;
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  private EndpointScheduledTestType type;
-
-  public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
-  private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
-
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 443;
-
-  public EndpointTest() { 
-  }
-
-  public EndpointTest aid(String aid) {
-    this.aid = aid;
-    return this;
-  }
-
-   /**
-   * A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint.
-   * @return aid
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getAid() {
-    return aid;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAid(String aid) {
-    this.aid = aid;
-  }
-
-
-  public EndpointTest links(EndpointTestLinks links) {
-    this.links = links;
-    return this;
-  }
-
-   /**
-   * Get links
-   * @return links
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LINKS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public EndpointTestLinks getLinks() {
-    return links;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LINKS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLinks(EndpointTestLinks links) {
-    this.links = links;
-  }
-
-
-  public EndpointTest agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
-    this.agentSelectorConfig = agentSelectorConfig;
-    return this;
-  }
-
-   /**
-   * Get agentSelectorConfig
-   * @return agentSelectorConfig
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_CONFIG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public EndpointAgentSelectorConfig getAgentSelectorConfig() {
-    return agentSelectorConfig;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AGENT_SELECTOR_CONFIG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAgentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
-    this.agentSelectorConfig = agentSelectorConfig;
-  }
-
-
-   /**
-   * UTC created date (ISO date-time format).
-   * @return createdDate
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREATED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OffsetDateTime getCreatedDate() {
-    return createdDate;
-  }
-
-
-
-
-  public EndpointTest isPrioritized(Boolean isPrioritized) {
-    this.isPrioritized = isPrioritized;
-    return this;
-  }
-
-   /**
-   * Indicates whether the test should be prioritized when the number of tests assigned to an agent exceeds the license limit.
-   * @return isPrioritized
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getIsPrioritized() {
-    return isPrioritized;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IS_PRIORITIZED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsPrioritized(Boolean isPrioritized) {
-    this.isPrioritized = isPrioritized;
-  }
-
-
-  public EndpointTest interval(TestInterval interval) {
-    this.interval = interval;
-    return this;
-  }
-
-   /**
-   * Get interval
-   * @return interval
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INTERVAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public TestInterval getInterval() {
-    return interval;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INTERVAL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(TestInterval interval) {
-    this.interval = interval;
-  }
-
-
-  public EndpointTest isEnabled(Boolean isEnabled) {
-    this.isEnabled = isEnabled;
-    return this;
-  }
-
-   /**
-   * Indicates if test is enabled.
-   * @return isEnabled
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IS_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getIsEnabled() {
-    return isEnabled;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IS_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsEnabled(Boolean isEnabled) {
-    this.isEnabled = isEnabled;
-  }
-
-
-   /**
-   * Indicates if the test is a saved event.  **Note**: **Saved Events** are now called **Private Snapshots** in the user interface. This change does not affect API. 
-   * @return isSavedEvent
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IS_SAVED_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getIsSavedEvent() {
-    return isSavedEvent;
-  }
-
-
-
-
-  public EndpointTest hasPathTraceInSession(Boolean hasPathTraceInSession) {
-    this.hasPathTraceInSession = hasPathTraceInSession;
-    return this;
-  }
-
-   /**
-   * Enables \&quot;in session\&quot; path trace. When enabled, this option initiates a TCP session with the target server and sends path trace packets within the established TCP session.
-   * @return hasPathTraceInSession
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getHasPathTraceInSession() {
-    return hasPathTraceInSession;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasPathTraceInSession(Boolean hasPathTraceInSession) {
-    this.hasPathTraceInSession = hasPathTraceInSession;
-  }
-
-
-   /**
-   * Labels to which the test is assigned. This field is not returned for Instant Tests.
-   * @return labels
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LABELS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<TestLabel> getLabels() {
-    return labels;
-  }
-
-
-
-
-   /**
-   * UTC last modification date (ISO date-time format).
-   * @return modifiedDate
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MODIFIED_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OffsetDateTime getModifiedDate() {
-    return modifiedDate;
-  }
-
-
-
-
-  public EndpointTest networkMeasurements(Boolean networkMeasurements) {
-    this.networkMeasurements = networkMeasurements;
-    return this;
-  }
-
-   /**
-   * Enable or disable network measurements. Set to true to enable or false to disable network measurements.
-   * @return networkMeasurements
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NETWORK_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getNetworkMeasurements() {
-    return networkMeasurements;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NETWORK_MEASUREMENTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNetworkMeasurements(Boolean networkMeasurements) {
-    this.networkMeasurements = networkMeasurements;
-  }
-
-
-  public EndpointTest protocol(EndpointTestProtocol protocol) {
-    this.protocol = protocol;
-    return this;
-  }
-
-   /**
-   * Get protocol
-   * @return protocol
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public EndpointTestProtocol getProtocol() {
-    return protocol;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PROTOCOL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProtocol(EndpointTestProtocol protocol) {
-    this.protocol = protocol;
-  }
-
-
-  public EndpointTest ipVersion(String ipVersion) {
-    this.ipVersion = ipVersion;
-    return this;
-  }
-
-   /**
-   * For reading current network test configurations, the IP version of the test. Values include V4_ONLY, V6_ONLY, V6_PREFER, and OS_DEFAULT.
-   * @return ipVersion
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IP_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getIpVersion() {
-    return ipVersion;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IP_VERSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIpVersion(String ipVersion) {
-    this.ipVersion = ipVersion;
-  }
-
-
-  public EndpointTest server(String server) {
-    this.server = server;
-    return this;
-  }
-
-   /**
-   * Target domain name or IP address.
-   * @return server
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getServer() {
-    return server;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SERVER)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServer(String server) {
-    this.server = server;
-  }
-
-
-   /**
-   * Each test is assigned a unique ID to access test data from other endpoints.
-   * @return testId
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TEST_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getTestId() {
-    return testId;
-  }
-
-
-
-
-  public EndpointTest testName(String testName) {
-    this.testName = testName;
-    return this;
-  }
-
-   /**
-   * Name of the test.
-   * @return testName
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TEST_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getTestName() {
-    return testName;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TEST_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTestName(String testName) {
-    this.testName = testName;
-  }
-
-
-  public EndpointTest type(EndpointScheduledTestType type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @jakarta.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public EndpointScheduledTestType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(EndpointScheduledTestType type) {
-    this.type = type;
-  }
-
-
-  public EndpointTest tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
-    this.tcpProbeMode = tcpProbeMode;
-    return this;
-  }
-
-   /**
-   * Get tcpProbeMode
-   * @return tcpProbeMode
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TCP_PROBE_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public TestProbeModeResponse getTcpProbeMode() {
-    return tcpProbeMode;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TCP_PROBE_MODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTcpProbeMode(TestProbeModeResponse tcpProbeMode) {
-    this.tcpProbeMode = tcpProbeMode;
-  }
-
-
-  public EndpointTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number.
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
-  /**
-   * Return true if this EndpointTest object is equal to o.
-   */
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    EndpointTest endpointTest = (EndpointTest) o;
-    return Objects.equals(this.aid, endpointTest.aid) &&
-        Objects.equals(this.links, endpointTest.links) &&
-        Objects.equals(this.agentSelectorConfig, endpointTest.agentSelectorConfig) &&
-        Objects.equals(this.createdDate, endpointTest.createdDate) &&
-        Objects.equals(this.isPrioritized, endpointTest.isPrioritized) &&
-        Objects.equals(this.interval, endpointTest.interval) &&
-        Objects.equals(this.isEnabled, endpointTest.isEnabled) &&
-        Objects.equals(this.isSavedEvent, endpointTest.isSavedEvent) &&
-        Objects.equals(this.hasPathTraceInSession, endpointTest.hasPathTraceInSession) &&
-        Objects.equals(this.labels, endpointTest.labels) &&
-        Objects.equals(this.modifiedDate, endpointTest.modifiedDate) &&
-        Objects.equals(this.networkMeasurements, endpointTest.networkMeasurements) &&
-        Objects.equals(this.protocol, endpointTest.protocol) &&
-        Objects.equals(this.ipVersion, endpointTest.ipVersion) &&
-        Objects.equals(this.server, endpointTest.server) &&
-        Objects.equals(this.testId, endpointTest.testId) &&
-        Objects.equals(this.testName, endpointTest.testName) &&
-        Objects.equals(this.type, endpointTest.type) &&
-        Objects.equals(this.tcpProbeMode, endpointTest.tcpProbeMode) &&
-        Objects.equals(this.port, endpointTest.port);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EndpointTest {\n");
-    sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    agentSelectorConfig: ").append(toIndentedString(agentSelectorConfig)).append("\n");
-    sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
-    sb.append("    isPrioritized: ").append(toIndentedString(isPrioritized)).append("\n");
-    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
-    sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
-    sb.append("    isSavedEvent: ").append(toIndentedString(isSavedEvent)).append("\n");
-    sb.append("    hasPathTraceInSession: ").append(toIndentedString(hasPathTraceInSession)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    modifiedDate: ").append(toIndentedString(modifiedDate)).append("\n");
-    sb.append("    networkMeasurements: ").append(toIndentedString(networkMeasurements)).append("\n");
-    sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
-    sb.append("    ipVersion: ").append(toIndentedString(ipVersion)).append("\n");
-    sb.append("    server: ").append(toIndentedString(server)).append("\n");
-    sb.append("    testId: ").append(toIndentedString(testId)).append("\n");
-    sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-  public static class ModelBuilder {
-
-    private EndpointTest instance;
-
-    public ModelBuilder() {
-      this(new EndpointTest());
+@JsonDeserialize(using = EndpointTest.EndpointTestDeserializer.class)
+@JsonSerialize(using = EndpointTest.EndpointTestSerializer.class)
+public class EndpointTest extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(EndpointTest.class.getName());
+
+    public static class EndpointTestSerializer extends StdSerializer<EndpointTest> {
+        public EndpointTestSerializer(Class<EndpointTest> t) {
+            super(t);
+        }
+
+        public EndpointTestSerializer() {
+            this(null);
+        }
+
+        @Override
+        public void serialize(EndpointTest value, JsonGenerator jgen, SerializationContext ctxt) throws JacksonException {
+            ctxt.writeValue(jgen, value.getActualInstance());
+        }
     }
 
-    protected ModelBuilder(EndpointTest instance) {
-      this.instance = instance;
+    public static class EndpointTestDeserializer extends StdDeserializer<EndpointTest> {
+        public EndpointTestDeserializer() {
+            this(EndpointTest.class);
+        }
+
+        public EndpointTestDeserializer(Class<?> vc) {
+            super(vc);
+        }
+
+        @Override
+        public EndpointTest deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
+            JsonNode tree = ctxt.readTree(jp);
+            Object deserialized = null;
+            EndpointTest newEndpointTest = new EndpointTest();
+            String discriminatorValue = tree.path("type").asString(null);
+            switch (discriminatorValue) {
+                case "agent-to-server":
+                    deserialized = ctxt.readTreeAsValue(tree, EndpointAgentToServerTest.class);
+                    newEndpointTest.setActualInstance(deserialized);
+                    return newEndpointTest;
+                case "http-server":
+                    deserialized = ctxt.readTreeAsValue(tree, EndpointHttpServerTest.class);
+                    newEndpointTest.setActualInstance(deserialized);
+                    return newEndpointTest;
+                default:
+                    log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for EndpointTest. Possible values: agent-to-server http-server", discriminatorValue));
+            }
+
+            boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
+            int match = 0;
+            JsonToken token = tree.asToken();
+            // deserialize EndpointAgentToServerTest
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (EndpointAgentToServerTest.class.equals(Integer.class) || EndpointAgentToServerTest.class.equals(Long.class) || EndpointAgentToServerTest.class.equals(Float.class) || EndpointAgentToServerTest.class.equals(Double.class) || EndpointAgentToServerTest.class.equals(Boolean.class) || EndpointAgentToServerTest.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((EndpointAgentToServerTest.class.equals(Integer.class) || EndpointAgentToServerTest.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((EndpointAgentToServerTest.class.equals(Float.class) || EndpointAgentToServerTest.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (EndpointAgentToServerTest.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (EndpointAgentToServerTest.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = ctxt.readTreeAsValue(tree, EndpointAgentToServerTest.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'EndpointAgentToServerTest'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'EndpointAgentToServerTest'", e);
+            }
+
+            // deserialize EndpointHttpServerTest
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (EndpointHttpServerTest.class.equals(Integer.class) || EndpointHttpServerTest.class.equals(Long.class) || EndpointHttpServerTest.class.equals(Float.class) || EndpointHttpServerTest.class.equals(Double.class) || EndpointHttpServerTest.class.equals(Boolean.class) || EndpointHttpServerTest.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((EndpointHttpServerTest.class.equals(Integer.class) || EndpointHttpServerTest.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((EndpointHttpServerTest.class.equals(Float.class) || EndpointHttpServerTest.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (EndpointHttpServerTest.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (EndpointHttpServerTest.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = ctxt.readTreeAsValue(tree, EndpointHttpServerTest.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'EndpointHttpServerTest'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'EndpointHttpServerTest'", e);
+            }
+
+            if (match == 1) {
+                EndpointTest ret = new EndpointTest();
+                ret.setActualInstance(deserialized);
+                return ret;
+            }
+            throw DatabindException.from(jp, String.format("Failed deserialization for EndpointTest: %d classes match result, expected 1", match));
+        }
+
+        /**
+         * Handle deserialization of the 'null' value.
+         */
+        @Override
+        public EndpointTest getNullValue(DeserializationContext ctxt) {
+            throw DatabindException.from(ctxt, "EndpointTest cannot be null");
+        }
     }
 
-    public EndpointTest.ModelBuilder aid(String aid) {
-      this.instance.setAid(aid);
-      return this;
-    }
-    public EndpointTest.ModelBuilder links(EndpointTestLinks links) {
-      this.instance.setLinks(links);
-      return this;
-    }
-    public EndpointTest.ModelBuilder agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
-      this.instance.setAgentSelectorConfig(agentSelectorConfig);
-      return this;
-    }
-    public EndpointTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
-      this.instance.createdDate = createdDate;
-      return this;
-    }
-    public EndpointTest.ModelBuilder isPrioritized(Boolean isPrioritized) {
-      this.instance.setIsPrioritized(isPrioritized);
-      return this;
-    }
-    public EndpointTest.ModelBuilder interval(TestInterval interval) {
-      this.instance.setInterval(interval);
-      return this;
-    }
-    public EndpointTest.ModelBuilder isEnabled(Boolean isEnabled) {
-      this.instance.setIsEnabled(isEnabled);
-      return this;
-    }
-    public EndpointTest.ModelBuilder isSavedEvent(Boolean isSavedEvent) {
-      this.instance.isSavedEvent = isSavedEvent;
-      return this;
-    }
-    public EndpointTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
-      this.instance.setHasPathTraceInSession(hasPathTraceInSession);
-      return this;
-    }
-    public EndpointTest.ModelBuilder labels(List<TestLabel> labels) {
-      this.instance.labels = labels;
-      return this;
-    }
-    public EndpointTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
-      this.instance.modifiedDate = modifiedDate;
-      return this;
-    }
-    public EndpointTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
-      this.instance.setNetworkMeasurements(networkMeasurements);
-      return this;
-    }
-    public EndpointTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
-      this.instance.setProtocol(protocol);
-      return this;
-    }
-    public EndpointTest.ModelBuilder ipVersion(String ipVersion) {
-      this.instance.setIpVersion(ipVersion);
-      return this;
-    }
-    public EndpointTest.ModelBuilder server(String server) {
-      this.instance.setServer(server);
-      return this;
-    }
-    public EndpointTest.ModelBuilder testId(String testId) {
-      this.instance.testId = testId;
-      return this;
-    }
-    public EndpointTest.ModelBuilder testName(String testName) {
-      this.instance.setTestName(testName);
-      return this;
-    }
-    public EndpointTest.ModelBuilder type(EndpointScheduledTestType type) {
-      this.instance.setType(type);
-      return this;
-    }
-    public EndpointTest.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
-      this.instance.setTcpProbeMode(tcpProbeMode);
-      return this;
-    }
-    public EndpointTest.ModelBuilder port(Integer port) {
-      this.instance.setPort(port);
-      return this;
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<>();
+
+    public EndpointTest() {
+        super("oneOf", Boolean.FALSE);
     }
 
-    /**
-     * Returns a built EndpointTest instance.
-     *
-     * <p>The builder is not reusable.</p>
-     */
-    public EndpointTest build() {
-      try {
-        return this.instance;
-      } finally {
-        // Ensure that this builder cannot mutate an already-built instance.
-        this.instance = null;
-      }
+    public EndpointTest(EndpointAgentToServerTest o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EndpointTest(EndpointHttpServerTest o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    static {
+        schemas.put("EndpointAgentToServerTest", EndpointAgentToServerTest.class);
+        schemas.put("EndpointHttpServerTest", EndpointHttpServerTest.class);
+        JSON.registerDescendants(EndpointTest.class, Collections.unmodifiableMap(schemas));
+        // Initialize and register the discriminator mappings.
+        Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+        mappings.put("agent-to-server", EndpointAgentToServerTest.class);
+        mappings.put("http-server", EndpointHttpServerTest.class);
+        mappings.put("EndpointTest", EndpointTest.class);
+        JSON.registerDiscriminator(EndpointTest.class, "type", mappings);
     }
 
     @Override
-    public String toString() {
-      return getClass() + "=(" + instance + ")";
+    public Map<String, Class<?>> getSchemas() {
+        return EndpointTest.schemas;
     }
-  }
 
-  /**
-   * Create a builder with no initialized fields.
-   */
-  public static EndpointTest.ModelBuilder builder() {
-    return new EndpointTest.ModelBuilder();
-  }
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * EndpointAgentToServerTest, EndpointHttpServerTest
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (JSON.isInstanceOf(EndpointAgentToServerTest.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
 
-  /**
-   * Create a builder with a shallow copy of this instance.
-   */
-  public EndpointTest.ModelBuilder toBuilder() {
-    EndpointTest.ModelBuilder builder = new EndpointTest.ModelBuilder()
-      .aid(getAid())
-      .links(getLinks())
-      .agentSelectorConfig(getAgentSelectorConfig())
-      .createdDate(getCreatedDate())
-      .isPrioritized(getIsPrioritized())
-      .interval(getInterval())
-      .isEnabled(getIsEnabled())
-      .isSavedEvent(getIsSavedEvent())
-      .hasPathTraceInSession(getHasPathTraceInSession())
-      .labels(getLabels())
-      .modifiedDate(getModifiedDate())
-      .networkMeasurements(getNetworkMeasurements())
-      .protocol(getProtocol())
-      .ipVersion(getIpVersion())
-      .server(getServer())
-      .testId(getTestId())
-      .testName(getTestName())
-      .type(getType())
-      .tcpProbeMode(getTcpProbeMode())
-      .port(getPort());
-    return builder;
-  }
+        if (JSON.isInstanceOf(EndpointHttpServerTest.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be EndpointAgentToServerTest, EndpointHttpServerTest");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * EndpointAgentToServerTest, EndpointHttpServerTest
+     *
+     * @return The actual instance (EndpointAgentToServerTest, EndpointHttpServerTest)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `EndpointAgentToServerTest`. If the actual instance is not `EndpointAgentToServerTest`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `EndpointAgentToServerTest`
+     * @throws ClassCastException if the instance is not `EndpointAgentToServerTest`
+     */
+    public EndpointAgentToServerTest getEndpointAgentToServerTest() throws ClassCastException {
+        return (EndpointAgentToServerTest)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `EndpointHttpServerTest`. If the actual instance is not `EndpointHttpServerTest`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `EndpointHttpServerTest`
+     * @throws ClassCastException if the instance is not `EndpointHttpServerTest`
+     */
+    public EndpointHttpServerTest getEndpointHttpServerTest() throws ClassCastException {
+        return (EndpointHttpServerTest)super.getActualInstance();
+    }
+
+
 
 }
 
