@@ -58,7 +58,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_TEST_NAME,
   EndpointHttpServerTest.JSON_PROPERTY_TYPE,
   EndpointHttpServerTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointHttpServerTest.JSON_PROPERTY_PORT,
   EndpointHttpServerTest.JSON_PROPERTY_AUTH_TYPE,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_TIME_LIMIT,
   EndpointHttpServerTest.JSON_PROPERTY_USERNAME,
@@ -68,6 +67,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EndpointHttpServerTest.JSON_PROPERTY_FOLLOW_REDIRECTS,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_TARGET_TIME,
   EndpointHttpServerTest.JSON_PROPERTY_HTTP_VERSION,
+  EndpointHttpServerTest.JSON_PROPERTY_PORT,
   EndpointHttpServerTest.JSON_PROPERTY_SSL_VERSION,
   EndpointHttpServerTest.JSON_PROPERTY_USE_NTLM
 })
@@ -136,9 +136,6 @@ public class EndpointHttpServerTest {
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 443;
-
   public static final String JSON_PROPERTY_AUTH_TYPE = "authType";
   private EndpointTestAuthType authType = EndpointTestAuthType.NONE;
 
@@ -165,6 +162,9 @@ public class EndpointHttpServerTest {
 
   public static final String JSON_PROPERTY_HTTP_VERSION = "httpVersion";
   private Integer httpVersion = 2;
+
+  public static final String JSON_PROPERTY_PORT = "port";
+  private Integer port = 443;
 
   public static final String JSON_PROPERTY_SSL_VERSION = "sslVersion";
   @JsonProperty(JSON_PROPERTY_SSL_VERSION)
@@ -591,31 +591,6 @@ public class EndpointHttpServerTest {
   }
 
 
-  public EndpointHttpServerTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number.
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
   public EndpointHttpServerTest authType(EndpointTestAuthType authType) {
     this.authType = authType;
     return this;
@@ -845,6 +820,31 @@ public class EndpointHttpServerTest {
   }
 
 
+  public EndpointHttpServerTest port(Integer port) {
+    this.port = port;
+    return this;
+  }
+
+   /**
+   * Port number.
+   * @return port
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPort() {
+    return port;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PORT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPort(Integer port) {
+    this.port = port;
+  }
+
+
    /**
    * Reflects the verbose SSL protocol version used by a test.
    * @return sslVersion
@@ -916,7 +916,6 @@ public class EndpointHttpServerTest {
         Objects.equals(this.testName, endpointHttpServerTest.testName) &&
         Objects.equals(this.type, endpointHttpServerTest.type) &&
         Objects.equals(this.tcpProbeMode, endpointHttpServerTest.tcpProbeMode) &&
-        Objects.equals(this.port, endpointHttpServerTest.port) &&
         Objects.equals(this.authType, endpointHttpServerTest.authType) &&
         Objects.equals(this.httpTimeLimit, endpointHttpServerTest.httpTimeLimit) &&
         Objects.equals(this.username, endpointHttpServerTest.username) &&
@@ -926,13 +925,14 @@ public class EndpointHttpServerTest {
         Objects.equals(this.followRedirects, endpointHttpServerTest.followRedirects) &&
         Objects.equals(this.httpTargetTime, endpointHttpServerTest.httpTargetTime) &&
         Objects.equals(this.httpVersion, endpointHttpServerTest.httpVersion) &&
+        Objects.equals(this.port, endpointHttpServerTest.port) &&
         Objects.equals(this.sslVersion, endpointHttpServerTest.sslVersion) &&
         Objects.equals(this.useNtlm, endpointHttpServerTest.useNtlm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, sslVersion, useNtlm);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, authType, httpTimeLimit, username, sslVersionId, verifyCertificate, url, followRedirects, httpTargetTime, httpVersion, port, sslVersion, useNtlm);
   }
 
   @Override
@@ -958,7 +958,6 @@ public class EndpointHttpServerTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    authType: ").append(toIndentedString(authType)).append("\n");
     sb.append("    httpTimeLimit: ").append(toIndentedString(httpTimeLimit)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
@@ -968,6 +967,7 @@ public class EndpointHttpServerTest {
     sb.append("    followRedirects: ").append(toIndentedString(followRedirects)).append("\n");
     sb.append("    httpTargetTime: ").append(toIndentedString(httpTargetTime)).append("\n");
     sb.append("    httpVersion: ").append(toIndentedString(httpVersion)).append("\n");
+    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    sslVersion: ").append(toIndentedString(sslVersion)).append("\n");
     sb.append("    useNtlm: ").append(toIndentedString(useNtlm)).append("\n");
     sb.append("}");
@@ -1073,10 +1073,6 @@ public class EndpointHttpServerTest {
       this.instance.setTcpProbeMode(tcpProbeMode);
       return this;
     }
-    public EndpointHttpServerTest.ModelBuilder port(Integer port) {
-      this.instance.setPort(port);
-      return this;
-    }
     public EndpointHttpServerTest.ModelBuilder authType(EndpointTestAuthType authType) {
       this.instance.setAuthType(authType);
       return this;
@@ -1111,6 +1107,10 @@ public class EndpointHttpServerTest {
     }
     public EndpointHttpServerTest.ModelBuilder httpVersion(Integer httpVersion) {
       this.instance.setHttpVersion(httpVersion);
+      return this;
+    }
+    public EndpointHttpServerTest.ModelBuilder port(Integer port) {
+      this.instance.setPort(port);
       return this;
     }
     public EndpointHttpServerTest.ModelBuilder sslVersion(String sslVersion) {
@@ -1173,7 +1173,6 @@ public class EndpointHttpServerTest {
       .testName(getTestName())
       .type(getType())
       .tcpProbeMode(getTcpProbeMode())
-      .port(getPort())
       .authType(getAuthType())
       .httpTimeLimit(getHttpTimeLimit())
       .username(getUsername())
@@ -1183,6 +1182,7 @@ public class EndpointHttpServerTest {
       .followRedirects(getFollowRedirects())
       .httpTargetTime(getHttpTargetTime())
       .httpVersion(getHttpVersion())
+      .port(getPort())
       .sslVersion(getSslVersion())
       .useNtlm(getUseNtlm());
     return builder;

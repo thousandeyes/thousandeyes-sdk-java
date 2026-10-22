@@ -2,7 +2,7 @@
 
 Test Results API
 
-- API version: 7.0.110
+- API version: 7.0.112
 
 Get test result metrics for Network and Application Synthetics tests.
 
