@@ -44,6 +44,7 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointSpecificAgentsSe
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestAgentSelectorType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestAuthType.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestLinks.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestProtocol.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/model/EndpointTestSelfLink.java

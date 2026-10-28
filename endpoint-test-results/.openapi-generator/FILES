@@ -49,11 +49,11 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeGat
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeProxyScore.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointProbeVpnScore.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointResultRequestFilter.java
-src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointScheduledTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointScheduledTestType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointSpecificAgentsSelectorConfig.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestAuthType.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestEthernetProfile.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestLinks.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/results/model/EndpointTestProtocol.java

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.alerts.model.BaseRule;
+import com.thousandeyes.sdk.alerts.model.RuleListItem;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
 public class Rules {
   public static final String JSON_PROPERTY_ALERT_RULES = "alertRules";
-  private List<BaseRule> alertRules = new ArrayList<>();
+  private List<RuleListItem> alertRules = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -46,12 +46,12 @@ public class Rules {
   public Rules() { 
   }
 
-  public Rules alertRules(List<BaseRule> alertRules) {
+  public Rules alertRules(List<RuleListItem> alertRules) {
     this.alertRules = alertRules;
     return this;
   }
 
-  public Rules addAlertRulesItem(BaseRule alertRulesItem) {
+  public Rules addAlertRulesItem(RuleListItem alertRulesItem) {
     if (this.alertRules == null) {
       this.alertRules = new ArrayList<>();
     }
@@ -67,14 +67,14 @@ public class Rules {
   @JsonProperty(JSON_PROPERTY_ALERT_RULES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<BaseRule> getAlertRules() {
+  public List<RuleListItem> getAlertRules() {
     return alertRules;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ALERT_RULES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlertRules(List<BaseRule> alertRules) {
+  public void setAlertRules(List<RuleListItem> alertRules) {
     this.alertRules = alertRules;
   }
 
@@ -158,7 +158,7 @@ public class Rules {
       this.instance = instance;
     }
 
-    public Rules.ModelBuilder alertRules(List<BaseRule> alertRules) {
+    public Rules.ModelBuilder alertRules(List<RuleListItem> alertRules) {
       this.instance.setAlertRules(alertRules);
       return this;
     }
