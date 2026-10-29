@@ -22,9 +22,9 @@ src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointIpVersio
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointRunScheduledInstantTestResult.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointScheduledTestType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointSpecificAgentsSelectorConfig.java
-src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTest.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestAgentSelectorType.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestAuthType.java
+src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestBase.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestLinks.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestProtocol.java
 src/main/java/com/thousandeyes/sdk/endpoint/tests/instant/model/EndpointTestSelfLink.java

@@ -1,6 +1,6 @@
 /*
- * Endpoint Instant Scheduled Tests API
- * You can create and execute a new endpoint instant scheduled test within ThousandEyes using this API. The test parameters are specified in the `POST` data.  The following applies to the Endpoint Instant Scheduled Tests API:  * To initiate the creation and execution of an instant scheduled test, the user must possess the `Edit endpoint tests` permission.  * Upon successful creation of an instant scheduled test, the API responds with an HTTP/201 CREATED status code and return the test definition. * It's important to note that the response does not include the results of the instant scheduled test. To retrieve test results, users can utilize the Endpoint Test Data endpoints. The URLs for these API test data endpoints are provided within the test definition output when an instant scheduled test is created. 
+ * Endpoint Tests API
+ * Manage endpoint agent dynamic and scheduled tests using the Endpoint Tests API. 
  *
  * 
  *
@@ -10,7 +10,7 @@
  */
 
 
-package com.thousandeyes.sdk.endpoint.tests.instant.model;
+package com.thousandeyes.sdk.endpoint.tests.model;
 
 import java.util.Objects;
 import java.util.Map;
@@ -20,13 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointAgentSelectorConfig;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointScheduledTestType;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestLinks;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.EndpointTestProtocol;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.TestInterval;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.TestLabel;
-import com.thousandeyes.sdk.endpoint.tests.instant.model.TestProbeModeResponse;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointAgentSelectorConfig;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointScheduledTestType;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestLinks;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestProtocol;
+import com.thousandeyes.sdk.endpoint.tests.model.TestInterval;
+import com.thousandeyes.sdk.endpoint.tests.model.TestLabel;
+import com.thousandeyes.sdk.endpoint.tests.model.TestProbeModeResponse;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,32 +35,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 /**
- * EndpointTest
+ * EndpointTestBase
  */
 @JsonPropertyOrder({
-  EndpointTest.JSON_PROPERTY_AID,
-  EndpointTest.JSON_PROPERTY_LINKS,
-  EndpointTest.JSON_PROPERTY_AGENT_SELECTOR_CONFIG,
-  EndpointTest.JSON_PROPERTY_CREATED_DATE,
-  EndpointTest.JSON_PROPERTY_IS_PRIORITIZED,
-  EndpointTest.JSON_PROPERTY_INTERVAL,
-  EndpointTest.JSON_PROPERTY_IS_ENABLED,
-  EndpointTest.JSON_PROPERTY_IS_SAVED_EVENT,
-  EndpointTest.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
-  EndpointTest.JSON_PROPERTY_LABELS,
-  EndpointTest.JSON_PROPERTY_MODIFIED_DATE,
-  EndpointTest.JSON_PROPERTY_NETWORK_MEASUREMENTS,
-  EndpointTest.JSON_PROPERTY_PROTOCOL,
-  EndpointTest.JSON_PROPERTY_IP_VERSION,
-  EndpointTest.JSON_PROPERTY_SERVER,
-  EndpointTest.JSON_PROPERTY_TEST_ID,
-  EndpointTest.JSON_PROPERTY_TEST_NAME,
-  EndpointTest.JSON_PROPERTY_TYPE,
-  EndpointTest.JSON_PROPERTY_TCP_PROBE_MODE,
-  EndpointTest.JSON_PROPERTY_PORT
+  EndpointTestBase.JSON_PROPERTY_AID,
+  EndpointTestBase.JSON_PROPERTY_LINKS,
+  EndpointTestBase.JSON_PROPERTY_AGENT_SELECTOR_CONFIG,
+  EndpointTestBase.JSON_PROPERTY_CREATED_DATE,
+  EndpointTestBase.JSON_PROPERTY_IS_PRIORITIZED,
+  EndpointTestBase.JSON_PROPERTY_INTERVAL,
+  EndpointTestBase.JSON_PROPERTY_IS_ENABLED,
+  EndpointTestBase.JSON_PROPERTY_IS_SAVED_EVENT,
+  EndpointTestBase.JSON_PROPERTY_HAS_PATH_TRACE_IN_SESSION,
+  EndpointTestBase.JSON_PROPERTY_LABELS,
+  EndpointTestBase.JSON_PROPERTY_MODIFIED_DATE,
+  EndpointTestBase.JSON_PROPERTY_NETWORK_MEASUREMENTS,
+  EndpointTestBase.JSON_PROPERTY_PROTOCOL,
+  EndpointTestBase.JSON_PROPERTY_IP_VERSION,
+  EndpointTestBase.JSON_PROPERTY_SERVER,
+  EndpointTestBase.JSON_PROPERTY_TEST_ID,
+  EndpointTestBase.JSON_PROPERTY_TEST_NAME,
+  EndpointTestBase.JSON_PROPERTY_TYPE,
+  EndpointTestBase.JSON_PROPERTY_TCP_PROBE_MODE
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
-public class EndpointTest {
+public class EndpointTestBase {
   public static final String JSON_PROPERTY_AID = "aid";
   private String aid;
 
@@ -123,13 +122,10 @@ public class EndpointTest {
   public static final String JSON_PROPERTY_TCP_PROBE_MODE = "tcpProbeMode";
   private TestProbeModeResponse tcpProbeMode = TestProbeModeResponse.AUTO;
 
-  public static final String JSON_PROPERTY_PORT = "port";
-  private Integer port = 443;
-
-  public EndpointTest() { 
+  public EndpointTestBase() { 
   }
 
-  public EndpointTest aid(String aid) {
+  public EndpointTestBase aid(String aid) {
     this.aid = aid;
     return this;
   }
@@ -154,7 +150,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest links(EndpointTestLinks links) {
+  public EndpointTestBase links(EndpointTestLinks links) {
     this.links = links;
     return this;
   }
@@ -179,7 +175,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
+  public EndpointTestBase agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
     this.agentSelectorConfig = agentSelectorConfig;
     return this;
   }
@@ -219,7 +215,7 @@ public class EndpointTest {
 
 
 
-  public EndpointTest isPrioritized(Boolean isPrioritized) {
+  public EndpointTestBase isPrioritized(Boolean isPrioritized) {
     this.isPrioritized = isPrioritized;
     return this;
   }
@@ -244,7 +240,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest interval(TestInterval interval) {
+  public EndpointTestBase interval(TestInterval interval) {
     this.interval = interval;
     return this;
   }
@@ -269,7 +265,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest isEnabled(Boolean isEnabled) {
+  public EndpointTestBase isEnabled(Boolean isEnabled) {
     this.isEnabled = isEnabled;
     return this;
   }
@@ -309,7 +305,7 @@ public class EndpointTest {
 
 
 
-  public EndpointTest hasPathTraceInSession(Boolean hasPathTraceInSession) {
+  public EndpointTestBase hasPathTraceInSession(Boolean hasPathTraceInSession) {
     this.hasPathTraceInSession = hasPathTraceInSession;
     return this;
   }
@@ -364,7 +360,7 @@ public class EndpointTest {
 
 
 
-  public EndpointTest networkMeasurements(Boolean networkMeasurements) {
+  public EndpointTestBase networkMeasurements(Boolean networkMeasurements) {
     this.networkMeasurements = networkMeasurements;
     return this;
   }
@@ -389,7 +385,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest protocol(EndpointTestProtocol protocol) {
+  public EndpointTestBase protocol(EndpointTestProtocol protocol) {
     this.protocol = protocol;
     return this;
   }
@@ -414,7 +410,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest ipVersion(String ipVersion) {
+  public EndpointTestBase ipVersion(String ipVersion) {
     this.ipVersion = ipVersion;
     return this;
   }
@@ -439,7 +435,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest server(String server) {
+  public EndpointTestBase server(String server) {
     this.server = server;
     return this;
   }
@@ -479,7 +475,7 @@ public class EndpointTest {
 
 
 
-  public EndpointTest testName(String testName) {
+  public EndpointTestBase testName(String testName) {
     this.testName = testName;
     return this;
   }
@@ -504,7 +500,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest type(EndpointScheduledTestType type) {
+  public EndpointTestBase type(EndpointScheduledTestType type) {
     this.type = type;
     return this;
   }
@@ -529,7 +525,7 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+  public EndpointTestBase tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
     this.tcpProbeMode = tcpProbeMode;
     return this;
   }
@@ -554,33 +550,8 @@ public class EndpointTest {
   }
 
 
-  public EndpointTest port(Integer port) {
-    this.port = port;
-    return this;
-  }
-
-   /**
-   * Port number.
-   * @return port
-  **/
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Integer getPort() {
-    return port;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PORT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPort(Integer port) {
-    this.port = port;
-  }
-
-
   /**
-   * Return true if this EndpointTest object is equal to o.
+   * Return true if this EndpointTestBase object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -590,38 +561,37 @@ public class EndpointTest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EndpointTest endpointTest = (EndpointTest) o;
-    return Objects.equals(this.aid, endpointTest.aid) &&
-        Objects.equals(this.links, endpointTest.links) &&
-        Objects.equals(this.agentSelectorConfig, endpointTest.agentSelectorConfig) &&
-        Objects.equals(this.createdDate, endpointTest.createdDate) &&
-        Objects.equals(this.isPrioritized, endpointTest.isPrioritized) &&
-        Objects.equals(this.interval, endpointTest.interval) &&
-        Objects.equals(this.isEnabled, endpointTest.isEnabled) &&
-        Objects.equals(this.isSavedEvent, endpointTest.isSavedEvent) &&
-        Objects.equals(this.hasPathTraceInSession, endpointTest.hasPathTraceInSession) &&
-        Objects.equals(this.labels, endpointTest.labels) &&
-        Objects.equals(this.modifiedDate, endpointTest.modifiedDate) &&
-        Objects.equals(this.networkMeasurements, endpointTest.networkMeasurements) &&
-        Objects.equals(this.protocol, endpointTest.protocol) &&
-        Objects.equals(this.ipVersion, endpointTest.ipVersion) &&
-        Objects.equals(this.server, endpointTest.server) &&
-        Objects.equals(this.testId, endpointTest.testId) &&
-        Objects.equals(this.testName, endpointTest.testName) &&
-        Objects.equals(this.type, endpointTest.type) &&
-        Objects.equals(this.tcpProbeMode, endpointTest.tcpProbeMode) &&
-        Objects.equals(this.port, endpointTest.port);
+    EndpointTestBase endpointTestBase = (EndpointTestBase) o;
+    return Objects.equals(this.aid, endpointTestBase.aid) &&
+        Objects.equals(this.links, endpointTestBase.links) &&
+        Objects.equals(this.agentSelectorConfig, endpointTestBase.agentSelectorConfig) &&
+        Objects.equals(this.createdDate, endpointTestBase.createdDate) &&
+        Objects.equals(this.isPrioritized, endpointTestBase.isPrioritized) &&
+        Objects.equals(this.interval, endpointTestBase.interval) &&
+        Objects.equals(this.isEnabled, endpointTestBase.isEnabled) &&
+        Objects.equals(this.isSavedEvent, endpointTestBase.isSavedEvent) &&
+        Objects.equals(this.hasPathTraceInSession, endpointTestBase.hasPathTraceInSession) &&
+        Objects.equals(this.labels, endpointTestBase.labels) &&
+        Objects.equals(this.modifiedDate, endpointTestBase.modifiedDate) &&
+        Objects.equals(this.networkMeasurements, endpointTestBase.networkMeasurements) &&
+        Objects.equals(this.protocol, endpointTestBase.protocol) &&
+        Objects.equals(this.ipVersion, endpointTestBase.ipVersion) &&
+        Objects.equals(this.server, endpointTestBase.server) &&
+        Objects.equals(this.testId, endpointTestBase.testId) &&
+        Objects.equals(this.testName, endpointTestBase.testName) &&
+        Objects.equals(this.type, endpointTestBase.type) &&
+        Objects.equals(this.tcpProbeMode, endpointTestBase.tcpProbeMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode, port);
+    return Objects.hash(aid, links, agentSelectorConfig, createdDate, isPrioritized, interval, isEnabled, isSavedEvent, hasPathTraceInSession, labels, modifiedDate, networkMeasurements, protocol, ipVersion, server, testId, testName, type, tcpProbeMode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EndpointTest {\n");
+    sb.append("class EndpointTestBase {\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("    agentSelectorConfig: ").append(toIndentedString(agentSelectorConfig)).append("\n");
@@ -641,7 +611,6 @@ public class EndpointTest {
     sb.append("    testName: ").append(toIndentedString(testName)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    tcpProbeMode: ").append(toIndentedString(tcpProbeMode)).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -659,103 +628,99 @@ public class EndpointTest {
 
   public static class ModelBuilder {
 
-    private EndpointTest instance;
+    private EndpointTestBase instance;
 
     public ModelBuilder() {
-      this(new EndpointTest());
+      this(new EndpointTestBase());
     }
 
-    protected ModelBuilder(EndpointTest instance) {
+    protected ModelBuilder(EndpointTestBase instance) {
       this.instance = instance;
     }
 
-    public EndpointTest.ModelBuilder aid(String aid) {
+    public EndpointTestBase.ModelBuilder aid(String aid) {
       this.instance.setAid(aid);
       return this;
     }
-    public EndpointTest.ModelBuilder links(EndpointTestLinks links) {
+    public EndpointTestBase.ModelBuilder links(EndpointTestLinks links) {
       this.instance.setLinks(links);
       return this;
     }
-    public EndpointTest.ModelBuilder agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
+    public EndpointTestBase.ModelBuilder agentSelectorConfig(EndpointAgentSelectorConfig agentSelectorConfig) {
       this.instance.setAgentSelectorConfig(agentSelectorConfig);
       return this;
     }
-    public EndpointTest.ModelBuilder createdDate(OffsetDateTime createdDate) {
+    public EndpointTestBase.ModelBuilder createdDate(OffsetDateTime createdDate) {
       this.instance.createdDate = createdDate;
       return this;
     }
-    public EndpointTest.ModelBuilder isPrioritized(Boolean isPrioritized) {
+    public EndpointTestBase.ModelBuilder isPrioritized(Boolean isPrioritized) {
       this.instance.setIsPrioritized(isPrioritized);
       return this;
     }
-    public EndpointTest.ModelBuilder interval(TestInterval interval) {
+    public EndpointTestBase.ModelBuilder interval(TestInterval interval) {
       this.instance.setInterval(interval);
       return this;
     }
-    public EndpointTest.ModelBuilder isEnabled(Boolean isEnabled) {
+    public EndpointTestBase.ModelBuilder isEnabled(Boolean isEnabled) {
       this.instance.setIsEnabled(isEnabled);
       return this;
     }
-    public EndpointTest.ModelBuilder isSavedEvent(Boolean isSavedEvent) {
+    public EndpointTestBase.ModelBuilder isSavedEvent(Boolean isSavedEvent) {
       this.instance.isSavedEvent = isSavedEvent;
       return this;
     }
-    public EndpointTest.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
+    public EndpointTestBase.ModelBuilder hasPathTraceInSession(Boolean hasPathTraceInSession) {
       this.instance.setHasPathTraceInSession(hasPathTraceInSession);
       return this;
     }
-    public EndpointTest.ModelBuilder labels(List<TestLabel> labels) {
+    public EndpointTestBase.ModelBuilder labels(List<TestLabel> labels) {
       this.instance.labels = labels;
       return this;
     }
-    public EndpointTest.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
+    public EndpointTestBase.ModelBuilder modifiedDate(OffsetDateTime modifiedDate) {
       this.instance.modifiedDate = modifiedDate;
       return this;
     }
-    public EndpointTest.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
+    public EndpointTestBase.ModelBuilder networkMeasurements(Boolean networkMeasurements) {
       this.instance.setNetworkMeasurements(networkMeasurements);
       return this;
     }
-    public EndpointTest.ModelBuilder protocol(EndpointTestProtocol protocol) {
+    public EndpointTestBase.ModelBuilder protocol(EndpointTestProtocol protocol) {
       this.instance.setProtocol(protocol);
       return this;
     }
-    public EndpointTest.ModelBuilder ipVersion(String ipVersion) {
+    public EndpointTestBase.ModelBuilder ipVersion(String ipVersion) {
       this.instance.setIpVersion(ipVersion);
       return this;
     }
-    public EndpointTest.ModelBuilder server(String server) {
+    public EndpointTestBase.ModelBuilder server(String server) {
       this.instance.setServer(server);
       return this;
     }
-    public EndpointTest.ModelBuilder testId(String testId) {
+    public EndpointTestBase.ModelBuilder testId(String testId) {
       this.instance.testId = testId;
       return this;
     }
-    public EndpointTest.ModelBuilder testName(String testName) {
+    public EndpointTestBase.ModelBuilder testName(String testName) {
       this.instance.setTestName(testName);
       return this;
     }
-    public EndpointTest.ModelBuilder type(EndpointScheduledTestType type) {
+    public EndpointTestBase.ModelBuilder type(EndpointScheduledTestType type) {
       this.instance.setType(type);
       return this;
     }
-    public EndpointTest.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
+    public EndpointTestBase.ModelBuilder tcpProbeMode(TestProbeModeResponse tcpProbeMode) {
       this.instance.setTcpProbeMode(tcpProbeMode);
-      return this;
-    }
-    public EndpointTest.ModelBuilder port(Integer port) {
-      this.instance.setPort(port);
       return this;
     }
 
     /**
-     * Returns a built EndpointTest instance.
+     * Returns a built EndpointTestBase instance.
      *
      * <p>The builder is not reusable.</p>
      */
-    public EndpointTest build() {
+    public EndpointTestBase build() {
       try {
         return this.instance;
       } finally {
@@ -773,15 +738,15 @@ public class EndpointTest {
   /**
    * Create a builder with no initialized fields.
    */
-  public static EndpointTest.ModelBuilder builder() {
-    return new EndpointTest.ModelBuilder();
+  public static EndpointTestBase.ModelBuilder builder() {
+    return new EndpointTestBase.ModelBuilder();
   }
 
   /**
    * Create a builder with a shallow copy of this instance.
    */
-  public EndpointTest.ModelBuilder toBuilder() {
-    EndpointTest.ModelBuilder builder = new EndpointTest.ModelBuilder()
+  public EndpointTestBase.ModelBuilder toBuilder() {
+    EndpointTestBase.ModelBuilder builder = new EndpointTestBase.ModelBuilder()
       .aid(getAid())
       .links(getLinks())
       .agentSelectorConfig(getAgentSelectorConfig())
@@ -800,8 +765,7 @@ public class EndpointTest {
       .testId(getTestId())
       .testName(getTestName())
       .type(getType())
-      .tcpProbeMode(getTcpProbeMode())
-      .port(getPort());
+      .tcpProbeMode(getTcpProbeMode());
     return builder;
   }
 

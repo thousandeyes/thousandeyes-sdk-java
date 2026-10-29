@@ -24,6 +24,7 @@ import com.thousandeyes.sdk.alerts.model.AlertDirection;
 import com.thousandeyes.sdk.alerts.model.AlertGroupType;
 import com.thousandeyes.sdk.alerts.model.AlertNotification;
 import com.thousandeyes.sdk.alerts.model.AlertRoundsViolationMode;
+import com.thousandeyes.sdk.alerts.model.AlertRuleOptimization;
 import com.thousandeyes.sdk.alerts.model.AlertSimpleTest;
 import com.thousandeyes.sdk.alerts.model.AlertType;
 import com.thousandeyes.sdk.alerts.model.SelfLinks;
@@ -62,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   RuleDetail.JSON_PROPERTY_NOTIFICATIONS,
   RuleDetail.JSON_PROPERTY_TESTS,
   RuleDetail.JSON_PROPERTY_TEST_IDS,
+  RuleDetail.JSON_PROPERTY_OPTIMIZATION,
   RuleDetail.JSON_PROPERTY_LINKS
 })
 @jakarta.annotation.Generated(value = "com.thousandeyes.api.codegen.ThousandeyesJavaGenerator")
@@ -137,6 +139,9 @@ public class RuleDetail {
   public static final String JSON_PROPERTY_TEST_IDS = "testIds";
   @JsonProperty(JSON_PROPERTY_TEST_IDS)
   private List<String> testIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_OPTIMIZATION = "optimization";
+  private AlertRuleOptimization optimization;
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private SelfLinks links;
@@ -713,6 +718,31 @@ public class RuleDetail {
 
 
 
+  public RuleDetail optimization(AlertRuleOptimization optimization) {
+    this.optimization = optimization;
+    return this;
+  }
+
+   /**
+   * Get optimization
+   * @return optimization
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_OPTIMIZATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlertRuleOptimization getOptimization() {
+    return optimization;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OPTIMIZATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOptimization(AlertRuleOptimization optimization) {
+    this.optimization = optimization;
+  }
+
+
   public RuleDetail links(SelfLinks links) {
     this.links = links;
     return this;
@@ -773,12 +803,13 @@ public class RuleDetail {
         Objects.equals(this.notifications, ruleDetail.notifications) &&
         Objects.equals(this.tests, ruleDetail.tests) &&
         Objects.equals(this.testIds, ruleDetail.testIds) &&
+        Objects.equals(this.optimization, ruleDetail.optimization) &&
         Objects.equals(this.links, ruleDetail.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, tests, testIds, links);
+    return Objects.hash(ruleId, ruleName, expression, description, direction, notifyOnClear, isDefault, alertType, alertGroupType, minimumSources, minimumSourcesPct, roundsViolatingMode, roundsViolatingOutOf, roundsViolatingRequired, includeCoveredPrefixes, sensitivityLevel, severity, endpointAgentIds, endpointLabelIds, visitedSitesFilter, notifications, tests, testIds, optimization, links);
   }
 
   @Override
@@ -808,6 +839,7 @@ public class RuleDetail {
     sb.append("    notifications: ").append(toIndentedString(notifications)).append("\n");
     sb.append("    tests: ").append(toIndentedString(tests)).append("\n");
     sb.append("    testIds: ").append(toIndentedString(testIds)).append("\n");
+    sb.append("    optimization: ").append(toIndentedString(optimization)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -928,6 +960,10 @@ public class RuleDetail {
       this.instance.testIds = testIds;
       return this;
     }
+    public RuleDetail.ModelBuilder optimization(AlertRuleOptimization optimization) {
+      this.instance.setOptimization(optimization);
+      return this;
+    }
     public RuleDetail.ModelBuilder links(SelfLinks links) {
       this.instance.setLinks(links);
       return this;
@@ -988,6 +1024,7 @@ public class RuleDetail {
       .notifications(getNotifications())
       .tests(getTests())
       .testIds(getTestIds())
+      .optimization(getOptimization())
       .links(getLinks());
     return builder;
   }

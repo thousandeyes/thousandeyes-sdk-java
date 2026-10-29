@@ -13,6 +13,7 @@
 package com.thousandeyes.sdk.alerts;
 
 import com.thousandeyes.sdk.alerts.model.Error;
+import com.thousandeyes.sdk.alerts.model.OptimizationDataUnavailableError;
 import com.thousandeyes.sdk.alerts.model.Rule;
 import com.thousandeyes.sdk.alerts.model.RuleDetail;
 import com.thousandeyes.sdk.alerts.model.RuleDetailUpdate;
@@ -78,7 +79,7 @@ public class AlertRulesApiTest {
     /**
      * Create alert rule
      * <p>
-     * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+     * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in create responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
      * @throws JacksonException if the deserialization fails
      */
@@ -280,7 +281,7 @@ public class AlertRulesApiTest {
     /**
      * Retrieve alert rule
      * <p>
-     * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
+     * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, &#x60;404&#x60; is returned; the same response is used for both cases so callers cannot distinguish a missing rule from an inaccessible one. This is the only alert-rule response that includes optimization details. No optimization query parameter is required. For callers with the &#x60;View alert rules&#x60; permission, &#x60;optimization&#x60; is a singular, system-generated, read-only object when an authorized lookup finds an active optimization, or explicit &#x60;null&#x60; when the lookup completes and none exists. If optimization lookup is temporarily unavailable, the alert rule is still returned with &#x60;200&#x60; and &#x60;optimization&#x60; is omitted; omission must not be interpreted as no optimization. An optimization-service timeout or failure does not fail this request or produce &#x60;503&#x60;. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
      *
      * @throws JacksonException if the deserialization fails
      */
@@ -292,9 +293,6 @@ public class AlertRulesApiTest {
 
         var responseBodyJson = """
                 {
-                  "severity" : "major",
-                  "expression" : "((hops((hopDelay >= 100 ms))))",
-                  "alertType" : "http-server",
                   "_links" : {
                     "self" : {
                       "hreflang" : "hreflang",
@@ -307,15 +305,45 @@ public class AlertRulesApiTest {
                       "title" : "title"
                     }
                   },
-                  "includeCoveredPrefixes" : true,
-                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
                   "description" : "A rule description string",
-                  "roundsViolatingMode" : "exact",
                   "sensitivityLevel" : "medium",
                   "alertGroupType" : "endpoint",
                   "notifyOnClear" : true,
-                  "testIds" : [ "281474976710706", "271659" ],
                   "roundsViolatingOutOf" : 5,
+                  "optimization" : {
+                    "createdDate" : "2026-07-17T22:00:54Z",
+                    "_links" : {
+                      "appLink" : {
+                        "hreflang" : "hreflang",
+                        "templated" : true,
+                        "profile" : "profile",
+                        "name" : "name",
+                        "href" : "https://api.thousandeyes.com/v7/link/to/resource/id",
+                        "type" : "type",
+                        "deprecation" : "deprecation",
+                        "title" : "title"
+                      }
+                    },
+                    "confidence" : "high",
+                    "id" : "3289d651-d557-42a3-9d9e-8cd2f2f8960c",
+                    "updatedDate" : "2026-07-24T22:00:54Z",
+                    "title" : "Fewer distractions from flapping alerts",
+                    "type" : "flapping",
+                    "rationale" : "This alert rule frequently triggers and clears within a short period, producing notifications that do not require action.",
+                    "status" : "active"
+                  },
+                  "minimumSourcesPct" : 99,
+                  "ruleName" : "The End of the Internet",
+                  "endpointLabelIds" : [ "123456", "123456" ],
+                  "ruleId" : "127094",
+                  "direction" : "to-target",
+                  "severity" : "major",
+                  "expression" : "((hops((hopDelay >= 100 ms))))",
+                  "alertType" : "http-server",
+                  "includeCoveredPrefixes" : true,
+                  "visitedSitesFilter" : [ "app.thousandeyes.com" ],
+                  "roundsViolatingMode" : "exact",
+                  "testIds" : [ "281474976710706", "271659" ],
                   "roundsViolatingRequired" : 2,
                   "isDefault" : true,
                   "endpointAgentIds" : [ "281474976710706", "281474976710706" ],
@@ -382,11 +410,7 @@ public class AlertRulesApiTest {
                     "alertsEnabled" : true,
                     "testName" : "ThousandEyes Test"
                   } ],
-                  "minimumSourcesPct" : 99,
-                  "ruleName" : "The End of the Internet",
-                  "endpointLabelIds" : [ "123456", "123456" ],
                   "minimumSources" : 10,
-                  "ruleId" : "127094",
                   "notifications" : {
                     "thirdParty" : [ {
                       "integrationType" : "slack",
@@ -421,8 +445,7 @@ public class AlertRulesApiTest {
                       "integrationId" : "6e069ae9-8537-4120-b988-61bf8e0d8b87",
                       "target" : "https://example.com/test/webhooks/notifications"
                     } ]
-                  },
-                  "direction" : "to-target"
+                  }
                 }
                                   """;
         var statusCode = 200;
@@ -451,7 +474,7 @@ public class AlertRulesApiTest {
     /**
      * List alert rules
      * <p>
-     * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
+     * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. Each list row may include the response-only boolean &#x60;hasOptimization&#x60;. &#x60;true&#x60; means the authorized lookup completed and an active optimization exists. &#x60;false&#x60; means the lookup completed and no active optimization exists. If &#x60;hasOptimization&#x60; is omitted from a row, enrichment could not be completed and the absence must not be interpreted as &#x60;false&#x60;. Query &#x60;hasOptimization&#x3D;true&#x60; returns only rows with an active optimization; &#x60;hasOptimization&#x3D;false&#x60; returns only rows without one. Omitting the query parameter preserves the unfiltered list. When the query parameter is explicitly supplied and optimization data cannot be retrieved, the request returns &#x60;503&#x60; with &#x60;OPTIMIZATION_DATA_UNAVAILABLE&#x60;. Unfiltered requests remain &#x60;200&#x60; if enrichment is unavailable; affected rows omit &#x60;hasOptimization&#x60;. List rows do not include the full &#x60;optimization&#x60; object. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
      *
      * @throws JacksonException if the deserialization fails
      */
@@ -483,6 +506,7 @@ public class AlertRulesApiTest {
                     "description" : "A rule description string",
                     "roundsViolatingMode" : "exact",
                     "sensitivityLevel" : "medium",
+                    "hasOptimization" : true,
                     "alertGroupType" : "endpoint",
                     "notifyOnClear" : true,
                     "roundsViolatingOutOf" : 5,
@@ -504,6 +528,7 @@ public class AlertRulesApiTest {
                     "description" : "A rule description string",
                     "roundsViolatingMode" : "exact",
                     "sensitivityLevel" : "medium",
+                    "hasOptimization" : true,
                     "alertGroupType" : "endpoint",
                     "notifyOnClear" : true,
                     "roundsViolatingOutOf" : 5,
@@ -543,7 +568,7 @@ public class AlertRulesApiTest {
     /**
      * Update alert rule
      * <p>
-     * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+     * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in update responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
      *
      * @throws JacksonException if the deserialization fails
      */
