@@ -142,7 +142,7 @@ public class AgentToServerTestsApiTest {
                   "modifiedDate" : "2022-07-17T22:00:54Z",
                   "interval" : 60,
                   "testId" : "281474976710706",
-                  "pingPayloadSize" : 112,
+                  "pingPayloadSize" : 735,
                   "sharedWithAccounts" : [ "1234", "12345" ],
                   "continuousMode" : false,
                   "monitors" : [ "17410", "5" ]
@@ -299,7 +299,7 @@ public class AgentToServerTestsApiTest {
                     "name" : "Account name",
                     "aid" : "1234"
                   } ],
-                  "pingPayloadSize" : 112,
+                  "pingPayloadSize" : 735,
                   "continuousMode" : false,
                   "monitors" : [ {
                     "monitorType" : "public",
@@ -532,7 +532,7 @@ public class AgentToServerTestsApiTest {
                     "name" : "Account name",
                     "aid" : "1234"
                   } ],
-                  "pingPayloadSize" : 112,
+                  "pingPayloadSize" : 735,
                   "continuousMode" : false,
                   "monitors" : [ {
                     "monitorType" : "public",
@@ -636,7 +636,7 @@ public class AgentToServerTestsApiTest {
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "testId" : "281474976710706",
-                    "pingPayloadSize" : 112,
+                    "pingPayloadSize" : 735,
                     "continuousMode" : false
                   }, {
                     "server" : "www.thousandeyes.com:80",
@@ -684,7 +684,7 @@ public class AgentToServerTestsApiTest {
                     "modifiedDate" : "2022-07-17T22:00:54Z",
                     "interval" : 60,
                     "testId" : "281474976710706",
-                    "pingPayloadSize" : 112,
+                    "pingPayloadSize" : 735,
                     "continuousMode" : false
                   } ],
                   "_links" : {
@@ -765,7 +765,7 @@ public class AgentToServerTestsApiTest {
                   "port" : 443,
                   "interval" : 60,
                   "sharedWithAccounts" : [ "1234", "12345" ],
-                  "pingPayloadSize" : 112,
+                  "pingPayloadSize" : 735,
                   "continuousMode" : false,
                   "monitors" : [ "17410", "5" ]
                 }
@@ -921,7 +921,7 @@ public class AgentToServerTestsApiTest {
                     "name" : "Account name",
                     "aid" : "1234"
                   } ],
-                  "pingPayloadSize" : 112,
+                  "pingPayloadSize" : 735,
                   "continuousMode" : false,
                   "monitors" : [ {
                     "monitorType" : "public",
