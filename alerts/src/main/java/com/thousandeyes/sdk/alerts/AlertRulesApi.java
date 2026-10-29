@@ -20,6 +20,7 @@ import com.thousandeyes.sdk.utils.Config;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.reflect.TypeUtils;
 import com.thousandeyes.sdk.alerts.model.Error;
+import com.thousandeyes.sdk.alerts.model.OptimizationDataUnavailableError;
 import com.thousandeyes.sdk.alerts.model.Rule;
 import com.thousandeyes.sdk.alerts.model.RuleDetail;
 import com.thousandeyes.sdk.alerts.model.RuleDetailUpdate;
@@ -61,7 +62,7 @@ public class AlertRulesApi {
 
   /**
    * Create alert rule
-   * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+   * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in create responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
    * @param request operation parameters (required)
    * @return Rule
    * @throws ApiException if fails to make API call
@@ -73,7 +74,7 @@ public class AlertRulesApi {
 
   /**
    * Create alert rule
-   * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+   * Creates a new alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to create an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in create responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
    * @param request operation parameters (required)
    * @return ApiResponse&lt;Rule&gt;
    * @throws ApiException if fails to make API call
@@ -256,7 +257,7 @@ public class AlertRulesApi {
 
   /**
    * Retrieve alert rule
-   * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
+   * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, &#x60;404&#x60; is returned; the same response is used for both cases so callers cannot distinguish a missing rule from an inaccessible one. This is the only alert-rule response that includes optimization details. No optimization query parameter is required. For callers with the &#x60;View alert rules&#x60; permission, &#x60;optimization&#x60; is a singular, system-generated, read-only object when an authorized lookup finds an active optimization, or explicit &#x60;null&#x60; when the lookup completes and none exists. If optimization lookup is temporarily unavailable, the alert rule is still returned with &#x60;200&#x60; and &#x60;optimization&#x60; is omitted; omission must not be interpreted as no optimization. An optimization-service timeout or failure does not fail this request or produce &#x60;503&#x60;. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
    * @param request operation parameters (required)
    * @return RuleDetail
    * @throws ApiException if fails to make API call
@@ -268,7 +269,7 @@ public class AlertRulesApi {
 
   /**
    * Retrieve alert rule
-   * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, an empty response is returned.
+   * Returns detailed information about an alert rule using the &#x60;ruleId&#x60;. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. If the &#x60;ruleId&#x60; doesn’t exist or is inaccessible by your account, &#x60;404&#x60; is returned; the same response is used for both cases so callers cannot distinguish a missing rule from an inaccessible one. This is the only alert-rule response that includes optimization details. No optimization query parameter is required. For callers with the &#x60;View alert rules&#x60; permission, &#x60;optimization&#x60; is a singular, system-generated, read-only object when an authorized lookup finds an active optimization, or explicit &#x60;null&#x60; when the lookup completes and none exists. If optimization lookup is temporarily unavailable, the alert rule is still returned with &#x60;200&#x60; and &#x60;optimization&#x60; is omitted; omission must not be interpreted as no optimization. An optimization-service timeout or failure does not fail this request or produce &#x60;503&#x60;. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
    * @param request operation parameters (required)
    * @return ApiResponse&lt;RuleDetail&gt;
    * @throws ApiException if fails to make API call
@@ -354,7 +355,7 @@ public class AlertRulesApi {
 
   /**
    * List alert rules
-   * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
+   * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. Each list row may include the response-only boolean &#x60;hasOptimization&#x60;. &#x60;true&#x60; means the authorized lookup completed and an active optimization exists. &#x60;false&#x60; means the lookup completed and no active optimization exists. If &#x60;hasOptimization&#x60; is omitted from a row, enrichment could not be completed and the absence must not be interpreted as &#x60;false&#x60;. Query &#x60;hasOptimization&#x3D;true&#x60; returns only rows with an active optimization; &#x60;hasOptimization&#x3D;false&#x60; returns only rows without one. Omitting the query parameter preserves the unfiltered list. When the query parameter is explicitly supplied and optimization data cannot be retrieved, the request returns &#x60;503&#x60; with &#x60;OPTIMIZATION_DATA_UNAVAILABLE&#x60;. Unfiltered requests remain &#x60;200&#x60; if enrichment is unavailable; affected rows omit &#x60;hasOptimization&#x60;. List rows do not include the full &#x60;optimization&#x60; object. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
    * @param request operation parameters (required)
    * @return Rules
    * @throws ApiException if fails to make API call
@@ -366,7 +367,7 @@ public class AlertRulesApi {
 
   /**
    * List alert rules
-   * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests.
+   * Returns a list of alert rules. Default rules for each test type are indicated with a boolean response (true or false); these default alert rules automatically apply to their respective test types. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. Each list row may include the response-only boolean &#x60;hasOptimization&#x60;. &#x60;true&#x60; means the authorized lookup completed and an active optimization exists. &#x60;false&#x60; means the lookup completed and no active optimization exists. If &#x60;hasOptimization&#x60; is omitted from a row, enrichment could not be completed and the absence must not be interpreted as &#x60;false&#x60;. Query &#x60;hasOptimization&#x3D;true&#x60; returns only rows with an active optimization; &#x60;hasOptimization&#x3D;false&#x60; returns only rows without one. Omitting the query parameter preserves the unfiltered list. When the query parameter is explicitly supplied and optimization data cannot be retrieved, the request returns &#x60;503&#x60; with &#x60;OPTIMIZATION_DATA_UNAVAILABLE&#x60;. Unfiltered requests remain &#x60;200&#x60; if enrichment is unavailable; affected rows omit &#x60;hasOptimization&#x60;. List rows do not include the full &#x60;optimization&#x60; object. Callers without the &#x60;View alert rules&#x60; permission receive &#x60;403&#x60;.
    * @param request operation parameters (required)
    * @return ApiResponse&lt;Rules&gt;
    * @throws ApiException if fails to make API call
@@ -377,7 +378,7 @@ public class AlertRulesApi {
     }
     getAlertsRulesValidateRequest();
 
-    var requestBuilder = getAlertsRulesRequestBuilder(request.getAid());
+    var requestBuilder = getAlertsRulesRequestBuilder(request.getAid(), request.getHasOptimization());
 
     return apiClient.send(requestBuilder.build(), Rules.class);
   }
@@ -385,7 +386,7 @@ public class AlertRulesApi {
   private void getAlertsRulesValidateRequest() throws ApiException {
   }
 
-  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertsRulesRequestBuilder(String aid) throws ApiException {
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder getAlertsRulesRequestBuilder(String aid, Boolean hasOptimization) throws ApiException {
     com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
             .method("GET");
 
@@ -393,6 +394,7 @@ public class AlertRulesApi {
 
     List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
     localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("hasOptimization", hasOptimization));
 
     if (!localVarQueryParams.isEmpty()) {
       requestBuilder.queryParams(localVarQueryParams);
@@ -405,12 +407,17 @@ public class AlertRulesApi {
 
   public static final class GetAlertsRulesRequest {
     private final String aid;
+    private final Boolean hasOptimization;
 
     private GetAlertsRulesRequest(Builder builder) {
       this.aid = builder.aid;
+      this.hasOptimization = builder.hasOptimization;
     }
     public String getAid() {
       return aid;
+    }
+    public Boolean getHasOptimization() {
+      return hasOptimization;
     }
     public static Builder builder() {
       return new Builder();
@@ -418,14 +425,20 @@ public class AlertRulesApi {
 
     public Builder toBuilder() {
       return builder()
-          .aid(aid);
+          .aid(aid)
+          .hasOptimization(hasOptimization);
     }
 
     public static final class Builder {
       private String aid;
+      private Boolean hasOptimization;
 
       public Builder aid(String aid) {
         this.aid = aid;
+        return this;
+      }
+      public Builder hasOptimization(Boolean hasOptimization) {
+        this.hasOptimization = hasOptimization;
         return this;
       }
       public GetAlertsRulesRequest build() {
@@ -436,7 +449,7 @@ public class AlertRulesApi {
 
   /**
    * Update alert rule
-   * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+   * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in update responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
    * @param request operation parameters (required)
    * @return Rule
    * @throws ApiException if fails to make API call
@@ -448,7 +461,7 @@ public class AlertRulesApi {
 
   /**
    * Update alert rule
-   * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule.  Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
+   * Modifies an existing alert rule in your account, using the provided POST data. This endpoint is limited to alert rules for Network &amp; App Synthetics tests and Routing tests. The &#x60;Edit alert rules&#x60; permission is required to modify an alert rule. The &#x60;optimization&#x60; field is system-generated and read-only; it is not included in update responses. Supplying &#x60;optimization&#x60; in the request body returns &#x60;400 Bad Request&#x60; with a field-level validation error stating that &#x60;optimization&#x60; is system-generated and read-only. Note: Assigning an alert rule to a test during creation requires the &#x60;Edit tests&#x60; permission.
    * @param request operation parameters (required)
    * @return ApiResponse&lt;Rule&gt;
    * @throws ApiException if fails to make API call

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointScheduledTest;
+import com.thousandeyes.sdk.endpoint.tests.results.model.EndpointTest;
 import com.thousandeyes.sdk.endpoint.tests.results.model.NetworkEndpointTestResult;
 import com.thousandeyes.sdk.endpoint.tests.results.model.PaginationNextLink;
 import java.time.OffsetDateTime;
@@ -50,7 +50,7 @@ public class NetworkEndpointTestResults {
   private Integer totalHits;
 
   public static final String JSON_PROPERTY_TEST = "test";
-  private EndpointScheduledTest test;
+  private EndpointTest test;
 
   public static final String JSON_PROPERTY_START_DATE = "startDate";
   @JsonProperty(JSON_PROPERTY_START_DATE)
@@ -124,7 +124,7 @@ public class NetworkEndpointTestResults {
   }
 
 
-  public NetworkEndpointTestResults test(EndpointScheduledTest test) {
+  public NetworkEndpointTestResults test(EndpointTest test) {
     this.test = test;
     return this;
   }
@@ -137,14 +137,14 @@ public class NetworkEndpointTestResults {
   @JsonProperty(JSON_PROPERTY_TEST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public EndpointScheduledTest getTest() {
+  public EndpointTest getTest() {
     return test;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TEST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTest(EndpointScheduledTest test) {
+  public void setTest(EndpointTest test) {
     this.test = test;
   }
 
@@ -274,7 +274,7 @@ public class NetworkEndpointTestResults {
       this.instance.setTotalHits(totalHits);
       return this;
     }
-    public NetworkEndpointTestResults.ModelBuilder test(EndpointScheduledTest test) {
+    public NetworkEndpointTestResults.ModelBuilder test(EndpointTest test) {
       this.instance.setTest(test);
       return this;
     }
