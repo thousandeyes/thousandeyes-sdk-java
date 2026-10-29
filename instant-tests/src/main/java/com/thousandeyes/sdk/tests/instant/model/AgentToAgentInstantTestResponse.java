@@ -486,8 +486,8 @@ public class AgentToAgentInstantTestResponse {
 
    /**
    * Maximum segment size, in bytes.
-   * minimum: 20
-   * maximum: 1400
+   * minimum: 30
+   * maximum: 9176
    * @return mss
   **/
   @jakarta.annotation.Nullable
