@@ -2,7 +2,7 @@
 
 BGP Monitors API
 
-- API version: 7.0.113
+- API version: 7.0.114
 
 **Note:** Private monitor data is not available for ThousandEyes for Government instance.
 
