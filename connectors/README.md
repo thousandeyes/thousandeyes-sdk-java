@@ -2,7 +2,7 @@
 
 Integrations API
 
-- API version: 7.0.113
+- API version: 7.0.115
 
 **Note:** The Webhook Operations APIs are not available for ThousandEyes for Government instance.
 
