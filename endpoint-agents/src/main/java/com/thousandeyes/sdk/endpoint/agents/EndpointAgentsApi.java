@@ -176,7 +176,7 @@ public class EndpointAgentsApi {
 
   /**
    * Disable endpoint agent
-   * Disables an endpoint agent. If it&#39;s already disabled, it has no effect (no operation).
+   * Disables an endpoint agent. If the agent is already disabled, this operation has no effect.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
@@ -188,7 +188,7 @@ public class EndpointAgentsApi {
 
   /**
    * Disable endpoint agent
-   * Disables an endpoint agent. If it&#39;s already disabled, it has no effect (no operation).
+   * Disables an endpoint agent. If the agent is already disabled, this operation has no effect.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
@@ -274,7 +274,7 @@ public class EndpointAgentsApi {
 
   /**
    * Enable endpoint agent
-   * Enables an endpoint agent. If it&#39;s already enabled, it has no effect (no operation).
+   * Enables an endpoint agent. If the agent is already enabled, this operation has no effect.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
@@ -286,7 +286,7 @@ public class EndpointAgentsApi {
 
   /**
    * Enable endpoint agent
-   * Enables an endpoint agent. If it&#39;s already enabled, it has no effect (no operation).
+   * Enables an endpoint agent. If the agent is already enabled, this operation has no effect.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
@@ -372,7 +372,7 @@ public class EndpointAgentsApi {
 
   /**
    * Filter endpoint agents with pagination
-   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
+   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If no agents match the filter criteria, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return Paginator<EndpointAgent, FilterEndpointAgentsResponse>
    */
@@ -388,7 +388,7 @@ public class EndpointAgentsApi {
   }
   /**
    * Filter endpoint agents
-   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
+   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If no agents match the filter criteria, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return FilterEndpointAgentsResponse
    * @throws ApiException if fails to make API call
@@ -400,7 +400,7 @@ public class EndpointAgentsApi {
 
   /**
    * Filter endpoint agents
-   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  If no agents meet the filter criteria, the API returns an empty array. 
+   * Retrieves a list of endpoint agents within the specified account group that match the specified filters.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If no agents match the filter criteria, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;FilterEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
@@ -535,7 +535,7 @@ public class EndpointAgentsApi {
 
   /**
    * Retrieve endpoint agent
-   * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.
+   * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
@@ -547,7 +547,7 @@ public class EndpointAgentsApi {
 
   /**
    * Retrieve endpoint agent
-   * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.
+   * Retrieves details of an agent with the specified &#x60;agent_id&#x60;.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
@@ -657,7 +657,7 @@ public class EndpointAgentsApi {
 
   /**
    * List endpoint agents with pagination
-   * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
+   * Retrieves a list of endpoint agents in a given account group.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If there are no agents in the specified account group, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return Paginator<EndpointAgent, ListEndpointAgentsResponse>
    */
@@ -673,7 +673,7 @@ public class EndpointAgentsApi {
   }
   /**
    * List endpoint agents
-   * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
+   * Retrieves a list of endpoint agents in a given account group.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If there are no agents in the specified account group, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return ListEndpointAgentsResponse
    * @throws ApiException if fails to make API call
@@ -685,7 +685,7 @@ public class EndpointAgentsApi {
 
   /**
    * List endpoint agents
-   * Retrieves a list of endpoint agents in a given account group.  If there are no agents in the specified account group, it returns an empty array. 
+   * Retrieves a list of endpoint agents in a given account group.  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  If there are no agents in the specified account group, the API returns an empty array. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;ListEndpointAgentsResponse&gt;
    * @throws ApiException if fails to make API call
@@ -921,7 +921,7 @@ public class EndpointAgentsApi {
 
   /**
    * Update endpoint agent
-   * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  Any attempt to update fields other than those listed above, with a value different from their current value, will result in a 400 Bad Request response. 
+   * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  Any attempt to update fields other than those listed above, with a value different from their current value, results in a &#x60;400 Bad Request&#x60; response. 
    * @param request operation parameters (required)
    * @return EndpointAgent
    * @throws ApiException if fails to make API call
@@ -933,7 +933,7 @@ public class EndpointAgentsApi {
 
   /**
    * Update endpoint agent
-   * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  Any attempt to update fields other than those listed above, with a value different from their current value, will result in a 400 Bad Request response. 
+   * Updates the agent with the specified &#x60;agent_id&#x60;. This API supports the modification of the following fields:  * &#x60;name&#x60;  * &#x60;licenseType&#x60;  **Required permissions**  This operation requires all of the following permissions:  * View endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_READ&#x60;) * Edit endpoint agent settings (&#x60;SETTINGS_ENDPOINT_AGENTS_UPDATE&#x60;) * View endpoint experience data that identifies network (&#x60;VIEWS_ENDPOINT_AGENTS_PII_NETWORK_DATA&#x60;) * View endpoint experience data that identifies users (&#x60;VIEWS_ENDPOINT_AGENTS_PII_USER_DATA&#x60;) * View endpoint experience data that identifies Endpoint Agents (&#x60;VIEWS_ENDPOINT_AGENTS_PII_AGENT_DATA&#x60;) * View endpoint experience data that identifies location (&#x60;VIEWS_ENDPOINT_AGENTS_PII_LOCATION_DATA&#x60;)  If any required permission is missing, the API returns &#x60;403 Forbidden&#x60;.  Any attempt to update fields other than those listed above, with a value different from their current value, results in a &#x60;400 Bad Request&#x60; response. 
    * @param request operation parameters (required)
    * @return ApiResponse&lt;EndpointAgent&gt;
    * @throws ApiException if fails to make API call
