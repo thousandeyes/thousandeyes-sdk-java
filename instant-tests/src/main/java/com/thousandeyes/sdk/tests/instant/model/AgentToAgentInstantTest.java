@@ -63,6 +63,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AgentToAgentInstantTest.JSON_PROPERTY_PROTOCOL,
   AgentToAgentInstantTest.JSON_PROPERTY_RANDOMIZED_START_TIME,
   AgentToAgentInstantTest.JSON_PROPERTY_TARGET_AGENT_ID,
+  AgentToAgentInstantTest.JSON_PROPERTY_TARGET_AGENT_INTERFACE,
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_MEASUREMENTS,
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_DURATION,
   AgentToAgentInstantTest.JSON_PROPERTY_THROUGHPUT_RATE,
@@ -153,6 +154,9 @@ public class AgentToAgentInstantTest {
 
   public static final String JSON_PROPERTY_TARGET_AGENT_ID = "targetAgentId";
   private String targetAgentId;
+
+  public static final String JSON_PROPERTY_TARGET_AGENT_INTERFACE = "targetAgentInterface";
+  private String targetAgentInterface;
 
   public static final String JSON_PROPERTY_THROUGHPUT_MEASUREMENTS = "throughputMeasurements";
   private Boolean throughputMeasurements = false;
@@ -481,8 +485,8 @@ public class AgentToAgentInstantTest {
 
    /**
    * Maximum segment size, in bytes.
-   * minimum: 20
-   * maximum: 1400
+   * minimum: 30
+   * maximum: 9176
    * @return mss
   **/
   @jakarta.annotation.Nullable
@@ -655,6 +659,31 @@ public class AgentToAgentInstantTest {
   }
 
 
+  public AgentToAgentInstantTest targetAgentInterface(String targetAgentInterface) {
+    this.targetAgentInterface = targetAgentInterface;
+    return this;
+  }
+
+   /**
+   * IP address of the target Enterprise Agent interface to use for the test. The value must match an address in the target agent&#39;s &#x60;ipAddresses&#x60; field returned by &#x60;GET /v7/agents&#x60;. This field is not supported for Cloud Agents or Enterprise Agent clusters. If omitted, the test does not select a specific target interface.
+   * @return targetAgentInterface
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_TARGET_AGENT_INTERFACE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getTargetAgentInterface() {
+    return targetAgentInterface;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TARGET_AGENT_INTERFACE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTargetAgentInterface(String targetAgentInterface) {
+    this.targetAgentInterface = targetAgentInterface;
+  }
+
+
   public AgentToAgentInstantTest throughputMeasurements(Boolean throughputMeasurements) {
     this.throughputMeasurements = throughputMeasurements;
     return this;
@@ -797,6 +826,7 @@ public class AgentToAgentInstantTest {
         Objects.equals(this.protocol, agentToAgentInstantTest.protocol) &&
         Objects.equals(this.randomizedStartTime, agentToAgentInstantTest.randomizedStartTime) &&
         Objects.equals(this.targetAgentId, agentToAgentInstantTest.targetAgentId) &&
+        Objects.equals(this.targetAgentInterface, agentToAgentInstantTest.targetAgentInterface) &&
         Objects.equals(this.throughputMeasurements, agentToAgentInstantTest.throughputMeasurements) &&
         Objects.equals(this.throughputDuration, agentToAgentInstantTest.throughputDuration) &&
         Objects.equals(this.throughputRate, agentToAgentInstantTest.throughputRate) &&
@@ -805,7 +835,7 @@ public class AgentToAgentInstantTest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate);
+    return Objects.hash(createdBy, createdDate, description, liveShare, modifiedBy, modifiedDate, savedEvent, testId, testName, type, links, labels, tags, sharedWithAccounts, direction, dscp, dscpId, mss, numPathTraces, pathTraceMode, port, protocol, randomizedStartTime, targetAgentId, targetAgentInterface, throughputMeasurements, throughputDuration, throughputRate, fixedPacketRate);
   }
 
   @Override
@@ -836,6 +866,7 @@ public class AgentToAgentInstantTest {
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    randomizedStartTime: ").append(toIndentedString(randomizedStartTime)).append("\n");
     sb.append("    targetAgentId: ").append(toIndentedString(targetAgentId)).append("\n");
+    sb.append("    targetAgentInterface: ").append(toIndentedString(targetAgentInterface)).append("\n");
     sb.append("    throughputMeasurements: ").append(toIndentedString(throughputMeasurements)).append("\n");
     sb.append("    throughputDuration: ").append(toIndentedString(throughputDuration)).append("\n");
     sb.append("    throughputRate: ").append(toIndentedString(throughputRate)).append("\n");
@@ -963,6 +994,10 @@ public class AgentToAgentInstantTest {
       this.instance.setTargetAgentId(targetAgentId);
       return this;
     }
+    public AgentToAgentInstantTest.ModelBuilder targetAgentInterface(String targetAgentInterface) {
+      this.instance.setTargetAgentInterface(targetAgentInterface);
+      return this;
+    }
     public AgentToAgentInstantTest.ModelBuilder throughputMeasurements(Boolean throughputMeasurements) {
       this.instance.setThroughputMeasurements(throughputMeasurements);
       return this;
@@ -1036,6 +1071,7 @@ public class AgentToAgentInstantTest {
       .protocol(getProtocol())
       .randomizedStartTime(getRandomizedStartTime())
       .targetAgentId(getTargetAgentId())
+      .targetAgentInterface(getTargetAgentInterface())
       .throughputMeasurements(getThroughputMeasurements())
       .throughputDuration(getThroughputDuration())
       .throughputRate(getThroughputRate())
