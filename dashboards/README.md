@@ -2,7 +2,6 @@
 
 Dashboards API
 
-- API version: 7.0.113
 
 Manage ThousandEyes Dashboards.
 
