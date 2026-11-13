@@ -2,7 +2,6 @@
 
 Cloud Insights Integrations API
 
-- API version: 7.0.113
 
 **Note:** All Cloud Insights APIs are not available for ThousandEyes for Government instance.
 
