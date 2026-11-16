@@ -744,9 +744,9 @@ public class AgentToServerInstantTestResponse {
   }
 
    /**
-   * Payload size (not total packet size) for the end-to-end metric&#39;s probes, ping payload size allows values from 0 to 1400 bytes. When set to null, payload sizes are 0 bytes for ICMP-based tests and 1 byte for TCP-based tests.
+   * Payload size (not total packet size) for the end-to-end metric&#39;s probes, ping payload size allows values from 0 to 9188 bytes. When omitted or set to null, payload sizes are 0 bytes for ICMP-based tests and 1 byte for TCP-based tests.
    * minimum: 0
-   * maximum: 1400
+   * maximum: 9188
    * @return pingPayloadSize
   **/
   @jakarta.annotation.Nullable
