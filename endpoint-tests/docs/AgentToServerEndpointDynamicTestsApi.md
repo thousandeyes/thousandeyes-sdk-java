@@ -4,6 +4,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**bulkDeleteAgentToServerEndpointDynamicTests**](AgentToServerEndpointDynamicTestsApi.md#bulkDeleteAgentToServerEndpointDynamicTests) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server | Bulk delete agent to server endpoint dynamic tests |
+| [**bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo**](AgentToServerEndpointDynamicTestsApi.md#bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server | Bulk delete agent to server endpoint dynamic tests |
 | [**createAgentToServerEndpointDynamicTest**](AgentToServerEndpointDynamicTestsApi.md#createAgentToServerEndpointDynamicTest) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
 | [**createAgentToServerEndpointDynamicTestWithHttpInfo**](AgentToServerEndpointDynamicTestsApi.md#createAgentToServerEndpointDynamicTestWithHttpInfo) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test |
 | [**deleteAgentToServerEndpointDynamicTest**](AgentToServerEndpointDynamicTestsApi.md#deleteAgentToServerEndpointDynamicTest) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test |
@@ -14,6 +16,183 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getAgentToServerEndpointDynamicTestsWithHttpInfo**](AgentToServerEndpointDynamicTestsApi.md#getAgentToServerEndpointDynamicTestsWithHttpInfo) | **GET** /endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests |
 | [**updateAgentToServerEndpointDynamicTest**](AgentToServerEndpointDynamicTestsApi.md#updateAgentToServerEndpointDynamicTest) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
 | [**updateAgentToServerEndpointDynamicTestWithHttpInfo**](AgentToServerEndpointDynamicTestsApi.md#updateAgentToServerEndpointDynamicTestWithHttpInfo) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test |
+
+
+
+## bulkDeleteAgentToServerEndpointDynamicTests
+
+> EndpointTestBulkDeleteResult bulkDeleteAgentToServerEndpointDynamicTests(BulkDeleteAgentToServerEndpointDynamicTestsRequest)
+
+Bulk delete agent to server endpoint dynamic tests
+
+Deletes multiple agent to server endpoint dynamic tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.endpoint.Configuration;
+import com.thousandeyes.sdk.endpoint.authentication.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
+import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        AgentToServerEndpointDynamicTestsApi apiInstance = new AgentToServerEndpointDynamicTestsApi(defaultClient);
+        Set<String> testId = Arrays.asList(); // Set<String> | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the `400 Bad Request` response includes the supported maximum in `maximumTestsSupported`.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest request = AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            EndpointTestBulkDeleteResult result = apiInstance.bulkDeleteAgentToServerEndpointDynamicTests(request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#bulkDeleteAgentToServerEndpointDynamicTests");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| request | [**BulkDeleteAgentToServerEndpointDynamicTestsRequest**](AgentToServerEndpointDynamicTestsApi.md#BulkDeleteAgentToServerEndpointDynamicTestsRequest)|-|-|
+
+### Return type
+
+[**EndpointTestBulkDeleteResult**](EndpointTestBulkDeleteResult.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The IDs of tests successfully deleted. |  -  |
+| **400** | The request is invalid. Missing test IDs are ignored. Each test that is found must belong to the endpoint test family addressed by the operation and must be deletable by the caller or owning partner. If any validation check fails, no tests are deleted. When the request exceeds the bulk-delete limit, the response includes the maximum number of tests supported by the operation. |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo
+
+> ApiResponse<EndpointTestBulkDeleteResult> bulkDeleteAgentToServerEndpointDynamicTests bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo(BulkDeleteAgentToServerEndpointDynamicTestsRequest)
+
+Bulk delete agent to server endpoint dynamic tests
+
+Deletes multiple agent to server endpoint dynamic tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.endpoint.Configuration;
+import com.thousandeyes.sdk.endpoint.authentication.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
+import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointDynamicTestsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        AgentToServerEndpointDynamicTestsApi apiInstance = new AgentToServerEndpointDynamicTestsApi(defaultClient);
+        Set<String> testId = Arrays.asList(); // Set<String> | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the `400 Bad Request` response includes the supported maximum in `maximumTestsSupported`.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest request = AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointTestBulkDeleteResult> response = apiInstance.bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo(request);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#bulkDeleteAgentToServerEndpointDynamicTests");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| request | [**BulkDeleteAgentToServerEndpointDynamicTestsRequest**](AgentToServerEndpointDynamicTestsApi.md#BulkDeleteAgentToServerEndpointDynamicTestsRequest)|-|-|
+
+### Return type
+
+ApiResponse<[**EndpointTestBulkDeleteResult**](EndpointTestBulkDeleteResult.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The IDs of tests successfully deleted. |  -  |
+| **400** | The request is invalid. Missing test IDs are ignored. Each test that is found must belong to the endpoint test family addressed by the operation and must be deletable by the caller or owning partner. If any validation check fails, no tests are deleted. When the request exceeds the bulk-delete limit, the response includes the maximum number of tests supported by the operation. |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+
+<a id="BulkDeleteAgentToServerEndpointDynamicTestsRequest"></a>
+## BulkDeleteAgentToServerEndpointDynamicTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | [**Set&lt;String&gt;**](String.md) | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the &#x60;400 Bad Request&#x60; response includes the supported maximum in &#x60;maximumTestsSupported&#x60;. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 
 

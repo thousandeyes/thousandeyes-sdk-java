@@ -23,7 +23,10 @@ import com.thousandeyes.sdk.endpoint.tests.model.EndpointHttpServerTest;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointHttpServerTestRequest;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointHttpServerTests;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointHttpTestUpdate;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteResult;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteValidationError;
 import com.thousandeyes.sdk.endpoint.tests.model.Error;
+import java.util.Set;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.model.ValidationError;
@@ -57,6 +60,104 @@ public class HttpServerEndpointScheduledTestsApi {
 
   public HttpServerEndpointScheduledTestsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
+  }
+
+  /**
+   * Bulk delete HTTP server endpoint scheduled tests
+   * Deletes multiple HTTP server endpoint scheduled tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+   * @param request operation parameters (required)
+   * @return EndpointTestBulkDeleteResult
+   * @throws ApiException if fails to make API call
+   */
+  public EndpointTestBulkDeleteResult bulkDeleteHttpServerEndpointScheduledTests(BulkDeleteHttpServerEndpointScheduledTestsRequest request) throws ApiException {
+    ApiResponse<EndpointTestBulkDeleteResult> response = bulkDeleteHttpServerEndpointScheduledTestsWithHttpInfo(request);
+    return response.getData();
+  }
+
+  /**
+   * Bulk delete HTTP server endpoint scheduled tests
+   * Deletes multiple HTTP server endpoint scheduled tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+   * @param request operation parameters (required)
+   * @return ApiResponse&lt;EndpointTestBulkDeleteResult&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<EndpointTestBulkDeleteResult> bulkDeleteHttpServerEndpointScheduledTestsWithHttpInfo(BulkDeleteHttpServerEndpointScheduledTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling bulkDeleteHttpServerEndpointScheduledTests");
+    }
+    bulkDeleteHttpServerEndpointScheduledTestsValidateRequest(request.getTestId());
+
+    var requestBuilder = bulkDeleteHttpServerEndpointScheduledTestsRequestBuilder(request.getTestId(), request.getAid());
+
+    return apiClient.send(requestBuilder.build(), EndpointTestBulkDeleteResult.class);
+  }
+
+  private void bulkDeleteHttpServerEndpointScheduledTestsValidateRequest(Set<String> testId) throws ApiException {
+      // verify the required parameter 'testId' is set
+      if (testId == null) {
+        throw new ApiException(400, "Missing the required parameter 'testId' when calling bulkDeleteHttpServerEndpointScheduledTests");
+      }
+  }
+
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder bulkDeleteHttpServerEndpointScheduledTestsRequestBuilder(Set<String> testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
+            .method("DELETE");
+
+    requestBuilder.pathTemplate("/endpoint/tests/scheduled-tests/http-server");
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("multi", "testId", testId));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+
+  public static final class BulkDeleteHttpServerEndpointScheduledTestsRequest {
+    private final Set<String> testId;
+    private final String aid;
+
+    private BulkDeleteHttpServerEndpointScheduledTestsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public Set<String> getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private Set<String> testId;
+      private String aid;
+
+      public Builder testId(Set<String> testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public BulkDeleteHttpServerEndpointScheduledTestsRequest build() {
+        return new BulkDeleteHttpServerEndpointScheduledTestsRequest(this);
+      }
+    }
   }
 
   /**

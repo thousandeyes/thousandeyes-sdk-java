@@ -4,6 +4,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**bulkDeleteAgentToServerEndpointScheduledTests**](AgentToServerEndpointScheduledTestsApi.md#bulkDeleteAgentToServerEndpointScheduledTests) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server | Bulk delete agent to server endpoint scheduled tests |
+| [**bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo**](AgentToServerEndpointScheduledTestsApi.md#bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server | Bulk delete agent to server endpoint scheduled tests |
 | [**createAgentToServerEndpointScheduledTest**](AgentToServerEndpointScheduledTestsApi.md#createAgentToServerEndpointScheduledTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
 | [**createAgentToServerEndpointScheduledTestWithHttpInfo**](AgentToServerEndpointScheduledTestsApi.md#createAgentToServerEndpointScheduledTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test |
 | [**deleteAgentToServerEndpointScheduledTest**](AgentToServerEndpointScheduledTestsApi.md#deleteAgentToServerEndpointScheduledTest) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test |
@@ -14,6 +16,183 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 | [**getAgentToServerEndpointScheduledTestsWithHttpInfo**](AgentToServerEndpointScheduledTestsApi.md#getAgentToServerEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests/agent-to-server | List agent to server endpoint scheduled tests |
 | [**updateAgentToServerEndpointScheduledTest**](AgentToServerEndpointScheduledTestsApi.md#updateAgentToServerEndpointScheduledTest) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
 | [**updateAgentToServerEndpointScheduledTestWithHttpInfo**](AgentToServerEndpointScheduledTestsApi.md#updateAgentToServerEndpointScheduledTestWithHttpInfo) | **PATCH** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Update agent to server endpoint scheduled test |
+
+
+
+## bulkDeleteAgentToServerEndpointScheduledTests
+
+> EndpointTestBulkDeleteResult bulkDeleteAgentToServerEndpointScheduledTests(BulkDeleteAgentToServerEndpointScheduledTestsRequest)
+
+Bulk delete agent to server endpoint scheduled tests
+
+Deletes multiple agent to server endpoint scheduled tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.endpoint.Configuration;
+import com.thousandeyes.sdk.endpoint.authentication.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
+import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        AgentToServerEndpointScheduledTestsApi apiInstance = new AgentToServerEndpointScheduledTestsApi(defaultClient);
+        Set<String> testId = Arrays.asList(); // Set<String> | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the `400 Bad Request` response includes the supported maximum in `maximumTestsSupported`.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            AgentToServerEndpointScheduledTestsApi.BulkDeleteAgentToServerEndpointScheduledTestsRequest request = AgentToServerEndpointScheduledTestsApi.BulkDeleteAgentToServerEndpointScheduledTestsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            EndpointTestBulkDeleteResult result = apiInstance.bulkDeleteAgentToServerEndpointScheduledTests(request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#bulkDeleteAgentToServerEndpointScheduledTests");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| request | [**BulkDeleteAgentToServerEndpointScheduledTestsRequest**](AgentToServerEndpointScheduledTestsApi.md#BulkDeleteAgentToServerEndpointScheduledTestsRequest)|-|-|
+
+### Return type
+
+[**EndpointTestBulkDeleteResult**](EndpointTestBulkDeleteResult.md)
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The IDs of tests successfully deleted. |  -  |
+| **400** | The request is invalid. Missing test IDs are ignored. Each test that is found must belong to the endpoint test family addressed by the operation and must be deletable by the caller or owning partner. If any validation check fails, no tests are deleted. When the request exceeds the bulk-delete limit, the response includes the maximum number of tests supported by the operation. |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+## bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo
+
+> ApiResponse<EndpointTestBulkDeleteResult> bulkDeleteAgentToServerEndpointScheduledTests bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo(BulkDeleteAgentToServerEndpointScheduledTestsRequest)
+
+Bulk delete agent to server endpoint scheduled tests
+
+Deletes multiple agent to server endpoint scheduled tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+
+### Example
+
+```java
+// Import classes:
+import com.thousandeyes.sdk.client.ApiClient;
+import com.thousandeyes.sdk.common.ApiException;
+import com.thousandeyes.sdk.common.ApiResponse;
+import com.thousandeyes.sdk.endpoint.Configuration;
+import com.thousandeyes.sdk.endpoint.authentication.*;
+import com.thousandeyes.sdk.endpoint.tests.model.*;
+import com.thousandeyes.sdk.endpoint.tests.AgentToServerEndpointScheduledTestsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.thousandeyes.com/v7");
+        
+        // Configure HTTP bearer authorization: BearerAuth
+        HttpBearerAuth BearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("BearerAuth");
+        BearerAuth.setBearerToken("BEARER TOKEN");
+
+        AgentToServerEndpointScheduledTestsApi apiInstance = new AgentToServerEndpointScheduledTestsApi(defaultClient);
+        Set<String> testId = Arrays.asList(); // Set<String> | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the `400 Bad Request` response includes the supported maximum in `maximumTestsSupported`.
+        String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
+        try {
+            AgentToServerEndpointScheduledTestsApi.BulkDeleteAgentToServerEndpointScheduledTestsRequest request = AgentToServerEndpointScheduledTestsApi.BulkDeleteAgentToServerEndpointScheduledTestsRequest.builder()
+                .testId(testId)
+                .aid(aid)
+                .build();
+            ApiResponse<EndpointTestBulkDeleteResult> response = apiInstance.bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo(request);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AgentToServerEndpointScheduledTestsApi#bulkDeleteAgentToServerEndpointScheduledTests");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+|    Name      |    Type       | Description   |     Notes    |
+|------------- | ------------- | ------------- | -------------|
+| request | [**BulkDeleteAgentToServerEndpointScheduledTestsRequest**](AgentToServerEndpointScheduledTestsApi.md#BulkDeleteAgentToServerEndpointScheduledTestsRequest)|-|-|
+
+### Return type
+
+ApiResponse<[**EndpointTestBulkDeleteResult**](EndpointTestBulkDeleteResult.md)>
+
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The IDs of tests successfully deleted. |  -  |
+| **400** | The request is invalid. Missing test IDs are ignored. Each test that is found must belong to the endpoint test family addressed by the operation and must be deletable by the caller or owning partner. If any validation check fails, no tests are deleted. When the request exceeds the bulk-delete limit, the response includes the maximum number of tests supported by the operation. |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Insufficient permissions to query endpoint |  -  |
+| **429** | Exhausted rate limit for the organization |  -  |
+| **500** | Internal server error |  -  |
+| **502** | Bad Gateway |  -  |
+| **0** | An error occurred |  -  |
+
+
+<a id="BulkDeleteAgentToServerEndpointScheduledTestsRequest"></a>
+## BulkDeleteAgentToServerEndpointScheduledTestsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **testId** | [**Set&lt;String&gt;**](String.md) | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the &#x60;400 Bad Request&#x60; response includes the supported maximum in &#x60;maximumTestsSupported&#x60;. | |
+| **aid** | **String** | A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. | [optional] |
 
 
 

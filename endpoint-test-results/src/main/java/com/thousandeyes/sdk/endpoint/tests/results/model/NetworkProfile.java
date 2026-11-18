@@ -1,6 +1,6 @@
 /*
  * Endpoint Test Results API
- * Retrieve results for scheduled and dynamic tests on endpoint agents.
+ * Retrieve results for scheduled and dynamic tests on endpoint agents.  For endpoints that require PII permissions, all required PII permissions must be granted. Otherwise, the API returns `403 Forbidden` instead of masked values.  Role and permission changes may not take effect immediately because API permissions are cached. This delay applies to both permission grants and removals. 
  *
  * 
  *
@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   NetworkProfile.JSON_PROPERTY_IP_ADDRESS,
   NetworkProfile.JSON_PROPERTY_SUBNET_MASK,
+  NetworkProfile.JSON_PROPERTY_PREFIX_LENGTH,
   NetworkProfile.JSON_PROPERTY_PUBLIC_IP_ADDRESS,
   NetworkProfile.JSON_PROPERTY_LOCAL_PREFIX,
   NetworkProfile.JSON_PROPERTY_PUBLIC_IP_RANGE,
@@ -59,6 +60,10 @@ public class NetworkProfile {
   public static final String JSON_PROPERTY_SUBNET_MASK = "subnetMask";
   @JsonProperty(JSON_PROPERTY_SUBNET_MASK)
   private String subnetMask;
+
+  public static final String JSON_PROPERTY_PREFIX_LENGTH = "prefixLength";
+  @JsonProperty(JSON_PROPERTY_PREFIX_LENGTH)
+  private Integer prefixLength;
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESS = "publicIpAddress";
   @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESS)
@@ -131,6 +136,21 @@ public class NetworkProfile {
 
   public String getSubnetMask() {
     return subnetMask;
+  }
+
+
+
+
+   /**
+   * Number of bits in the network prefix, for IPv4 and IPv6.
+   * @return prefixLength
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPrefixLength() {
+    return prefixLength;
   }
 
 
@@ -380,6 +400,7 @@ public class NetworkProfile {
     NetworkProfile networkProfile = (NetworkProfile) o;
     return Objects.equals(this.ipAddress, networkProfile.ipAddress) &&
         Objects.equals(this.subnetMask, networkProfile.subnetMask) &&
+        Objects.equals(this.prefixLength, networkProfile.prefixLength) &&
         Objects.equals(this.publicIpAddress, networkProfile.publicIpAddress) &&
         Objects.equals(this.localPrefix, networkProfile.localPrefix) &&
         Objects.equals(this.publicIpRange, networkProfile.publicIpRange) &&
@@ -396,7 +417,7 @@ public class NetworkProfile {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddress, subnetMask, publicIpAddress, localPrefix, publicIpRange, dnsServers, hardwareType, interfaceName, error, gateway, wirelessProfile, proxyProfile, ethernetProfile, previousInterface);
+    return Objects.hash(ipAddress, subnetMask, prefixLength, publicIpAddress, localPrefix, publicIpRange, dnsServers, hardwareType, interfaceName, error, gateway, wirelessProfile, proxyProfile, ethernetProfile, previousInterface);
   }
 
   @Override
@@ -405,6 +426,7 @@ public class NetworkProfile {
     sb.append("class NetworkProfile {\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    subnetMask: ").append(toIndentedString(subnetMask)).append("\n");
+    sb.append("    prefixLength: ").append(toIndentedString(prefixLength)).append("\n");
     sb.append("    publicIpAddress: ").append(toIndentedString(publicIpAddress)).append("\n");
     sb.append("    localPrefix: ").append(toIndentedString(localPrefix)).append("\n");
     sb.append("    publicIpRange: ").append(toIndentedString(publicIpRange)).append("\n");
@@ -450,6 +472,10 @@ public class NetworkProfile {
     }
     public NetworkProfile.ModelBuilder subnetMask(String subnetMask) {
       this.instance.subnetMask = subnetMask;
+      return this;
+    }
+    public NetworkProfile.ModelBuilder prefixLength(Integer prefixLength) {
+      this.instance.prefixLength = prefixLength;
       return this;
     }
     public NetworkProfile.ModelBuilder publicIpAddress(String publicIpAddress) {
@@ -535,6 +561,7 @@ public class NetworkProfile {
     NetworkProfile.ModelBuilder builder = new NetworkProfile.ModelBuilder()
       .ipAddress(getIpAddress())
       .subnetMask(getSubnetMask())
+      .prefixLength(getPrefixLength())
       .publicIpAddress(getPublicIpAddress())
       .localPrefix(getLocalPrefix())
       .publicIpRange(getPublicIpRange())

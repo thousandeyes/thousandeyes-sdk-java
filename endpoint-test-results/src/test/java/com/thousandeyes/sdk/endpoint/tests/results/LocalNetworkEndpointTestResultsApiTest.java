@@ -1,6 +1,6 @@
 /*
  * Endpoint Test Results API
- * Retrieve results for scheduled and dynamic tests on endpoint agents.
+ * Retrieve results for scheduled and dynamic tests on endpoint agents.  For endpoints that require PII permissions, all required PII permissions must be granted. Otherwise, the API returns `403 Forbidden` instead of masked values.  Role and permission changes may not take effect immediately because API permissions are cached. This delay applies to both permission grants and removals. 
  *
  * 
  *
@@ -81,7 +81,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
     /**
      * List endpoint network topologies probes
      * <p>
-     * Returns a list of all endpoint local network topologies probes.  All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter?window&#x3D;12h&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Warning Note that a maximum of 12h worth of data can be retrieved at once.  If you need more, you need to make multiple requests.  Returns a &#x60;results&#x60; array of network topology probes.  Network topology probes shown are from the latest round, or based on the time range specified. 
+     * Returns a list of all endpoint local network topologies probes. All results are provided, oldest to newest (according to a specified page index and size) unless an explicit start and end is provided with &#x60;startDate&#x60;, &#x60;endDate&#x60; or &#x60;window&#x60; optional parameters.  ## Request body filters This endpoint supports complex filtering using the request body. It is important these filters remain unaltered when making use of pagination, otherwise the results will not be coherent with the original request.  ### Multiple filter fields When multiple filter fields are provided, a logical &#x60;AND&#x60; is applied between the filters.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Filter field with multiple values When a filter field contains multiple values, a logical &#x60;OR&#x60; is applied between the filter values.  &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Combination of request parameters and body filters &#x60;&#x60;&#x60; curl --location --request POST &#39;https://api.thousandeyes.com/v7/endpoint/test-results/local-networks/topologies/filter?window&#x3D;12h&#39; --header &#39;Authorization: Bearer $token&#39; --header &#39;Content-Type: application/json&#39; --data-raw &#39;{   \&quot;searchFilters\&quot;: {     \&quot;platform\&quot;: [ \&quot;mac\&quot; ],     \&quot;domain\&quot;: [ \&quot;thousandeyes.com\&quot; ],     \&quot;networkId\&quot;: [ \&quot;660b34109d12\&quot;, \&quot;660b34109d15\&quot; ]   }}&#39; &#x60;&#x60;&#x60;  ### Warning Note that a maximum of 12h worth of data can be retrieved at once. If you need more, you need to make multiple requests.  Returns a &#x60;results&#x60; array of network topology probes. Network topology probes shown are from the latest round, or based on the time range specified. 
      *
      * @throws JacksonException if the deserialization fails
      */
@@ -654,6 +654,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -695,6 +696,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -944,6 +946,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                     },
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -985,6 +988,7 @@ public class LocalNetworkEndpointTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
