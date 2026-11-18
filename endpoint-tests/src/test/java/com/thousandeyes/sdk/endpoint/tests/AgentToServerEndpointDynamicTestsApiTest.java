@@ -16,7 +16,10 @@ import com.thousandeyes.sdk.endpoint.tests.model.DynamicTest;
 import com.thousandeyes.sdk.endpoint.tests.model.DynamicTestRequest;
 import com.thousandeyes.sdk.endpoint.tests.model.DynamicTests;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointDynamicTestUpdate;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteResult;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteValidationError;
 import com.thousandeyes.sdk.endpoint.tests.model.Error;
+import java.util.Set;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.model.ValidationError;
@@ -73,6 +76,46 @@ public class AgentToServerEndpointDynamicTestsApiTest {
                                 .bearerToken(TOKEN)
                                 .build();
         api = new AgentToServerEndpointDynamicTestsApi(client);
+    }
+    
+    /**
+     * Bulk delete agent to server endpoint dynamic tests
+     * <p>
+     * Deletes multiple agent to server endpoint dynamic tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+     *
+     * @throws JacksonException if the deserialization fails
+     */
+    @Test
+    public void bulkDeleteAgentToServerEndpointDynamicTestsRequestAndResponseDeserializationTest()
+            throws JacksonException, ApiException
+    {
+        Set<String> testId = Arrays.asList();
+
+        var responseBodyJson = """
+                {
+                  "deletedTestIds" : [ "281474976710706", "281474976710707" ]
+                }
+                                  """;
+        var statusCode = 200;
+        var responseContentType = "application/json";
+        EndpointTestBulkDeleteResult mappedResponse = 
+                mapper.readValue(responseBodyJson, EndpointTestBulkDeleteResult.class);
+        assertNotNull(mappedResponse);
+
+        var path = "/endpoint/tests/dynamic-tests/agent-to-server";
+        stubFor(delete(urlPathTemplate(path))
+                        .withHeader(AUTHORIZATION, equalTo(BEARER_TOKEN))
+                        .willReturn(aResponse()
+                                            .withHeader(CONTENT_TYPE, responseContentType)
+                                            .withBody(responseBodyJson)
+                                            .withStatus(statusCode)));
+
+        var request = AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest.builder()
+                .testId(testId)
+                .aid("1234")
+                .build();
+        var apiResponse = api.bulkDeleteAgentToServerEndpointDynamicTests(request);
+        assertEquals(mappedResponse, apiResponse);
     }
     
     /**

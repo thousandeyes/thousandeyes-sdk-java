@@ -23,7 +23,10 @@ import com.thousandeyes.sdk.endpoint.tests.model.DynamicTest;
 import com.thousandeyes.sdk.endpoint.tests.model.DynamicTestRequest;
 import com.thousandeyes.sdk.endpoint.tests.model.DynamicTests;
 import com.thousandeyes.sdk.endpoint.tests.model.EndpointDynamicTestUpdate;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteResult;
+import com.thousandeyes.sdk.endpoint.tests.model.EndpointTestBulkDeleteValidationError;
 import com.thousandeyes.sdk.endpoint.tests.model.Error;
+import java.util.Set;
 import java.net.URI;
 import com.thousandeyes.sdk.endpoint.tests.model.UnauthorizedError;
 import com.thousandeyes.sdk.endpoint.tests.model.ValidationError;
@@ -57,6 +60,104 @@ public class AgentToServerEndpointDynamicTestsApi {
 
   public AgentToServerEndpointDynamicTestsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
+  }
+
+  /**
+   * Bulk delete agent to server endpoint dynamic tests
+   * Deletes multiple agent to server endpoint dynamic tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+   * @param request operation parameters (required)
+   * @return EndpointTestBulkDeleteResult
+   * @throws ApiException if fails to make API call
+   */
+  public EndpointTestBulkDeleteResult bulkDeleteAgentToServerEndpointDynamicTests(BulkDeleteAgentToServerEndpointDynamicTestsRequest request) throws ApiException {
+    ApiResponse<EndpointTestBulkDeleteResult> response = bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo(request);
+    return response.getData();
+  }
+
+  /**
+   * Bulk delete agent to server endpoint dynamic tests
+   * Deletes multiple agent to server endpoint dynamic tests in one all-or-nothing operation. Missing test IDs are ignored.  Before any tests are deleted, all found tests are validated to ensure they belong to this test family and can be deleted by the caller or, for partner-owned tests, by the owning partner. If any validation check fails, no tests are deleted. 
+   * @param request operation parameters (required)
+   * @return ApiResponse&lt;EndpointTestBulkDeleteResult&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<EndpointTestBulkDeleteResult> bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo(BulkDeleteAgentToServerEndpointDynamicTestsRequest request) throws ApiException {
+    if (request == null) {
+      throw new ApiException(400, "Request must not be null when calling bulkDeleteAgentToServerEndpointDynamicTests");
+    }
+    bulkDeleteAgentToServerEndpointDynamicTestsValidateRequest(request.getTestId());
+
+    var requestBuilder = bulkDeleteAgentToServerEndpointDynamicTestsRequestBuilder(request.getTestId(), request.getAid());
+
+    return apiClient.send(requestBuilder.build(), EndpointTestBulkDeleteResult.class);
+  }
+
+  private void bulkDeleteAgentToServerEndpointDynamicTestsValidateRequest(Set<String> testId) throws ApiException {
+      // verify the required parameter 'testId' is set
+      if (testId == null) {
+        throw new ApiException(400, "Missing the required parameter 'testId' when calling bulkDeleteAgentToServerEndpointDynamicTests");
+      }
+  }
+
+  private com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder bulkDeleteAgentToServerEndpointDynamicTestsRequestBuilder(Set<String> testId, String aid) throws ApiException {
+    com.thousandeyes.sdk.client.ApiRequest.ApiRequestBuilder requestBuilder = com.thousandeyes.sdk.client.ApiRequest.builder()
+            .method("DELETE");
+
+    requestBuilder.pathTemplate("/endpoint/tests/dynamic-tests/agent-to-server");
+
+    List<Pair<String, String>> localVarQueryParams = new ArrayList<>();
+    localVarQueryParams.addAll(parameterToPairs("aid", aid));
+    localVarQueryParams.addAll(parameterToPairs("multi", "testId", testId));
+
+    if (!localVarQueryParams.isEmpty()) {
+      requestBuilder.queryParams(localVarQueryParams);
+    }
+
+    requestBuilder.header("Accept", List.of("application/json, application/problem+json"));
+    requestBuilder.header("User-Agent", List.of(Config.USER_AGENT));
+    return requestBuilder;
+  }
+
+  public static final class BulkDeleteAgentToServerEndpointDynamicTestsRequest {
+    private final Set<String> testId;
+    private final String aid;
+
+    private BulkDeleteAgentToServerEndpointDynamicTestsRequest(Builder builder) {
+      this.testId = builder.testId;
+      this.aid = builder.aid;
+    }
+    public Set<String> getTestId() {
+      return testId;
+    }
+    public String getAid() {
+      return aid;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+
+    public Builder toBuilder() {
+      return builder()
+          .testId(testId)
+          .aid(aid);
+    }
+
+    public static final class Builder {
+      private Set<String> testId;
+      private String aid;
+
+      public Builder testId(Set<String> testId) {
+        this.testId = testId;
+        return this;
+      }
+      public Builder aid(String aid) {
+        this.aid = aid;
+        return this;
+      }
+      public BulkDeleteAgentToServerEndpointDynamicTestsRequest build() {
+        return new BulkDeleteAgentToServerEndpointDynamicTestsRequest(this);
+      }
+    }
   }
 
   /**

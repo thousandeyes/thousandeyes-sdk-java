@@ -106,17 +106,17 @@ public class AgentToServerEndpointDynamicTestsApiExample {
                 .build();
 
         AgentToServerEndpointDynamicTestsApi apiInstance = new AgentToServerEndpointDynamicTestsApi(defaultClient);
-        DynamicTestRequest dynamicTestRequest = new DynamicTestRequest(); // DynamicTestRequest | 
+        Set<String> testId = Arrays.asList(); // Set<String> | Endpoint test IDs to delete. Specify this parameter once for each test ID. The request must not contain more than the maximum number of tests supported by the operation. If the limit is exceeded, the `400 Bad Request` response includes the supported maximum in `maximumTestsSupported`.
         String aid = "1234"; // String | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
         try {
-            AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest request = AgentToServerEndpointDynamicTestsApi.CreateAgentToServerEndpointDynamicTestRequest.builder()
-                .dynamicTestRequest(dynamicTestRequest)
+            AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest request = AgentToServerEndpointDynamicTestsApi.BulkDeleteAgentToServerEndpointDynamicTestsRequest.builder()
+                .testId(testId)
                 .aid(aid)
                 .build();
-            DynamicTest result = apiInstance.createAgentToServerEndpointDynamicTest(request);
+            EndpointTestBulkDeleteResult result = apiInstance.bulkDeleteAgentToServerEndpointDynamicTests(request);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#createAgentToServerEndpointDynamicTest");
+            System.err.println("Exception when calling AgentToServerEndpointDynamicTestsApi#bulkDeleteAgentToServerEndpointDynamicTests");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -133,6 +133,8 @@ All URIs are relative to *https://api.thousandeyes.com/v7*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentToServerEndpointDynamicTestsApi* | [**bulkDeleteAgentToServerEndpointDynamicTests**](docs/AgentToServerEndpointDynamicTestsApi.md#bulkDeleteAgentToServerEndpointDynamicTests) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server | Bulk delete agent to server endpoint dynamic tests
+*AgentToServerEndpointDynamicTestsApi* | [**bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo**](docs/AgentToServerEndpointDynamicTestsApi.md#bulkDeleteAgentToServerEndpointDynamicTestsWithHttpInfo) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server | Bulk delete agent to server endpoint dynamic tests
 *AgentToServerEndpointDynamicTestsApi* | [**createAgentToServerEndpointDynamicTest**](docs/AgentToServerEndpointDynamicTestsApi.md#createAgentToServerEndpointDynamicTest) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
 *AgentToServerEndpointDynamicTestsApi* | [**createAgentToServerEndpointDynamicTestWithHttpInfo**](docs/AgentToServerEndpointDynamicTestsApi.md#createAgentToServerEndpointDynamicTestWithHttpInfo) | **POST** /endpoint/tests/dynamic-tests/agent-to-server | Create endpoint dynamic test
 *AgentToServerEndpointDynamicTestsApi* | [**deleteAgentToServerEndpointDynamicTest**](docs/AgentToServerEndpointDynamicTestsApi.md#deleteAgentToServerEndpointDynamicTest) | **DELETE** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Delete agent to server dynamic test
@@ -143,6 +145,8 @@ Class | Method | HTTP request | Description
 *AgentToServerEndpointDynamicTestsApi* | [**getAgentToServerEndpointDynamicTestsWithHttpInfo**](docs/AgentToServerEndpointDynamicTestsApi.md#getAgentToServerEndpointDynamicTestsWithHttpInfo) | **GET** /endpoint/tests/dynamic-tests/agent-to-server | List endpoint dynamic tests
 *AgentToServerEndpointDynamicTestsApi* | [**updateAgentToServerEndpointDynamicTest**](docs/AgentToServerEndpointDynamicTestsApi.md#updateAgentToServerEndpointDynamicTest) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
 *AgentToServerEndpointDynamicTestsApi* | [**updateAgentToServerEndpointDynamicTestWithHttpInfo**](docs/AgentToServerEndpointDynamicTestsApi.md#updateAgentToServerEndpointDynamicTestWithHttpInfo) | **PATCH** /endpoint/tests/dynamic-tests/agent-to-server/{testId} | Update agent to server dynamic test
+*AgentToServerEndpointScheduledTestsApi* | [**bulkDeleteAgentToServerEndpointScheduledTests**](docs/AgentToServerEndpointScheduledTestsApi.md#bulkDeleteAgentToServerEndpointScheduledTests) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server | Bulk delete agent to server endpoint scheduled tests
+*AgentToServerEndpointScheduledTestsApi* | [**bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo**](docs/AgentToServerEndpointScheduledTestsApi.md#bulkDeleteAgentToServerEndpointScheduledTestsWithHttpInfo) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server | Bulk delete agent to server endpoint scheduled tests
 *AgentToServerEndpointScheduledTestsApi* | [**createAgentToServerEndpointScheduledTest**](docs/AgentToServerEndpointScheduledTestsApi.md#createAgentToServerEndpointScheduledTest) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *AgentToServerEndpointScheduledTestsApi* | [**createAgentToServerEndpointScheduledTestWithHttpInfo**](docs/AgentToServerEndpointScheduledTestsApi.md#createAgentToServerEndpointScheduledTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/agent-to-server | Creates agent to server endpoint scheduled test
 *AgentToServerEndpointScheduledTestsApi* | [**deleteAgentToServerEndpointScheduledTest**](docs/AgentToServerEndpointScheduledTestsApi.md#deleteAgentToServerEndpointScheduledTest) | **DELETE** /endpoint/tests/scheduled-tests/agent-to-server/{testId} | Delete agent to server scheduled test
@@ -157,6 +161,8 @@ Class | Method | HTTP request | Description
 *EndpointRealUserTestsApi* | [**getEndpointRealUserTestsWithHttpInfo**](docs/EndpointRealUserTestsApi.md#getEndpointRealUserTestsWithHttpInfo) | **GET** /endpoint/tests/real-user-tests | List endpoint real user tests
 *EndpointScheduledTestsApi* | [**getEndpointScheduledTests**](docs/EndpointScheduledTestsApi.md#getEndpointScheduledTests) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests
 *EndpointScheduledTestsApi* | [**getEndpointScheduledTestsWithHttpInfo**](docs/EndpointScheduledTestsApi.md#getEndpointScheduledTestsWithHttpInfo) | **GET** /endpoint/tests/scheduled-tests | List endpoint scheduled tests
+*HttpServerEndpointScheduledTestsApi* | [**bulkDeleteHttpServerEndpointScheduledTests**](docs/HttpServerEndpointScheduledTestsApi.md#bulkDeleteHttpServerEndpointScheduledTests) | **DELETE** /endpoint/tests/scheduled-tests/http-server | Bulk delete HTTP server endpoint scheduled tests
+*HttpServerEndpointScheduledTestsApi* | [**bulkDeleteHttpServerEndpointScheduledTestsWithHttpInfo**](docs/HttpServerEndpointScheduledTestsApi.md#bulkDeleteHttpServerEndpointScheduledTestsWithHttpInfo) | **DELETE** /endpoint/tests/scheduled-tests/http-server | Bulk delete HTTP server endpoint scheduled tests
 *HttpServerEndpointScheduledTestsApi* | [**createHttpServerEndpointScheduledTest**](docs/HttpServerEndpointScheduledTestsApi.md#createHttpServerEndpointScheduledTest) | **POST** /endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
 *HttpServerEndpointScheduledTestsApi* | [**createHttpServerEndpointScheduledTestWithHttpInfo**](docs/HttpServerEndpointScheduledTestsApi.md#createHttpServerEndpointScheduledTestWithHttpInfo) | **POST** /endpoint/tests/scheduled-tests/http-server | Create HTTP server endpoint scheduled test
 *HttpServerEndpointScheduledTestsApi* | [**deleteHttpServerEndpointScheduledTest**](docs/HttpServerEndpointScheduledTestsApi.md#deleteHttpServerEndpointScheduledTest) | **DELETE** /endpoint/tests/scheduled-tests/http-server/{testId} | Delete HTTP server scheduled test

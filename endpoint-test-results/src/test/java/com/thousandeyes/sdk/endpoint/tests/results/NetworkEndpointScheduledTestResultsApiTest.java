@@ -1,6 +1,6 @@
 /*
  * Endpoint Test Results API
- * Retrieve results for scheduled and dynamic tests on endpoint agents.
+ * Retrieve results for scheduled and dynamic tests on endpoint agents.  For endpoints that require PII permissions, all required PII permissions must be granted. Otherwise, the API returns `403 Forbidden` instead of masked values.  Role and permission changes may not take effect immediately because API permissions are cached. This delay applies to both permission grants and removals. 
  *
  * 
  *
@@ -263,6 +263,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -304,6 +305,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -394,6 +396,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -435,6 +438,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -620,6 +624,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -661,6 +666,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -751,6 +757,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -792,6 +799,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -1081,6 +1089,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -1122,6 +1131,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -1285,6 +1295,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -1326,6 +1337,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -1533,6 +1545,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -1574,6 +1587,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"
@@ -1665,6 +1679,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                     "serverIp" : "185.199.108.153",
                     "networkProfile" : {
                       "previousInterface" : {
+                        "prefixLength" : 24,
                         "publicIpAddress" : "84.255.241.1",
                         "publicIpRange" : "84.255.241.0-84.255.241.255",
                         "ipAddress" : "10.0.0.13",
@@ -1706,6 +1721,7 @@ public class NetworkEndpointScheduledTestResultsApiTest {
                         "ssid" : "Internet for the masses",
                         "quality" : 100
                       },
+                      "prefixLength" : 24,
                       "interfaceName" : "en0",
                       "dnsServers" : [ "8.8.8.8", "8.8.8.4" ],
                       "gateway" : "10.0.0.1"

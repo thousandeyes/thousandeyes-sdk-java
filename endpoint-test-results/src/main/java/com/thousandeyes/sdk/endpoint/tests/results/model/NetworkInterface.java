@@ -1,6 +1,6 @@
 /*
  * Endpoint Test Results API
- * Retrieve results for scheduled and dynamic tests on endpoint agents.
+ * Retrieve results for scheduled and dynamic tests on endpoint agents.  For endpoints that require PII permissions, all required PII permissions must be granted. Otherwise, the API returns `403 Forbidden` instead of masked values.  Role and permission changes may not take effect immediately because API permissions are cached. This delay applies to both permission grants and removals. 
  *
  * 
  *
@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   NetworkInterface.JSON_PROPERTY_IP_ADDRESS,
   NetworkInterface.JSON_PROPERTY_SUBNET_MASK,
+  NetworkInterface.JSON_PROPERTY_PREFIX_LENGTH,
   NetworkInterface.JSON_PROPERTY_PUBLIC_IP_ADDRESS,
   NetworkInterface.JSON_PROPERTY_LOCAL_PREFIX,
   NetworkInterface.JSON_PROPERTY_PUBLIC_IP_RANGE,
@@ -49,6 +50,10 @@ public class NetworkInterface {
   public static final String JSON_PROPERTY_SUBNET_MASK = "subnetMask";
   @JsonProperty(JSON_PROPERTY_SUBNET_MASK)
   private String subnetMask;
+
+  public static final String JSON_PROPERTY_PREFIX_LENGTH = "prefixLength";
+  @JsonProperty(JSON_PROPERTY_PREFIX_LENGTH)
+  private Integer prefixLength;
 
   public static final String JSON_PROPERTY_PUBLIC_IP_ADDRESS = "publicIpAddress";
   @JsonProperty(JSON_PROPERTY_PUBLIC_IP_ADDRESS)
@@ -101,6 +106,21 @@ public class NetworkInterface {
 
   public String getSubnetMask() {
     return subnetMask;
+  }
+
+
+
+
+   /**
+   * Number of bits in the network prefix, for IPv4 and IPv6.
+   * @return prefixLength
+  **/
+  @jakarta.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREFIX_LENGTH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getPrefixLength() {
+    return prefixLength;
   }
 
 
@@ -220,6 +240,7 @@ public class NetworkInterface {
     NetworkInterface networkInterface = (NetworkInterface) o;
     return Objects.equals(this.ipAddress, networkInterface.ipAddress) &&
         Objects.equals(this.subnetMask, networkInterface.subnetMask) &&
+        Objects.equals(this.prefixLength, networkInterface.prefixLength) &&
         Objects.equals(this.publicIpAddress, networkInterface.publicIpAddress) &&
         Objects.equals(this.localPrefix, networkInterface.localPrefix) &&
         Objects.equals(this.publicIpRange, networkInterface.publicIpRange) &&
@@ -230,7 +251,7 @@ public class NetworkInterface {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ipAddress, subnetMask, publicIpAddress, localPrefix, publicIpRange, dnsServers, hardwareType, interfaceName);
+    return Objects.hash(ipAddress, subnetMask, prefixLength, publicIpAddress, localPrefix, publicIpRange, dnsServers, hardwareType, interfaceName);
   }
 
   @Override
@@ -239,6 +260,7 @@ public class NetworkInterface {
     sb.append("class NetworkInterface {\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    subnetMask: ").append(toIndentedString(subnetMask)).append("\n");
+    sb.append("    prefixLength: ").append(toIndentedString(prefixLength)).append("\n");
     sb.append("    publicIpAddress: ").append(toIndentedString(publicIpAddress)).append("\n");
     sb.append("    localPrefix: ").append(toIndentedString(localPrefix)).append("\n");
     sb.append("    publicIpRange: ").append(toIndentedString(publicIpRange)).append("\n");
@@ -278,6 +300,10 @@ public class NetworkInterface {
     }
     public NetworkInterface.ModelBuilder subnetMask(String subnetMask) {
       this.instance.subnetMask = subnetMask;
+      return this;
+    }
+    public NetworkInterface.ModelBuilder prefixLength(Integer prefixLength) {
+      this.instance.prefixLength = prefixLength;
       return this;
     }
     public NetworkInterface.ModelBuilder publicIpAddress(String publicIpAddress) {
@@ -339,6 +365,7 @@ public class NetworkInterface {
     NetworkInterface.ModelBuilder builder = new NetworkInterface.ModelBuilder()
       .ipAddress(getIpAddress())
       .subnetMask(getSubnetMask())
+      .prefixLength(getPrefixLength())
       .publicIpAddress(getPublicIpAddress())
       .localPrefix(getLocalPrefix())
       .publicIpRange(getPublicIpRange())
